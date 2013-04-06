@@ -1,0 +1,45 @@
+<div id="action-bar">
+  <div class="row-fluid">
+    <div class="pull-left">
+      <a class="btn">
+        <span class="icon-ok icon-white"></span>
+      </a>
+      <a class="btn">
+        <span class="icon-repeat icon-white"></span>
+      </a>
+    </div>
+
+    <div class="pull-right">
+      <a class="btn btn-primary">
+        <span class="icon-cog icon-white"></span>
+      </a>
+      <a class="btn btn-primary">
+        <span class="icon-plus icon-white"></span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div id="stories">
+  <ul id="story-list">
+    <% @stories.each do |story| %>
+      <li class="story">
+        <div class="row-fluid">
+          <div class="span3">
+            <p class="blog-title">
+              <%= story.source %>
+            </p>
+          </div>
+          <div class="span9">
+            <p class="story-title">
+              <%= story.headline %>
+              <span class="story-lead">
+                &mdash; <%= story.lead %>
+              </span>
+            </p>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>

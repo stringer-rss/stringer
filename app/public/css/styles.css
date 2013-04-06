@@ -1,0 +1,86 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: #FAF2E5;
+}
+
+.container {
+  width: 720px;
+  margin: 0 auto;
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  /* Negative indent footer by it's height */
+  margin: 0 auto -30px;
+}
+
+/* Set the fixed height of the footer here */
+#push, #footer {
+  height: 30px;
+}
+
+#frame {
+  border-top: 7px solid #484948;
+}
+
+.btn {
+  padding: 8px;
+  height: 14px;
+  width: 14px;
+  background-color: #484948;
+}
+
+.btn:hover, .btn:focus {
+  background-color: #7F8281;
+}
+
+.btn.btn-primary {
+  background-color: #F67100;
+}
+
+.btn.btn-primary:hover, .btn.btn-primary:focus {
+  background-color: #F59745;
+}
+
+.no-margin {
+  margin-left: 0px !important;
+}
+
+#action-bar {
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+ul#story-list {
+  list-style-type: none;
+  margin-left: 0px;
+}
+
+ul#story-list p {
+  margin: 0px;
+}
+
+li.story {
+  height: 30px;
+  line-height: 30px;
+  margin-bottom: 7px;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.blog-title {
+  text-align: center;
+  margin-left: 10px;
+  overflow: hidden;
+}
+
+.story-lead {
+  color: gray;
+}

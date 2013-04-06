@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/flat-ui-no-icons.css">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+
+    <%= yield_content :head %>
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="frame">
+        <div class="container">
+          <div class="row-fluid">
+            <div class="span12">
+              <%= yield %>
+            </div>
+          </div>       
+        </div>
+      </div>
+
+      <div id="push"></div>
+    </div>
+
+    <div id="footer">
+      <div class="container">
+        <div class="row-fluid">
+          <div class="span12">
+            <p class="pull-right">
+              <b>Hey!</b> Get back to work, you slacker!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
