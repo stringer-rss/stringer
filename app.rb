@@ -39,5 +39,16 @@ class Stringer < Sinatra::Base
     erb :index
   end
 
-  class Story < Struct.new(:source, :headline, :lead); end;
+  class Story < Struct.new(:source, :headline, :lead);
+    def body
+      <<-eos 
+      Beginning today, all <a href="http://www.github.com">GitHub</a> Pages sites are moving to a new, dedicated domain: github.io. This is a security measure aimed at removing potential vectors for cross domain attacks targeting the main github.com session as well as vectors for phishing attacks relying on the presence of the "github.com" domain to build a false sense of trust in malicious websites.
+<br />
+<br />
+If you've configured a custom domain for your Pages site ("yoursite.com" instead of "yoursite.github.com") then you are not affected by this change and may stop reading now.
+
+If your Pages site was previously served from a username.github.com domain, all traffic will be redirected to the new username.github.io location indefinitely, so you won't have to change any links. For example, newmerator.github.com now redirects to newmerator.github.io."
+eos
+    end
+  end;
 end

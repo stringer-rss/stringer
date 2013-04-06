@@ -63,24 +63,68 @@ ul#story-list {
 }
 
 ul#story-list p {
-  margin: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 li.story {
-  height: 30px;
-  line-height: 30px;
   margin-bottom: 7px;
   background-color: white;
   cursor: pointer;
   border-radius: 5px;
+  -webkit-transform: rotate(0);
+  -moz-transform: rotate(0);
+  transform: rotate(0);
+}
+
+li.story a {
+  color: #F67100;
+  text-decoration: none;
+  border-bottom: 1px dotted #F67100;
+}
+
+li.story a:hover {
+  color: #F59745;
+  border-bottom: 1px dotted #F59745;
+}
+
+li.story.read {
+  opacity: 0.5;
+}
+
+li.story.open {
+  opacity: 1.0;
+}
+
+li.story.open .story-lead {
+  transition: opacity 1.5s ease-out;
+  -webkit-transition: opacity 1.5s ease-out;
+  opacity: 0;
+}
+
+li.story.open .story-preview {
+  border-bottom: 2px solid #FAF2E5;
+}
+
+.story-preview {
+  height: 30px;
+  line-height: 30px;
 }
 
 .blog-title {
-  text-align: center;
-  margin-left: 10px;
+  text-align: left;
+  margin-left: 20px;
   overflow: hidden;
 }
 
 .story-lead {
   color: gray;
+}
+
+.story-body {
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: justify;
 }

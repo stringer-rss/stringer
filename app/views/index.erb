@@ -24,7 +24,7 @@
   <ul id="story-list">
     <% @stories.each do |story| %>
       <li class="story">
-        <div class="row-fluid">
+        <div class="row-fluid story-preview">
           <div class="span3">
             <p class="blog-title">
               <%= story.source %>
@@ -38,6 +38,12 @@
               </span>
             </p>
           </div>
+        </div>
+
+        <div class="story-body" class="row-fluid" style="display: none;">
+          <p class="story-body">
+            <%= story.body %>
+          </p>
         </div>
       </li>
     <% end %>
