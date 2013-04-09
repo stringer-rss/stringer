@@ -21,7 +21,8 @@ $(document).ready(function() {
       $this.removeClass("open");
       $this.addClass("read");
 
-      $(".story-body", this).stop().slideUp(100);
+      $(".story-lead", this).show();
+      $(".story-body-container", this).stop().slideUp(100);
     }
   });
 
@@ -31,6 +32,7 @@ $(document).ready(function() {
 
     $this.addClass("open");
 
-    $(".story-body", this).stop().slideDown(100);
+    $(".story-lead", this).fadeOut(1000);
+    $(".story-body-container", this).stop().slideDown(100);
   });
 });

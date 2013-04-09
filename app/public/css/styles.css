@@ -31,8 +31,8 @@ body {
 
 .btn {
   padding: 8px;
-  height: 14px;
-  width: 14px;
+  height: 18px;
+  width: 18px;
   background-color: #484948;
 }
 
@@ -46,6 +46,11 @@ body {
 
 .btn.btn-primary:hover, .btn.btn-primary:focus {
   background-color: #F59745;
+}
+
+#action-bar i {
+  color: white;
+  line-height: 18px;
 }
 
 .no-margin {
@@ -77,13 +82,13 @@ li.story {
   transform: rotate(0);
 }
 
-li.story a {
+li.story .story-body a {
   color: #F67100;
   text-decoration: none;
   border-bottom: 1px dotted #F67100;
 }
 
-li.story a:hover {
+li.story .story-body a:hover {
   color: #F59745;
   border-bottom: 1px dotted #F59745;
 }
@@ -94,12 +99,6 @@ li.story.read {
 
 li.story.open {
   opacity: 1.0;
-}
-
-li.story.open .story-lead {
-  transition: opacity 1.5s ease-out;
-  -webkit-transition: opacity 1.5s ease-out;
-  opacity: 0;
 }
 
 li.story.open .story-preview {
@@ -122,9 +121,41 @@ li.story.open .story-preview {
 }
 
 .story-body {
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
   text-align: justify;
+}
+
+.story-actions-container {
+  border-top: 2px solid #FAF2E5;
+  height: 28px;
+  line-height: 30px;
+}
+
+.story-actions {
+  margin-right: 20px;
+  color: #484948;
+}
+
+.story-actions i {
+  margin-left: 7px;
+}
+
+.story-actions .spacer {
+  height: 12px;
+  line-height: 30px;
+  display: inline-block;
+  margin-left: 7px;
+  border-left: 1px solid #484948;
+}
+
+.story-actions a {
+  color: #484948;
+  text-decoration: none;
+}
+
+.story-actions a:hover, .story-actions a:focus {
+  color: #7F8281;
 }

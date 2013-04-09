@@ -2,19 +2,19 @@
   <div class="row-fluid">
     <div class="pull-left">
       <a class="btn">
-        <span class="icon-ok icon-white"></span>
+        <i class="icon-ok"></i>
       </a>
-      <a class="btn">
-        <span class="icon-repeat icon-white"></span>
+      <a class="btn" href="/">
+        <i class="icon-repeat"></i>
       </a>
     </div>
 
     <div class="pull-right">
       <a class="btn btn-primary">
-        <span class="icon-cog icon-white"></span>
+        <i class="icon-cog"></i>
       </a>
       <a class="btn btn-primary">
-        <span class="icon-plus icon-white"></span>
+        <i class="icon-plus"></i>
       </a>
     </div>
   </div>
@@ -31,8 +31,10 @@
             </p>
           </div>
           <div class="span9">
-            <p class="story-title">
-              <%= story.headline %>
+            <p>
+              <span class="story-title">
+                <%= story.headline %>
+              </span>
               <span class="story-lead">
                 &mdash; <%= story.lead %>
               </span>
@@ -40,10 +42,21 @@
           </div>
         </div>
 
-        <div class="story-body" class="row-fluid" style="display: none;">
+        <div class="story-body-container" class="row-fluid" style="display: none;">
           <p class="story-body">
             <%= story.body %>
           </p>
+          <div class="row-fluid story-actions-container">
+            <div class="pull-right story-actions">
+              <a href="#">
+                <i class="icon-external-link"></i>
+              </a>
+              <span class="spacer"></span>
+              <a href="#">
+                <i class="icon-twitter"></i>
+              </a>
+            </div>
+          </div>
         </div>
       </li>
     <% end %>
