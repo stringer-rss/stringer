@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $("li.story").click(function(e){ 
+  $(".story-preview").click(function(e){ 
     e.preventDefault();
 
     var $this = $(this);

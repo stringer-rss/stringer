@@ -75,7 +75,6 @@ ul#story-list p {
 li.story {
   margin-bottom: 7px;
   background-color: white;
-  cursor: pointer;
   border-radius: 5px;
   -webkit-transform: rotate(0);
   -moz-transform: rotate(0);
@@ -108,6 +107,7 @@ li.story.open .story-preview {
 .story-preview {
   height: 30px;
   line-height: 30px;
+  cursor: pointer;
 }
 
 .blog-title {
