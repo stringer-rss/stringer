@@ -8,6 +8,8 @@ gem "sinatra-contrib", github: "sinatra/sinatra-contrib"
 gem "rake"
 gem "delayed_job_active_record"
 
+gem "feedzirra", github: "pauldix/feedzirra"
+
 group :production do
   gem "unicorn"
   gem "pg"
