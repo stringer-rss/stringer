@@ -104,6 +104,7 @@ PLATFORMS
 DEPENDENCIES
   delayed_job_active_record
   feedzirra!
+  loofah
   pg
   pry
   rack-test

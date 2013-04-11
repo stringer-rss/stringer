@@ -33,7 +33,7 @@ class Stringer < Sinatra::Base
   end
 
   get "/" do
-    @stories = Story.all
+    @stories = Story.all.sample(5)
 
     erb :index
   end

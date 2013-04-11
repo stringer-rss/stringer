@@ -2,11 +2,11 @@ class Story < ActiveRecord::Base
   belongs_to :feed
 
   def headline
-    self.title
+    self.title[0, 50]
   end
 
   def lead
-    self.body[0,10]
+    Loofah.fragment(self.body).text[0,25]
   end
 
   def source

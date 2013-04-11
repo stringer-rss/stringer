@@ -4,9 +4,10 @@ require "bundler"
 Bundler.require
 
 require "./app"
+require_relative "./app/tasks/fetch_feeds"
 
 task :fetch_feeds do
-  puts "fetch some feeds yo"
+  FetchFeeds.new(Feed.all).fetch_all
 end
 
 desc "Clear the delayed_job queue."

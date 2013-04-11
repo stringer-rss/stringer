@@ -1,4 +1,5 @@
 require "feedzirra"
+
 require_relative "../repositories/story_repository"
 require_relative "../repositories/feed_repository"
 
@@ -12,11 +13,16 @@ class FetchFeed
     result = @parser.fetch_and_parse(@feed.url)
 
     unless result.last_modified < @feed.last_fetched
-      FeedRepository.update_last_fetched(@feed, result.last_modified)
-
       result.entries.each do |entry|
-        StoryRepository.add(entry, @feed) if is_new?(entry)
+        begin
+          StoryRepository.add(entry, @feed) if is_new?(entry)
+        rescue
+          require "pry"
+          binding.pry
+        end
       end
+
+      FeedRepository.update_last_fetched(@feed, result.last_modified)
     end
 
     result
