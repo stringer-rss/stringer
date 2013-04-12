@@ -42,4 +42,16 @@ describe "StoriesController" do
       last_response.body.should have_tag("#zen")
     end
   end
+
+  describe "/mark_as_read" do
+    before { StoryRepository.stub(:fetch).and_return(story_one) }
+
+    it "marks a story as read" do
+      StoryRepository.should_receive(:save).once
+
+      post "/mark_as_read", {story_id: story_one.id}.to_json
+
+      story_one.is_read.should be_true
+    end
+  end
 end

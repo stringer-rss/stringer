@@ -2,6 +2,7 @@ require "sinatra/base"
 require "sinatra/activerecord"
 require "sinatra/flash"
 require "sinatra/contrib/all"
+require "json"
 
 class Stringer < Sinatra::Base
   configure do

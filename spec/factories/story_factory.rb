@@ -12,9 +12,13 @@ class StoryFactory
   end;
 
   def self.build
-    FakeStory.new(title: Faker::Lorem.sentence, 
+    FakeStory.new(
+      id: rand(100),
+      title: Faker::Lorem.sentence, 
       permalink: Faker::Internet.url, 
       body: Faker::Lorem.paragraph,
-      feed: FeedFactory.build)
+      feed: FeedFactory.build,
+      is_read: false,
+      published: Time.now)
   end
 end

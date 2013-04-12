@@ -24,7 +24,7 @@
 <div id="stories">
   <ul id="story-list">
     <% @unread_stories.each do |story| %>
-      <li class="story">
+      <li class="story" data-id="<%= story.id %>">
         <div class="row-fluid story-preview">
           <div class="span3">
             <p class="blog-title">
