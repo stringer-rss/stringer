@@ -23,7 +23,9 @@ end
 group(:development, :testing) do
   gem "pry"
   gem "rspec"
+  gem "rspec-html-matchers"
   gem "rack-test"
   gem "shotgun"
   gem "racksh"
+  gem "faker"
 end

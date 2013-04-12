@@ -1,28 +1,29 @@
 <div id="action-bar">
   <div class="row-fluid">
     <div class="pull-left">
-      <a class="btn">
+      <a class="btn" id="mark-all">
         <i class="icon-ok"></i>
       </a>
-      <a class="btn" href="/">
+      <a class="btn" href="/" id="refresh">
         <i class="icon-repeat"></i>
       </a>
     </div>
 
     <div class="pull-right">
-      <a class="btn btn-primary">
+      <a class="btn btn-primary" id="settings">
         <i class="icon-cog"></i>
       </a>
-      <a class="btn btn-primary">
+      <a class="btn btn-primary" id="add-feed">
         <i class="icon-plus"></i>
       </a>
     </div>
   </div>
 </div>
 
+<% unless @unread_stories.empty? %>
 <div id="stories">
   <ul id="story-list">
-    <% @stories.each do |story| %>
+    <% @unread_stories.each do |story| %>
       <li class="story">
         <div class="row-fluid story-preview">
           <div class="span3">
@@ -62,3 +63,7 @@
     <% end %>
   </ul>
 </div>
+<% else %>
+<div id="zen">
+</div>
+<% end %>

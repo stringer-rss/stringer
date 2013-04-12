@@ -14,12 +14,7 @@ class FetchFeed
 
     unless result.last_modified < @feed.last_fetched
       result.entries.each do |entry|
-        begin
-          StoryRepository.add(entry, @feed) if is_new?(entry)
-        rescue
-          require "pry"
-          binding.pry
-        end
+        StoryRepository.add(entry, @feed) if is_new?(entry)
       end
 
       FeedRepository.update_last_fetched(@feed, result.last_modified)

@@ -1,15 +1,15 @@
 require "spec_helper"
 app_require "tasks/fetch_feed"
 
-class Feed < OpenStruct; end;
-
 describe FetchFeed do
   let (:daring_fireball) {
-    Feed.new(name: "Daring Fireball", url: "http://daringfireball.net/index.xml", last_fetched: Time.new(2013, 4, 5))
+    FeedFactory.build(name: "Daring Fireball", url: "http://daringfireball.net/index.xml", last_fetched: Time.new(2013, 4, 5))
   }
 
   describe "#fetch" do
-    it "fetches the feed" do
+    before { StoryRepository.stub(:add) }
+
+    it "fetches the feed", speed: "slow" do
       result = FetchFeed.new(daring_fireball).fetch
       result.title.should eq "Daring Fireball"
       result.entries.first.author.should eq "John Gruber"

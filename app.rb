@@ -3,9 +3,6 @@ require "sinatra/activerecord"
 require "sinatra/flash"
 require "sinatra/contrib/all"
 
-require_relative "app/models/feed"
-require_relative "app/models/story"
-
 class Stringer < Sinatra::Base
   configure do
     set :database_file, "config/database.yml"
@@ -33,8 +30,8 @@ class Stringer < Sinatra::Base
   end
 
   get "/" do
-    @stories = Story.all.sample(5)
-
-    erb :index
+    redirect to("/news")
   end
 end
+
+require_relative "app/controllers/stories_controller"

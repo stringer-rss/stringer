@@ -6,6 +6,7 @@ Bundler.require
 require "./app"
 require_relative "./app/tasks/fetch_feeds"
 
+desc "Fetch all feeds."
 task :fetch_feeds do
   FetchFeeds.new(Feed.all).fetch_all
 end
@@ -15,7 +16,17 @@ task :clear_jobs do
   Delayed::Job.delete_all
 end
 
-desc 'delayed_job worker process'
+desc "Work the delayed_job queue."
 task :work_jobs do
   Delayed::Worker.new(:min_priority => ENV['MIN_PRIORITY'], :max_priority => ENV['MAX_PRIORITY']).start
 end
+
+require 'rspec/core/rake_task'
+
+RSpec::Core::RakeTask.new(:speedy_tests) do |t|
+  t.rspec_opts = "--tag ~speed:slow"
+end
+
+RSpec::Core::RakeTask.new(:spec)
+
+task :default => [:speedy_tests]

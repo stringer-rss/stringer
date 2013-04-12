@@ -1,3 +1,5 @@
+require_relative "./feed"
+
 class Story < ActiveRecord::Base
   belongs_to :feed
 
