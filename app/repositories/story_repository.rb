@@ -21,4 +21,8 @@ class StoryRepository
   def self.unread
     Story.where(is_read: false).order(:published)
   end
+
+  def self.mark_all_as_read
+    Story.update_all(is_read: false, is_read: true)
+  end
 end

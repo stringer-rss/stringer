@@ -12,4 +12,10 @@ class Stringer < Sinatra::Base
     story.is_read = true
     StoryRepository.save(story)
   end
+
+  post "/mark_all_as_read" do
+    StoryRepository.mark_all_as_read
+    
+    redirect to("/news")
+  end
 end

@@ -38,4 +38,10 @@ $(document).ready(function() {
     $.post("/mark_as_read", { story_id: $this.data("id") })
       .fail(function() { alert("something broke!"); });
   });
+
+  $("#mark-all").click(function(e) {
+    e.preventDefault();
+
+    $("form#mark-all-as-read").submit();
+  });
 });
