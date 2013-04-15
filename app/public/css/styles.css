@@ -67,11 +67,6 @@ ul#story-list {
   margin-left: 0px;
 }
 
-ul#story-list p {
-  margin-top: 0px;
-  margin-bottom: 0px;
-}
-
 li.story {
   margin-bottom: 7px;
   background-color: white;
@@ -79,6 +74,7 @@ li.story {
   -webkit-transform: rotate(0);
   -moz-transform: rotate(0);
   transform: rotate(0);
+  color: #484948;
 }
 
 li.story .story-body a {
@@ -110,6 +106,10 @@ li.story.open .story-preview {
   cursor: pointer;
 }
 
+.story-preview div {
+  height: 30px;
+}
+
 .blog-title {
   text-align: left;
   margin-left: 20px;
@@ -117,15 +117,49 @@ li.story.open .story-preview {
 }
 
 .story-lead {
-  color: gray;
+  color: #e5e5e5;
+}
+
+.story-author {
+  margin-left: 20px;
 }
 
 .story-body {
   margin-left: 20px;
   margin-right: 20px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  text-align: justify;
+  text-align: left;
+}
+
+.story-body h1, .story-body h2, .story-body h3 {
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+.story-body h1 {
+  font-size: 26px;
+  margin-bottom: 13px;
+}
+
+.story-body h2 {
+  font-size: 22px;
+  margin-bottom: 11px;
+}
+
+.story-body h3 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.story-body p {
+  font-size: 16px;
+  line-height: 1.4;
+  margin-bottom: 16px;
+  font-weight: 300;
+}
+
+.story-body ul {
+  list-style-type: disc;
 }
 
 .story-actions-container {
@@ -137,18 +171,6 @@ li.story.open .story-preview {
 .story-actions {
   margin-right: 20px;
   color: #484948;
-}
-
-.story-actions i {
-  margin-left: 7px;
-}
-
-.story-actions .spacer {
-  height: 12px;
-  line-height: 30px;
-  display: inline-block;
-  margin-left: 7px;
-  border-left: 1px solid #484948;
 }
 
 .story-actions a {

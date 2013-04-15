@@ -5,6 +5,7 @@ class StoryRepository
     Story.create(feed: feed, 
                 title: entry.title, 
                 permalink: entry.url, 
+                author: entry.author,
                 body: entry.content.sanitize,
                 is_read: false,
                 published: entry.published)
@@ -19,7 +20,7 @@ class StoryRepository
   end
 
   def self.unread
-    Story.where(is_read: false).order(:published)
+    Story.where(is_read: false).order("published desc") 
   end
 
   def self.mark_all_as_read
