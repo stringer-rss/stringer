@@ -1,5 +1,6 @@
 html, body {
   height: 100%;
+  color: #484948;
 }
 
 body {
@@ -180,4 +181,26 @@ li.story.open .story-preview {
 
 .story-actions a:hover, .story-actions a:focus {
   color: #7F8281;
+}
+
+#zen {
+  text-align: center;
+}
+
+#zen p {
+  font-size: 50px;
+  line-height: 50px;
+}
+
+#zen p small {
+  font-size: 20px;
+}
+
+#zen #zero {
+  font-size: 144px;
+}
+
+#zen #gtfo {
+  color: #F59745;
+  font-weight: bold;
 }
