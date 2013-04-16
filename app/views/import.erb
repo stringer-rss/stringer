@@ -1,4 +1,16 @@
+<% content_for :head do %>
+  <script src="/js/bootstrap.file-input.js"></script>
+<% end %>
+
+
 <form id="import" method="POST" action="/import" enctype="multipart/form-data">
-  <input id="opml_file" name="opml_file" type="file" />
-  <input type="submit" />
+  <input id="opml_file" name="opml_file" type="file" title="Browse" class="btn-primary" />
 </form> 
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#opml_file').on("filePicked", function(e) {
+    $('form#import').submit();
+  });
+});
+</script>

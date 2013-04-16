@@ -30,7 +30,7 @@ body {
   border-top: 7px solid #484948;
 }
 
-.btn {
+#action-bar .btn {
   padding: 8px;
   height: 18px;
   width: 18px;
