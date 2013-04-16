@@ -10,6 +10,7 @@ gem "delayed_job_active_record"
 
 gem "feedzirra", github: "pauldix/feedzirra"
 gem "loofah"
+gem "nokogiri"
 
 group :production do
   gem "unicorn"

@@ -36,3 +36,4 @@ class Stringer < Sinatra::Base
 end
 
 require_relative "app/controllers/stories_controller"
+require_relative "app/controllers/first_run_controller"

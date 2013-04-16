@@ -10,14 +10,18 @@ class FetchFeed
   end
 
   def fetch
-    result = @parser.fetch_and_parse(@feed.url)
+    begin
+      result = @parser.fetch_and_parse(@feed.url)
 
-    unless result.last_modified < @feed.last_fetched
-      result.entries.each do |entry|
-        StoryRepository.add(entry, @feed) if is_new?(entry)
+      unless result.last_modified < @feed.last_fetched
+        result.entries.each do |entry|
+          StoryRepository.add(entry, @feed) if is_new?(entry)
+        end
+
+        FeedRepository.update_last_fetched(@feed, result.last_modified)
       end
-
-      FeedRepository.update_last_fetched(@feed, result.last_modified)
+    rescue
+      puts "Something went wrong when parsing #{@feed.url}"
     end
 
     result

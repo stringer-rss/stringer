@@ -9,7 +9,7 @@ class StoryFactory
     def source
       self.feed.name
     end
-  end;
+  end
 
   def self.build
     FakeStory.new(

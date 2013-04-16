@@ -111,6 +111,7 @@ DEPENDENCIES
   faker
   feedzirra!
   loofah
+  nokogiri
   pg
   pry
   rack-test

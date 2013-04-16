@@ -11,6 +11,11 @@ task :fetch_feeds do
   FetchFeeds.new(Feed.all).fetch_all
 end
 
+desc "Fetch single feed"
+task :fetch_feed => :id do
+  # TODO
+end
+
 desc "Clear the delayed_job queue."
 task :clear_jobs do
   Delayed::Job.delete_all
