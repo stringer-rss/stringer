@@ -105,6 +105,8 @@ li.story.open .story-preview {
   height: 30px;
   line-height: 30px;
   cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .story-preview div {

@@ -18,7 +18,7 @@ describe FetchFeed do
     context "when no new posts have been added" do
       it "should not add any new posts" do
         fake_feed = stub(last_modified: Time.new(2012, 12, 31))
-        parser = stub(fetch_and_parse: fake_feed)
+        parser = stub(update: fake_feed)
 
         StoryRepository.should_not_receive(:add)
 
@@ -31,8 +31,8 @@ describe FetchFeed do
       let(:new_story){ stub(published: now + 1) }
       let(:old_story) { stub(published: Time.new(2009, 4, 20)) }
 
-      let(:fake_feed) { stub(last_modified: now, entries: [new_story, old_story]) }
-      let(:fake_parser) { stub(fetch_and_parse: fake_feed) }
+      let(:fake_feed) { stub(last_modified: now, entries: [new_story, old_story], new_entries: [new_story]) }
+      let(:fake_parser) { stub(update: fake_feed) }
 
       it "should only add posts that are new" do
         StoryRepository.should_receive(:add).with(new_story, daring_fireball)

@@ -8,7 +8,7 @@ class Story < ActiveRecord::Base
   end
 
   def lead
-    Loofah.fragment(self.body).text[0,25]
+    Loofah.fragment(self.body).text[0,100]
   end
 
   def source
