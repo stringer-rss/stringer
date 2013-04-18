@@ -11,7 +11,7 @@ class Stringer < Sinatra::Base
     set :public_dir, "app/public"
 
     enable :sessions
-    set :session_secret, "secret!"
+    set :session_secret, ENV["SECRET_TOKEN"] || "secret!"
 
     register Sinatra::ActiveRecordExtension
     register Sinatra::Flash
@@ -30,6 +30,21 @@ class Stringer < Sinatra::Base
     end
   end
 
+  before do
+    if !is_authenticated? && needs_authentication?(request.path)
+      redirect '/login'
+    end
+  end
+
+  def needs_authentication?(path)
+    return false if path == "/login" || path == "/logout"
+    true
+  end
+
+  def is_authenticated?
+    session[:user_id]
+  end
+
   get "/" do
     redirect to("/news")
   end
@@ -37,3 +52,4 @@ end
 
 require_relative "app/controllers/stories_controller"
 require_relative "app/controllers/first_run_controller"
+require_relative "app/controllers/sessions_controller"

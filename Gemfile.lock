@@ -36,6 +36,7 @@ GEM
       multi_json (~> 1.0)
     arel (3.0.2)
     backports (3.3.0)
+    bcrypt-ruby (3.0.1)
     builder (3.0.4)
     coderay (1.0.9)
     curb (0.8.3)
@@ -107,6 +108,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt-ruby
   delayed_job_active_record
   faker
   feedzirra!

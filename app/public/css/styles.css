@@ -34,18 +34,21 @@ body {
   padding: 8px;
   height: 18px;
   width: 18px;
+}
+
+.btn {
   background-color: #484948;
 }
 
-#action-bar .btn-primary {
+.btn.btn-primary {
   background-color: #F67100;
 }
 
-#action-bar .btn-primary:hover, #action-bar .btn-primary:focus {
+.btn.btn-primary:hover, .btn.btn-primary:focus {
   background-color: #F59745;
 }
 
-#action-bar .btn:hover, .btn:focus {
+.btn:hover, .btn:focus {
   background-color: #7F8281;
 }
 
