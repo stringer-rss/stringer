@@ -37,16 +37,16 @@ body {
   background-color: #484948;
 }
 
-.btn:hover, .btn:focus {
-  background-color: #7F8281;
-}
-
-.btn.btn-primary {
+#action-bar .btn-primary {
   background-color: #F67100;
 }
 
-.btn.btn-primary:hover, .btn.btn-primary:focus {
+#action-bar .btn-primary:hover, #action-bar .btn-primary:focus {
   background-color: #F59745;
+}
+
+#action-bar .btn:hover, .btn:focus {
+  background-color: #7F8281;
 }
 
 #action-bar i {
