@@ -30,6 +30,13 @@ body {
   border-top: 7px solid #484948;
 }
 
+.alert {
+  text-align: center;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+}
+
 #action-bar .btn {
   padding: 8px;
   height: 18px;

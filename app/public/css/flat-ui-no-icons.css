@@ -707,7 +707,7 @@ input[type="color"],
   input[type="tel"]:focus,
   input[type="color"]:focus,
   .uneditable-input:focus {
-    border-color: #1abc9c;
+    border-color: #F67100;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none; }
@@ -1336,8 +1336,8 @@ textarea,
     transition: background 0.2s ease-out, border-color 0s ease-out, color 0.2s ease-out;
     -webkit-backface-visibility: hidden; }
     .pagination ul > li > a:hover, .pagination ul > li > a :focus, .pagination ul > li > span:hover, .pagination ul > li > span :focus {
-      background-color: #1abc9c;
-      border-color: #1abc9c;
+      background-color: #F67100;
+      border-color: #F67100;
       color: white;
       -webkit-transition: background 0.2s ease-out, border-color 0.2s ease-out, color 0.2s ease-out;
       -moz-transition: background 0.2s ease-out, border-color 0.2s ease-out, color 0.2s ease-out;

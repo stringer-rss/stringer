@@ -9,7 +9,6 @@ class Stringer < Sinatra::Base
     user = SignInUser.sign_in(params[:email], params[:password])
     if user
       session[:user_id] = user.id
-      flash[:notice] = "Logged in!"
       redirect to("/")
     else
       flash.now[:error] = "Invalid username or password"
@@ -18,6 +17,7 @@ class Stringer < Sinatra::Base
   end
 
   get "/logout" do
+    flash[:success] = "You have been signed out"
     session[:user_id] = nil
     redirect to("/")
   end

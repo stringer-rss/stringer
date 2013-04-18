@@ -22,7 +22,7 @@ $(document).ready(function() {
       $this.addClass("read");
 
       $(".story-lead", this).show();
-      $(".story-body-container", this).stop().slideUp(100);
+      $(".story-body-container", this).stop().hide();
     }
   });
 
@@ -33,7 +33,7 @@ $(document).ready(function() {
     $this.addClass("open");
 
     $(".story-lead", this).fadeOut(1000);
-    $(".story-body-container", this).stop().slideDown(100);
+    $(".story-body-container", this).stop().show();
 
     $.post("/mark_as_read", { story_id: $this.data("id") })
       .fail(function() { alert("something broke!"); });
