@@ -12,8 +12,8 @@ task :fetch_feeds do
 end
 
 desc "Fetch single feed"
-task :fetch_feed => :id do
-  # TODO
+task :fetch_feed, :id do |t, args|
+  FetchFeed.new(Feed.find(args[:id])).fetch
 end
 
 desc "Clear the delayed_job queue."

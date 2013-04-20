@@ -9,7 +9,7 @@ gem "rake"
 gem "delayed_job_active_record"
 gem "bcrypt-ruby"
 
-gem "feedzirra", github: "pauldix/feedzirra"
+gem "feedzirra", github: "swanson/feedzirra"
 gem "loofah"
 gem "nokogiri"
 
