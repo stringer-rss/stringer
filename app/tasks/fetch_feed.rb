@@ -22,7 +22,9 @@ class FetchFeed
       FeedRepository.update_last_fetched(@feed, raw_feed.last_modified)
     rescue Exception => ex
       puts "Something went wrong when parsing #{@feed.url}"
-      puts ex, ex.backtrace
+      puts raw_feed.inspect
+      puts ex
+      puts
     end
   end
 

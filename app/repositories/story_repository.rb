@@ -8,7 +8,7 @@ class StoryRepository
                 author: entry.author,
                 body: StoryRepository.extract_content(entry),
                 is_read: false,
-                published: entry.published)
+                published: entry.published || Time.now)
   end
 
   def self.fetch(id)

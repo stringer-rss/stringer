@@ -35,8 +35,8 @@ $(document).ready(function() {
     $(".story-lead", this).fadeOut(1000);
     $(".story-body-container", this).stop().show();
 
-    //$.post("/mark_as_read", { story_id: $this.data("id") })
-    //  .fail(function() { alert("something broke!"); });
+    $.post("/mark_as_read", { story_id: $this.data("id") })
+      .fail(function() { alert("something broke!"); });
   });
 
   $("#mark-all").click(function(e) {

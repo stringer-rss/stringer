@@ -17,7 +17,7 @@ describe FindNewStories do
       it "should return stories that are new based on published date" do
         new_story = stub(published: Time.new(2013, 1, 5))
         old_story = stub(published: Time.new(2013, 1, 1))
-        feed = stub(last_modified: Time.new(2013, 1, 5), stories: [new_story, old_story])
+        feed = stub(last_modified: Time.new(2013, 1, 5), entries: [new_story, old_story])
 
         result = FindNewStories.new(feed, Time.new(2013, 1, 3)).new_stories
         result.should eq [new_story]
@@ -28,7 +28,7 @@ describe FindNewStories do
       it "should check all stories and compare published time" do
         new_story = stub(published: Time.new(2013, 1, 5))
         old_story = stub(published: Time.new(2013, 1, 1))
-        feed = stub(last_modified: nil, stories: [new_story, old_story])
+        feed = stub(last_modified: nil, entries: [new_story, old_story])
 
         result = FindNewStories.new(feed, Time.new(2013, 1, 3)).new_stories
         result.should eq [new_story]
@@ -39,7 +39,7 @@ describe FindNewStories do
       it "should scan until matching the last url" do
         new_story = stub(published: nil, url: "http://blog.com/new-story")
         old_story = stub(published: nil, url: "http://blog.com/old-story")
-        feed = stub(last_modified: nil, stories: [new_story, old_story])
+        feed = stub(last_modified: nil, entries: [new_story, old_story])
 
         result = FindNewStories.new(feed, Time.new(2013, 1, 3), "http://blog.com/old-story").new_stories
         result.should eq [new_story]

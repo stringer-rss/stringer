@@ -10,7 +10,7 @@ class FindNewStories
                  @raw_feed.last_modified < @last_fetched
 
     stories = []
-    @raw_feed.stories.each do |story|
+    @raw_feed.entries.each do |story|
       break if @latest_url && story.url == @latest_url
 
       stories << story unless story.published && 

@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: git://github.com/swanson/feedzirra.git
-  revision: 48e45278f77be8352482eb00bee727cb1ca17864
+  revision: 3d4767670b24b4de617ab9bcbd1ac9786cb30183
   specs:
     feedzirra (0.2.0.rc2)
       curb (~> 0.8.1)
@@ -52,7 +52,7 @@ GEM
     delayed_job_active_record (0.4.4)
       activerecord (>= 2.1.0, < 4)
       delayed_job (~> 3.0)
-    diff-lcs (1.2.3)
+    diff-lcs (1.2.4)
     eventmachine (1.0.3)
     faker (1.1.2)
       i18n (~> 0.5)
@@ -76,7 +76,7 @@ GEM
     racksh (1.0.0)
       rack (>= 1.0)
       rack-test (>= 0.5)
-    raindrops (0.10.0)
+    raindrops (0.11.0)
     rake (10.0.4)
     rspec (2.13.0)
       rspec-core (~> 2.13.0)

@@ -1,3 +1,9 @@
+<% content_for :title do %>
+  <% unless @unread_stories.empty? %>
+    <%= "(#{@unread_stories.count})" %>
+  <% end %>
+<% end %>
+
 <div id="action-bar">
   <div class="row-fluid">
     <div class="pull-left">
