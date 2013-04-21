@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: git://github.com/swanson/feedzirra.git
-  revision: 3d4767670b24b4de617ab9bcbd1ac9786cb30183
+  revision: bde016b7f778ea86d7aa1100beca7e504c9a7032
   specs:
     feedzirra (0.2.0.rc2)
       curb (~> 0.8.1)
@@ -64,7 +64,7 @@ GEM
     multi_json (1.7.2)
     nokogiri (1.5.9)
     pg (0.15.1)
-    pry (0.9.12)
+    pry (0.9.12.1)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.4)
