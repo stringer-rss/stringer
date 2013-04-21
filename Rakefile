@@ -6,6 +6,13 @@ Bundler.require
 require "./app"
 require_relative "./app/tasks/fetch_feeds"
 
+desc "Heroku scheduled fetch feeds"
+task :heroku_fetch_feeds do
+  if Time.now.hour % 4 == 0
+    FetchFeeds.new(Feed.all).fetch_all
+  end
+end
+
 desc "Fetch all feeds."
 task :fetch_feeds do
   FetchFeeds.new(Feed.all).fetch_all
