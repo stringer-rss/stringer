@@ -2,23 +2,24 @@ require "spec_helper"
 app_require "tasks/fetch_feed"
 
 describe FetchFeed do
-  let (:daring_fireball) {
-    FeedFactory.build(name: "Daring Fireball", url: "http://daringfireball.net/index.xml", last_fetched: Time.new(2013, 4, 5))
-  }
-
   describe "#fetch" do
-    before { StoryRepository.stub(:add) }
+    let(:daring_fireball) do
+     stub(url: "http://daringfireball.com/feed", 
+          last_fetched: Time.new(2013,1,1),
+          stories: [])
+    end
 
-    it "fetches the feed", speed: "slow" do
-      result = FetchFeed.new(daring_fireball).fetch
-      result.title.should eq "Daring Fireball"
-      result.entries.first.author.should eq "John Gruber"
+    before do
+      StoryRepository.stub(:add)
+      FeedRepository.stub(:update_last_fetched)
     end
 
     context "when no new posts have been added" do
       it "should not add any new posts" do
         fake_feed = stub(last_modified: Time.new(2012, 12, 31))
-        parser = stub(update: fake_feed)
+        parser = stub(fetch_and_parse: fake_feed)
+
+        FindNewStories.any_instance.stub(:new_stories).and_return([])
 
         StoryRepository.should_not_receive(:add)
 
@@ -28,11 +29,13 @@ describe FetchFeed do
 
     context "when new posts have been added" do
       let(:now) { Time.now }
-      let(:new_story){ stub(published: now + 1) }
-      let(:old_story) { stub(published: Time.new(2009, 4, 20)) }
+      let(:new_story){ stub }
+      let(:old_story) { stub }
 
-      let(:fake_feed) { stub(last_modified: now, entries: [new_story, old_story], new_entries: [new_story]) }
-      let(:fake_parser) { stub(update: fake_feed) }
+      let(:fake_feed) { stub(last_modified: now, entries: [new_story, old_story]) }
+      let(:fake_parser) { stub(fetch_and_parse: fake_feed) }
+
+      before { FindNewStories.any_instance.stub(:new_stories).and_return([new_story]) }
 
       it "should only add posts that are new" do
         StoryRepository.should_receive(:add).with(new_story, daring_fireball)

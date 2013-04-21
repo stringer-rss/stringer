@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/dwillis/feedbag.git
+  revision: f7f2269ada54f9b5be7c1312949512bb8a557b10
+  specs:
+    feedbag (0.9.1)
+      nokogiri
+
+GIT
   remote: git://github.com/sinatra/sinatra-contrib.git
   revision: 6da79a0309ccc652c18e6edfd29d59f66b251a39
   specs:
@@ -111,6 +118,7 @@ DEPENDENCIES
   bcrypt-ruby
   delayed_job_active_record
   faker
+  feedbag!
   feedzirra!
   loofah
   nokogiri

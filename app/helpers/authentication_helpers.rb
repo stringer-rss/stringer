@@ -7,6 +7,7 @@ module Sinatra
     end
 
     def needs_authentication?(path)
+      return false if ENV['RACK_ENV'] == 'test'
       return false if path == "/login" || path == "/logout"
       true
     end

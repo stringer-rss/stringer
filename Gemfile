@@ -13,6 +13,8 @@ gem "feedzirra", github: "swanson/feedzirra"
 gem "loofah"
 gem "nokogiri"
 
+gem "feedbag", github: "dwillis/feedbag"
+
 group :production do
   gem "unicorn"
   gem "pg"

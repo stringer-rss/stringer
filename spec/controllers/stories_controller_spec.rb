@@ -3,6 +3,8 @@ require "spec_helper"
 app_require "controllers/stories_controller"
 
 describe "StoriesController" do
+  before { }
+  
   let(:story_one) { StoryFactory.build }
   let(:story_two) { StoryFactory.build }
   let(:stories) { [story_one, story_two] }
