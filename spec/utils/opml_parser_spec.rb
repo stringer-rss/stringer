@@ -30,6 +30,29 @@ describe OpmlParser do
       result.last[:url].should eq "http://mdswanson.com/atom.xml"
     end
 
+    it "handles nested groups of feeds" do
+      parser = OpmlParser.new
+
+      result = parser.parse_feeds(<<-eos)
+        <?xml version="1.0" encoding="UTF-8"?>
+        <opml version="1.0">
+        <head>
+          <title>matt swanson subscriptions in Google Reader</title>
+        </head>
+        <body>
+          <outline text="Technology News">
+            <outline text="a sample feed" title="a sample feed" type="rss"
+                xmlUrl="http://feeds.feedburner.com/foobar" htmlUrl="http://www.example.org/"/>
+          </outline>
+        </body>
+        </opml>
+      eos
+
+      result.count.should eq 1
+      result.first[:name].should eq "a sample feed"
+      result.first[:url].should eq "http://feeds.feedburner.com/foobar"
+    end
+
     it "doesn't explode when there are no feeds" do
       parser = OpmlParser.new
 
