@@ -23,14 +23,8 @@ class Stringer < Sinatra::Base
   helpers do
     include Sinatra::AuthenticationHelpers
 
-    # allow for partials using this syntax
-    # = render partial: :foo
-    def render(*args)
-      if args.first.is_a?(Hash) && args.first.keys.include?(:partial)
-        return erb "partials/_#{args.first[:partial]}".to_sym, :layout => false
-      else
-        super
-      end
+    def render_partial(name, locals = {})
+      erb "partials/_#{name}".to_sym, layout: false, locals: locals
     end
   end
 

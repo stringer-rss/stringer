@@ -5,85 +5,17 @@
 <% end %>
 
 <div id="action-bar">
-  <div class="row-fluid">
-    <div class="pull-left">
-      <a class="btn" id="mark-all">
-        <i class="icon-ok"></i>
-      </a>
-      <a class="btn" href="/" id="refresh">
-        <i class="icon-repeat"></i>
-      </a>
-    </div>
-
-    <div class="pull-right">
-      <a class="btn btn-primary" id="settings">
-        <i class="icon-cog"></i>
-      </a>
-      <a class="btn btn-primary" id="add-feed">
-        <i class="icon-plus"></i>
-      </a>
-    </div>
-  </div>
-
-  <div class="hidden">
-    <form id="mark-all-as-read" method="POST" action="/mark_all_as_read"></form>
-  </div>
+  <%= render_partial :action_bar, {stories: @unread_stories} %>
 </div>
 
 <% unless @unread_stories.empty? %>
 <div id="stories">
   <ul id="story-list">
     <% @unread_stories.each do |story| %>
-      <li class="story" id="story-<%= story.id%>" data-id="<%= story.id %>">
-        <div class="row-fluid story-preview">
-          <div class="span3">
-            <p class="blog-title">
-              <%= story.source %>
-            </p>
-          </div>
-          <div class="span9">
-            <p>
-              <span class="story-title">
-                <%= story.headline %>
-              </span>
-              <span class="story-lead">
-                &mdash; <%= story.lead %>
-              </span>
-            </p>
-          </div>
-        </div>
-
-        <div class="story-body-container" class="row-fluid" style="display: none;">
-          <div class="story-body">
-            <h1><%= story.title %></h1>
-            <%= story.body %>
-          </div>
-          <div class="row-fluid story-actions-container">
-            <div class="pull-left">
-              <span class="story-author">
-                <%= story.author %> &mdash; <%= story.published.strftime("%A, %B %d") %>
-              </span>
-            </div>
-            <div class="pull-right story-actions">
-              <a href="<%=story.permalink %>">
-                <i class="icon-external-link"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </li>
+      <%= render_partial :story, { story: story } %>
     <% end %>
   </ul>
 </div>
 <% else %>
-<div id="zen">
-  <span id="zero">&ndash; 0 &ndash;</span>
-  <p>You&#8217;ve reached RSS Zero&trade;</p>
-  <p>
-    <small>
-      Now stop reading blogs and 
-      <span id="gtfo">go make something</span>
-    </small>
-  </p>
-</div>
+  <%= render_partial :zen %>
 <% end %>

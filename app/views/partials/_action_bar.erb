@@ -1,0 +1,21 @@
+<div class="row-fluid">
+  <div class="pull-left">
+    <a class="btn" id="mark-all">
+      <i class="icon-ok"></i>
+      <%= render_partial :mark_all_as_read_form, 
+                        {stories: @unread_stories} %>
+    </a>
+    <a class="btn" href="/" id="refresh">
+      <i class="icon-repeat"></i>
+    </a>
+  </div>
+
+  <div class="pull-right">
+    <a class="btn btn-primary" id="settings">
+      <i class="icon-cog"></i>
+    </a>
+    <a class="btn btn-primary" id="add-feed">
+      <i class="icon-plus"></i>
+    </a>
+  </div>
+</div>

@@ -57,9 +57,9 @@ describe "StoriesController" do
 
   describe "/mark_all_as_read" do
     it "marks all unread stories as read and reload the page" do
-      StoryRepository.should_receive(:mark_all_as_read).once
+      MarkAllAsRead.any_instance.should_receive(:mark_as_read).once
 
-      post "/mark_all_as_read"
+      post "/mark_all_as_read", story_ids: ["1", "2", "3"]
 
       last_response.status.should be 302
       URI::parse(last_response.location).path.should eq "/news"

@@ -15,16 +15,16 @@ class StoryRepository
     Story.find(id)
   end
 
+  def self.fetch_by_ids(ids)
+    Story.where(id: ids)
+  end
+
   def self.save(story)
     story.save
   end
 
   def self.unread
     Story.where(is_read: false).order("published desc") 
-  end
-
-  def self.mark_all_as_read
-    Story.update_all(is_read: false, is_read: true)
   end
 
   def self.extract_content(entry)

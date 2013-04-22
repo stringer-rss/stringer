@@ -1,4 +1,5 @@
 require_relative "../repositories/story_repository"
+require_relative "../commands/stories/mark_all_as_read"
 
 class Stringer < Sinatra::Base
   get "/news" do
@@ -14,7 +15,7 @@ class Stringer < Sinatra::Base
   end
 
   post "/mark_all_as_read" do
-    StoryRepository.mark_all_as_read
+    MarkAllAsRead.new(params[:story_ids]).mark_as_read
     
     redirect to("/news")
   end
