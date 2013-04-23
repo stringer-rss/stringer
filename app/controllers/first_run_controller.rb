@@ -3,11 +3,11 @@ require_relative "../commands/users/create_user"
 require_relative "../repositories/user_repository"
 
 class Stringer < Sinatra::Base
-  before /\/(password|import)/ do
-    if first_run_completed?
-      redirect to("/news")
-    end
-  end
+  #before /\/(password|import)/ do
+  #  if first_run_completed?
+  #    redirect to("/news")
+  #  end
+  #end
 
   get "/" do
     if first_run_completed?

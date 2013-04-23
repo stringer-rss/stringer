@@ -61,7 +61,7 @@ describe "FirstRunController" do
       User.stub(:any?).and_return(true)
     end
 
-    it "should redirect any requests to first run stuff" do
+    xit "should redirect any requests to first run stuff" do
       get "/"
       last_response.status.should be 302
       URI::parse(last_response.location).path.should eq "/news"
