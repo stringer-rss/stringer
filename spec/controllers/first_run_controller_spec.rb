@@ -45,8 +45,8 @@ describe "FirstRunController" do
       get "/import"
 
       page = last_response.body
-      page.should have_tag("#opml_file")
-      page.should have_tag("#skip")
+      page.should have_tag("input#opml_file")
+      page.should have_tag("a#skip")
     end
   end
 end
