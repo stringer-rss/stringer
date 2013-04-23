@@ -7,6 +7,13 @@ body {
   background-color: #FAF2E5;
 }
 
+hr {
+  border-bottom: 0px;
+  border-top: 1px solid #e5e5e5;
+  width: 100%;
+  margin: 20px auto;
+}
+
 .container {
   width: 720px;
   margin: 0 auto;
@@ -88,15 +95,20 @@ li.story {
   color: #484948;
 }
 
-li.story .story-body a {
+li.story .story-body a, .setup a {
   color: #F67100;
   text-decoration: none;
   border-bottom: 1px dotted #F67100;
 }
 
-li.story .story-body a:hover {
+li.story .story-body a:hover, .setup a:hover {
   color: #F59745;
   border-bottom: 1px dotted #F59745;
+}
+
+a.btn, a.btn:hover {
+  border-bottom: 0px;
+  color: white;
 }
 
 li.story.read {
@@ -216,4 +228,32 @@ li.story.open .story-preview {
 #zen #gtfo {
   color: #F59745;
   font-weight: bold;
+}
+
+.orange {
+  color: #F67100;
+}
+
+.setup {
+  width: 350px;
+  margin: 0 auto;
+  padding-top: 50px;
+}
+
+.setup h1 {
+  text-align: center;
+}
+
+.setup h2 {
+  text-align: center;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.setup p {
+  text-align: justify;
+}
+
+.setup .control-group input {
+  width: 336px;
 }

@@ -19,3 +19,15 @@
 <% else %>
   <%= render_partial :zen %>
 <% end %>
+
+<% content_for :footer do %>
+<div class="container">
+  <div class="row-fluid">
+    <div class="span12">
+      <p class="pull-right">
+        <b>Hey!</b> Get back to work, slacker!
+      </p>
+    </div>
+  </div>
+</div>
+<% end %>

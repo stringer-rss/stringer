@@ -2,10 +2,19 @@
   <script src="/js/bootstrap.file-input.js"></script>
 <% end %>
 
+<div class="setup" id="feed-setup">
+  <h1>Stringer can <span class="orange">import</span>.</h1>
+  <h2>Let's setup your feeds.</h2>
+  
+  <hr />
+  <p>Use this <a href="#">guide</a> to export your feeds from Google Reader.</p>
+  <hr />
 
-<form id="import" method="POST" action="/import" enctype="multipart/form-data">
-  <input id="opml_file" name="opml_file" type="file" title="Browse" class="btn-primary" />
-</form> 
+  <form id="import" method="POST" action="/import" enctype="multipart/form-data">
+    <input id="opml_file" name="opml_file" type="file" title="Import OPML" class="btn-primary" />
+    <a id="skip" class="btn pull-right">Not now</a>
+  </form> 
+</div>
 
 <script type="text/javascript">
 $(document).ready(function() {
