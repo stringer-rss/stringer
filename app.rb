@@ -33,10 +33,6 @@ class Stringer < Sinatra::Base
       redirect '/login'
     end
   end
-
-  get "/" do
-    redirect to("/news")
-  end
 end
 
 require_relative "app/controllers/stories_controller"

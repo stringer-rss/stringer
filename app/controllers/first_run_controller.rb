@@ -1,15 +1,16 @@
 require_relative "../commands/feeds/import_from_opml"
 require_relative "../commands/users/create_user"
+require_relative "../repositories/user_repository"
 
 class Stringer < Sinatra::Base
-  get "/import" do
-    erb :import
+  before /\/(password|import)/ do
+    if first_run_completed?
+      redirect to("/news")
+    end
   end
 
-  post "/import" do
-    ImportFromOpml.import(params["opml_file"][:tempfile].read, true)
-
-    redirect to("/")
+  get "/" do
+    redirect to("/password")
   end
 
   get "/password" do
@@ -27,7 +28,21 @@ class Stringer < Sinatra::Base
     end
   end
 
+  get "/import" do
+    erb :import
+  end
+
+  post "/import" do
+    ImportFromOpml.import(params["opml_file"][:tempfile].read, true)
+
+    redirect to("/")
+  end
+
   private
+  def first_run_completed?
+    UserRepository.any?
+  end
+
   def no_password(params)
     params[:password].nil? || params[:password] == ""
   end
