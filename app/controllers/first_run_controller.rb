@@ -10,7 +10,11 @@ class Stringer < Sinatra::Base
   end
 
   get "/" do
-    redirect to("/password")
+    if first_run_completed?
+      redirect to("/news")
+    else
+      redirect to("/password")
+    end
   end
 
   get "/password" do
