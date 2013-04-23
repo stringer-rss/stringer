@@ -1,10 +1,11 @@
 require_relative "../../models/user"
 
 class SignInUser
-  def self.sign_in(email, password, repository = User)
-    user = repository.where(email: email).first
+  def self.sign_in(submitted_password, repository = User)
+    user = repository.first
+    user_password = BCrypt::Password.new(user.password_digest)
 
-    if user && BCrypt::Password.new(user.password_digest) == password
+    if user_password == submitted_password
       user
     else
       nil

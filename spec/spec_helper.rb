@@ -24,3 +24,7 @@ end
 def app
   Stringer
 end
+
+def session
+  last_request.env['rack.session'] 
+end

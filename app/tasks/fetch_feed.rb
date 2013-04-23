@@ -2,7 +2,6 @@ require "feedzirra"
 
 require_relative "../repositories/story_repository"
 require_relative "../repositories/feed_repository"
-require_relative "../repositories/story_repository"
 require_relative "../commands/feeds/find_new_stories"
 
 class FetchFeed
@@ -14,7 +13,7 @@ class FetchFeed
   def fetch
     begin
       raw_feed = @parser.fetch_and_parse(@feed.url)
-      
+
       new_entries_from(raw_feed).each do |entry|
         StoryRepository.add(entry, @feed)
       end
