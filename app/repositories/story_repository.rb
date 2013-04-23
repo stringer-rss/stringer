@@ -5,7 +5,6 @@ class StoryRepository
     Story.create(feed: feed, 
                 title: entry.title, 
                 permalink: entry.url, 
-                author: entry.author || feed.author,
                 body: StoryRepository.extract_content(entry),
                 is_read: false,
                 published: entry.published || Time.now)
