@@ -1,13 +1,15 @@
-<h1>Login</h1>
-<form method="POST" id="login" action="/login">
-  <div class="control-group">
+<div class="setup" id="feed-setup">
+  <h1>Stringer speaks <span class="orange">RSS</span>.</h1>
+  <h2>Welcome back, friend.</h2>
+  
+  <hr />
 
-    <label for="email">Email</label>
-    <input name="email" id="email" type="text" />
-  </div>
-  <div class="control-group">
-    <label for="password">Password</label>
-    <input name="password" id="password" type="password" />
-  </div>
-  <input type="submit" value="Login" class="btn btn-primary" />
-</form>
+  <form method="POST" id="login" action="/login">
+    <div class="control-group">
+      <input name="password" id="password" type="password" autofocus="autofocus"/ >
+      <i class="icon-lock field-icon"></i>
+      <label id="password-label" class="field-label" for="password">Password</label>
+    </div>
+    <input type="submit" value="Login" class="btn btn-primary pull-right" />
+  </form> 
+</div>

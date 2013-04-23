@@ -707,7 +707,7 @@ input[type="color"],
   input[type="tel"]:focus,
   input[type="color"]:focus,
   .uneditable-input:focus {
-    border-color: #F67100;
+    border-color: #484948;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none; }

@@ -66,6 +66,11 @@ hr {
   background-color: #7F8281;
 }
 
+.btn:focus {
+  outline:0px !important;
+  -webkit-appearance:none;
+}
+
 #action-bar i {
   color: white;
   line-height: 18px;
@@ -255,5 +260,47 @@ li.story.open .story-preview {
 }
 
 .setup .control-group input {
-  width: 336px;
+  width: 210px;
+}
+
+.setup .field-icon {
+  display: block;
+  color: #BFC9CA;
+  font-size: 24px;
+  position: absolute;
+  right: 13px;
+  top: 8px;
+  -webkit-transition: 0.25s;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  transition: 0.25s;
+}
+
+.setup .control-group input:focus + .field-icon {
+  color: #484948;
+}
+
+.setup .control-group input:focus ~ .field-label {
+  color: #484948;
+}
+
+.setup .field-label {
+  display: block;
+  color: #BFC9CA;
+  position: absolute;
+  left: 13px;
+  top: 10px;
+  -webkit-transition: 0.25s;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  transition: 0.25s;
+}
+
+.setup #password, .setup #password-confirmation {
+  padding-left: 100px;
+  padding-right: 36px;
+}
+
+.setup .control-group {
+  position: relative;
 }
