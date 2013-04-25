@@ -5,6 +5,7 @@ require "sinatra/contrib/all"
 require "json"
 
 require_relative "app/helpers/authentication_helpers"
+require_relative "app/repositories/user_repository"
 
 class Stringer < Sinatra::Base
   configure do
@@ -31,6 +32,14 @@ class Stringer < Sinatra::Base
   before do
     if !is_authenticated? && needs_authentication?(request.path)
       redirect '/login'
+    end
+  end
+
+  get "/" do
+    if UserRepository.setup_complete?
+      redirect to("/news")
+    else
+      redirect to("/setup/password")
     end
   end
 end

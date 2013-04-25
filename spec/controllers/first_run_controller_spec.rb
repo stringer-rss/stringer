@@ -5,12 +5,12 @@ app_require "controllers/first_run_controller"
 describe "FirstRunController" do
   context "when a user has not been setup" do
     before do
-      User.stub(:any?).and_return(false)
+      UserRepository.stub(:setup_complete?).and_return(false)
     end
 
-    describe "GET /password" do
+    describe "GET /setup/password" do
       it "displays a form to enter your password" do
-        get "/password"
+        get "/setup/password"
 
         page = last_response.body
         page.should have_tag("form#password_setup")
@@ -20,57 +20,99 @@ describe "FirstRunController" do
       end
     end
 
-    describe "POST /password" do
+    describe "POST /setup/password" do
       it "rejects empty passwords" do
-        post "/password"
+        post "/setup/password"
 
         page = last_response.body
         page.should have_tag("div.error")
       end
 
       it "rejects when password isn't confirmed" do
-        post "/password", {password: "foo", password_confirmation: "bar"}
+        post "/setup/password", {password: "foo", password_confirmation: "bar"}
 
         page = last_response.body
         page.should have_tag("div.error")
       end
 
       it "accepts confirmed passwords and redirects to next step" do
-        CreateUser.any_instance.should_receive(:create).with("foo")
+        CreateUser.any_instance.should_receive(:create).with("foo").and_return(stub(id: 1))
 
-        post "/password", {password: "foo", password_confirmation: "foo"}
+        post "/setup/password", {password: "foo", password_confirmation: "foo"}
 
         last_response.status.should be 302
-        URI::parse(last_response.location).path.should eq "/import"
+        URI::parse(last_response.location).path.should eq "/setup/import"
       end
     end
 
-    describe "GET /import" do
+    describe "GET /setup/import" do
       it "displays the import options" do
-        get "/import"
+        get "/setup/import"
 
         page = last_response.body
         page.should have_tag("input#opml_file")
         page.should have_tag("a#skip")
       end
     end
+
+    describe "POST /setup/import" do
+      let(:opml_file) { Rack::Test::UploadedFile.new("spec/sample_data/subscriptions.xml", "application/xml") }
+
+      it "parse OPML and starts fetching" do
+        ImportFromOpml.should_receive(:import).once
+
+        post "/setup/import", {"opml_file" => opml_file}
+
+        last_response.status.should be 302
+        URI::parse(last_response.location).path.should eq "/setup/tutorial"
+      end
+    end
+
+    describe "GET /setup/tutorial" do
+      let(:user) { stub }
+      let(:feeds) {[stub, stub]}
+
+      before do 
+        UserRepository.stub(fetch: user)
+        Feed.stub(all: feeds)
+      end
+
+      it "displays the tutorial and completes setup" do
+        CompleteSetup.should_receive(:complete).with(user).once
+        FetchFeeds.should_receive(:enqueue).with(feeds).once
+        
+        get "/setup/tutorial"
+
+        page = last_response.body
+        page.should have_tag("#mark-all-instruction")
+        page.should have_tag("#refresh-instruction")
+        page.should have_tag("#feeds-instruction")
+        page.should have_tag("#add-feed-instruction")
+        page.should have_tag("#story-instruction")
+        page.should have_tag("#start")
+      end
+    end
   end
 
   context "when a user has been setup" do
     before do
-      User.stub(:any?).and_return(true)
+      UserRepository.stub(:setup_complete?).and_return(true)
     end
 
-    xit "should redirect any requests to first run stuff" do
+    it "should redirect any requests to first run stuff" do
       get "/"
       last_response.status.should be 302
       URI::parse(last_response.location).path.should eq "/news"
 
-      get "/password"
+      get "/setup/password"
       last_response.status.should be 302
       URI::parse(last_response.location).path.should eq "/news"
 
-      get "/import"
+      get "/setup/import"
+      last_response.status.should be 302
+      URI::parse(last_response.location).path.should eq "/news"
+
+      get "/setup/tutorial"
       last_response.status.should be 302
       URI::parse(last_response.location).path.should eq "/news"
     end

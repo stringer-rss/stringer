@@ -10,6 +10,7 @@ require "date"
 
 require "factories/feed_factory"
 require "factories/story_factory"
+require "factories/user_factory"
 
 require "./app"
 

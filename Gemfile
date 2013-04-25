@@ -31,4 +31,5 @@ group(:development, :testing) do
   gem "shotgun"
   gem "racksh"
   gem "faker"
+  gem "foreman"
 end

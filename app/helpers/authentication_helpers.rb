@@ -1,5 +1,7 @@
 require "sinatra/base"
 
+require_relative "../repositories/user_repository"
+
 module Sinatra
   module AuthenticationHelpers
     def is_authenticated?
@@ -8,8 +10,14 @@ module Sinatra
 
     def needs_authentication?(path)
       return false if ENV['RACK_ENV'] == 'test'
+      return false if !UserRepository.setup_complete?
       return false if path == "/login" || path == "/logout"
       true
+    end
+
+    def current_user
+      nil unless is_authenticated?
+      UserRepository.fetch(session[:user_id])
     end
   end
 end

@@ -10,4 +10,8 @@ class FetchFeeds
       FetchFeed.new(feed).fetch
     end
   end
+
+  def self.enqueue(feeds)
+    self.new(feeds).delay.fetch_all
+  end
 end
