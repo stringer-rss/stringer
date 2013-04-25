@@ -1,6 +1,7 @@
 require_relative "../commands/feeds/import_from_opml"
 require_relative "../commands/users/create_user"
 require_relative "../repositories/user_repository"
+require_relative "../repositories/story_repository"
 
 class Stringer < Sinatra::Base
   #before /\/(password|import)/ do
@@ -40,6 +41,11 @@ class Stringer < Sinatra::Base
     ImportFromOpml.import(params["opml_file"][:tempfile].read, true)
 
     redirect to("/")
+  end
+
+  get "/tutorial" do
+    @sample_stories = StoryRepository.samples
+    erb :tutorial
   end
 
   private

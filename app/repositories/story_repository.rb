@@ -1,4 +1,5 @@
 require_relative "../models/story"
+require_relative "../utils/sample_story"
 
 class StoryRepository
   def self.add(entry, feed)
@@ -34,5 +35,13 @@ class StoryRepository
     else
       ""
     end
+  end
+
+  def self.samples
+    [
+      SampleStory.new("Darin' Fireballs", "Why you should trade your firstborn for a Retina iPad"),
+      SampleStory.new("TechKrunch", "SugarGlidr raises $1.2M Series A for Social Network for Photo Filters"),
+      SampleStory.new("Lambda Da Ultimate", "Flimsy types are the new hotness")
+    ]
   end
 end

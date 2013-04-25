@@ -172,6 +172,16 @@ li.story.open .story-preview {
   margin-bottom: 13px;
 }
 
+li.story .story-body h1 a {
+  border: none;
+  color: #484948;
+}
+
+li.story .story-body h1 a:hover {
+  border: none;
+  color: #7F8281;
+}
+
 .story-body h2 {
   font-size: 22px;
   margin-bottom: 11px;
@@ -187,6 +197,13 @@ li.story.open .story-preview {
   line-height: 1.4;
   margin-bottom: 16px;
   font-weight: 300;
+}
+
+.story-body img {
+  margin: 16px auto;
+  display: block;
+  padding: 5px;
+  border: 1px solid #e5e5e5;
 }
 
 .story-body ul {
@@ -256,7 +273,7 @@ li.story.open .story-preview {
 }
 
 .setup p {
-  text-align: justify;
+  text-align: center;
 }
 
 .setup .control-group input {
@@ -303,4 +320,53 @@ li.story.open .story-preview {
 
 .setup .control-group {
   position: relative;
+}
+
+.tutorial-overlay {
+  font-family: 'Reenie Beanie', cursive;
+  height: 0;
+}
+
+.instruction {
+  font-size: 28px;
+  line-height: 20px;
+  position: relative;
+}
+
+#mark-all-instruction {
+  left: -100px;
+  top: 20px;
+  background: url("/img/arrow-up-right.png") no-repeat top left 30px;
+  padding-top: 30px;
+}
+
+#refresh-instruction {
+  left: 50px;
+  top: 25px;
+  background: url("/img/arrow-left.png") no-repeat top left 30px;
+  padding-left: 75px;
+}
+
+#feeds-instruction {
+  top: 28px;
+  left: 500px;
+  background: url("/img/arrow-right.png") no-repeat top left 105px;
+}
+
+#add-feed-instruction {
+  top: 27px;
+  left: 735px;
+  background: url("/img/arrow-up-left.png") no-repeat top left;
+  padding-top: 30px;
+}
+
+#story-instruction {
+  left: 200px;
+  top: 180px;
+  background: url("/img/arrow-right-up.png") no-repeat top left 150px;
+  padding-top: 10px;
+}
+
+.center {
+  text-align: center;
 }

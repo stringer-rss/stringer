@@ -35,8 +35,12 @@ $(document).ready(function() {
     $(".story-lead", this).fadeOut(1000);
     $(".story-body-container", this).stop().show();
 
-    $.post("/mark_as_read", { story_id: $this.data("id") })
-      .fail(function() { alert("something broke!"); });
+    var story_id = $this.data("id");
+
+    if (story_id > 0) {
+      $.post("/mark_as_read", { story_id: $this.data("id") })
+       .fail(function() { alert("something broke!"); });
+    }
   });
 
   $("#mark-all").click(function(e) {

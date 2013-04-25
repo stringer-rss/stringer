@@ -1,0 +1,53 @@
+<% content_for :head do %>
+  <link href='http://fonts.googleapis.com/css?family=Reenie+Beanie' rel='stylesheet' type='text/css'>
+<% end %>
+
+<div class="tutorial-overlay">
+  <p class="instruction" id="mark-all-instruction">mark all <br/>as read</p>
+</div>
+<div class="tutorial-overlay">
+  <p class="instruction" id="refresh-instruction">refresh</p>
+</div>
+<div class="tutorial-overlay">
+  <p class="instruction" id="feeds-instruction">your feeds</p>
+</div>
+<div class="tutorial-overlay">
+  <p class="instruction" id="add-feed-instruction">add feed</p>
+</div>
+<div class="tutorial-overlay">
+  <p class="instruction" id="story-instruction">your stories <br/>(click to read)</p>
+</div>
+
+<div id="action-bar">
+  <%= render_partial :action_bar, {stories: @sample_stories} %>
+</div>
+
+<div id="stories">
+  <ul id="story-list">
+    <% @sample_stories.each do |story| %>
+      <%= render_partial :story, { story: story } %>
+    <% end %>
+  </ul>
+</div>
+
+<div class="setup">
+  <h1>Stringer is <span class="orange">simple</span>.</h1>
+  <h2>Here's the instruction manual.</h2>
+  <hr />
+  <p id="cta">We're getting you some stories to read, give us a second.</p>
+  <hr />
+  <div class="center">
+    <a href="/news" id="start" style="display: none" class="btn btn-primary">Start Reading</a>
+  </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  setTimeout(function() {
+    $("#cta").fadeOut(function() {
+      $(this).html("Okay it's ready!").fadeIn();
+      $("#start").fadeIn();
+    });
+  }, 5 * 1000);
+});
+</script>

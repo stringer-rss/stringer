@@ -30,7 +30,7 @@ describe "StoriesController" do
 
       last_response.body.should have_tag("#mark-all")
       last_response.body.should have_tag("#refresh")
-      last_response.body.should have_tag("#settings")
+      last_response.body.should have_tag("#feeds")
       last_response.body.should have_tag("#add-feed")
     end
 

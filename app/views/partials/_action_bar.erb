@@ -3,7 +3,7 @@
     <a class="btn" id="mark-all">
       <i class="icon-ok"></i>
       <%= render_partial :mark_all_as_read_form, 
-                        {stories: @unread_stories} %>
+                        {stories: stories} %>
     </a>
     <a class="btn" href="/" id="refresh">
       <i class="icon-repeat"></i>
@@ -11,8 +11,8 @@
   </div>
 
   <div class="pull-right">
-    <a class="btn btn-primary" id="settings">
-      <i class="icon-cog"></i>
+    <a class="btn btn-primary" id="feeds">
+      <i class="icon-list"></i>
     </a>
     <a class="btn btn-primary" id="add-feed">
       <i class="icon-plus"></i>
