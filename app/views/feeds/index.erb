@@ -1,0 +1,15 @@
+<div id="action-bar">
+  <%= render_partial :feed_action_bar %>
+</div>
+
+<% unless @feeds.empty? %>
+<div id="feeds">
+  <ul id="feed-list">
+    <% @feeds.each do |feed| %>
+      <%= render_partial :feed, { feed: feed } %>
+    <% end %>
+  </ul>
+</div>
+<% else %>
+  Hey, you should <a href="/add_feed">add</a> some feeds.
+<% end %>
