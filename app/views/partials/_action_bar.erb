@@ -1,20 +1,20 @@
 <div class="row-fluid">
   <div class="pull-left">
-    <a class="btn" id="mark-all">
+    <a class="btn" id="mark-all" title="Mark all as read">
       <i class="icon-ok"></i>
       <%= render_partial :mark_all_as_read_form, 
                         {stories: stories} %>
     </a>
-    <a class="btn" href="/" id="refresh">
+    <a class="btn" href="/" id="refresh" title="Refresh">
       <i class="icon-repeat"></i>
     </a>
   </div>
 
   <div class="pull-right">
-    <a class="btn btn-primary" id="feeds" href="/feeds">
+    <a class="btn btn-primary" id="feeds" href="/feeds" title="View feeds">
       <i class="icon-list"></i>
     </a>
-    <a class="btn btn-primary" id="add-feed" href="/add_feed">
+    <a class="btn btn-primary" id="add-feed" href="/add_feed" title="Add a feed">
       <i class="icon-plus"></i>
     </a>
   </div>
