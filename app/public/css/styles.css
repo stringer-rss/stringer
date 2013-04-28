@@ -250,6 +250,15 @@ li.feed .feed-title {
   display: inline-block;
 }
 
+li.feed .feed-title a {
+  color: #484948;
+  text-decoration: none;
+}
+
+li.feed .feed-title a:hover {
+  color: #7F8281;
+}
+
 li.feed .feed-title-container {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -291,6 +300,10 @@ li.feed .remove-feed a {
   padding-right: 3px;
   margin-left: 10px;
   color: #C0392B;
+}
+
+li.feed .remove-feed a:hover {
+  color: #E74C3C;
 }
 
 #zen {
