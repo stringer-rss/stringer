@@ -9,4 +9,9 @@ class FeedRepository
   def self.delete(feed_id)
     Feed.destroy(feed_id)
   end
+
+  def self.set_status(status, feed)
+    feed.status = status
+    feed.save
+  end
 end

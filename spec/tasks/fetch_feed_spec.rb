@@ -12,6 +12,7 @@ describe FetchFeed do
     before do
       StoryRepository.stub(:add)
       FeedRepository.stub(:update_last_fetched)
+      FeedRepository.stub(:set_status)
     end
 
     context "when no new posts have been added" do
@@ -49,6 +50,27 @@ describe FetchFeed do
           .with(daring_fireball, now)
 
         FetchFeed.new(daring_fireball, fake_parser).fetch
+      end
+    end
+
+    context "feed status" do
+      it "sets the status to green if things are all good" do
+        fake_feed = stub(last_modified: Time.new(2012, 12, 31))
+        parser = stub(fetch_and_parse: fake_feed)
+
+        FeedRepository.should_receive(:set_status)
+          .with(:green, daring_fireball)
+
+        FetchFeed.new(daring_fireball, parser).fetch
+      end
+
+      it "sets the status to red if things go wrong" do
+        parser = stub(fetch_and_parse: 404)
+        
+        FeedRepository.should_receive(:set_status)
+          .with(:red, daring_fireball)
+
+        FetchFeed.new(daring_fireball, parser).fetch
       end
     end
   end

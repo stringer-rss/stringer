@@ -2,7 +2,7 @@ require_relative "../repositories/feed_repository"
 
 class Stringer < Sinatra::Base
   get "/feeds" do
-    @feeds = Feed.all
+    @feeds = Feed.order('lower(name)')
 
     erb :'feeds/index'
   end

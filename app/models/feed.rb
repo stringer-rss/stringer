@@ -1,8 +1,21 @@
 class Feed < ActiveRecord::Base
   has_many :stories, order: "published desc", dependent: :delete_all
 
+  STATUS = { green: 0, yellow: 1, red: 2 }
+
   def status
-    options = [:green, :yellow, :red]
-    options[rand(3)]
+    STATUS.key(read_attribute(:status))
+  end
+
+  def status=(s)
+    write_attribute(:status, STATUS[s])
+  end
+
+  def status_bubble
+    if status == :red
+      return :yellow unless stories.empty?
+    end
+
+    status
   end
 end
