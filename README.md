@@ -1,5 +1,5 @@
 ## Stringer
-### A (work-in-progress) self-hosted, anti-social RSS reader.
+### A [work-in-progress] self-hosted, anti-social RSS reader.
 
 Stringer has no external dependencies, no social recommendations/sharing, and no fancy machine learning algorithms. 
 
