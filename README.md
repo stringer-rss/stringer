@@ -15,7 +15,7 @@ The app is currently under active development, please try it out and report any 
 
 Stringer is a Ruby app based on Sinatra, ActiveRecord, PostgreSQL, and DelayedJob.
 
-Instructions are provided for deploying to Heroku (runs fine on the free plan) but Stringer can be deployed anyway that supports Ruby.
+Instructions are provided for deploying to Heroku (runs fine on the free plan) but Stringer can be deployed anywhere that supports Ruby.
 
 ```
 git clone git://github.com/swanson/stringer.git
