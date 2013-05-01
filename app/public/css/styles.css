@@ -43,6 +43,7 @@ hr {
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   border-radius: 0px;
+  margin-bottom: 0px;
 }
 
 #action-bar .btn {
@@ -332,6 +333,10 @@ li.feed .remove-feed a:hover {
   color: #F67100;
 }
 
+#add-feed {
+  padding-top: 10px;
+}
+
 .setup {
   width: 350px;
   margin: 0 auto;
@@ -389,7 +394,7 @@ li.feed .remove-feed a:hover {
   transition: 0.25s;
 }
 
-.setup #password, .setup #password-confirmation {
+.setup #password, .setup #password-confirmation, .setup #feed-url {
   padding-left: 100px;
   padding-right: 36px;
 }

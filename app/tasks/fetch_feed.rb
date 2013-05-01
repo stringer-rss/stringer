@@ -5,9 +5,10 @@ require_relative "../repositories/feed_repository"
 require_relative "../commands/feeds/find_new_stories"
 
 class FetchFeed
-  def initialize(feed, feed_parser = Feedzirra::Feed)
+  def initialize(feed, feed_parser = Feedzirra::Feed, logger = nil)
     @feed = feed
     @parser = feed_parser
+    @logger = logger
   end
 
   def fetch
@@ -23,9 +24,7 @@ class FetchFeed
     rescue Exception => ex
       FeedRepository.set_status(:red, @feed)
 
-      puts "Something went wrong when parsing #{@feed.url}"
-      puts ex
-      puts
+      @logger.error "Something went wrong when parsing #{@feed.url}: #{ex}" if @logger
     end
   end
 

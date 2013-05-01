@@ -16,6 +16,8 @@ class Stringer < Sinatra::Base
     enable :sessions
     set :session_secret, ENV["SECRET_TOKEN"] || "secret!"
 
+    enable :logging
+
     register Sinatra::ActiveRecordExtension
     register Sinatra::Flash
     register Sinatra::Contrib
