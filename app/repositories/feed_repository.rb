@@ -14,4 +14,8 @@ class FeedRepository
     feed.status = status
     feed.save
   end
+
+  def self.list
+    Feed.order('lower(name)')
+  end
 end

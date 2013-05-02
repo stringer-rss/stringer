@@ -16,7 +16,6 @@ module Sinatra
     end
 
     def current_user
-      nil unless is_authenticated?
       UserRepository.fetch(session[:user_id])
     end
   end

@@ -102,7 +102,7 @@ li.story, li.feed {
   color: #484948;
 }
 
-li.story .story-body a, .setup a {
+li.story .story-body a, .setup a, .footer-links a {
   color: #F67100;
   text-decoration: none;
   border-bottom: 1px dotted #F67100;
@@ -450,4 +450,9 @@ li.feed .remove-feed a:hover {
 
 .center {
   text-align: center;
+}
+
+.footer-links li {
+  display: inline;
+  padding: 0 2px;
 }

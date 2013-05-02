@@ -34,7 +34,27 @@
     </div>
 
     <div id="footer">
-      <%= yield_content :footer %>
+      <div class="container">
+        <div class="row-fluid">
+          <div class="span6">
+            <ul class="footer-links">
+              <% if current_user %>
+                <li><a href="/logout">Logout</a></li>
+                <li class="muted">·</li>
+                <li><a href="/export">Export</a></li>
+                <li class="muted">·</li>
+              <% end %>
+              
+              <li><a href="https://github.com/swanson/stringer">Support</a></li>
+            </ul>
+          </div>
+          <div class="span6">
+            <p class="pull-right">
+              <b>Hey!</b> Get back to work, slacker!
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>

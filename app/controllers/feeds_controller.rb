@@ -1,9 +1,10 @@
 require_relative "../repositories/feed_repository"
 require_relative "../commands/feeds/add_new_feed"
+require_relative "../commands/feeds/export_to_opml"
 
 class Stringer < Sinatra::Base
   get "/feeds" do
-    @feeds = Feed.order('lower(name)')
+    @feeds = FeedRepository.list
 
     erb :'feeds/index'
   end
@@ -30,5 +31,11 @@ class Stringer < Sinatra::Base
       flash.now[:error] = "We couldn't find that feed. Try again."
       erb :'feeds/add'
     end
+  end
+
+  get "/export" do
+    content_type :xml
+
+    ExportToOpml.new(Feed.all).to_xml
   end
 end
