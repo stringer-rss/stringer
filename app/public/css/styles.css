@@ -452,6 +452,10 @@ li.feed .remove-feed a:hover {
   text-align: center;
 }
 
+.footer-links {
+  margin-left: 0px;
+}
+
 .footer-links li {
   display: inline;
   padding: 0 2px;
