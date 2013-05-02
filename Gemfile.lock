@@ -46,6 +46,13 @@ GEM
     bcrypt-ruby (3.0.1)
     builder (3.0.4)
     coderay (1.0.9)
+    colorize (0.5.8)
+    coveralls (0.6.7)
+      colorize
+      multi_json (~> 1.3)
+      rest-client
+      simplecov (>= 0.7)
+      thor
     curb (0.8.3)
     delayed_job (3.0.5)
       activesupport (~> 3.0)
@@ -65,6 +72,7 @@ GEM
     loofah (1.2.1)
       nokogiri (>= 1.4.4)
     method_source (0.8.1)
+    mime-types (1.23)
     multi_json (1.7.2)
     nokogiri (1.5.9)
     pg (0.15.1)
@@ -82,6 +90,8 @@ GEM
       rack-test (>= 0.5)
     raindrops (0.11.0)
     rake (10.0.4)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     rspec (2.13.0)
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
@@ -97,6 +107,10 @@ GEM
       nokogiri (~> 1.5.2)
     shotgun (0.9)
       rack (>= 1.0)
+    simplecov (0.7.1)
+      multi_json (~> 1.0)
+      simplecov-html (~> 0.7.1)
+    simplecov-html (0.7.1)
     sinatra (1.4.2)
       rack (~> 1.5, >= 1.5.2)
       rack-protection (~> 1.4)
@@ -121,6 +135,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt-ruby
+  coveralls
   delayed_job_active_record
   faker
   feedbag!

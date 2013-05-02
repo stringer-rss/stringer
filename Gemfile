@@ -14,6 +14,8 @@ gem "loofah"
 gem "nokogiri"
 gem "feedbag", github: "dwillis/feedbag"
 
+gem "coveralls", require: false
+
 group :production do
   gem "unicorn"
   gem "pg"
