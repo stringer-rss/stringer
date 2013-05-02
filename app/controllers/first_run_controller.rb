@@ -25,18 +25,8 @@ class Stringer < Sinatra::Base
         user = CreateUser.new.create(params[:password])
         session[:user_id] = user.id
 
-        redirect to("/setup/import")
+        redirect to("/import")
       end
-    end
-
-    get "/import" do
-      erb :import
-    end
-
-    post "/import" do
-      ImportFromOpml.import(params["opml_file"][:tempfile].read, true)
-
-      redirect to("/setup/tutorial")
     end
 
     get "/tutorial" do

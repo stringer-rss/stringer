@@ -33,6 +33,16 @@ class Stringer < Sinatra::Base
     end
   end
 
+  get "/import" do
+    erb :import
+  end
+
+  post "/import" do
+    ImportFromOpml.import(params["opml_file"][:tempfile].read, true)
+
+    redirect to("/setup/tutorial")
+  end
+
   get "/export" do
     content_type :xml
 

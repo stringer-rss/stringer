@@ -41,30 +41,7 @@ describe "FirstRunController" do
         post "/setup/password", {password: "foo", password_confirmation: "foo"}
 
         last_response.status.should be 302
-        URI::parse(last_response.location).path.should eq "/setup/import"
-      end
-    end
-
-    describe "GET /setup/import" do
-      it "displays the import options" do
-        get "/setup/import"
-
-        page = last_response.body
-        page.should have_tag("input#opml_file")
-        page.should have_tag("a#skip")
-      end
-    end
-
-    describe "POST /setup/import" do
-      let(:opml_file) { Rack::Test::UploadedFile.new("spec/sample_data/subscriptions.xml", "application/xml") }
-
-      it "parse OPML and starts fetching" do
-        ImportFromOpml.should_receive(:import).once
-
-        post "/setup/import", {"opml_file" => opml_file}
-
-        last_response.status.should be 302
-        URI::parse(last_response.location).path.should eq "/setup/tutorial"
+        URI::parse(last_response.location).path.should eq "/import"
       end
     end
 

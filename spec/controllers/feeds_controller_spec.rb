@@ -64,6 +64,29 @@ describe "FeedsController" do
     end
   end
 
+  describe "GET /import" do
+    it "displays the import options" do
+      get "/import"
+
+      page = last_response.body
+      page.should have_tag("input#opml_file")
+      page.should have_tag("a#skip")
+    end
+  end
+
+  describe "POST /import" do
+    let(:opml_file) { Rack::Test::UploadedFile.new("spec/sample_data/subscriptions.xml", "application/xml") }
+
+    it "parse OPML and starts fetching" do
+      ImportFromOpml.should_receive(:import).once
+
+      post "/import", {"opml_file" => opml_file}
+
+      last_response.status.should be 302
+      URI::parse(last_response.location).path.should eq "/setup/tutorial"
+    end
+  end
+
   describe "GET /export" do
     let(:some_xml) { "<xml>some dummy opml</xml>"}
     before { Feed.stub(:all) }
