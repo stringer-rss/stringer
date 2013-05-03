@@ -7,6 +7,8 @@
 
 Stringer has no external dependencies, no social recommendations/sharing, and no fancy machine learning algorithms. 
 
+But it does have keyboard shortcuts and was made with love! 
+
 When `BIG_FREE_READER` shuts down, your instance of Stringer will still be kicking.
 
 ![](https://raw.github.com/swanson/stringer/master/screenshots/instructions.png)
