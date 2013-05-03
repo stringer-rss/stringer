@@ -12,7 +12,7 @@ But it does have keyboard shortcuts and was made with love!
 When `BIG_FREE_READER` shuts down, your instance of Stringer will still be kicking.
 
 ![](https://raw.github.com/swanson/stringer/master/screenshots/instructions.png)
-
+![](https://raw.github.com/swanson/stringer/master/screenshots/stories.png)
 ![](https://raw.github.com/swanson/stringer/master/screenshots/feed.png)
 
 The app is currently under active development, please try it out and report any issues you have.
