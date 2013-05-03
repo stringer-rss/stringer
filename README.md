@@ -28,6 +28,8 @@ git clone git://github.com/swanson/stringer.git
 heroku create
 git push heroku master
 
+heroku config:set SECRET_TOKEN=`openssl rand -hex 20`
+
 heroku run rake db:migrate
 heroku restart #needed for DelayedJob/unicorn setup
 
