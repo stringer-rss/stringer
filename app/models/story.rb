@@ -3,8 +3,10 @@ require_relative "./feed"
 class Story < ActiveRecord::Base
   belongs_to :feed
 
+  UNTITLED = "[untitled]"
+
   def headline
-    self.title[0, 50]
+    self.title.nil? ? UNTITLED : self.title[0, 50]
   end
 
   def lead
