@@ -35,10 +35,10 @@ $(document).ready(function() {
     $(".story-lead", this).fadeOut(1000);
     $(".story-body-container", this).stop().show();
 
-    var story_id = $this.data("id");
+    var storyId = $this.data("id");
 
-    if (story_id > 0) {
-      $.post("/mark_as_read", { story_id: story_id })
+    if (storyId > 0) {
+      $.post("/mark_as_read", { story_id: storyId })
        .fail(function() { alert("something broke!"); });
     }
   });
@@ -64,10 +64,10 @@ $(document).ready(function() {
     e.preventDefault();
     var $this = $(this);
 
-    var feed_id = $this.parents("li").data("id");
+    var feedId = $this.parents("li").data("id");
 
-    if (feed_id > 0) {
-      $.post("/delete_feed", { feed_id: feed_id })
+    if (feedId > 0) {
+      $.post("/delete_feed", { feed_id: feedId })
        .success(function() {
           $this.parents("li").fadeOut(500, function () {
             $(this).remove();
@@ -81,31 +81,31 @@ $(document).ready(function() {
     $("#shortcuts").modal('toggle');
   });
 
-  var cursor_position = -1;
+  var cursorPosition = -1;
   var MAX_POSITION = $("li.story").size();
 
   Mousetrap.bind("k", function() {
-    if (cursor_position < MAX_POSITION - 1) {
-      cursor_position++;
+    if (cursorPosition < MAX_POSITION - 1) {
+      cursorPosition++;
       
       $("li.story").removeClass("cursor");
-      $("li.story").eq(cursor_position).addClass("cursor");
+      $("li.story").eq(cursorPosition).addClass("cursor");
     }
   });
 
   Mousetrap.bind("j", function() {
     $("li.story").removeClass("cursor");
 
-    if (cursor_position > 0) {
-      cursor_position--;
-      $("li.story").eq(cursor_position).addClass("cursor");
+    if (cursorPosition > 0) {
+      cursorPosition--;
+      $("li.story").eq(cursorPosition).addClass("cursor");
     } else {
       $("li.story").eq(0).addClass("cursor");
     }
   });
 
   Mousetrap.bind(["o", "enter"], function() {
-    $("li.story").eq(cursor_position).trigger("toggleStory");
+    $("li.story").eq(cursorPosition).trigger("toggleStory");
   });
 
   Mousetrap.bind("r", function() {
@@ -118,7 +118,9 @@ $(document).ready(function() {
   });
 
   Mousetrap.bind("v", function() {
-    var permalink = $("li.story.open a#story-permalink")[0];
+    var currentStory = $("li.story").eq(cursorPosition);
+
+    var permalink = currentStory.find("a#story-permalink")[0];
     if (permalink) permalink.click();
   });
 });
