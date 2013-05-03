@@ -184,6 +184,15 @@ li.story .story-body h1 a:hover {
   color: #7F8281;
 }
 
+li.story.cursor {
+  border: 3px solid #484948;
+}
+
+p.story-details {
+  margin-right: 5px;
+  overflow: hidden;
+}
+
 .story-body h2 {
   font-size: 22px;
   margin-bottom: 11px;
@@ -459,4 +468,31 @@ li.feed .remove-feed a:hover {
 .footer-links li {
   display: inline;
   padding: 0 2px;
+}
+
+kbd {
+  padding: 0.1em 0.6em;
+  border: 1px solid #CCC;
+  font-family: Arial,Helvetica,sans-serif;
+  color: #333;
+  -moz-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2),0 0 0 2px #ffffff inset;
+  -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2),0 0 0 2px #FFF inset;
+  box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2),0 0 0 2px #FFF inset;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  display: inline-block;
+  margin: 0 0.1em;
+  text-shadow: 0 1px 0 #FFF;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+ul.shortcut-legend li {
+  margin-bottom: 10px;
+}
+
+li.blank {
+  list-style-type: none;
+  height: 20px;
 }

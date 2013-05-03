@@ -13,6 +13,8 @@
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
 
     <script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="js/mousetrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/js/app.js"></script>
 
     <%= yield_content :head %>
@@ -21,6 +23,7 @@
     <div id="wrap">
       <div id="frame">
         <%= render_partial :flash %>
+        <%= render_partial :shortcuts  if current_user %>
         <div class="container">
           <div class="row-fluid">
             <div class="span12">

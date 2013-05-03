@@ -6,7 +6,7 @@
       </p>
     </div>
     <div class="span9">
-      <p>
+      <p class="story-details">
         <span class="story-title">
           <%= story.headline %>
         </span>
@@ -29,7 +29,7 @@
         </span>
       </div>
       <div class="pull-right story-actions">
-        <a href="<%=story.permalink %>">
+        <a id="story-permalink" href="<%= story.permalink %>">
           <i class="icon-external-link"></i>
         </a>
       </div>

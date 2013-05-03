@@ -43,6 +43,17 @@ $(document).ready(function() {
     }
   });
 
+  $("li.story").on("toggleStory", function(e) {
+    e.preventDefault();
+    var $this = $(this);
+
+    if($this.hasClass("open")) {
+      $this.trigger("closeStory");
+    } else {
+      $this.trigger("openStory");
+    }
+  });
+
   $("#mark-all").click(function(e) {
     e.preventDefault();
 
@@ -64,5 +75,50 @@ $(document).ready(function() {
         })
        .fail(function() { alert("something broke!"); });
     }
+  });
+
+  Mousetrap.bind("?", function() {
+    $("#shortcuts").modal('toggle');
+  });
+
+  var cursor_position = -1;
+  var MAX_POSITION = $("li.story").size();
+
+  Mousetrap.bind("k", function() {
+    if (cursor_position < MAX_POSITION - 1) {
+      cursor_position++;
+      
+      $("li.story").removeClass("cursor");
+      $("li.story").eq(cursor_position).addClass("cursor");
+    }
+  });
+
+  Mousetrap.bind("j", function() {
+    $("li.story").removeClass("cursor");
+
+    if (cursor_position > 0) {
+      cursor_position--;
+      $("li.story").eq(cursor_position).addClass("cursor");
+    } else {
+      $("li.story").eq(0).addClass("cursor");
+    }
+  });
+
+  Mousetrap.bind(["o", "enter"], function() {
+    $("li.story").eq(cursor_position).trigger("toggleStory");
+  });
+
+  Mousetrap.bind("r", function() {
+    var refresh = $("a#refresh")[0];
+    if (refresh) refresh.click();
+  });
+
+  Mousetrap.bind("shift+a", function() {
+    $("form#mark-all-as-read").submit();
+  });
+
+  Mousetrap.bind("v", function() {
+    var permalink = $("li.story.open a#story-permalink")[0];
+    if (permalink) permalink.click();
   });
 });
