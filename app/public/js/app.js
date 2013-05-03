@@ -47,6 +47,9 @@ $(document).ready(function() {
     e.preventDefault();
     var $this = $(this);
 
+    var openStories = $("li.story.open");
+    openStories.trigger("closeStory");
+    
     if($this.hasClass("open")) {
       $this.trigger("closeStory");
     } else {
