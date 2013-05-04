@@ -25,13 +25,14 @@ Instructions are provided for deploying to Heroku (runs fine on the free plan) b
 
 ```
 git clone git://github.com/swanson/stringer.git
+cd stringer
 heroku create
 git push heroku master
 
 heroku config:set SECRET_TOKEN=`openssl rand -hex 20`
 
 heroku run rake db:migrate
-heroku restart #needed for DelayedJob/unicorn setup
+heroku restart
 
 heroku addons:add scheduler
 heroku addons:open scheduler
