@@ -63,6 +63,17 @@ Run the tests with `rspec`.
 
 In development, stringer uses `sqlite` - there are issues with locking if you run background jobs at the same time as queries are being made via the web app. If you run into these, consider using `pg` locally.
 
+## Getting Started
+
+To get started using Stringer locally simply run the following:
+
+```sh
+rake db:migrate
+foreman start
+```
+
+The application will be running on port `5000`
+
 # Acknowledgements
 Most of the heavy-lifting is done by [`feedzirra`](https://github.com/pauldix/feedzirra) and [`feedbag`](https://github.com/dwillis/feedbag).
 
