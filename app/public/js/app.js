@@ -48,13 +48,14 @@ $(document).ready(function() {
     var $this = $(this);
 
     var openStories = $("li.story.open");
-    openStories.trigger("closeStory");
-    
+
     if($this.hasClass("open")) {
       $this.trigger("closeStory");
     } else {
       $this.trigger("openStory");
     }
+
+    openStories.trigger("closeStory");
   });
 
   $("#mark-all").click(function(e) {
