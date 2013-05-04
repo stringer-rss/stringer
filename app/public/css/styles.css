@@ -96,6 +96,7 @@ li.story, li.feed {
   margin-bottom: 7px;
   background-color: white;
   border-radius: 5px;
+  border: 3px solid white;
   -webkit-transform: rotate(0);
   -moz-transform: rotate(0);
   transform: rotate(0);
@@ -145,7 +146,7 @@ li.story.open .story-preview {
 
 .blog-title, .feed-title {
   text-align: left;
-  margin-left: 20px;
+  margin-left: 10px;
   overflow: hidden;
 }
 
