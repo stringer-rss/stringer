@@ -88,7 +88,7 @@ $(document).ready(function() {
   var cursorPosition = -1;
   var MAX_POSITION = $("li.story").size();
 
-  Mousetrap.bind("k", function() {
+  Mousetrap.bind("j", function() {
     if (cursorPosition < MAX_POSITION - 1) {
       cursorPosition++;
       
@@ -97,7 +97,7 @@ $(document).ready(function() {
     }
   });
 
-  Mousetrap.bind("j", function() {
+  Mousetrap.bind("k", function() {
     $("li.story").removeClass("cursor");
 
     if (cursorPosition > 0) {
