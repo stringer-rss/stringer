@@ -23,7 +23,7 @@ Stringer is a Ruby app based on Sinatra, ActiveRecord, PostgreSQL, and DelayedJo
 
 Instructions are provided for deploying to Heroku (runs fine on the free plan) but Stringer can be deployed anywhere that supports Ruby.
 
-```
+```sh
 git clone git://github.com/swanson/stringer.git
 cd stringer
 heroku create
@@ -42,6 +42,16 @@ Add an hourly task that runs `rake fetch_feeds`
 
 Load the app and follow the instructions to import your feeds and start using the app.
 
+## Updating the app
+
+From the app's directory,
+
+```sh
+git pull
+git push heroku master
+heroku run rake db:migrate
+heroku restart
+```
 
 # Niceities
 
@@ -52,9 +62,11 @@ If you are on Heroku:
 `heroku domains:add reader.yourdomain.com`
 
 Go to your registrar and add a CNAME:
+```
 Record: CNAME
 Name: reader
 Target: your-heroku-instance.herokuapp.com
+```
 
 Wait a few minutes for changes to progate.
 
