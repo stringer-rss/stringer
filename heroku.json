@@ -1,9 +1,0 @@
-{
-  "addons": [
-    "scheduler:standard",
-    "heroku-postgresql:dev"
-  ],
-  "env": {
-
-  }
-}
