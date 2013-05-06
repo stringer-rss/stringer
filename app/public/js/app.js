@@ -109,6 +109,7 @@ $(document).ready(function() {
   });
 
   Mousetrap.bind(["o", "enter"], function() {
+    if (cursorPosition < 0) cursorPosition = 0;
     $("li.story").eq(cursorPosition).trigger("toggleStory");
   });
 
