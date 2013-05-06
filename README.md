@@ -5,9 +5,9 @@
 
 ### A [work-in-progress] self-hosted, anti-social RSS reader.
 
-Stringer has no external dependencies, no social recommendations/sharing, and no fancy machine learning algorithms. 
+Stringer has no external dependencies, no social recommendations/sharing, and no fancy machine learning algorithms.
 
-But it does have keyboard shortcuts and was made with love! 
+But it does have keyboard shortcuts and was made with love!
 
 When `BIG_FREE_READER` shuts down, your instance of Stringer will still be kicking.
 
@@ -52,9 +52,12 @@ If you are on Heroku:
 `heroku domains:add reader.yourdomain.com`
 
 Go to your registrar and add a CNAME:
+
+```
 Record: CNAME
 Name: reader
 Target: your-heroku-instance.herokuapp.com
+```
 
 Wait a few minutes for changes to progate.
 
