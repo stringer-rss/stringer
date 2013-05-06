@@ -88,29 +88,44 @@ $(document).ready(function() {
   var cursorPosition = -1;
   var MAX_POSITION = $("li.story").size();
 
+  var Stringer = {
+    setCursorPosition: function(position) {
+      if (position < 0) position = 0;
+
+      var stories = $("li.story");
+      stories.removeClass("cursor");
+      stories.eq(position).addClass("cursor");
+    },
+
+    currentlySelectedStory: function() {
+      position = cursorPosition;
+      if (position < 0) position = 0;
+
+      return $("li.story").eq(position);
+    }
+  };
+
   Mousetrap.bind("j", function() {
     if (cursorPosition < MAX_POSITION - 1) {
       cursorPosition++;
-      
-      $("li.story").removeClass("cursor");
-      $("li.story").eq(cursorPosition).addClass("cursor");
     }
+
+    Stringer.setCursorPosition(cursorPosition);
   });
 
   Mousetrap.bind("k", function() {
-    $("li.story").removeClass("cursor");
-
     if (cursorPosition > 0) {
       cursorPosition--;
-      $("li.story").eq(cursorPosition).addClass("cursor");
     } else {
-      $("li.story").eq(0).addClass("cursor");
+      cursorPosition = 0;
     }
+
+    Stringer.setCursorPosition(cursorPosition);
   });
 
   Mousetrap.bind(["o", "enter"], function() {
-    if (cursorPosition < 0) cursorPosition = 0;
-    $("li.story").eq(cursorPosition).trigger("toggleStory");
+    Stringer.currentlySelectedStory().trigger("toggleStory");
+    Stringer.setCursorPosition(cursorPosition);
   });
 
   Mousetrap.bind("r", function() {
@@ -123,7 +138,7 @@ $(document).ready(function() {
   });
 
   Mousetrap.bind("v", function() {
-    var currentStory = $("li.story").eq(cursorPosition);
+    var currentStory = Stringer.currentlySelectedStory();
 
     var permalink = currentStory.find("a#story-permalink")[0];
     if (permalink) permalink.click();
