@@ -54,8 +54,8 @@ $(document).ready(function() {
     } else {
       $this.trigger("openStory");
     }
-
     openStories.trigger("closeStory");
+    window.scrollTo(0,$(this).offset().top);
   });
 
   $("#mark-all").click(function(e) {
@@ -111,6 +111,7 @@ $(document).ready(function() {
     }
 
     Stringer.setCursorPosition(cursorPosition);
+    Stringer.currentlySelectedStory().trigger("toggleStory");
   });
 
   Mousetrap.bind("k", function() {
@@ -121,6 +122,7 @@ $(document).ready(function() {
     }
 
     Stringer.setCursorPosition(cursorPosition);
+    Stringer.currentlySelectedStory().trigger("toggleStory");
   });
 
   Mousetrap.bind(["o", "enter"], function() {
@@ -137,10 +139,10 @@ $(document).ready(function() {
     $("form#mark-all-as-read").submit();
   });
 
-  Mousetrap.bind("v", function() {
+  Mousetrap.bind(["b","v"], function() {
     var currentStory = Stringer.currentlySelectedStory();
 
-    var permalink = currentStory.find("a#story-permalink")[0];
+    var permalink = currentStory.find("a.story-permalink")[0];
     if (permalink) permalink.click();
   });
 });
