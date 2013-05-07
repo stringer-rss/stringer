@@ -11,7 +11,8 @@ en:
       add: "add"
   first_run:
     password:
-      title: 'Stringer is <span class="orange">anti-social</span>.'
+      title: 'Stringer is'
+      anti_social: 'anti-social'
       subtitle: "There is only one user: you."
       description: "Let's pick a password so only you can read your stories."
       fields:
@@ -40,10 +41,12 @@ en:
         r: "Refresh"
     zen:
       zero: "You&#8217;ve reached RSS Zero&trade;"
-      gtfo: 'Now stop reading blogs and <span id="gtfo">go make something</span>.'
+      gtfo: 'Now stop reading blogs and'
+      go_make: 'go make something'
   sessions:
     new:
-      title: 'Stringer speaks <span class="orange">RSS</span>.'
+      title: 'Stringer speaks'
+      rss: 'RSS'
       subtitle: "Welcome back, friend."
       fields:
         password: "Password"
@@ -61,14 +64,18 @@ en:
     logout: "Logout"
     export: "Export"
     support: "Support"
-    back_to_work: "<b>Hey!</b> Get back to work, slacker!"
+    hey: "Hey!"
+    back_to_work: "Get back to work, slacker!"
   tutorial:
-    mark_all: "mark all <br/>as read"
+    mark_all: "mark all"
+    as_read: "as read"
     refresh: "refresh"
     your_feeds: "your feeds"
     add_feed: "add feed"
-    your_stories: "your stories <br/>(click to read)"
-    title: 'Stringer is <span class="orange">simple</span>.'
+    your_stories: "your stories"
+    click_to_read: "(click to read)"
+    title: 'Stringer is '
+    simple: "simple"
     subtitle: "Here's the instruction manual."
     description: "We're getting you some stories to read, give us a second."
     start: "Start Reading"

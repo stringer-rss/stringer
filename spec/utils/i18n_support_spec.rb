@@ -15,6 +15,15 @@ describe "i18n" do
 
     it "should load default locale" do
       I18n.locale.to_s.should eq "en"
+      I18n.t('layout.title').should eq "stringer | your rss buddy"
+    end
+  end
+
+  context "when a missing locale was set" do
+    ENV['locale'] = "xx"
+
+    it "should not find localization strings" do
+      I18n.t('layout.title', locale: ENV['locale'].to_sym).should_not eq "stringer | your rss buddy"
     end
   end
 end

@@ -3,7 +3,7 @@
 <% end %>
 
 <div class="tutorial-overlay">
-  <p class="instruction" id="mark-all-instruction"><%= t('tutorial.mark_all') %></p>
+  <p class="instruction" id="mark-all-instruction"><%= t('tutorial.mark_all') %> <br/><%= t('tutorial.as_read') %></p>
 </div>
 <div class="tutorial-overlay">
   <p class="instruction" id="refresh-instruction"><%= t('tutorial.refresh') %></p>
@@ -15,7 +15,7 @@
   <p class="instruction" id="add-feed-instruction"><%= t('tutorial.add_feed') %></p>
 </div>
 <div class="tutorial-overlay">
-  <p class="instruction" id="story-instruction"><%= t('tutorial.your_stories') %></p>
+  <p class="instruction" id="story-instruction"><%= t('tutorial.your_stories') %><br/><%= t('tutorial.click_to_read') %></p>
 </div>
 
 <div id="action-bar">
@@ -31,7 +31,7 @@
 </div>
 
 <div class="setup">
-  <h1><%= t('tutorial.title') %></h1>
+  <h1><%= t('tutorial.title') %> <span class="orange"><%= t('tutorial.simple') %></span>.</h1>
   <h2><%= t('tutorial.subtitle') %></h2>
   <hr />
   <p id="cta"><%= t('tutorial.description') %></p>
