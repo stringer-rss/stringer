@@ -1,0 +1,11 @@
+en:
+  feeds:
+    add:
+      title: "Need new stories?"
+      description: "Paste in the URL of the blog you want to read."
+      fields:
+        feed_url: "Feed URL"
+        submit: "Add"
+    index:
+      add_some_feeds: "Hey, you should %{add} some feeds."
+      add: "add"
