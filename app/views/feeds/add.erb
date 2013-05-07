@@ -3,17 +3,17 @@
 </div>
 
 <div class="setup" id="add-feed">
-  <h1>Need new stories?</h1>
+  <h1><%= t('feeds.add.title') %></h1>
   <hr />
-  <p>Paste in the URL of the blog you want to read.</p>
+  <p><%= t('feeds.add.description') %></p>
   <hr />
   <form id="add-feed-setup" method="POST" action="/add_feed">
     <div class="control-group">
       <input name="feed_url" id="feed-url" type="text" autofocus="autofocus" />
       <i class="icon-rss field-icon"></i>
-      <label id="feed_url-label" class="field-label" for="feed_url">Feed URL</label>
+      <label id="feed_url-label" class="field-label" for="feed_url"><%= t('feeds.add.fields.feed_url') %></label>
     </div>
 
-    <input type="submit" id="submit" class="btn btn-primary pull-right" value="Add"/>
+    <input type="submit" id="submit" class="btn btn-primary pull-right" value="<%= t('feeds.add.fields.submit') %>"/>
   </form>
 </div>

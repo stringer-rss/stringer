@@ -12,6 +12,6 @@
 </div>
 <% else %>
   <div id="add-some-feeds">
-    <p>Hey, you should <a href="/add_feed">add</a> some feeds.</p>
+    <p><%= t('feeds.index.add_some_feeds', :add => '<a href="/add_feed">'+t('feeds.index.add')+'</a>') %></p>
   </div>
 <% end %>

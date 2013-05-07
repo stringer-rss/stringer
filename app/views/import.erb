@@ -3,19 +3,19 @@
 <% end %>
 
 <div class="setup" id="feed-setup">
-  <h1>Welcome aboard.</h1>
-  <h2>Let's setup your feeds.</h2>
-  
+  <h1><%= t('import.title') %></h1>
+  <h2><%= t('import.subtitle') %></h2>
+
   <hr />
   <p>
-    <a href="https://www.google.com/reader/subscriptions/export?hl=en">Export</a> your feeds from Google Reader and import them.
+    <%= t('import.description', :link => '<a href="https://www.google.com/reader/subscriptions/export?hl=en">'+t('import.export')+'</a>') %>
   </p>
   <hr />
 
   <form id="import" method="POST" action="/import" enctype="multipart/form-data">
-    <input id="opml_file" name="opml_file" type="file" title="Import" class="btn-primary" />
-    <a href="/setup/tutorial" id="skip" class="btn pull-right">Not now</a>
-  </form> 
+    <input id="opml_file" name="opml_file" type="file" title="<%= t('import.fields.import') %>" class="btn-primary" />
+    <a href="/setup/tutorial" id="skip" class="btn pull-right"><%= t('import.fields.not_now') %></a>
+  </form>
 </div>
 
 <script type="text/javascript">

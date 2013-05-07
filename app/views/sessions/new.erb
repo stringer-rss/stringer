@@ -1,15 +1,15 @@
 <div class="setup" id="feed-setup">
-  <h1>Stringer speaks <span class="orange">RSS</span>.</h1>
-  <h2>Welcome back, friend.</h2>
-  
+  <h1><%= t('sessions.new.title') %> <span class="orange"><%= t('sessions.new.rss') %></span>.</h1>
+  <h2><%= t('sessions.new.subtitle') %></h2>
+
   <hr />
 
   <form method="POST" id="login" action="/login">
     <div class="control-group">
       <input name="password" id="password" type="password" autofocus="autofocus"/ >
       <i class="icon-lock field-icon"></i>
-      <label id="password-label" class="field-label" for="password">Password</label>
+      <label id="password-label" class="field-label" for="password"><%= t('sessions.new.fields.password') %></label>
     </div>
-    <input type="submit" value="Login" class="btn btn-primary pull-right" />
-  </form> 
+    <input type="submit" value="<%= t('sessions.new.fields.submit') %>" class="btn btn-primary pull-right" />
+  </form>
 </div>

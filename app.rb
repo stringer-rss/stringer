@@ -3,9 +3,12 @@ require "sinatra/activerecord"
 require "sinatra/flash"
 require "sinatra/contrib/all"
 require "json"
+require "i18n"
 
 require_relative "app/helpers/authentication_helpers"
 require_relative "app/repositories/user_repository"
+
+I18n.load_path += Dir[File.join(File.dirname(__FILE__), 'config/locales', '*.yml').to_s]
 
 class Stringer < Sinatra::Base
   configure do
@@ -29,12 +32,18 @@ class Stringer < Sinatra::Base
     def render_partial(name, locals = {})
       erb "partials/_#{name}".to_sym, layout: false, locals: locals
     end
+
+    def t(*args)
+      I18n.t(*args)
+    end
   end
 
   before do
     if !is_authenticated? && needs_authentication?(request.path)
       redirect '/login'
     end
+
+    I18n.locale = ENV["locale"].to_sym unless ENV["locale"].blank? || :en
   end
 
   get "/" do

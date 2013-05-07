@@ -1,16 +1,16 @@
 <div id="shortcuts" class="modal hide fade" tabindex="-1" role="dialog">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Keyboard shortcuts</h3>
+    <h3 id="myModalLabel"><%= t('partials.shortcuts.title') %></h3>
   </div>
   <div class="modal-body">
     <ul class="shortcut-legend">
-      <li><kbd>j</kbd>/<kbd>k</kbd>: Next/previous story</li>
-      <li><kbd>o</kbd> or <kbd>enter</kbd>: Toggle story open/closed</li>
-      <li><kbd>v</kbd>: Go to story URL</li>
+      <li><kbd>j</kbd>/<kbd>k</kbd>: <%= t('partials.shortcuts.keys.jk') %></li>
+      <li><kbd>o</kbd> or <kbd>enter</kbd>: <%= t('partials.shortcuts.keys.oenter') %></li>
+      <li><kbd>v</kbd>: <%= t('partials.shortcuts.keys.v') %></li>
       <li class="blank"></li>
-      <li><kbd>shift</kbd>+<kbd>a</kbd>: Mark all as read</li>
-      <li><kbd>r</kbd>: Refresh</li>
+      <li><kbd>shift</kbd>+<kbd>a</kbd>: <%= t('partials.shortcuts.keys.shifta') %></li>
+      <li><kbd>r</kbd>: <%= t('partials.shortcuts.keys.r') %></li>
     </ul>
   </div>
 </div>
