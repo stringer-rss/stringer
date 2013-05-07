@@ -8,6 +8,12 @@ class Stringer < Sinatra::Base
     erb :index
   end
 
+  get "/archive" do
+    @all_stories = StoryRepository.read
+  
+    erb :archive
+  end
+
   post "/mark_as_read" do
     story = StoryRepository.fetch(params[:story_id])
     story.is_read = true

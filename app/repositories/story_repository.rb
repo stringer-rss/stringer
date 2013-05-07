@@ -27,6 +27,10 @@ class StoryRepository
     Story.where(is_read: false).order("published desc") 
   end
 
+  def self.read
+    Story.where(is_read: true).order("published desc")
+  end
+
   def self.extract_content(entry)
     if entry.content
       entry.content.sanitize
