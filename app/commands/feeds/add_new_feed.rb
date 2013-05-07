@@ -1,16 +1,12 @@
-require "feedbag"
-require "feedzirra"
-
+require_relative "../../models/feed"
+require_relative "../../utils/feed_discovery"
 
 class AddNewFeed
   ONE_DAY = 24 * 60 * 60
 
-  def self.add(url, finder = Feedbag, parser = Feedzirra::Feed, repo = Feed)
-    results = finder.find(url)
-
-    return false if results.empty?
-    
-    result = parser.fetch_and_parse(results.first)
+  def self.add(url, discoverer = FeedDiscovery.new, repo = Feed)
+    result = discoverer.discover(url)
+    return false unless result
 
     repo.create(name: result.title,
                 url: result.feed_url,
