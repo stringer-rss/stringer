@@ -56,6 +56,8 @@ $(document).ready(function() {
     }
 
     openStories.trigger("closeStory");
+    
+    window.scrollTo(0, $this.offset().top);
   });
 
   $("#mark-all").click(function(e) {
@@ -107,20 +109,21 @@ $(document).ready(function() {
 
   Mousetrap.bind("j", function() {
     if (cursorPosition < MAX_POSITION - 1) {
-      cursorPosition++;
+      Stringer.setCursorPosition(++cursorPosition)
+      Stringer.currentlySelectedStory().trigger("toggleStory");
     }
-
-    Stringer.setCursorPosition(cursorPosition);
   });
 
   Mousetrap.bind("k", function() {
     if (cursorPosition > 0) {
-      cursorPosition--;
+      Stringer.setCursorPosition(--cursorPosition);
+      Stringer.currentlySelectedStory().trigger("toggleStory");
     } else {
       cursorPosition = 0;
+      
+      Stringer.setCursorPosition(cursorPosition);
+      Stringer.currentlySelectedStory().trigger("openStory");
     }
-
-    Stringer.setCursorPosition(cursorPosition);
   });
 
   Mousetrap.bind(["o", "enter"], function() {
@@ -137,10 +140,10 @@ $(document).ready(function() {
     $("form#mark-all-as-read").submit();
   });
 
-  Mousetrap.bind("v", function() {
+  Mousetrap.bind(["b","v"], function() {
     var currentStory = Stringer.currentlySelectedStory();
+    var permalink = currentStory.find("a.story-permalink")[0];
 
-    var permalink = currentStory.find("a#story-permalink")[0];
-    if (permalink) permalink.click();
+    if (permalink) window.open(permalink.href, '_blank');
   });
 });
