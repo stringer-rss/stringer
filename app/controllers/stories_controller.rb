@@ -8,10 +8,10 @@ class Stringer < Sinatra::Base
     erb :index
   end
 
-  get "/archive" do
-    @all_stories = StoryRepository.read
+  get "/read" do
+    @read_stories = StoryRepository.read
   
-    erb :archive
+    erb :read
   end
 
   post "/mark_as_read" do

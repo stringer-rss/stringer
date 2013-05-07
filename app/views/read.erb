@@ -1,0 +1,17 @@
+<div id="action-bar">
+  <%= render_partial :feed_action_bar %>
+</div>
+
+<% unless @read_stories.empty? %>
+<div id="stories">
+  <ul id="story-list">
+    <% @read_stories.each do |story| %>
+      <%= render_partial :story, { story: story } %>
+    <% end %>
+  </ul>
+</div>
+<% else %>
+  <div id="add-some-feeds">
+    <p>Sorry, you haven't read any stories yet!</p>
+  </div>
+<% end %>
