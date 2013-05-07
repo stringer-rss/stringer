@@ -1,4 +1,10 @@
 $(document).ready(function() {
+  var OSName="Unknown OS";
+  if (navigator.appVersion.indexOf("Win")!=-1) OSName="Windows";
+  if (navigator.appVersion.indexOf("Mac")!=-1) OSName="MacOS";
+  if (navigator.appVersion.indexOf("X11")!=-1) OSName="UNIX";
+  if (navigator.appVersion.indexOf("Linux")!=-1) OSName="Linux";
+
   $(".story-preview").click(function(e){ 
     e.preventDefault();
 
@@ -141,8 +147,22 @@ $(document).ready(function() {
 
   Mousetrap.bind(["b","v"], function() {
     var currentStory = Stringer.currentlySelectedStory();
-
     var permalink = currentStory.find("a.story-permalink")[0];
-    if (permalink) permalink.click();
+    if (permalink) {
+        permalink.target='_blank';
+        var evt = document.createEvent("MouseEvents");
+        if (OSName == 'MacOS')
+        {
+            //the tenth parameter of initMouseEvent sets ctrl key
+            evt.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0,
+                                    false, false, false, true, 0, null);            
+        } else {
+            //the tenth parameter of initMouseEvent sets ctrl key
+            evt.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0,
+                                    true, false, false, false, 0, null);
+        }
+        permalink.dispatchEvent(evt);
+        window.focus();
+    }
   });
 });
