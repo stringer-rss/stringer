@@ -1,0 +1,23 @@
+<% content_for :title do %>
+  <% unless @all_stories.empty? %>
+    <%= "(#{@all_stories.count})" %>
+  <% end %>
+<% end %>
+
+<div id="action-bar">
+  <%= render_partial :feed_action_bar %>
+</div>
+
+<% unless @all_stories.empty? %>
+<div id="stories">
+  <ul id="story-list">
+    <% @all_stories.each do |story| %>
+      <%= render_partial :story, { story: story } %>
+    <% end %>
+  </ul>
+</div>
+<% else %>
+  <div id="add-some-feeds">
+    <p>Sorry, you don't have any feeds in your archive yet!</p>
+  </div>
+<% end %>
