@@ -8,6 +8,7 @@ gem "sinatra-contrib", github: "sinatra/sinatra-contrib"
 gem "rake"
 gem "delayed_job_active_record"
 gem "bcrypt-ruby"
+gem "will_paginate"
 
 gem "feedzirra", github: "swanson/feedzirra"
 gem "loofah"

@@ -129,6 +129,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    will_paginate (3.0.4)
 
 PLATFORMS
   ruby
@@ -157,3 +158,4 @@ DEPENDENCIES
   sinatra-flash
   sqlite3
   unicorn
+  will_paginate
