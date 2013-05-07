@@ -250,7 +250,7 @@ li.feed .status {
   border-radius: 50px;
   position: relative;
   top: 2px;
-  left: 10px;
+  left: 6px;
 }
 
 li.feed .feed-line {
@@ -453,7 +453,7 @@ li.feed .remove-feed a:hover {
 
 #story-instruction {
   left: 200px;
-  top: 180px;
+  top: 190px;
   background: url("/img/arrow-right-up.png") no-repeat top left 150px;
   padding-top: 10px;
 }
