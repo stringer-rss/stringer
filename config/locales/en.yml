@@ -9,3 +9,67 @@ en:
     index:
       add_some_feeds: "Hey, you should %{add} some feeds."
       add: "add"
+  first_run:
+    password:
+      title: 'Stringer is <span class="orange">anti-social</span>.'
+      subtitle: "There is only one user: you."
+      description: "Let's pick a password so only you can read your stories."
+      fields:
+        password: "Password"
+        password_confirmation: "Confirm"
+        next: "Next"
+  partials:
+    action_bar:
+      mark_all: "Mark all as read"
+      refresh: "Refresh"
+      view_feeds: "View feeds"
+      add_feed: "Add a feed"
+    feed:
+      last_updated: "Last updated at"
+    feed_action_bar:
+      home: "Return to Stories"
+      feeds: "View feeds"
+      add_feed: "Add a feed"
+    shortcuts:
+      title: "Keyboard shortcuts"
+      keys:
+        jk: "Next/previous story"
+        oenter: "Toggle story open/closed"
+        v: "Go to story URL"
+        shifta: "Mark all as read"
+        r: "Refresh"
+    zen:
+      zero: "You&#8217;ve reached RSS Zero&trade;"
+      gtfo: 'Now stop reading blogs and <span id="gtfo">go make something</span>.'
+  sessions:
+    new:
+      title: 'Stringer speaks <span class="orange">RSS</span>.'
+      subtitle: "Welcome back, friend."
+      fields:
+        password: "Password"
+        submit: "Login"
+  import:
+    title: "Welcome aboard."
+    subtitle: "Let's setup your feeds."
+    description: "%{link} your feeds from Google Reader and import them."
+    export: "Export"
+    fields:
+      import: "Import"
+      not_now: "Not now"
+  layout:
+    title: "stringer | your rss buddy"
+    logout: "Logout"
+    export: "Export"
+    support: "Support"
+    back_to_work: "<b>Hey!</b> Get back to work, slacker!"
+  tutorial:
+    mark_all: "mark all <br/>as read"
+    refresh: "refresh"
+    your_feeds: "your feeds"
+    add_feed: "add feed"
+    your_stories: "your stories <br/>(click to read)"
+    title: 'Stringer is <span class="orange">simple</span>.'
+    subtitle: "Here's the instruction manual."
+    description: "We're getting you some stories to read, give us a second."
+    start: "Start Reading"
+    ready: "Okay, it's ready!"

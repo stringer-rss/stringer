@@ -1,20 +1,20 @@
 <div class="row-fluid">
   <div class="pull-left">
-    <a class="btn" id="mark-all" title="Mark all as read">
+    <a class="btn" id="mark-all" title="<%= t('partials.action_bar.mark_all') %>">
       <i class="icon-ok"></i>
-      <%= render_partial :mark_all_as_read_form, 
+      <%= render_partial :mark_all_as_read_form,
                         {stories: stories} %>
     </a>
-    <a class="btn" href="/" id="refresh" title="Refresh">
+    <a class="btn" href="/" id="refresh" title="<%= t('partials.action_bar.refresh') %>">
       <i class="icon-repeat"></i>
     </a>
   </div>
 
   <div class="pull-right">
-    <a class="btn btn-primary" id="feeds" href="/feeds" title="View feeds">
+    <a class="btn btn-primary" id="feeds" href="/feeds" title="<%= t('partials.action_bar.view_feeds') %>">
       <i class="icon-list"></i>
     </a>
-    <a class="btn btn-primary" id="add-feed" href="/add_feed" title="Add a feed">
+    <a class="btn btn-primary" id="add-feed" href="/add_feed" title="<%= t('partials.action_bar.add_feed') %>">
       <i class="icon-plus"></i>
     </a>
   </div>
