@@ -73,7 +73,7 @@ $(document).ready(function() {
     var feedId = $this.parents("li").data("id");
 
     if (feedId > 0) {
-      $.post("/delete_feed", { feed_id: feedId })
+      $.ajax({url: "/feeds/" + feedId, type: "DELETE"})
        .success(function() {
           $this.parents("li").fadeOut(500, function () {
             $(this).remove();
