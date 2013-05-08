@@ -1,6 +1,8 @@
 class Feed < ActiveRecord::Base
   has_many :stories, order: "published desc", dependent: :delete_all
 
+  validates_uniqueness_of :url
+
   STATUS = { green: 0, yellow: 1, red: 2 }
 
   def status

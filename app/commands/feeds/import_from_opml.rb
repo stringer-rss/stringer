@@ -4,10 +4,8 @@ require_relative "../../utils/opml_parser"
 class ImportFromOpml
   ONE_DAY = 24 * 60 * 60
 
-  def self.import(opml_contents, should_overwrite = false)
+  def self.import(opml_contents)
     feeds = OpmlParser.new.parse_feeds(opml_contents)
-
-    Feed.delete_all if should_overwrite
 
     feeds.each do |feed|
       Feed.create(name: feed[:name],

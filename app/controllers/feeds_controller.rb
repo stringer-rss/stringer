@@ -20,13 +20,17 @@ class Stringer < Sinatra::Base
   end
 
   post "/feeds" do
-    feed = AddNewFeed.add(params[:feed_url])
+    @feed_url = params[:feed_url]
+    feed = AddNewFeed.add(@feed_url)
 
-    if feed
+    if feed and feed.valid?
       FetchFeeds.enqueue([feed])
 
       flash[:success] = "We've added your new feed. Check back in a bit."
       redirect to("/")
+    elsif feed
+      flash.now[:error] = "You are already subscribed to this feed..."
+      erb :'feeds/add'
     else
       flash.now[:error] = "We couldn't find that feed. Try again."
       erb :'feeds/add'
@@ -38,7 +42,7 @@ class Stringer < Sinatra::Base
   end
 
   post "/feeds/import" do
-    ImportFromOpml.import(params["opml_file"][:tempfile].read, true)
+    ImportFromOpml.import(params["opml_file"][:tempfile].read)
 
     redirect to("/setup/tutorial")
   end

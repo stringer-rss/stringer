@@ -35,13 +35,23 @@ describe "FeedsController" do
   end
 
   describe "GET /feeds/new" do
+    it "displays a form and submit button" do
+      get "/feeds/new"
+
+      page = last_response.body
+      page.should have_tag("form#add-feed-setup")
+      page.should have_tag("input#submit")
+    end
+  end
+
+  describe "POST /feeds" do
     context "when the feed url is valid" do
       let(:feed_url) { "http://example.com/" }
-      let(:feed) { stub }
+      let(:valid_feed) { stub(valid?: true) }
 
       it "adds the feed and queues it to be fetched" do
-        AddNewFeed.should_receive(:add).with(feed_url).and_return(feed)
-        FetchFeeds.should_receive(:enqueue).with([feed])
+        AddNewFeed.should_receive(:add).with(feed_url).and_return(valid_feed)
+        FetchFeeds.should_receive(:enqueue).with([valid_feed])
 
         post "/feeds", feed_url: feed_url
 
@@ -51,10 +61,24 @@ describe "FeedsController" do
     end
 
     context "when the feed url is invalid" do
-      let(:feed_url) { "http://not-a-feed.com/" }
+      let(:feed_url) { "http://not-a-valid-feed.com/" }
 
       it "adds the feed and queues it to be fetched" do
-        AddNewFeed.should_receive(:add).with(feed_url).and_return(nil)
+        AddNewFeed.should_receive(:add).with(feed_url).and_return(false)
+
+        post "/feeds", feed_url: feed_url
+
+        page = last_response.body
+        page.should have_tag(".error")
+      end
+    end
+
+    context "when the feed url is one we already subscribe to" do
+      let(:feed_url) { "http://example.com/" }
+      let(:invalid_feed) { stub(valid?: false) }
+
+      it "adds the feed and queues it to be fetched" do
+        AddNewFeed.should_receive(:add).with(feed_url).and_return(invalid_feed)
 
         post "/feeds", feed_url: feed_url
 
@@ -74,7 +98,7 @@ describe "FeedsController" do
     end
   end
 
-  describe "POST /import" do
+  describe "POST /feeds/import" do
     let(:opml_file) { Rack::Test::UploadedFile.new("spec/sample_data/subscriptions.xml", "application/xml") }
 
     it "parse OPML and starts fetching" do
