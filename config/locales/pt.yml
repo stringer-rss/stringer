@@ -1,0 +1,82 @@
+pt:
+  feeds:
+    add:
+      title: "Precisa de novas histórias?"
+      description: "Cole a URL do blog que você quer ler."
+      fields:
+        feed_url: "URL do Feed"
+        submit: "Adicionar"
+    index:
+      add_some_feeds: "Ei, você deveria %{add} alguns feeds."
+      add: "adicionar"
+  first_run:
+    password:
+      title: 'Stringer é'
+      anti_social: 'anti-social'
+      subtitle: "Existe apenas um usuário: você."
+      description: "Vamos escolher uma senha para que só você possa ler suas histórias."
+      fields:
+        password: "Senha"
+        password_confirmation: "Confirmar"
+        next: "Próximo"
+  partials:
+    action_bar:
+      mark_all: "Marcar tudo como lido"
+      refresh: "Atualizar"
+      view_feeds: "Ver feeds"
+      add_feed: "Adicionar um feed"
+    feed:
+      last_updated: "Atualizado da última vez em"
+    feed_action_bar:
+      home: "Retornar para Histórias"
+      feeds: "Ver feeds"
+      add_feed: "Adicionar um feed"
+    shortcuts:
+      title: "Atalhos do teclado"
+      keys:
+        jk: "História seguinte/anterior"
+        oenter: "Abrir/fechar história"
+        v: "Ir para URL da história"
+        shifta: "Marcar tudo como lido"
+        r: "Atualizar"
+    zen:
+      zero: "Você alcançou RSS Zero&trade;"
+      gtfo: 'Agora pare de ler blogs e'
+      go_make: 'vá fazer algo'
+  sessions:
+    new:
+      title: 'Stringer fala'
+      rss: 'RSS'
+      subtitle: "Bem vindo novamente, amigo."
+      fields:
+        password: "Senha"
+        submit: "Entrar"
+  import:
+    title: "Bem vindo a bordo."
+    subtitle: "Vamos configurar seus feeds."
+    description: "%{link} seus feeds do Google Reader e importe-os."
+    export: "Exportar"
+    fields:
+      import: "Importar"
+      not_now: "Agora não"
+  layout:
+    title: "stringer | seu companheiro de rss"
+    logout: "Sair"
+    export: "Exportar"
+    support: "Suporte"
+    hey: "Ei!"
+    back_to_work: "Volte ao trabalho, preguiçoso!"
+  tutorial:
+    mark_all: "marcar todos"
+    as_read: "como lido"
+    refresh: "atualizar"
+    your_feeds: "seus feeds"
+    add_feed: "adicionar feed"
+    your_stories: "suas histórias"
+    click_to_read: "(clique para ler)"
+    title: 'Stringer é '
+    simple: "simples"
+    subtitle: "Aqui está o manual de instruções."
+    description: "Nós estamos pegando algumas histórias para leitura, dê-nos um segundo."
+    start: "Começar Leitura"
+    ready: "Ok, está pronto!"
