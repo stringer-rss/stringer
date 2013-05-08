@@ -9,17 +9,17 @@ class Stringer < Sinatra::Base
     erb :'feeds/index'
   end
 
-  post "/delete_feed" do
+  delete "/feeds/:feed_id" do
     FeedRepository.delete(params[:feed_id])
 
     status 200
   end
 
-  get "/add_feed" do
+  get "/feeds/new" do
     erb :'feeds/add'
   end
 
-  post "/add_feed" do
+  post "/feeds" do
     feed = AddNewFeed.add(params[:feed_url])
 
     if feed
@@ -33,17 +33,17 @@ class Stringer < Sinatra::Base
     end
   end
 
-  get "/import" do
-    erb :import
+  get "/feeds/import" do
+    erb :'feeds/import'
   end
 
-  post "/import" do
+  post "/feeds/import" do
     ImportFromOpml.import(params["opml_file"][:tempfile].read, true)
 
     redirect to("/setup/tutorial")
   end
 
-  get "/export" do
+  get "/feeds/export" do
     content_type :xml
 
     ExportToOpml.new(Feed.all).to_xml

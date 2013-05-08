@@ -8,7 +8,10 @@ describe "StoriesController" do
   let(:stories) { [story_one, story_two] }
 
   describe "/news" do
-    before { StoryRepository.stub(:unread).and_return(stories) }
+    before do
+      StoryRepository.stub(:unread).and_return(stories)
+      UserRepository.stub(fetch: stub)
+    end
     
     it "display list of unread stories" do
       get "/news"
@@ -32,6 +35,15 @@ describe "StoriesController" do
       last_response.body.should have_tag("#refresh")
       last_response.body.should have_tag("#feeds")
       last_response.body.should have_tag("#add-feed")
+    end
+
+    it "should have correct footer links" do
+      get "/news"
+
+      content = last_response.body
+      content.should have_tag("a", with: { href: "/feeds/export"})
+      content.should have_tag("a", with: { href: "/logout"})
+      content.should have_tag("a", with: { href: "https://github.com/swanson/stringer"})
     end
 
     it "displays a zen-like message when there are no unread stories" do
