@@ -64,9 +64,9 @@ describe "FeedsController" do
     end
   end
 
-  describe "GET /import" do
+  describe "GET /feeds/import" do
     it "displays the import options" do
-      get "/import"
+      get "/feeds/import"
 
       page = last_response.body
       page.should have_tag("input#opml_file")
@@ -80,21 +80,21 @@ describe "FeedsController" do
     it "parse OPML and starts fetching" do
       ImportFromOpml.should_receive(:import).once
 
-      post "/import", {"opml_file" => opml_file}
+      post "/feeds/import", {"opml_file" => opml_file}
 
       last_response.status.should be 302
       URI::parse(last_response.location).path.should eq "/setup/tutorial"
     end
   end
 
-  describe "GET /export" do
+  describe "GET /feeds/export" do
     let(:some_xml) { "<xml>some dummy opml</xml>"}
     before { Feed.stub(:all) }
 
     it "returns an OPML file" do
       ExportToOpml.any_instance.should_receive(:to_xml).and_return(some_xml)
     
-      get "/export"
+      get "/feeds/export"
 
       last_response.body.should eq some_xml
       last_response.header["Content-Type"].should include 'xml'

@@ -41,7 +41,7 @@ describe "FirstRunController" do
         post "/setup/password", {password: "foo", password_confirmation: "foo"}
 
         last_response.status.should be 302
-        URI::parse(last_response.location).path.should eq "/import"
+        URI::parse(last_response.location).path.should eq "/feeds/import"
       end
     end
 
@@ -82,10 +82,6 @@ describe "FirstRunController" do
       URI::parse(last_response.location).path.should eq "/news"
 
       get "/setup/password"
-      last_response.status.should be 302
-      URI::parse(last_response.location).path.should eq "/news"
-
-      get "/setup/import"
       last_response.status.should be 302
       URI::parse(last_response.location).path.should eq "/news"
 
