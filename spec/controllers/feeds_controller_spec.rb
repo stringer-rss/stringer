@@ -26,15 +26,15 @@ describe "FeedsController" do
     end
   end
 
-  describe "POST /delete_feed" do
+  describe "DELETE /feeds/:feed_id" do
     it "deletes a feed given the id" do
       FeedRepository.should_receive(:delete).with("123")
 
-      post "/delete_feed", feed_id: 123
+      delete "/feeds/123"
     end
   end
 
-  describe "GET /add_feed" do
+  describe "GET /feeds/new" do
     context "when the feed url is valid" do
       let(:feed_url) { "http://example.com/" }
       let(:feed) { stub }
@@ -43,7 +43,7 @@ describe "FeedsController" do
         AddNewFeed.should_receive(:add).with(feed_url).and_return(feed)
         FetchFeeds.should_receive(:enqueue).with([feed])
 
-        post "/add_feed", feed_url: feed_url
+        post "/feeds", feed_url: feed_url
 
         last_response.status.should be 302
         URI::parse(last_response.location).path.should eq "/"
@@ -56,7 +56,7 @@ describe "FeedsController" do
       it "adds the feed and queues it to be fetched" do
         AddNewFeed.should_receive(:add).with(feed_url).and_return(nil)
 
-        post "/add_feed", feed_url: feed_url
+        post "/feeds", feed_url: feed_url
 
         page = last_response.body
         page.should have_tag(".error")
