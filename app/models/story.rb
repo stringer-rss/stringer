@@ -3,6 +3,8 @@ require_relative "./feed"
 class Story < ActiveRecord::Base
   belongs_to :feed
 
+  validates_uniqueness_of :permalink
+
   UNTITLED = "[untitled]"
 
   def headline

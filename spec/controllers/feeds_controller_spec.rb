@@ -26,24 +26,34 @@ describe "FeedsController" do
     end
   end
 
-  describe "POST /delete_feed" do
+  describe "DELETE /feeds/:feed_id" do
     it "deletes a feed given the id" do
       FeedRepository.should_receive(:delete).with("123")
 
-      post "/delete_feed", feed_id: 123
+      delete "/feeds/123"
     end
   end
 
-  describe "GET /add_feed" do
+  describe "GET /feeds/new" do
+    it "displays a form and submit button" do
+      get "/feeds/new"
+
+      page = last_response.body
+      page.should have_tag("form#add-feed-setup")
+      page.should have_tag("input#submit")
+    end
+  end
+
+  describe "POST /feeds" do
     context "when the feed url is valid" do
       let(:feed_url) { "http://example.com/" }
-      let(:feed) { stub }
+      let(:valid_feed) { stub(valid?: true) }
 
       it "adds the feed and queues it to be fetched" do
-        AddNewFeed.should_receive(:add).with(feed_url).and_return(feed)
-        FetchFeeds.should_receive(:enqueue).with([feed])
+        AddNewFeed.should_receive(:add).with(feed_url).and_return(valid_feed)
+        FetchFeeds.should_receive(:enqueue).with([valid_feed])
 
-        post "/add_feed", feed_url: feed_url
+        post "/feeds", feed_url: feed_url
 
         last_response.status.should be 302
         URI::parse(last_response.location).path.should eq "/"
@@ -51,12 +61,26 @@ describe "FeedsController" do
     end
 
     context "when the feed url is invalid" do
-      let(:feed_url) { "http://not-a-feed.com/" }
+      let(:feed_url) { "http://not-a-valid-feed.com/" }
 
       it "adds the feed and queues it to be fetched" do
-        AddNewFeed.should_receive(:add).with(feed_url).and_return(nil)
+        AddNewFeed.should_receive(:add).with(feed_url).and_return(false)
 
-        post "/add_feed", feed_url: feed_url
+        post "/feeds", feed_url: feed_url
+
+        page = last_response.body
+        page.should have_tag(".error")
+      end
+    end
+
+    context "when the feed url is one we already subscribe to" do
+      let(:feed_url) { "http://example.com/" }
+      let(:invalid_feed) { stub(valid?: false) }
+
+      it "adds the feed and queues it to be fetched" do
+        AddNewFeed.should_receive(:add).with(feed_url).and_return(invalid_feed)
+
+        post "/feeds", feed_url: feed_url
 
         page = last_response.body
         page.should have_tag(".error")
@@ -64,9 +88,9 @@ describe "FeedsController" do
     end
   end
 
-  describe "GET /import" do
+  describe "GET /feeds/import" do
     it "displays the import options" do
-      get "/import"
+      get "/feeds/import"
 
       page = last_response.body
       page.should have_tag("input#opml_file")
@@ -74,27 +98,27 @@ describe "FeedsController" do
     end
   end
 
-  describe "POST /import" do
+  describe "POST /feeds/import" do
     let(:opml_file) { Rack::Test::UploadedFile.new("spec/sample_data/subscriptions.xml", "application/xml") }
 
     it "parse OPML and starts fetching" do
       ImportFromOpml.should_receive(:import).once
 
-      post "/import", {"opml_file" => opml_file}
+      post "/feeds/import", {"opml_file" => opml_file}
 
       last_response.status.should be 302
       URI::parse(last_response.location).path.should eq "/setup/tutorial"
     end
   end
 
-  describe "GET /export" do
+  describe "GET /feeds/export" do
     let(:some_xml) { "<xml>some dummy opml</xml>"}
     before { Feed.stub(:all) }
 
     it "returns an OPML file" do
       ExportToOpml.any_instance.should_receive(:to_xml).and_return(some_xml)
     
-      get "/export"
+      get "/feeds/export"
 
       last_response.body.should eq some_xml
       last_response.header["Content-Type"].should include 'xml'

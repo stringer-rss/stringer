@@ -1,0 +1,82 @@
+en:
+  feeds:
+    add:
+      title: "Need new stories?"
+      description: "Paste in the URL of the blog you want to read."
+      fields:
+        feed_url: "Feed URL"
+        submit: "Add"
+    index:
+      add_some_feeds: "Hey, you should %{add} some feeds."
+      add: "add"
+  first_run:
+    password:
+      title: 'Stringer is'
+      anti_social: 'anti-social'
+      subtitle: "There is only one user: you."
+      description: "Let's pick a password so only you can read your stories."
+      fields:
+        password: "Password"
+        password_confirmation: "Confirm"
+        next: "Next"
+  partials:
+    action_bar:
+      mark_all: "Mark all as read"
+      refresh: "Refresh"
+      view_feeds: "View feeds"
+      add_feed: "Add a feed"
+    feed:
+      last_updated: "Last updated at"
+    feed_action_bar:
+      home: "Return to Stories"
+      feeds: "View feeds"
+      add_feed: "Add a feed"
+    shortcuts:
+      title: "Keyboard shortcuts"
+      keys:
+        jk: "Next/previous story"
+        oenter: "Toggle story open/closed"
+        v: "Go to story URL"
+        shifta: "Mark all as read"
+        r: "Refresh"
+    zen:
+      zero: "You&#8217;ve reached RSS Zero&trade;"
+      gtfo: 'Now stop reading blogs and'
+      go_make: 'go make something'
+  sessions:
+    new:
+      title: 'Stringer speaks'
+      rss: 'RSS'
+      subtitle: "Welcome back, friend."
+      fields:
+        password: "Password"
+        submit: "Login"
+  import:
+    title: "Welcome aboard."
+    subtitle: "Let's setup your feeds."
+    description: "%{link} your feeds from Google Reader and import them."
+    export: "Export"
+    fields:
+      import: "Import"
+      not_now: "Not now"
+  layout:
+    title: "stringer | your rss buddy"
+    logout: "Logout"
+    export: "Export"
+    support: "Support"
+    hey: "Hey!"
+    back_to_work: "Get back to work, slacker!"
+  tutorial:
+    mark_all: "mark all"
+    as_read: "as read"
+    refresh: "refresh"
+    your_feeds: "your feeds"
+    add_feed: "add feed"
+    your_stories: "your stories"
+    click_to_read: "(click to read)"
+    title: 'Stringer is '
+    simple: "simple"
+    subtitle: "Here's the instruction manual."
+    description: "We're getting you some stories to read, give us a second."
+    start: "Start Reading"
+    ready: "Okay, it's ready!"

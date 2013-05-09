@@ -1,6 +1,6 @@
 <div class="row-fluid">
   <div class="pull-left">
-    <a class="btn" id="home" href="/news" title="Return to Stories">
+    <a class="btn" id="home" href="/news" title="<%= t('partials.feed_action_bar.home') %>">
       <i class="icon-reply"></i>
     </a>
   </div>
@@ -9,10 +9,10 @@
     <a class="btn btn-primary" id="feeds" href="/read" title="Read stories">
       <i class="icon-time"></i>
     </a>
-    <a class="btn btn-primary" id="feeds" href="/feeds" title="View feeds">
+    <a class="btn btn-primary" id="feeds" href="/feeds" title="<%= t('partials.feed_action_bar.feeds') %>">
       <i class="icon-list"></i>
     </a>
-    <a class="btn btn-primary" id="add-feed" href="/add_feed" title="Add a feed">
+    <a class="btn btn-primary" id="add-feed" href="/feeds/new" title="<%= t('partials.feed_action_bar.add_feed') %>">
       <i class="icon-plus"></i>
     </a>
   </div>

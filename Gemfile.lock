@@ -142,6 +142,7 @@ DEPENDENCIES
   feedbag!
   feedzirra!
   foreman
+  i18n
   loofah
   nokogiri
   pg

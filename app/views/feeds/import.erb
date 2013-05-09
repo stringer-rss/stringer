@@ -1,0 +1,27 @@
+<% content_for :head do %>
+  <script src="/js/bootstrap.file-input.js"></script>
+<% end %>
+
+<div class="setup" id="feed-setup">
+  <h1><%= t('import.title') %></h1>
+  <h2><%= t('import.subtitle') %></h2>
+
+  <hr />
+  <p>
+    <%= t('import.description', :link => '<a href="https://www.google.com/reader/subscriptions/export?hl=en">'+t('import.export')+'</a>') %>
+  </p>
+  <hr />
+
+  <form id="import" method="POST" action="/feeds/import" enctype="multipart/form-data">
+    <input id="opml_file" name="opml_file" type="file" title="<%= t('import.fields.import') %>" class="btn-primary" />
+    <a href="/setup/tutorial" id="skip" class="btn pull-right"><%= t('import.fields.not_now') %></a>
+  </form>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#opml_file').on("filePicked", function(e) {
+    $('form#import').submit();
+  });
+});
+</script>

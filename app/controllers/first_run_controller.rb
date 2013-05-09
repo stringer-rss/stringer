@@ -25,7 +25,7 @@ class Stringer < Sinatra::Base
         user = CreateUser.new.create(params[:password])
         session[:user_id] = user.id
 
-        redirect to("/import")
+        redirect to("/feeds/import")
       end
     end
 

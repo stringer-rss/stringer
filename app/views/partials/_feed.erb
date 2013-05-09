@@ -7,7 +7,7 @@
       </p>
     </div>
     <div class="span4 feed-last-updated">
-      <span class="last-updated">Last updated</span>
+      <span class="last-updated"><%= t('partials.feed.last_updated') %></span>
       <span class="last-updated-time">
         <% if feed.last_fetched %>
           <%= feed.last_fetched.strftime("%b %d, %H:%M") %>

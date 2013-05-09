@@ -4,6 +4,7 @@ gem "sinatra"
 gem "sinatra-activerecord"
 gem "sinatra-flash"
 gem "sinatra-contrib", github: "sinatra/sinatra-contrib"
+gem "i18n"
 
 gem "rake"
 gem "delayed_job_active_record"

@@ -3,19 +3,19 @@
 <% end %>
 
 <div class="tutorial-overlay">
-  <p class="instruction" id="mark-all-instruction">mark all <br/>as read</p>
+  <p class="instruction" id="mark-all-instruction"><%= t('tutorial.mark_all') %> <br/><%= t('tutorial.as_read') %></p>
 </div>
 <div class="tutorial-overlay">
-  <p class="instruction" id="refresh-instruction">refresh</p>
+  <p class="instruction" id="refresh-instruction"><%= t('tutorial.refresh') %></p>
 </div>
 <div class="tutorial-overlay">
-  <p class="instruction" id="feeds-instruction">your feeds</p>
+  <p class="instruction" id="feeds-instruction"><%= t('tutorial.your_feeds') %></p>
 </div>
 <div class="tutorial-overlay">
-  <p class="instruction" id="add-feed-instruction">add feed</p>
+  <p class="instruction" id="add-feed-instruction"><%= t('tutorial.add_feed') %></p>
 </div>
 <div class="tutorial-overlay">
-  <p class="instruction" id="story-instruction">your stories <br/>(click to read)</p>
+  <p class="instruction" id="story-instruction"><%= t('tutorial.your_stories') %><br/><%= t('tutorial.click_to_read') %></p>
 </div>
 
 <div id="action-bar">
@@ -31,13 +31,13 @@
 </div>
 
 <div class="setup">
-  <h1>Stringer is <span class="orange">simple</span>.</h1>
-  <h2>Here's the instruction manual.</h2>
+  <h1><%= t('tutorial.title') %> <span class="orange"><%= t('tutorial.simple') %></span>.</h1>
+  <h2><%= t('tutorial.subtitle') %></h2>
   <hr />
-  <p id="cta">We're getting you some stories to read, give us a second.</p>
+  <p id="cta"><%= t('tutorial.description') %></p>
   <hr />
   <div class="center">
-    <a href="/news" id="start" style="display: none" class="btn btn-primary">Start Reading</a>
+    <a href="/news" id="start" style="display: none" class="btn btn-primary"><%= t('tutorial.start') %></a>
   </div>
 </div>
 
@@ -45,7 +45,7 @@
 $(document).ready(function() {
   setTimeout(function() {
     $("#cta").fadeOut(function() {
-      $(this).html("Okay, it's ready!").fadeIn();
+      $(this).html("<%= t('tutorial.ready') %>").fadeIn();
       $("#start").fadeIn();
     });
   }, 10 * 1000);
