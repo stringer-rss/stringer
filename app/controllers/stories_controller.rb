@@ -8,10 +8,10 @@ class Stringer < Sinatra::Base
     erb :index
   end
 
-  get "/read" do
+  get "/archive" do
     @read_stories = StoryRepository.read.page(params[:page]).per_page(15)
 
-    erb :read
+    erb :archive
   end
 
   post "/mark_as_read" do

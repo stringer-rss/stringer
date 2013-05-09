@@ -1,23 +1,26 @@
-<% content_for :title do %>
-  <% unless @all_stories.empty? %>
-    <%= "(#{@all_stories.count})" %>
-  <% end %>
-<% end %>
-
 <div id="action-bar">
   <%= render_partial :feed_action_bar %>
 </div>
 
-<% unless @all_stories.empty? %>
+<% unless @read_stories.empty? %>
 <div id="stories">
   <ul id="story-list">
-    <% @all_stories.each do |story| %>
+    <% @read_stories.each do |story| %>
       <%= render_partial :story, { story: story } %>
     <% end %>
   </ul>
 </div>
+<div id="pagination">
+  <% if @read_stories.previous_page %>
+    <a href="?page=<%= @read_stories.previous_page %>"><i class="icon-double-angle-left"></i> Previous</a>
+  <% end %>
+  Page <%= @read_stories.current_page %> of <%= @read_stories.total_pages %>
+  <% if @read_stories.next_page %>
+    <a href="?page=<%= @read_stories.next_page %>">Next <i class="icon-double-angle-right"></i></a>
+  <% end %>
+</div>
 <% else %>
   <div id="add-some-feeds">
-    <p>Sorry, you don't have any feeds in your archive yet!</p>
+    <p>Sorry, you haven't read any stories yet!</p>
   </div>
 <% end %>
