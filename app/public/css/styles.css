@@ -53,24 +53,31 @@ hr {
 }
 
 .btn {
+  position: relative;
+  top: 0px;
   background-color: #484948;
   box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.12);
+}
+
+.btn:active {
+  top: 1px;
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.12);
 }
 
 .btn.btn-primary {
   background-color: #F67100;
 }
 
-.btn.btn-primary:hover, .btn.btn-primary:focus {
+.btn.btn-primary:hover, .btn.btn-primary:focus, .btn.btn-primary:active {
   background-color: #F59745;
 }
 
-.btn:hover, .btn:focus {
+.btn:hover, .btn:focus, .btn:active {
   background-color: #7F8281;
 }
 
 .btn:focus {
-  outline:0px !important;
+  outline: 0px !important;
   -webkit-appearance:none;
 }
 
