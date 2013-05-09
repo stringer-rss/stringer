@@ -39,6 +39,16 @@ $(document).ready(function() {
 
     if (storyId > 0) {
       $.post("/mark_as_read", { story_id: storyId })
+       .done(function() { 
+           $.ajax({
+               type: "GET",
+               url: "/unread_stories_count",
+               success: function (data) {
+                   var title = $("head > title")[0]
+                   title.text = title.text.replace(/\d+/,data);
+               }
+           });
+       })
        .fail(function() { alert("something broke!"); });
     }
   });
