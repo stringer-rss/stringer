@@ -1,0 +1,37 @@
+#!/usr/bin/env ruby
+
+require 'bundler'
+Bundler.require
+
+require "irb"
+
+def main
+  load_app
+  customize_irb
+  IRB.start
+end
+
+def load_app
+  require_relative "../app"
+  Dir.chdir Stringer.root
+  # Not sure why this doesn't work in sinatra/activerecord
+  database = Stringer.database rescue nil
+  unless database
+    path = Stringer.database_file
+    path = File.join(Stringer.root, path) if Pathname.new(path).relative?
+    if File.exists?(path)
+      database_hash = YAML.load(ERB.new(File.read(path)).result) || {}
+      database_hash = database_hash[Stringer.environment.to_s] || database_hash
+      Stringer.set :database, database_hash
+    end
+  end
+  if Stringer.database.nil?
+    raise "Error: Could not find the database configuration."
+  end
+  disable :run
+end
+
+def customize_irb
+end
+
+main(*ARGV)
