@@ -10,6 +10,15 @@
     <% end %>
   </ul>
 </div>
+<div id="pagination">
+  <% if @read_stories.previous_page %>
+    <a href="?page=<%= @read_stories.previous_page %>"><i class="icon-double-angle-left"></i> Previous</a>
+  <% end %>
+  Page <%= @read_stories.current_page %> of <%= @read_stories.total_pages %>
+  <% if @read_stories.next_page %>
+    <a href="?page=<%= @read_stories.next_page %>">Next <i class="icon-double-angle-right"></i></a>
+  <% end %>
+</div>
 <% else %>
   <div id="add-some-feeds">
     <p>Sorry, you haven't read any stories yet!</p>

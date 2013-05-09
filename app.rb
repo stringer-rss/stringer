@@ -3,6 +3,8 @@ require "sinatra/activerecord"
 require "sinatra/flash"
 require "sinatra/contrib/all"
 require "json"
+require "will_paginate"
+require "will_paginate/active_record"
 
 require_relative "app/helpers/authentication_helpers"
 require_relative "app/repositories/user_repository"

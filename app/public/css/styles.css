@@ -497,3 +497,7 @@ li.blank {
   list-style-type: none;
   height: 20px;
 }
+
+#pagination {
+  text-align: center;
+}
