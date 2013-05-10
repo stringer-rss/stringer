@@ -30,7 +30,6 @@ heroku create
 git push heroku master
 
 heroku config:set SECRET_TOKEN=`openssl rand -hex 20`
-heroku config:set LOCALE='en'
 
 heroku run rake db:migrate
 heroku restart
@@ -70,6 +69,14 @@ Target: your-heroku-instance.herokuapp.com
 ```
 
 Wait a few minutes for changes to progate.
+
+---
+
+Stringer has been translated to [several other languages](https://github.com/swanson/stringer/tree/master/config/locales). Your language can be set with the `LOCALE` environment variable.
+
+To set your locale on Heroku, run `heroku config:set LOCALE=en`.
+
+If you would like to translate Stringer to your preferred language, please open a pull request.
 
 # Development
 
