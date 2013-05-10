@@ -55,15 +55,19 @@ describe "StoriesController" do
     end
   end
 
-  describe "/mark_as_read" do
+  describe "/mark_story" do
     before { StoryRepository.stub(:fetch).and_return(story_one) }
 
     it "marks a story as read" do
       StoryRepository.should_receive(:save).once
-
-      post "/mark_as_read", {story_id: story_one.id}.to_json
-
+      post "/mark_story", {story_id: story_one.id, is_read: true}
       story_one.is_read.should be_true
+    end
+
+    it "marks a story as un-read" do
+      StoryRepository.should_receive(:save).once
+      post "/mark_story", {story_id: story_one.id, is_read: false}
+      story_one.is_read.should be_false
     end
   end
 

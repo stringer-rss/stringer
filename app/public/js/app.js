@@ -19,7 +19,7 @@ $(document).ready(function() {
 
     if($this.hasClass("open")) {
       $this.removeClass("open");
-      $this.addClass("read");
+      if (!e.keepUnread) { $this.addClass("read") };
 
       $(".story-lead", this).show();
       $(".story-body-container", this).stop().hide();
@@ -38,7 +38,7 @@ $(document).ready(function() {
     var storyId = $this.data("id");
 
     if (storyId > 0) {
-      $.post("/mark_as_read", { story_id: storyId })
+      $.post("/mark_story", { story_id: storyId, is_read: true })
        .fail(function() { alert("something broke!"); });
     }
   });
@@ -145,5 +145,19 @@ $(document).ready(function() {
     var permalink = currentStory.find("a.story-permalink")[0];
 
     if (permalink) window.open(permalink.href, '_blank');
+  });
+
+  Mousetrap.bind("m", function() {
+    var openStories = $("li.story.open");
+    openStories.each(function() {
+      $this = $(this);
+      var storyId = $this.data("id");
+
+      if (storyId > 0) {
+        $.post("/mark_story", { story_id: storyId, is_read: false })
+         .fail(function() { alert("something broke!"); });
+      }
+      openStories.trigger({type: "closeStory", keepUnread: true});
+    });
   });
 });
