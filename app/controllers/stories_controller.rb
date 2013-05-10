@@ -7,10 +7,6 @@ class Stringer < Sinatra::Base
 
     erb :index
   end
-
-  get "/unread_stories_count" do
-    StoryRepository.unread.count.to_s
-  end
   
   post "/mark_as_read" do
     story = StoryRepository.fetch(params[:story_id])

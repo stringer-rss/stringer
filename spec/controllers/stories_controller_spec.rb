@@ -66,18 +66,7 @@ describe "StoriesController" do
       story_one.is_read.should be_true
     end
   end
-  
-  describe "/unread_stories_count" do
-    before { StoryRepository.stub(:unread).and_return(stories) }
-    
-    it "returns the current unread stories count" do
 
-      get "/unread_stories_count"
-
-      last_response.body.to_i.should eq stories.count
-    end
-  end
-  
   describe "/mark_all_as_read" do
     it "marks all unread stories as read and reload the page" do
       MarkAllAsRead.any_instance.should_receive(:mark_as_read).once
