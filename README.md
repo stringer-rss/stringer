@@ -87,6 +87,8 @@ foreman start
 
 The application will be running on port `5000`
 
+You can launch an interactive console (ala `rails c`) using `racksh`
+
 # Acknowledgements
 Most of the heavy-lifting is done by [`feedzirra`](https://github.com/pauldix/feedzirra) and [`feedbag`](https://github.com/dwillis/feedbag).
 
