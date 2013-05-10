@@ -509,3 +509,7 @@ li.blank {
 #pagination {
   text-align: center;
 }
+
+#pagination a {
+  color: #F67100;
+}

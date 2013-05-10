@@ -16,15 +16,6 @@
     <% end %>
   </ul>
 </div>
-<div id="pagination">
-  <% if @unread_stories.previous_page %>
-    <a href="?page=<%= @unread_stories.previous_page %>"><i class="icon-double-angle-left"></i> Previous</a>
-  <% end %>
-  Page <%= @unread_stories.current_page %> of <%= @unread_stories.total_pages %>
-  <% if @unread_stories.next_page %>
-    <a href="?page=<%= @unread_stories.next_page %>">Next <i class="icon-double-angle-right"></i></a>
-  <% end %>
-</div>
 <% else %>
   <%= render_partial :zen %>
 <% end %>
