@@ -39,11 +39,11 @@ class Stringer < Sinatra::Base
   end
 
   before do
+    I18n.locale = ENV["LOCALE"].blank? ? :en : ENV["LOCALE"].to_sym
+
     if !is_authenticated? && needs_authentication?(request.path)
       redirect '/login'
     end
-
-    I18n.locale = ENV["locale"].to_sym unless ENV["locale"].blank? || :en
   end
 
   get "/" do
@@ -59,3 +59,4 @@ require_relative "app/controllers/stories_controller"
 require_relative "app/controllers/first_run_controller"
 require_relative "app/controllers/sessions_controller"
 require_relative "app/controllers/feeds_controller"
+
