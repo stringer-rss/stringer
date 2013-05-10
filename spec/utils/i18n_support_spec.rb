@@ -3,7 +3,7 @@ require "spec_helper"
 describe "i18n" do
   before do
     UserRepository.stub(:setup_complete?).and_return(false)
-    ENV['locale'] = locale
+    ENV['LOCALE'] = locale
     get "/"
   end
 
@@ -29,7 +29,7 @@ describe "i18n" do
     let(:locale) { 'xx' }
 
     it "should not find localization strings" do
-      I18n.t('layout.title', locale: ENV['locale'].to_sym).should_not eq "stringer | your rss buddy"
+      I18n.t('layout.title', locale: ENV['LOCALE'].to_sym).should_not eq "stringer | your rss buddy"
     end
   end
 end
