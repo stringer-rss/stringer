@@ -30,6 +30,7 @@ heroku create
 git push heroku master
 
 heroku config:set SECRET_TOKEN=`openssl rand -hex 20`
+heroku config:set LOCALE='en'
 
 heroku run rake db:migrate
 heroku restart
@@ -96,3 +97,4 @@ General sexiness courtesy of [`Twitter Bootstrap`](http://twitter.github.io/boot
 
 # Contact
 Matt Swanson, [mdswanson.com](http://mdswanson.com) [@_swanson](http://twitter.com/_swanson)
+
