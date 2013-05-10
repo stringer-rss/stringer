@@ -6,6 +6,10 @@ en:
       fields:
         feed_url: "Feed URL"
         submit: "Add"
+      flash:
+        added_successfully: "We've added your new feed. Check back in a bit."
+        already_subscribed_error: "You are already subscribed to this feed..."
+        feed_not_found_error: "We couldn't find that feed. Try again."
     index:
       add_some_feeds: "Hey, you should %{add} some feeds."
       add: "add"
@@ -19,6 +23,8 @@ en:
         password: "Password"
         password_confirmation: "Confirm"
         next: "Next"
+      flash:
+        passwords_dont_match: "Hey, your password confirmation didn't match. Try again."
   partials:
     action_bar:
       mark_all: "Mark all as read"
@@ -51,6 +57,11 @@ en:
       fields:
         password: "Password"
         submit: "Login"
+      flash:
+        wrong_password: "That's the wrong password. Try again."
+    destroy:
+      flash:
+        logged_out_successfully: "You have been signed out!"
   import:
     title: "Welcome aboard."
     subtitle: "Let's setup your feeds."
