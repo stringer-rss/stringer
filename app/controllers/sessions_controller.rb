@@ -12,13 +12,13 @@ class Stringer < Sinatra::Base
 
       redirect to("/")
     else
-      flash.now[:error] = "That's the wrong password. Try again."
+      flash.now[:error] = t('sessions.new.flash.wrong_password')
       erb :"sessions/new"
     end
   end
 
   get "/logout" do
-    flash[:success] = "You have been signed out!"
+    flash[:success] = t('sessions.destroy.flash.logged_out_successfully')
     session[:user_id] = nil
 
     redirect to("/")

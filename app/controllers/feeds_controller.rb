@@ -26,13 +26,13 @@ class Stringer < Sinatra::Base
     if feed and feed.valid?
       FetchFeeds.enqueue([feed])
 
-      flash[:success] = "We've added your new feed. Check back in a bit."
+      flash[:success] = t('feeds.add.flash.added_successfully')
       redirect to("/")
     elsif feed
-      flash.now[:error] = "You are already subscribed to this feed..."
+      flash.now[:error] = t('feeds.add.flash.already_subscribed_error')
       erb :'feeds/add'
     else
-      flash.now[:error] = "We couldn't find that feed. Try again."
+      flash.now[:error] = t('feeds.add.flash.feed_not_found_error')
       erb :'feeds/add'
     end
   end
