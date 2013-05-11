@@ -8,9 +8,9 @@ class Stringer < Sinatra::Base
     erb :index
   end
 
-  post "/mark_as_read" do
+  post "/mark_story" do
     story = StoryRepository.fetch(params[:story_id])
-    story.is_read = true
+    story.is_read = (params[:is_read] == 'true')
     StoryRepository.save(story)
   end
 
