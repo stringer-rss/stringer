@@ -80,3 +80,7 @@ en:
     description: "We're getting you some stories to read, give us a second."
     start: "Start Reading"
     ready: "Okay, it's ready!"
+  archive:
+    next: "Next"
+    previous: "Previous"
+    sorry: "Sorry, you haven't read any stories yet!"
