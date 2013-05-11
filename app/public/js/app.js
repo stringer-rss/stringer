@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  var previous_req_id = 0;
   $(".story-preview").click(function(e){ 
     e.preventDefault();
 
@@ -38,8 +39,20 @@ $(document).ready(function() {
     var storyId = $this.data("id");
 
     if (storyId > 0) {
-      $.post("/mark_as_read", { story_id: storyId })
-       .fail(function() { alert("something broke!"); });
+        $.post("/mark_as_read", { story_id: storyId })
+        .done(function() {
+            if(previous_req_id != storyId ){
+                var title = $("head > title")[0];
+                var stories_count = parseInt(title.text.match(/\d+/));
+                if (stories_count > 1){
+                    title.text = title.text.replace(/\d+/,stories_count - 1);
+                }else{
+                    title.text = title.text.replace("(1)","")
+                }
+                previous_req_id = storyId;
+            }
+        })
+        .fail(function() { alert("something broke!"); });
     }
   });
 
