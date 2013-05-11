@@ -33,7 +33,7 @@ fr:
       add_feed: "Ajouter un flux"
       archived_stories: "Articles archivés"
     feed:
-      last_updated: "Dernière mise-à-jour à"
+      last_updated: "Dernière mise à jour"
     feed_action_bar:
       home: "Revenir aux Articles"
       feeds: "Voir les flux"
