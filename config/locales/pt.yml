@@ -25,12 +25,14 @@ pt:
       refresh: "Atualizar"
       view_feeds: "Ver feeds"
       add_feed: "Adicionar um feed"
+      archived_stories: "Archived stories"
     feed:
       last_updated: "Atualizado da última vez em"
     feed_action_bar:
       home: "Retornar para Histórias"
       feeds: "Ver feeds"
       add_feed: "Adicionar um feed"
+      archived_stories: "Archived stories"
     shortcuts:
       title: "Atalhos do teclado"
       keys:
