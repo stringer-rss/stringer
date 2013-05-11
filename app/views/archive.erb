@@ -10,13 +10,18 @@
     <% end %>
   </ul>
 </div>
+
 <div id="pagination">
   <% if @read_stories.previous_page %>
-    <a href="?page=<%= @read_stories.previous_page %>"><i class="icon-double-angle-left"></i> <%= t('archive.previous') %></a>
+    <a href="?page=<%= @read_stories.previous_page %>"><%= t('archive.previous') %></a>
   <% end %>
-  Page <%= @read_stories.current_page %> of <%= @read_stories.total_pages %>
+
+  <% if @read_stories.total_pages > 1 %>
+    <%= @read_stories.current_page %> <%= t('archive.of') %> <%= @read_stories.total_pages %>
+  <% end %>
+
   <% if @read_stories.next_page %>
-    <a href="?page=<%= @read_stories.next_page %>"><%= t('archive.next') %> <i class="icon-double-angle-right"></i></a>
+    <a href="?page=<%= @read_stories.next_page %>"><%= t('archive.next') %></a>
   <% end %>
 </div>
 <% else %>

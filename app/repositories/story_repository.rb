@@ -27,8 +27,8 @@ class StoryRepository
     Story.where(is_read: false).order("published desc") 
   end
 
-  def self.read
-    Story.where(is_read: true).order("published desc")
+  def self.read(page = 1)
+    Story.where(is_read: true).order("published desc").page(page).per_page(15)
   end
 
   def self.extract_content(entry)

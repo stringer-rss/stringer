@@ -45,8 +45,7 @@ pt:
       zero: "Você alcançou RSS Zero&trade;"
       gtfo: 'Agora pare de ler blogs e'
       go_make: 'vá fazer algo'
-      procrastinate: "You can keep procrastinating by checking out your"
-      archive: "archive"
+      archive: "view all items"
   sessions:
     new:
       title: 'Stringer fala'

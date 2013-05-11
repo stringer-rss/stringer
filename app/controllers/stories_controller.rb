@@ -9,7 +9,7 @@ class Stringer < Sinatra::Base
   end
 
   get "/archive" do
-    @read_stories = StoryRepository.read.page(params[:page]).per_page(15)
+    @read_stories = StoryRepository.read(params[:page])
 
     erb :archive
   end
