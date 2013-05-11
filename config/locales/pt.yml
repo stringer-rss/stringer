@@ -36,6 +36,7 @@ pt:
       keys:
         jk: "História seguinte/anterior"
         oenter: "Abrir/fechar história"
+        or: "ou"
         v: "Ir para URL da história"
         shifta: "Marcar tudo como lido"
         r: "Atualizar"

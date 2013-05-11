@@ -42,6 +42,7 @@ de:
       keys:
         jk: "Nächste/vorherige Geschichte"
         oenter: "Klappe Geschichte aus/ein"
+        or: "oder"
         v: "Öffne die URL der Geschichte"
         shifta: "Alle als gelesen markieren"
         r: "Aktualisieren"

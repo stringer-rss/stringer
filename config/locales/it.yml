@@ -36,6 +36,7 @@ it:
       keys:
         jk: "Prossima/precedente storia"
         oenter: "Apri/chiudi la storia"
+        or: "o"
         v: "Vai all'URL della storia"
         shifta: "Segna tutte le storie come lette"
         r: "Aggiorna"
