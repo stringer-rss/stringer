@@ -44,7 +44,7 @@ Load the app and follow the instructions to import your feeds and start using th
 
 ## Updating the app
 
-From the app's directory,
+From the app's directory:
 
 ```sh
 git pull
@@ -53,7 +53,7 @@ heroku run rake db:migrate
 heroku restart
 ```
 
-# Niceities
+# Niceties
 
 You can run Stringer at `http://reader.yourdomain.com` using a CNAME.
 
