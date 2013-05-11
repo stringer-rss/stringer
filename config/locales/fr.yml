@@ -31,17 +31,20 @@ fr:
       refresh: "Rafraîchir"
       view_feeds: "Voir les flux"
       add_feed: "Ajouter un flux"
+      archived_stories: "Articles archivés"
     feed:
       last_updated: "Dernière mise-à-jour à"
     feed_action_bar:
       home: "Revenir aux Articles"
       feeds: "Voir les flux"
       add_feed: "Ajouter un flux"
+      archived_stories: "Articles archivés"
     shortcuts:
       title: "Raccourcis clavier"
       keys:
         jk: "Article suivant/précédant"
         oenter: "Ouvrir/fermer l'article"
+        or: "ou"
         v: "Aller à l'URL de l'article"
         shifta: "Tout marquer comme lu"
         r: "Rafraîchir"
@@ -49,16 +52,17 @@ fr:
       zero: "Vous avez atteint RSS Zero&trade;"
       gtfo: 'Maintenant cessez de lire des blogs et'
       go_make: 'allez faire quelque chose'
+      archive: "voir toutes les entrées"
   sessions:
     new:
       title: 'Stringer parle le'
       rss: 'RSS'
-      subtitle: "Bienvenue, mon ami."
+      subtitle: "Bienvenue, ami."
       fields:
         password: "Mot de passe"
         submit: "Identifiant"
       flash:
-        wrong_password: "Ce n'est pas le bon mot de pass. Essayez encore."
+        wrong_password: "Ce n'est pas le bon mot de passe. Essayez encore."
     destroy:
       flash:
         logged_out_successfully: "Vous avez été déconnecté !"
@@ -71,7 +75,7 @@ fr:
       import: "Importez"
       not_now: "Pas maintenant"
   layout:
-    title: "stringer | votre pote rss"
+    title: "stringer | votre compagnon rss"
     logout: "Déconnection"
     export: "Export"
     support: "Aide"
@@ -91,3 +95,8 @@ fr:
     description: "Nous récupérons quelques articles à lire, donnez-nous une seconde."
     start: "Commencez à lire"
     ready: "Ok, c'est prêt !"
+  archive:
+    next: "Suivant"
+    previous: "Précédent"
+    of: "de"
+    sorry: "Désolé, vous n'avez encore lu aucun article !"
