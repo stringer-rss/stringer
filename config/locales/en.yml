@@ -42,6 +42,7 @@ en:
       keys:
         jk: "Next/previous story"
         oenter: "Toggle story open/closed"
+        or: "or"
         v: "Go to story URL"
         shifta: "Mark all as read"
         r: "Refresh"

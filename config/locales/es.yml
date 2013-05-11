@@ -36,6 +36,7 @@ es:
       keys:
         jk: "Siguiente/Anterior historia"
         oenter: "Arrastrar historia abierta/cerrada"
+        or: "o"
         v: "Ir a URL de la historia"
         shifta: "Marcar todas como leidas"
         r: "Refrescar"

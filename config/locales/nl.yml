@@ -42,6 +42,7 @@ nl:
       keys:
         jk: "Volgend/vorig artikel"
         oenter: "Artikel open-/dichtklappen"
+        or: "of"
         v: "Open de URL van het artikel"
         shifta: "Alles als gelezen markeren"
         r: "Vernieuwen"
