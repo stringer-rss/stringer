@@ -31,6 +31,10 @@ class StoryRepository
     Story.where(is_read: true).order("published desc").page(page).per_page(15)
   end
 
+  def self.read_count
+    Story.where(is_read: true).count
+  end
+
   def self.extract_content(entry)
     if entry.content
       entry.content.sanitize

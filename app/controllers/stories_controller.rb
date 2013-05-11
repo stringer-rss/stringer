@@ -4,12 +4,14 @@ require_relative "../commands/stories/mark_all_as_read"
 class Stringer < Sinatra::Base
   get "/news" do
     @unread_stories = StoryRepository.unread
+    @read_count = StoryRepository.read_count
 
     erb :index
   end
 
   get "/archive" do
     @read_stories = StoryRepository.read(params[:page])
+    @read_count = @read_stories.length
 
     erb :archive
   end
