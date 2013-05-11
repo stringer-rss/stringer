@@ -506,6 +506,10 @@ li.blank {
   height: 20px;
 }
 
+#zen a {
+  color: #F67100;
+}
+
 #pagination {
   text-align: center;
 }
