@@ -68,7 +68,7 @@ Name: reader
 Target: your-heroku-instance.herokuapp.com
 ```
 
-Wait a few minutes for changes to progate.
+Wait a few minutes for changes to propagate.
 
 ---
 
