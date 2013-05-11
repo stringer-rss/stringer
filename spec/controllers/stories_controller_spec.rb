@@ -1,4 +1,5 @@
 require "spec_helper"
+require 'will_paginate/array'
 
 app_require "controllers/stories_controller"
 
@@ -40,10 +41,10 @@ describe "StoriesController" do
     it "should have correct footer links" do
       get "/news"
 
-      content = last_response.body
-      content.should have_tag("a", with: { href: "/feeds/export"})
-      content.should have_tag("a", with: { href: "/logout"})
-      content.should have_tag("a", with: { href: "https://github.com/swanson/stringer"})
+      page = last_response.body
+      page.should have_tag("a", with: { href: "/feeds/export"})
+      page.should have_tag("a", with: { href: "/logout"})
+      page.should have_tag("a", with: { href: "https://github.com/swanson/stringer"})
     end
 
     it "displays a zen-like message when there are no unread stories" do
@@ -52,6 +53,21 @@ describe "StoriesController" do
       get "/news"
 
       last_response.body.should have_tag("#zen")
+    end
+  end
+
+  describe "/archive" do
+    let(:read_one) { StoryFactory.build(is_read: true) }
+    let(:read_two) { StoryFactory.build(is_read: true) }
+    let(:stories) { [read_one, read_two].paginate }
+    before { StoryRepository.stub(:read).and_return(stories) }
+
+    it "displays the list of read stories with pagination" do
+      get "/archive"
+
+      page = last_response.body
+      page.should have_tag("li.story.read", count: 2)
+      page.should have_tag("div#pagination")
     end
   end
 

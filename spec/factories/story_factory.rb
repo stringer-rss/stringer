@@ -11,14 +11,14 @@ class StoryFactory
     end
   end
 
-  def self.build
+  def self.build(params = {})
     FakeStory.new(
       id: rand(100),
-      title: Faker::Lorem.sentence, 
-      permalink: Faker::Internet.url, 
-      body: Faker::Lorem.paragraph,
-      feed: FeedFactory.build,
-      is_read: false,
-      published: Time.now)
+      title: params[:title] || Faker::Lorem.sentence, 
+      permalink: params[:permalink] || Faker::Internet.url, 
+      body: params[:body] || Faker::Lorem.paragraph,
+      feed: params[:feed] || FeedFactory.build,
+      is_read: params[:is_read] || false,
+      published: params[:published] ||Time.now)
   end
 end

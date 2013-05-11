@@ -31,12 +31,14 @@ en:
       refresh: "Refresh"
       view_feeds: "View feeds"
       add_feed: "Add a feed"
+      archived_stories: "Archived stories"
     feed:
       last_updated: "Last updated at"
     feed_action_bar:
       home: "Return to Stories"
       feeds: "View feeds"
       add_feed: "Add a feed"
+      archived_stories: "Archived stories"
     shortcuts:
       title: "Keyboard shortcuts"
       keys:
@@ -48,8 +50,9 @@ en:
         r: "Refresh"
     zen:
       zero: "You&#8217;ve reached RSS Zero&trade;"
-      gtfo: 'Now stop reading blogs and'
-      go_make: 'go make something'
+      gtfo: "Now stop reading blogs and"
+      go_make: "go make something"
+      archive: "view all items"
   sessions:
     new:
       title: 'Stringer speaks'
@@ -92,3 +95,8 @@ en:
     description: "We're getting you some stories to read, give us a second."
     start: "Start Reading"
     ready: "Okay, it's ready!"
+  archive:
+    next: "Next"
+    previous: "Previous"
+    of: "of"
+    sorry: "Sorry, you haven't read any stories yet!"

@@ -25,12 +25,14 @@ pt:
       refresh: "Atualizar"
       view_feeds: "Ver feeds"
       add_feed: "Adicionar um feed"
+      archived_stories: "Archived stories"
     feed:
       last_updated: "Atualizado da última vez em"
     feed_action_bar:
       home: "Retornar para Histórias"
       feeds: "Ver feeds"
       add_feed: "Adicionar um feed"
+      archived_stories: "Archived stories"
     shortcuts:
       title: "Atalhos do teclado"
       keys:
@@ -44,6 +46,7 @@ pt:
       zero: "Você alcançou RSS Zero&trade;"
       gtfo: 'Agora pare de ler blogs e'
       go_make: 'vá fazer algo'
+      archive: "view all items"
   sessions:
     new:
       title: 'Stringer fala'
@@ -81,3 +84,7 @@ pt:
     description: "Nós estamos pegando algumas histórias para leitura, dê-nos um segundo."
     start: "Começar Leitura"
     ready: "Ok, está pronto!"
+  archive:
+    next: "Next"
+    previous: "Previous"
+    sorry: "Sorry, you haven't read any stories yet!"

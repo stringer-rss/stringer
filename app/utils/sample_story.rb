@@ -1,4 +1,4 @@
-class SampleStory < Struct.new(:source, :title, :lead, :published)
+class SampleStory < Struct.new(:source, :title, :lead, :is_read, :published)
   def id; -1; end
   def headline; title; end
   def permalink; "#"; end
@@ -23,5 +23,6 @@ class SampleStory < Struct.new(:source, :title, :lead, :published)
     booth vice literally.</p>
 eos
   end
+  def is_read; false; end
   def published; Time.now; end
 end

@@ -500,3 +500,25 @@ li.blank {
   list-style-type: none;
   height: 20px;
 }
+
+#zen a {
+  color: #F59745;
+  font-size: 14px;
+  border-bottom: 1px dotted #F59745;
+  text-decoration: none;
+}
+
+#zen .view-all {
+  line-height: 18px;
+}
+
+#pagination {
+  text-align: center;
+}
+
+#pagination a {
+  color: #F67100;
+  border-bottom: 1px dotted #F59745;
+  text-decoration: none;
+  margin: 0 7px;
+}
