@@ -3,15 +3,14 @@
 </div>
 
 <% unless @read_stories.empty? %>
-<div id="stories">
-  <ul id="story-list">
-    <% @read_stories.each do |story| %>
-      <%= render_partial :story, { story: story } %>
-    <% end %>
-  </ul>
-</div>
+  <%= render_js :stories, { stories: @read_stories } %>
 
-<div id="pagination">
+  <div id="stories">
+    <ul id="story-list">
+    </ul>
+  </div>
+
+  <div id="pagination">
   <% if @read_stories.previous_page %>
     <a href="?page=<%= @read_stories.previous_page %>"><%= t('archive.previous') %></a>
   <% end %>
@@ -23,7 +22,7 @@
   <% if @read_stories.next_page %>
     <a href="?page=<%= @read_stories.next_page %>"><%= t('archive.next') %></a>
   <% end %>
-</div>
+  </div>
 <% else %>
   <div id="sorry">
     <p><%= t('archive.sorry') %></p>

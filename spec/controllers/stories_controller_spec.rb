@@ -8,7 +8,7 @@ describe "StoriesController" do
   let(:story_two) { StoryFactory.build }
   let(:stories) { [story_one, story_two] }
 
-  describe "/news" do
+  describe "GET /news" do
     before do
       StoryRepository.stub(:unread).and_return(stories)
       UserRepository.stub(fetch: stub)
@@ -17,7 +17,7 @@ describe "StoriesController" do
     it "display list of unread stories" do
       get "/news"
 
-      last_response.body.should have_tag("li.story", count: 2)
+      last_response.body.should have_tag("#stories")
     end
 
     it "displays the blog title and article title" do
@@ -56,7 +56,7 @@ describe "StoriesController" do
     end
   end
 
-  describe "/archive" do
+  describe "GET /archive" do
     let(:read_one) { StoryFactory.build(is_read: true) }
     let(:read_two) { StoryFactory.build(is_read: true) }
     let(:stories) { [read_one, read_two].paginate }
@@ -66,18 +66,18 @@ describe "StoriesController" do
       get "/archive"
 
       page = last_response.body
-      page.should have_tag("li.story.read", count: 2)
+      page.should have_tag("#stories")
       page.should have_tag("div#pagination")
     end
   end
 
-  describe "/mark_as_read" do
+  describe "PUT /stories/:id" do
     before { StoryRepository.stub(:fetch).and_return(story_one) }
 
     it "marks a story as read" do
       StoryRepository.should_receive(:save).once
 
-      post "/mark_as_read", {story_id: story_one.id}.to_json
+      put "/stories/#{story_one.id}", {is_read: true}.to_json
 
       story_one.is_read.should be_true
     end

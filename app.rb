@@ -28,6 +28,8 @@ class Stringer < Sinatra::Base
     register Sinatra::Flash
     register Sinatra::Contrib
     register Sinatra::AssetPack
+
+    ActiveRecord::Base.include_root_in_json = false
   end
 
   assets {
@@ -59,6 +61,14 @@ class Stringer < Sinatra::Base
 
     def render_partial(name, locals = {})
       erb "partials/_#{name}".to_sym, layout: false, locals: locals
+    end
+
+    def render_js_template(name)
+      erb "js/templates/_#{name}.js".to_sym, layout: false
+    end
+
+    def render_js(name, locals = {})
+      erb "js/#{name}.js".to_sym, layout: false, locals: locals
     end
 
     def t(*args)

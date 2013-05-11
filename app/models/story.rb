@@ -18,4 +18,12 @@ class Story < ActiveRecord::Base
   def source
     self.feed.name
   end
+
+  def pretty_date
+    self.published.strftime("%A, %B %d")
+  end
+
+  def as_json(options = {})
+    super(methods: [:headline, :lead, :source, :pretty_date])
+  end
 end

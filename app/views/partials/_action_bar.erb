@@ -22,3 +22,22 @@
     </a>
   </div>
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#mark-all").click(function(e) {
+      e.preventDefault();
+
+      $("form#mark-all-as-read").submit();
+    });
+    
+    Mousetrap.bind("r", function() {
+      var refresh = $("a#refresh")[0];
+      if (refresh) refresh.click();
+    });
+
+    Mousetrap.bind("shift+a", function() {
+      $("form#mark-all-as-read").submit();
+    });
+  });
+</script>

@@ -166,9 +166,14 @@ li.story.open .story-preview {
   margin-left: 20px;
 }
 
+.story-keep-unread {
+  margin-right: 25px;
+}
+
 .story-body {
   margin-left: 20px;
   margin-right: 20px;
+  margin-bottom: 10px;
   text-align: left;
 }
 
@@ -195,6 +200,14 @@ li.story .story-body h1 a:hover {
 
 li.story.cursor {
   border: 3px solid #484948;
+}
+
+li.story .story-body-container { 
+  display: none;
+}
+
+li.story.open .story-body-container {
+  display: block;
 }
 
 p.story-details {

@@ -7,11 +7,9 @@
     </title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="shortcut icon" href="/img/favicon.png">
-
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,900,400italic" rel="stylesheet" type="text/css">
     
     <%= css :application %>
-
     <%= js  :application %>
 
     <%= yield_content :head %>
@@ -56,5 +54,12 @@
         </div>
       </div>
     </div>
+    
+    <script>
+      window.i18n = {};
+      window.i18n.titleName = "<%= t('layout.title') %>";
+    </script>
+
+    <%= render_js_template :story %>
   </body>
 </html>

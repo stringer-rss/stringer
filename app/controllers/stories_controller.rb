@@ -14,9 +14,11 @@ class Stringer < Sinatra::Base
     erb :archive
   end
 
-  post "/mark_as_read" do
-    story = StoryRepository.fetch(params[:story_id])
-    story.is_read = true
+  put "/stories/:id" do
+    json_params = JSON.parse(request.body.read, symbolize_names: true)
+    
+    story = StoryRepository.fetch(params[:id])
+    story.is_read = json_params[:is_read]
     StoryRepository.save(story)
   end
 

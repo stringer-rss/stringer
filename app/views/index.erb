@@ -8,14 +8,13 @@
   <%= render_partial :action_bar, { stories: @unread_stories } %>
 </div>
 
-<% unless @unread_stories.empty? %>
-<div id="stories">
-  <ul id="story-list">
-    <% @unread_stories.each do |story| %>
-      <%= render_partial :story, { story: story } %>
-    <% end %>
-  </ul>
-</div>
-<% else %>
+<% if @unread_stories.empty? %>
   <%= render_partial :zen %>
+<% else %>
+  <%= render_js :stories, { stories: @unread_stories } %>
+  
+  <div id="stories">
+    <ul id="story-list">
+    </ul>
+  </div>
 <% end %>

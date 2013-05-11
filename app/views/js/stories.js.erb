@@ -1,0 +1,221 @@
+<script type="text/javascript">
+  $(document).ready(function() {
+    var Story = Backbone.Model.extend({
+      defaults: function() {
+        return {
+          "open" : false,
+          "selected" : false
+        }
+      },
+
+      toggle: function() {
+        if (this.get("open")) {
+          this.close();
+        } else {
+          this.open();
+        }
+      },
+
+      open: function() {
+        this.set("is_read", true)
+
+        if (this.changedAttributes()) {
+          this.save();
+        }
+        
+        this.collection.closeOthers(this);
+        this.collection.unselectAll();
+        this.collection.setSelection(this);
+
+        this.set("open", true);
+        this.set("selected", true);
+      },
+
+      close: function() {
+        this.set("open", false);
+      },
+
+      unselect: function() {
+        this.set("selected", false);
+      },
+
+      openInTab: function() {
+        window.open(this.get("permalink"), '_blank');
+      }
+    });
+
+    var StoryView = Backbone.View.extend({
+      tagName: "li",
+      className: "story",
+
+      template: "#story-template",
+
+      events: {
+        "click" : "storyClicked"
+      },
+
+      initialize: function() {
+        this.template = _.template($(this.template).html());
+        this.listenTo(this.model, 'change', this.render);
+      },
+
+      render: function() {
+        this.$el.html(this.template(this.model.toJSON()));
+
+        this.$el.toggleClass("read", this.model.get("is_read"));
+
+        if (this.model.get("open")) {
+          this.$el.addClass("open");
+          $(".story-lead", this.$el).fadeOut(1000);
+        } else {
+          this.$el.removeClass("open");
+          $(".story-lead", this.$el).show();
+        }
+
+        this.$el.toggleClass("cursor", this.model.get("selected"));
+
+        return this;
+      },
+
+      storyClicked: function() {
+        this.model.toggle();
+        window.scrollTo(0, this.$el.offset().top);
+      }
+    });
+
+    var StoryList = Backbone.Collection.extend({
+      model: Story,
+      url: "/stories",
+
+      initialize: function() {
+        this.cursorPosition = -1;
+      },
+
+      max_position: function() {
+        return this.length - 1;
+      },
+
+      unreadCount: function() {
+        return this.where({is_read: false}).length;
+      },
+
+      closeOthers: function(modelToSkip) {
+        this.each(function(model) {
+          if (model.id != modelToSkip.id) {
+            model.close();
+          }
+        });
+      },
+
+      selected: function() {
+        return this.where({selected: true});
+      },
+
+      unselectAll: function() {
+        _.invoke(this.selected(), "unselect");
+      },
+
+      selectedStoryId: function() {
+        var selectedStory = this.at(this.cursorPosition);
+        return selectedStory ? selectedStory.id : -1;
+      },
+
+      setSelection: function(model) {
+        this.cursorPosition = this.indexOf(model);
+      },
+
+      nextStory: function() {
+        if (this.cursorPosition < this.max_position()) {
+          this.cursorPosition++;
+          this.at(this.cursorPosition).open();
+        }
+      },
+
+      prevStory: function() {
+        if (this.cursorPosition > 0) {
+          this.cursorPosition--;
+          this.at(this.cursorPosition).open();
+        } else {
+          this.cursorPosition = 0;
+          this.at(this.cursorPosition).open();
+        }
+      },
+
+      toggleCurrent: function() {
+        if (this.cursorPosition < 0) this.cursorPosition = 0;
+        this.at(this.cursorPosition).toggle();
+      },
+
+      viewCurrentInTab: function() {
+        if (this.cursorPosition < 0) this.cursorPosition = 0;
+        this.at(this.cursorPosition).openInTab();
+      }
+    });
+
+    var Stories = new StoryList;
+
+    var AppView = Backbone.View.extend({
+      el: $("#stories"),
+
+      initialize: function() {
+        this.listenTo(Stories, 'add', this.addOne);
+        this.listenTo(Stories, 'reset', this.addAll);
+        this.listenTo(Stories, 'all', this.render);
+      },
+
+      render: function() {
+        var unreadCount = Stories.unreadCount();
+        
+        if (unreadCount === 0) {
+          document.title = window.i18n.titleName;
+        } else {
+          document.title = "(" + unreadCount + ") " + window.i18n.titleName;
+        }
+      },
+
+      addOne: function(story) {
+        var view = new StoryView({model: story});
+        this.$("#story-list").append(view.render().el);
+      },
+
+      addAll: function() {
+        Stories.each(this.addOne, this);
+      },
+
+      nextStory: function() {
+        Stories.nextStory();
+      },
+
+      prevStory: function() {
+        Stories.prevStory();
+      },
+
+      toggleCurrent: function() {
+        Stories.toggleCurrent();
+      },
+
+      viewCurrentInTab: function() {
+        Stories.viewCurrentInTab();
+      }
+    });
+
+    var StoryApp = new AppView;
+    Stories.reset(<%= stories.to_json %>);
+
+    Mousetrap.bind("j", function() {
+      StoryApp.nextStory();
+    });
+
+    Mousetrap.bind("k", function() {
+      StoryApp.prevStory();
+    });
+
+    Mousetrap.bind(["o", "enter"], function() {
+      StoryApp.toggleCurrent();
+    });
+
+    Mousetrap.bind(["b", "v"], function() {
+      StoryApp.viewCurrentInTab();
+    });
+  });
+</script>
