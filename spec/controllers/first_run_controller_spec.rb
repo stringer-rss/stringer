@@ -49,7 +49,7 @@ describe "FirstRunController" do
       let(:user) { stub }
       let(:feeds) {[stub, stub]}
 
-      before do 
+      before do
         UserRepository.stub(fetch: user)
         Feed.stub(all: feeds)
       end
@@ -57,7 +57,7 @@ describe "FirstRunController" do
       it "displays the tutorial and completes setup" do
         CompleteSetup.should_receive(:complete).with(user).once
         FetchFeeds.should_receive(:enqueue).with(feeds).once
-        
+
         get "/setup/tutorial"
 
         page = last_response.body
@@ -67,6 +67,18 @@ describe "FirstRunController" do
         page.should have_tag("#add-feed-instruction")
         page.should have_tag("#story-instruction")
         page.should have_tag("#start")
+      end
+
+      context "When cookies are disabled" do
+        before do
+          UserRepository.stub(:fetch).and_return(nil)
+        end
+
+        it "redirects to the cookies page" do
+          get "/setup/tutorial"
+          last_response.status.should be 302
+          URI::parse(last_response.location).path.should eq "/setup/cookies"
+        end
       end
     end
   end
