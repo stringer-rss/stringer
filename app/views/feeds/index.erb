@@ -15,3 +15,9 @@
     <p><%= t('feeds.index.add_some_feeds', :add => '<a href="/feeds/new">'+t('feeds.index.add')+'</a>') %></p>
   </div>
 <% end %>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $(".status").tooltip();
+  });
+</script>

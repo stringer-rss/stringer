@@ -33,7 +33,11 @@ fr:
       add_feed: "Ajouter un flux"
       archived_stories: "Articles archivés"
     feed:
-      last_updated: "Dernière mise à jour"
+      last_updated: "Dernière mise-à-jour à"
+      status_bubble:
+        green: "Succès !"
+        yellow: "Erreur d'analyse (probablement temporaire)"
+        red: "Erreur d'analyse (et il n'a jamais travaillé avant, non plus)"
     feed_action_bar:
       home: "Revenir aux Articles"
       feeds: "Voir les flux"
