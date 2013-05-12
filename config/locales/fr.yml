@@ -33,11 +33,11 @@ fr:
       add_feed: "Ajouter un flux"
       archived_stories: "Articles archivés"
     feed:
-      last_updated: "Dernière mise-à-jour à"
+      last_updated: "Dernière mise à jour"
       status_bubble:
         green: "Succès !"
         yellow: "Erreur d'analyse (probablement temporaire)"
-        red: "Erreur d'analyse (et il n'a jamais travaillé avant, non plus)"
+        red: "Erreur d'analyse (n'a jamais fonctionné avant, non plus)"
     feed_action_bar:
       home: "Revenir aux Articles"
       feeds: "Voir les flux"
@@ -53,7 +53,7 @@ fr:
         shifta: "Tout marquer comme lu"
         r: "Rafraîchir"
     zen:
-      zero: "Vous avez atteint RSS Zero&trade;"
+      zero: "Vous avez atteint RSS Zéro&trade;"
       gtfo: 'Maintenant cessez de lire des blogs et'
       go_make: 'allez faire quelque chose'
       archive: "voir toutes les entrées"
