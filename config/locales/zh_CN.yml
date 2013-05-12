@@ -36,8 +36,8 @@ zh_CN:
       last_updated: "最后更新于"
       status_bubble:
         green: "成功"
-        yellow: "解析 （可能是短暂的) 时出现错误"
-        red: "错误分析 (和它从未合作过，要么)"
+        yellow: "解析时出现错误"
+        red: "此订阅可能已失效"
     feed_action_bar:
       home: "返回未读故事列表"
       feeds: "查看订阅列表"
