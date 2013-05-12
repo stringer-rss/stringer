@@ -148,8 +148,8 @@ li.story.open .story-preview {
   white-space: nowrap;
 }
 
-.story-preview div, .feed-line div {
-  height: 30px;
+.tooltip {
+  white-space: pre-wrap;
 }
 
 .blog-title, .feed-title {
@@ -250,18 +250,13 @@ p.story-details {
   color: #7F8281;
 }
 
-li.feed .status {
-  margin-right: 5px;
-  color: #ddd;
-}
-
 li.feed .feed-line {
   cursor: default;
 }
 
 li.feed .feed-title {
   display: inline-block;
-  margin-left: 5px;
+  margin-left: 0px;
 }
 
 li.feed .feed-title a {
@@ -277,6 +272,12 @@ li.feed .feed-title-container {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+li.feed .status {
+  padding: 8px;
+  width: 14px;
+  color: #ddd;
 }
 
 li.feed .status.green {
