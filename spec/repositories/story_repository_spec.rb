@@ -14,12 +14,12 @@ describe StoryRepository do
       content = <<-EOS
 <div>
 <img src="https://foo">
-<a href="/bar/baz">tee</a>
-<img src="bar/bar">
+<a href="/bar/baz">tee</a><img src="bar/bar">
 <video src="/tee"></video>
 </div>
       EOS
-      expect(klass.urls_to_absolute(content, "http://oodl.io/d/")).to eq(<<-EOS)
+      expect(klass.urls_to_absolute(content, "http://oodl.io/d/").gsub(/\n/, ""))
+        .to eq((<<-EOS).gsub(/\n/, ""))
 <div>
 <img src="https://foo">
 <a href="http://oodl.io/bar/baz">tee</a>
