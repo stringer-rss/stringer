@@ -14,10 +14,7 @@ class Feed < ActiveRecord::Base
   end
 
   def status_bubble
-    if status == :red
-      return :yellow unless stories.empty?
-    end
-
+    return :yellow if status == :red && stories.any?
     status
   end
 end
