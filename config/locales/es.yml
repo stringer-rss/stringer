@@ -28,10 +28,6 @@ es:
       archived_stories: "Archived stories"
     feed:
       last_updated: "Última actualización"
-      status_bubble:
-        green: "¡ Un éxito!"
-        yellow: "Error de análisis (probablemente temporal)"
-        red: "Error de análisis (y nunca funcionó antes, tampoco)"
     feed_action_bar:
       home: "Volver a historias"
       feeds: "Ver feeds"
@@ -40,7 +36,8 @@ es:
     shortcuts:
       title: "Atajos de teclado"
       keys:
-        jk: "Siguiente/Anterior historia"
+        jk: "Seleccionar siguiente/anterior historia"
+        np: "Ir a la siguiente / anterior historia (sin seleccionarlo)"
         oenter: "Arrastrar historia abierta/cerrada"
         or: "o"
         v: "Ir a URL de la historia"

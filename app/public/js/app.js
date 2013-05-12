@@ -1,12 +1,12 @@
 $(document).ready(function() {
   var previous_req_id = 0;
-  $(".story-preview").click(function(e){ 
+  $(".story-preview").click(function(e){
     e.preventDefault();
 
     var $this = $(this);
 
     var openStories = $("li.story.open");
-    
+
     if(!$this.hasClass("open")) {
       $this.trigger("openStory");
     }
@@ -69,8 +69,15 @@ $(document).ready(function() {
     }
 
     openStories.trigger("closeStory");
-    
+
     window.scrollTo(0, $this.offset().top);
+  });
+
+  $("li.story").on("updateScroll", function(e) {
+    var $this = $(this);
+    if (!$this.visible()) {
+      window.scrollTo(0, $this.offset().top);
+    }
   });
 
   $("#mark-all").click(function(e) {
@@ -133,7 +140,6 @@ $(document).ready(function() {
       Stringer.currentlySelectedStory().trigger("toggleStory");
     } else {
       cursorPosition = 0;
-      
       Stringer.setCursorPosition(cursorPosition);
       Stringer.currentlySelectedStory().trigger("openStory");
     }
@@ -159,4 +165,22 @@ $(document).ready(function() {
 
     if (permalink) window.open(permalink.href, '_blank');
   });
+
+  Mousetrap.bind("n", function() {
+    if (cursorPosition < MAX_POSITION - 1) {
+      Stringer.setCursorPosition(++cursorPosition);
+      Stringer.currentlySelectedStory().trigger("updateScroll");
+    }
+  });
+
+  Mousetrap.bind("p", function() {
+    if (cursorPosition > 0) {
+      Stringer.setCursorPosition(--cursorPosition);
+    } else {
+      cursorPosition = 0;
+      Stringer.setCursorPosition(cursorPosition);
+    }
+    Stringer.currentlySelectedStory().trigger("updateScroll");
+  });
+
 });

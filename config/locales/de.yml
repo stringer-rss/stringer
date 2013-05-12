@@ -33,10 +33,6 @@ de:
       add_feed: "Füge einen Feed hinzu"
     feed:
       last_updated: "Zuletzt aktualisiert um"
-      status_bubble:
-        green: "Erfolg!"
-        yellow: "Fehler beim analysieren der (wahrscheinlich temporäre)"
-        red: "Fehler beim analysieren (und es funktionierte nie vor, entweder)"
     feed_action_bar:
       home: "Zurück zu den Geschichten"
       feeds: "Zeige Feeds an"
@@ -44,7 +40,8 @@ de:
     shortcuts:
       title: "Tastaturkürzel"
       keys:
-        jk: "Nächste/vorherige Geschichte"
+        jk: "Wählen nächsten/vorherigen Geschichte"
+        np: "Gehe zur nächsten/vorherigen Bericht (ohne Auswahl it)"
         oenter: "Klappe Geschichte aus/ein"
         or: "oder"
         v: "Öffne die URL der Geschichte"

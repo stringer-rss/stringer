@@ -34,10 +34,6 @@ en:
       archived_stories: "Archived stories"
     feed:
       last_updated: "Last updated at"
-      status_bubble:
-        green: "Success!"
-        yellow: "Error parsing (probably temporary)"
-        red: "Error parsing (and it ain't never worked before, either)"
     feed_action_bar:
       home: "Return to Stories"
       feeds: "View feeds"
@@ -46,7 +42,8 @@ en:
     shortcuts:
       title: "Keyboard shortcuts"
       keys:
-        jk: "Next/previous story"
+        jk: "Select next/previous story"
+        np: "Go to next/previous story (without selecting it)"
         oenter: "Toggle story open/closed"
         or: "or"
         v: "Go to story URL"
