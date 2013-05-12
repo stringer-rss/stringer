@@ -8,7 +8,7 @@ class Story < ActiveRecord::Base
   UNTITLED = "[untitled]"
 
   def headline
-    self.title.nil? ? UNTITLED : self.title[0, 50]
+    self.title.nil? ? UNTITLED : Loofah::Helpers.strip_tags(self.title)[0, 50]
   end
 
   def lead
