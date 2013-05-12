@@ -27,6 +27,10 @@ it:
       add_feed: "Aggiungi un feed"
     feed:
       last_updated: "Ultimo aggiornamento il"
+      status_bubble:
+        green: "Successo!"
+        yellow: "Errore di analisi (probabilmente temporanea)"
+        red: "Errore di analisi (e mai lavorato prima, neanche)"
     feed_action_bar:
       home: "Ritorna alle Storie"
       feeds: "Mostra i feed"
