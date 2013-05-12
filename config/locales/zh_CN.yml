@@ -31,12 +31,14 @@ zh_CN:
       refresh: "刷新"
       view_feeds: "查看订阅列表"
       add_feed: "添加新订阅"
+      archived_stories: "已读故事"
     feed:
       last_updated: "最后更新于"
     feed_action_bar:
       home: "返回未读故事列表"
       feeds: "查看订阅列表"
       add_feed: "添加新订阅"
+      archived_stories: "已读故事"
     shortcuts:
       title: "快捷键"
       keys:
@@ -50,6 +52,7 @@ zh_CN:
       zero: "你已经达成了零RSS的任务；"
       gtfo: '是时候停止阅读'
       go_make: '去做些其它事了'
+      archive: "查看所有故事"
   sessions:
     new:
       title: 'Stringer speaks'
@@ -92,3 +95,8 @@ zh_CN:
     description: "我们正在努力的加载您订阅的内容，请稍等。"
     start: "开始阅读吧！"
     ready: "好了，我想你已经准备好了~"
+  archive:
+    next: "下一页"
+    previous: "上一页"
+    of: "of"
+    sorry: "呃，你现在还没有已经读过的故事"
