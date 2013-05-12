@@ -30,5 +30,5 @@ def app
 end
 
 def session
-  last_request.env['rack.session'] 
+  last_request.env['rack.session']
 end
