@@ -1,4 +1,4 @@
-pt:
+"pt-BR":
   feeds:
     add:
       title: "Precisa de novas histórias?"
@@ -6,6 +6,10 @@ pt:
       fields:
         feed_url: "URL do Feed"
         submit: "Adicionar"
+      flash:
+        added_successfully: "Nós estamos adicionando um novo feed. Volte daqui a pouco."
+        already_subscribed_error: "Você já está inscrito neste feed..."
+        feed_not_found_error: "Não consegumos achar este feed. Tente novamente."
     index:
       add_some_feeds: "Ei, você deveria %{add} alguns feeds."
       add: "adicionar"
@@ -19,38 +23,40 @@ pt:
         password: "Senha"
         password_confirmation: "Confirmar"
         next: "Próximo"
+      flash:
+        passwords_dont_match: "Hey, a confirmação de senha não confere. Tente novamente."
   partials:
     action_bar:
       mark_all: "Marcar tudo como lido"
       refresh: "Atualizar"
-      view_feeds: "Ver feeds"
+      view_feeds: "Visualizar feeds"
       add_feed: "Adicionar um feed"
-      archived_stories: "Archived stories"
+      archived_stories: "Arquivo de histórias"
     feed:
-      last_updated: "Atualizado da última vez em"
+      last_updated: "Última atualização em"
       status_bubble:
         green: "Sucesso!"
-        yellow: "Erro de análise (provavelmente temporária)"
-        red: "Erro de análise (e ele nunca trabalhou antes, tampouco)"
+        yellow: "Erro ao analizar (provavelmente temporário)"
+        red: "Erro ao analizar (e este nunca funcionou antes.)"
     feed_action_bar:
-      home: "Retornar para Histórias"
-      feeds: "Ver feeds"
+      home: "Voltar para histórias"
+      feeds: "Visualizar feeds"
       add_feed: "Adicionar um feed"
-      archived_stories: "Archived stories"
+      archived_stories: "Arquivo de histórias"
     shortcuts:
-      title: "Atalhos do teclado"
+      title: "Atalhos de teclado"
       keys:
-        jk: "História seguinte/anterior"
-        oenter: "Abrir/fechar história"
+        jk: "História próxima/anterior"
+        oenter: "Alterna história aberta/fechada"
         or: "ou"
-        v: "Ir para URL da história"
+        v: "Ir para a URL da história"
         shifta: "Marcar tudo como lido"
         r: "Atualizar"
     zen:
       zero: "Você alcançou RSS Zero&trade;"
-      gtfo: 'Agora pare de ler blogs e'
-      go_make: 'vá fazer algo'
-      archive: "view all items"
+      gtfo: "Agora pare de ler blogs e"
+      go_make: "vá fazer alguma coisa"
+      archive: "visualizar todos os itens"
   sessions:
     new:
       title: 'Stringer fala'
@@ -59,6 +65,11 @@ pt:
       fields:
         password: "Senha"
         submit: "Entrar"
+      flash:
+        wrong_password: "Esta senha está incorreta. Tente novamente."
+    destroy:
+      flash:
+        logged_out_successfully: "Você saiu!"
   import:
     title: "Bem vindo a bordo."
     subtitle: "Vamos configurar seus feeds."
@@ -72,7 +83,7 @@ pt:
     logout: "Sair"
     export: "Exportar"
     support: "Suporte"
-    hey: "Ei!"
+    hey: "Hey!"
     back_to_work: "Volte ao trabalho, preguiçoso!"
   tutorial:
     mark_all: "marcar todos"
@@ -86,9 +97,10 @@ pt:
     simple: "simples"
     subtitle: "Aqui está o manual de instruções."
     description: "Nós estamos pegando algumas histórias para leitura, dê-nos um segundo."
-    start: "Começar Leitura"
+    start: "Começar a leitura"
     ready: "Ok, está pronto!"
   archive:
-    next: "Next"
-    previous: "Previous"
-    sorry: "Sorry, you haven't read any stories yet!"
+    next: "Próximo"
+    previous: "Anterior"
+    of: "de"
+    sorry: "Desculpe, você não leu alguma história ainda!"
