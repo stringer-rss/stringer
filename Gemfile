@@ -9,6 +9,7 @@ gem "i18n"
 gem "rake"
 gem "delayed_job_active_record"
 gem "bcrypt-ruby"
+gem "will_paginate"
 
 gem "feedzirra", github: "swanson/feedzirra"
 gem "loofah"
