@@ -2,7 +2,7 @@
   <div class="row-fluid feed-line">
     <div class="span7 feed-title-container">
       <p class="feed-title">
-        <i class="icon-circle status <%= feed.status_bubble %>" title="<%= feed.status_bubble_text %>"></i>
+        <i class="icon-circle status <%= feed.status_bubble %>" title="<%= t("partials.feed.status_bubble.#{feed.status_bubble}") %>"></i>
         <a href="<%= feed.url %>"><%= feed.name %></a>
       </p>
     </div>

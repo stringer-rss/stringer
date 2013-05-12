@@ -5,10 +5,6 @@ class Feed < ActiveRecord::Base
 
   STATUS = { green: 0, yellow: 1, red: 2 }
 
-  STATUS_TEXT = { green: "Success!", 
-                  yellow: "Error parsing (probably temporary)", 
-                  red: "Error parsing (and it ain't never worked before, either)" }
-
   def status
     STATUS.key(read_attribute(:status))
   end
@@ -20,9 +16,5 @@ class Feed < ActiveRecord::Base
   def status_bubble
     return :yellow if status == :red && stories.any?
     status
-  end
-
-  def status_bubble_text
-    STATUS_TEXT[status_bubble]
   end
 end

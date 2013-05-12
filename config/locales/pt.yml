@@ -28,6 +28,10 @@ pt:
       archived_stories: "Archived stories"
     feed:
       last_updated: "Atualizado da última vez em"
+      status_bubble:
+        green: "Sucesso!"
+        yellow: "Erro de análise (provavelmente temporária)"
+        red: "Erro de análise (e ele nunca trabalhou antes, tampouco)"
     feed_action_bar:
       home: "Retornar para Histórias"
       feeds: "Ver feeds"
