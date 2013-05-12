@@ -132,7 +132,7 @@ $(document).ready(function() {
       Stringer.setCursorPosition(--cursorPosition);
       Stringer.currentlySelectedStory().trigger("toggleStory");
     } else {
-      cursorPosition = 0;
+      cursorPosition = MAX_POSITION;
       
       Stringer.setCursorPosition(cursorPosition);
       Stringer.currentlySelectedStory().trigger("openStory");
