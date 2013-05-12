@@ -33,6 +33,10 @@ nl:
       add_feed: "Feed toevoegen"
     feed:
       last_updated: "Laatst bijgewerkt op"
+      status_bubble:
+        green: "Succes!"
+        yellow: "Fout ontleden (waarschijnlijk tijdelijke)"
+        red: "Fout ontleden (en het nooit gewerkt voordat, ofwel)"
     feed_action_bar:
       home: "Terug naar artikelen"
       feeds: "Feeds bekijken"
