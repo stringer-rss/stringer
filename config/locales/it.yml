@@ -38,7 +38,8 @@ it:
     shortcuts:
       title: "Shortcuts da tastiera"
       keys:
-        jk: "Prossima/precedente storia"
+        jk: "Seleziona successiva/precedente storia"
+        np: "Vai alla successiva/precedente storia (senza selezionarla)"
         oenter: "Apri/chiudi la storia"
         or: "o"
         v: "Vai all'URL della storia"

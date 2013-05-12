@@ -40,7 +40,8 @@ pt:
     shortcuts:
       title: "Atalhos do teclado"
       keys:
-        jk: "História seguinte/anterior"
+        jk: "Selecionar anterior/seguinte história"
+        np: "Ir para a próxima/anterior story (sem selecioná-lo)"
         oenter: "Abrir/fechar história"
         or: "ou"
         v: "Ir para URL da história"

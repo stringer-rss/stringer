@@ -46,7 +46,8 @@ nl:
     shortcuts:
       title: "Sneltoetsen"
       keys:
-        jk: "Volgend/vorig artikel"
+        jk: "Naar volgend/vorig artikel"
+        np: "Ga naar volgende/vorige artikel (zonder het te selecteren)"
         oenter: "Artikel open-/dichtklappen"
         or: "of"
         v: "Open de URL van het artikel"

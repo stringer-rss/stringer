@@ -40,7 +40,8 @@ es:
     shortcuts:
       title: "Atajos de teclado"
       keys:
-        jk: "Siguiente/Anterior historia"
+        jk: "Seleccionar siguiente/anterior historia"
+        np: "Ir a la siguiente / anterior historia (sin seleccionarlo)"
         oenter: "Arrastrar historia abierta/cerrada"
         or: "o"
         v: "Ir a URL de la historia"

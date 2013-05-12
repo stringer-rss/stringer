@@ -46,7 +46,8 @@ en:
     shortcuts:
       title: "Keyboard shortcuts"
       keys:
-        jk: "Next/previous story"
+        jk: "Select next/previous story"
+        np: "Go to next/previous story (without selecting it)"
         oenter: "Toggle story open/closed"
         or: "or"
         v: "Go to story URL"

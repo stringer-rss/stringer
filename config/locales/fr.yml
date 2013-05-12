@@ -46,7 +46,8 @@ fr:
     shortcuts:
       title: "Raccourcis clavier"
       keys:
-        jk: "Article suivant/précédant"
+        jk: "Sélectionner article suivant/précédent"
+        np: "Aller à l'article suivant/précédent (sans le sélectionner)"
         oenter: "Ouvrir/fermer l'article"
         or: "ou"
         v: "Aller à l'URL de l'article"

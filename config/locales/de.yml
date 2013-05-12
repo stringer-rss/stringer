@@ -44,7 +44,8 @@ de:
     shortcuts:
       title: "Tastaturkürzel"
       keys:
-        jk: "Nächste/vorherige Geschichte"
+        jk: "Wählen nächsten/vorherigen Geschichte"
+        np: "Gehe zur nächsten/vorherigen Bericht (ohne Auswahl it)"
         oenter: "Klappe Geschichte aus/ein"
         or: "oder"
         v: "Öffne die URL der Geschichte"
