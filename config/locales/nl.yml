@@ -31,16 +31,18 @@ nl:
       refresh: "Vernieuwen"
       view_feeds: "Feeds bekijken"
       add_feed: "Feed toevoegen"
+      archived_stories: "Gearchiveerde artikelen"
     feed:
       last_updated: "Laatst bijgewerkt op"
       status_bubble:
         green: "Succes!"
-        yellow: "Fout ontleden (waarschijnlijk tijdelijke)"
-        red: "Fout ontleden (en het nooit gewerkt voordat, ofwel)"
+        yellow: "Fout bij inlezen (waarschijnlijk tijdelijk)"
+        red: "Fout bij inlezen (en het heeft ook nog nooit gewerkt)"
     feed_action_bar:
       home: "Terug naar artikelen"
       feeds: "Feeds bekijken"
       add_feed: "Feed toevoegen"
+      archived_stories: "Gearchiveerde artikelen"
     shortcuts:
       title: "Sneltoetsen"
       keys:
@@ -54,6 +56,7 @@ nl:
       zero: "Je hebt RSS Zero&trade; bereikt"
       gtfo: 'Stop met het lezen van blogs en'
       go_make: 'ga iets maken'
+      archive: "alle artikelen bekijken"
   sessions:
     new:
       title: 'Stringer spreekt'
@@ -96,3 +99,8 @@ nl:
     description: "We zijn je artikelen aan het ophalen, geef ons even."
     start: "Je kunt beginnen met lezen"
     ready: "Okay, klaar!"
+archive:
+    next: "Volgende"
+    previous: "Vorige"
+    of: "van"
+    sorry: "Sorry, je hebt nog geen artikelen gelezen!"
