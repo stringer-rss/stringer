@@ -76,7 +76,7 @@ GEM
     multi_json (1.7.3)
     nokogiri (1.5.9)
     pg (0.15.1)
-    pry (0.9.12.1)
+    pry (0.9.12.2)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.4)
