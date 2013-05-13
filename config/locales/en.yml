@@ -47,6 +47,7 @@ en:
       title: "Keyboard shortcuts"
       keys:
         jk: "Next/previous story"
+        np: "Move down/move up"
         oenter: "Toggle story open/closed"
         or: "or"
         v: "Go to story URL"

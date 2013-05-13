@@ -42,6 +42,8 @@ class Stringer < Sinatra::Base
       "/js/jquery-1.9.1.min.js",
       "/js/mousetrap.min.js",
       "/js/bootstrap.min.js",
+      "/js/underscore-min.js",
+      "/js/backbone-min.js",
       "/js/app.js"
     ]
 
