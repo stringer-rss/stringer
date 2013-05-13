@@ -85,4 +85,23 @@ it:
     description: "Stiamo importando alcune storie da leggere, dacci un secondo."
     start: "Inizia a leggere"
     ready: "Okay, è pronto!"
+  time:
+    formats:
+      default: "%d %b, %H:%M"
+  date:
+    abbr_month_names:
+    -
+    - gen
+    - feb
+    - mar
+    - apr
+    - mag
+    - giu
+    - lug
+    - ago
+    - set
+    - ott
+    - nov
+    - dic
+
 

@@ -40,6 +40,8 @@ de:
         green: "Erfolg!"
         yellow: "Fehler beim Analysieren der (wahrscheinlich temporäre)"
         red: "Fehler beim Analysieren (und es funktionierte nie vor, entweder)"
+      last_fetched:
+        never: "Nie"
     feed_action_bar:
       home: "Zurück zu den Geschichten"
       feeds: "Zeige Feeds an"
@@ -108,3 +110,21 @@ de:
     previous: "Vorherige"
     of: "von"
     sorry: "Entschuldigung, du hast noch keine Geschichten gelesen."
+  time:
+    formats:
+      default: "%e. %b, %H:%M Uhr"
+  date:
+    abbr_month_names:
+    -
+    - Jan
+    - Feb
+    - Mär
+    - Apr
+    - Mai
+    - Jun
+    - Jul
+    - Aug
+    - Sep
+    - Okt
+    - Nov
+    - Dez

@@ -99,8 +99,26 @@ nl:
     description: "We zijn je artikelen aan het ophalen, geef ons even."
     start: "Je kunt beginnen met lezen"
     ready: "Okay, klaar!"
-archive:
+  archive:
     next: "Volgende"
     previous: "Vorige"
     of: "van"
     sorry: "Sorry, je hebt nog geen artikelen gelezen!"
+  time:
+    formats:
+      default: "%d %b, %H:%M"
+  date:
+    abbr_month_names:
+    -
+    - jan
+    - feb
+    - mar
+    - apr
+    - mei
+    - jun
+    - jul
+    - aug
+    - sep
+    - okt
+    - nov
+    - dec

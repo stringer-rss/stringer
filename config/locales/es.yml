@@ -92,3 +92,21 @@ es:
     next: "Next"
     previous: "Previous"
     sorry: "Sorry, you haven't read any stories yet!"
+  time:
+    formats:
+      default: "%d de %b %H:%M"
+  date:
+    abbr_month_names:
+    -
+    - ene
+    - feb
+    - mar
+    - abr
+    - may
+    - jun
+    - jul
+    - ago
+    - sep
+    - oct
+    - nov
+    - dic

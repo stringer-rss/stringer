@@ -104,3 +104,22 @@ fr:
     previous: "Précédent"
     of: "de"
     sorry: "Désolé, vous n'avez encore lu aucun article !"
+  time:
+    formats:
+      default: "%d %b %H:%M"
+  date:
+    abbr_month_names:
+    -
+    - jan.
+    - fév.
+    - mar.
+    - avr.
+    - mai
+    - juin
+    - juil.
+    - août
+    - sept.
+    - oct.
+    - nov.
+    - déc.
+
