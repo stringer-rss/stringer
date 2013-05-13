@@ -8,6 +8,7 @@ class StoryRepository
                 permalink: entry.url,
                 body: extract_content(entry),
                 is_read: false,
+                is_starred: false,
                 published: entry.published || Time.now)
   end
 
@@ -29,6 +30,11 @@ class StoryRepository
 
   def self.read(page = 1)
     Story.where(is_read: true).order("published desc").page(page).per_page(15)
+  end
+
+  def self.starred(page = 1)
+    Story.where(is_starred: true)
+          .order("published desc").page(page).per_page(15)
   end
 
   def self.read_count
