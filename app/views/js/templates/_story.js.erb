@@ -29,9 +29,9 @@
         </span>
       </div>
       <div class="pull-right story-actions">
-        <a class="story-keep-unread" href="#">
-          <i class="icon-check"></i> Keep unread
-        </a>
+        <div class="story-keep-unread">
+          <i class="icon-check{{ if(!keep_unread) { }}-empty{{ } }}"></i> Keep unread
+        </div>
         <a class="story-permalink" href="{{= permalink }}">
           <i class="icon-external-link"></i>
         </a>

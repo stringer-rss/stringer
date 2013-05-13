@@ -49,6 +49,7 @@ en:
         jk: "Next/previous story"
         np: "Move down/move up"
         oenter: "Toggle story open/closed"
+        m: "Mark item as read/unread"
         or: "or"
         v: "Go to story URL"
         shifta: "Mark all as read"

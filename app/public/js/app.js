@@ -19,12 +19,13 @@ var Story = Backbone.Model.extend({
     }
   },
 
-  open: function() {
-    this.set("is_read", true)
+  shouldSave: function() {
+    return this.changedAttributes() && this.get("id") > 0;
+  },
 
-    if (this.changedAttributes() && this.get("id") > 0) {
-      this.save();
-    }
+  open: function() {
+    if (!this.get("keep_unread")) this.set("is_read", true);
+    if (this.shouldSave()) this.save();
     
     this.collection.closeOthers(this);
     this.collection.unselectAll();
@@ -32,6 +33,18 @@ var Story = Backbone.Model.extend({
 
     this.set("open", true);
     this.set("selected", true);
+  },
+
+  toggleKeepUnread: function() {
+    if (this.get("keep_unread")) {
+      this.set("keep_unread", false);
+      this.set("is_read", true);
+    } else {
+      this.set("keep_unread", true);
+      this.set("is_read", false);
+    }
+
+    if (this.shouldSave()) this.save();
   },
 
   close: function() {
@@ -59,7 +72,8 @@ var StoryView = Backbone.View.extend({
   template: "#story-template",
 
   events: {
-    "click" : "storyClicked"
+    "click .story-preview" : "storyClicked",
+    "click .story-keep-unread" : "toggleKeepUnread"
   },
 
   initialize: function() {
@@ -88,6 +102,10 @@ var StoryView = Backbone.View.extend({
   storyClicked: function() {
     this.model.toggle();
     window.scrollTo(0, this.$el.offset().top);
+  },
+
+  toggleKeepUnread: function() {
+    this.model.toggleKeepUnread();
   }
 });
 
@@ -162,6 +180,11 @@ var StoryList = Backbone.Collection.extend({
   viewCurrentInTab: function() {
     if (this.cursorPosition < 0) this.cursorPosition = 0;
     this.at(this.cursorPosition).openInTab();
+  },
+
+  toggleCurrentKeepUnread: function() {
+    if (this.cursorPosition < 0) this.cursorPosition = 0;
+    this.at(this.cursorPosition).toggleKeepUnread();
   }
 });
 
@@ -218,6 +241,10 @@ var AppView = Backbone.View.extend({
 
   viewCurrentInTab: function() {
     this.stories.viewCurrentInTab();
+  },
+
+  toggleCurrentKeepUnread: function() {
+    this.stories.toggleCurrentKeepUnread();
   }
 });
 

@@ -19,6 +19,7 @@ class Stringer < Sinatra::Base
     
     story = StoryRepository.fetch(params[:id])
     story.is_read = json_params[:is_read]
+    story.keep_unread = json_params[:keep_unread]
     StoryRepository.save(story)
   end
 
