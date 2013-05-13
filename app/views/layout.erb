@@ -8,18 +8,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="shortcut icon" href="/img/favicon.png">
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,900,400italic" rel="stylesheet" type="text/css">
-    
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap-min.css">
-    <link rel="stylesheet" type="text/css" href="/css/flat-ui-no-icons.css">
-    <link rel="stylesheet" type="text/css" href="/css/font-awesome-min.css">
-    <link rel="stylesheet" type="text/css" href="/css/styles.css">
 
-    <script type="text/javascript" src="/js/jquery-min.js"></script>
-    <script type="text/javascript" src="/js/mousetrap-min.js"></script>
-    <script type="text/javascript" src="/js/bootstrap-min.js"></script>
-    <script type="text/javascript" src="/js/underscore-min.js"></script>
-    <script type="text/javascript" src="/js/backbone-min.js"></script>
-    <script type="text/javascript" src="/js/app.js"></script>
+    <%= css :application %>
+    <%= js  :application %>
 
     <%= yield_content :head %>
   </head>
@@ -43,7 +34,7 @@
     <div id="footer">
       <%= render_partial :footer %>
     </div>
-    
+
     <script>
       window.i18n = {};
       window.i18n.titleName = "<%= t('layout.title') %>";
