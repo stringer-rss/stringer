@@ -4,6 +4,7 @@ gem "sinatra"
 gem "sinatra-activerecord"
 gem "sinatra-flash"
 gem "sinatra-contrib", github: "sinatra/sinatra-contrib"
+gem "sinatra-assetpack", :require => "sinatra/assetpack"
 gem "i18n"
 
 gem "rake"
@@ -15,8 +16,8 @@ gem "feedzirra", github: "swanson/feedzirra"
 gem "loofah"
 gem "nokogiri"
 gem "feedbag", github: "dwillis/feedbag"
-
 gem "coveralls", require: false
+gem "uglifier"
 
 group :production do
   gem "unicorn"
