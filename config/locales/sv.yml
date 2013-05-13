@@ -13,6 +13,8 @@ sv:
     index:
       add_some_feeds: "Hej, du borde %{add} några feeds."
       add: "lägga till"
+  stories:
+    keep_unread: "Behåll oläst"
   first_run:
     password:
       title: 'Stringer är'
