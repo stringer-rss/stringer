@@ -2,6 +2,7 @@ require "sinatra/base"
 require "sinatra/activerecord"
 require "sinatra/flash"
 require "sinatra/contrib/all"
+require "sinatra/assetpack"
 require "json"
 require "i18n"
 require "will_paginate"
@@ -17,16 +18,41 @@ class Stringer < Sinatra::Base
     set :database_file, "config/database.yml"
     set :views, "app/views"
     set :public_dir, "app/public"
+    set :root, File.dirname(__FILE__)
 
     enable :sessions
     set :session_secret, ENV["SECRET_TOKEN"] || "secret!"
-
     enable :logging
 
     register Sinatra::ActiveRecordExtension
     register Sinatra::Flash
     register Sinatra::Contrib
+    register Sinatra::AssetPack
   end
+
+  assets {
+    serve "/js",    from: "app/public/js"
+    serve "/css",   from: "app/public/css"
+    serve "/img",   from: "app/public/img"
+    serve "/fonts", from: "app/public/fonts"
+
+    js :application, "/js/application.js", [
+      "/js/jquery-1.9.1.min.js",
+      "/js/mousetrap.min.js",
+      "/js/bootstrap.min.js",
+      "/js/app.js"
+    ]
+
+    css :application, "/css/application.css", [
+      "/css/bootstrap.min.css",
+      "/css/flat-ui-no-icons.css",
+      "/css/font-awesome.min.css",
+      "/css/styles.css"
+    ]
+
+    js_compression  :uglify
+    css_compression :simple
+  }
 
   helpers do
     include Sinatra::AuthenticationHelpers
