@@ -48,7 +48,7 @@ fr:
     shortcuts:
       title: "Raccourcis clavier"
       keys:
-        jk: "Article suivant/précédant"
+        jk: "Article suivant/précédent"
         np: "Descendre/monter"
         oenter: "Ouvrir/fermer l'article"
         m: "Marquer l'entrée comme lue/non lue"
