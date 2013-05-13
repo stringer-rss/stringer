@@ -56,7 +56,6 @@ class StoryRepository
         url = node.get_attribute(attr)
         unless url =~ abs_re
           node.set_attribute(attr, URI.join(base_url, url).to_s)
-          URI.parse(url)
         end
       end
     end

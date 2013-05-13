@@ -3,7 +3,7 @@ require "spec_helper"
 app_require "repositories/story_repository"
 
 describe StoryRepository do
-  describe "#expand_absolute_urls" do
+  describe ".expand_absolute_urls" do
     it "preserves existing absolute urls" do
       content = '<a href="http://foo">bar</a>'
 
@@ -35,7 +35,7 @@ describe StoryRepository do
     end
   end
 
-  describe "#extract_content" do
+  describe ".extract_content" do
     let(:entry) do 
       stub(url: "http://mdswanson.com",
            content: "Some test content<script></script>")
