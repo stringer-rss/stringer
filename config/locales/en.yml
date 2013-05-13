@@ -27,6 +27,9 @@ en:
         next: "Next"
       flash:
         passwords_dont_match: "Hey, your password confirmation didn't match. Try again."
+    cookies:
+      title: "Stringer requires cookies."
+      subtitle: "Please whitelist cookies on this domain."
   partials:
     action_bar:
       mark_all: "Mark all as read"

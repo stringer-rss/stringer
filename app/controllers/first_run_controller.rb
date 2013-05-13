@@ -30,11 +30,19 @@ class Stringer < Sinatra::Base
     end
 
     get "/tutorial" do
-      FetchFeeds.enqueue(Feed.all)
-      CompleteSetup.complete(current_user)
+      if current_user
+        FetchFeeds.enqueue(Feed.all)
+        CompleteSetup.complete(current_user)
 
-      @sample_stories = StoryRepository.samples
-      erb :tutorial
+        @sample_stories = StoryRepository.samples
+        erb :tutorial
+      else
+        redirect to("/setup/cookies")
+      end
+    end
+
+    get "/cookies" do
+      erb :"first_run/cookies"
     end
   end
 
