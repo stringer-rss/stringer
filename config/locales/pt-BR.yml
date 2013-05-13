@@ -1,117 +1,117 @@
-"pt-BR":
+pt-BR:
   feeds:
     add:
-      title: "Precisa de novas histórias?"
-      description: "Cole a URL do blog que você quer ler."
+      title: Precisa de novas histórias?
+      description: Cole a URL do blog que você quer ler.
       fields:
-        feed_url: "URL do Feed"
-        submit: "Adicionar"
+        feed_url: URL do Feed
+        submit: Adicionar
       flash:
-        added_successfully: "Nós estamos adicionando um novo feed. Volte daqui a pouco."
-        already_subscribed_error: "Você já está inscrito neste feed..."
-        feed_not_found_error: "Não consegumos achar este feed. Tente novamente."
+        added_successfully: Nós estamos adicionando um novo feed. Volte daqui a pouco.
+        already_subscribed_error: Você já está inscrito neste feed...
+        feed_not_found_error: Não consegumos achar este feed. Tente novamente.
     index:
-      add_some_feeds: "Ei, você deveria %{add} alguns feeds."
-      add: "adicionar"
+      add_some_feeds: Ei, você deveria %{add} alguns feeds.
+      add: adicionar
   stories:
-    keep_unread: "Continue não lido"
+    keep_unread: Continue não lido
   first_run:
     password:
-      title: 'Stringer é'
-      anti_social: 'anti-social'
-      subtitle: "Existe apenas um usuário: você."
-      description: "Vamos escolher uma senha para que só você possa ler suas histórias."
+      title: Stringer é
+      anti_social: anti-social
+      subtitle: ! 'Existe apenas um usuário: você.'
+      description: Vamos escolher uma senha para que só você possa ler suas histórias.
       fields:
-        password: "Senha"
-        password_confirmation: "Confirmar"
-        next: "Próximo"
+        password: Senha
+        password_confirmation: Confirmar
+        next: Próximo
       flash:
-        passwords_dont_match: "Hey, a confirmação de senha não confere. Tente novamente."
+        passwords_dont_match: Hey, a confirmação de senha não confere. Tente novamente.
   partials:
     action_bar:
-      mark_all: "Marcar tudo como lido"
-      refresh: "Atualizar"
-      view_feeds: "Visualizar feeds"
-      add_feed: "Adicionar um feed"
-      archived_stories: "Arquivo de histórias"
+      mark_all: Marcar tudo como lido
+      refresh: Atualizar
+      view_feeds: Visualizar feeds
+      add_feed: Adicionar um feed
+      archived_stories: Arquivo de histórias
     feed:
-      last_updated: "Última atualização em"
+      last_updated: Última atualização em
       status_bubble:
-        green: "Sucesso!"
-        yellow: "Erro ao analizar (provavelmente temporário)"
-        red: "Erro ao analizar (e este nunca funcionou antes.)"
+        green: Sucesso!
+        yellow: Erro ao analizar (provavelmente temporário)
+        red: Erro ao analizar (e este nunca funcionou antes.)
     feed_action_bar:
-      home: "Voltar para histórias"
-      feeds: "Visualizar feeds"
-      add_feed: "Adicionar um feed"
-      archived_stories: "Arquivo de histórias"
+      home: Voltar para histórias
+      feeds: Visualizar feeds
+      add_feed: Adicionar um feed
+      archived_stories: Arquivo de histórias
     shortcuts:
-      title: "Atalhos de teclado"
+      title: Atalhos de teclado
       keys:
-        jk: "História próxima/anterior"
-        oenter: "Alterna história aberta/fechada"
-        or: "ou"
-        v: "Ir para a URL da história"
-        shifta: "Marcar tudo como lido"
-        r: "Atualizar"
+        jk: História próxima/anterior
+        oenter: Alterna história aberta/fechada
+        or: ou
+        v: Ir para a URL da história
+        shifta: Marcar tudo como lido
+        r: Atualizar
     zen:
-      zero: "Você alcançou RSS Zero&trade;"
-      gtfo: "Agora pare de ler blogs e"
-      go_make: "vá fazer alguma coisa"
-      archive: "visualizar todos os itens"
+      zero: Você alcançou RSS Zero&trade;
+      gtfo: Agora pare de ler blogs e
+      go_make: vá fazer alguma coisa
+      archive: visualizar todos os itens
   sessions:
     new:
-      title: 'Stringer fala'
-      rss: 'RSS'
-      subtitle: "Bem vindo novamente, amigo."
+      title: Stringer fala
+      rss: RSS
+      subtitle: Bem vindo novamente, amigo.
       fields:
-        password: "Senha"
-        submit: "Entrar"
+        password: Senha
+        submit: Entrar
       flash:
-        wrong_password: "Esta senha está incorreta. Tente novamente."
+        wrong_password: Esta senha está incorreta. Tente novamente.
     destroy:
       flash:
-        logged_out_successfully: "Você saiu!"
+        logged_out_successfully: Você saiu!
   import:
-    title: "Bem vindo a bordo."
-    subtitle: "Vamos configurar seus feeds."
-    description: "%{link} seus feeds do Google Reader e importe-os."
-    export: "Exportar"
+    title: Bem vindo a bordo.
+    subtitle: Vamos configurar seus feeds.
+    description: ! '%{link} seus feeds do Google Reader e importe-os.'
+    export: Exportar
     fields:
-      import: "Importar"
-      not_now: "Agora não"
+      import: Importar
+      not_now: Agora não
   layout:
-    title: "stringer | seu companheiro de rss"
-    logout: "Sair"
-    export: "Exportar"
-    support: "Suporte"
-    hey: "Hey!"
-    back_to_work: "Volte ao trabalho, preguiçoso!"
+    title: stringer | seu companheiro de rss
+    logout: Sair
+    export: Exportar
+    support: Suporte
+    hey: Hey!
+    back_to_work: Volte ao trabalho, preguiçoso!
   tutorial:
-    mark_all: "marcar todos"
-    as_read: "como lido"
-    refresh: "atualizar"
-    your_feeds: "seus feeds"
-    add_feed: "adicionar feed"
-    your_stories: "suas histórias"
-    click_to_read: "(clique para ler)"
-    title: 'Stringer é '
-    simple: "simples"
-    subtitle: "Aqui está o manual de instruções."
-    description: "Nós estamos pegando algumas histórias para leitura, dê-nos um segundo."
-    start: "Começar a leitura"
-    ready: "Ok, está pronto!"
+    mark_all: marcar todos
+    as_read: como lido
+    refresh: atualizar
+    your_feeds: seus feeds
+    add_feed: adicionar feed
+    your_stories: suas histórias
+    click_to_read: (clique para ler)
+    title: ! 'Stringer é '
+    simple: simples
+    subtitle: Aqui está o manual de instruções.
+    description: Nós estamos pegando algumas histórias para leitura, dê-nos um segundo.
+    start: Começar a leitura
+    ready: Ok, está pronto!
   archive:
-    next: "Próximo"
-    previous: "Anterior"
-    of: "de"
-    sorry: "Desculpe, você não leu alguma história ainda!"
+    next: Próximo
+    previous: Anterior
+    of: de
+    sorry: Desculpe, você não leu alguma história ainda!
   time:
     formats:
-      default: "%d de %b, %H:%M"
+      default: ! '%d de %b, %H:%M'
   date:
     abbr_month_names:
-    -
+    - 
     - Jan
     - Fev
     - Mar

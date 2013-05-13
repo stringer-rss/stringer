@@ -1,115 +1,115 @@
 nl:
   feeds:
     add:
-      title: "Nieuwe artikelen nodig?"
-      description: "Plak de URL van de feed die je wilt lezen."
+      title: Nieuwe artikelen nodig?
+      description: Plak de URL van de feed die je wilt lezen.
       fields:
-        feed_url: "Feed-URL"
-        submit: "Toevoegen"
+        feed_url: Feed-URL
+        submit: Toevoegen
       flash:
-        added_successfully: "We hebben je nieuwe feed toegevoegd, kijk over een tijdje nog eens."
-        already_subscribed_error: "Je bent al geabonneerd op deze feed..."
-        feed_not_found_error: "Die feed konden we niet vinden. Probeer het opnieuw."
+        added_successfully: We hebben je nieuwe feed toegevoegd, kijk over een tijdje nog eens.
+        already_subscribed_error: Je bent al geabonneerd op deze feed...
+        feed_not_found_error: Die feed konden we niet vinden. Probeer het opnieuw.
     index:
-      add_some_feeds: "Hé, je zou eens wat feeds kunnen %{add}."
-      add: "toevoegen"
+      add_some_feeds: Hé, je zou eens wat feeds kunnen %{add}.
+      add: toevoegen
   first_run:
     password:
-      title: 'Stringer is'
-      anti_social: 'anti-sociaal'
-      subtitle: "Er is maar één gebruiker: jij."
-      description: "Kies een wachtwoord zodat alleen jij je artikelen kunt lezen."
+      title: Stringer is
+      anti_social: anti-sociaal
+      subtitle: ! 'Er is maar één gebruiker: jij.'
+      description: Kies een wachtwoord zodat alleen jij je artikelen kunt lezen.
       fields:
-        password: "Wachtwoord"
-        password_confirmation: "Bevestigen"
-        next: "Volgende"
+        password: Wachtwoord
+        password_confirmation: Bevestigen
+        next: Volgende
       flash:
-        passwords_dont_match: "Hé, je wachtwoordbevestiging kwam niet overeen. Probeer het opnieuw."
+        passwords_dont_match: Hé, je wachtwoordbevestiging kwam niet overeen. Probeer het opnieuw.
   partials:
     action_bar:
-      mark_all: "Alles als gelezen markeren"
-      refresh: "Vernieuwen"
-      view_feeds: "Feeds bekijken"
-      add_feed: "Feed toevoegen"
-      archived_stories: "Gearchiveerde artikelen"
+      mark_all: Alles als gelezen markeren
+      refresh: Vernieuwen
+      view_feeds: Feeds bekijken
+      add_feed: Feed toevoegen
+      archived_stories: Gearchiveerde artikelen
     feed:
-      last_updated: "Laatst bijgewerkt op"
+      last_updated: Laatst bijgewerkt op
       status_bubble:
-        green: "Succes!"
-        yellow: "Fout bij inlezen (waarschijnlijk tijdelijk)"
-        red: "Fout bij inlezen (en het heeft ook nog nooit gewerkt)"
+        green: Succes!
+        yellow: Fout bij inlezen (waarschijnlijk tijdelijk)
+        red: Fout bij inlezen (en het heeft ook nog nooit gewerkt)
     feed_action_bar:
-      home: "Terug naar artikelen"
-      feeds: "Feeds bekijken"
-      add_feed: "Feed toevoegen"
-      archived_stories: "Gearchiveerde artikelen"
+      home: Terug naar artikelen
+      feeds: Feeds bekijken
+      add_feed: Feed toevoegen
+      archived_stories: Gearchiveerde artikelen
     shortcuts:
-      title: "Sneltoetsen"
+      title: Sneltoetsen
       keys:
-        jk: "Volgend/vorig artikel"
-        oenter: "Artikel open-/dichtklappen"
-        or: "of"
-        v: "Open de URL van het artikel"
-        shifta: "Alles als gelezen markeren"
-        r: "Vernieuwen"
+        jk: Volgend/vorig artikel
+        oenter: Artikel open-/dichtklappen
+        or: of
+        v: Open de URL van het artikel
+        shifta: Alles als gelezen markeren
+        r: Vernieuwen
     zen:
-      zero: "Je hebt RSS Zero&trade; bereikt"
-      gtfo: 'Stop met het lezen van blogs en'
-      go_make: 'ga iets maken'
-      archive: "alle artikelen bekijken"
+      zero: Je hebt RSS Zero&trade; bereikt
+      gtfo: Stop met het lezen van blogs en
+      go_make: ga iets maken
+      archive: alle artikelen bekijken
   sessions:
     new:
-      title: 'Stringer spreekt'
-      rss: 'RSS'
-      subtitle: "Welkom terug, vriend."
+      title: Stringer spreekt
+      rss: RSS
+      subtitle: Welkom terug, vriend.
       fields:
-        password: "Wachtwoord"
-        submit: "Inloggen"
+        password: Wachtwoord
+        submit: Inloggen
       flash:
-        wrong_password: "Dat is het verkeerde wachtwoord. Probeer het opnieuw."
+        wrong_password: Dat is het verkeerde wachtwoord. Probeer het opnieuw.
     destroy:
       flash:
-        logged_out_successfully: "Je bent uitgelogd!"
+        logged_out_successfully: Je bent uitgelogd!
   import:
-    title: "Welkom aan boord."
-    subtitle: "Laten we je feeds instellen."
-    description: "%{link} je feeds uit Google Reader en importeer ze."
-    export: "Exporteer"
+    title: Welkom aan boord.
+    subtitle: Laten we je feeds instellen.
+    description: ! '%{link} je feeds uit Google Reader en importeer ze.'
+    export: Exporteer
     fields:
-      import: "Importeren"
-      not_now: "Niet nu"
+      import: Importeren
+      not_now: Niet nu
   layout:
-    title: "stringer | jouw rss-kompaan"
-    logout: "Uitloggen"
-    export: "Exporteren"
-    support: "Hulp"
-    hey: "Hé!"
-    back_to_work: "Aan het werk, luilak!"
+    title: stringer | jouw rss-kompaan
+    logout: Uitloggen
+    export: Exporteren
+    support: Hulp
+    hey: Hé!
+    back_to_work: Aan het werk, luilak!
   tutorial:
-    mark_all: "alles"
-    as_read: "als gelezen markeren"
-    refresh: "vernieuwen"
-    your_feeds: "je feeds"
-    add_feed: "feeds toevoegen"
-    your_stories: "je artikelen"
-    click_to_read: "(klik om te lezen)"
-    title: 'Stringer is '
-    simple: "simpel"
-    subtitle: "Hier is de handleiding."
-    description: "We zijn je artikelen aan het ophalen, geef ons even."
-    start: "Je kunt beginnen met lezen"
-    ready: "Okay, klaar!"
+    mark_all: alles
+    as_read: als gelezen markeren
+    refresh: vernieuwen
+    your_feeds: je feeds
+    add_feed: feeds toevoegen
+    your_stories: je artikelen
+    click_to_read: (klik om te lezen)
+    title: ! 'Stringer is '
+    simple: simpel
+    subtitle: Hier is de handleiding.
+    description: We zijn je artikelen aan het ophalen, geef ons even.
+    start: Je kunt beginnen met lezen
+    ready: Okay, klaar!
   archive:
-    next: "Volgende"
-    previous: "Vorige"
-    of: "van"
-    sorry: "Sorry, je hebt nog geen artikelen gelezen!"
+    next: Volgende
+    previous: Vorige
+    of: van
+    sorry: Sorry, je hebt nog geen artikelen gelezen!
   time:
     formats:
-      default: "%d %b, %H:%M"
+      default: ! '%d %b, %H:%M'
   date:
     abbr_month_names:
-    -
+    - 
     - jan
     - feb
     - mar

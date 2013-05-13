@@ -1,96 +1,96 @@
 it:
   feeds:
     add:
-      title: "Bisogno di nuove storie?"
-      description: "Incolla l'URL del blog che desideri leggere."
+      title: Bisogno di nuove storie?
+      description: Incolla l'URL del blog che desideri leggere.
       fields:
-        feed_url: "URL del feed"
-        submit: "Aggiungi"
+        feed_url: URL del feed
+        submit: Aggiungi
     index:
-      add_some_feeds: "Hey, dovresti %{add} qualche feed."
-      add: "aggiungere"
+      add_some_feeds: Hey, dovresti %{add} qualche feed.
+      add: aggiungere
   first_run:
     password:
-      title: 'Stringer è'
-      anti_social: 'anti-social'
-      subtitle: "Esiste un solo utente: tu."
-      description: "Scegli una password, così che solo tu possa leggere le tue storie."
+      title: Stringer è
+      anti_social: anti-social
+      subtitle: ! 'Esiste un solo utente: tu.'
+      description: Scegli una password, così che solo tu possa leggere le tue storie.
       fields:
-        password: "Password"
-        password_confirmation: "Conferma"
-        next: "Avanti"
+        password: Password
+        password_confirmation: Conferma
+        next: Avanti
   partials:
     action_bar:
-      mark_all: "Segna tutte come lette"
-      refresh: "Aggiorna"
-      view_feeds: "Mostra i feed"
-      add_feed: "Aggiungi un feed"
+      mark_all: Segna tutte come lette
+      refresh: Aggiorna
+      view_feeds: Mostra i feed
+      add_feed: Aggiungi un feed
     feed:
-      last_updated: "Ultimo aggiornamento il"
+      last_updated: Ultimo aggiornamento il
       status_bubble:
-        green: "Successo!"
-        yellow: "Errore di analisi (probabilmente temporanea)"
-        red: "Errore di analisi (e mai lavorato prima, neanche)"
+        green: Successo!
+        yellow: Errore di analisi (probabilmente temporanea)
+        red: Errore di analisi (e mai lavorato prima, neanche)
     feed_action_bar:
-      home: "Ritorna alle Storie"
-      feeds: "Mostra i feed"
-      add_feed: "Aggiungi un feed"
+      home: Ritorna alle Storie
+      feeds: Mostra i feed
+      add_feed: Aggiungi un feed
     shortcuts:
-      title: "Shortcuts da tastiera"
+      title: Shortcuts da tastiera
       keys:
-        jk: "Prossima/precedente storia"
-        oenter: "Apri/chiudi la storia"
-        or: "o"
-        v: "Vai all'URL della storia"
-        shifta: "Segna tutte le storie come lette"
-        r: "Aggiorna"
+        jk: Prossima/precedente storia
+        oenter: Apri/chiudi la storia
+        or: o
+        v: Vai all'URL della storia
+        shifta: Segna tutte le storie come lette
+        r: Aggiorna
     zen:
-      zero: "You&#8217;ve reached RSS Zero&trade;"
-      gtfo: 'Ora piantala di leggere blog e'
-      go_make: 'vai a fare altro'
+      zero: You&#8217;ve reached RSS Zero&trade;
+      gtfo: Ora piantala di leggere blog e
+      go_make: vai a fare altro
   sessions:
     new:
-      title: 'Stringer parla'
-      rss: 'RSS'
-      subtitle: "Benvenuto, amico."
+      title: Stringer parla
+      rss: RSS
+      subtitle: Benvenuto, amico.
       fields:
-        password: "Password"
-        submit: "Login"
+        password: Password
+        submit: Login
   import:
-    title: "Benvenuto a bordo."
-    subtitle: "Impostiamo i tuoi feed."
-    description: "%{link} i tuoi feed da Google Reader e importali qui."
-    export: "Esporta"
+    title: Benvenuto a bordo.
+    subtitle: Impostiamo i tuoi feed.
+    description: ! '%{link} i tuoi feed da Google Reader e importali qui.'
+    export: Esporta
     fields:
-      import: "Importa"
-      not_now: "Non adesso"
+      import: Importa
+      not_now: Non adesso
   layout:
-    title: "stringer | your rss buddy"
-    logout: "Logout"
-    export: "Esporta"
-    support: "Supporto"
-    hey: "Hey!"
-    back_to_work: "Torna a lavorare, fannullone!"
+    title: stringer | your rss buddy
+    logout: Logout
+    export: Esporta
+    support: Supporto
+    hey: Hey!
+    back_to_work: Torna a lavorare, fannullone!
   tutorial:
-    mark_all: "segna tutte"
-    as_read: "come lette"
-    refresh: "aggiorna"
-    your_feeds: "i tuoi feed"
-    add_feed: "aggiungi feed"
-    your_stories: "le tue storie"
-    click_to_read: "(clicca per leggere)"
-    title: 'Stringer è '
-    simple: "semplice"
-    subtitle: "Ecco il manuale d'istruzioni."
-    description: "Stiamo importando alcune storie da leggere, dacci un secondo."
-    start: "Inizia a leggere"
-    ready: "Okay, è pronto!"
+    mark_all: segna tutte
+    as_read: come lette
+    refresh: aggiorna
+    your_feeds: i tuoi feed
+    add_feed: aggiungi feed
+    your_stories: le tue storie
+    click_to_read: (clicca per leggere)
+    title: ! 'Stringer è '
+    simple: semplice
+    subtitle: Ecco il manuale d'istruzioni.
+    description: Stiamo importando alcune storie da leggere, dacci un secondo.
+    start: Inizia a leggere
+    ready: Okay, è pronto!
   time:
     formats:
-      default: "%d %b, %H:%M"
+      default: ! '%d %b, %H:%M'
   date:
     abbr_month_names:
-    -
+    - 
     - gen
     - feb
     - mar
@@ -103,5 +103,3 @@ it:
     - ott
     - nov
     - dic
-
-

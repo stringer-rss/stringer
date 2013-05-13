@@ -1,117 +1,117 @@
 sv:
   feeds:
     add:
-      title: "Behöver du nya berättelser?"
-      description: "Kopiera in URL:en till bloggen du vill läsa"
+      title: Behöver du nya berättelser?
+      description: Kopiera in URL:en till bloggen du vill läsa
       fields:
-        feed_url: "Feedens URL"
-        submit: "Lägg till"
+        feed_url: Feedens URL
+        submit: Lägg till
       flash:
-        added_successfully: "Vi har lagt till din nya feed. Kom tillbaks om en stund."
-        already_subscribed_error: "Du har redan prenumererat på den här feeden..."
-        feed_not_found_error: "Vi kunde inte hitta feeden. Prova igen."
+        added_successfully: Vi har lagt till din nya feed. Kom tillbaks om en stund.
+        already_subscribed_error: Du har redan prenumererat på den här feeden...
+        feed_not_found_error: Vi kunde inte hitta feeden. Prova igen.
     index:
-      add_some_feeds: "Hej, du borde %{add} några feeds."
-      add: "lägga till"
+      add_some_feeds: Hej, du borde %{add} några feeds.
+      add: lägga till
   stories:
-    keep_unread: "Behåll oläst"
+    keep_unread: Behåll oläst
   first_run:
     password:
-      title: 'Stringer är'
-      anti_social: 'anti-social'
-      subtitle: "Det finns bara en användare: du."
-      description: "Välj ett lösenord så att bara du kan läsa dina berättelser."
+      title: Stringer är
+      anti_social: anti-social
+      subtitle: ! 'Det finns bara en användare: du.'
+      description: Välj ett lösenord så att bara du kan läsa dina berättelser.
       fields:
-        password: "Lösenord"
-        password_confirmation: "Bekräfta"
-        next: "Nästa"
+        password: Lösenord
+        password_confirmation: Bekräfta
+        next: Nästa
       flash:
-        passwords_dont_match: "Din bekräftelse matchade inte. Försök igen."
+        passwords_dont_match: Din bekräftelse matchade inte. Försök igen.
   partials:
     action_bar:
-      mark_all: "Markera alla som lästa"
-      refresh: "Uppdatera"
-      view_feeds: "Visa feeds"
-      add_feed: "Lägg till en feed"
-      archived_stories: "Arkiverade berättelser"
+      mark_all: Markera alla som lästa
+      refresh: Uppdatera
+      view_feeds: Visa feeds
+      add_feed: Lägg till en feed
+      archived_stories: Arkiverade berättelser
     feed:
-      last_updated: "Senast uppdaterad"
+      last_updated: Senast uppdaterad
       status_bubble:
-        green: "Lyckad!"
-        yellow: "Problem med parsning (troligtvis temporärt)"
-        red: "Problem med parsning (och det har inte fungerat förr heller)"
+        green: Lyckad!
+        yellow: Problem med parsning (troligtvis temporärt)
+        red: Problem med parsning (och det har inte fungerat förr heller)
     feed_action_bar:
-      home: "Tillbaks till berättelser"
-      feeds: "Visa feeds"
-      add_feed: "Lägg till en feed"
-      archived_stories: "Arkiverade berättelser"
+      home: Tillbaks till berättelser
+      feeds: Visa feeds
+      add_feed: Lägg till en feed
+      archived_stories: Arkiverade berättelser
     shortcuts:
-      title: "Kortkommandon"
+      title: Kortkommandon
       keys:
-        jk: "Nästa/föregående berättelse"
-        oenter: "Öppna/stäng berättelse"
-        or: "eller"
-        v: "Gå till berättelsens URL"
-        shifta: "Markera alla som lästa"
-        r: "Uppdatera"
+        jk: Nästa/föregående berättelse
+        oenter: Öppna/stäng berättelse
+        or: eller
+        v: Gå till berättelsens URL
+        shifta: Markera alla som lästa
+        r: Uppdatera
     zen:
-      zero: "Du har nått RSS Noll&trade;"
-      gtfo: "Sluta läsa bloggar nu och"
-      go_make: "gör nånting"
-      archive: "visa alla objekt"
+      zero: Du har nått RSS Noll&trade;
+      gtfo: Sluta läsa bloggar nu och
+      go_make: gör nånting
+      archive: visa alla objekt
   sessions:
     new:
-      title: 'Stringer pratar'
-      rss: 'RSS'
-      subtitle: "Välkommen tillbaka, kompis."
+      title: Stringer pratar
+      rss: RSS
+      subtitle: Välkommen tillbaka, kompis.
       fields:
-        password: "Lösenord"
-        submit: "Logga in"
+        password: Lösenord
+        submit: Logga in
       flash:
-        wrong_password: "Det där är fel lösenord. Försök igen."
+        wrong_password: Det där är fel lösenord. Försök igen.
     destroy:
       flash:
-        logged_out_successfully: "Du har blivit utloggad!"
+        logged_out_successfully: Du har blivit utloggad!
   import:
-    title: "Välkommen ombord."
-    subtitle: "Nu ska vi fixa dina feeds."
-    description: "%{link} dina feeds från Google Reader och importera dom."
-    export: "Exportera"
+    title: Välkommen ombord.
+    subtitle: Nu ska vi fixa dina feeds.
+    description: ! '%{link} dina feeds från Google Reader och importera dom.'
+    export: Exportera
     fields:
-      import: "Importera"
-      not_now: "Inte nu"
+      import: Importera
+      not_now: Inte nu
   layout:
-    title: "stringer | din rss-polare"
-    logout: "Logga ut"
-    export: "Exportera"
-    support: "Hjälp"
-    hey: "Hallå!"
-    back_to_work: "Tillbaks till arbetet, slöfock!"
+    title: stringer | din rss-polare
+    logout: Logga ut
+    export: Exportera
+    support: Hjälp
+    hey: Hallå!
+    back_to_work: Tillbaks till arbetet, slöfock!
   tutorial:
-    mark_all: "markera alla"
-    as_read: "som lästa"
-    refresh: "uppdatera"
-    your_feeds: "dina feeds"
-    add_feed: "lägg till feed"
-    your_stories: "dina berättelser"
-    click_to_read: "(klicka för att läsa)"
-    title: 'Stringer är '
-    simple: "enkelt"
-    subtitle: "Här är manualen."
-    description: "Vi hämtar några berättelser åt dig, ge oss en stund."
-    start: "Börja läsa"
-    ready: "Ok, det är klart!"
+    mark_all: markera alla
+    as_read: som lästa
+    refresh: uppdatera
+    your_feeds: dina feeds
+    add_feed: lägg till feed
+    your_stories: dina berättelser
+    click_to_read: (klicka för att läsa)
+    title: ! 'Stringer är '
+    simple: enkelt
+    subtitle: Här är manualen.
+    description: Vi hämtar några berättelser åt dig, ge oss en stund.
+    start: Börja läsa
+    ready: Ok, det är klart!
   archive:
-    next: "Nästa"
-    previous: "Föregående"
-    of: "av"
-    sorry: "Tyvärr, du har inte läst några berättelser än!"
+    next: Nästa
+    previous: Föregående
+    of: av
+    sorry: Tyvärr, du har inte läst några berättelser än!
   time:
     formats:
-      default: "%e %berättelser %H:%M"
+      default: ! '%e %berättelser %H:%M'
   date:
     abbr_month_names:
-    -
+    - 
     - jan
     - feb
     - mar

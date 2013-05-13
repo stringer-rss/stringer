@@ -1,121 +1,121 @@
 en:
   feeds:
     add:
-      title: "Need new stories?"
-      description: "Paste in the URL of the blog you want to read."
+      title: Need new stories?
+      description: Paste in the URL of the blog you want to read.
       fields:
-        feed_url: "Feed URL"
-        submit: "Add"
+        feed_url: Feed URL
+        submit: Add
       flash:
-        added_successfully: "We've added your new feed. Check back in a bit."
-        already_subscribed_error: "You are already subscribed to this feed..."
-        feed_not_found_error: "We couldn't find that feed. Try again."
+        added_successfully: We've added your new feed. Check back in a bit.
+        already_subscribed_error: You are already subscribed to this feed...
+        feed_not_found_error: We couldn't find that feed. Try again.
     index:
-      add_some_feeds: "Hey, you should %{add} some feeds."
-      add: "add"
+      add_some_feeds: Hey, you should %{add} some feeds.
+      add: add
   stories:
-    keep_unread: "Keep unread"
+    keep_unread: Keep unread
   first_run:
     password:
-      title: 'Stringer is'
-      anti_social: 'anti-social'
-      subtitle: "There is only one user: you."
-      description: "Let's pick a password so only you can read your stories."
+      title: Stringer is
+      anti_social: anti-social
+      subtitle: ! 'There is only one user: you.'
+      description: Let's pick a password so only you can read your stories.
       fields:
-        password: "Password"
-        password_confirmation: "Confirm"
-        next: "Next"
+        password: Password
+        password_confirmation: Confirm
+        next: Next
       flash:
-        passwords_dont_match: "Hey, your password confirmation didn't match. Try again."
+        passwords_dont_match: Hey, your password confirmation didn't match. Try again.
   partials:
     action_bar:
-      mark_all: "Mark all as read"
-      refresh: "Refresh"
-      view_feeds: "View feeds"
-      add_feed: "Add a feed"
-      archived_stories: "Archived stories"
+      mark_all: Mark all as read
+      refresh: Refresh
+      view_feeds: View feeds
+      add_feed: Add a feed
+      archived_stories: Archived stories
     feed:
-      last_updated: "Last updated at"
+      last_updated: Last updated at
       status_bubble:
-        green: "Success!"
-        yellow: "Error parsing (probably temporary)"
-        red: "Error parsing (and it ain't never worked before, either)"
+        green: Success!
+        yellow: Error parsing (probably temporary)
+        red: Error parsing (and it ain't never worked before, either)
       last_fetched:
-        never: "Never"
+        never: Never
     feed_action_bar:
-      home: "Return to Stories"
-      feeds: "View feeds"
-      add_feed: "Add a feed"
-      archived_stories: "Archived stories"
+      home: Return to Stories
+      feeds: View feeds
+      add_feed: Add a feed
+      archived_stories: Archived stories
     shortcuts:
-      title: "Keyboard shortcuts"
+      title: Keyboard shortcuts
       keys:
-        jk: "Next/previous story"
-        np: "Move down/move up"
-        oenter: "Toggle story open/closed"
-        m: "Mark item as read/unread"
-        or: "or"
-        v: "Go to story URL"
-        shifta: "Mark all as read"
-        r: "Refresh"
+        jk: Next/previous story
+        np: Move down/move up
+        oenter: Toggle story open/closed
+        m: Mark item as read/unread
+        or: or
+        v: Go to story URL
+        shifta: Mark all as read
+        r: Refresh
     zen:
-      zero: "You&#8217;ve reached RSS Zero&trade;"
-      gtfo: "Now stop reading blogs and"
-      go_make: "go make something"
-      archive: "view all items"
+      zero: You&#8217;ve reached RSS Zero&trade;
+      gtfo: Now stop reading blogs and
+      go_make: go make something
+      archive: view all items
   sessions:
     new:
-      title: 'Stringer speaks'
-      rss: 'RSS'
-      subtitle: "Welcome back, friend."
+      title: Stringer speaks
+      rss: RSS
+      subtitle: Welcome back, friend.
       fields:
-        password: "Password"
-        submit: "Login"
+        password: Password
+        submit: Login
       flash:
-        wrong_password: "That's the wrong password. Try again."
+        wrong_password: That's the wrong password. Try again.
     destroy:
       flash:
-        logged_out_successfully: "You have been signed out!"
+        logged_out_successfully: You have been signed out!
   import:
-    title: "Welcome aboard."
-    subtitle: "Let's setup your feeds."
-    description: "%{link} your feeds from Google Reader and import them."
-    export: "Export"
+    title: Welcome aboard.
+    subtitle: Let's setup your feeds.
+    description: ! '%{link} your feeds from Google Reader and import them.'
+    export: Export
     fields:
-      import: "Import"
-      not_now: "Not now"
+      import: Import
+      not_now: Not now
   layout:
-    title: "stringer | your rss buddy"
-    logout: "Logout"
-    export: "Export"
-    support: "Support"
-    hey: "Hey!"
-    back_to_work: "Get back to work, slacker!"
+    title: stringer | your rss buddy
+    logout: Logout
+    export: Export
+    support: Support
+    hey: Hey!
+    back_to_work: Get back to work, slacker!
   tutorial:
-    mark_all: "mark all"
-    as_read: "as read"
-    refresh: "refresh"
-    your_feeds: "your feeds"
-    add_feed: "add feed"
-    your_stories: "your stories"
-    click_to_read: "(click to read)"
-    title: 'Stringer is '
-    simple: "simple"
-    subtitle: "Here's the instruction manual."
-    description: "We're getting you some stories to read, give us a second."
-    start: "Start Reading"
-    ready: "Okay, it's ready!"
+    mark_all: mark all
+    as_read: as read
+    refresh: refresh
+    your_feeds: your feeds
+    add_feed: add feed
+    your_stories: your stories
+    click_to_read: (click to read)
+    title: ! 'Stringer is '
+    simple: simple
+    subtitle: Here's the instruction manual.
+    description: We're getting you some stories to read, give us a second.
+    start: Start Reading
+    ready: Okay, it's ready!
   archive:
-    next: "Next"
-    previous: "Previous"
-    of: "of"
-    sorry: "Sorry, you haven't read any stories yet!"
+    next: Next
+    previous: Previous
+    of: of
+    sorry: Sorry, you haven't read any stories yet!
   time:
     formats:
-      default: "%b %d, %H:%M"
+      default: ! '%b %d, %H:%M'
   date:
     abbr_month_names:
-    -
+    - 
     - Jan
     - Feb
     - Mar

@@ -1,103 +1,103 @@
 es:
   feeds:
     add:
-      title: "¿Necesitas nuevas historias?"
-      description: "Pega en la URL del blog lo que quieras leer"
+      title: ¿Necesitas nuevas historias?
+      description: Pega en la URL del blog lo que quieras leer
       fields:
-        feed_url: "Feed URL"
-        submit: "Añadir"
+        feed_url: Feed URL
+        submit: Añadir
     index:
-      add_some_feeds: "Hey, deberias %{add} algunos feeds."
-      add: "añadir"
+      add_some_feeds: Hey, deberias %{add} algunos feeds.
+      add: añadir
   first_run:
     password:
-      title: 'Stringer es'
-      anti_social: 'anti-social'
-      subtitle: "Hay solo un usuario: tu."
-      description: "Incorporemos una contraseña para que solo tu puedas leer tus historias"
+      title: Stringer es
+      anti_social: anti-social
+      subtitle: ! 'Hay solo un usuario: tu.'
+      description: Incorporemos una contraseña para que solo tu puedas leer tus historias
       fields:
-        password: "Contraseña"
-        password_confirmation: "Confirmar"
-        next: "Siguiente"
+        password: Contraseña
+        password_confirmation: Confirmar
+        next: Siguiente
   partials:
     action_bar:
-      mark_all: "Marcar todas como leidas"
-      refresh: "Refrescar"
-      view_feeds: "Ver feeds"
-      add_feed: "Añadir feed"
-      archived_stories: "Archived stories"
+      mark_all: Marcar todas como leidas
+      refresh: Refrescar
+      view_feeds: Ver feeds
+      add_feed: Añadir feed
+      archived_stories: Archived stories
     feed:
-      last_updated: "Última actualización"
+      last_updated: Última actualización
       status_bubble:
-        green: "¡ Un éxito!"
-        yellow: "Error de análisis (probablemente temporal)"
-        red: "Error de análisis (y nunca funcionó antes, tampoco)"
+        green: ¡ Un éxito!
+        yellow: Error de análisis (probablemente temporal)
+        red: Error de análisis (y nunca funcionó antes, tampoco)
     feed_action_bar:
-      home: "Volver a historias"
-      feeds: "Ver feeds"
-      add_feed: "Añadir a feed"
-      archived_stories: "Archived stories"
+      home: Volver a historias
+      feeds: Ver feeds
+      add_feed: Añadir a feed
+      archived_stories: Archived stories
     shortcuts:
-      title: "Atajos de teclado"
+      title: Atajos de teclado
       keys:
-        jk: "Siguiente/Anterior historia"
-        oenter: "Arrastrar historia abierta/cerrada"
-        or: "o"
-        v: "Ir a URL de la historia"
-        shifta: "Marcar todas como leidas"
-        r: "Refrescar"
+        jk: Siguiente/Anterior historia
+        oenter: Arrastrar historia abierta/cerrada
+        or: o
+        v: Ir a URL de la historia
+        shifta: Marcar todas como leidas
+        r: Refrescar
     zen:
-      zero: "You&#8217;ve reached RSS Zero&trade;"
-      gtfo: 'Ahora deja de leer blogs y'
-      go_make: 've a hacer algo'
-      archive: "view all items"
+      zero: You&#8217;ve reached RSS Zero&trade;
+      gtfo: Ahora deja de leer blogs y
+      go_make: ve a hacer algo
+      archive: view all items
   sessions:
     new:
-      title: 'Stringer que habla'
-      rss: 'RSS'
-      subtitle: "Bienvenido de nuevo, amigo."
+      title: Stringer que habla
+      rss: RSS
+      subtitle: Bienvenido de nuevo, amigo.
       fields:
-        password: "Contraseña"
-        submit: "Acceder"
+        password: Contraseña
+        submit: Acceder
   import:
-    title: "Bienvenido a bordo."
-    subtitle: "Vamos a configurar tus feeds"
-    description: "%{link} tus feeds de google reader e importarlos"
-    export: "Exportar"
+    title: Bienvenido a bordo.
+    subtitle: Vamos a configurar tus feeds
+    description: ! '%{link} tus feeds de google reader e importarlos'
+    export: Exportar
     fields:
-      import: "Importar"
-      not_now: "No ahora"
+      import: Importar
+      not_now: No ahora
   layout:
-    title: "stringer | Tu Amigo RSS"
-    logout: "Salir"
-    export: "Exportar"
-    support: "Suporte"
-    hey: "Hey!"
-    back_to_work: "¡Vuelve al trabajo, holgazán!"
+    title: stringer | Tu Amigo RSS
+    logout: Salir
+    export: Exportar
+    support: Suporte
+    hey: Hey!
+    back_to_work: ¡Vuelve al trabajo, holgazán!
   tutorial:
-    mark_all: "marcar todos"
-    as_read: "como leidos"
-    refresh: "refrescar"
-    your_feeds: "tus feeds"
-    add_feed: "añadir feed"
-    your_stories: "tus historias"
-    click_to_read: "(click para leer)"
-    title: 'Stringer es '
-    simple: "simple"
-    subtitle: "Acá está el manual de instrucciones."
-    description: "Estamos recibiendo algunas historias para leer, darnos un segundo."
-    start: "Comenzar a leer"
-    ready: "Okay, ¡esta listo!"
+    mark_all: marcar todos
+    as_read: como leidos
+    refresh: refrescar
+    your_feeds: tus feeds
+    add_feed: añadir feed
+    your_stories: tus historias
+    click_to_read: (click para leer)
+    title: ! 'Stringer es '
+    simple: simple
+    subtitle: Acá está el manual de instrucciones.
+    description: Estamos recibiendo algunas historias para leer, darnos un segundo.
+    start: Comenzar a leer
+    ready: Okay, ¡esta listo!
   archive:
-    next: "Next"
-    previous: "Previous"
-    sorry: "Sorry, you haven't read any stories yet!"
+    next: Next
+    previous: Previous
+    sorry: Sorry, you haven't read any stories yet!
   time:
     formats:
-      default: "%d de %b %H:%M"
+      default: ! '%d de %b %H:%M'
   date:
     abbr_month_names:
-    -
+    - 
     - ene
     - feb
     - mar

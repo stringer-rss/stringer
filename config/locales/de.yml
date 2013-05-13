@@ -1,121 +1,121 @@
 de:
   feeds:
     add:
-      title: "Benötigst du neue Geschichten?"
-      description: "Füge die URL des Blogs, den du lesen willst, ein."
+      title: Benötigst du neue Geschichten?
+      description: Füge die URL des Blogs, den du lesen willst, ein.
       fields:
-        feed_url: "Feed URL"
-        submit: "Hinzufügen"
+        feed_url: Feed URL
+        submit: Hinzufügen
       flash:
-        added_successfully: "Wir haben deinen Feed hinzugefügt. Schau ein Bisschen später wieder vorbei."
-        already_subscribed_error: "Du hast diesen Feed bereits abonniert..."
-        feed_not_found_error: "Wir konnten diesen Feed nicht finden. Probiere es noch einmal"
+        added_successfully: Wir haben deinen Feed hinzugefügt. Schau ein Bisschen später wieder vorbei.
+        already_subscribed_error: Du hast diesen Feed bereits abonniert...
+        feed_not_found_error: Wir konnten diesen Feed nicht finden. Probiere es noch einmal
     index:
-      add_some_feeds: "Hey, du solltest ein paar Feeds %{add}."
-      add: "hinzufügen"
+      add_some_feeds: Hey, du solltest ein paar Feeds %{add}.
+      add: hinzufügen
   stories:
-    keep_unread: "Als ungelesen behalten"
+    keep_unread: Als ungelesen behalten
   first_run:
     password:
-      title: 'Stringer ist'
-      anti_social: 'anti-sozial'
-      subtitle: "Es gibt nur einen Benutzer: Dich."
-      description: "Denke dir ein Passwort aus, damit nur du deine Geschichten lesen kannst."
+      title: Stringer ist
+      anti_social: anti-sozial
+      subtitle: ! 'Es gibt nur einen Benutzer: Dich.'
+      description: Denke dir ein Passwort aus, damit nur du deine Geschichten lesen kannst.
       fields:
-        password: "Passwort"
-        password_confirmation: "Bestätigung"
-        next: "Weiter"
+        password: Passwort
+        password_confirmation: Bestätigung
+        next: Weiter
       flash:
-        passwords_dont_match: "Hey, deine Passwortbestätigung stimmte nicht überein. Probiere es noch einmal."
+        passwords_dont_match: Hey, deine Passwortbestätigung stimmte nicht überein. Probiere es noch einmal.
   partials:
     action_bar:
-      mark_all: "Alle als gelesen markieren"
-      refresh: "Aktualisieren"
-      view_feeds: "Zeige Feeds an"
-      add_feed: "Füge einen Feed hinzu"
-      archived_stories: "Archivierte Geschichten"
+      mark_all: Alle als gelesen markieren
+      refresh: Aktualisieren
+      view_feeds: Zeige Feeds an
+      add_feed: Füge einen Feed hinzu
+      archived_stories: Archivierte Geschichten
     feed:
-      last_updated: "Zuletzt aktualisiert um"
+      last_updated: Zuletzt aktualisiert um
       status_bubble:
-        green: "Erfolg!"
-        yellow: "Fehler beim Analysieren der (wahrscheinlich temporäre)"
-        red: "Fehler beim Analysieren (und es funktionierte nie vor, entweder)"
+        green: Erfolg!
+        yellow: Fehler beim Analysieren der (wahrscheinlich temporäre)
+        red: Fehler beim Analysieren (und es funktionierte nie vor, entweder)
       last_fetched:
-        never: "Nie"
+        never: Nie
     feed_action_bar:
-      home: "Zurück zu den Geschichten"
-      feeds: "Zeige Feeds an"
-      add_feed: "Füge einen Feed hinzu"
-      archived_stories: "Archivierte Geschichten"
+      home: Zurück zu den Geschichten
+      feeds: Zeige Feeds an
+      add_feed: Füge einen Feed hinzu
+      archived_stories: Archivierte Geschichten
     shortcuts:
-      title: "Tastaturkürzel"
+      title: Tastaturkürzel
       keys:
-        jk: "Nächste/vorherige Geschichte"
-        np: "Hoch/runter bewegen"
-        oenter: "Klappe Geschichte aus/ein"
-        m: "Markiere Geschichte als gelesen/ungelesen"
-        or: "oder"
-        v: "Öffne die URL der Geschichte"
-        shifta: "Alle als gelesen markieren"
-        r: "Aktualisieren"
+        jk: Nächste/vorherige Geschichte
+        np: Hoch/runter bewegen
+        oenter: Klappe Geschichte aus/ein
+        m: Markiere Geschichte als gelesen/ungelesen
+        or: oder
+        v: Öffne die URL der Geschichte
+        shifta: Alle als gelesen markieren
+        r: Aktualisieren
     zen:
-      zero: "Du hast RSS Zero&trade; erreicht"
-      gtfo: 'Jetzt hör auf Blogs zu lesen und'
-      go_make: 'geh und mach etwas'
-      archive: "alle Einträge anzeigen"
+      zero: Du hast RSS Zero&trade; erreicht
+      gtfo: Jetzt hör auf Blogs zu lesen und
+      go_make: geh und mach etwas
+      archive: alle Einträge anzeigen
   sessions:
     new:
-      title: 'Stringer sagt'
-      rss: 'RSS'
-      subtitle: "Wilkommen zurück, Freund."
+      title: Stringer sagt
+      rss: RSS
+      subtitle: Wilkommen zurück, Freund.
       fields:
-        password: "Passwort"
-        submit: "Login"
+        password: Passwort
+        submit: Login
       flash:
-        wrong_password: "Das ist das falsche Passwort. Probiere es noch einmal."
+        wrong_password: Das ist das falsche Passwort. Probiere es noch einmal.
     destroy:
       flash:
-        logged_out_successfully: "Du wurdest ausgeloggt!"
+        logged_out_successfully: Du wurdest ausgeloggt!
   import:
-    title: "Willkommen an Board."
-    subtitle: "Lass uns deine Feeds eintragen."
-    description: "%{link} deine Feeds aus Google Reader und importiere sie hier."
-    export: "Exportiere"
+    title: Willkommen an Board.
+    subtitle: Lass uns deine Feeds eintragen.
+    description: ! '%{link} deine Feeds aus Google Reader und importiere sie hier.'
+    export: Exportiere
     fields:
-      import: "Importieren"
-      not_now: "Nicht jetzt"
+      import: Importieren
+      not_now: Nicht jetzt
   layout:
-    title: "stringer | dein rss Kumpel"
-    logout: "Ausloggen"
-    export: "Exportieren"
-    support: "Support"
-    hey: "Hey!"
-    back_to_work: "Mach dich wieder an die Arbeit, Faulpelz!"
+    title: stringer | dein rss Kumpel
+    logout: Ausloggen
+    export: Exportieren
+    support: Support
+    hey: Hey!
+    back_to_work: Mach dich wieder an die Arbeit, Faulpelz!
   tutorial:
-    mark_all: "alle"
-    as_read: "als gelesen markieren"
-    refresh: "aktualisieren"
-    your_feeds: "deine Feeds"
-    add_feed: "Feed hinzufügen"
-    your_stories: "deine Geschichten"
-    click_to_read: "(klicken um zu lesen)"
-    title: 'Stringer ist '
-    simple: "einfach"
-    subtitle: "Hier ist die Bedienungsanleitung."
-    description: "Wir besorgen dir Geschichten zum Lesen, gib uns eine Sekunde."
-    start: "Fang an zu lesen"
-    ready: "Okay, es ist bereit!"
+    mark_all: alle
+    as_read: als gelesen markieren
+    refresh: aktualisieren
+    your_feeds: deine Feeds
+    add_feed: Feed hinzufügen
+    your_stories: deine Geschichten
+    click_to_read: (klicken um zu lesen)
+    title: ! 'Stringer ist '
+    simple: einfach
+    subtitle: Hier ist die Bedienungsanleitung.
+    description: Wir besorgen dir Geschichten zum Lesen, gib uns eine Sekunde.
+    start: Fang an zu lesen
+    ready: Okay, es ist bereit!
   archive:
-    next: "Nächste"
-    previous: "Vorherige"
-    of: "von"
-    sorry: "Entschuldigung, du hast noch keine Geschichten gelesen."
+    next: Nächste lol
+    previous: Vorherige
+    of: von
+    sorry: Entschuldigung, du hast noch keine Geschichten gelesen.
   time:
     formats:
-      default: "%e. %b, %H:%M Uhr"
+      default: ! '%e. %b, %H:%M Uhr'
   date:
     abbr_month_names:
-    -
+    - 
     - Jan
     - Feb
     - Mär
