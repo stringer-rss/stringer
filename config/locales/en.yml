@@ -13,6 +13,8 @@ en:
     index:
       add_some_feeds: "Hey, you should %{add} some feeds."
       add: "add"
+  stories:
+    keep_unread: "Keep unread"
   first_run:
     password:
       title: 'Stringer is'
