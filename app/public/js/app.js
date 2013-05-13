@@ -47,6 +47,14 @@ var Story = Backbone.Model.extend({
     if (this.shouldSave()) this.save();
   },
 
+  toggleStarred: function() {
+    if (this.get("is_starred")) {
+      this.set("is_starred", false);
+    } else {
+      this.set("is_starred", true);
+    }
+  },
+
   close: function() {
     this.set("open", false);
   },
@@ -73,7 +81,8 @@ var StoryView = Backbone.View.extend({
 
   events: {
     "click .story-preview" : "storyClicked",
-    "click .story-keep-unread" : "toggleKeepUnread"
+    "click .story-keep-unread" : "toggleKeepUnread",
+    "click .story-starred" : "toggleStarred"
   },
 
   initialize: function() {
@@ -106,6 +115,10 @@ var StoryView = Backbone.View.extend({
 
   toggleKeepUnread: function() {
     this.model.toggleKeepUnread();
+  },
+
+  toggleStarred: function() {
+    this.model.toggleStarred();
   }
 });
 
