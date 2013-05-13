@@ -13,6 +13,8 @@ de:
     index:
       add_some_feeds: "Hey, du solltest ein paar Feeds %{add}."
       add: "hinzufügen"
+  stories:
+    keep_unread: "Als ungelesen behalten"
   first_run:
     password:
       title: 'Stringer ist'
@@ -31,21 +33,27 @@ de:
       refresh: "Aktualisieren"
       view_feeds: "Zeige Feeds an"
       add_feed: "Füge einen Feed hinzu"
+      archived_stories: "Archivierte Geschichten"
     feed:
       last_updated: "Zuletzt aktualisiert um"
       status_bubble:
         green: "Erfolg!"
-        yellow: "Fehler beim analysieren der (wahrscheinlich temporäre)"
-        red: "Fehler beim analysieren (und es funktionierte nie vor, entweder)"
+        yellow: "Fehler beim Analysieren der (wahrscheinlich temporäre)"
+        red: "Fehler beim Analysieren (und es funktionierte nie vor, entweder)"
+      last_fetched:
+        never: "Nie"
     feed_action_bar:
       home: "Zurück zu den Geschichten"
       feeds: "Zeige Feeds an"
       add_feed: "Füge einen Feed hinzu"
+      archived_stories: "Archivierte Geschichten"
     shortcuts:
       title: "Tastaturkürzel"
       keys:
         jk: "Nächste/vorherige Geschichte"
+        np: "Hoch/runter bewegen"
         oenter: "Klappe Geschichte aus/ein"
+        m: "Markiere Geschichte als gelesen/ungelesen"
         or: "oder"
         v: "Öffne die URL der Geschichte"
         shifta: "Alle als gelesen markieren"
@@ -54,6 +62,7 @@ de:
       zero: "Du hast RSS Zero&trade; erreicht"
       gtfo: 'Jetzt hör auf Blogs zu lesen und'
       go_make: 'geh und mach etwas'
+      archive: "alle Einträge anzeigen"
   sessions:
     new:
       title: 'Stringer sagt'
@@ -96,3 +105,26 @@ de:
     description: "Wir besorgen dir Geschichten zum Lesen, gib uns eine Sekunde."
     start: "Fang an zu lesen"
     ready: "Okay, es ist bereit!"
+  archive:
+    next: "Nächste"
+    previous: "Vorherige"
+    of: "von"
+    sorry: "Entschuldigung, du hast noch keine Geschichten gelesen."
+  time:
+    formats:
+      default: "%e. %b, %H:%M Uhr"
+  date:
+    abbr_month_names:
+    -
+    - Jan
+    - Feb
+    - Mär
+    - Apr
+    - Mai
+    - Jun
+    - Jul
+    - Aug
+    - Sep
+    - Okt
+    - Nov
+    - Dez

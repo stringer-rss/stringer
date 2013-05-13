@@ -104,3 +104,21 @@
     previous: "Anterior"
     of: "de"
     sorry: "Desculpe, você não leu alguma história ainda!"
+  time:
+    formats:
+      default: "%d de %b, %H:%M"
+  date:
+    abbr_month_names:
+    -
+    - Jan
+    - Fev
+    - Mar
+    - Abr
+    - Mai
+    - Jun
+    - Jul
+    - Ago
+    - Set
+    - Out
+    - Nov
+    - Dez

@@ -20,7 +20,7 @@ class Story < ActiveRecord::Base
   end
 
   def pretty_date
-    self.published.strftime("%A, %B %d")
+    I18n.l(self.published)
   end
 
   def as_json(options = {})
