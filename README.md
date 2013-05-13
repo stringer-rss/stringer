@@ -76,7 +76,7 @@ Stringer has been translated to [several other languages](config/locales). Your 
 
 To set your locale on Heroku, run `heroku config:set LOCALE=en`.
 
-If you would like to translate Stringer to your preferred language, please open a pull request.
+If you would like to translate Stringer to your preferred language, please use [LocaleApp](http://www.localeapp.com/projects/4637).
 
 # Development
 
