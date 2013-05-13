@@ -38,6 +38,8 @@ fr:
         green: "Succès !"
         yellow: "Erreur d'analyse (probablement temporaire)"
         red: "Erreur d'analyse (n'a jamais fonctionné avant, non plus)"
+      last_fetched:
+        never: "Jamais"
     feed_action_bar:
       home: "Revenir aux Articles"
       feeds: "Voir les flux"
@@ -47,7 +49,9 @@ fr:
       title: "Raccourcis clavier"
       keys:
         jk: "Article suivant/précédant"
+        np: "Descendre/monter"
         oenter: "Ouvrir/fermer l'article"
+        m: "Marquer l'entrée comme lue/non lue"
         or: "ou"
         v: "Aller à l'URL de l'article"
         shifta: "Tout marquer comme lu"
