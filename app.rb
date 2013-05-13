@@ -62,6 +62,7 @@ class Stringer < Sinatra::Base
       "/js/bootstrap-min.js",
       "/js/bootstrap.file-input.js",
       "/js/mousetrap-min.js",
+      "/js/jquery-visible-min.js",
       "/js/underscore-min.js",
       "/js/backbone-min.js",
       "/js/app.js"
