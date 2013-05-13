@@ -10,9 +10,9 @@
       <span class="last-updated"><%= t('partials.feed.last_updated') %></span>
       <span class="last-updated-time">
         <% if feed.last_fetched %>
-          <%= feed.last_fetched.strftime("%b %d, %H:%M") %>
+          <%= I18n.l(feed.last_fetched) %>
         <% else %>
-          Never
+          <%= t("partials.feed.last_fetched.never") %>
         <% end %>
       </span>
     </div>
