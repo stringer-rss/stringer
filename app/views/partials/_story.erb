@@ -30,7 +30,7 @@
       <div class="row-fluid story-actions-container">
         <div class="pull-left">
           <span class="story-published">
-            <%= story.published.strftime("%A, %B %d") %>
+            <%= I18n.l(story.published) %>
           </span>
         </div>
         <div class="pull-right story-actions">

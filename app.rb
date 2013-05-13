@@ -2,6 +2,7 @@ require "sinatra/base"
 require "sinatra/activerecord"
 require "sinatra/flash"
 require "sinatra/contrib/all"
+require "sinatra/assetpack"
 require "json"
 require "i18n"
 require "will_paginate"
@@ -17,6 +18,7 @@ class Stringer < Sinatra::Base
     set :database_file, "config/database.yml"
     set :views, "app/views"
     set :public_dir, "app/public"
+    set :root, File.dirname(__FILE__)
 
     enable :sessions
     set :session_secret, ENV["SECRET_TOKEN"] || "secret!"
@@ -25,6 +27,7 @@ class Stringer < Sinatra::Base
     register Sinatra::ActiveRecordExtension
     register Sinatra::Flash
     register Sinatra::Contrib
+    register Sinatra::AssetPack
 
     ActiveRecord::Base.include_root_in_json = false
   end
@@ -48,6 +51,36 @@ class Stringer < Sinatra::Base
       I18n.t(*args)
     end
   end
+
+  assets {
+    serve "/js",     from: "app/public/js"
+    serve "/css",    from: "app/public/css"
+    serve "/images", from: "app/public/img"
+
+    js :application, "/js/application.js", [
+      "/js/jquery-min.js",
+      "/js/bootstrap-min.js",
+      "/js/bootstrap.file-input.js",
+      "/js/mousetrap-min.js",
+      "/js/jquery-visible-min.js",
+      "/js/underscore-min.js",
+      "/js/backbone-min.js",
+      "/js/app.js"
+    ]
+
+    css :application, "/css/application.css", [
+      "/css/bootstrap-min.css",
+      "/css/flat-ui-no-icons.css",
+      "/css/font-awesome-min.css",
+      "/css/styles.css"
+    ]
+
+    js_compression  :uglify
+    css_compression :simple
+
+    prebuild true
+    cache_dynamic_assets true
+  }
 
   before do
     I18n.locale = ENV["LOCALE"].blank? ? :en : ENV["LOCALE"].to_sym

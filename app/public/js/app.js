@@ -87,25 +87,35 @@ var StoryView = Backbone.View.extend({
 
   initialize: function() {
     this.template = _.template($(this.template).html());
-    this.listenTo(this.model, 'change', this.render);
+    this.listenTo(this.model, 'add', this.render);
+    this.listenTo(this.model, 'change:selected', this.itemSelected);
+    this.listenTo(this.model, 'change:open', this.itemOpened);
+    this.listenTo(this.model, 'change:is_read', this.itemRead);
   },
 
   render: function() {
     this.$el.html(this.template(this.model.toJSON()));
+    return this;
+  },
 
+  itemRead: function() {
     this.$el.toggleClass("read", this.model.get("is_read"));
+  },
 
+  itemOpened: function() {
     if (this.model.get("open")) {
       this.$el.addClass("open");
       $(".story-lead", this.$el).fadeOut(1000);
+      window.scrollTo(0, this.$el.offset().top);
     } else {
       this.$el.removeClass("open");
       $(".story-lead", this.$el).show();
     }
+  },
 
+  itemSelected: function() {
     this.$el.toggleClass("cursor", this.model.get("selected"));
-
-    return this;
+    if (!this.$el.visible()) window.scrollTo(0, this.$el.offset().top);
   },
 
   storyClicked: function() {
@@ -166,6 +176,8 @@ var StoryList = Backbone.Collection.extend({
   moveCursorDown: function() {
     if (this.cursorPosition < this.max_position()) {
       this.cursorPosition++;
+    } else {
+      this.cursorPosition = 0;
     }
 
     this.at(this.cursorPosition).select();
