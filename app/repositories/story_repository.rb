@@ -3,12 +3,10 @@ require_relative "../utils/sample_story"
 
 class StoryRepository
   def self.add(entry, feed)
-    url = entry.url
-    content = extract_content(entry)
     Story.create(feed: feed, 
                 title: entry.title, 
-                permalink: url,
-                body: urls_to_absolute(content, url),
+                permalink: entry.url,
+                body: extract_content(entry),
                 is_read: false,
                 published: entry.published || Time.now)
   end
@@ -38,18 +36,21 @@ class StoryRepository
   end
 
   def self.extract_content(entry)
+    sanitized_content = ""
+    
     if entry.content
-      entry.content.sanitize
+      sanitized_content = entry.content.sanitize
     elsif entry.summary
-      entry.summary.sanitize
-    else
-      ""
+      sanitized_content = entry.summary.sanitize
     end
+
+    expand_absolute_urls(sanitized_content, entry.url)
   end
 
-  def self.urls_to_absolute(content, base_url)
+  def self.expand_absolute_urls(content, base_url)
     doc = Nokogiri::HTML.fragment(content)
     abs_re = URI::DEFAULT_PARSER.regexp[:ABS_URI]
+
     [["a", "href"], ["img", "src"], ["video", "src"]].each do |tag, attr|
       doc.css(tag).each do |node|
         url = node.get_attribute(attr)
@@ -59,6 +60,7 @@ class StoryRepository
         end
       end
     end
+
     doc.to_html
   end
 
