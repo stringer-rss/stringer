@@ -4,13 +4,7 @@ config = YAML.load(File.read('config/database.yml'))
 ActiveRecord::Base.establish_connection(config['test'])
 
 def need_to_migrate?
-  current_migration = ActiveRecord::Migrator.current_version
-  latest_migration = begin
-    ActiveRecord::Migrator.get_all_versions.last
-  rescue ActiveRecord::StatementInvalid
-    nil
-  end
-  current_migration != latest_migration
+  ActiveRecord::Migrator.new(:up, 'db/migrate').pending_migrations.any?
 end
 
 if need_to_migrate?

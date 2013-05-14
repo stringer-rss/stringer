@@ -17,4 +17,16 @@ class Feed < ActiveRecord::Base
     return :yellow if status == :red && stories.any?
     status
   end
+
+  def as_fever_json
+    {
+      id: self.id,
+      favicon_id: 0,
+      title: self.name,
+      url: self.url,
+      site_url: self.url,
+      is_spark: 0,
+      last_updated_on_time: self.last_fetched.to_i
+    }
+  end
 end
