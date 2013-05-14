@@ -13,6 +13,8 @@ fr:
     index:
       add_some_feeds: Vous devriez %{add} quelques flux.
       add: ajouter
+  stories:
+    keep_unread: Rester non lus
   first_run:
     password:
       title: Stringer est
