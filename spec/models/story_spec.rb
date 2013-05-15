@@ -21,11 +21,21 @@ describe "Story" do
       story.title = nil
       story.headline.should eq(Story::UNTITLED)
     end
+
+    it "strips html out" do
+      story.title = "<b>Super cool</b> stuff"
+      story.headline.should eq "Super cool stuff"
+    end
   end
 
   describe "#lead" do
     it "truncates to 100 chars" do
       story.lead.size.should eq(100)
+    end
+
+    it "strips html out" do
+      story.body = "<a href='http://github.com'>Yo</a> dawg"
+      story.lead.should eq "Yo dawg"
     end
   end
 
