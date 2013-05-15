@@ -13,13 +13,31 @@ describe "Story" do
   end
 
   describe "#headline" do
-    it "truncates to 50 chars" do
-      story.headline.size.should eq(50)
+    context "plain string title" do
+
+      it "truncates to 50 chars" do
+        story.headline.size.should eq(50)
+      end
+
+      it "uses a fallback string if story has no title" do
+        story.title = nil
+        story.headline.should eq(Story::UNTITLED)
+      end
     end
 
-    it "uses a fallback string if story has no title" do
-      story.title = nil
-      story.headline.should eq(Story::UNTITLED)
+    context "title with HTML tags" do
+      before { story.title = "<a>#{Faker::Lorem.sentence(50)}</a>" }
+
+      it "strips HTML tags from story title" do
+        story.headline.should_not start_with('<a>')
+        story.headline.should_not end_with('</a>')
+      end
+
+      it "truncates to 50 chars after stripping tags" do
+        story.headline.should_not start_with('<a>')
+        story.headline.size.should eq(50)
+      end
+
     end
   end
 
