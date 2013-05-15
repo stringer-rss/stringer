@@ -1,65 +1,65 @@
-pt-BR:
+pt:
   feeds:
     add:
       title: Precisa de novas histórias?
-      description: Cole a URL do blog que você quer ler.
+      description: Copie a URL do blog que deseja ler.
       fields:
-        feed_url: URL do Feed
+        feed_url: URL da Feed
         submit: Adicionar
       flash:
-        added_successfully: Nós estamos adicionando um novo feed. Volte daqui a pouco.
-        already_subscribed_error: Você já está inscrito neste feed...
-        feed_not_found_error: Não conseguimos achar este feed. Tente novamente.
+        added_successfully: Adicionamos a sua nova feed. Verifique novamente mais tarde.
+        already_subscribed_error: Você já subscreveu esta feed...
+        feed_not_found_error: Não foi possível encontrar a feed. Tente novamente.
     index:
-      add_some_feeds: Ei, você deveria %{add} alguns feeds.
+      add_some_feeds: Ei, você deveria %{add} algumas feeds.
       add: adicionar
   stories:
-    keep_unread: Continue não lido
+    keep_unread: Continuar como não lido
   first_run:
     password:
       title: Stringer é
       anti_social: anti-social
-      subtitle: ! 'Existe apenas um usuário: você.'
-      description: Vamos escolher uma senha para que só você possa ler suas histórias.
+      subtitle: ! 'Existe apenas um utilizador: você.'
+      description: Vamos escolher uma password para que apenas tu possas ler as tuas histórias.
       fields:
-        password: Senha
+        password: Password
         password_confirmation: Confirmar
         next: Próximo
       flash:
-        passwords_dont_match: Hey, a confirmação de senha não confere. Tente novamente.
+        passwords_dont_match: Ei, a password de confirmação não está correcta. Tente novamente.
   partials:
     action_bar:
       mark_all: Marcar tudo como lido
       refresh: Atualizar
       view_feeds: Visualizar feeds
-      add_feed: Adicionar um feed
+      add_feed: Adicionar uma feed
       archived_stories: Arquivo de histórias
     feed:
       last_updated: Última atualização em
       status_bubble:
         green: Sucesso!
         yellow: Erro ao analizar (provavelmente temporário)
-        red: Erro ao analizar (e este nunca funcionou antes.)
+        red: Erro ao analisar (e nunca funcionou antes, também)
       last_fetched:
         never: Nunca
     feed_action_bar:
-      home: Voltar para histórias
+      home: Voltar para as histórias
       feeds: Visualizar feeds
-      add_feed: Adicionar um feed
+      add_feed: Adicionar uma feed
       archived_stories: Arquivo de histórias
     shortcuts:
-      title: Atalhos de teclado
+      title: Atalhos do teclado
       keys:
-        jk: História próxima/anterior
+        jk: Próxima história/História anterior
         np: Mover para baixo/Mover para cima
-        oenter: Alterna história aberta/fechada
+        oenter: Alternar como história aberta/fechada
         m: Marcar item como lido/não lido
         or: ou
         v: Ir para a URL da história
         shifta: Marcar tudo como lido
         r: Atualizar
     zen:
-      zero: Você alcançou RSS Zero&trade;
+      zero: Você alcançou Zero RSS&trade;
       gtfo: Agora pare de ler blogs e
       go_make: vá fazer alguma coisa
       archive: visualizar todos os itens
@@ -69,47 +69,47 @@ pt-BR:
       rss: RSS
       subtitle: Bem vindo novamente, amigo.
       fields:
-        password: Senha
+        password: Password
         submit: Entrar
       flash:
-        wrong_password: Esta senha está incorreta. Tente novamente.
+        wrong_password: Esta password está incorreta. Tente novamente.
     destroy:
       flash:
-        logged_out_successfully: Você saiu!
+        logged_out_successfully: Você terminou a sessão!
   import:
     title: Bem vindo a bordo.
-    subtitle: Vamos configurar seus feeds.
-    description: ! '%{link} seus feeds do Google Reader e importe-os.'
+    subtitle: Vamos configurar as suas feeds.
+    description: ! '%{link} as suas feeds do Google Reader e importe-as.'
     export: Exportar
     fields:
       import: Importar
       not_now: Agora não
   layout:
-    title: stringer | seu companheiro de rss
+    title: stringer | o seu amigo rss
     logout: Sair
     export: Exportar
     support: Suporte
-    hey: Hey!
+    hey: Ei!
     back_to_work: Volte ao trabalho, preguiçoso!
   tutorial:
     mark_all: marcar todos
     as_read: como lido
     refresh: atualizar
-    your_feeds: seus feeds
+    your_feeds: as seus feeds
     add_feed: adicionar feed
-    your_stories: suas histórias
+    your_stories: as suas histórias
     click_to_read: (clique para ler)
     title: ! 'Stringer é '
     simple: simples
     subtitle: Aqui está o manual de instruções.
-    description: Nós estamos pegando algumas histórias para leitura, dê-nos um segundo.
-    start: Começar a leitura
+    description: Estamos a actualizar as suas histórias, dê-nos um segundo.
+    start: Começar a ler
     ready: Ok, está pronto!
   archive:
     next: Próximo
     previous: Anterior
     of: de
-    sorry: Desculpe, você não leu alguma história ainda!
+    sorry: Desculpe, ainda não leu nenhuma história!
   time:
     formats:
       default: ! '%d de %b, %H:%M'
