@@ -1,0 +1,129 @@
+he:
+  archive:
+    next: הבא
+    of: של
+    previous: קודם
+    sorry: טרם קראת את הפוסטים!
+  date:
+    abbr_month_names:
+    - 
+    - יאנ
+    - פבר
+    - מרץ
+    - אפר
+    - מאי
+    - יונ
+    - יול
+    - אוג
+    - ספט
+    - אוק
+    - נוב
+    - דצמ
+  feeds:
+    add:
+      description: הכנס את הכתובת של הבלוג אשר ברצונך לקרוא
+      fields:
+        feed_url: כתובת של הפיד
+        submit: להוסיף
+      flash:
+        added_successfully: אנחנו הוספנו את הפיד החדש. עוד מעט תקבל עידכונים.
+        already_subscribed_error: הפיד הנ"ל כבר נמצא במעקב.
+        feed_not_found_error: לא הצלחנו למצוא את הפיד. נסה שוב.
+      title: מחפש מה לקרוא?
+    index:
+      add: להוסיף
+      add_some_feeds: הי, כדאי %{add} קצת פידים.
+  first_run:
+    password:
+      anti_social: אינו חברתי
+      description: תבחר סיסמה כך שרק אתה תוכל לקרוא את הסיפורים שלך.
+      fields:
+        next: הבא
+        password: סיסמה
+        password_confirmation: אימות סיסמא
+      flash:
+        passwords_dont_match: הי, אימות הסיסמה אינו זהה. נסה שוב.
+      subtitle: יש רק משתמש יחיד. אתה.
+      title: סטרינגר זה
+  import:
+    description: ! '%{link} את הפיד שלך מ- Google Reader ויבא אותו.'
+    export: יצוא
+    fields:
+      import: יבוא
+      not_now: לא עכשיו
+    subtitle: נגדיר את רשימת הקריאה.
+    title: ברוך הבא.
+  layout:
+    back_to_work: תחזור לעבודה, בטלן!
+    export: יצוא
+    hey: הי!
+    logout: יציאה
+    support: תמיכה
+    title: סטרינגר | עוזר ה- RSS שלך
+  partials:
+    action_bar:
+      add_feed: הוסף פיד
+      archived_stories: סיפורים ישנים
+      mark_all: סמן הכל כנקרא
+      refresh: רענון
+      view_feeds: בדוק את הפיד
+    feed:
+      last_fetched:
+        never: לעולם
+      last_updated: עדכון אחרון ב-
+      status_bubble:
+        green: הצליח!
+        red: טעות בפענוח (וזה לא עבד אף פעם)
+        yellow: טעות בפענוח (כנראה זמני)
+    feed_action_bar:
+      add_feed: הוסף פיד
+      archived_stories: סיפורים ישנים
+      feeds: ראה פיד
+      home: חזור לסיפורים
+    shortcuts:
+      keys:
+        jk: סיפור הבא/קודם
+        m: סמן את הכל כנקרא/לא נקרא
+        np: למעלה/למטה
+        oenter: תפתח/תסגור את הסיפור
+        or: או
+        r: רענון
+        shifta: סמן הכל כנקרא
+        v: תעבור לקישור של הסיפור
+      title: קיצורי מקשים
+    zen:
+      archive: ראה את כל הפריטים
+      go_make: ולך תעשה משהו חיוני
+      gtfo: הפסק לקרוא בלוגים
+  sessions:
+    destroy:
+      flash:
+        logged_out_successfully: יצאת מהמערכת!
+    new:
+      fields:
+        password: סיסמה
+        submit: כניסה
+      flash:
+        wrong_password: סיסמה לא נכונה
+      rss: RSS
+      subtitle: ברוך שובך, חבר!
+      title: סטרינגר עושה סדר ב
+  stories:
+    keep_unread: סמן כלא נקרא
+  time:
+    formats:
+      default: ! '%b %d, %H:%M%'
+  tutorial:
+    add_feed: הוסף פיד
+    as_read: כנקרא
+    click_to_read: (לקריאה)
+    description: אנחנו מחפשים סיפורים בשבילך, תן לנו קצת זמן.
+    mark_all: סמן הכל
+    ready: יפה, הכל מוכן!
+    refresh: רענון
+    simple: פשוט
+    start: תתחיל לקרוא
+    subtitle: הוראות הפעלה.
+    title: סטרינגר זה
+    your_feeds: הפידים שלך
+    your_stories: הסיפורים שלך
