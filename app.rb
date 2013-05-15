@@ -53,9 +53,9 @@ class Stringer < Sinatra::Base
   end
 
   assets {
-    serve "/js",     from: "app/public/js"
-    serve "/css",    from: "app/public/css"
-    serve "/images", from: "app/public/img"
+    serve "/js",     from: "/js"
+    serve "/css",    from: "/css"
+    serve "/images", from: "/img"
 
     js :application, "/js/application.js", [
       "/js/jquery-min.js",
