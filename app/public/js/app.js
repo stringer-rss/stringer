@@ -82,6 +82,7 @@ var StoryView = Backbone.View.extend({
     this.listenTo(this.model, 'change:selected', this.itemSelected);
     this.listenTo(this.model, 'change:open', this.itemOpened);
     this.listenTo(this.model, 'change:is_read', this.itemRead);
+    this.listenTo(this.model, 'change:keep_unread', this.itemKeepUnread);
   },
 
   render: function() {
@@ -107,6 +108,11 @@ var StoryView = Backbone.View.extend({
   itemSelected: function() {
     this.$el.toggleClass("cursor", this.model.get("selected"));
     if (!this.$el.visible()) window.scrollTo(0, this.$el.offset().top);
+  },
+
+  itemKeepUnread: function(){
+    var icon = this.model.get("keep_unread") ? "icon-check" : "icon-check-empty";
+    this.$(".story-keep-unread > i").attr("class", icon);
   },
 
   storyClicked: function() {
