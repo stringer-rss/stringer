@@ -33,6 +33,9 @@ en:
     index:
       add: add
       add_some_feeds: Hey, you should %{add} some feeds.
+  flash:
+    js_required: Well, this is awkward. Javascript is required for the app to work properly.
+    cookies_required: Well, this is awkward. Cookies are required for the app to work properly.
   first_run:
     password:
       anti_social: anti-social
