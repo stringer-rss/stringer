@@ -78,7 +78,7 @@ class Stringer < Sinatra::Base
     js_compression  :uglify
     css_compression :simple
 
-    prebuild true if ENV['RACK_ENV'] != 'test'
+    prebuild true unless ENV['RACK_ENV'] == 'test'
     cache_dynamic_assets true
   }
 
