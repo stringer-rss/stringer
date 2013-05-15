@@ -46,8 +46,8 @@ sv:
       subtitle: ! 'Det finns bara en användare: du.'
       title: Stringer är
   flash:
-    cookies_required: 
-    js_required: 
+    cookies_required: Jaha, det här var tråkigt. Cookies behövs för att appen ska fungera.
+    js_required: Jaha, det här var tråkigt. Javascript behövs för att appen ska fungera.
   import:
     description: ! '%{link} dina feeds från Google Reader och importera dom.'
     export: Exportera
@@ -72,7 +72,7 @@ sv:
       view_feeds: Visa feeds
     feed:
       last_fetched:
-        never: 
+        never: Aldrig
       last_updated: Senast uppdaterad
       status_bubble:
         green: Lyckad!
@@ -86,8 +86,8 @@ sv:
     shortcuts:
       keys:
         jk: Nästa/föregående berättelse
-        m: 
-        np: 
+        m: Markera som läst/oläst
+        np: Gå ner/upp
         oenter: Öppna/stäng berättelse
         or: eller
         r: Uppdatera

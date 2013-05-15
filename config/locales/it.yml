@@ -1,9 +1,9 @@
 it:
   archive:
-    next: 
-    of: 
-    previous: 
-    sorry: 
+    next: Successivo
+    of: di
+    previous: Precedente
+    sorry: Spiacente, non hai ancora letto nessuna storia!
   date:
     abbr_month_names:
     - 
@@ -26,9 +26,9 @@ it:
         feed_url: URL del feed
         submit: Aggiungi
       flash:
-        added_successfully: 
-        already_subscribed_error: 
-        feed_not_found_error: 
+        added_successfully: Abbiamo aggiunto il tuo nuovo feed. Ripassa tra qualche istante.
+        already_subscribed_error: Sei già sottoscritto a questo feed...
+        feed_not_found_error: Non siamo riusciti a trovare il feed. Riprova.
       title: Bisogno di nuove storie?
     index:
       add: aggiungere
@@ -42,12 +42,12 @@ it:
         password: Password
         password_confirmation: Conferma
       flash:
-        passwords_dont_match: 
+        passwords_dont_match: Hey, le password non combaciano. Riprova.
       subtitle: ! 'Esiste un solo utente: tu.'
       title: Stringer è
   flash:
-    cookies_required: 
-    js_required: 
+    cookies_required: Beh, questo sì che è strano. L'app necessita di cookie per funzionare correttamente.
+    js_required: Beh, questo sì che è strano. L'app necessita di Javascript attivato per funzionare correttamente.
   import:
     description: ! '%{link} i tuoi feed da Google Reader e importali qui.'
     export: Esporta
@@ -66,13 +66,13 @@ it:
   partials:
     action_bar:
       add_feed: Aggiungi un feed
-      archived_stories: 
+      archived_stories: Storie archiviate
       mark_all: Segna tutte come lette
       refresh: Aggiorna
       view_feeds: Mostra i feed
     feed:
       last_fetched:
-        never: 
+        never: Mai
       last_updated: Ultimo aggiornamento il
       status_bubble:
         green: Successo!
@@ -80,14 +80,14 @@ it:
         yellow: Errore di analisi (probabilmente temporanea)
     feed_action_bar:
       add_feed: Aggiungi un feed
-      archived_stories: 
+      archived_stories: Storie archiviate
       feeds: Mostra i feed
       home: Ritorna alle Storie
     shortcuts:
       keys:
         jk: Prossima/precedente storia
-        m: 
-        np: 
+        m: Segna come letto/non letto
+        np: Spostati giù/su
         oenter: Apri/chiudi la storia
         or: o
         r: Aggiorna
@@ -95,24 +95,24 @@ it:
         v: Vai all'URL della storia
       title: Shortcuts da tastiera
     zen:
-      archive: 
+      archive: vai all'archivio
       go_make: vai a fare altro
       gtfo: Ora piantala di leggere blog e
   sessions:
     destroy:
       flash:
-        logged_out_successfully: 
+        logged_out_successfully: Hai effettuato logout correttamente!
     new:
       fields:
         password: Password
         submit: Login
       flash:
-        wrong_password: 
+        wrong_password: Password incorretta. Riprova.
       rss: RSS
       subtitle: Benvenuto, amico.
       title: Stringer parla
   stories:
-    keep_unread: 
+    keep_unread: Mantieni come non letta
   time:
     formats:
       default: ! '%d %b, %H:%M'
