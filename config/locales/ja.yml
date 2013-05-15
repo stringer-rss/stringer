@@ -1,0 +1,130 @@
+ja:
+  feeds:
+    add:
+      title: 新しいストーリーが必要ですか?
+      description: 購読したいブログのURLをペーストして下さい
+      fields:
+        feed_url: フィードURL
+        submit: 追加
+      flash:
+        added_successfully: 新しいフィードを追加しました、ちょっと経ったら確認して下さい
+        already_subscribed_error: このフィードは既に登録されてます
+        feed_not_found_error: フィードを見つけられませんでした、もう一度試して下さい
+    index:
+      add_some_feeds: いくつかフィードを%{add}したよ
+      add: 追加
+  stories:
+    keep_unread: 未読にする
+  first_run:
+    password:
+      title: Stringerは
+      anti_social: 反社交的
+      subtitle: ユーザは「あなた」ただひとり
+      description: あなただけが読むためにパスワードを設定しよう
+      fields:
+        password: パスワード
+        password_confirmation: パスワード（確認）
+        next: 次へ
+      flash:
+        passwords_dont_match: パスワード（確認）と一致しません、もう一度試して下さい
+  partials:
+    action_bar:
+      mark_all: すべて既読にする
+      refresh: リフレッシュ
+      view_feeds: 購読フィードを見る
+      add_feed: フィードを追加する
+      archived_stories: ストーリーを保存する
+    feed:
+      last_updated: 最終更新
+      status_bubble:
+        green: 成功!
+        yellow: パースエラー（たぶん一時的）
+        red: パースエラー（以前にも動いていない)
+      last_fetched:
+        never: Never
+    feed_action_bar:
+      home: ストーリーに戻る
+      feeds: 購読フィードを見る
+      add_feed: フィードを追加
+      archived_stories: 保存したストーリー
+    shortcuts:
+      title: キーボードショートカット
+      keys:
+        jk: 次／前のストーリー
+        np: 下／上へ移動
+        oenter: ストーリーの表示・非表示切り替え
+        m: 既読／未読切り替え
+        or: または
+        v: ストーリーURLを開く
+        shifta: すべてのストーリーを既読にする
+        r: リフレッシュ
+    zen:
+      zero: You&#8217;ve reached RSS Zero&trade;
+      gtfo: ブログを読むのをやめて
+      go_make: 何か作ろう
+      archive: すべてのアイテムをみる
+  sessions:
+    new:
+      title: 'Stringer speaks'
+      rss: 'RSS'
+      subtitle: おかえり
+      fields:
+        password: パスワード
+        submit: ログイン
+      flash:
+        wrong_password: パスワードが違います。もう一度試して下さい
+    destroy:
+      flash:
+        logged_out_successfully: サインアウトしました!
+  import:
+    title: ようこそ
+    subtitle: フィードを設定しよう
+    description: ! '%{link} あなたのGoogle Readerのフィードです、それらを取り込みます'
+    export: 書き出し
+    fields:
+      import: 取り込み
+      not_now: いまはやらない
+  layout:
+    title: stringer | your rss buddy
+    logout: ログアウト
+    export: 書き出し
+    support: サポート
+    hey: Hey!
+    back_to_work: Get back to work, slacker!
+  tutorial:
+    mark_all: mark all
+    as_read: as read
+    refresh: refresh
+    your_feeds: your feeds
+    add_feed: add feed
+    your_stories: your stories
+    click_to_read: (click to read)
+    title: Stringerは
+    simple: シンプル
+    subtitle: 取り扱い説明です
+    description: あなたのストーリーを読み込んでます、しばらくお待ち下さい
+    start: 読みはじめよう
+    ready: 準備OK!
+  archive:
+    next: 次へ
+    previous: 前へ
+    of: の
+    sorry: ごめんなさい、なにもストーリーを読み込んでません
+  time:
+    formats:
+      default: ! '%b %d, %H:%M'
+  date:
+    abbr_month_names:
+    - 
+    - 一月
+    - 二月
+    - 三月
+    - 四月
+    - 五月
+    - 六月
+    - 七月
+    - 八月
+    - 九月
+    - 十月
+    - 十一月
+    - 十二月
