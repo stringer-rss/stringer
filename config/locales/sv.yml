@@ -45,6 +45,9 @@ sv:
         passwords_dont_match: Din bekräftelse matchade inte. Försök igen.
       subtitle: ! 'Det finns bara en användare: du.'
       title: Stringer är
+  flash:
+    cookies_required: 
+    js_required: 
   import:
     description: ! '%{link} dina feeds från Google Reader och importera dom.'
     export: Exportera

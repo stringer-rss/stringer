@@ -45,6 +45,9 @@ de:
         passwords_dont_match: Hey, deine Passwortbestätigung stimmte nicht überein. Probiere es noch einmal.
       subtitle: ! 'Es gibt nur einen Benutzer: Dich.'
       title: Stringer ist
+  flash:
+    cookies_required: 
+    js_required: 
   import:
     description: ! '%{link} deine Feeds aus Google Reader und importiere sie hier.'
     export: Exportiere

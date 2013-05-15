@@ -45,6 +45,9 @@ he:
         passwords_dont_match: הי, אימות הסיסמה אינו זהה. נסה שוב.
       subtitle: יש רק משתמש יחיד. אתה.
       title: סטרינגר זה
+  flash:
+    cookies_required: 
+    js_required: 
   import:
     description: ! '%{link} את הפיד שלך מ- Google Reader ויבא אותו.'
     export: יצוא

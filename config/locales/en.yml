@@ -33,9 +33,6 @@ en:
     index:
       add: add
       add_some_feeds: Hey, you should %{add} some feeds.
-  flash:
-    js_required: Well, this is awkward. Javascript is required for the app to work properly.
-    cookies_required: Well, this is awkward. Cookies are required for the app to work properly.
   first_run:
     password:
       anti_social: anti-social
@@ -48,6 +45,9 @@ en:
         passwords_dont_match: Hey, your password confirmation didn't match. Try again.
       subtitle: ! 'There is only one user: you.'
       title: Stringer is
+  flash:
+    cookies_required: Well, this is awkward. Cookies are required for the app to work properly.
+    js_required: Well, this is awkward. Javascript is required for the app to work properly.
   import:
     description: ! '%{link} your feeds from Google Reader and import them.'
     export: Export

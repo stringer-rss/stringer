@@ -45,6 +45,9 @@ nl:
         passwords_dont_match: Hé, je wachtwoordbevestiging kwam niet overeen. Probeer het opnieuw.
       subtitle: ! 'Er is maar één gebruiker: jij.'
       title: Stringer is
+  flash:
+    cookies_required: 
+    js_required: 
   import:
     description: ! '%{link} je feeds uit Google Reader en importeer ze.'
     export: Exporteer

@@ -45,6 +45,9 @@ ru:
         passwords_dont_match: Эй, Ваше подтверждение пароля не совпадает. Попробуйте еще раз.
       subtitle: ! 'Существует только один пользователь: ВЫ.'
       title: Стингер это
+  flash:
+    cookies_required: 
+    js_required: 
   import:
     description: ! '%{link} фиды из Google Reader и импортировать их.'
     export: Экспортировать

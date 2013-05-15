@@ -45,6 +45,9 @@ it:
         passwords_dont_match: 
       subtitle: ! 'Esiste un solo utente: tu.'
       title: Stringer è
+  flash:
+    cookies_required: 
+    js_required: 
   import:
     description: ! '%{link} i tuoi feed da Google Reader e importali qui.'
     export: Esporta

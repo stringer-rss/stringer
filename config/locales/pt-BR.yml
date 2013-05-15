@@ -45,6 +45,9 @@ pt-BR:
         passwords_dont_match: Hey, a confirmação de senha não confere. Tente novamente.
       subtitle: ! 'Existe apenas um usuário: você.'
       title: Stringer é
+  flash:
+    cookies_required: 
+    js_required: 
   import:
     description: ! '%{link} seus feeds do Google Reader e importe-os.'
     export: Exportar

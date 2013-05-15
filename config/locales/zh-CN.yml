@@ -45,6 +45,9 @@ zh-CN:
         passwords_dont_match: 两次输入的密码不同，麻烦你重新输入啦。
       subtitle: 这里将只会有一个用户，那就是你
       title: Stringer是
+  flash:
+    cookies_required: 抱歉，你的浏览器禁用了Cookie记录功能。为了你的正常使用，请开启浏览器的Cookie功能。
+    js_required: 抱歉，你的浏览器禁用了Javascript脚本。为了你的正常使用，请开启脚本功能。
   import:
     description: ! '%{link}你在Google Reader上的订阅列表然后再将它们导入这里'
     export: 导出

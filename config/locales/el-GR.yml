@@ -45,6 +45,9 @@ el-GR:
         passwords_dont_match: Ψψψιιτ, η επιβεβαίωση του κωδικού σου δεν ταιριάζει με τον κωδικό.
       subtitle: ! 'Υπάρχει μόνο ένας χρήστης: Εσύ!'
       title: Το Stringer είναι
+  flash:
+    cookies_required: 
+    js_required: 
   import:
     description: Πάρε τα ιστολόγια σου απο δω %{link} και εισήγαγε τα.
     export: Εξαγωγή

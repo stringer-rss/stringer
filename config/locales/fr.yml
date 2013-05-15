@@ -45,6 +45,9 @@ fr:
         passwords_dont_match: Les mots de passe sont différents. Essayez encore.
       subtitle: ! 'Il n''y a qu''un seul utilisateur : vous.'
       title: Stringer est
+  flash:
+    cookies_required: 
+    js_required: 
   import:
     description: ! '%{link} vos flux provenant de Google Reader et importez-les.'
     export: Exportez
