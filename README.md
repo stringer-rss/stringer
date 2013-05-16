@@ -89,6 +89,7 @@ In development, stringer uses `sqlite` - there are issues with locking if you ru
 To get started using Stringer locally simply run the following:
 
 ```sh
+bundle install
 rake db:migrate
 foreman start
 ```
