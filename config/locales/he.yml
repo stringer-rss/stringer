@@ -98,6 +98,7 @@ he:
       archive: ראה את כל הפריטים
       go_make: ולך תעשה משהו חיוני
       gtfo: הפסק לקרוא בלוגים
+      rss_zero: 
   sessions:
     destroy:
       flash:

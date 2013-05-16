@@ -98,6 +98,7 @@ es:
       archive: view all items
       go_make: ve a hacer algo
       gtfo: Ahora deja de leer blogs y
+      rss_zero: 
   sessions:
     destroy:
       flash:

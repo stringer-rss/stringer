@@ -98,6 +98,7 @@ ja:
       archive: すべてのアイテムをみる
       go_make: 何か作ろう
       gtfo: ブログを読むのをやめて
+      rss_zero: 
   sessions:
     destroy:
       flash:

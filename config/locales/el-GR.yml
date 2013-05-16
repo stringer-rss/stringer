@@ -98,6 +98,7 @@ el-GR:
       archive: εμφάνισης όλων των αντικειμένων
       go_make: και δράσε
       gtfo: ! 'Τώρα σταμάτα να διαβάζεις ιστολόγια '
+      rss_zero: Έχεις Μηδέν RSS Ειδήσεις
   sessions:
     destroy:
       flash:

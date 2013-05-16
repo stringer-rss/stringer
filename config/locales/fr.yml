@@ -98,6 +98,7 @@ fr:
       archive: voir toutes les entrées
       go_make: allez faire quelque chose
       gtfo: Maintenant cessez de lire et
+      rss_zero: Vous avez atteint RSS Zéro&trade;
   sessions:
     destroy:
       flash:

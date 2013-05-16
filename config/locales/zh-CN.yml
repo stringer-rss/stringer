@@ -98,6 +98,7 @@ zh-CN:
       archive: 查看所有故事
       go_make: 去做些其它事了
       gtfo: 是时候停止阅读
+      rss_zero: 你已经达成了零RSS的任务&trade;
   sessions:
     destroy:
       flash:

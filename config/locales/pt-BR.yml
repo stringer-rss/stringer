@@ -98,6 +98,7 @@ pt-BR:
       archive: visualizar todos os itens
       go_make: vá fazer alguma coisa
       gtfo: Agora pare de ler blogs e
+      rss_zero: Você alcançou RSS Zero&trade;
   sessions:
     destroy:
       flash:

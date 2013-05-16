@@ -98,6 +98,7 @@ nl:
       archive: alle artikelen bekijken
       go_make: ga iets maken
       gtfo: Stop met het lezen van blogs en
+      rss_zero: Je hebt RSS Zero&trade; bereikt
   sessions:
     destroy:
       flash:

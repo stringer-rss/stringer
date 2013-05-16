@@ -98,6 +98,7 @@ ru:
       archive: Просмотреть все ФИДы
       go_make: сделаите что-то полезное
       gtfo: Теперь прекратите читать блоги и
+      rss_zero: Вы достигли RSS Zero&trade;
   sessions:
     destroy:
       flash:
