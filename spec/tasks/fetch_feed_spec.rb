@@ -6,7 +6,8 @@ describe FetchFeed do
     let(:daring_fireball) do
      stub(url: "http://daringfireball.com/feed", 
           last_fetched: Time.new(2013,1,1),
-          stories: [])
+          stories: [],
+          reload: true)
     end
 
     before do

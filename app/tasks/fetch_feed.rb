@@ -22,6 +22,7 @@ class FetchFeed
       FeedRepository.update_last_fetched(@feed, raw_feed.last_modified)
       FeedRepository.set_status(:green, @feed)
     rescue Exception => ex
+      @feed.reload
       FeedRepository.set_status(:red, @feed)
 
       @logger.error "Something went wrong when parsing #{@feed.url}: #{ex}" if @logger
