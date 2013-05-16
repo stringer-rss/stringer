@@ -5,6 +5,7 @@ Bundler.require
 
 require "./app"
 require_relative "./app/tasks/fetch_feeds"
+require_relative "./app/tasks/change_password"
 
 desc "Fetch all feeds."
 task :fetch_feeds do
@@ -24,6 +25,11 @@ end
 desc "Work the delayed_job queue."
 task :work_jobs do
   Delayed::Worker.new(:min_priority => ENV['MIN_PRIORITY'], :max_priority => ENV['MAX_PRIORITY']).start
+end
+
+desc "Change your password"
+task :change_password do
+  ChangePassword.new.change_password
 end
 
 require 'rspec/core/rake_task'
