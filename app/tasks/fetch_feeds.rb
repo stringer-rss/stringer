@@ -1,3 +1,4 @@
+require 'thread/pool'
 require_relative "fetch_feed"
 
 class FetchFeeds
@@ -6,9 +7,15 @@ class FetchFeeds
   end
 
   def fetch_all
+    pool = Thread.pool(10)
+
     @feeds.each do |feed|
-      FetchFeed.new(feed).fetch
+      pool.process do
+        FetchFeed.new(feed).fetch
+      end
     end
+
+    pool.shutdown
   end
 
   def self.enqueue(feeds)

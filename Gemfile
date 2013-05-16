@@ -19,6 +19,7 @@ gem "feedbag", github: "dwillis/feedbag"
 gem "coveralls", require: false
 gem "uglifier"
 gem "highline", require: false
+gem "thread"
 
 group :production do
   gem "unicorn"
