@@ -98,6 +98,7 @@ en:
       archive: view all items
       go_make: go make something
       gtfo: Now stop reading blogs and
+      zero: You've reached RSS Zero
   sessions:
     destroy:
       flash:
