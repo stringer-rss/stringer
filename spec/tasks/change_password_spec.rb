@@ -1,12 +1,13 @@
 require "spec_helper"
+
 app_require "tasks/change_password"
 
 describe ChangePassword do
-  let(:ui)          { double("ui")      }
-  let(:command)     { double("command") }
-  let(:new_password){ "new-pw"          }
+  let(:ui) { double("ui") }
+  let(:command) { double("command") }
+  let(:new_password) { "new-pw" }
 
-  let(:task)        { ChangePassword.new(ui, command) }
+  let(:task) { ChangePassword.new(ui, command) }
 
   describe "#change_password" do
     it "invokes command with confirmed password" do

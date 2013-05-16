@@ -15,10 +15,9 @@ class ChangePassword
   end
 
   private
-
   def ask_password
     ask_hidden("New password: ") do |q|
-      q.validate     = /\A.+\Z/
+      q.validate = /\A.+\Z/
       q.responses[:not_valid] = "The password can't be blank."
     end
   end
