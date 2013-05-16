@@ -1,4 +1,5 @@
 class FindNewStories
+  attr_accessor :raw_feed,:last_fetched,:latest_url
   def initialize(raw_feed, last_fetched, latest_url = nil)
     @raw_feed = raw_feed
     @last_fetched = last_fetched
@@ -6,15 +7,15 @@ class FindNewStories
   end
 
   def new_stories
-    return [] if @raw_feed.last_modified &&
-                 @raw_feed.last_modified < @last_fetched
+    return [] if raw_feed.last_modified &&
+                 raw_feed.last_modified < last_fetched
 
     stories = []
-    @raw_feed.entries.each do |story|
-      break if @latest_url && story.url == @latest_url
+    raw_feed.entries.each do |story|
+      break if latest_url && story.url == latest_url
 
       stories << story unless story.published && 
-                              story.published < @last_fetched
+                              story.published < last_fetched
     end
 
     stories
