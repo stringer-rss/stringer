@@ -2,16 +2,17 @@ require "highline"
 require_relative "../commands/users/change_user_password"
 
 class ChangePassword
+  attr_accessor :ui,:command
   def initialize(ui = HighLine.new, command = ChangeUserPassword.new)
     @ui      = ui
     @command = command
   end
 
   def change_password
-    while (password = ask_password) != (confirmation = ask_confirmation)
-      @ui.say "The confirmation doesn't match the password. Please try again."
+    while (password = ask_password) != ask_confirmation
+      ui.say "The confirmation doesn't match the password. Please try again."
     end
-    @command.change_user_password(password)
+    command.change_user_password(password)
   end
 
   private
@@ -27,7 +28,7 @@ class ChangePassword
   end
 
   def ask_hidden(question)
-    @ui.ask(question) do |q|
+    ui.ask(question) do |q|
       q.echo = "*"
       yield(q) if block_given?
     end
