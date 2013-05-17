@@ -62,8 +62,6 @@ GEM
     diff-lcs (1.2.4)
     dotenv (0.7.0)
     eventmachine (1.0.3)
-    execjs (1.4.0)
-      multi_json (~> 1.0)
     faker (1.1.2)
       i18n (~> 0.5)
     foreman (0.63.0)
@@ -135,9 +133,6 @@ GEM
     thor (0.18.1)
     tilt (1.4.1)
     tzinfo (0.3.37)
-    uglifier (2.1.0)
-      execjs (>= 0.3.0)
-      multi_json (~> 1.0, >= 1.0.2)
     unicorn (4.6.2)
       kgio (~> 2.6)
       rack
@@ -173,6 +168,5 @@ DEPENDENCIES
   sinatra-contrib!
   sinatra-flash
   sqlite3
-  uglifier
   unicorn
   will_paginate

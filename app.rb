@@ -75,7 +75,7 @@ class Stringer < Sinatra::Base
       "/css/styles.css"
     ]
 
-    js_compression  :uglify
+    js_compression  :jsmin
     css_compression :simple
 
     prebuild true unless ENV['RACK_ENV'] == 'test'
