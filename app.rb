@@ -53,9 +53,9 @@ class Stringer < Sinatra::Base
   end
 
   assets {
-    serve "/js",     from: "/js"
-    serve "/css",    from: "/css"
-    serve "/images", from: "/img"
+    serve "/js",     from: "app/public/js"
+    serve "/css",    from: "app/public/css"
+    serve "/images", from: "app/public/img"
 
     js :application, "/js/application.js", [
       "/js/jquery-min.js",
@@ -79,7 +79,6 @@ class Stringer < Sinatra::Base
     css_compression :simple
 
     prebuild true unless ENV['RACK_ENV'] == 'test'
-    cache_dynamic_assets true
   }
 
   before do
