@@ -3,7 +3,7 @@ require "feedzirra"
 
 class FeedDiscovery
   def discover(url, finder = Feedbag, parser = Feedzirra::Feed)
-    feed = get_feed_for_url(url, finder, parser) do
+    get_feed_for_url(url, finder, parser) do
       urls = finder.find(url)
       return false if urls.empty?
 
@@ -11,7 +11,6 @@ class FeedDiscovery
         return false
       end
     end
-    feed
   end
 
   def get_feed_for_url(url, finder, parser)
