@@ -44,7 +44,7 @@ Load the app and follow the instructions to import your feeds and start using th
 
 ---
 
-To change your stringer password run `heroku run rake change_password`  from the app folder.
+In the event that you need to change your password, run `heroku run rake change_password`  from the app folder.
 
 ## Updating the app
 
