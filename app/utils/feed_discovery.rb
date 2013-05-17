@@ -11,13 +11,13 @@ class FeedDiscovery
         return false
       end
     end
-
-    feed.feed_url ||= url
     feed
   end
 
   def get_feed_for_url(url, finder, parser)
     feed = parser.fetch_and_parse(url)
+    feed.feed_url ||= url
+    feed
   rescue Exception
     yield if block_given?
   end
