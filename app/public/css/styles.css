@@ -327,6 +327,18 @@ li.feed .last-updated-time {
   display: inline-block;
 }
 
+li.feed .feed-url-link a {
+  color: #484948;
+  text-decoration: none;
+  text-align: center;
+  margin-left: 2px;
+  padding: 5px;
+}
+
+li.feed .feed-url-link a:hover {
+  color: #7F8281;
+}
+
 li.feed .remove-feed {
   cursor: pointer;
 }
