@@ -26,16 +26,16 @@ ja:
         feed_url: フィードURL
         submit: 追加
       flash:
-        added_successfully: 新しいフィードを追加しました、ちょっと経ったら確認して下さい
+        added_successfully: 新しいフィードを追加しました、少し経ってから確認して下さい
         already_subscribed_error: このフィードは既に登録されてます
         feed_not_found_error: フィードを見つけられませんでした、もう一度試して下さい
       title: 新しいストーリーが必要ですか?
     index:
       add: 追加
-      add_some_feeds: いくつかフィードを%{add}したよ
+      add_some_feeds: 何かフィードを%{add}する必要があります
   first_run:
     password:
-      anti_social: 反社交的
+      anti_social: アンチソーシャル
       description: あなただけが読むためにパスワードを設定しよう
       fields:
         next: 次へ
@@ -49,7 +49,7 @@ ja:
     cookies_required: 正常に動作するためにクッキーを有効にして下さい
     js_required: 正常に動作するためにJavascriptを有効にして下さい
   import:
-    description: ! '%{link} あなたのGoogle Readerのフィードです、それらを取り込みます'
+    description: ! '%{link} あなたのGoogle Readerからのフィードです、それを取り込めます'
     export: 書き出し
     fields:
       import: 取り込み
@@ -57,7 +57,7 @@ ja:
     subtitle: フィードを設定しよう
     title: ようこそ
   layout:
-    back_to_work: Get back to work, slacker!
+    back_to_work: 怠け者さん！仕事に戻りましょう
     export: 書き出し
     hey: Hey!
     logout: ログアウト
@@ -66,21 +66,21 @@ ja:
   partials:
     action_bar:
       add_feed: フィードを追加する
-      archived_stories: ストーリーを保存する
+      archived_stories: アーカイブ
       mark_all: すべて既読にする
       refresh: リフレッシュ
       view_feeds: 購読フィードを見る
     feed:
       last_fetched:
-        never: Never
+        never: まだない
       last_updated: 最終更新
       status_bubble:
-        green: 成功!
+        green: 成功！
         red: パースエラー（以前にも動いていない)
         yellow: パースエラー（たぶん一時的）
     feed_action_bar:
       add_feed: フィードを追加
-      archived_stories: 保存したストーリー
+      archived_stories: アーカイブ
       feeds: 購読フィードを見る
       home: ストーリーに戻る
     shortcuts:
@@ -98,11 +98,11 @@ ja:
       archive: すべてのアイテムをみる
       go_make: 何か作ろう
       gtfo: ブログを読むのをやめて
-      rss_zero: 
+      rss_zero: RSS Zero&trade; に達しました
   sessions:
     destroy:
       flash:
-        logged_out_successfully: サインアウトしました!
+        logged_out_successfully: サインアウトしました！
     new:
       fields:
         password: パスワード

@@ -3,7 +3,7 @@ fr:
     next: Suivant
     of: de
     previous: Précédent
-    sorry: Désolé, vous n'avez encore lu aucune Histoire !
+    sorry: Désolé, vous n'avez encore rien lu !
   date:
     abbr_month_names:
     - 
@@ -26,23 +26,23 @@ fr:
         feed_url: URL du flux
         submit: Ajouter
       flash:
-        added_successfully: Nous avons ajouté le nouveau flux. Vérifiez dans quelques instants.
+        added_successfully: Le nouveau flux a été ajouté. Patientez quelques instants.
         already_subscribed_error: Vous suivez déjà ce flux...
         feed_not_found_error: Nous n'avons pas pu trouver ce flux. Essayez de nouveau.
-      title: Besoin de nouvelles Histoires ?
+      title: Besoin de nouveaux articles ?
     index:
       add: ajouter
       add_some_feeds: Vous devriez %{add} quelques flux.
   first_run:
     password:
       anti_social: anti-social
-      description: Choisissez un mot de passe pour être le seul à lire vos Histoires.
+      description: Choisissez un mot de passe pour être le seul à lire vos articles.
       fields:
         next: Suivant
         password: Mot de passe
         password_confirmation: Confirmez
       flash:
-        passwords_dont_match: Les mots de passe sont différents. Essayez encore.
+        passwords_dont_match: Les mots de passe sont différents. Essayez à nouveau.
       subtitle: ! 'Il n''y a qu''un seul utilisateur : vous.'
       title: Stringer est
   flash:
@@ -66,7 +66,7 @@ fr:
   partials:
     action_bar:
       add_feed: Ajouter un flux
-      archived_stories: Histoires archivées
+      archived_stories: Articles archivés
       mark_all: Tout marquer comme lu
       refresh: Rafraîchir
       view_feeds: Voir vos flux
@@ -76,23 +76,23 @@ fr:
       last_updated: Dernière mise à jour
       status_bubble:
         green: Succès !
-        red: Erreur d'analyse (n'a jamais fonctionné avant, non plus)
+        red: Erreur d'analyse (n'ayant jamais fonctionné avant)
         yellow: Erreur d'analyse (probablement temporaire)
     feed_action_bar:
       add_feed: Ajouter un flux
-      archived_stories: Histoires archivées
+      archived_stories: Articles archivés
       feeds: Voir vos flux
-      home: Revenir aux Histoires
+      home: Revenir aux Articles
     shortcuts:
       keys:
-        jk: Histoire suivante/précédante
-        m: Marquer l'Histoire comme lue/non lue
-        np: Descendre/monter
-        oenter: Ouvrir/fermer l'Histoire
+        jk: Article suivant/précédent
+        m: Marquer ceci comme lu/non lu
+        np: Vers le bas / vers le haut
+        oenter: Ouvrir/fermer l'article
         or: ou
         r: Rafraîchir
         shifta: Tout marquer comme lu
-        v: Aller à l'URL de l'Histoire
+        v: Aller à l'URL de l'article
       title: Raccourcis clavier
     zen:
       archive: voir toutes les entrées
@@ -110,10 +110,10 @@ fr:
       flash:
         wrong_password: Ce n'est pas le bon mot de passe. Essayez encore.
       rss: RSS
-      subtitle: Bienvenue, ami.
+      subtitle: Content de vous revoir l'ami.
       title: Stringer parle le
   stories:
-    keep_unread: Rester non lus
+    keep_unread: Marquer comme non lu
   time:
     formats:
       default: ! '%d %b %H:%M'
@@ -121,7 +121,7 @@ fr:
     add_feed: ajouter un flux
     as_read: comme lu
     click_to_read: (cliquer pour lire)
-    description: Nous récupérons quelques Histoires à lire, donnez-nous une seconde.
+    description: Nous récupérons quelques articles à lire, donnez-nous une seconde.
     mark_all: tout marquer
     ready: Ok, c'est prêt !
     refresh: rafraîchir
@@ -130,4 +130,4 @@ fr:
     subtitle: Voici le manuel d'utilisation.
     title: ! 'Stringer est '
     your_feeds: vos flux
-    your_stories: vos Histoires
+    your_stories: vos articles

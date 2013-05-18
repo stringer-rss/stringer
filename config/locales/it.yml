@@ -98,7 +98,7 @@ it:
       archive: vai all'archivio
       go_make: vai a fare altro
       gtfo: Ora piantala di leggere blog e
-      rss_zero: 
+      rss_zero: Hai raggiunto l'RSS Zero&trade;
   sessions:
     destroy:
       flash:
