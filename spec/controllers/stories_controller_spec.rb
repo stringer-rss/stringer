@@ -98,9 +98,9 @@ describe "StoriesController" do
     context "keep_unread parameter" do
       context "when it is not malformed" do
         it "marks a story as permanently unread" do
-          put "/stories/#{story_one.id}", {keep_unread: true}.to_json
+          put "/stories/#{story_one.id}", {keep_unread: false}.to_json
 
-          story_one.keep_unread.should eq true
+          story_one.keep_unread.should eq false
         end
       end
 
