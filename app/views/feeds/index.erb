@@ -3,7 +3,7 @@
 </div>
 
 <% unless @feeds.empty? %>
-<div id="feeds">
+<div id="feeds-container">
   <ul id="feed-list">
     <% @feeds.each do |feed| %>
       <%= render_partial :feed, { feed: feed } %>

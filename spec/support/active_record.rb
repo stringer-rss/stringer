@@ -1,6 +1,7 @@
 require 'active_record'
 
-ActiveRecord::Base.establish_connection adapter: "sqlite3", database: "db/stringer_test.sqlite"
+config = YAML.load(File.read('config/database.yml'))
+ActiveRecord::Base.establish_connection(config['test'])
 
 def need_to_migrate?
   current_migration = ActiveRecord::Migrator.current_version

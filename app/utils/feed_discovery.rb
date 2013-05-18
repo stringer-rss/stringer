@@ -3,21 +3,21 @@ require "feedzirra"
 
 class FeedDiscovery
   def discover(url, finder = Feedbag, parser = Feedzirra::Feed)
-    begin
-      feed = parser.fetch_and_parse(url)
-      feed.feed_url ||= url
-      return feed
-    rescue Exception => e
+    get_feed_for_url(url, finder, parser) do
       urls = finder.find(url)
       return false if urls.empty?
-    end
 
-    begin
-      feed = parser.fetch_and_parse(urls.first)
-      feed.feed_url ||= urls.first
-      return feed
-    rescue Exception => e
-      return false
+      get_feed_for_url(urls.first, finder, parser) do
+        return false
+      end
     end
+  end
+
+  def get_feed_for_url(url, finder, parser)
+    feed = parser.fetch_and_parse(url)
+    feed.feed_url ||= url
+    feed
+  rescue Exception
+    yield if block_given?
   end
 end

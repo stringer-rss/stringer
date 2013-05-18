@@ -36,11 +36,15 @@ heroku restart
 
 heroku addons:add scheduler
 heroku addons:open scheduler
-
-Add an hourly task that runs `rake fetch_feeds`
 ```
 
+Add an hourly task that runs `rake fetch_feeds`
+
 Load the app and follow the instructions to import your feeds and start using the app.
+
+---
+
+In the event that you need to change your password, run `heroku run rake change_password`  from the app folder.
 
 ## Updating the app
 
@@ -89,6 +93,7 @@ In development, stringer uses `sqlite` - there are issues with locking if you ru
 To get started using Stringer locally simply run the following:
 
 ```sh
+bundle install
 rake db:migrate
 foreman start
 ```

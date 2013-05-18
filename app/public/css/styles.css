@@ -16,7 +16,8 @@ hr {
 }
 
 .container {
-  width: 720px;
+  width: 100%;
+  max-width: 720px;
   margin: 0 auto;
 }
 
@@ -326,6 +327,18 @@ li.feed .last-updated-time {
   display: inline-block;
 }
 
+li.feed .feed-url-link a {
+  color: #484948;
+  text-decoration: none;
+  text-align: center;
+  margin-left: 2px;
+  padding: 5px;
+}
+
+li.feed .feed-url-link a:hover {
+  color: #7F8281;
+}
+
 li.feed .remove-feed {
   cursor: pointer;
 }
@@ -368,7 +381,7 @@ li.feed .remove-feed a:hover {
   color: #F67100;
 }
 
-#add-feed {
+#add-feed-container {
   padding-top: 10px;
 }
 

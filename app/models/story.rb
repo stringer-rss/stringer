@@ -8,11 +8,11 @@ class Story < ActiveRecord::Base
   UNTITLED = "[untitled]"
 
   def headline
-    self.title.nil? ? UNTITLED : self.title[0, 50]
+    self.title.nil? ? UNTITLED : strip_html(self.title)[0, 50]
   end
 
   def lead
-    Loofah.fragment(self.body).text[0,100]
+    strip_html(self.body)[0,100]
   end
 
   def source
@@ -25,5 +25,10 @@ class Story < ActiveRecord::Base
 
   def as_json(options = {})
     super(methods: [:headline, :lead, :source, :pretty_date])
+  end
+
+  private
+  def strip_html(contents)
+    Loofah.fragment(contents).text
   end
 end
