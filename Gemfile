@@ -18,6 +18,7 @@ gem "nokogiri"
 gem "feedbag", github: "dwillis/feedbag"
 gem "coveralls", require: false
 gem "highline", require: false
+gem "thread"
 
 group :production do
   gem "unicorn"
