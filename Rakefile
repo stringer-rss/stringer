@@ -10,7 +10,6 @@ require_relative "./app/tasks/change_password"
 desc "Fetch all feeds."
 task :fetch_feeds do
   FetchFeeds.new(Feed.all).fetch_all
-  ActiveRecord::Base.clear_active_connections!
 end
 
 desc "Fetch single feed"
