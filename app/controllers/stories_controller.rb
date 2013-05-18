@@ -15,7 +15,7 @@ class Stringer < Sinatra::Base
   end
 
   get "/starred" do
-    @starred_stories = StoryRepository.read(params[:page])
+    @starred_stories = StoryRepository.starred(params[:page])
 
     erb :starred
   end
