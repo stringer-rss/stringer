@@ -331,8 +331,8 @@ li.feed .feed-url-link a {
   color: #484948;
   text-decoration: none;
   text-align: center;
-  padding-left: 2px;
-  padding-right: 2px;
+  margin-left: 2px;
+  padding: 5px;
 }
 
 li.feed .feed-url-link a:hover {
@@ -345,9 +345,9 @@ li.feed .remove-feed {
 
 li.feed .remove-feed a {
   text-align: center;
-  padding-left: 2px;
-  padding-right: 2px;
-  margin-left: 5px;
+  padding-left: 3px;
+  padding-right: 3px;
+  margin-left: 10px;
   color: #C0392B;
 }
 

@@ -4,6 +4,11 @@
       <p class="feed-title">
         <i class="icon-circle status <%= feed.status_bubble %>" data-toggle="tooltip" title="<%= t("partials.feed.status_bubble.#{feed.status_bubble}") if feed.status_bubble %>" data-placement="left"></i>
         <%= feed.name %>
+        <span class="feed-url-link">
+          <a class="feed-url" href="<%= feed.url %>">
+            <i class="icon-external-link"></i>
+          </a>
+        </span>
       </p>
     </div>
     <div class="span4 feed-last-updated">
@@ -17,11 +22,6 @@
       </span>
     </div>
     <div class="span1">
-      <span class="feed-url-link">
-        <a class="feed-url" href="<%= feed.url %>" target="_blank">
-          <i class="icon-external-link"></i>
-        </a>
-      </span>
       <span class="remove-feed">
         <a class="icon-remove"></a>
       <span/>
