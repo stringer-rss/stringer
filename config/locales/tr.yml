@@ -21,7 +21,7 @@ tr:
     - Aralik
   feeds:
     add:
-description: Okumak isteginiz blogun URL'sini yapistirin.
+      description: Okumak isteginiz blogun URL'sini yapistirin.
       fields:
         feed_url: Besleme URL'si
         submit: Ekle
