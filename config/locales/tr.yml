@@ -49,7 +49,7 @@ tr:
     cookies_required: Aaa, garip!. Uygulamanin duzgun calismasi icin Cookies gerekli.
     js_required: Aaa, garip. Uygulamanin duzgun calismasi icin Javascript gerekli.
   import:
-    description: ! 'Beslemelerinizi Google Readerdan ekleyin.'
+    description: 
     export: Disa Aktar
     fields:
       import: Ekle
@@ -131,4 +131,3 @@ tr:
     title: ! 'Stringer '
     your_feeds: beslemeleriniz
     your_stories: hikayeleriniz
-
