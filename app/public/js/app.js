@@ -224,6 +224,11 @@ var StoryList = Backbone.Collection.extend({
   toggleCurrentKeepUnread: function() {
     if (this.cursorPosition < 0) this.cursorPosition = 0;
     this.at(this.cursorPosition).toggleKeepUnread();
+  },
+
+  toggleCurrentStarred: function() {
+    if (this.cursorPosition < 0) this.cursorPosition = 0;
+    this.at(this.cursorPosition).toggleStarred();
   }
 });
 
@@ -284,6 +289,10 @@ var AppView = Backbone.View.extend({
 
   toggleCurrentKeepUnread: function() {
     this.stories.toggleCurrentKeepUnread();
+  },
+
+  toggleCurrentStarred: function() {
+    this.stories.toggleCurrentStarred();
   }
 });
 

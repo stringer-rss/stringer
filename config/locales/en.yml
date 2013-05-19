@@ -94,6 +94,7 @@ en:
       keys:
         jk: Next/previous story
         m: Mark item as read/unread
+        s: Mark item as starred/unstarred
         np: Move down/move up
         oenter: Toggle story open/closed
         or: or
