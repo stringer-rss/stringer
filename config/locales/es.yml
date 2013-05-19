@@ -3,22 +3,22 @@ es:
     next: Siguiente
     of: de
     previous: Anterior
-    sorry: Sorry, you haven't read any stories yet!
+    sorry: ! 'Disculpa, no has leido ninguna historia aún! '
   date:
     abbr_month_names:
     - 
-    - ene
-    - feb
-    - mar
-    - abr
-    - may
-    - jun
-    - jul
-    - ago
-    - sep
-    - oct
-    - nov
-    - dic
+    - Ene
+    - Feb
+    - Mar
+    - Abr
+    - May
+    - Jun
+    - Jul
+    - Ago
+    - Sep
+    - Oct
+    - Nov
+    - Dic
   feeds:
     add:
       description: Pega en la URL del blog lo que quieras leer
@@ -26,7 +26,7 @@ es:
         feed_url: Feed URL
         submit: Añadir
       flash:
-        added_successfully: Hemos agregado tu nuevo feed. Vuelve a revisar en unos momentos.
+        added_successfully: Hemos agregado tu nuevo feed. Vuelve a revisar en algunos momentos.
         already_subscribed_error: Actualmente ya estas suscrito a este feed...
         feed_not_found_error: No podemos encontrar ese feed. Intentalo de nuevo.
       title: ¿Necesitas nuevas historias?
@@ -42,7 +42,7 @@ es:
         password: Contraseña
         password_confirmation: Confirmar
       flash:
-        passwords_dont_match: Hey, la confirmación del password no concuerda. Intentalo de nuevo.
+        passwords_dont_match: Hey, la confirmación del password no coincide. Intentalo de nuevo.
       subtitle: ! 'Hay solo un usuario: tu.'
       title: Stringer es
   flash:
@@ -98,7 +98,7 @@ es:
       archive: view all items
       go_make: ve a hacer algo
       gtfo: Ahora deja de leer blogs y
-      rss_zero: 
+      rss_zero: Tu has alcanzado RSS Zero&trade;
   sessions:
     destroy:
       flash:

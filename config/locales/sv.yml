@@ -21,7 +21,7 @@ sv:
     - dec
   feeds:
     add:
-      description: Kopiera in URL:en till bloggen du vill läsa
+      description: Kopiera in URL:en till bloggen du vill läsa.
       fields:
         feed_url: Feedens URL
         submit: Lägg till
@@ -116,7 +116,7 @@ sv:
     keep_unread: Behåll oläst
   time:
     formats:
-      default: ! '%e %berättelser %H:%M'
+      default: ! '%e %b %H:%M'
   tutorial:
     add_feed: lägg till feed
     as_read: som lästa
