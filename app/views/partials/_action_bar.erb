@@ -1,11 +1,14 @@
 <div class="row-fluid">
   <div class="pull-left">
+    <a class="btn" id="back-to-feeds" href="/feeds" title="<%= t('partials.action_bar.view_feeds') %>">
+      <i class="icon-reply"></i>
+    </a>
     <a class="btn" id="mark-all" title="<%= t('partials.action_bar.mark_all') %>">
       <i class="icon-ok"></i>
       <%= render_partial :mark_all_as_read_form,
-                        {stories: stories} %>
+                        {stories: stories, feed_id: feed_id} %>
     </a>
-    <a class="btn" href="/" id="refresh" title="<%= t('partials.action_bar.refresh') %>">
+    <a class="btn" href="/news<%= @feed_id ? ('/' + @feed_id) : '' %>" id="refresh" title="<%= t('partials.action_bar.refresh') %>">
       <i class="icon-repeat"></i>
     </a>
   </div>

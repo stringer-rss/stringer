@@ -27,6 +27,10 @@ class StoryRepository
     Story.where(is_read: false).order("published desc") 
   end
 
+  def self.unread_by_feed_id(feed_id)
+    unread.where(feed_id: feed_id)
+  end
+
   def self.read(page = 1)
     Story.where(is_read: true).order("published desc").page(page).per_page(15)
   end
@@ -37,7 +41,7 @@ class StoryRepository
 
   def self.extract_content(entry)
     sanitized_content = ""
-    
+
     if entry.content
       sanitized_content = entry.content.sanitize
     elsif entry.summary
