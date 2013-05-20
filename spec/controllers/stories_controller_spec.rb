@@ -123,5 +123,14 @@ describe "StoriesController" do
       last_response.status.should be 302
       URI::parse(last_response.location).path.should eq "/news"
     end
+
+    it "marks all unread stories of a feed as read and reload the page" do
+      MarkAllAsRead.any_instance.should_receive(:mark_as_read).once
+
+      post "/mark_all_as_read", story_ids: ["1", "2", "3"], feed_id: 4
+
+      last_response.status.should be 302
+      URI::parse(last_response.location).path.should eq "/news/4"
+    end
   end
 end
