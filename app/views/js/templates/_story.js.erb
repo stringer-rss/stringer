@@ -1,6 +1,11 @@
 <script type="text/template" id="story-template">
   <div class="row-fluid story-preview">
     <div class="span3">
+      <div class="story-starred-box">
+        <div class="story-starred">
+          <i class="icon-star{{ if(!is_starred) { }}-empty{{ } }}"></i>
+        </div>
+      </div>
       <p class="blog-title">
         {{= source }}
       </p>

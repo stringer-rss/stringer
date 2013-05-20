@@ -179,6 +179,13 @@ li.story.open .story-preview {
   margin-right: 25px;
 }
 
+.story-starred-box {
+  display: inline-block;
+  float: left;
+  padding-left: 2px;
+  width: 15%;
+}
+
 .story-starred {
   display: inline-block;
   cursor: pointer;
