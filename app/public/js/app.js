@@ -130,7 +130,6 @@ var StoryView = Backbone.View.extend({
   itemStarred: function() {
     var icon = this.model.get("is_starred") ? "icon-star" : "icon-star-empty";
     this.$(".story-starred > i").attr("class", icon);
-    this.$el.preventDefault();
   },
 
   storyClicked: function() {
@@ -142,7 +141,8 @@ var StoryView = Backbone.View.extend({
     this.model.toggleKeepUnread();
   },
 
-  toggleStarred: function() {
+  toggleStarred: function(e) {
+    e.stopPropagation();
     this.model.toggleStarred();
   }
 });

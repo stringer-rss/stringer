@@ -182,8 +182,8 @@ li.story.open .story-preview {
 .story-starred-box {
   display: inline-block;
   float: left;
-  padding-left: 2px;
-  width: 15%;
+  padding-left: 4px;
+  width: 20%;
 }
 
 .story-starred {
