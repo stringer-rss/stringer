@@ -21,7 +21,7 @@ es:
     - Dic
   feeds:
     add:
-      description: Pega en la URL del blog lo que quieras leer
+      description: Pega la URL del blog que quieras leer
       fields:
         feed_url: Feed URL
         submit: Añadir
@@ -46,8 +46,8 @@ es:
       subtitle: ! 'Hay solo un usuario: tu.'
       title: Stringer es
   flash:
-    cookies_required: Bien, esto es extraño. Las cookies son un requerimiento de funcionamiento de la aplicación.
-    js_required: Bien, esto es extraño- Javascript es un requerimiento para el funcionamiento de la aplicación.
+    cookies_required: Bueno, esto es embarazoso. Las cookies son un requerimiento de funcionamiento de la aplicación.
+    js_required: Bueno, esto es embarazoso. Javascript es un requerimiento para el funcionamiento de la aplicación.
   import:
     description: ! '%{link} tus feeds de google reader e importarlos'
     export: Exportar
@@ -61,12 +61,12 @@ es:
     export: Exportar
     hey: Hey!
     logout: Salir
-    support: Suporte
+    support: Soporte
     title: stringer | Tu Amigo RSS
   partials:
     action_bar:
       add_feed: Añadir feed
-      archived_stories: Archived stories
+      archived_stories: Historias archivadas
       mark_all: Marcar todas como leidas
       refresh: Refrescar
       view_feeds: Ver feeds
@@ -75,12 +75,12 @@ es:
         never: Nunca
       last_updated: Última actualización
       status_bubble:
-        green: ¡ Un éxito!
+        green: ¡Éxito!
         red: Error de análisis (y nunca funcionó antes, tampoco)
         yellow: Error de análisis (probablemente temporal)
     feed_action_bar:
-      add_feed: Añadir a feed
-      archived_stories: Archived stories
+      add_feed: Añadir un feed
+      archived_stories: Historias archivadas
       feeds: Ver feeds
       home: Volver a historias
     shortcuts:
@@ -95,7 +95,7 @@ es:
         v: Ir a URL de la historia
       title: Atajos de teclado
     zen:
-      archive: view all items
+      archive: Ver todos los items
       go_make: ve a hacer algo
       gtfo: Ahora deja de leer blogs y
       rss_zero: Tu has alcanzado RSS Zero&trade;
@@ -108,7 +108,7 @@ es:
         password: Contraseña
         submit: Acceder
       flash:
-        wrong_password: El password es incorrecto. Intentalo de nuevo.
+        wrong_password: El password es incorrecto. Inténtalo de nuevo.
       rss: RSS
       subtitle: Bienvenido de nuevo, amigo.
       title: Stringer que habla
