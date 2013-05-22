@@ -91,7 +91,7 @@ Email: stringer (case-sensitive)
 Password: {your-stringer-password}
 ```
 
-Currently, only reading is supported and this is kind of a hack so please report any issues you run into.
+Currently, only reading is supported and this is kind of a hack so please report any issues you run into. If you have previously setup Stringer, you will need to migrate your database and run `rake change_password` for the API key to be setup properly.
 
 ---
 
