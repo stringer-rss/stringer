@@ -76,6 +76,23 @@ Wait a few minutes for changes to propagate.
 
 ---
 
+ReederApp Support (experimental)
+
+Stringer implements a clone of Fever's API so it can be used with any mobile client that supports Fever.
+
+Use the following settings:
+
+```
+Server: {path-to-stringer}/fever (e.g. http://reader.example.com/fever)
+
+Email: stringer (case-sensitive)
+Password: {your-stringer-password}
+```
+
+Currently, only reading is supported and this is kind of a hack so please report any issues you run into.
+
+---
+
 Stringer has been translated to [several other languages](config/locales). Your language can be set with the `LOCALE` environment variable.
 
 To set your locale on Heroku, run `heroku config:set LOCALE=en`.
