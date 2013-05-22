@@ -78,7 +78,9 @@ Wait a few minutes for changes to propagate.
 
 ReederApp Support (experimental)
 
-Stringer implements a clone of Fever's API so it can be used with any mobile client that supports Fever.
+Stringer implements a clone of [Fever's API](http://www.feedafever.com/api) so it can be used with any mobile client that supports Fever.
+
+![image](https://f.cloud.github.com/assets/56947/546236/68456536-c288-11e2-834b-9043dc75a087.png)
 
 Use the following settings:
 
