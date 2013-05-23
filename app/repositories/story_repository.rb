@@ -19,6 +19,10 @@ class StoryRepository
     Story.where(id: ids)
   end
 
+  def self.fetch_by_ids_without_keep_unread(ids)
+    Story.where(id: ids).where(keep_unread: false)
+  end
+
   def self.save(story)
     story.save
   end
