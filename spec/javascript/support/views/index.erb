@@ -12,7 +12,14 @@
       <link rel="stylesheet" type="text/css" href="<%= css_file%>">
     <% end %>
   </head>
-  <body onload="mocha.run()">
+  <body>
     <div id="mocha"></div>
+    <script type="text/javascript">
+      if(window.mochaPhantomJS) {
+        mochaPhantomJS.run();
+      } else {
+        mocha.run();
+      }
+    </script>
   </body>
 </html>
