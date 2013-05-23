@@ -13,9 +13,9 @@ class FeverAPI < Sinatra::Base
     ActiveRecord::Base.include_root_in_json = false
   end
 
-  # before do
-  #   halt 403 unless authenticated?(params[:api_key])
-  # end
+  before do
+    halt 403 unless authenticated?(params[:api_key])
+  end
 
   def authenticated?(api_key)
     user = User.first
