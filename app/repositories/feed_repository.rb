@@ -21,3 +21,4 @@ class FeedRepository
     Feed.order('lower(name)')
   end
 end
+
