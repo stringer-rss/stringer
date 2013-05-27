@@ -10,3 +10,4 @@ class MarkAllAsRead
     @repo.fetch_by_ids(@story_ids).update_all(is_read: true)
   end
 end
+

@@ -3,8 +3,8 @@ require_relative "../utils/sample_story"
 
 class StoryRepository
   def self.add(entry, feed)
-    Story.create(feed: feed, 
-                title: entry.title, 
+    Story.create(feed: feed,
+                title: entry.title,
                 permalink: entry.url,
                 body: extract_content(entry),
                 is_read: false,
@@ -24,7 +24,11 @@ class StoryRepository
   end
 
   def self.unread
-    Story.where(is_read: false).order("published desc") 
+    Story.where(is_read: false).order("published desc")
+  end
+
+  def self.unread_since_id(since_id)
+    unread.where('id > ?', since_id)
   end
 
   def self.read(page = 1)
@@ -37,7 +41,7 @@ class StoryRepository
 
   def self.extract_content(entry)
     sanitized_content = ""
-    
+
     if entry.content
       sanitized_content = entry.content.sanitize
     elsif entry.summary
@@ -71,3 +75,4 @@ class StoryRepository
     ]
   end
 end
+
