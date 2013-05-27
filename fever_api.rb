@@ -2,8 +2,11 @@ require "sinatra/base"
 require "sinatra/activerecord"
 require "digest/md5"
 
-require_relative "app/models/story"
-require_relative "app/models/feed"
+require_relative "app/repositories/story_repository"
+require_relative "app/repositories/feed_repository"
+
+require_relative "app/commands/stories/mark_as_read"
+require_relative "app/commands/stories/mark_as_unread"
 
 class FeverAPI < Sinatra::Base
   configure do
@@ -46,7 +49,7 @@ class FeverAPI < Sinatra::Base
     end
 
     if keys.include?(:feeds)
-      response[:feeds] = Feed.all.map{|f| f.as_fever_json}
+      response[:feeds] = feeds.map{|f| f.as_fever_json}
       response[:feeds_groups] = feeds_groups
     end
 
@@ -60,7 +63,7 @@ class FeverAPI < Sinatra::Base
     end
 
     if keys.include?(:items)
-      response[:items] = unread_stories.map{|s| s.as_fever_json}
+      response[:items] = unread_stories(params[:since_id]).map{|s| s.as_fever_json}
       response[:total_items] = unread_stories.count
     end
 
@@ -69,24 +72,41 @@ class FeverAPI < Sinatra::Base
     end
 
     if keys.include?(:unread_item_ids)
-      response[:unread_item_ids] = unread_stories.map{|s| s.id}
+      response[:unread_item_ids] = unread_stories.map{|s| s.id}.join(",")
     end
 
     if keys.include?(:saved_item_ids)
-      response[:saved_item_ids] = []
+      response[:saved_item_ids] = ""
+    end
+
+    if params[:mark] == "item"
+      case params[:as]
+      when "read"
+        MarkAsRead.new(params[:id]).mark_as_read
+      when "unread"
+        MarkAsUnread.new(params[:id]).mark_as_unread
+      end
     end
 
     response.to_json
   end
 
-  def unread_stories
-    Story.where(is_read: false)
+  def unread_stories(since_id = nil)
+    if since_id
+      StoryRepository.unread_since_id(since_id)
+    else
+      StoryRepository.unread
+    end
+  end
+
+  def feeds
+    FeedRepository.list
   end
 
   def groups
     [
       {
-        id: 1, 
+        id: 1,
         title: "All items"
       }
     ]
@@ -101,3 +121,4 @@ class FeverAPI < Sinatra::Base
     ]
   end
 end
+
