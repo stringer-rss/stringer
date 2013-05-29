@@ -4,6 +4,11 @@ en:
     of: of
     previous: Previous
     sorry: Sorry, you haven't read any stories yet!
+  starred:
+    next: Next
+    of: of
+    previous: Previous
+    sorry: Sorry, you haven't starred any stories yet!
   date:
     abbr_month_names:
     - 
@@ -70,6 +75,7 @@ en:
       mark_all: Mark all as read
       refresh: Refresh
       view_feeds: View feeds
+      starred_stories: Starred stories
     feed:
       last_fetched:
         never: Never
@@ -83,10 +89,12 @@ en:
       archived_stories: Archived stories
       feeds: View feeds
       home: Return to Stories
+      starred_stories: Starred stories
     shortcuts:
       keys:
         jk: Next/previous story
         m: Mark item as read/unread
+        s: Mark item as starred/unstarred
         np: Move down/move up
         oenter: Toggle story open/closed
         or: or

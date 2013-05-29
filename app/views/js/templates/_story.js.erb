@@ -1,6 +1,9 @@
 <script type="text/template" id="story-template">
   <div class="row-fluid story-preview">
     <div class="span3">
+      <div class="story-starred">
+        <i class="icon-star{{ if(!is_starred) { }}-empty{{ } }}"></i>
+      </div>
       <p class="blog-title">
         {{= source }}
       </p>
@@ -31,6 +34,9 @@
       <div class="pull-right story-actions">
         <div class="story-keep-unread">
           <i class="icon-check{{ if(!keep_unread) { }}-empty{{ } }}"></i> <%= t('stories.keep_unread') %>
+        </div>
+        <div class="story-starred">
+          <i class="icon-star{{ if(!is_starred) { }}-empty{{ } }}"></i>
         </div>
         <a class="story-permalink" href="{{= permalink }}">
           <i class="icon-external-link"></i>

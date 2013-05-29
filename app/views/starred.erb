@@ -1,0 +1,30 @@
+<div id="action-bar">
+  <%= render_partial :feed_action_bar %>
+</div>
+
+<% unless @starred_stories.empty? %>
+  <%= render_js :stories, { stories: @starred_stories } %>
+
+  <div id="stories">
+    <ul id="story-list">
+    </ul>
+  </div>
+
+  <div id="pagination">
+  <% if @starred_stories.previous_page %>
+    <a href="?page=<%= @starred_stories.previous_page %>"><%= t('starred.previous') %></a>
+  <% end %>
+
+  <% if @starred_stories.total_pages > 1 %>
+    <%= @starred_stories.current_page %> <%= t('starred.of') %> <%= @starred_stories.total_pages %>
+  <% end %>
+
+  <% if @starred_stories.next_page %>
+    <a href="?page=<%= @starred_stories.next_page %>"><%= t('starred.next') %></a>
+  <% end %>
+  </div>
+<% else %>
+  <div id="sorry">
+    <p><%= t('starred.sorry') %></p>
+  </div>
+<% end %>

@@ -4,6 +4,11 @@ zh-CN:
     of: of
     previous: 上一页
     sorry: 呃，你现在还没有已经读过的故事
+  starred:
+    next: 下一页
+    of: of
+    previous: 上一页
+    sorry: 呃，你现在还没有为任何故事加注星标
   date:
     abbr_month_names:
     - 
@@ -70,6 +75,7 @@ zh-CN:
       mark_all: 全部标为已读
       refresh: 刷新
       view_feeds: 查看订阅列表
+      starred_stories: 加星标的故事
     feed:
       last_fetched:
         never: 尚未成功读取过
@@ -83,10 +89,12 @@ zh-CN:
       archived_stories: 已读故事
       feeds: 查看订阅列表
       home: 返回未读故事列表
+      starred_stories: 加星标的故事
     shortcuts:
       keys:
         jk: 下一个/上一个故事
         m: 将一个条目标为已读/未读
+        s: 为一个条目加注星标/取消星标
         np: 向上/向下移动
         oenter: 点击打开/关闭
         or: 或
