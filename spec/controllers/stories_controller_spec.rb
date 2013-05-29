@@ -71,6 +71,21 @@ describe "StoriesController" do
     end
   end
 
+  describe "GET /starred" do
+    let(:starred_one) { StoryFactory.build(is_starred: true) }
+    let(:starred_two) { StoryFactory.build(is_starred: true) }
+    let(:stories) { [starred_one, starred_two].paginate }
+    before { StoryRepository.stub(:starred).and_return(stories) }
+
+    it "displays the list of starred stories with pagination" do
+      get "/starred"
+
+      page = last_response.body
+      page.should have_tag("#stories")
+      page.should have_tag("div#pagination")
+    end
+  end
+
   describe "PUT /stories/:id" do
     before { StoryRepository.stub(:fetch).and_return(story_one) }
     context "is_read parameter" do
@@ -109,6 +124,24 @@ describe "StoriesController" do
           put "/stories/#{story_one.id}", {keep_unread: "malformed"}.to_json
 
           story_one.keep_unread.should eq true
+        end
+      end
+    end
+
+    context "is_starred parameter" do
+      context "when it is not malformed" do
+        it "marks a story as permanently starred" do
+          put "/stories/#{story_one.id}", {is_starred: true}.to_json
+
+          story_one.is_starred.should eq true
+        end
+      end
+
+      context "when it is malformed" do
+        it "marks a story as permanently starred" do
+          put "/stories/#{story_one.id}", {is_starred: "malformed"}.to_json
+
+          story_one.is_starred.should eq true
         end
       end
     end
