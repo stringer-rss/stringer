@@ -31,7 +31,7 @@ class Story < ActiveRecord::Base
     {
       id: self.id,
       feed_id: self.feed.id,
-      title: headline,
+      title: self.title,
       author: source,
       html: body,
       url: self.permalink,
