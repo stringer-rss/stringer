@@ -7,8 +7,12 @@ class Story < ActiveRecord::Base
 
   UNTITLED = "[untitled]"
 
+  def fever_headline
+    self.title.nil? ? UNTITLED : strip_html(self.title)
+  end
+
   def headline
-    self.title.nil? ? UNTITLED : strip_html(self.title)[0, 50]
+    fever_headline[0, 50]
   end
 
   def lead
@@ -31,7 +35,7 @@ class Story < ActiveRecord::Base
     {
       id: self.id,
       feed_id: self.feed.id,
-      title: headline,
+      title: fever_headline,
       author: source,
       html: body,
       url: self.permalink,
