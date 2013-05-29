@@ -14,7 +14,7 @@ class FeedDiscovery
   end
 
   def get_feed_for_url(url, finder, parser)
-    feed = parser.fetch_and_parse(url)
+    feed = parser.fetch_and_parse(url, user_agent: "Stringer")
     feed.feed_url ||= url
     feed
   rescue Exception
