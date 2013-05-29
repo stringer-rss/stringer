@@ -110,7 +110,7 @@ fr:
       flash:
         wrong_password: Ce n'est pas le bon mot de passe. Essayez encore.
       rss: RSS
-      subtitle: Content de vous revoir l'ami.
+      subtitle: Content de vous revoir, l'ami.
       title: Stringer parle le
   stories:
     keep_unread: Marquer comme non lu
