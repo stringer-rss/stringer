@@ -1,16 +1,14 @@
 <script type="text/template" id="story-template">
   <div class="row-fluid story-preview">
     <div class="span3">
-      <div class="story-starred-box">
-        <div class="story-starred">
-          <i class="icon-star{{ if(!is_starred) { }}-empty{{ } }}"></i>
-        </div>
+      <div class="story-starred">
+        <i class="icon-star{{ if(!is_starred) { }}-empty{{ } }}"></i>
       </div>
       <p class="blog-title">
         {{= source }}
       </p>
     </div>
-    <div class="span8">
+    <div class="span9">
       <p class="story-details">
         <span class="story-title">
           {{= headline }}

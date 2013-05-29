@@ -167,7 +167,7 @@ li.story.open .story-preview {
   margin-left: 20px;
 }
 
-.story-keep-unread {
+.story-keep-unread, .story-starred  {
   display: inline-block;
   cursor: pointer;
   -webkit-touch-callout: none;
@@ -176,26 +176,22 @@ li.story.open .story-preview {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  margin-right: 25px;
+  margin-right: 20px;
 }
 
-.story-starred-box {
-  display: inline-block;
+.story-preview .story-starred {
+  width: 13px;
   float: left;
-  padding-left: 4px;
-  width: 20%;
+  margin-left: 10px;
+  margin-right: 13px;
 }
 
-.story-starred {
-  display: inline-block;
-  cursor: pointer;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  margin-right: 25px;
+li.story .icon-star {
+  color: #F67100;
+}
+
+li.story .icon-star-empty {
+  color: #e5e5e5;
 }
 
 .story-body {

@@ -16,7 +16,7 @@
   <% end %>
 
   <% if @starred_stories.total_pages > 1 %>
-    <%= @starred_stories.current_page %> <%= t('starred.of') %> <%= @read_stories.total_pages %>
+    <%= @starred_stories.current_page %> <%= t('starred.of') %> <%= @starred_stories.total_pages %>
   <% end %>
 
   <% if @starred_stories.next_page %>
