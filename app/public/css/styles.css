@@ -267,6 +267,10 @@ p.story-details {
   list-style-type: disc;
 }
 
+.story-body ul, .story-body ol {
+  margin-bottom: 16px;
+}
+
 .story-actions-container {
   border-top: 2px solid #FAF2E5;
   height: 28px;
