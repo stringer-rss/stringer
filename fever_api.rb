@@ -8,6 +8,9 @@ require_relative "app/repositories/feed_repository"
 require_relative "app/commands/stories/mark_as_read"
 require_relative "app/commands/stories/mark_as_unread"
 
+require_relative "app/commands/stories/mark_as_starred"
+require_relative "app/commands/stories/mark_as_unstarred"
+
 class FeverAPI < Sinatra::Base
   configure do
     set :database_file, "config/database.yml"
@@ -76,7 +79,7 @@ class FeverAPI < Sinatra::Base
     end
 
     if keys.include?(:saved_item_ids)
-      response[:saved_item_ids] = ""
+      response[:saved_item_ids] = starred_stories.map{|s| s.id}.join(",")
     end
 
     if params[:mark] == "item"
@@ -85,6 +88,10 @@ class FeverAPI < Sinatra::Base
         MarkAsRead.new(params[:id]).mark_as_read
       when "unread"
         MarkAsUnread.new(params[:id]).mark_as_unread
+      when "saved"
+        MarkAsStarred.new(params[:id]).mark_as_starred
+      when "unsaved"
+        MarkAsUnstarred.new(params[:id]).mark_as_unstarred
       end
     end
 
@@ -97,6 +104,10 @@ class FeverAPI < Sinatra::Base
     else
       StoryRepository.unread
     end
+  end
+
+  def starred_stories
+      StoryRepository.starred
   end
 
   def feeds
