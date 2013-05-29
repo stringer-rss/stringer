@@ -25,6 +25,7 @@ eos
   end
   def is_read; false; end
   def keep_unread; false; end
+  def is_starred; false; end
   def published; Time.now; end
 
   def as_json(options = {})
@@ -38,6 +39,7 @@ eos
       body: body,
       permalink: permalink,
       is_read: is_read,
+      is_starred: is_starred,
       keep_unread: keep_unread
     }
   end
