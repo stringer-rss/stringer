@@ -4,6 +4,10 @@ class AddUserModel < ActiveRecord::Migration
       t.string :email
       t.string :password_digest
 
+      t.string :superfeedr_host
+      t.string :superfeedr_username
+      t.string :superfeedr_password
+      
       t.timestamps
     end
   end

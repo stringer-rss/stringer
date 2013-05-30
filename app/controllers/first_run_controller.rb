@@ -7,7 +7,7 @@ require_relative "../tasks/fetch_feeds"
 
 class Stringer < Sinatra::Base
   namespace "/setup" do
-    before do
+    before /^(?!\/(js|css|stream))/ do
       if UserRepository.setup_complete?
         redirect to("/news")
       end

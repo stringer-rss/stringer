@@ -19,12 +19,16 @@ class StoryRepository
     Story.where(id: ids)
   end
 
+  def self.fetch_by_url(url)
+    Story.where(permalink: url).first
+  end
+
   def self.save(story)
     story.save
   end
 
   def self.unread
-    Story.where(is_read: false).order("published desc") 
+    Story.where(is_read: false).order("published desc")
   end
 
   def self.read(page = 1)

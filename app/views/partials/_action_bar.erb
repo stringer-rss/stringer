@@ -23,6 +23,12 @@
   </div>
 </div>
 
+<div class="row-fluid" style="text-align:center; display:none;">
+  <% if !@user.superfeedr_username? || !@user.superfeedr_password?%>
+    <a href="/setup/superfeedr"><%= t('partials.action_bar.connect_to_superfeedr') %></a>
+  <% end %>
+</div>
+
 <script type="text/javascript">
   $(document).ready(function() {
     $("#mark-all").click(function(e) {

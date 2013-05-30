@@ -19,6 +19,9 @@ gem "feedbag", github: "dwillis/feedbag"
 gem "coveralls", require: false
 gem "uglifier"
 
+gem "rack-superfeedr"
+gem "json"
+
 group :production do
   gem "unicorn"
   gem "pg"

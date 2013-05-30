@@ -1,4 +1,27 @@
 en:
+  superfeedr:
+    add:
+      title: "Superfeedr"
+      description: "Add Superfeedr credentials"
+      fields:
+        username: "Username"
+        password: "Password"
+        submit: "Connect"
+      flash:
+        connected: "Connected to Superfeedr"
+        not_connected: "Unable to connect to Superfeedr"
+    remove:
+      fields:
+        username: "Username"
+        submit: "Delete"
+      flash:
+        disconnected: "Disconnected from Superfeedr"
+        not_disconnected: "Unable to disconnect from Superfeedr"
+    setup:
+      already_connected: "Already connected to Superfeedr."
+      update_delete_message: "You can %{update} or %{delete} Superfeedr credentials."
+      update: "update"
+      delete: "delete"
   feeds:
     add:
       title: "Need new stories?"
@@ -10,6 +33,7 @@ en:
         added_successfully: "We've added your new feed. Check back in a bit."
         already_subscribed_error: "You are already subscribed to this feed..."
         feed_not_found_error: "We couldn't find that feed. Try again."
+        superfeedr_subscribe_error: "We couldn't subsribe feed to superfeedr. Try again."
     index:
       add_some_feeds: "Hey, you should %{add} some feeds."
       add: "add"
@@ -34,6 +58,7 @@ en:
       view_feeds: "View feeds"
       add_feed: "Add a feed"
       archived_stories: "Archived stories"
+      connect_to_superfeedr: "Connect to Superfeedr"
     feed:
       last_updated: "Last updated at"
       status_bubble:
@@ -91,6 +116,7 @@ en:
     support: "Support"
     hey: "Hey!"
     back_to_work: "Get back to work, slacker!"
+    superfeedr: "Superfeedr"
   tutorial:
     mark_all: "mark all"
     as_read: "as read"
