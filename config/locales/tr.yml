@@ -1,0 +1,133 @@
+tr:
+  archive:
+    next: Ileri
+    of: of
+    previous: Önceki
+    sorry: Üzgünüm, daha hic bir hikayeyi okumadiniz!
+  date:
+    abbr_month_names:
+    - 
+    - Ocak
+    - Subat
+    - Mart
+    - Nisan
+    - Mayis
+    - Haziran
+    - Temmuz
+    - Agustos
+    - Eylul
+    - Ekim
+    - Kasim
+    - Aralik
+  feeds:
+    add:
+      description: Okumak isteginiz blogun URL'sini yapistirin.
+      fields:
+        feed_url: Besleme URL'si
+        submit: Ekle
+      flash:
+        added_successfully: Yeni besleme eklenmistir. Sonra kontrol edin.
+        already_subscribed_error: Bu beslemeye zaten kayitlisiniz...
+        feed_not_found_error: Bu beslemeyi bulamadik. Tekrar deneyiniz.
+      title: Yeni hikayelere mi ihtiyaciniz var?
+    index:
+      add: ekle
+      add_some_feeds: Hey, you should %{add} some feeds.
+  first_run:
+    password:
+      anti_social: anti-social
+      description: Hadi bir sifre olusturalim cunku hikayeleri sadece sen okumalisin.
+      fields:
+        next: Ileri
+        password: Sifre
+        password_confirmation: Tekrar
+      flash:
+        passwords_dont_match: Sifrelerin tekrari farkli. Tekrardan dene.
+      subtitle: ! 'Sadece bir kullanici var: Sen!'
+      title: Stringer is
+  flash:
+    cookies_required: Aaa, garip!. Uygulamanin duzgun calismasi icin Cookies gerekli.
+    js_required: Aaa, garip. Uygulamanin duzgun calismasi icin Javascript gerekli.
+  import:
+    description: 
+    export: Disa Aktar
+    fields:
+      import: Ekle
+      not_now: Simdi Degil
+    subtitle: Hadi beslemelerinizi olusturalim.
+    title: Hoşgeldiniz.
+  layout:
+    back_to_work: Hadi isine geri don!
+    export: Disa Aktar
+    hey: Hey!
+    logout: Cikis Yap
+    support: Destekle
+    title: stringer | rss kankan
+  partials:
+    action_bar:
+      add_feed: Besleme Ekle
+      archived_stories: Arsivlenen hikayeler
+      mark_all: Hepsini okunmus olarak isaretle
+      refresh: Yenile
+      view_feeds: Beslemeleri Goruntule
+    feed:
+      last_fetched:
+        never: Asla
+      last_updated: En son guncellendi
+      status_bubble:
+        green: Basari!
+        red: Hata veriyor (daha oncede hic calismadi zaten)
+        yellow: Hata veriyor (buyuk ihtimal gecici)
+    feed_action_bar:
+      add_feed: Besleme ekle
+      archived_stories: Arsivlenmis hikayeler
+      feeds: Beslemeleri Goruntule
+      home: Hikayelere geri don
+    shortcuts:
+      keys:
+        jk: Sonraki/onceki hikaye
+        m: Okundu/okunmadi olarak isaretle
+        np: Asagi/yukari hareket et
+        oenter: Hikayeyi ac/kapa
+        or: yada
+        r: Yenile
+        shifta: Hepsini okundu olarak isaretle
+        v: Hikaye URL'sine git
+      title: Klavye kisayollari
+    zen:
+      archive: butun hikayeleri goster
+      go_make: git birseyler uret
+      gtfo: Simdi bloglari okumayi birak ve
+      rss_zero: RSS beslemelerinizi sifirladiniz&trade;
+  sessions:
+    destroy:
+      flash:
+        logged_out_successfully: Cikis yaptiniz!
+    new:
+      fields:
+        password: Sifre
+        submit: Giris Yap
+      flash:
+        wrong_password: Sifre yanlis. Tekrar deneyiniz.
+      rss: RSS
+      subtitle: Tekrar hosgeldin, dostum.
+      title: Stringer diyoki
+  stories:
+    keep_unread: Okunmadi olarak tut
+  time:
+    formats:
+      default: ! '%b %d, %H:%M'
+  tutorial:
+    add_feed: feed ekle
+    as_read: okundu olarak
+    click_to_read: (okumak icin tikla)
+    description: Sana okuman icin hikayeler getirecegiz, bize biraz zaman ver.
+    mark_all: hepsini isaretle
+    ready: Tamam hazir!
+    refresh: yenile
+    simple: basit
+    start: Okumaya basla
+    subtitle: Iste kullanma klavuzu.
+    title: ! 'Stringer '
+    your_feeds: beslemeleriniz
+    your_stories: hikayeleriniz

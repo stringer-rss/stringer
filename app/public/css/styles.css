@@ -16,7 +16,8 @@ hr {
 }
 
 .container {
-  width: 720px;
+  width: 100%;
+  max-width: 720px;
   margin: 0 auto;
 }
 
@@ -166,7 +167,7 @@ li.story.open .story-preview {
   margin-left: 20px;
 }
 
-.story-keep-unread {
+.story-keep-unread, .story-starred  {
   display: inline-block;
   cursor: pointer;
   -webkit-touch-callout: none;
@@ -175,7 +176,22 @@ li.story.open .story-preview {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  margin-right: 25px;
+  margin-right: 20px;
+}
+
+.story-preview .story-starred {
+  width: 13px;
+  float: left;
+  margin-left: 10px;
+  margin-right: 13px;
+}
+
+li.story .icon-star {
+  color: #F67100;
+}
+
+li.story .icon-star-empty {
+  color: #e5e5e5;
 }
 
 .story-body {
@@ -249,6 +265,10 @@ p.story-details {
 
 .story-body ul {
   list-style-type: disc;
+}
+
+.story-body ul, .story-body ol {
+  margin-bottom: 16px;
 }
 
 .story-actions-container {
@@ -326,6 +346,18 @@ li.feed .last-updated-time {
   display: inline-block;
 }
 
+li.feed .feed-url-link a {
+  color: #484948;
+  text-decoration: none;
+  text-align: center;
+  margin-left: 2px;
+  padding: 5px;
+}
+
+li.feed .feed-url-link a:hover {
+  color: #7F8281;
+}
+
 li.feed .remove-feed {
   cursor: pointer;
 }
@@ -368,7 +400,7 @@ li.feed .remove-feed a:hover {
   color: #F67100;
 }
 
-#add-feed {
+#add-feed-container {
   padding-top: 10px;
 }
 

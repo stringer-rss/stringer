@@ -64,6 +64,7 @@ class Stringer < Sinatra::Base
       "/js/bootstrap-min.js",
       "/js/bootstrap.file-input.js",
       "/js/mousetrap-min.js",
+      "/js/jquery-visible-min.js",
       "/js/underscore-min.js",
       "/js/backbone-min.js",
       "/js/app.js"
@@ -76,11 +77,10 @@ class Stringer < Sinatra::Base
       "/css/styles.css"
     ]
 
-    js_compression  :uglify
+    js_compression  :jsmin
     css_compression :simple
 
-    prebuild true
-    cache_dynamic_assets true
+    prebuild true unless ENV['RACK_ENV'] == 'test'
   }
 
   before /^(?!\/(js|css|stream))/ do

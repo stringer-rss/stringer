@@ -41,6 +41,10 @@
       StoryApp.toggleCurrentKeepUnread();
     });
 
+    Mousetrap.bind(["s"], function() {
+      StoryApp.toggleCurrentStarred();
+    });
+
     <% if @has_superfeedr %>
     var source = new EventSource('/stream');
     source.addEventListener('message', function(e){

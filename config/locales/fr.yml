@@ -1,115 +1,12 @@
 fr:
-  feeds:
-    add:
-      title: "Besoin de nouveaux articles ?"
-      description: "Collez ici l'URL du blog que vous souhaitez lire."
-      fields:
-        feed_url: "Feed URL"
-        submit: "Ajouter"
-      flash:
-        added_successfully: "Nous avons ajouté le nouveau flux. Vérifiez dans quelques instants."
-        already_subscribed_error: "Vous êtes déjà inscrit à ce flux..."
-        feed_not_found_error: "Nous n'avons pas pu trouver ce flux. Essayez de nouveau."
-    index:
-      add_some_feeds: "Vous devriez %{add} quelques flux."
-      add: "ajouter"
-  first_run:
-    password:
-      title: 'Stringer est'
-      anti_social: 'anti-social'
-      subtitle: "Il n'y a qu'un seul utilisateur : vous."
-      description: "Choisissez un mot de passe pour être le seul à pouvoir lire vos articles."
-      fields:
-        password: "Mot de passe"
-        password_confirmation: "Confirmez"
-        next: "Suivant"
-      flash:
-        passwords_dont_match: "Les mots de passe sont différents. Essayez encore."
-  partials:
-    action_bar:
-      mark_all: "Tout marquer comme lu"
-      refresh: "Rafraîchir"
-      view_feeds: "Voir les flux"
-      add_feed: "Ajouter un flux"
-      archived_stories: "Articles archivés"
-    feed:
-      last_updated: "Dernière mise à jour"
-      status_bubble:
-        green: "Succès !"
-        yellow: "Erreur d'analyse (probablement temporaire)"
-        red: "Erreur d'analyse (n'a jamais fonctionné avant, non plus)"
-    feed_action_bar:
-      home: "Revenir aux Articles"
-      feeds: "Voir les flux"
-      add_feed: "Ajouter un flux"
-      archived_stories: "Articles archivés"
-    shortcuts:
-      title: "Raccourcis clavier"
-      keys:
-        jk: "Article suivant/précédant"
-        oenter: "Ouvrir/fermer l'article"
-        or: "ou"
-        v: "Aller à l'URL de l'article"
-        shifta: "Tout marquer comme lu"
-        r: "Rafraîchir"
-    zen:
-      zero: "Vous avez atteint RSS Zéro&trade;"
-      gtfo: 'Maintenant cessez de lire des blogs et'
-      go_make: 'allez faire quelque chose'
-      archive: "voir toutes les entrées"
-  sessions:
-    new:
-      title: 'Stringer parle le'
-      rss: 'RSS'
-      subtitle: "Bienvenue, ami."
-      fields:
-        password: "Mot de passe"
-        submit: "Identifiant"
-      flash:
-        wrong_password: "Ce n'est pas le bon mot de passe. Essayez encore."
-    destroy:
-      flash:
-        logged_out_successfully: "Vous avez été déconnecté !"
-  import:
-    title: "Bienvenue à bord."
-    subtitle: "Configurons vos flux."
-    description: "%{link} vos flux à partir de Google Reader et importez-les."
-    export: "Exportez"
-    fields:
-      import: "Importez"
-      not_now: "Pas maintenant"
-  layout:
-    title: "stringer | votre compagnon rss"
-    logout: "Déconnection"
-    export: "Export"
-    support: "Aide"
-    hey: "Hé !"
-    back_to_work: "Retournez au travail, fénéant !"
-  tutorial:
-    mark_all: "tout marquer"
-    as_read: "comme lu"
-    refresh: "rafraîchir"
-    your_feeds: "vos flux"
-    add_feed: "ajouter un flux"
-    your_stories: "vos articles"
-    click_to_read: "(cliquer pour lire)"
-    title: 'Stringer est '
-    simple: "simple"
-    subtitle: "Voici le manuel d'utilisation."
-    description: "Nous récupérons quelques articles à lire, donnez-nous une seconde."
-    start: "Commencez à lire"
-    ready: "Ok, c'est prêt !"
   archive:
-    next: "Suivant"
-    previous: "Précédent"
-    of: "de"
-    sorry: "Désolé, vous n'avez encore lu aucun article !"
-  time:
-    formats:
-      default: "%d %b %H:%M"
+    next: Suivant
+    of: de
+    previous: Précédent
+    sorry: Désolé, vous n'avez encore rien lu !
   date:
     abbr_month_names:
-    -
+    - 
     - jan.
     - fév.
     - mar.
@@ -122,4 +19,115 @@ fr:
     - oct.
     - nov.
     - déc.
-
+  feeds:
+    add:
+      description: Collez ici l'URL du blog que vous souhaitez lire.
+      fields:
+        feed_url: URL du flux
+        submit: Ajouter
+      flash:
+        added_successfully: Le nouveau flux a été ajouté. Patientez quelques instants.
+        already_subscribed_error: Vous suivez déjà ce flux...
+        feed_not_found_error: Nous n'avons pas pu trouver ce flux. Essayez de nouveau.
+      title: Besoin de nouveaux articles ?
+    index:
+      add: ajouter
+      add_some_feeds: Vous devriez %{add} quelques flux.
+  first_run:
+    password:
+      anti_social: anti-social
+      description: Choisissez un mot de passe pour être le seul à lire vos articles.
+      fields:
+        next: Suivant
+        password: Mot de passe
+        password_confirmation: Confirmez
+      flash:
+        passwords_dont_match: Les mots de passe sont différents. Essayez à nouveau.
+      subtitle: ! 'Il n''y a qu''un seul utilisateur : vous.'
+      title: Stringer est
+  flash:
+    cookies_required: ! 'C''est embêtant : les cookies sont obligatoires pour le bon fonctionnement de l''application.'
+    js_required: ! 'C''est embêtant : Javascript est obligatoire pour le bon fonctionnement de l''application.'
+  import:
+    description: ! '%{link} vos flux provenant de Google Reader et importez-les.'
+    export: Exportez
+    fields:
+      import: Importez
+      not_now: Pas maintenant
+    subtitle: Configurons vos flux.
+    title: Bienvenue à bord.
+  layout:
+    back_to_work: Retournez au travail, fénéant !
+    export: Export
+    hey: Hé !
+    logout: Déconnection
+    support: Aide
+    title: stringer | votre compagnon rss
+  partials:
+    action_bar:
+      add_feed: Ajouter un flux
+      archived_stories: Articles archivés
+      mark_all: Tout marquer comme lu
+      refresh: Rafraîchir
+      view_feeds: Voir vos flux
+    feed:
+      last_fetched:
+        never: Jamais
+      last_updated: Dernière mise à jour
+      status_bubble:
+        green: Succès !
+        red: Erreur d'analyse (n'ayant jamais fonctionné avant)
+        yellow: Erreur d'analyse (probablement temporaire)
+    feed_action_bar:
+      add_feed: Ajouter un flux
+      archived_stories: Articles archivés
+      feeds: Voir vos flux
+      home: Revenir aux Articles
+    shortcuts:
+      keys:
+        jk: Article suivant/précédent
+        m: Marquer ceci comme lu/non lu
+        np: Vers le bas/vers le haut
+        oenter: Ouvrir/fermer l'article
+        or: ou
+        r: Rafraîchir
+        shifta: Tout marquer comme lu
+        v: Aller à l'URL de l'article
+      title: Raccourcis clavier
+    zen:
+      archive: voir toutes les entrées
+      go_make: allez faire quelque chose
+      gtfo: Maintenant cessez de lire et
+      rss_zero: Vous avez atteint RSS Zéro&trade;
+  sessions:
+    destroy:
+      flash:
+        logged_out_successfully: Vous avez été déconnecté !
+    new:
+      fields:
+        password: Mot de passe
+        submit: Identifiant
+      flash:
+        wrong_password: Ce n'est pas le bon mot de passe. Essayez encore.
+      rss: RSS
+      subtitle: Content de vous revoir, l'ami.
+      title: Stringer parle le
+  stories:
+    keep_unread: Marquer comme non lu
+  time:
+    formats:
+      default: ! '%d %b %H:%M'
+  tutorial:
+    add_feed: ajouter un flux
+    as_read: comme lu
+    click_to_read: (cliquer pour lire)
+    description: Nous récupérons quelques articles à lire, donnez-nous une seconde.
+    mark_all: tout marquer
+    ready: Ok, c'est prêt !
+    refresh: rafraîchir
+    simple: simple
+    start: Commencez à lire
+    subtitle: Voici le manuel d'utilisation.
+    title: ! 'Stringer est '
+    your_feeds: vos flux
+    your_stories: vos articles

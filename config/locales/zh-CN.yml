@@ -1,0 +1,141 @@
+zh-CN:
+  archive:
+    next: 下一页
+    of: of
+    previous: 上一页
+    sorry: 呃，你现在还没有已经读过的故事
+  starred:
+    next: 下一页
+    of: of
+    previous: 上一页
+    sorry: 呃，你现在还没有为任何故事加注星标
+  date:
+    abbr_month_names:
+    - 
+    - 一月
+    - 二月
+    - 三月
+    - 四月
+    - 五月
+    - 六月
+    - 七月
+    - 八月
+    - 九月
+    - 十月
+    - 十一月
+    - 十二月
+  feeds:
+    add:
+      description: 请填入你想要订阅的供稿的地址
+      fields:
+        feed_url: 供稿地址
+        submit: 添加
+      flash:
+        added_successfully: 你的订阅已经添加完毕，稍等一段时间就可以阅读啦
+        already_subscribed_error: 你已经订阅过这个供稿了哟...
+        feed_not_found_error: 呃，我们无法识别这个供稿地址。麻烦你检查后再试一次。
+      title: 想要添加新内容？
+    index:
+      add: 添加
+      add_some_feeds: 你应该%{add}一些订阅哟~
+  first_run:
+    password:
+      anti_social: 反社交化的
+      description: 好了，设置好你的密码，然后你就可以开始享受独自阅读的乐趣了。
+      fields:
+        next: 下一步
+        password: 密码
+        password_confirmation: 确认密码
+      flash:
+        passwords_dont_match: 两次输入的密码不同，麻烦你重新输入啦。
+      subtitle: 这里将只会有一个用户，那就是你
+      title: Stringer是
+  flash:
+    cookies_required: 抱歉，你的浏览器禁用了Cookie记录功能。为了你的正常使用，请开启浏览器的Cookie功能。
+    js_required: 抱歉，你的浏览器禁用了Javascript脚本。为了你的正常使用，请开启脚本功能。
+  import:
+    description: ! '%{link}你在Google Reader上的订阅列表然后再将它们导入这里'
+    export: 导出
+    fields:
+      import: 导入
+      not_now: 稍后再说
+    subtitle: 开始设置你的订阅吧
+    title: 欢迎使用
+  layout:
+    back_to_work: 懒鬼，还不赶紧去干活！
+    export: 导出
+    hey: 喂！
+    logout: 退出
+    support: 支持
+    title: stringer | your rss buddy
+  partials:
+    action_bar:
+      add_feed: 添加新订阅
+      archived_stories: 已读故事
+      mark_all: 全部标为已读
+      refresh: 刷新
+      view_feeds: 查看订阅列表
+      starred_stories: 加星标的故事
+    feed:
+      last_fetched:
+        never: 尚未成功读取过
+      last_updated: 最后更新于
+      status_bubble:
+        green: 成功
+        red: 此订阅可能已失效
+        yellow: 解析时出现错误
+    feed_action_bar:
+      add_feed: 添加新订阅
+      archived_stories: 已读故事
+      feeds: 查看订阅列表
+      home: 返回未读故事列表
+      starred_stories: 加星标的故事
+    shortcuts:
+      keys:
+        jk: 下一个/上一个故事
+        m: 将一个条目标为已读/未读
+        s: 为一个条目加注星标/取消星标
+        np: 向上/向下移动
+        oenter: 点击打开/关闭
+        or: 或
+        r: 刷新
+        shifta: 全部标为已读
+        v: 转到原网址
+      title: 快捷键
+    zen:
+      archive: 查看所有故事
+      go_make: 去做些其它事了
+      gtfo: 是时候停止阅读
+      rss_zero: 你已经达成了零RSS的任务&trade;
+  sessions:
+    destroy:
+      flash:
+        logged_out_successfully: 你已经成功退出
+    new:
+      fields:
+        password: 密码
+        submit: 登录
+      flash:
+        wrong_password: 你输入的密码错误，麻烦重新输入啦
+      rss: RSS
+      subtitle: 欢迎回来，我的朋友。
+      title: Stringer speaks
+  stories:
+    keep_unread: 保持未读状态
+  time:
+    formats:
+      default: ! '%b%d日 %H:%M'
+  tutorial:
+    add_feed: 添加新订阅
+    as_read: 已读
+    click_to_read: （点击阅读）
+    description: 我们正在努力的加载您订阅的内容，请稍等。
+    mark_all: 全部标为
+    ready: 好了，我想你已经准备好了~
+    refresh: 刷新
+    simple: simple
+    start: 开始阅读吧！
+    subtitle: 这是一份简单的指导手册。
+    title: ! 'Stringer is '
+    your_feeds: 你的订阅列表
+    your_stories: 你订阅的内容

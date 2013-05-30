@@ -28,4 +28,13 @@ class UserRepository
   def self.has_superfeedr()
     User.any? && User.first.has_superfeedr?
   end
+
+  def self.save(user)
+    user.save
+    user
+  end
+
+  def self.first
+    User.first
+  end
 end

@@ -24,6 +24,8 @@ class SampleStory < Struct.new(:source, :title, :lead, :is_read, :published)
 eos
   end
   def is_read; false; end
+  def keep_unread; false; end
+  def is_starred; false; end
   def published; Time.now; end
 
   def as_json(options = {})
@@ -36,7 +38,9 @@ eos
       pretty_date: published.strftime("%A, %B %d"),
       body: body,
       permalink: permalink,
-      is_read: is_read
+      is_read: is_read,
+      is_starred: is_starred,
+      keep_unread: keep_unread
     }
   end
 end

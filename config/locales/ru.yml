@@ -1,0 +1,133 @@
+ru:
+  archive:
+    next: Следующий
+    of: of
+    previous: Предыдущий
+    sorry: К сожалению, вы не читали пока истории!
+  date:
+    abbr_month_names:
+    - 
+    - янв.
+    - февр.
+    - марта
+    - апр.
+    - мая
+    - июня
+    - июля
+    - авг.
+    - сент.
+    - окт.
+    - нояб.
+    - дек.
+  feeds:
+    add:
+      description: Вставьте адрес блога который вы хотите прочитать.
+      fields:
+        feed_url: Feed URL
+        submit: Добавить
+      flash:
+        added_successfully: Мы добавили новый ФИД. Скоро информация обновится.
+        already_subscribed_error: Вы уже подписаны на этот ФИД...
+        feed_not_found_error: Мы не смогли найти этот ФИД. Попробуйте еще раз.
+      title: Нужны новые истории?
+    index:
+      add: добавить
+      add_some_feeds: Эй, ​​Вы должны %{add}  некоторые ФИД каналы.
+  first_run:
+    password:
+      anti_social: антиобщественное
+      description: Выберете пароль, чтобы только вы могли прочитать ваши истории.
+      fields:
+        next: Далее
+        password: Пароль
+        password_confirmation: Подтвердить
+      flash:
+        passwords_dont_match: Эй, Ваше подтверждение пароля не совпадает. Попробуйте еще раз.
+      subtitle: ! 'Существует только один пользователь: ВЫ.'
+      title: Стингер это
+  flash:
+    cookies_required: 
+    js_required: 
+  import:
+    description: ! '%{link} фиды из Google Reader и импортировать их.'
+    export: Экспортировать
+    fields:
+      import: Импортировать
+      not_now: Не сейчас
+    subtitle: Так давайте настроим ваши ФИД каналы.
+    title: Добро пожаловать.
+  layout:
+    back_to_work: Возвращайтесь к работе, бездельник!
+    export: Экспортировать
+    hey: Привет!
+    logout: Выйти
+    support: Помощь
+    title: stringer | your rss buddy
+  partials:
+    action_bar:
+      add_feed: Добавить ФИД канал
+      archived_stories: Архив историй
+      mark_all: Отметить все как прочитанное
+      refresh: Обновить
+      view_feeds: Посмотреть ФИД каналы
+    feed:
+      last_fetched:
+        never: Никогда
+      last_updated: Последние обновление в
+      status_bubble:
+        green: Получилось!
+        red: Ошибка при анализе (и это не никогда не работало раньше)
+        yellow: Ошибка при анализе (возможно временно)
+    feed_action_bar:
+      add_feed: Добавить ФИД
+      archived_stories: Архив историй
+      feeds: Посмотреть ФИД истории
+      home: Вернуться к истории
+    shortcuts:
+      keys:
+        jk: Перейти на следующую/предыдущую историю
+        m: Пометить как прочитанное / непрочитанное
+        np: Вниз / Вверх
+        oenter: Открыть / Закрыть историю
+        or: или
+        r: Обновить
+        shifta: Пометить все как прочитанное
+        v: Перейти к ссылке
+      title: Быстрые комбинации клавиш
+    zen:
+      archive: Просмотреть все ФИДы
+      go_make: сделаите что-то полезное
+      gtfo: Теперь прекратите читать блоги и
+      rss_zero: Вы достигли RSS Zero&trade;
+  sessions:
+    destroy:
+      flash:
+        logged_out_successfully: Вы вышли из системы!
+    new:
+      fields:
+        password: Пароль
+        submit: Войти
+      flash:
+        wrong_password: Это неправильный пароль. Попробуйте еще раз.
+      rss: RSS
+      subtitle: Добро пожаловать, друг.
+      title: Stringer использует
+  stories:
+    keep_unread: Пометить как непрочитанное
+  time:
+    formats:
+      default: ! '%b %d, %H:%M'
+  tutorial:
+    add_feed: добавить фид
+    as_read: как прочитанное
+    click_to_read: (нажмите, чтобы прочитать)
+    description: Мы проверяем ваши истории для чтения, секунду.
+    mark_all: пометить все
+    ready: Все готово!
+    refresh: обновить
+    simple: просто
+    start: Начинайте читать
+    subtitle: Вот руководство по эксплуатации.
+    title: ! 'Stringer это '
+    your_feeds: ваши фиды
+    your_stories: Ваши истории

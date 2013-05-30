@@ -1,0 +1,133 @@
+el-GR:
+  archive:
+    next: Επόμενο
+    of: από
+    previous: Προηγούμενο
+    sorry: Δεν έχετε διαβάσει κάποια είδηση ακόμη.
+  date:
+    abbr_month_names:
+    - 
+    - Ιαν
+    - Φεβ
+    - Μαρ
+    - Απρ
+    - Μαϊ
+    - Ιουν
+    - Ιουλ
+    - Αυγ
+    - Σεπ
+    - Οκτ
+    - Νοε
+    - Δεκ
+  feeds:
+    add:
+      description: Εισάγετε εδώ την διεύθυνση του ιστολογίου που θέλετε να διαβάσετε.
+      fields:
+        feed_url: Διεύθυνση
+        submit: Προσθήκη
+      flash:
+        added_successfully: Το καινούριο σας Ιστολόγιο προστέθηκε. Ελέγξτε παλι αργότερα.
+        already_subscribed_error: Είστε ήδη εγγεγραμενος σ' αυτο το ιστολόγιο...
+        feed_not_found_error: Δεν μπορέσαμε να βρούμε αυτο το ιστολόγιο. Προσπαθήστε ξανά.
+      title: Όρεξη για καινούριες ειδήσεις?
+    index:
+      add: εισάγεις
+      add_some_feeds: Επ! Γιατί δεν %{add} μερικά ιστολόγια στη συλλογή σου?
+  first_run:
+    password:
+      anti_social: αντι-κοινωνικό
+      description: Επίλεξε έναν κωδικό πρόσβασης ώστε μόνο εσύ να διαβάζεις τις ειδήσεις σου.
+      fields:
+        next: Επόμενο
+        password: Κωδικός
+        password_confirmation: Επιβεβαίωση
+      flash:
+        passwords_dont_match: Ψψψιιτ, η επιβεβαίωση του κωδικού σου δεν ταιριάζει με τον κωδικό. Δοκίμασε ξανά.
+      subtitle: ! 'Υπάρχει μόνο ένας χρήστης: Εσύ!'
+      title: Το Stringer είναι
+  flash:
+    cookies_required: Έχετε την καλοσύνη να ενεργοποιήσετε τα Cookies ώστε να λειτουργήσει κανονικά η εφαρμογή?
+    js_required: Δεν είναι και τόσο περίεργο, αλλά η εφαρμογή στηρίζεται στην Javascript.
+  import:
+    description: Πάρε τα ιστολόγια σου απο δω %{link} και εισήγαγε τα.
+    export: Εξαγωγή
+    fields:
+      import: Εισαγωγή
+      not_now: Όχι τώρα
+    subtitle: Ας φτιάξουμε τα ιστολόγια σου.
+    title: Καλωσήρθες
+  layout:
+    back_to_work: Γύρνα στην δουλειά σου, τεμπέλη!
+    export: Εξαγωγή
+    hey: Γειά!
+    logout: Έξοδος
+    support: Υποστήριξη
+    title: stringer | ο φίλος των rss σου
+  partials:
+    action_bar:
+      add_feed: Προσθήκη ιστολογίου
+      archived_stories: Αποθηκευμένες ιστοσελίδες
+      mark_all: Επισήμανση όλων ως αναγνωσμένα
+      refresh: Ανανέωση
+      view_feeds: Εμφάνιση ιστολογίων
+    feed:
+      last_fetched:
+        never: Ποτέ
+      last_updated: Τελευταία ανανέωση στις
+      status_bubble:
+        green: Επιτυχές!
+        red: Ανάλυση σφάλματος (λες και δούλεψε ποτέ!)
+        yellow: Ανάλυση σφάλματος (πιθανώς προσωρινό)
+    feed_action_bar:
+      add_feed: Πρόσθεσε ένα ιστολόγιο
+      archived_stories: Αποθηκευμένες ιστοσελίδες
+      feeds: Εμφάνιση ιστολογίων
+      home: Επιστροφή στις ειδήσεις
+    shortcuts:
+      keys:
+        jk: Επόμενη/Προηγούμενη είδηση
+        m: Σημειώστε το νέο ως αναγνωσμένο ή όχι
+        np: Πάνω/κάτω
+        oenter: Εναλλαγή ανοιχτής/κλειστής είδησης
+        or: ή
+        r: Ανανέωση
+        shifta: Επισήμανση όλων ως αναγνωσμένα
+        v: Πήγαινε στην διεύθυνση
+      title: Συντομεύσεις στο πληκτρολόγιο
+    zen:
+      archive: εμφάνισης όλων των αντικειμένων
+      go_make: και δράσε
+      gtfo: ! 'Τώρα σταμάτα να διαβάζεις ιστολόγια '
+      rss_zero: Έχεις Μηδέν RSS Ειδήσεις
+  sessions:
+    destroy:
+      flash:
+        logged_out_successfully: Αποσυνδεθήκατε!
+    new:
+      fields:
+        password: Κωδικός
+        submit: Είσοδος
+      flash:
+        wrong_password: Ο κωδικός είναι λάθος. Προσπάθησε ξανα.
+      rss: RSS
+      subtitle: Καλωσήρθες πίσω, φίλε.
+      title: Το Stringer λέει
+  stories:
+    keep_unread: Φύλαξη στα μη αναγνωσμένα
+  time:
+    formats:
+      default: ! '%d %b %H:%M'
+  tutorial:
+    add_feed: προσθήκη ιστολογίου
+    as_read: ως αναγνωσμένα
+    click_to_read: (πάτα εδώ για ανάγνωση)
+    description: Μια στιγμή, ετοιμάζουμε τις ειδήσεις προς ανάγνωση.
+    mark_all: επισήμανση όλων
+    ready: Έτοιμοι!
+    refresh: ανανέωση
+    simple: απλό
+    start: Ξεκίνα την ανάγνωση
+    subtitle: Εδώ είναι το εγχειρίδιο.
+    title: ! 'Το Stringer είναι '
+    your_feeds: τα ιστολόγια σου
+    your_stories: οι ειδήσεις σου

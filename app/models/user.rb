@@ -1,9 +1,8 @@
 class User < ActiveRecord::Base
-  attr_accessible :setup_complete
+
+  attr_accessible :setup_complete, :api_key
   
-  attr_accessible :superfeedr_host
-  attr_accessible :superfeedr_username
-  attr_accessible :superfeedr_password
+  attr_accessible :superfeedr_host, :superfeedr_username, :superfeedr_password
 
   attr_accessible :password, :password_confirmation
   has_secure_password
