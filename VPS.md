@@ -14,7 +14,7 @@ The first step is installing some essential dependencies from your VPS's package
 Set up the database
 ===================
 
-Create a postgresql user to own the database stringer will use, you will need to create a password too, make a note of it.
+Create a postgresql user to own the database Stringer will use, you will need to create a password too, make a note of it.
 
     sudo -u postgres createuser -D -A -P stringer
 
@@ -25,7 +25,7 @@ Now create the database Stringer will use
 Create your stringer user
 =========================
 
-We will run stringer as it's own user for security, also as we'll be installing a specific version of ruby to be used for the stringer user alone in the stringer user's home directory, this saves us worrying whether the version of ruby and some dependencies provided by your distro are compatible with Stringer.
+We will run stringer as it's own user for security, also we will be installing a specific version of ruby to stringer user's home directory, this saves us worrying whether the version of ruby and some dependencies provided by your distro are compatible with Stringer.
 
     adduser stringer --shell /bin/bash
     su stringer
