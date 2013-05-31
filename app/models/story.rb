@@ -35,7 +35,7 @@ class Story < ActiveRecord::Base
       author: source,
       html: body,
       url: self.permalink,
-      is_saved: 0,
+      is_saved: self.is_starred ? 1 : 0,
       is_read: self.is_read ? 1 : 0,
       created_on_time: self.published.to_i
     }
