@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>JavaScript Tests</title>
+    <title>Stringer JavaScript Test Suite</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
     <%= js :application %>
 
@@ -10,6 +10,12 @@
     <% end %>
     <% css_files.each do |css_file| %>
       <link rel="stylesheet" type="text/css" href="<%= css_file%>">
+    <% end %>
+
+    <!-- Javascript templates -->
+    <% js_templates.each do |template| %>
+      <%= template %>
+      <%= render_js_template template.to_sym %>
     <% end %>
   </head>
   <body>

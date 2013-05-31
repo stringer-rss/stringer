@@ -6,7 +6,8 @@ class Stringer < Sinatra::Base
 
   get '/test' do
     erb File.read(self.class.test_path('support', 'views', 'index.erb')), layout: false, locals: {
-      js_files: js_files
+      js_files: js_files,
+      js_templates: js_templates
     }
   end
 
@@ -58,5 +59,9 @@ class Stringer < Sinatra::Base
 
   def css_files
     vendor_css_files
+  end
+
+  def js_templates
+    [:story]
   end
 end
