@@ -1,0 +1,92 @@
+Install some dependencies
+=========================
+
+The first step is installing some essential dependencies from your VPS's package manager.
+
+#### Ubuntu/Debian
+
+    sudo apt-get install git libxml2-dev libxslt-dev libcurl4-openssl-dev libpq-dev libsqlite3-dev build-essential postgresql screen
+
+#### CentOS/Fedora
+
+    sudo yum install git libxml2-devel libxslt-devel libcurl4-devel libpq-devel libsqlite3-devel  make automake gcc gcc-c++ postgresql screen
+
+Set up the database
+===================
+
+Create a postgresql user to own the database Stringer will use, you will need to create a password too, make a note of it.
+
+    sudo -u postgres createuser -D -A -P stringer
+
+Now create the database Stringer will use
+
+    sudo -u postgres createdb -O stringer stringer_live
+
+Create your stringer user
+=========================
+
+We will run stringer as it's own user for security, also we will be installing a specific version of ruby to stringer user's home directory, this saves us worrying whether the version of ruby and some dependencies provided by your distro are compatible with Stringer.
+
+    adduser stringer --shell /bin/bash
+    su stringer
+
+Install Ruby for your stringer user
+===================================
+
+We are going to use Rbenv to manage the version of Ruby you use.
+
+    cd
+    git clone git://github.com/sstephenson/rbenv.git .rbenv
+    echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> $HOME/.bash_profile
+    echo 'eval "$(rbenv init -)"' >> $HOME/.bash_profile
+    git clone git://github.com/sstephenson/ruby-build.git $HOME/.rbenv/plugins/ruby-build
+    source ~/.bash_profile
+
+    rbenv install 1.9.3-p0
+    rbenv local 1.9.3-p0
+    rbenv rehash
+
+We also need to install bundler which will handle Stringer's dependencies
+
+    gem install bundler
+    rbenv rehash
+
+Install Stringer and set it up
+==============================
+
+Grab Stringer from github
+
+    git clone https://github.com/swanson/stringer.git
+    cd stringer
+
+Use bundler to grab and build Stringer's dependencies
+
+    bundle install
+    rbenv rehash
+
+Stringer uses environment variables to determine information about your database, edit these values to reflect your database and the password you chose earlier
+
+    echo 'export STRINGER_DATABASE="stringer_live"' >> $HOME/.bash_profile
+    echo 'export STRINGER_DATABASE_USERNAME="stringer"' >> $HOME/.bash_profile
+    echo 'export STRINGER_DATABASE_PASSWORD="EDIT_ME"' >> $HOME/.bash_profile
+    source ~/.bash_profile
+    
+Tell stringer to run the database in production mode, using the postgres database you created earlier.
+
+    cd $HOME/stringer
+    rake db:migrate RACK_ENV=production
+
+Run the application:
+
+    screen -d "bundle exec foreman start"
+
+Set up a cron job to parse the rss feeds. 
+
+    crontab -e
+
+add the lines
+
+    SHELL=/bin/bash
+    PATH=/home/stringer/.rbenv/bin:/bin/:/usr/bin:/usr/local/bin/:/usr/local/sbin
+    */10 * * * *  source $HOME/.bash_profile; cd $HOME/stringer/; bundle exec rake fetch_feeds;
+
