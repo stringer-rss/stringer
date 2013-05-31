@@ -103,7 +103,9 @@ If you would like to translate Stringer to your preferred language, please use [
 
 # Development
 
-Run the tests with `rspec`.
+Run the Ruby tests with `rspec`. 
+
+Run the Javascript tests with `rake test_js` and then open a browser to `http://localhost:4567/test`.
 
 In development, stringer uses `sqlite` - there are issues with locking if you run background jobs at the same time as queries are being made via the web app. If you run into these, consider using `pg` locally.
 
