@@ -21,6 +21,7 @@ class FeverAPI < Sinatra::Base
 
   before do
     halt 403 unless authenticated?(params[:api_key])
+    puts params
   end
 
   def authenticated?(api_key)
@@ -66,8 +67,13 @@ class FeverAPI < Sinatra::Base
     end
 
     if keys.include?(:items)
-      response[:items] = unread_stories(params[:since_id]).map{|s| s.as_fever_json}
-      response[:total_items] = unread_stories.count
+      if keys.include?(:with_ids)
+        response[:items] = stories_by_ids(params[:with_ids].split(",")).map{|s| s.as_fever_json}
+        response[:total_items] = stories_by_ids(params[:with_ids].split(",")).count  
+      else
+        response[:items] = unread_stories(params[:since_id]).map{|s| s.as_fever_json}
+        response[:total_items] = unread_stories.count
+      end
     end
 
     if keys.include?(:links)
@@ -107,7 +113,11 @@ class FeverAPI < Sinatra::Base
   end
 
   def starred_stories
-    Story.where(is_starred: true)
+     Story.where(is_starred: true)
+  end
+
+  def stories_by_ids(ids)
+      StoryRepository.fetch_by_ids(ids)
   end
 
   def feeds
