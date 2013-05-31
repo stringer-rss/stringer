@@ -70,6 +70,7 @@ el-GR:
       mark_all: Επισήμανση όλων ως αναγνωσμένα
       refresh: Ανανέωση
       view_feeds: Εμφάνιση ιστολογίων
+      starred_stories: 
     feed:
       last_fetched:
         never: Ποτέ
@@ -83,6 +84,7 @@ el-GR:
       archived_stories: Αποθηκευμένες ιστοσελίδες
       feeds: Εμφάνιση ιστολογίων
       home: Επιστροφή στις ειδήσεις
+      starred_stories: 
     shortcuts:
       keys:
         jk: Επόμενη/Προηγούμενη είδηση
@@ -93,6 +95,7 @@ el-GR:
         r: Ανανέωση
         shifta: Επισήμανση όλων ως αναγνωσμένα
         v: Πήγαινε στην διεύθυνση
+        s: 
       title: Συντομεύσεις στο πληκτρολόγιο
     zen:
       archive: εμφάνισης όλων των αντικειμένων
@@ -131,3 +134,8 @@ el-GR:
     title: ! 'Το Stringer είναι '
     your_feeds: τα ιστολόγια σου
     your_stories: οι ειδήσεις σου
+  starred:
+    next: 
+    of: 
+    previous: 
+    sorry: 

@@ -70,6 +70,7 @@ he:
       mark_all: סמן הכל כנקרא
       refresh: רענון
       view_feeds: בדוק את הפיד
+      starred_stories: 
     feed:
       last_fetched:
         never: לעולם
@@ -83,6 +84,7 @@ he:
       archived_stories: סיפורים ישנים
       feeds: ראה פיד
       home: חזור לסיפורים
+      starred_stories: 
     shortcuts:
       keys:
         jk: סיפור הבא/קודם
@@ -93,6 +95,7 @@ he:
         r: רענון
         shifta: סמן הכל כנקרא
         v: תעבור לקישור של הסיפור
+        s: 
       title: קיצורי מקשים
     zen:
       archive: ראה את כל הפריטים
@@ -131,3 +134,8 @@ he:
     title: סטרינגר זה
     your_feeds: הפידים שלך
     your_stories: הסיפורים שלך
+  starred:
+    next: 
+    of: 
+    previous: 
+    sorry: 
