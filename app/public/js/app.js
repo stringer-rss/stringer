@@ -26,10 +26,12 @@ var Story = Backbone.Model.extend({
   open: function() {
     if (!this.get("keep_unread")) this.set("is_read", true);
     if (this.shouldSave()) this.save();
-    
-    this.collection.closeOthers(this);
-    this.collection.unselectAll();
-    this.collection.setSelection(this);
+
+    if(this.collection){
+      this.collection.closeOthers(this);
+      this.collection.unselectAll();
+      this.collection.setSelection(this);
+    }
 
     this.set("open", true);
     this.set("selected", true);
@@ -62,7 +64,7 @@ var Story = Backbone.Model.extend({
   },
 
   select: function() {
-    this.collection.unselectAll();
+    if(this.collection) this.collection.unselectAll();
     this.set("selected", true);
   },
 
