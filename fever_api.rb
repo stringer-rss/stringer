@@ -79,7 +79,7 @@ class FeverAPI < Sinatra::Base
     end
 
     if keys.include?(:saved_item_ids)
-      response[:saved_item_ids] = starred_stories.map{|s| s.id}.join(",")
+      response[:saved_item_ids] = all_starred_stories.map{|s| s.id}.join(",")
     end
 
     if params[:mark] == "item"
@@ -107,7 +107,7 @@ class FeverAPI < Sinatra::Base
   end
 
   def starred_stories
-      StoryRepository.starred
+    Story.where(is_starred: true)
   end
 
   def feeds
