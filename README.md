@@ -109,7 +109,7 @@ In development, stringer uses `sqlite` - there are issues with locking if you ru
 
 ## Getting Started
 
-To get started using Stringer locally simply run the following:
+To get started using Stringer for development simply run the following:
 
 ```sh
 bundle install
