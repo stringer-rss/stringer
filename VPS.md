@@ -5,11 +5,11 @@ The first step is installing some essential dependencies from your VPS's package
 
 #### Ubuntu/Debian
 
-    sudo apt-get install git libxml2-dev libxslt-dev libcurl4-openssl-dev libpq-dev libsqlite3-dev build-essential nodejs postgresql screen
+    sudo apt-get install git libxml2-dev libxslt-dev libcurl4-openssl-dev libpq-dev libsqlite3-dev build-essential postgresql screen
 
 #### CentOS/Fedora
 
-    sudo yum install git libxml2-devel libxslt-devel libcurl4-devel libpq-devel libsqlite3-devel nodejs make automake gcc gcc-c++ postgresql screen
+    sudo yum install git libxml2-devel libxslt-devel libcurl4-devel libpq-devel libsqlite3-devel  make automake gcc gcc-c++ postgresql screen
 
 Set up the database
 ===================
