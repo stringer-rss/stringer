@@ -46,7 +46,7 @@ We are going to use Rbenv to manage the version of Ruby you use.
     rbenv local 1.9.3-p0
     rbenv rehash
 
-We also need to install bundle which will handle Stringer's dependencies
+We also need to install bundler which will handle Stringer's dependencies
 
     gem install bundler
     rbenv rehash
@@ -59,16 +59,16 @@ Grab Stringer from github
     git clone https://github.com/swanson/stringer.git
     cd stringer
 
-Use bundle to grab and build Stringer's dependencies
+Use bundler to grab and build Stringer's dependencies
 
     bundle install
     rbenv rehash
 
 Stringer uses environment variables to determine information about your database, edit these values to reflect your database and the password you chose earlier
 
-    echo export STRINGER_DATABASE="stringer_live" >> $HOME/.bash_profile
-    echo export STRINGER_DATABASE_USERNAME="stringer" >> $HOME/.bash_profile
-    echo export STRINGER_DATABASE_PASSWORD="EDIT_ME" >> $HOME/.bash_profile
+    echo 'export STRINGER_DATABASE="stringer_live"' >> $HOME/.bash_profile
+    echo 'export STRINGER_DATABASE_USERNAME="stringer"' >> $HOME/.bash_profile
+    echo 'export STRINGER_DATABASE_PASSWORD="EDIT_ME"' >> $HOME/.bash_profile
     source ~/.bash_profile
     
 Tell stringer to run the database in production mode, using the postgres database you created earlier.
