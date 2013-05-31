@@ -16,7 +16,8 @@ describe("Storyiew", function(){
         pretty_date: "Mon July 1, 2013",
         permalink: "http://example.com/krunch",
         keep_unread: false,
-        is_read: false
+        is_read: false,
+        is_starred: false
       });
 
       this.view = new StoryView({model: this.story})
@@ -28,8 +29,9 @@ describe("Storyiew", function(){
       this.view.$el.hasClass("story").should.be.true;
     });
 
-    var assertTagExists = function(el, tagName) {
-      el.find(tagName).should.have.length(1);
+    var assertTagExists = function(el, tagName, count) {
+      count = typeof count !== "undefined" ? count : 1;
+      el.find(tagName).should.have.length(count);
     };
 
     var assertPropertyRendered = function(el, model, propName) {
@@ -86,6 +88,20 @@ describe("Storyiew", function(){
       this.view.render();
 
       assertTagExists(this.view.$el, ".story-keep-unread .icon-check");      
+    });
+
+    it("should render two instances of the star button", function(){
+      assertTagExists(this.view.$el, ".story-actions .story-starred");
+      assertTagExists(this.view.$el, ".story-preview .story-starred");
+    });
+
+    it("should autofill star button based on item", function(){
+      assertTagExists(this.view.$el, ".story-starred .icon-star-empty", 2);
+
+      this.story.set("is_starred", true);
+      this.view.render();
+
+      assertTagExists(this.view.$el, ".story-starred .icon-star", 2);      
     });
   });
 });
