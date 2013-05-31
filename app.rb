@@ -20,6 +20,7 @@ class Stringer < Sinatra::Base
     set :public_dir, "app/public"
     set :root, File.dirname(__FILE__)
 
+    set :superfeedr, nil
     set :stories, []
 
     enable :sessions
@@ -86,7 +87,6 @@ class Stringer < Sinatra::Base
   before /^(?!\/(js|css|stream))/ do
     I18n.locale = ENV["LOCALE"].blank? ? :en : ENV["LOCALE"].to_sym
     if !is_authenticated? && needs_authentication?(request.path)
-      puts "redirect to login"
       redirect '/login'
     end
   end

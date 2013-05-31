@@ -74,6 +74,9 @@ en:
         passwords_dont_match: Hey, your password confirmation didn't match. Try again.
       subtitle: ! 'There is only one user: you.'
       title: Stringer is
+    superfeedr:
+      flash:
+        no_username_password: Hey, enter a username and a password. Try again.
   flash:
     cookies_required: Well, this is awkward. Cookies are required for the app to work properly.
     js_required: Well, this is awkward. Javascript is required for the app to work properly.

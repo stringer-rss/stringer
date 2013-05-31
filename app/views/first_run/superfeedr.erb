@@ -6,22 +6,19 @@
   <h1><%= t('superfeedr.add.title') %></h1>
   <hr />
   
-  <% if !@user.superfeedr_username? || !@user.superfeedr_password? %>
+  <% if !@user || (!@user.superfeedr_username? || !@user.superfeedr_password?) %>
   <p><%= t('superfeedr.add.description') %></p>
   <% else %>
   <p><%= t('superfeedr.setup.already_connected') %> </p>
   
   <p><%= t('superfeedr.setup.update_delete_message', :update => '<a href="#" onclick="update_superfeedr()">'+t('superfeedr.setup.update')+'</a>', :delete => '<a href="#" onclick="remove_superfeedr()">'+t('superfeedr.setup.delete')+'</a>') %></p>
-  <!--
-  <p>You can <a href="#" onclick="update_superfeedr()">update</a> or <a href="#" onclick="remove_superfeedr()">delete</a> Superfeedr credentials.</p>
-  -->
   <% end %>
   <hr />
   
-  <% if !@user.superfeedr_username? || !@user.superfeedr_password? %>
-  <form id="add-superfeedr-setup" method="POST" action="/setup/superfeedr" onsubmit="return validate();">
+  <% if !@user || (!@user.superfeedr_username? || !@user.superfeedr_password?) %>
+  <form id="add-superfeedr-setup" method="POST" action="/config/superfeedr" onsubmit="return validate();">
   <% else %>
-  <form id="add-superfeedr-setup" method="POST" action="/setup/superfeedr" onsubmit="return validate();" style="display:none;">
+  <form id="add-superfeedr-setup" method="POST" action="/config/superfeedr" onsubmit="return validate();" style="display:none;">
   <% end %>
     <div class="control-group">
       <div class="controls">
