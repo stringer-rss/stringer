@@ -21,7 +21,6 @@ class FeverAPI < Sinatra::Base
 
   before do
     halt 403 unless authenticated?(params[:api_key])
-    puts params
   end
 
   def authenticated?(api_key)
