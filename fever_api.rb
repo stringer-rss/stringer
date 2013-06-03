@@ -111,7 +111,7 @@ class FeverAPI < Sinatra::Base
     end
   end
 
-  def starred_stories
+  def all_starred_stories
      Story.where(is_starred: true)
   end
 
