@@ -124,4 +124,25 @@ describe "FeedsController" do
       last_response.header["Content-Type"].should include 'xml'
     end
   end
+
+  describe "GET /feeds/refresh" do
+    it "Fetches all the feeds" do
+      Feed.stub(all: ['feed'])
+
+      FetchFeeds.should_receive(:enqueue).with(['feed'])
+
+      get "/feeds/refresh"
+    end
+  end
+
+  describe "GET /feeds/:feed_id/refresh" do
+    it "Fetches a feed given an id" do
+      feed_id = '123'
+
+      Feed.should_receive(:find).with(feed_id).and_return(['feed'])
+      FetchFeeds.should_receive(:enqueue).with(['feed'])
+
+      get "/feeds/#{feed_id}/refresh"
+    end
+  end
 end

@@ -52,4 +52,12 @@ class Stringer < Sinatra::Base
 
     ExportToOpml.new(Feed.all).to_xml
   end
+
+  get "/feeds/refresh" do
+    FetchFeeds.enqueue(Feed.all)
+  end
+
+  get "/feeds/:feed_id/refresh" do
+    FetchFeeds.enqueue(Feed.find(params[:feed_id]))
+  end
 end
