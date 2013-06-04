@@ -70,7 +70,7 @@ nl:
       mark_all: Alles als gelezen markeren
       refresh: Vernieuwen
       view_feeds: Feeds bekijken
-      starred_stories: 
+      starred_stories: Artikelen met ster
     feed:
       last_fetched:
         never: Nooit
@@ -84,7 +84,7 @@ nl:
       archived_stories: Gearchiveerde artikelen
       feeds: Feeds bekijken
       home: Terug naar artikelen
-      starred_stories: 
+      starred_stories: Artikelen met ster
     shortcuts:
       keys:
         jk: Volgend/vorig artikel
@@ -95,7 +95,7 @@ nl:
         r: Vernieuwen
         shifta: Alles als gelezen markeren
         v: Open de URL van het artikel
-        s: 
+        s: Artikel markeren met ster/zonder ster
       title: Sneltoetsen
     zen:
       archive: alle artikelen bekijken
@@ -135,7 +135,7 @@ nl:
     your_feeds: je feeds
     your_stories: je artikelen
   starred:
-    next: 
-    of: 
-    previous: 
-    sorry: 
+    next: Volgende
+    of: van
+    previous: Vorige
+    sorry: Sorry, je hebt nog geen artikelen met ster!
