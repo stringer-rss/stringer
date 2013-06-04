@@ -1,4 +1,27 @@
 en:
+  superfeedr:
+    add:
+      title: Superfeedr
+      description: Add Superfeedr credentials
+      fields:
+        username: Username
+        password: Password
+        submit: Connect
+      flash:
+        connected: Connected to Superfeedr
+        not_connected: Unable to connect to Superfeedr
+    remove:
+      fields:
+        username: Username
+        submit: Delete
+      flash:
+        disconnected: Disconnected from Superfeedr
+        not_disconnected: Unable to disconnect from Superfeedr
+    setup:
+      already_connected: Already connected to Superfeedr.
+      update_delete_message: You can %{update} or %{delete} Superfeedr credentials.
+      update: update
+      delete: delete
   archive:
     next: Next
     of: of
@@ -34,6 +57,7 @@ en:
         added_successfully: We've added your new feed. Check back in a bit.
         already_subscribed_error: You are already subscribed to this feed...
         feed_not_found_error: We couldn't find that feed. Try again.
+        superfeedr_subscribe_error: We couldn't subsribe feed to superfeedr. Try again.
       title: Need new stories?
     index:
       add: add
@@ -50,6 +74,9 @@ en:
         passwords_dont_match: Hey, your password confirmation didn't match. Try again.
       subtitle: ! 'There is only one user: you.'
       title: Stringer is
+    superfeedr:
+      flash:
+        no_username_password: Hey, enter a username and a password. Try again.
   flash:
     cookies_required: Well, this is awkward. Cookies are required for the app to work properly.
     js_required: Well, this is awkward. Javascript is required for the app to work properly.
@@ -68,6 +95,7 @@ en:
     logout: Logout
     support: Support
     title: stringer | your rss buddy
+    superfeedr: Superfeedr
   partials:
     action_bar:
       add_feed: Add a feed
@@ -76,6 +104,7 @@ en:
       refresh: Refresh
       view_feeds: View feeds
       starred_stories: Starred stories
+      connect_to_superfeedr: Connect to Superfeedr
     feed:
       last_fetched:
         never: Never

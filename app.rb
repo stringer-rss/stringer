@@ -20,6 +20,9 @@ class Stringer < Sinatra::Base
     set :public_dir, "app/public"
     set :root, File.dirname(__FILE__)
 
+    set :superfeedr, nil
+    set :stories, []
+
     enable :sessions
     set :session_secret, ENV["SECRET_TOKEN"] || "secret!"
     enable :logging
@@ -81,9 +84,8 @@ class Stringer < Sinatra::Base
     prebuild true unless ENV['RACK_ENV'] == 'test'
   }
 
-  before do
+  before /^(?!\/(js|css|stream))/ do
     I18n.locale = ENV["LOCALE"].blank? ? :en : ENV["LOCALE"].to_sym
-
     if !is_authenticated? && needs_authentication?(request.path)
       redirect '/login'
     end
@@ -96,10 +98,27 @@ class Stringer < Sinatra::Base
       redirect to("/setup/password")
     end
   end
+
+  connections = []
+
+  get "/stream", :provides => "text/event-stream" do
+    stream :keep_open do |out|
+      connections << out
+      connections.each { |out|
+        out << "data: #{settings.stories}\n\n" 
+        settings.stories = []
+      }
+      out.callback { connections.delete(out) } 
+    end
+  end
+
 end
+
 
 require_relative "app/controllers/stories_controller"
 require_relative "app/controllers/first_run_controller"
 require_relative "app/controllers/sessions_controller"
 require_relative "app/controllers/feeds_controller"
+require_relative "app/controllers/superfeedr_controller"
 
+require_relative "app/tasks/initialize_superfeedr"

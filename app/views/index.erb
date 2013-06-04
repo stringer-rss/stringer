@@ -10,6 +10,14 @@
 
 <% if @unread_stories.empty? %>
   <%= render_partial :zen %>
+
+  <%= render_js :stories, { stories: nil } %>
+  
+  <div id="stories" style="display: none;">
+    <ul id="story-list">
+    </ul>
+  </div>  
+
 <% else %>
   <%= render_js :stories, { stories: @unread_stories } %>
   

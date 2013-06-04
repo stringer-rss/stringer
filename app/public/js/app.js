@@ -261,6 +261,13 @@ var AppView = Backbone.View.extend({
     }
   },
 
+  insert: function(story) {
+    this.stories.add(story, {at: 0});
+    var last_el = $('#story-list li:last');
+    $('#story-list li:last').remove();
+    $('#story-list').prepend(last_el);
+  },
+
   addOne: function(story) {
     var view = new StoryView({model: story});
     this.$("#story-list").append(view.render().el);

@@ -20,5 +20,12 @@ class FeedRepository
   def self.list
     Feed.order('lower(name)')
   end
-end
 
+  def self.fetch(id)
+    Feed.find(id)
+  end
+
+  def self.fetch_by_url(url)
+    Feed.where(url: url).first
+  end
+end

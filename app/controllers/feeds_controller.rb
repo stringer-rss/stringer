@@ -10,6 +10,18 @@ class Stringer < Sinatra::Base
   end
 
   delete "/feeds/:feed_id" do
+    
+    # unsubscribe to superfeedr
+    begin
+      unless settings.superfeedr.nil?
+        feed = FeedRepository.fetch(params[:feed_id])
+        settings.superfeedr.unsubscribe(feed.url)
+      end
+    rescue Exception => msg  
+      puts msg
+    end 
+    #
+
     FeedRepository.delete(params[:feed_id])
 
     status 200
@@ -24,6 +36,23 @@ class Stringer < Sinatra::Base
     feed = AddNewFeed.add(@feed_url)
 
     if feed and feed.valid?
+
+      # subscribe to superfeedr
+      begin
+        unless settings.superfeedr.nil?
+          subscription = settings.superfeedr.subscribe(feed.url)
+          if !subscription
+            flash.now[:error] = t('feeds.add.flash.superfeedr_subscribe_error')
+            erb :'feeds/add'
+          end
+        end 
+      rescue Exception => msg  
+        #puts msg
+        flash.now[:error] = t('feeds.add.flash.superfeedr_subscribe_error')
+        erb :'feeds/add'
+      end 
+      #
+      
       FetchFeeds.enqueue([feed])
 
       flash[:success] = t('feeds.add.flash.added_successfully')

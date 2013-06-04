@@ -1,0 +1,87 @@
+<div id="action-bar">
+  <%= render_partial :feed_action_bar %>
+</div>
+
+<div class="setup" id="add-feed">
+  <h1><%= t('superfeedr.add.title') %></h1>
+  <hr />
+  
+  <% if !@user || (!@user.superfeedr_username? || !@user.superfeedr_password?) %>
+  <p><%= t('superfeedr.add.description') %></p>
+  <% else %>
+  <p><%= t('superfeedr.setup.already_connected') %> </p>
+  
+  <p><%= t('superfeedr.setup.update_delete_message', :update => '<a href="#" onclick="update_superfeedr()">'+t('superfeedr.setup.update')+'</a>', :delete => '<a href="#" onclick="remove_superfeedr()">'+t('superfeedr.setup.delete')+'</a>') %></p>
+  <% end %>
+  <hr />
+  
+  <% if !@user || (!@user.superfeedr_username? || !@user.superfeedr_password?) %>
+  <form id="add-superfeedr-setup" method="POST" action="/config/superfeedr" onsubmit="return validate();">
+  <% else %>
+  <form id="add-superfeedr-setup" method="POST" action="/config/superfeedr" onsubmit="return validate();" style="display:none;">
+  <% end %>
+    <div class="control-group">
+      <div class="controls">
+        <input type="text" id="superfeedr_username" name="superfeedr_username" placeholder="<%= t('superfeedr.add.fields.username') %>">
+        <input type="password" id="superfeedr_password" name="superfeedr_password" placeholder="<%= t('superfeedr.add.fields.password') %>">
+      </div>
+    </div>
+    <input type="submit" id="submit" class="btn btn-primary pull-right" value="<%= t('superfeedr.add.fields.submit') %>"/>
+  </form>
+  
+  
+  <form id="remove-superfeedr-setup" method="POST" action="/delete/superfeedr" onsubmit="return validate_for_removal();" style="display:none;">
+    <div class="control-group">
+      <div class="controls">
+        <input type="text" id="remove_superfeedr_username" name="remove_superfeedr_username" placeholder="<%= t('superfeedr.remove.fields.username') %>">  
+      </div>
+    </div>
+    <input type="submit" id="submit" class="btn btn-primary pull-right" value="<%= t('superfeedr.remove.fields.submit') %>"/>  
+  </form>
+
+</div>
+
+<script type="text/javascript">
+  function isEmpty(str){
+    if(str === undefined){
+      return true;
+    }
+    if($.trim(str).length === 0){
+      return true;
+    }
+    return false;
+  }
+  function validate(){
+    if(isEmpty($("#superfeedr_username").val()) || isEmpty($("#superfeedr_password").val())){
+      return false;  
+    }
+    return true;
+  }
+  function validate_for_removal(){
+    if(isEmpty($("#remove_superfeedr_username").val())){
+      console.log("return false;");
+      return false;  
+    }
+    console.log("return true;");
+    return true;
+  }
+
+  function update_superfeedr(){
+    if ( $("#remove-superfeedr-setup").is(":visible") ) {
+      $("#remove-superfeedr-setup").fadeOut("fast", function (){
+        $("#add-superfeedr-setup").fadeIn("slow");   
+      });  
+    } else { 
+        $("#add-superfeedr-setup").fadeIn("slow"); 
+    }
+  }
+  function remove_superfeedr(){
+    if ( $("#add-superfeedr-setup").is(":visible") ) {
+      $("#add-superfeedr-setup").fadeOut("fast", function (){
+        $("#remove-superfeedr-setup").fadeIn("slow");   
+      });  
+    } else { 
+        $("#remove-superfeedr-setup").fadeIn("slow"); 
+    }
+  }
+</script>

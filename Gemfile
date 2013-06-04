@@ -20,6 +20,9 @@ gem "coveralls", require: false
 gem "highline", require: false
 gem "thread"
 
+gem "rack-superfeedr"
+gem "json"
+
 group :production do
   gem "unicorn"
   gem "pg"

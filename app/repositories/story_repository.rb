@@ -20,6 +20,10 @@ class StoryRepository
     Story.where(id: ids)
   end
 
+  def self.fetch_by_url(url)
+    Story.where(permalink: url).first
+  end
+
   def self.save(story)
     story.save
   end
