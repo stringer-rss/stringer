@@ -70,6 +70,7 @@ it:
       mark_all: Segna tutte come lette
       refresh: Aggiorna
       view_feeds: Mostra i feed
+      starred_stories: 
     feed:
       last_fetched:
         never: Mai
@@ -83,6 +84,7 @@ it:
       archived_stories: Storie archiviate
       feeds: Mostra i feed
       home: Ritorna alle Storie
+      starred_stories: 
     shortcuts:
       keys:
         jk: Prossima/precedente storia
@@ -93,6 +95,7 @@ it:
         r: Aggiorna
         shifta: Segna tutte le storie come lette
         v: Vai all'URL della storia
+        s: 
       title: Shortcuts da tastiera
     zen:
       archive: vai all'archivio
@@ -131,3 +134,8 @@ it:
     title: ! 'Stringer è '
     your_feeds: i tuoi feed
     your_stories: le tue storie
+  starred:
+    next: 
+    of: 
+    previous: 
+    sorry: 

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Stringer JavaScript Test Suite</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+    <%= js :application %>
+
+    <% js_files.each do |js_file| %>
+      <script src="<%= js_file %>"></script>
+    <% end %>
+    <% css_files.each do |css_file| %>
+      <link rel="stylesheet" type="text/css" href="<%= css_file%>">
+    <% end %>
+
+    <!-- Javascript templates -->
+    <% js_templates.each do |template| %>
+      <%= template %>
+      <%= render_js_template template.to_sym %>
+    <% end %>
+  </head>
+  <body>
+    <div id="mocha"></div>
+    <script type="text/javascript">
+      if(window.mochaPhantomJS) {
+        mochaPhantomJS.run();
+      } else {
+        mocha.run();
+      }
+    </script>
+  </body>
+</html>

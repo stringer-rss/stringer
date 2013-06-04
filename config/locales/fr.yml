@@ -70,6 +70,7 @@ fr:
       mark_all: Tout marquer comme lu
       refresh: Rafraîchir
       view_feeds: Voir vos flux
+      starred_stories: Articles favoris
     feed:
       last_fetched:
         never: Jamais
@@ -83,6 +84,7 @@ fr:
       archived_stories: Articles archivés
       feeds: Voir vos flux
       home: Revenir aux Articles
+      starred_stories: Articles favoris
     shortcuts:
       keys:
         jk: Article suivant/précédent
@@ -93,6 +95,7 @@ fr:
         r: Rafraîchir
         shifta: Tout marquer comme lu
         v: Aller à l'URL de l'article
+        s: Mettre/enlever cet article des favoris
       title: Raccourcis clavier
     zen:
       archive: voir toutes les entrées
@@ -131,3 +134,8 @@ fr:
     title: ! 'Stringer est '
     your_feeds: vos flux
     your_stories: vos articles
+  starred:
+    next: Suivant
+    of: de
+    previous: Précédent
+    sorry: Désolé, vous n'avez pas encore d'articles favoris!

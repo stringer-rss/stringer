@@ -32,6 +32,12 @@ task :change_password do
   ChangePassword.new.change_password
 end
 
+desc "Start server and serve JavaScript test suite at /test"
+task :test_js do
+  require_relative "./spec/javascript/test_controller"
+  Stringer.run!
+end
+
 require 'rspec/core/rake_task'
 
 RSpec::Core::RakeTask.new(:speedy_tests) do |t|

@@ -7,7 +7,7 @@ describe MarkAsUnread do
     let(:story) { stub }
     let(:repo){ stub(fetch: story) }
 
-    it "marks a story as read" do
+    it "marks a story as unread" do
       command = MarkAsUnread.new(1, repo)
       story.should_receive(:update_attributes).with(is_read: false)
       command.mark_as_unread

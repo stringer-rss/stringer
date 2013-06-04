@@ -12,7 +12,7 @@
 
   <div id="pagination">
   <% if @read_stories.previous_page %>
-    <a href="?page=<%= @read_stories.previous_page %>"><%= t('archive.previous') %></a>
+    <a id="prev_page" href="?page=<%= @read_stories.previous_page %>"><%= t('archive.previous') %></a>
   <% end %>
 
   <% if @read_stories.total_pages > 1 %>
@@ -20,9 +20,31 @@
   <% end %>
 
   <% if @read_stories.next_page %>
-    <a href="?page=<%= @read_stories.next_page %>"><%= t('archive.next') %></a>
+    <a id="next_page" href="?page=<%= @read_stories.next_page %>"><%= t('archive.next') %></a>
   <% end %>
   </div>
+
+  <script>
+    $(document).ready(function() {
+      var stripQuerystring = function(full_url) {
+        return full_url.split("?")[0];
+      };
+
+      Mousetrap.bind("left", function() {
+        var pageNumber = $("#prev_page").attr("href");
+        
+        if (pageNumber)
+          location.href = stripQuerystring(location.href) + pageNumber;
+      });
+
+      Mousetrap.bind("right", function() {
+        var pageNumber = $("#next_page").attr("href");
+        
+        if (pageNumber)
+          location.href = stripQuerystring(location.href) + pageNumber;
+      });
+    });
+  </script>
 <% else %>
   <div id="sorry">
     <p><%= t('archive.sorry') %></p>

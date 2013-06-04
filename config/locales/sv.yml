@@ -70,6 +70,7 @@ sv:
       mark_all: Markera alla som lästa
       refresh: Uppdatera
       view_feeds: Visa feeds
+      starred_stories: 
     feed:
       last_fetched:
         never: Aldrig
@@ -83,6 +84,7 @@ sv:
       archived_stories: Arkiverade berättelser
       feeds: Visa feeds
       home: Tillbaks till berättelser
+      starred_stories: 
     shortcuts:
       keys:
         jk: Nästa/föregående berättelse
@@ -93,6 +95,7 @@ sv:
         r: Uppdatera
         shifta: Markera alla som lästa
         v: Gå till berättelsens URL
+        s: 
       title: Kortkommandon
     zen:
       archive: visa alla objekt
@@ -131,3 +134,8 @@ sv:
     title: ! 'Stringer är '
     your_feeds: dina feeds
     your_stories: dina berättelser
+  starred:
+    next: 
+    of: 
+    previous: 
+    sorry: 
