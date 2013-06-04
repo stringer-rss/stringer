@@ -6,6 +6,7 @@ preload_app true
 
 before_fork do |server, worker|
   @delayed_job_pid ||= spawn("bundle exec rake work_jobs")
+  ActiveRecord::Base.establish_connection
 
   sleep 1
 end
