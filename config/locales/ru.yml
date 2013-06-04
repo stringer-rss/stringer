@@ -70,6 +70,7 @@ ru:
       mark_all: Отметить все как прочитанное
       refresh: Обновить
       view_feeds: Посмотреть ФИД каналы
+      starred_stories: 
     feed:
       last_fetched:
         never: Никогда
@@ -83,6 +84,7 @@ ru:
       archived_stories: Архив историй
       feeds: Посмотреть ФИД истории
       home: Вернуться к истории
+      starred_stories: 
     shortcuts:
       keys:
         jk: Перейти на следующую/предыдущую историю
@@ -93,6 +95,7 @@ ru:
         r: Обновить
         shifta: Пометить все как прочитанное
         v: Перейти к ссылке
+        s: 
       title: Быстрые комбинации клавиш
     zen:
       archive: Просмотреть все ФИДы
@@ -131,3 +134,8 @@ ru:
     title: ! 'Stringer это '
     your_feeds: ваши фиды
     your_stories: Ваши истории
+  starred:
+    next: 
+    of: 
+    previous: 
+    sorry: 

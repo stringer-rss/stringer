@@ -59,7 +59,7 @@ ja:
   layout:
     back_to_work: 怠け者さん！仕事に戻りましょう
     export: 書き出し
-    hey: Hey!
+    hey: やぁ！
     logout: ログアウト
     support: サポート
     title: stringer | your rss buddy
@@ -70,6 +70,7 @@ ja:
       mark_all: すべて既読にする
       refresh: リフレッシュ
       view_feeds: 購読フィードを見る
+      starred_stories: スター付きストーリー
     feed:
       last_fetched:
         never: まだない
@@ -83,6 +84,7 @@ ja:
       archived_stories: アーカイブ
       feeds: 購読フィードを見る
       home: ストーリーに戻る
+      starred_stories: スター付きストーリー
     shortcuts:
       keys:
         jk: 次／前のストーリー
@@ -93,6 +95,7 @@ ja:
         r: リフレッシュ
         shifta: すべてのストーリーを既読にする
         v: ストーリーURLを開く
+        s: スターを付ける／外す
       title: キーボードショートカット
     zen:
       archive: すべてのアイテムをみる
@@ -131,3 +134,8 @@ ja:
     title: Stringerは
     your_feeds: your feeds
     your_stories: your stories
+  starred:
+    next: 次
+    of: の
+    previous: 前
+    sorry: スター付きストーリーはまだありません

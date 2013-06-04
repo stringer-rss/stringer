@@ -8,7 +8,7 @@ zh-CN:
     next: 下一页
     of: of
     previous: 上一页
-    sorry: 呃，你现在还没有为任何故事加注星标
+    sorry: 抱歉，你还没有为任何条目加注星标诶
   date:
     abbr_month_names:
     - 
@@ -94,7 +94,7 @@ zh-CN:
       keys:
         jk: 下一个/上一个故事
         m: 将一个条目标为已读/未读
-        s: 为一个条目加注星标/取消星标
+        s: 将条目标为加注星标/取消星标
         np: 向上/向下移动
         oenter: 点击打开/关闭
         or: 或

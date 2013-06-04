@@ -70,6 +70,7 @@ tr:
       mark_all: Hepsini okunmus olarak isaretle
       refresh: Yenile
       view_feeds: Beslemeleri Goruntule
+      starred_stories: 
     feed:
       last_fetched:
         never: Asla
@@ -83,6 +84,7 @@ tr:
       archived_stories: Arsivlenmis hikayeler
       feeds: Beslemeleri Goruntule
       home: Hikayelere geri don
+      starred_stories: 
     shortcuts:
       keys:
         jk: Sonraki/onceki hikaye
@@ -93,6 +95,7 @@ tr:
         r: Yenile
         shifta: Hepsini okundu olarak isaretle
         v: Hikaye URL'sine git
+        s: 
       title: Klavye kisayollari
     zen:
       archive: butun hikayeleri goster
@@ -131,3 +134,8 @@ tr:
     title: ! 'Stringer '
     your_feeds: beslemeleriniz
     your_stories: hikayeleriniz
+  starred:
+    next: 
+    of: 
+    previous: 
+    sorry: 

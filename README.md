@@ -7,7 +7,7 @@
 
 Stringer has no external dependencies, no social recommendations/sharing, and no fancy machine learning algorithms. 
 
-But it does have keyboard shortcuts (hit `?` from within the app) and was made with love!
+But it does have keyboard shortcuts and was made with love!
 
 When `BIG_FREE_READER` shuts down, your instance of Stringer will still be kicking.
 
@@ -21,7 +21,7 @@ The app is currently under active development, please try it out and report any 
 
 Stringer is a Ruby app based on Sinatra, ActiveRecord, PostgreSQL, Backbone.js and DelayedJob.
 
-Instructions are provided for deploying to Heroku (runs fine on the free plan) but Stringer can be deployed anywhere that supports Ruby.
+Instructions are provided for deploying to Heroku (runs fine on the free plan) but Stringer can be deployed anywhere that supports Ruby (setup instructions for a Linux-based VPS are provided [here](/VPS.md)).
 
 ```sh
 git clone git://github.com/swanson/stringer.git
@@ -58,6 +58,14 @@ heroku restart
 ```
 
 # Niceties
+
+Keyboard Shortcuts
+
+You can access the keyboard shortcuts when using the app by hitting `?`.
+
+![](screenshots/keyboard_shortcuts.png)
+
+---
 
 You can run Stringer at `http://reader.yourdomain.com` using a CNAME.
 
@@ -103,7 +111,9 @@ If you would like to translate Stringer to your preferred language, please use [
 
 # Development
 
-Run the tests with `rspec`.
+Run the Ruby tests with `rspec`. 
+
+Run the Javascript tests with `rake test_js` and then open a browser to `http://localhost:4567/test`.
 
 In development, stringer uses `sqlite` - there are issues with locking if you run background jobs at the same time as queries are being made via the web app. If you run into these, consider using `pg` locally.
 

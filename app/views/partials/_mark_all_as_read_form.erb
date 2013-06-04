@@ -1,5 +1,5 @@
 <div class="hide">
-  <form id="mark-all-as-read" method="POST" action="/mark_all_as_read">
+  <form id="mark-all-as-read" method="POST" action="/stories/mark_all_as_read">
     <% stories.each do |story| %>
       <input type="hidden" name="story_ids[]" value="<%= story.id %>" />
     <% end %>
