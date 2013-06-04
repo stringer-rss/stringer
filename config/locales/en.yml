@@ -101,6 +101,8 @@ en:
         r: Refresh
         shifta: Mark all as read
         v: Go to story URL
+        left: Previous page
+        right: Next page
       title: Keyboard shortcuts
     zen:
       archive: view all items

@@ -33,12 +33,13 @@ class StoryRepository
   end
 
   def self.read(page = 1)
-    Story.where(is_read: true).order("published desc").page(page).per_page(15)
+    Story.where(is_read: true)
+      .order("published desc").page(page).per_page(20)
   end
 
   def self.starred(page = 1)
     Story.where(is_starred: true)
-          .order("published desc").page(page).per_page(15)
+          .order("published desc").page(page).per_page(20)
   end
 
   def self.read_count
