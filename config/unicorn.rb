@@ -18,7 +18,7 @@ end
 after_fork do |server, worker|
   if defined?(ActiveRecord::Base)
     env = ENV['RACK_ENV'] || "development"
-    config = YAML::load(File.open('config/database.yml'))[env]
+    config = YAML::load(ERB.new(File.read('config/database.yml')).result)[env]
     ActiveRecord::Base.establish_connection(config)
   end
 end
