@@ -96,6 +96,8 @@ sv:
         shifta: Markera alla som lästa
         v: Gå till berättelsens URL
         s: 
+        left: 
+        right: 
       title: Kortkommandon
     zen:
       archive: visa alla objekt

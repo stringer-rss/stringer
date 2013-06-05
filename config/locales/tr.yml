@@ -96,6 +96,8 @@ tr:
         shifta: Hepsini okundu olarak isaretle
         v: Hikaye URL'sine git
         s: 
+        left: 
+        right: 
       title: Klavye kisayollari
     zen:
       archive: butun hikayeleri goster

@@ -96,6 +96,8 @@ nl:
         shifta: Alles als gelezen markeren
         v: Open de URL van het artikel
         s: Artikel markeren met ster/zonder ster
+        left: 
+        right: 
       title: Sneltoetsen
     zen:
       archive: alle artikelen bekijken

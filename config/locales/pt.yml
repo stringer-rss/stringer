@@ -96,6 +96,8 @@ pt:
         shifta: Marcar tudo como lido
         v: Ir para a URL da história
         s: 
+        left: 
+        right: 
       title: Atalhos do teclado
     zen:
       archive: visualizar todos os itens

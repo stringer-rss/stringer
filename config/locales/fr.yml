@@ -96,6 +96,8 @@ fr:
         shifta: Tout marquer comme lu
         v: Aller à l'URL de l'article
         s: Mettre/enlever cet article des favoris
+        left: Page précédente
+        right: Page suivante
       title: Raccourcis clavier
     zen:
       archive: voir toutes les entrées

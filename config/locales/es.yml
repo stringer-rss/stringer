@@ -70,7 +70,7 @@ es:
       mark_all: Marcar todas como leidas
       refresh: Refrescar
       view_feeds: Ver feeds
-      starred_stories: 
+      starred_stories: Historias favoritas
     feed:
       last_fetched:
         never: Nunca
@@ -84,7 +84,7 @@ es:
       archived_stories: Historias archivadas
       feeds: Ver feeds
       home: Volver a historias
-      starred_stories: 
+      starred_stories: Historias favoritas
     shortcuts:
       keys:
         jk: Siguiente/Anterior historia
@@ -95,7 +95,9 @@ es:
         r: Refrescar
         shifta: Marcar todas como leidas
         v: Ir a URL de la historia
-        s: 
+        s: Marcar una como favorita
+        left: Anterior página
+        right: Siguiente página
       title: Atajos de teclado
     zen:
       archive: Ver todos los items
@@ -135,7 +137,7 @@ es:
     your_feeds: tus feeds
     your_stories: tus historias
   starred:
-    next: 
-    of: 
-    previous: 
+    next: Siguiente
+    of: de
+    previous: Anterior
     sorry: 

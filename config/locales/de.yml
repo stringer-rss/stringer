@@ -70,7 +70,7 @@ de:
       mark_all: Alle als gelesen markieren
       refresh: Aktualisieren
       view_feeds: Zeige Feeds an
-      starred_stories: 
+      starred_stories: Favoriten
     feed:
       last_fetched:
         never: Nie
@@ -84,7 +84,7 @@ de:
       archived_stories: Archivierte Geschichten
       feeds: Zeige Feeds an
       home: Zurück zu den Geschichten
-      starred_stories: 
+      starred_stories: Favoriten
     shortcuts:
       keys:
         jk: Nächste/vorherige Geschichte
@@ -95,7 +95,9 @@ de:
         r: Aktualisieren
         shifta: Alle als gelesen markieren
         v: Öffne die URL der Geschichte
-        s: 
+        s: Eintrag als Favorit markieren
+        left: Vorige Seite
+        right: Nächste Seite
       title: Tastaturkürzel
     zen:
       archive: alle Einträge anzeigen
@@ -135,7 +137,7 @@ de:
     your_feeds: deine Feeds
     your_stories: deine Geschichten
   starred:
-    next: 
-    of: 
-    previous: 
-    sorry: 
+    next: Nächste
+    of: von
+    previous: Vorherige
+    sorry: Bislang keine Einträge als Favoriten markiert.

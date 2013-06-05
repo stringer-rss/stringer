@@ -101,6 +101,8 @@ zh-CN:
         r: 刷新
         shifta: 全部标为已读
         v: 转到原网址
+        left: 
+        right: 
       title: 快捷键
     zen:
       archive: 查看所有故事

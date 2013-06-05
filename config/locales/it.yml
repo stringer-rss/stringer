@@ -96,6 +96,8 @@ it:
         shifta: Segna tutte le storie come lette
         v: Vai all'URL della storia
         s: 
+        left: 
+        right: 
       title: Shortcuts da tastiera
     zen:
       archive: vai all'archivio
