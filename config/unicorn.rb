@@ -16,14 +16,9 @@ before_fork do |server, worker|
 end
 
 after_fork do |server, worker|
-  # the following is *required* for Rails + "preload_app true",
-  defined?(ActiveRecord::Base) and
-    ActiveRecord::Base.establish_connection(
-      :adapter => 'postgresql',
-      :encoding => 'unicode',
-      :pool => 5,
-      :database => ENV['STRINGER_DATABASE'] || "stringer",
-      :username => ENV['STRINGER_DATABASE_USERNAME'],
-      :password => ENV['STRINGER_DATABASE_PASSWORD']
-    )
+  if defined?(ActiveRecord::Base)
+    env = ENV['RACK_ENV'] || "development"
+    config = YAML::load(File.open('config/database.yml'))[env]
+    ActiveRecord::Base.establish_connection(config)
+  end
 end
