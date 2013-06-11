@@ -3,7 +3,7 @@ rvm:
   - 1.9.3
   - 2.0.0
 before_script:
-  - npm install -g mocha-phantomjs
+  - npm install -g mocha-phantomjs@2.0.2
   - bundle exec rake test_js &> /dev/null &
   - sleep 5
 script:
