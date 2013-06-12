@@ -1,9 +1,9 @@
 ru:
   archive:
     next: Следующий
-    of: of
+    of: из
     previous: Предыдущий
-    sorry: К сожалению, вы не читали пока истории!
+    sorry: К сожалению, вы пока не прочитали истории!
   date:
     abbr_month_names:
     - 
@@ -21,18 +21,18 @@ ru:
     - дек.
   feeds:
     add:
-      description: Вставьте адрес блога который вы хотите прочитать.
+      description: Вставьте адрес блога который вы хотите читать.
       fields:
         feed_url: Feed URL
         submit: Добавить
       flash:
-        added_successfully: Мы добавили новый ФИД. Скоро информация обновится.
-        already_subscribed_error: Вы уже подписаны на этот ФИД...
-        feed_not_found_error: Мы не смогли найти этот ФИД. Попробуйте еще раз.
+        added_successfully: Мы добавили новый фид. Скоро информация обновится.
+        already_subscribed_error: Вы уже подписаны на этот фид...
+        feed_not_found_error: Мы не смогли найти этот фид. Попробуйте еще раз.
       title: Нужны новые истории?
     index:
       add: добавить
-      add_some_feeds: Эй, ​​Вы должны %{add}  некоторые ФИД каналы.
+      add_some_feeds: Эй, ​​Вы должны %{add} некоторые фид каналы.
   first_run:
     password:
       anti_social: антиобщественное
@@ -44,17 +44,17 @@ ru:
       flash:
         passwords_dont_match: Эй, Ваше подтверждение пароля не совпадает. Попробуйте еще раз.
       subtitle: ! 'Существует только один пользователь: ВЫ.'
-      title: Стингер это
+      title: Stringer это
   flash:
-    cookies_required: 
-    js_required: 
+    cookies_required: Ну, это неудобно. Cookies необходимы, чтобы приложение работало корректно.
+    js_required: Ну, это неудобно. Javascript необходим, чтобы приложение работало корректно.
   import:
     description: ! '%{link} фиды из Google Reader и импортировать их.'
     export: Экспортировать
     fields:
       import: Импортировать
       not_now: Не сейчас
-    subtitle: Так давайте настроим ваши ФИД каналы.
+    subtitle: Так давайте настроим ваши фид каналы.
     title: Добро пожаловать.
   layout:
     back_to_work: Возвращайтесь к работе, бездельник!
@@ -65,12 +65,12 @@ ru:
     title: stringer | your rss buddy
   partials:
     action_bar:
-      add_feed: Добавить ФИД канал
+      add_feed: Добавить фид канал
       archived_stories: Архив историй
       mark_all: Отметить все как прочитанное
       refresh: Обновить
-      view_feeds: Посмотреть ФИД каналы
-      starred_stories: 
+      view_feeds: Посмотреть фид каналы
+      starred_stories: Избранные истории
     feed:
       last_fetched:
         never: Никогда
@@ -80,27 +80,27 @@ ru:
         red: Ошибка при анализе (и это не никогда не работало раньше)
         yellow: Ошибка при анализе (возможно временно)
     feed_action_bar:
-      add_feed: Добавить ФИД
+      add_feed: Добавить фид
       archived_stories: Архив историй
-      feeds: Посмотреть ФИД истории
-      home: Вернуться к истории
-      starred_stories: 
+      feeds: Посмотреть фиды
+      home: Вернуться к историям
+      starred_stories: Избранные истории
     shortcuts:
       keys:
         jk: Перейти на следующую/предыдущую историю
-        m: Пометить как прочитанное / непрочитанное
+        m: Пометить как прочитанное/непрочитанное
         np: Вниз / Вверх
         oenter: Открыть / Закрыть историю
         or: или
         r: Обновить
         shifta: Пометить все как прочитанное
         v: Перейти к ссылке
-        s: 
-        left: 
-        right: 
+        s: Отметить как избранное/обычное
+        left: Предыдущая страница
+        right: Следующая страница
       title: Быстрые комбинации клавиш
     zen:
-      archive: Просмотреть все ФИДы
+      archive: просмотреть все фиды
       go_make: сделаите что-то полезное
       gtfo: Теперь прекратите читать блоги и
       rss_zero: Вы достигли RSS Zero&trade;
@@ -137,7 +137,7 @@ ru:
     your_feeds: ваши фиды
     your_stories: Ваши истории
   starred:
-    next: 
-    of: 
-    previous: 
-    sorry: 
+    next: Следующий
+    of: из
+    previous: Предыдущий
+    sorry: Извините, но у Вас нет избранных историй!
