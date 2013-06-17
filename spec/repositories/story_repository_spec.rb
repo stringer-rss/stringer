@@ -33,6 +33,25 @@ describe StoryRepository do
     it "handles empty body" do
       StoryRepository.expand_absolute_urls("", nil).should eq ""
     end
+
+    it "doesn't modify tags that do not have url attributes" do
+      content = <<-EOS
+<div>
+<img foo="bar">
+<a name="something"/></a>
+<video foo="bar"></video>
+</div>
+      EOS
+
+      result = StoryRepository.expand_absolute_urls(content, "http://oodl.io/d/")
+      result.gsub(/\n/, "").should eq <<-EOS.gsub(/\n/, "")
+<div>
+<img foo="bar">
+<a name="something"></a>
+<video foo="bar"></video>
+</div>
+      EOS
+    end
   end
 
   describe ".extract_content" do

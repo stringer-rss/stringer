@@ -65,7 +65,7 @@ class StoryRepository
     [["a", "href"], ["img", "src"], ["video", "src"]].each do |tag, attr|
       doc.css(tag).each do |node|
         url = node.get_attribute(attr)
-        unless url =~ abs_re
+        unless url =~ abs_re || url.nil?
           node.set_attribute(attr, URI.join(base_url, url).to_s)
         end
       end
