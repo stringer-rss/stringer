@@ -1,5 +1,5 @@
 class RemoveAuthorFromStories < ActiveRecord::Migration
-  def change
+  def up
     remove_column :stories, :author
   end
 end
