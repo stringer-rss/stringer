@@ -70,7 +70,7 @@ sv:
       mark_all: Markera alla som lästa
       refresh: Uppdatera
       view_feeds: Visa feeds
-      starred_stories: 
+      starred_stories: Stjärnade berättelser
     feed:
       last_fetched:
         never: Aldrig
@@ -84,7 +84,7 @@ sv:
       archived_stories: Arkiverade berättelser
       feeds: Visa feeds
       home: Tillbaks till berättelser
-      starred_stories: 
+      starred_stories: Stjärnade berättelser
     shortcuts:
       keys:
         jk: Nästa/föregående berättelse
@@ -95,9 +95,9 @@ sv:
         r: Uppdatera
         shifta: Markera alla som lästa
         v: Gå till berättelsens URL
-        s: 
-        left: 
-        right: 
+        s: Markera som stjärnad/ej stjärnad
+        left: Föregående sida
+        right: Nästa sida
       title: Kortkommandon
     zen:
       archive: visa alla objekt
@@ -137,7 +137,7 @@ sv:
     your_feeds: dina feeds
     your_stories: dina berättelser
   starred:
-    next: 
-    of: 
-    previous: 
-    sorry: 
+    next: Nästa
+    of: av
+    previous: Föregående
+    sorry: Tyvärr, du har inte stjärnat några berättelser än!

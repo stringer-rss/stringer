@@ -70,7 +70,7 @@ it:
       mark_all: Segna tutte come lette
       refresh: Aggiorna
       view_feeds: Mostra i feed
-      starred_stories: 
+      starred_stories: Storie preferite
     feed:
       last_fetched:
         never: Mai
@@ -84,7 +84,7 @@ it:
       archived_stories: Storie archiviate
       feeds: Mostra i feed
       home: Ritorna alle Storie
-      starred_stories: 
+      starred_stories: Storie preferite
     shortcuts:
       keys:
         jk: Prossima/precedente storia
@@ -95,9 +95,9 @@ it:
         r: Aggiorna
         shifta: Segna tutte le storie come lette
         v: Vai all'URL della storia
-        s: 
-        left: 
-        right: 
+        s: Segna come preferita/non preferita
+        left: Pagina precedente
+        right: Pagina successiva
       title: Shortcuts da tastiera
     zen:
       archive: vai all'archivio
@@ -137,7 +137,7 @@ it:
     your_feeds: i tuoi feed
     your_stories: le tue storie
   starred:
-    next: 
-    of: 
-    previous: 
-    sorry: 
+    next: Prossimo
+    of: di
+    previous: Precedente
+    sorry: Spiacente, non hai ancora segnato nessuna storia come preferita!
