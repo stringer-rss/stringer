@@ -1,5 +1,5 @@
 class ChangeStoryPermalinkColumn < ActiveRecord::Migration
-  def change
+  def up
     change_column :stories, :permalink, :text
   end
 end
