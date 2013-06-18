@@ -2,12 +2,12 @@ es:
   archive:
     next: Siguiente
     of: de
-    previous: Previo
+    previous: Anterior
     sorry: ! '¡Lo siento, aún no has leido ninguna historia!'
   starred:
     next: Siguiente
     of: de
-    previous: Previo
+    previous: Anterior
     sorry: ! '¡Lo siento, aún no has destacado ninguna historia!'
   date:
     abbr_month_names:
@@ -26,14 +26,14 @@ es:
     - Dic
   feeds:
     add:
-      description: Pega la URL del blog que quieres leer.
+      description: Pega la URL del blog que quieres leer
       fields:
-        feed_url: Feed URL
+        feed_url: URL de la feed
         submit: Añadir
       flash:
         added_successfully: Hemos agregado tu nueva feed. Regresa en un ratito.
-        already_subscribed_error: Ya te suscribiste a esta feed.
-        feed_not_found_error: No pudimos encontrar esa feed. Intenta de nuevo.
+        already_subscribed_error: Ya te suscribiste a esta feed...
+        feed_not_found_error: No pudimos encontrar esa feed. Inténtalo de vuelta.
       title: ¿Necesitas nuevas historias?
     index:
       add: agregar
@@ -47,22 +47,22 @@ es:
         password: Contraseña
         password_confirmation: Confirmar
       flash:
-        passwords_dont_match: Oye, tus contraseñas no coinciden. Intenta de nuevo.
+        passwords_dont_match: Oye, tus contraseñas no coinciden. Inténtalo de vuelta.
       subtitle: ! 'Nada mas hay un usuario: tu.'
       title: Stringer es
   flash:
-    cookies_required: Bueno esto es incomodo. Cookies son requeridas para que la aplicacion funcione correctamente.
-    js_required: Bueno esto es incomodo. JavaScript es requerido para que la aplicacion funcione correctamente.
+    cookies_required: Bueno esto es incomodo. Cookies son requeridas para que la aplicación funcione correctamente.
+    js_required: Bueno esto es incomodo. JavaScript es requerido para que la aplicación funcione correctamente.
   import:
-    description: %{link} tus feeds desde Google Reader e importalas.
+    description: ! '%{link} tus feeds desde Google Reader e importalas.'
     export: Exportar
     fields:
       import: Importar
       not_now: No ahora
-    subtitle: Establescamos tus feeds.
+    subtitle: Configuremos tus feeds.
     title: Bienvenido a bordo.
   layout:
-    back_to_work: ¡Regresa a tu trabajo, vago!
+    back_to_work: ¡Regresa a tu trabajo, holgazán!
     export: Exportar
     hey: ¡Oye!
     logout: Salir
@@ -70,7 +70,7 @@ es:
     title: stringer | tu compadre de rss
   partials:
     action_bar:
-      add_feed: Añadir una feed
+      add_feed: Añadir feed
       archived_stories: Historias archivadas
       mark_all: Marcar todo como leido
       refresh: Refrescar
@@ -101,12 +101,12 @@ es:
         r: Refrescar
         shifta: Marcar todo como leído
         v: Ir a URL de historia
-        left: Pagina previa
-        right: Siguiente pagina
+        left: Página anterior
+        right: Siguiente página
       title: Atajos de teclado
     zen:
       archive: ver todos los itemes
-      go_make: ir a hacer algo
+      go_make: ve a hacer algo
       gtfo: Ahora deja de leer tus blogs y
       rss_zero: Has alcanzado RSS Zero&trade;
   sessions:
@@ -118,7 +118,7 @@ es:
         password: Contraseña
         submit: Iniciar sesión
       flash:
-        wrong_password: Contraseña incorrecta. Intenta de vuelta.
+        wrong_password: Contraseña incorrecta. Inténtalo de vuelta.
       rss: RSS
       subtitle: Bienvenido de vuelta, amigo.
       title: Stringer habla
@@ -126,12 +126,12 @@ es:
     keep_unread: Dejar sin leer
   time:
     formats:
-      default: ! '%b %d, %H:%M'
+      default: ! '%d de %b, %H:%M'
   tutorial:
     add_feed: agregar feed
     as_read: como leído
     click_to_read: (haz click para leer)
-    description: Estamos consiguiendo unas historias para leer, danos un segundo.
+    description: Estamos consiguiendo unas historias para leer, danos un moment.
     mark_all: Marcar todas
     ready: ¡Bueno esta listo!
     refresh: refrescar
