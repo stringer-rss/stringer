@@ -1,14 +1,14 @@
-en:
+es:
   archive:
     next: Siguiente
     of: de
     previous: Previo
-    sorry: ¡Lo siento, aún no has leido ninguna historia!
+    sorry: ! '¡Lo siento, aún no has leido ninguna historia!'
   starred:
     next: Siguiente
     of: de
     previous: Previo
-    sorry: ¡Lo siento, aún no has destacado ninguna historia!
+    sorry: ! '¡Lo siento, aún no has destacado ninguna historia!'
   date:
     abbr_month_names:
     - 
