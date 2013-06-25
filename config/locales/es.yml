@@ -37,7 +37,7 @@ es:
       title: ¿Necesitas nuevas historias?
     index:
       add: agregar
-      add_some_feeds: Oye, deberias ${add} algunas feeds.
+      add_some_feeds: Oye, deberias %{add} algunas feeds.
   first_run:
     password:
       anti_social: anti-social
