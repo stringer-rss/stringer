@@ -77,7 +77,7 @@ nl:
       last_updated: Laatst bijgewerkt op
       status_bubble:
         green: Succes!
-        red: Fout bij inlezen (en het heeft ook nog nooit gewerkt)
+        red: Fout bij inlezen (en dat is ook nog niet eerder gelukt)
         yellow: Fout bij inlezen (waarschijnlijk tijdelijk)
     feed_action_bar:
       add_feed: Feed toevoegen
