@@ -39,6 +39,11 @@
       if (refresh) refresh.click();
     });
 
+    Mousetrap.bind("a", function() {
+      var add_feed = $("a#add-feed")[0];
+      if (add_feed) add_feed.click();
+    });
+
     Mousetrap.bind("shift+a", function() {
       $("form#mark-all-as-read").submit();
     });
