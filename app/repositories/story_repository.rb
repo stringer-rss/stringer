@@ -25,7 +25,7 @@ class StoryRepository
   end
 
   def self.unread
-    Story.where(is_read: false).order("published desc")
+    Story.where(is_read: false).order("published desc").includes(:feed)
   end
 
   def self.unread_since_id(since_id)
@@ -33,12 +33,12 @@ class StoryRepository
   end
 
   def self.read(page = 1)
-    Story.where(is_read: true)
+    Story.where(is_read: true).includes(:feed)
       .order("published desc").page(page).per_page(20)
   end
 
   def self.starred(page = 1)
-    Story.where(is_starred: true)
+    Story.where(is_starred: true).includes(:feed)
           .order("published desc").page(page).per_page(20)
   end
 
