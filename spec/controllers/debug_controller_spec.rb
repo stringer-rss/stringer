@@ -10,5 +10,12 @@ describe "DebugContoller" do
       page = last_response.body
       page.should have_tag("dd", text: /#{RUBY_VERSION}/)
     end
+
+    it "displays the user agent" do
+      get "/debug", {}, { "HTTP_USER_AGENT" => "test" }
+
+      page = last_response.body
+      page.should have_tag("dd", text: /test/)
+    end
   end
 end
