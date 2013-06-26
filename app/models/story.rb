@@ -30,7 +30,7 @@ class Story < ActiveRecord::Base
   def as_fever_json
     {
       id: self.id,
-      feed_id: self.feed.id,
+      feed_id: self.feed_id,
       title: self.title,
       author: source,
       html: body,
