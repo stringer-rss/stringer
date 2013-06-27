@@ -98,6 +98,7 @@ sv:
         s: Markera som stjärnad/ej stjärnad
         left: Föregående sida
         right: Nästa sida
+        a: 
       title: Kortkommandon
     zen:
       archive: visa alla objekt

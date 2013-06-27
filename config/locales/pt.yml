@@ -98,6 +98,7 @@ pt:
         s: 
         left: 
         right: 
+        a: 
       title: Atalhos do teclado
     zen:
       archive: visualizar todos os itens

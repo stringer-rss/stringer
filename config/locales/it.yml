@@ -98,6 +98,7 @@ it:
         s: Segna come preferita/non preferita
         left: Pagina precedente
         right: Pagina successiva
+        a: 
       title: Shortcuts da tastiera
     zen:
       archive: vai all'archivio

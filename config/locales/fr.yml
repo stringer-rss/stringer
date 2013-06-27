@@ -98,6 +98,7 @@ fr:
         s: Mettre/enlever cet article des favoris
         left: Page précédente
         right: Page suivante
+        a: 
       title: Raccourcis clavier
     zen:
       archive: voir toutes les entrées
