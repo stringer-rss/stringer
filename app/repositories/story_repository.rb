@@ -50,12 +50,16 @@ class StoryRepository
     sanitized_content = ""
 
     if entry.content
-      sanitized_content = entry.content.sanitize
+      sanitized_content = sanitize(entry.content)
     elsif entry.summary
-      sanitized_content = entry.summary.sanitize
+      sanitized_content = sanitize(entry.summary)
     end
 
     expand_absolute_urls(sanitized_content, entry.url)
+  end
+
+  def self.sanitize(content)
+    Loofah.fragment(content).scrub!(:prune).to_s
   end
 
   def self.expand_absolute_urls(content, base_url)

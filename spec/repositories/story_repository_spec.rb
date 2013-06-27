@@ -74,4 +74,13 @@ describe StoryRepository do
       StoryRepository.extract_content(summary_only).should eq "Dumb publisher"
     end
   end
+
+  describe ".sanitize" do
+    context "regressions" do
+      it "handles <wbr> tag properly" do
+        result = StoryRepository.sanitize("<code>WM_<wbr>ERROR</code> asdf")
+        result.should eq "<code>WM_ERROR</code> asdf"
+      end
+    end
+  end
 end
