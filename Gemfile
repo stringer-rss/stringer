@@ -16,8 +16,8 @@ gem "feedzirra", github: "swanson/feedzirra"
 gem "loofah"
 gem "nokogiri"
 gem "feedbag", github: "dwillis/feedbag"
-gem "coveralls", require: false
 gem "highline", require: false
+gem "rspec-core"
 gem "thread"
 
 group :production do
@@ -29,7 +29,8 @@ group :development do
   gem "sqlite3"
 end
 
-group(:development, :testing) do
+group(:development, :test) do
+  gem "coveralls", require: false
   gem "pry"
   gem "rspec"
   gem "rspec-html-matchers"

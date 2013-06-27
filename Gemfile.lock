@@ -161,6 +161,7 @@ DEPENDENCIES
   racksh
   rake
   rspec
+  rspec-core
   rspec-html-matchers
   shotgun
   sinatra
