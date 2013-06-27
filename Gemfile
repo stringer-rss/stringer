@@ -17,7 +17,6 @@ gem "loofah"
 gem "nokogiri"
 gem "feedbag", github: "dwillis/feedbag"
 gem "highline", require: false
-gem "rspec-core"
 gem "thread"
 
 group :production do
