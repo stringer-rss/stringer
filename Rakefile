@@ -38,12 +38,16 @@ task :test_js do
   Stringer.run!
 end
 
-require 'rspec/core/rake_task'
+begin
+  require 'rspec/core/rake_task'
 
-RSpec::Core::RakeTask.new(:speedy_tests) do |t|
-  t.rspec_opts = "--tag ~speed:slow"
+  RSpec::Core::RakeTask.new(:speedy_tests) do |t|
+    t.rspec_opts = "--tag ~speed:slow"
+  end
+
+  RSpec::Core::RakeTask.new(:spec)
+
+  task :default => [:speedy_tests]
+rescue LoadError
+  # allow for bundle install --without development:test
 end
-
-RSpec::Core::RakeTask.new(:spec)
-
-task :default => [:speedy_tests]
