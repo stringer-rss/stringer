@@ -1,0 +1,23 @@
+<div id="debug">
+  <h1>Debug Information</h1>
+  <dl>
+    <dt>Ruby Version</dt>
+    <dd><%= RUBY_VERSION %></dd>
+    <dt>User Agent</dt>
+    <dd><%= request.user_agent %></dd>
+    <dt>Queued Jobs</dt>
+    <dd><%= queued_jobs_count %></dd>
+    <dt>Pending Migrations</dt>
+    <dd>
+      <% if pending_migrations.present? %>
+        <ul>
+        <% pending_migrations.each do |pm| %>
+          <li><%= pm %></li>
+        <% end %>
+        </ul>
+      <% else %>
+        None
+      <% end %>
+    </dd>
+  </dl>
+</div>
