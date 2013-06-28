@@ -7,5 +7,17 @@
     <dd><%= request.user_agent %></dd>
     <dt>Queued Jobs</dt>
     <dd><%= queued_jobs_count %></dd>
+    <dt>Pending Migrations</dt>
+    <dd>
+      <% if pending_migrations.present? %>
+        <ul>
+        <% pending_migrations.each do |pm| %>
+          <li><%= pm %></li>
+        <% end %>
+        </ul>
+      <% else %>
+        None
+      <% end %>
+    </dd>
   </dl>
 </div>
