@@ -39,3 +39,10 @@ group(:development, :test) do
   gem "faker"
   gem "foreman"
 end
+
+group :heroku do
+  gem "excon"
+  gem "formatador"
+  gem "netrc"
+  gem "rendezvous"
+end
