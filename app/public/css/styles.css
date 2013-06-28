@@ -256,13 +256,6 @@ p.story-details {
   font-weight: 300;
 }
 
-.story-body img {
-  margin: 16px auto;
-  display: block;
-  padding: 5px;
-  border: 1px solid #e5e5e5;
-}
-
 .story-body ul {
   list-style-type: disc;
 }
@@ -275,6 +268,7 @@ p.story-details {
   border-top: 2px solid #FAF2E5;
   height: 28px;
   line-height: 30px;
+  clear: both;
 }
 
 .story-actions {
