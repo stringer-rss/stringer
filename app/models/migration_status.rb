@@ -1,8 +1,14 @@
 class MigrationStatus
+  attr_reader :migrator
+
+  def initialize(migrator=ActiveRecord::Migrator)
+    @migrator = migrator
+  end
+
   def pending_migrations
-    migrations_path = ActiveRecord::Migrator.migrations_path
-    migrations = ActiveRecord::Migrator.migrations(migrations_path)
-    current_version = ActiveRecord::Migrator.current_version
+    migrations_path = migrator.migrations_path
+    migrations = migrator.migrations(migrations_path)
+    current_version = migrator.current_version
 
     migrations.select do |m|
       current_version < m.version
