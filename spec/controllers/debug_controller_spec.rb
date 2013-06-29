@@ -3,7 +3,7 @@ require "support/active_record"
 
 app_require "controllers/debug_controller"
 
-describe "DebugContoller" do
+describe "DebugController" do
   describe "GET /debug" do
     before do
       delayed_job = double "Delayed::Job"
