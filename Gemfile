@@ -15,7 +15,7 @@ gem "will_paginate"
 gem "feedzirra", github: "swanson/feedzirra"
 gem "loofah"
 gem "nokogiri"
-gem "feedbag", github: "dwillis/feedbag"
+gem "feedbag", github: "mje113/feedbag"
 gem "highline", require: false
 gem "thread"
 
