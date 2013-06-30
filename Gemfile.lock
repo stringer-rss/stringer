@@ -1,6 +1,6 @@
 GIT
-  remote: git://github.com/dwillis/feedbag.git
-  revision: f7f2269ada54f9b5be7c1312949512bb8a557b10
+  remote: git://github.com/mje113/feedbag.git
+  revision: 7958a46fe424ee81198669b1ebc9db52fb4d4549
   specs:
     feedbag (0.9.1)
       nokogiri
