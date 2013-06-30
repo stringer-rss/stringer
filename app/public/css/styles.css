@@ -264,6 +264,23 @@ p.story-details {
   margin-bottom: 16px;
 }
 
+/* Wordpress image wackiness */
+.story-body img .alignright {
+  display: block;
+  float: right;
+  margin-left: 20px;
+}
+
+.story-body img .alignleft {
+  display: block;
+  float: left;
+  margin-right: 20px;
+}
+
+.story-body img .aligncenter {
+  display: block;
+}
+
 .story-actions-container {
   border-top: 2px solid #FAF2E5;
   height: 28px;
