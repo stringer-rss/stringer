@@ -8,6 +8,12 @@ class Stringer < Sinatra::Base
     erb :index
   end
 
+  get "/feed/:feed_id" do
+    @unread_stories = StoryRepository.unread_for_feed(params[:feed_id])
+
+    erb :index
+  end
+
   get "/archive" do
     @read_stories = StoryRepository.read(params[:page])
 

@@ -32,6 +32,10 @@ class StoryRepository
     unread.where('id > ?', since_id)
   end
 
+  def self.unread_for_feed(feed_id)
+    unread.where('feed_id = ?', feed_id)
+  end
+
   def self.read(page = 1)
     Story.where(is_read: true).includes(:feed)
       .order("published desc").page(page).per_page(20)
