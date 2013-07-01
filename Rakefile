@@ -157,7 +157,7 @@ task :update, :app do |task, args|
   Formatador.display_line("[negative]<> updating Heroku stringer on [underline]#{args.app}[/]")
 
   # grab netrc credentials, set by toolbelt via `heroku login`
-  Formatador.display_line("[negative]<> Reading your global Heroku credentials from ~/.netrc (set when you ran heroku login)...")
+  Formatador.display_line("[negative]<> Reading your global Heroku credentials from ~/.netrc (set when you ran heroku login)...[/]")
   _, password = Netrc.read['api.heroku.com']
 
   # setup excon for API calls
@@ -187,13 +187,13 @@ task :update, :app do |task, args|
   end
 
   #heroku run rake db:migrate
-  Formatador.display_line("[negative]<> running `rake db:migrate` on [underline]#{app_data['name']}[/]")
+  Formatador.display_line("[negative]<> running `rake db:migrate` on [underline]#{args.app}[/]")
   run_data = JSON.parse(heroku.post(
     :body => {
       "attach"  => true,
       "command" => "rake db:migrate"
     }.to_json,
-    :path => "/apps/#{app_data['id']}/dynos"
+    :path => "/apps/#{args.app}/dynos"
   ).body)
   Rendezvous.start(
     :url => run_data['attach_url']
@@ -202,6 +202,6 @@ task :update, :app do |task, args|
   heroku.reset # reset socket as db:migrate may take long enough for timeout
 
   #heroku restart
-  Formatador.display_line("[negative]<> restarting [underline]#{app_data['name']}[/]")
-  heroku.delete(:path => "/apps/#{app_data['id']}/dynos")
+  Formatador.display_line("[negative]<> restarting [underline]#{args.app}[/]")
+  heroku.delete(:path => "/apps/#{args.app}/dynos")
 end
