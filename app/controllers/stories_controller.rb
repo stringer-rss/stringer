@@ -9,9 +9,12 @@ class Stringer < Sinatra::Base
   end
 
   get "/feed/:feed_id" do
-    @unread_stories = StoryRepository.unread_for_feed(params[:feed_id])
+    @feed = FeedRepository.fetch(params[:feed_id])
 
-    erb :index
+    @stories = StoryRepository.feed(params[:feed_id])
+    @unread_stories = @stories.where(is_read: false)
+
+    erb :feed
   end
 
   get "/archive" do

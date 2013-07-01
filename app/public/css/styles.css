@@ -568,3 +568,9 @@ li.blank {
   text-decoration: none;
   margin: 0 7px;
 }
+
+#feed-title {
+  margin-bottom: 10px;
+  font-size: 28px;
+  text-align: center;
+}
