@@ -18,6 +18,14 @@ class Feed < ActiveRecord::Base
     status
   end
 
+  def unread_stories
+    stories.where('is_read = ?', false)
+  end
+
+  def has_unread_stories
+    unread_stories.any?
+  end
+
   def as_fever_json
     {
       id: self.id,

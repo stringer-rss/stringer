@@ -305,6 +305,10 @@ li.feed .feed-title a {
   text-decoration: none;
 }
 
+li.feed .feed-unread {
+  font-weight: bold;
+}
+
 li.feed .feed-title a:hover {
   color: #7F8281;
 }
