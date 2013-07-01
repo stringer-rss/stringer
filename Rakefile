@@ -154,6 +154,11 @@ task :update, :app do |task, args|
   require 'securerandom'
   require 'tmpdir'
 
+  unless args.app
+    Formatador.display_line("[negative]! Error: App required, please run as `bundle exec rake update[app]`[/]")
+    exit
+  end
+
   Formatador.display_line("[negative]<> updating Heroku stringer on [underline]#{args.app}[/]")
 
   # grab netrc credentials, set by toolbelt via `heroku login`
