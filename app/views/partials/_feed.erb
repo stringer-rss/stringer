@@ -3,10 +3,12 @@
     <div class="span7 feed-title-container">
       <p class="feed-title <%= feed.has_unread_stories ? "feed-unread" : "" %>">
         <i class="icon-circle status <%= feed.status_bubble %>" data-toggle="tooltip" title="<%= t("partials.feed.status_bubble.#{feed.status_bubble}") if feed.status_bubble %>" data-placement="left"></i>
-        <% if feed.has_unread_stories %>
-          (<%= feed.unread_stories.count %>)
-        <% end %>
-        <a href="/feed/<%= feed.id %>"><%= feed.name %></a>
+        <a href="/feed/<%= feed.id %>">
+          <% if feed.has_unread_stories %>
+            (<%= feed.unread_stories.count %>)
+          <% end %>
+          <%= feed.name %>
+        </a>
       </p>
     </div>
     <div class="span4 feed-last-updated">
