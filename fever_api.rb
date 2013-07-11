@@ -25,7 +25,7 @@ class FeverAPI < Sinatra::Base
 
   def authenticated?(api_key)
     user = User.first
-    user.api_key && api_key == user.api_key
+    user.api_key && api_key.downcase == user.api_key.downcase
   end
 
   get "/" do
