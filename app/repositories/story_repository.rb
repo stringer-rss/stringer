@@ -1,4 +1,3 @@
-require 'date'
 require_relative "../models/story"
 require_relative "../utils/sample_story"
 
@@ -45,7 +44,7 @@ class StoryRepository
 
   def self.unstarred_read_stories_older_than(num_days)
     Story.where(is_read: true, is_starred: false)
-      .where('created_at <= ?',num_days.days.ago)
+      .where('created_at <= ?', num_days.days.ago)
   end
 
   def self.read_count
