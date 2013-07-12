@@ -42,6 +42,11 @@ class StoryRepository
           .order("published desc").page(page).per_page(20)
   end
 
+  def self.oldest_read_stories(limit = 1000)
+    Story.where(is_read: true).order('created_at ASC')
+      .limit(limit)
+  end
+
   def self.read_count
     Story.where(is_read: true).count
   end

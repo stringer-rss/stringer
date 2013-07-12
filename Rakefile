@@ -6,6 +6,7 @@ Bundler.require
 require "./app"
 require_relative "./app/tasks/fetch_feeds"
 require_relative "./app/tasks/change_password"
+require_relative "./app/tasks/remove_old_stories.rb"
 
 desc "Fetch all feeds."
 task :fetch_feeds do
@@ -30,6 +31,12 @@ end
 desc "Change your password"
 task :change_password do
   ChangePassword.new.change_password
+end
+
+desc "Delete the oldest read stories"
+task :cleanup_read, :number_of_stories do |t, args|
+  args.with_defaults(:number_of_stories => 1000)
+  RemoveOldStories.new(args[:number_of_stories]).remove!
 end
 
 desc "Start server and serve JavaScript test suite at /test"
