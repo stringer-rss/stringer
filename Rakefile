@@ -34,9 +34,9 @@ task :change_password do
 end
 
 desc "Delete the oldest read stories"
-task :cleanup_read, :number_of_stories do |t, args|
-  args.with_defaults(:number_of_stories => 1000)
-  RemoveOldStories.new(args[:number_of_stories]).remove!
+task :cleanup_read, :number_of_days do |t, args|
+  args.with_defaults(:number_of_days => 7)
+  RemoveOldStories.new(args[:number_of_days].to_i).remove!
 end
 
 desc "Start server and serve JavaScript test suite at /test"

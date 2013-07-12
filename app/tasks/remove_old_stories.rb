@@ -1,10 +1,10 @@
 class RemoveOldStories
-  def initialize(number_of_stories = 1000)
-    @number_of_stories = number_of_stories
+  def initialize(number_of_days)
+    @number_of_days = number_of_days
   end
 
   def remove!
-    StoryRepository.oldest_read_stories(@number_of_stories)
-      .each(&:delete)
+    StoryRepository.unstarred_read_stories_older_than(@number_of_days)
+      .delete_all
   end
 end
