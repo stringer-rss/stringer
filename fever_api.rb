@@ -10,6 +10,7 @@ require_relative "app/commands/stories/mark_as_unread"
 
 require_relative "app/commands/stories/mark_as_starred"
 require_relative "app/commands/stories/mark_as_unstarred"
+require_relative "app/commands/stories/mark_group_as_read"
 
 class FeverAPI < Sinatra::Base
   configure do
@@ -68,7 +69,7 @@ class FeverAPI < Sinatra::Base
     if keys.include?(:items)
       if keys.include?(:with_ids)
         response[:items] = stories_by_ids(params[:with_ids].split(",")).map{|s| s.as_fever_json}
-        response[:total_items] = stories_by_ids(params[:with_ids].split(",")).count  
+        response[:total_items] = stories_by_ids(params[:with_ids].split(",")).count
       else
         response[:items] = unread_stories(params[:since_id]).map{|s| s.as_fever_json}
         response[:total_items] = unread_stories.count
@@ -98,6 +99,8 @@ class FeverAPI < Sinatra::Base
       when "unsaved"
         MarkAsUnstarred.new(params[:id]).mark_as_unstarred
       end
+    elsif params[:mark] == "group"
+      MarkGroupAsRead.new(params[:id], params[:before]).mark_group_as_read
     end
 
     response.to_json

@@ -20,6 +20,11 @@ class StoryRepository
     Story.where(id: ids)
   end
 
+  def self.fetch_unread_by_timestamp(timestamp)
+    timestamp = Time.at(timestamp.to_i)
+    Story.where("created_at < ? AND is_read = ?", timestamp, false)
+  end
+
   def self.save(story)
     story.save
   end
