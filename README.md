@@ -40,6 +40,11 @@ heroku addons:open scheduler
 
 Add an hourly task that runs `rake fetch_feeds`
 
+If you are running on Heroku's free database tier, you will be limited to 10,000 rows. If you have a large number of feeds, you may hit this limit quickly.
+There is a built in rake task that will remove any stories that are old, read, and unstarred.
+It defaults to stories older than one week, but you can optionally pass a number of days to the rake task.
+If you would like to automate this cleanup, you can add a daily task to the scheduler that runs `rake cleanup_read`
+
 Load the app and follow the instructions to import your feeds and start using the app.
 
 ---
