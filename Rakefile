@@ -36,7 +36,7 @@ end
 desc "Delete the oldest read stories"
 task :cleanup_read, :number_of_days do |t, args|
   args.with_defaults(:number_of_days => 7)
-  RemoveOldStories.new(args[:number_of_days].to_i).remove!
+  RemoveOldStories.remove!(args[:number_of_days].to_i)
 end
 
 desc "Start server and serve JavaScript test suite at /test"
