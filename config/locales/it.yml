@@ -98,7 +98,7 @@ it:
         s: Segna come preferita/non preferita
         left: Pagina precedente
         right: Pagina successiva
-        a: 
+        a: Aggiungi un feed
       title: Shortcuts da tastiera
     zen:
       archive: vai all'archivio

@@ -98,7 +98,7 @@ sv:
         s: Markera som stjärnad/ej stjärnad
         left: Föregående sida
         right: Nästa sida
-        a: 
+        a: Lägg till en feed
       title: Kortkommandon
     zen:
       archive: visa alla objekt
