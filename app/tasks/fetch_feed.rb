@@ -13,7 +13,7 @@ class FetchFeed
 
   def fetch
     begin
-      raw_feed = @parser.fetch_and_parse(@feed.url, user_agent: "Stringer")
+      raw_feed = @parser.fetch_and_parse(@feed.url, user_agent: "Stringer", if_modified_since: @feed.last_fetched)
 
       new_entries_from(raw_feed).each do |entry|
         StoryRepository.add(entry, @feed)
