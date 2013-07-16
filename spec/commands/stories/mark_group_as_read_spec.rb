@@ -13,7 +13,7 @@ describe MarkGroupAsRead do
       command.mark_group_as_read
     end
 
-    it "odes not mark other groups as read" do
+    it "does not mark other groups as read" do
       command = MarkGroupAsRead.new(2, Time.now.to_i, repo)
       stories.should_not_receive(:update_all).with(is_read: true)
       command.mark_group_as_read
