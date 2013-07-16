@@ -40,11 +40,6 @@ heroku addons:open scheduler
 
 Add an hourly task that runs `rake fetch_feeds`
 
-If you are running on Heroku's free database tier, you will be limited to 10,000 rows. If you have a large number of feeds, you may hit this limit quickly.
-There is a built in rake task that will remove any stories that are old, read, and unstarred.
-It defaults to stories older than one week, but you can optionally pass a number of days to the rake task.
-If you would like to automate this cleanup, you can add a daily task to the scheduler that runs `rake cleanup_read`
-
 Load the app and follow the instructions to import your feeds and start using the app.
 
 ---
@@ -113,6 +108,21 @@ Stringer has been translated to [several other languages](config/locales). Your 
 To set your locale on Heroku, run `heroku config:set LOCALE=en`.
 
 If you would like to translate Stringer to your preferred language, please use [LocaleApp](http://www.localeapp.com/projects/4637).
+
+---
+
+Clean up old read stories
+
+If you are on the Heroku free plan, there is a 10k row limit so you will 
+eventually run out of space.
+
+You can clean up old stories by running:
+
+`rake cleanup_old_stories`
+
+By default, this removes read stories that are more than 30 days old (that
+are not starred). You can either run this manually or add it as a scheduled
+task.
 
 # Development
 
