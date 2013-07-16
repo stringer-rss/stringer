@@ -8,11 +8,11 @@ class Story < ActiveRecord::Base
   UNTITLED = "[untitled]"
 
   def headline
-    self.title.nil? ? UNTITLED : strip_html(self.title)[0, 50]
+    self.title.nil? ? UNTITLED : strip_html(self.title)[0, 100]
   end
 
   def lead
-    strip_html(self.body)[0,100]
+    strip_html(self.body)[0,200]
   end
 
   def source

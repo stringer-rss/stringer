@@ -18,10 +18,10 @@ gem "nokogiri"
 gem "feedbag", github: "dwillis/feedbag"
 gem "highline", require: false
 gem "thread"
+gem "pg"
 
 group :production do
   gem "unicorn"
-  gem "pg"
 end
 
 group :development do
