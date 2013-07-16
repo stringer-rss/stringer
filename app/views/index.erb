@@ -12,9 +12,11 @@
   <%= render_partial :zen %>
 <% else %>
   <%= render_js :stories, { stories: @unread_stories } %>
-  
   <div id="stories">
     <ul id="story-list">
     </ul>
+  <div id="action-bar">
+    <%= render_partial :action_bar, { stories: @unread_stories } %>
+  </div>
   </div>
 <% end %>

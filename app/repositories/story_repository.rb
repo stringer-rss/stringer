@@ -30,7 +30,8 @@ class StoryRepository
   end
 
   def self.unread
-    Story.where(is_read: false).order("published desc").includes(:feed)
+    # Sorting by feeds.name as tempoparily solution to organize feeds.
+    Story.where(is_read: false).joins(:feed).order("feeds.name, published desc").includes(:feed)
   end
 
   def self.unread_since_id(since_id)

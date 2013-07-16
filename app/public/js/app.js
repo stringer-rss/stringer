@@ -112,7 +112,7 @@ var StoryView = Backbone.View.extend({
     if (this.model.get("open")) {
       this.$el.addClass("open");
       $(".story-lead", this.$el).fadeOut(1000);
-      window.scrollTo(0, this.$el.offset().top);
+      window.scrollTo(0, this.$el.offset().top - 100);
     } else {
       this.$el.removeClass("open");
       $(".story-lead", this.$el).show();
@@ -121,7 +121,7 @@ var StoryView = Backbone.View.extend({
 
   itemSelected: function() {
     this.$el.toggleClass("cursor", this.model.get("selected"));
-    if (!this.$el.visible()) window.scrollTo(0, this.$el.offset().top);
+    if (!this.$el.visible()) window.scrollTo(0, this.$el.offset().top - 100);
   },
 
   itemKeepUnread: function() {
@@ -136,7 +136,7 @@ var StoryView = Backbone.View.extend({
 
   storyClicked: function() {
     this.model.toggle();
-    window.scrollTo(0, this.$el.offset().top);
+    window.scrollTo(0, this.$el.offset().top - 100);
   },
 
   toggleKeepUnread: function() {
