@@ -1,0 +1,17 @@
+development:
+  adapter: sqlite3
+  database: db/stringer.sqlite
+
+test:
+  adapter: sqlite3
+  database: db/stringer_test.sqlite
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  database: <%= ENV['STRINGER_DATABASE'] || "stringer" %>
+  username: <%= ENV['STRINGER_DATABASE_USERNAME'] %>
+  password: <%= ENV['STRINGER_DATABASE_PASSWORD'] %>
+  host: <%= ENV['STRINGER_DATABASE_HOST'] %>
+  port: <%= ENV['STRINGER_DATABASE_PORT'] %>

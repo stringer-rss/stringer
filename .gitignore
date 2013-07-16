@@ -21,3 +21,4 @@ bin/
 db/*.sqlite
 .DS_Store
 .localeapp
+config/database.yml
