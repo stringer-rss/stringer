@@ -42,6 +42,11 @@ class StoryRepository
           .order("published desc").page(page).per_page(20)
   end
 
+  def self.unstarred_read_stories_older_than(num_days)
+    Story.where(is_read: true, is_starred: false)
+      .where('published <= ?', num_days.days.ago)
+  end
+
   def self.read_count
     Story.where(is_read: true).count
   end

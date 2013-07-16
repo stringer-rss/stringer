@@ -109,6 +109,21 @@ To set your locale on Heroku, run `heroku config:set LOCALE=en`.
 
 If you would like to translate Stringer to your preferred language, please use [LocaleApp](http://www.localeapp.com/projects/4637).
 
+---
+
+Clean up old read stories
+
+If you are on the Heroku free plan, there is a 10k row limit so you will 
+eventually run out of space.
+
+You can clean up old stories by running:
+
+`rake cleanup_old_stories`
+
+By default, this removes read stories that are more than 30 days old (that
+are not starred). You can either run this manually or add it as a scheduled
+task.
+
 # Development
 
 Run the Ruby tests with `rspec`. 
