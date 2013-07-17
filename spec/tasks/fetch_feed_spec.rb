@@ -15,6 +15,16 @@ describe FetchFeed do
       FeedRepository.stub(:set_status)
     end
 
+    context "when feed has not been modified" do
+      it "should not try to fetch posts" do
+        parser = stub(fetch_and_parse: 304)
+
+        StoryRepository.should_not_receive(:add)
+
+        FetchFeed.new(daring_fireball, parser)
+      end
+    end
+
     context "when no new posts have been added" do
       it "should not add any new posts" do
         fake_feed = stub(last_modified: Time.new(2012, 12, 31))
