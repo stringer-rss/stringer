@@ -21,10 +21,10 @@ class FetchFeed
         new_entries_from(raw_feed).each do |entry|
           StoryRepository.add(entry, @feed)
         end
-
-        FeedRepository.update_last_fetched(@feed, raw_feed.last_modified)
-        FeedRepository.set_status(:green, @feed)
       end
+
+      FeedRepository.update_last_fetched(@feed, raw_feed.last_modified)
+      FeedRepository.set_status(:green, @feed)
     rescue Exception => ex
       FeedRepository.set_status(:red, @feed)
 
