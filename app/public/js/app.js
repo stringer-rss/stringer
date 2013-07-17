@@ -134,9 +134,17 @@ var StoryView = Backbone.View.extend({
     this.$(".story-starred > i").attr("class", icon);
   },
 
-  storyClicked: function() {
-    this.model.toggle();
-    window.scrollTo(0, this.$el.offset().top);
+  storyClicked: function(e) {
+    if (e.metaKey) {
+      var background_tab = window.open(this.model.get("permalink"));
+      background_tab.blur();
+      window.focus();
+      if (!this.model.get("keep_unread")) this.model.set("is_read", true);
+      if (this.model.shouldSave()) this.model.save();
+    } else {
+      this.model.toggle();
+      window.scrollTo(0, this.$el.offset().top);
+    }
   },
 
   toggleKeepUnread: function() {
