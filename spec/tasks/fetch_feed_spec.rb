@@ -4,7 +4,7 @@ app_require "tasks/fetch_feed"
 describe FetchFeed do
   describe "#fetch" do
     let(:daring_fireball) do
-     stub(url: "http://daringfireball.com/feed", 
+     stub(url: "http://daringfireball.com/feed",
           last_fetched: Time.new(2013,1,1),
           stories: [])
     end
@@ -13,6 +13,16 @@ describe FetchFeed do
       StoryRepository.stub(:add)
       FeedRepository.stub(:update_last_fetched)
       FeedRepository.stub(:set_status)
+    end
+
+    context "when feed has not been modified" do
+      it "should not try to fetch posts" do
+        parser = stub(fetch_and_parse: 304)
+
+        StoryRepository.should_not_receive(:add)
+
+        FetchFeed.new(daring_fireball, parser)
+      end
     end
 
     context "when no new posts have been added" do
@@ -66,7 +76,7 @@ describe FetchFeed do
 
       it "sets the status to red if things go wrong" do
         parser = stub(fetch_and_parse: 404)
-        
+
         FeedRepository.should_receive(:set_status)
           .with(:red, daring_fireball)
 
