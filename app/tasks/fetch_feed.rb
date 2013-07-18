@@ -23,8 +23,9 @@ class FetchFeed
         end
 
         FeedRepository.update_last_fetched(@feed, raw_feed.last_modified)
-        FeedRepository.set_status(:green, @feed)
       end
+
+      FeedRepository.set_status(:green, @feed)
     rescue Exception => ex
       FeedRepository.set_status(:red, @feed)
 
