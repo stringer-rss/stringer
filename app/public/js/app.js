@@ -135,7 +135,7 @@ var StoryView = Backbone.View.extend({
   },
 
   storyClicked: function(e) {
-    if (e.metaKey) {
+    if (e.metaKey || e.ctrlKey || e.which == 2) {
       var background_tab = window.open(this.model.get("permalink"));
       background_tab.blur();
       window.focus();
