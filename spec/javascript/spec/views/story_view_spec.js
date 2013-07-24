@@ -113,12 +113,12 @@ describe("Storyiew", function(){
         this.toggle_stub.restore();
       });
 
-      it("should call toggle() method when clicked on story", function(){
+      it("should open story when clicked on it", function(){
         this.view.$('.story-preview').click();
         this.toggle_stub.should.have.been.calledOnce;
       });
 
-      it("should not call toggle() method when clicked on story with metaKey pressed", function(){
+      it("should not open story when clicked on it with metaKey pressed", function(){
         var e = jQuery.Event("click");
         e.metaKey = true;
         this.view.$('.story-preview').trigger(e);
@@ -126,7 +126,7 @@ describe("Storyiew", function(){
         this.toggle_stub.should.not.have.been.calledOnce;
       });
 
-      it("should not call toggle() method when clicked on story with ctrlKey pressed", function(){
+      it("should not open story when clicked on it with ctrlKey pressed", function(){
         var e = jQuery.Event("click");
         e.ctrlKey = true;
         this.view.$('.story-preview').trigger(e);
