@@ -6,6 +6,7 @@ Bundler.require
 require "./app"
 require_relative "./app/tasks/fetch_feeds"
 require_relative "./app/tasks/change_password"
+require_relative "./app/tasks/import_google_reader_stars"
 require_relative "./app/tasks/remove_old_stories.rb"
 
 desc "Fetch all feeds."
@@ -37,6 +38,11 @@ desc "Clean up old stories that are read and unstarred"
 task :cleanup_old_stories, :number_of_days do |t, args|
   args.with_defaults(:number_of_days => 30)
   RemoveOldStories.remove!(args[:number_of_days].to_i)
+end
+
+desc "Import starred items from Google Reader starred.json"
+task :import_google_reader_stars, :path do |t, args|
+  ImportGoogleReaderStars.new(args[:path]).import_google_reader_stars
 end
 
 desc "Start server and serve JavaScript test suite at /test"

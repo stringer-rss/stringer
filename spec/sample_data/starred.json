@@ -1,0 +1,70 @@
+{
+  "id" : "user/01234567890123456789/state/com.google/starred",
+  "title" : "fake's starred items in Google Reader",
+  "author" : "fake",
+  "updated" : 1372125721,
+  "direction" : "ltr",
+  "items" : [
+
+  {
+    "isReadStateLocked" : true,
+    "crawlTimeMsec" : "1366086459074",
+    "timestampUsec" : "1366086459074209",
+    "id" : "tag:google.com,2005:reader/item/0123456789abcdef",
+    "categories" : [ "user/01234567890123456789/state/com.google/read", "user/01234567890123456789/state/com.google/starred", "user/01234567890123456789/state/com.google/tracking-item-link-used", "user/01234567890123456789/state/com.google/tracking-kept-unread", "Opposable Thumbs" ],
+    "title" : "Thanks to modders, gamers can play Super Mareo Bruhs inside Counter-Strike: GO",
+    "published" : 1366065058,
+    "updated" : 1366065058,
+    "canonical" : [ {
+      "href" : "http://arstechnica.com/gaming/2013/04/thanks-to-modders-gamers-can-play-super-mareo-bruhs-inside-counter-strike-go/"
+    } ],
+    "alternate" : [ {
+      "href" : "http://feeds.arstechnica.com/~r/arstechnica/everything/~3/LEgiPxQ9Wis/",
+      "type" : "text/html"
+    } ],
+    "content" : {
+      "direction" : "ltr",
+      "content" : "<div> <p>The SourceMod community has brought us versions of everything from <a href=\"http://www.moddb.com/mods/goldeneye-source\"> <i>Goldeneye</i></a> and <a href=\"http://www.moddb.com/mods/doom-source\"><i>Doom</i></a> to <a href=\"http://www.moddb.com/mods/sonicsource\">Sonic</a> and <a href=\"http://www.mariokartsource.com/\"><i>Mario Kart</i></a> coded inside Valve's popular 3D engine and scripting environment. But the <a href=\"http://www.youtube.com/watch?v=zQU55ukMqLk&amp;list=UULEnlGVa60UbbIiViq-W6ZQ&amp;index=1\">recently unveiled SourceMod Entertainment System</a> is the first instance we can recall of a game designed to be played by characters in an existing Source engine game.</p>\n<p>As shown in the below video, <i>Counter-Strike: GO</i> players on the <a href=\"http://reflex-gamers.com/forums/cmps_index.php\">Reflex Gamers servers</a> can pick up a cartridge found in a modded version of the Office level and throw it in a recreated SNES model hooked up to the screen hanging on the wall. Next, they can pick up a virtual controller and play a thinly veiled two-player Nintendo rip-off called <i>Super Mareo Bruhs.Â </i><em>Bruhs</em> comes complete with goomba stomping and coin collecting, and players can enjoy the game-within-a-game while utterly ignoring the incoming grenades and live fire from the encroaching counter-terrorists.</p>\n<p>The mod has an admirable devotion to verisimilitude, from the power light on the in-game SNES to controllers with buttons that actually depress as you control the game from your own keyboard. Video uploader skwumpy writes in the description that the mod itself took \"months of playing with <i>CS:GO</i> modding\" and \"a little bit of maaaaagic\" to get interactive video and audio to run on an in-game screen (and an engine) that is not designed for it. \"The way it works is crazy!!\"</p>\n</div><p><a href=\"http://arstechnica.com/gaming/2013/04/thanks-to-modders-gamers-can-play-super-mareo-bruhs-inside-counter-strike-go/#p3n\">Read 1 remaining paragraphs</a> | <a href=\"http://arstechnica.com/gaming/2013/04/thanks-to-modders-gamers-can-play-super-mareo-bruhs-inside-counter-strike-go/?comments=1\">Comments</a></p><img src=\"http://feeds.feedburner.com/~r/arstechnica/everything/~4/LEgiPxQ9Wis\" height=\"1\" width=\"1\">"
+    },
+    "author" : "Kyle Orland",
+    "comments" : [ ],
+    "annotations" : [ ],
+    "origin" : {
+      "streamId" : "feed/http://feeds.arstechnica.com/arstechnica/everything",
+      "title" : "Ars Technica",
+      "htmlUrl" : "http://arstechnica.com"
+    }
+  }
+
+  , {
+    "isReadStateLocked" : true,
+    "crawlTimeMsec" : "1339722322430",
+    "timestampUsec" : "1339722322430850",
+    "id" : "tag:google.com,2005:reader/item/abcdef0123456789",
+    "categories" : [ "user/01234567890123456789/state/com.google/read", "user/01234567890123456789/state/com.google/starred", "Scientific Method", "bank robbery", "Economics", "statistics" ],
+    "title" : "Economists demonstrate exactly why bank robbery is a bad idea",
+    "published" : 1339688436,
+    "updated" : 1339688436,
+    "canonical" : [ {
+      "href" : "http://arstechnica.com/science/2012/06/economists-demonstrate-exactly-why-bank-robbery-is-a-bad-idea/"
+    } ],
+    "alternate" : [ {
+      "href" : "http://feeds.arstechnica.com/~r/arstechnica/everything/~3/Ei-g5X4VBWw/",
+      "type" : "text/html"
+    } ],
+    "content" : {
+      "direction" : "ltr",
+      "content" : "<div style=\"width:485px\">\n      <img src=\"http://cdn.arstechnica.net/wp-content/uploads/2012/06/mb101310_02-500x344.jpg\" width=\"485\" height=\"258\">\n  \n    <div>\n\t\n\t\t\t<div>\n\t\t\t\t\t\t\t<a href=\"http://www.fbi.gov/miami/press-releases/2010/image/mb101310_02.jpg\">FBI</a>\n\t\t\t\t</div>\n\t  </div>\n  </div>\n\n\n\n <p>In most papers we at Ars cover, we'll be pleasantly surprised to find a single clever turn of phrase that has survived multiple rounds of editing and peer review. So it was an unexpected surprise to come across a paper where the authors, all professors of economics, have spent the entire text with tongues so firmly planted in their cheeks that they threatened to burst out, alien-style.Â It surprised me even more to find it in a journal that is produced on behalf of the Royal Statistical Society and American Statistical Association. Credit to the statisticians, though, for the journal's clever name: <em>Significance</em>.</p>\n<p>What topic allowed the economists to cut loose? Bank robberiesâ€”or more specifically, the finances thereof. The UK's banking trade organization decided it wanted an analysis of the economic effectiveness of adding security measures to bank branches. The professors did that, but in the process, they also did an analysis that looked at the economics of bank robbery from the thieves' perspective.</p>\n<p>The results were not pretty. For guidance on the appropriateness of knocking over a bank, the authors first suggest that a would-be robber might check with a vicar or police officer, but \"[f]or the statistics, look no further. We can help. We can tell you exactly why robbing banks is a bad idea.\"</p><p><a href=\"http://arstechnica.com/science/2012/06/economists-demonstrate-exactly-why-bank-robbery-is-a-bad-idea/\">Read more</a> | <a href=\"http://arstechnica.com/science/2012/06/economists-demonstrate-exactly-why-bank-robbery-is-a-bad-idea/?comments=1#comments-bar\">Comments</a></p><p><iframe src=\"http://feedads.g.doubleclick.net/~ah/f/p5t6ra2auo51hja7iblc9aiftc/300/250?ca=1&amp;fh=280#http%3A%2F%2Farstechnica.com%2Fscience%2F2012%2F06%2Feconomists-demonstrate-exactly-why-bank-robbery-is-a-bad-idea%2F\" width=\"100%\" height=\"280\" frameborder=\"0\" scrolling=\"no\" marginwidth=\"0\" marginheight=\"0\"></iframe></p><img src=\"http://feeds.feedburner.com/~r/arstechnica/everything/~4/Ei-g5X4VBWw\" height=\"1\" width=\"1\">"
+    },
+    "author" : "John Timmer",
+    "comments" : [ ],
+    "annotations" : [ ],
+    "origin" : {
+      "streamId" : "feed/http://feeds.arstechnica.com/arstechnica/everything",
+      "title" : "Ars Technica",
+      "htmlUrl" : "http://arstechnica.com"
+    }
+  }
+
+  ]
+}
