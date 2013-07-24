@@ -121,7 +121,7 @@ describe "FeedsController" do
       get "/feeds/export"
 
       last_response.body.should eq some_xml
-      last_response.header["Content-Type"].should include 'application/octet-stream'
+      last_response.header["Content-Type"].should include 'application/xml'
       last_response.header["Content-Disposition"].should == "attachment; filename=\"stringer.opml\""
     end
   end

@@ -48,7 +48,7 @@ class Stringer < Sinatra::Base
   end
 
   get "/feeds/export" do
-    content_type 'application/octet-stream'
+    content_type 'application/xml'
     attachment 'stringer.opml'
 
     ExportToOpml.new(Feed.all).to_xml
