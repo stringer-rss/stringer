@@ -261,7 +261,7 @@ var AppView = Backbone.View.extend({
 
   render: function() {
     var unreadCount = this.stories.unreadCount();
-    
+
     if (unreadCount === 0) {
       document.title = window.i18n.titleName;
     } else {
