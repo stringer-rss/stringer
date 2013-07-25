@@ -21,12 +21,14 @@ class FeverAPI < Sinatra::Base
   end
 
   before do
-    halt 403 if !params[:api_key] || !authenticated?(params[:api_key])
+    halt 403 unless authenticated?(params[:api_key])
   end
 
   def authenticated?(api_key)
-    user = User.first
-    user.api_key && api_key.downcase == user.api_key.downcase
+    if api_key
+      user = User.first
+      user.api_key && api_key.downcase == user.api_key.downcase
+    end
   end
 
   get "/" do
