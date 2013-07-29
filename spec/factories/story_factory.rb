@@ -9,6 +9,20 @@ class StoryFactory
     def source
       self.feed.name
     end
+
+    def as_fever_json
+      {
+        id: self.id,
+        feed_id: self.feed_id,
+        title: self.title,
+        author: source,
+        html: body,
+        url: self.permalink,
+        is_saved: self.is_starred ? 1 : 0,
+        is_read: self.is_read ? 1 : 0,
+        created_on_time: self.published.to_i
+      }
+    end
   end
 
   def self.build(params = {})
