@@ -117,11 +117,11 @@ class FeverAPI < Sinatra::Base
   end
 
   def all_starred_stories
-     Story.where(is_starred: true)
+    Story.where(is_starred: true)
   end
 
   def stories_by_ids(ids)
-      StoryRepository.fetch_by_ids(ids)
+    StoryRepository.fetch_by_ids(ids)
   end
 
   def feeds
