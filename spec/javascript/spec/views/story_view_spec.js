@@ -87,7 +87,7 @@ describe("Storyiew", function(){
       this.story.set("keep_unread", true);
       this.view.render();
 
-      assertTagExists(this.view.$el, ".story-keep-unread .icon-check");      
+      assertTagExists(this.view.$el, ".story-keep-unread .icon-check");
     });
 
     it("should render two instances of the star button", function(){
@@ -101,7 +101,39 @@ describe("Storyiew", function(){
       this.story.set("is_starred", true);
       this.view.render();
 
-      assertTagExists(this.view.$el, ".story-starred .icon-star", 2);      
+      assertTagExists(this.view.$el, ".story-starred .icon-star", 2);
     });
+
+    describe("Handling click on story", function(){
+      beforeEach(function() {
+        this.toggle_stub = sinon.stub(this.story, "toggle");
+      });
+
+      afterEach(function() {
+        this.toggle_stub.restore();
+      });
+
+      it("should open story when clicked on it", function(){
+        this.view.$('.story-preview').click();
+        this.toggle_stub.should.have.been.calledOnce;
+      });
+
+      it("should not open story when clicked on it with metaKey pressed", function(){
+        var e = jQuery.Event("click");
+        e.metaKey = true;
+        this.view.$('.story-preview').trigger(e);
+
+        this.toggle_stub.should.not.have.been.calledOnce;
+      });
+
+      it("should not open story when clicked on it with ctrlKey pressed", function(){
+        var e = jQuery.Event("click");
+        e.ctrlKey = true;
+        this.view.$('.story-preview').trigger(e);
+
+        this.toggle_stub.should.not.have.been.calledOnce;
+      });
+    });
+
   });
 });
