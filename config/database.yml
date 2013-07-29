@@ -1,6 +1,8 @@
 development:
-  adapter: sqlite3
-  database: db/stringer.sqlite
+  adapter: postgresql
+  database: stringer_dev
+  encoding: unicode
+  pool: 5
 
 test:
   adapter: sqlite3
