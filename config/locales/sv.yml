@@ -70,7 +70,7 @@ sv:
       mark_all: Markera alla som lästa
       refresh: Uppdatera
       view_feeds: Visa feeds
-      starred_stories: Stjärnade berättelser
+      starred_stories: Stjärnmärkta berättelser
     feed:
       last_fetched:
         never: Aldrig
@@ -84,7 +84,7 @@ sv:
       archived_stories: Arkiverade berättelser
       feeds: Visa feeds
       home: Tillbaks till berättelser
-      starred_stories: Stjärnade berättelser
+      starred_stories: Stjärnmärkta berättelser
     shortcuts:
       keys:
         jk: Nästa/föregående berättelse
@@ -141,4 +141,4 @@ sv:
     next: Nästa
     of: av
     previous: Föregående
-    sorry: Tyvärr, du har inte stjärnat några berättelser än!
+    sorry: Tyvärr, du har inte stjärnmärkt några berättelser än!
