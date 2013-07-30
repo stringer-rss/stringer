@@ -70,7 +70,7 @@ pt:
       mark_all: Marcar tudo como lido
       refresh: Atualizar
       view_feeds: Visualizar feeds
-      starred_stories: 
+      starred_stories: Favoritas histórias
     feed:
       last_fetched:
         never: Nunca
@@ -84,7 +84,7 @@ pt:
       archived_stories: Arquivo de histórias
       feeds: Visualizar feeds
       home: Voltar para as histórias
-      starred_stories: 
+      starred_stories: Favoritas histórias
     shortcuts:
       keys:
         jk: Próxima história/História anterior
