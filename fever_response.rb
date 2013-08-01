@@ -31,12 +31,7 @@ module Fever
       end
 
       if keys.include?(:favicons)
-        response[:favicons] = [
-          {
-            id: 0,
-            data: "image/gif;base64,R0lGODlhAQABAIAAAObm5gAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-          }
-        ]
+        response[:favicons] = favicons
       end
 
       if keys.include?(:items)
@@ -122,6 +117,15 @@ module Fever
         {
           group_id: 1,
           feed_ids: Feed.all.map{|f| f.id}.join(",")
+        }
+      ]
+    end
+
+    def favicons
+      [
+        {
+          id: 0,
+          data: "image/gif;base64,R0lGODlhAQABAIAAAObm5gAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
         }
       ]
     end
