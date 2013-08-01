@@ -41,15 +41,15 @@ module Fever
       end
 
       if keys.include?(:links)
-        response[:links] = []
+        response[:links] = links
       end
 
       if keys.include?(:unread_item_ids)
-        response[:unread_item_ids] = unread_stories.map{|s| s.id}.join(",")
+        response[:unread_item_ids] = unread_item_ids
       end
 
       if keys.include?(:saved_item_ids)
-        response[:saved_item_ids] = all_starred_stories.map{|s| s.id}.join(",")
+        response[:saved_item_ids] = saved_item_ids
       end
 
       case params[:mark]
@@ -134,6 +134,18 @@ module Fever
     def total_items(item_ids)
       items = item_ids ? stories_by_ids(item_ids) : unread_stories
       items.count
+    end
+
+    def links
+      []
+    end
+
+    def unread_item_ids
+      unread_stories.map{|s| s.id}.join(',')
+    end
+
+    def saved_item_ids
+      all_starred_stories.map{|s| s.id}.join(',')
     end
   end
 end
