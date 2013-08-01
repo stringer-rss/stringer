@@ -77,27 +77,7 @@ module Fever
       @response.to_json
     end
 
-  private
-
-    def unread_stories(since_id = nil)
-      if since_id
-        StoryRepository.unread_since_id(since_id)
-      else
-        StoryRepository.unread
-      end
-    end
-
-    def all_starred_stories
-      Story.where(is_starred: true)
-    end
-
-    def stories_by_ids(ids)
-      StoryRepository.fetch_by_ids(ids)
-    end
-
-    def feeds
-      FeedRepository.list
-    end
+  protected
 
     def groups
       [
@@ -115,6 +95,10 @@ module Fever
           feed_ids: Feed.all.map{|f| f.id}.join(",")
         }
       ]
+    end
+
+    def feeds
+      FeedRepository.list
     end
 
     def favicons
@@ -146,6 +130,22 @@ module Fever
 
     def saved_item_ids
       all_starred_stories.map{|s| s.id}.join(',')
+    end
+
+    def unread_stories(since_id = nil)
+      if since_id
+        StoryRepository.unread_since_id(since_id)
+      else
+        StoryRepository.unread
+      end
+    end
+
+    def all_starred_stories
+      Story.where(is_starred: true)
+    end
+
+    def stories_by_ids(ids)
+      StoryRepository.fetch_by_ids(ids)
     end
   end
 end
