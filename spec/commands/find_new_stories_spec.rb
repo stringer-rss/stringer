@@ -36,12 +36,21 @@ describe FindNewStories do
     end
 
     context "the feed has no timekeeping" do
-      it "should scan until matching the last url" do
-        new_story = stub(published: nil, url: "http://blog.com/new-story")
-        old_story = stub(published: nil, url: "http://blog.com/old-story")
+      it "should scan until matching the last entry_id" do
+        new_story = stub(published: nil, entry_id: "new-story")
+        old_story = stub(published: nil, entry_id: "old-story")
         feed = stub(last_modified: nil, entries: [new_story, old_story])
 
-        result = FindNewStories.new(feed, Time.new(2013, 1, 3), "http://blog.com/old-story").new_stories
+        result = FindNewStories.new(feed, Time.new(2013, 1, 3), old_story).new_stories
+        result.should eq [new_story]
+      end
+
+      it "should scan until matching the last url" do
+        new_story = stub(published: nil, entry_id: nil, url: "http://blog.com/new-story")
+        old_story = stub(published: nil, entry_id: nil, url: "http://blog.com/old-story")
+        feed = stub(last_modified: nil, entries: [new_story, old_story])
+
+        result = FindNewStories.new(feed, Time.new(2013, 1, 3), old_story).new_stories
         result.should eq [new_story]
       end
     end

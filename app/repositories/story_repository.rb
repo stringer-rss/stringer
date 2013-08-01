@@ -9,7 +9,8 @@ class StoryRepository
                 body: extract_content(entry),
                 is_read: false,
                 is_starred: false,
-                published: entry.published || Time.now)
+                published: entry.published || Time.now,
+                entry_id: entry.entry_id)
   end
 
   def self.fetch(id)
