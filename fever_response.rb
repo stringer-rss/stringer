@@ -35,13 +35,9 @@ module Fever
       end
 
       if keys.include?(:items)
-        if keys.include?(:with_ids)
-          response[:items] = stories_by_ids(params[:with_ids].split(",")).map{|s| s.as_fever_json}
-          response[:total_items] = stories_by_ids(params[:with_ids].split(",")).count
-        else
-          response[:items] = unread_stories(params[:since_id]).map{|s| s.as_fever_json}
-          response[:total_items] = unread_stories.count
-        end
+        item_ids = params[:with_ids].split(',') rescue nil
+        response[:items] = items(item_ids, params[:since_id])
+        response[:total_items] = total_items(item_ids)
       end
 
       if keys.include?(:links)
@@ -128,6 +124,16 @@ module Fever
           data: "image/gif;base64,R0lGODlhAQABAIAAAObm5gAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
         }
       ]
+    end
+
+    def items(item_ids, since_id)
+      items = item_ids ? stories_by_ids(item_ids) : unread_stories(since_id)
+      items.map{|s| s.as_fever_json}
+    end
+
+    def total_items(item_ids)
+      items = item_ids ? stories_by_ids(item_ids) : unread_stories
+      items.count
     end
   end
 end
