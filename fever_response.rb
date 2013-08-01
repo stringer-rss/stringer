@@ -12,44 +12,54 @@ require_relative "app/commands/stories/mark_group_as_read"
 module Fever
   class Response
     def initialize(params)
-      response = {}
+      @response = {
+        api_version: 3,
+        auth: 1,
+        last_refreshed_on_time: Time.now.to_i
+      }
 
-      response[:api_version] = 3
-      response[:auth] = 1
-      response[:last_refreshed_on_time] = Time.now.to_i
+      process_params(params)
+    end
 
+    def to_json
+      @response.to_json
+    end
+
+  protected
+
+    def process_params(params)
       keys = params.keys.map{|k| k.to_sym}
 
       if keys.include?(:groups)
-        response[:groups] = groups
-        response[:feeds_groups] = feeds_groups
+        @response[:groups] = groups
+        @response[:feeds_groups] = feeds_groups
       end
 
       if keys.include?(:feeds)
-        response[:feeds] = feeds.map{|f| f.as_fever_json}
-        response[:feeds_groups] = feeds_groups
+        @response[:feeds] = feeds.map{|f| f.as_fever_json}
+        @response[:feeds_groups] = feeds_groups
       end
 
       if keys.include?(:favicons)
-        response[:favicons] = favicons
+        @response[:favicons] = favicons
       end
 
       if keys.include?(:items)
         item_ids = params[:with_ids].split(',') rescue nil
-        response[:items] = items(item_ids, params[:since_id])
-        response[:total_items] = total_items(item_ids)
+        @response[:items] = items(item_ids, params[:since_id])
+        @response[:total_items] = total_items(item_ids)
       end
 
       if keys.include?(:links)
-        response[:links] = links
+        @response[:links] = links
       end
 
       if keys.include?(:unread_item_ids)
-        response[:unread_item_ids] = unread_item_ids
+        @response[:unread_item_ids] = unread_item_ids
       end
 
       if keys.include?(:saved_item_ids)
-        response[:saved_item_ids] = saved_item_ids
+        @response[:saved_item_ids] = saved_item_ids
       end
 
       case params[:mark]
@@ -69,15 +79,7 @@ module Fever
       when "group"
         MarkGroupAsRead.new(params[:id], params[:before]).mark_group_as_read
       end
-
-      @response = response
     end
-
-    def to_json
-      @response.to_json
-    end
-
-  protected
 
     def groups
       [
