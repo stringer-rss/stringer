@@ -42,7 +42,7 @@ class FeverAPI < Sinatra::Base
     build_response(params)
   end
 
-  def build_response(params, is_json = true)
+  def build_response(params)
     response = {}
     response[:api_version] = 3
     response[:auth] = 1
