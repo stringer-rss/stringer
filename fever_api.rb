@@ -34,15 +34,15 @@ class FeverAPI < Sinatra::Base
 
   get "/" do
     content_type :json
-    get_response(params)
+    build_response(params)
   end
 
   post "/" do
     content_type :json
-    get_response(params)
+    build_response(params)
   end
 
-  def get_response(params, is_json = true)
+  def build_response(params, is_json = true)
     response = {}
     response[:api_version] = 3
     response[:auth] = 1
