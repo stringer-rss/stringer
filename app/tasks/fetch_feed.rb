@@ -35,11 +35,11 @@ class FetchFeed
 
   private
   def new_entries_from(raw_feed)
-    finder = FindNewStories.new(raw_feed, @feed.last_fetched, latest_url)
+    finder = FindNewStories.new(raw_feed, @feed.last_fetched, latest_entry_id)
     finder.new_stories
   end
 
-  def latest_url
-    return @feed.stories.first.permalink unless @feed.stories.empty?
+  def latest_entry_id
+    return @feed.stories.first.entry_id unless @feed.stories.empty?
   end
 end
