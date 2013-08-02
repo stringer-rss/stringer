@@ -1,5 +1,5 @@
 class AddEntryIdToStories < ActiveRecord::Migration
   def change
-    add_column :feeds, :entry_id, :string
+    add_column :stories, :entry_id, :string
   end
 end
