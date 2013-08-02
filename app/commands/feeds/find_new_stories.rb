@@ -25,8 +25,8 @@ class FindNewStories
 
     if @latest_story.entry_id
       story.entry_id == @latest_story.entry_id
-    elsif @latest_story.url
-      story.url == @latest_story.url
+    elsif @latest_story.permalink
+      story.url == @latest_story.permalink
     end
   end
 end
