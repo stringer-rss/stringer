@@ -16,7 +16,7 @@ class FetchFeed
       raw_feed = @parser.fetch_and_parse(@feed.url, user_agent: "Stringer", if_modified_since: @feed.last_fetched)
 
       if raw_feed == 304
-        @logger.info "Feed has not been modified since last fetch" if @logger
+        @logger.info "#{@feed.url} has not been modified since last fetch" if @logger
       else
         new_entries_from(raw_feed).each do |entry|
           StoryRepository.add(entry, @feed)
