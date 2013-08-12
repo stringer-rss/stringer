@@ -3,7 +3,7 @@ require_relative "./feed"
 class Story < ActiveRecord::Base
   belongs_to :feed
 
-  validates_uniqueness_of :permalink, :scope => :feed_id
+  validates_uniqueness_of :entry_id, scope: :feed_id
 
   UNTITLED = "[untitled]"
 
