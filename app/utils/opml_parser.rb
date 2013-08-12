@@ -8,7 +8,7 @@ class OpmlParser
       next feeds if missing_fields? outline.attributes
 
       feeds << {
-        name: outline.attributes["title"].value,
+        name: extract_name(outline.attributes).value,
         url: outline.attributes["xmlUrl"].value
       }
     end
@@ -16,6 +16,11 @@ class OpmlParser
 
   private
   def missing_fields?(attributes)
-    attributes["xmlUrl"].nil? || attributes["title"].nil?
+    attributes["xmlUrl"].nil? || 
+    (attributes["title"].nil? && attributes["text"].nil?)
+  end
+
+  def extract_name(attributes)
+    attributes["title"] || attributes["text"]
   end
 end
