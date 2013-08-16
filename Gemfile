@@ -13,7 +13,6 @@ group :development do
   gem "rspec-html-matchers", "~> 0.4.1"
   gem "rack-test", "~> 0.6.2"
   gem "shotgun", "~> 0.9"
-  gem "racksh", "~> 1.0.0"
   gem "faker", "~> 1.1.2"
   gem "foreman", "~> 0.63.0"
 end
@@ -53,3 +52,4 @@ gem "nokogiri", "~> 1.5.9"
 gem "feedbag", github: "dwillis/feedbag"
 gem "highline", "~> 1.6.19", require: false
 gem "thread", "~> 0.0.8"
+gem "racksh", "~> 1.0.0"
