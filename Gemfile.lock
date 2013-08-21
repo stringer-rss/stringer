@@ -148,6 +148,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord (~> 3.2.0)
   bcrypt-ruby (~> 3.0.1)
   coveralls (~> 0.6.7)
   delayed_job_active_record (~> 0.4.4)

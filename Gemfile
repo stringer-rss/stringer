@@ -37,6 +37,7 @@ group :heroku do
 end
 
 gem "sinatra", "~> 1.4.2"
+gem "activerecord", "~> 3.2.0"
 gem "sinatra-activerecord", "~> 1.2.2"
 gem "sinatra-flash", "~> 0.3.0"
 gem "sinatra-contrib", github: "sinatra/sinatra-contrib"
