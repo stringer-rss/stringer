@@ -81,6 +81,11 @@ describe StoryRepository do
         result = StoryRepository.sanitize("<code>WM_<wbr>ERROR</code> asdf")
         result.should eq "<code>WM_ERROR</code> asdf"
       end
+
+      it "handles <figure> tag properly" do
+        result = StoryRepository.sanitize("<figure>some code</figure>")
+        result.should eq "<figure>some code</figure>"
+      end
     end
   end
 end

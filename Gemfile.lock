@@ -27,6 +27,13 @@ GIT
       nokogiri (~> 1.5.3)
       sax-machine (~> 0.2.0.rc1)
 
+GIT
+  remote: git://github.com/swanson/loofah.git
+  revision: 825d715e6f1281501882d886cf34e82aebabb356
+  specs:
+    loofah (1.2.1.20130718080038)
+      nokogiri (>= 1.5.9)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -73,8 +80,6 @@ GEM
     i18n (0.6.4)
     jsmin (1.0.1)
     kgio (2.8.0)
-    loofah (1.2.1)
-      nokogiri (>= 1.4.4)
     method_source (0.8.1)
     mime-types (1.23)
     multi_json (1.7.3)
@@ -160,7 +165,7 @@ DEPENDENCIES
   formatador (~> 0.2.4)
   highline (~> 1.6.19)
   i18n (~> 0.6.4)
-  loofah (~> 1.2.1)
+  loofah!
   netrc (~> 0.7.7)
   nokogiri (~> 1.5.9)
   pg (~> 0.15.1)

@@ -49,7 +49,7 @@ gem "delayed_job_active_record", "~> 0.4.4"
 gem "bcrypt-ruby", "~> 3.0.1"
 gem "will_paginate", "~> 3.0.4"
 gem "feedzirra", github: "swanson/feedzirra"
-gem "loofah", "~> 1.2.1"
+gem "loofah", github: "swanson/loofah"
 gem "nokogiri", "~> 1.5.9"
 gem "feedbag", github: "dwillis/feedbag"
 gem "highline", "~> 1.6.19", require: false
