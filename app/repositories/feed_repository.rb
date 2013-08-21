@@ -4,7 +4,9 @@ class FeedRepository
   MIN_YEAR = 1970
 
   def self.update_last_fetched(feed, timestamp)
-    feed.last_fetched = timestamp unless timestamp.year < MIN_YEAR
+    is_invalid_timestamp = timestamp.nil? || timestamp.year < MIN_YEAR
+
+    feed.last_fetched = timestamp unless is_invalid_timestamp
     feed.save
   end
 

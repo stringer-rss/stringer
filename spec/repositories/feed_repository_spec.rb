@@ -24,5 +24,13 @@ describe FeedRepository do
 
       feed.last_fetched.should eq timestamp
     end
+
+    it "doesn't update if timestamp is nil (feed does not report last modified)" do
+      feed = Feed.new(last_fetched: timestamp)
+
+      result = FeedRepository.update_last_fetched(feed, nil)
+      
+      feed.last_fetched.should eq timestamp
+    end
   end
 end
