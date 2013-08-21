@@ -1,4 +1,5 @@
 source "https://rubygems.org"
+ruby '1.9.3'
 
 group :production do
   gem "unicorn", "~> 4.6.2"
