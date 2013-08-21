@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: git://github.com/swanson/feedzirra.git
-  revision: bde016b7f778ea86d7aa1100beca7e504c9a7032
+  revision: b1ff9dd220f90a6168d5c5555825bb3d33d851b8
   specs:
     feedzirra (0.2.0.rc2)
       curb (~> 0.8.1)
