@@ -2,6 +2,10 @@ require_relative "../repositories/feed_repository"
 
 module FeverAPI
   class ReadFeeds
+    def initialize(options = {})
+      @feed_repository = options.fetch(:feed_repository){ FeedRepository }
+    end
+
     def call(params)
       if params.keys.include?('feeds')
         { feeds: feeds }
@@ -13,7 +17,7 @@ module FeverAPI
     private
 
     def feeds
-      FeedRepository.list.map{|f| f.as_fever_json}
+      @feed_repository.list.map{|f| f.as_fever_json }
     end
   end
 end

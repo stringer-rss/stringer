@@ -2,6 +2,10 @@ require_relative "../repositories/story_repository"
 
 module FeverAPI
   class ReadItems
+    def initialize(options = {})
+      @story_repository = options.fetch(:story_repository){ StoryRepository }
+    end
+
     def call(params)
       if params.keys.include?('items')
         item_ids = params[:with_ids].split(',') rescue nil
@@ -28,14 +32,14 @@ module FeverAPI
     end
 
     def stories_by_ids(ids)
-      StoryRepository.fetch_by_ids(ids)
+      @story_repository.fetch_by_ids(ids)
     end
 
     def unread_stories(since_id = nil)
       if since_id
-        StoryRepository.unread_since_id(since_id)
+        @story_repository.unread_since_id(since_id)
       else
-        StoryRepository.unread
+        @story_repository.unread
       end
     end
   end
