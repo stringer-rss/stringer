@@ -1,15 +1,15 @@
-require_relative "app/repositories/story_repository"
-require_relative "app/repositories/feed_repository"
+require_relative "../repositories/story_repository"
+require_relative "../repositories/feed_repository"
 
-require_relative "app/commands/stories/mark_as_read"
-require_relative "app/commands/stories/mark_as_unread"
+require_relative "../commands/stories/mark_as_read"
+require_relative "../commands/stories/mark_as_unread"
 
-require_relative "app/commands/stories/mark_as_starred"
-require_relative "app/commands/stories/mark_as_unstarred"
-require_relative "app/commands/stories/mark_feed_as_read"
-require_relative "app/commands/stories/mark_group_as_read"
+require_relative "../commands/stories/mark_as_starred"
+require_relative "../commands/stories/mark_as_unstarred"
+require_relative "../commands/stories/mark_feed_as_read"
+require_relative "../commands/stories/mark_group_as_read"
 
-module Fever
+module FeverAPI
   class Authentication
     def call(params)
       { auth: 1, last_refreshed_on_time: Time.now.to_i }

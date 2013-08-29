@@ -5,7 +5,7 @@ describe FeverAPI do
   include Rack::Test::Methods
 
   def app
-    FeverAPI
+    FeverAPI::Endpoint
   end
 
   let(:api_key) { 'apisecretkey' }
