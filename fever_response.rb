@@ -195,32 +195,9 @@ module Fever
     end
   end
 
-  class Response
-    def initialize(params)
-      @response = { api_version: 3 }
-
-      @response.merge! Authentication.new.call(params)
-      @response.merge! ReadFeeds.new.call(params)
-      @response.merge! ReadGroups.new.call(params)
-      @response.merge! ReadFeedsGroups.new.call(params)
-      @response.merge! ReadFavicons.new.call(params)
-      @response.merge! ReadItems.new.call(params)
-      @response.merge! ReadLinks.new.call(params)
-      @response.merge! SyncUnreadItemIds.new.call(params)
-      @response.merge! SyncSavedItemIds.new.call(params)
-
-      process_params(params)
-    end
-
-    def to_json
-      @response.to_json
-    end
-
-  protected
-
-    def process_params(params)
-      case params[:mark]
-      when "item"
+  class WriteMarkItem
+    def call(params)
+      if params[:mark] == "item"
         case params[:as]
         when "read"
           MarkAsRead.new(params[:id]).mark_as_read
@@ -231,12 +208,49 @@ module Fever
         when "unsaved"
           MarkAsUnstarred.new(params[:id]).mark_as_unstarred
         end
-      when "feed"
+      end
+    end
+  end
+
+  class WriteMarkFeed
+    def call(params)
+      if params[:mark] == "feed"
         MarkFeedAsRead.new(params[:id], params[:before]).mark_feed_as_read
-      when "group"
+      end
+    end
+  end
+
+  class WriteMarkGroup
+    def call(params)
+      if params[:mark] == "group"
         MarkGroupAsRead.new(params[:id], params[:before]).mark_group_as_read
       end
     end
   end
-end
 
+  class Response
+    def initialize(params)
+      @response = { api_version: 3 }
+
+      @response.merge! Authentication.new.call(params)
+
+      @response.merge! ReadFeeds.new.call(params)
+      @response.merge! ReadGroups.new.call(params)
+      @response.merge! ReadFeedsGroups.new.call(params)
+      @response.merge! ReadFavicons.new.call(params)
+      @response.merge! ReadItems.new.call(params)
+      @response.merge! ReadLinks.new.call(params)
+
+      @response.merge! SyncUnreadItemIds.new.call(params)
+      @response.merge! SyncSavedItemIds.new.call(params)
+
+      WriteMarkItem.new.call(params)
+      WriteMarkFeed.new.call(params)
+      WriteMarkGroup.new.call(params)
+    end
+
+    def to_json
+      @response.to_json
+    end
+  end
+end
