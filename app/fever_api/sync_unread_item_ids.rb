@@ -2,6 +2,10 @@ require_relative "../repositories/story_repository"
 
 module FeverAPI
   class SyncUnreadItemIds
+    def initialize(options = {})
+      @story_repository = options.fetch(:story_repository){ StoryRepository }
+    end
+
     def call(params)
       if params.keys.include?('unread_item_ids')
         { unread_item_ids: unread_item_ids }
@@ -16,12 +20,8 @@ module FeverAPI
       unread_stories.map{|s| s.id}.join(',')
     end
 
-    def unread_stories(since_id = nil)
-      if since_id
-        StoryRepository.unread_since_id(since_id)
-      else
-        StoryRepository.unread
-      end
+    def unread_stories
+      @story_repository.unread
     end
   end
 end

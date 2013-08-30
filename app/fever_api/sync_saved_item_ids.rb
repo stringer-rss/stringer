@@ -1,7 +1,11 @@
-require_relative "../models/story"
+require_relative "../repositories/story_repository"
 
 module FeverAPI
   class SyncSavedItemIds
+    def initialize(options = {})
+      @story_repository = options.fetch(:story_repository){ StoryRepository }
+    end
+
     def call(params)
       if params.keys.include?('saved_item_ids')
         { saved_item_ids: saved_item_ids }
@@ -16,9 +20,8 @@ module FeverAPI
       all_starred_stories.map{|s| s.id}.join(',')
     end
 
-
     def all_starred_stories
-      Story.where(is_starred: true)
+      @story_repository.all_starred
     end
   end
 end
