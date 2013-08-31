@@ -4,10 +4,9 @@ require "bundler"
 Bundler.require
 
 require "./fever_api"
-require "./app"
-
 map "/fever" do
-  run FeverAPI
+  run FeverAPI::Endpoint
 end
 
+require "./app"
 run Stringer
