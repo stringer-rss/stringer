@@ -6,7 +6,7 @@ module FeverAPI
       @feed_repository = options.fetch(:feed_repository){ FeedRepository }
     end
 
-    def call(params)
+    def call(params = {})
       if params.keys.include?('feeds')
         { feeds: feeds }
       else

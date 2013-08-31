@@ -6,7 +6,7 @@ module FeverAPI
       @story_repository = options.fetch(:story_repository){ StoryRepository }
     end
 
-    def call(params)
+    def call(params = {})
       if params.keys.include?('unread_item_ids')
         { unread_item_ids: unread_item_ids }
       else

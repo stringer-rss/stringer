@@ -12,7 +12,7 @@ module FeverAPI
       @unstarred_marker_class = options.fetch(:unstarred_marker_class) { MarkAsUnstarred }
     end
 
-    def call(params)
+    def call(params = {})
       if params[:mark] == "item"
         case params[:as]
         when "read"

@@ -6,7 +6,7 @@ module FeverAPI
       @marker_class = options.fetch(:marker_class) { MarkGroupAsRead }
     end
 
-    def call(params)
+    def call(params = {})
       if params[:mark] == "group"
         @marker_class.new(params[:id], params[:before]).mark_group_as_read
       end

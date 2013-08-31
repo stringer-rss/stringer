@@ -6,7 +6,7 @@ module FeverAPI
       @story_repository = options.fetch(:story_repository){ StoryRepository }
     end
 
-    def call(params)
+    def call(params = {})
       if params.keys.include?('items')
         item_ids = params[:with_ids].split(',') rescue nil
 

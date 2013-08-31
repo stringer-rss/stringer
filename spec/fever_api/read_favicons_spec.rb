@@ -17,6 +17,6 @@ describe FeverAPI::ReadFavicons do
   end
 
   it "returns an empty hash otherwise" do
-    subject.call({}).should == {}
+    subject.call.should == {}
   end
 end
