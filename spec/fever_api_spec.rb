@@ -5,7 +5,7 @@ describe FeverAPI do
   include Rack::Test::Methods
 
   def app
-    FeverAPI
+    FeverAPI::Endpoint
   end
 
   let(:api_key) { 'apisecretkey' }
@@ -50,7 +50,7 @@ describe FeverAPI do
     end
 
     it "returns groups and feeds by groups when 'groups' header is provided" do
-      Feed.stub(:all).and_return([feed])
+      FeedRepository.stub(:list).and_return([feed])
       make_request({ groups: nil })
       answer.merge!({ groups: [{ id: 1, title: "All items" }], feeds_groups: [{ group_id: 1, feed_ids: feed.id.to_s }] })
       last_response.should be_ok

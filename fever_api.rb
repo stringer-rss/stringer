@@ -1,9 +1,9 @@
 require "sinatra/base"
 require "sinatra/activerecord"
 
-require_relative "fever_response.rb"
+require_relative "./app/fever_api/response"
 
-class FeverAPI < Sinatra::Base
+class FeverAPI::Endpoint < Sinatra::Base
   configure do
     set :database_file, "config/database.yml"
 
@@ -33,7 +33,7 @@ class FeverAPI < Sinatra::Base
   end
 
   def build_response(params)
-    Fever::Response.new(params).to_json
+    FeverAPI::Response.new(params).to_json
   end
 end
 
