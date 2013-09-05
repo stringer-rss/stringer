@@ -63,6 +63,7 @@ en:
     title: Welcome aboard.
   layout:
     back_to_work: Get back to work, slacker!
+    import: Import
     export: Export
     hey: Hey!
     logout: Logout
