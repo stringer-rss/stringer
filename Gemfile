@@ -9,7 +9,7 @@ end
 group :development do
   gem "sqlite3", "~> 1.3.7"
   gem "coveralls", "~> 0.6.7", require: false
-  gem "pry", "~> 0.9.12.2"
+  gem "pry-debugger", "~> 0.2.2"
   gem "rspec", "~> 2.13.0"
   gem "rspec-html-matchers", "~> 0.4.1"
   gem "rack-test", "~> 0.6.2"
@@ -20,7 +20,7 @@ end
 
 group :test do
   gem "coveralls", "~> 0.6.7", require: false
-  gem "pry", "~> 0.9.12.2"
+  gem "pry-debugger", "~> 0.2.2"
   gem "rspec", "~> 2.13.0"
   gem "rspec-html-matchers", "~> 0.4.1"
   gem "rack-test", "~> 0.6.2"
