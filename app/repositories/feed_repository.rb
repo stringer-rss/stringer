@@ -3,6 +3,10 @@ require_relative "../models/feed"
 class FeedRepository
   MIN_YEAR = 1970
 
+  def self.fetch_by_ids(ids)
+    Feed.where(id: ids)
+  end
+
   def self.update_last_fetched(feed, timestamp)
     is_invalid_timestamp = timestamp.nil? || timestamp.year < MIN_YEAR
 
