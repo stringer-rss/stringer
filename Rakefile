@@ -4,18 +4,32 @@ require "bundler"
 Bundler.require
 
 require "./app"
+require_relative "./app/jobs/fetch_feed_job"
 require_relative "./app/tasks/fetch_feeds"
 require_relative "./app/tasks/change_password"
 require_relative "./app/tasks/remove_old_stories.rb"
 
 desc "Fetch all feeds."
 task :fetch_feeds do
-  FetchFeeds.new(Feed.all).fetch_all
+  FetchFeeds.new(FeedRepository.list).fetch_all
+end
+
+desc "Enqueue fetching of all feeds"
+task :enqueue_fetch_feeds do
+  FeedRepository.list.each do |feed|
+    Delayed::Job.enqueue FetchFeedJob.new(feed.id)
+  end
 end
 
 desc "Fetch single feed"
 task :fetch_feed, :id do |t, args|
-  FetchFeed.new(Feed.find(args[:id])).fetch
+  feed = FeedRepository.fetch(args[:id])
+  FetchFeed.new(feed).fetch
+end
+
+desc "Enqueue fetching of a single feed"
+task :enqueue_fetch_feed, :id do |t, args|
+  Delayed::Job.enqueue FetchFeedJob.new(args[:id])
 end
 
 desc "Clear the delayed_job queue."
