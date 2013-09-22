@@ -100,7 +100,11 @@ var StoryView = Backbone.View.extend({
   },
 
   render: function() {
-    this.$el.html(this.template(this.model.toJSON()));
+    var jsonModel = this.model.toJSON();
+    this.$el.html(this.template(jsonModel));
+    if (jsonModel.is_read) {
+      this.$el.addClass('read');
+    }
     return this;
   },
 

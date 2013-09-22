@@ -1,9 +1,14 @@
 <li class="feed" id="feed-<%= feed.id%>" data-id="<%= feed.id %>">
   <div class="row-fluid feed-line">
     <div class="span7 feed-title-container">
-      <p class="feed-title">
+      <p class="feed-title <%= feed.has_unread_stories ? "feed-unread" : "" %>">
         <i class="icon-circle status <%= feed.status_bubble %>" data-toggle="tooltip" title="<%= t("partials.feed.status_bubble.#{feed.status_bubble}") if feed.status_bubble %>" data-placement="left"></i>
-        <a href="<%= feed.url %>"><%= feed.name %></a>
+        <a href="/feed/<%= feed.id %>">
+          <% if feed.has_unread_stories %>
+            (<%= feed.unread_stories.count %>)
+          <% end %>
+          <%= feed.name %>
+        </a>
       </p>
     </div>
     <div class="span4 feed-last-updated">
@@ -17,6 +22,9 @@
       </span>
     </div>
     <div class="span1">
+      <span class="read-feed">
+        <a class="icon-external-link" href="<%= feed.url %>"></a>
+      <span/>
       <span class="remove-feed">
         <a class="icon-remove"></a>
       <span/>
