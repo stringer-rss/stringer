@@ -60,6 +60,7 @@ sv:
     back_to_work: Tillbaks till arbetet, slöfock!
     export: Exportera
     hey: Hallå!
+    import: 
     logout: Logga ut
     support: Hjälp
     title: stringer | din rss-polare
@@ -69,8 +70,8 @@ sv:
       archived_stories: Arkiverade berättelser
       mark_all: Markera alla som lästa
       refresh: Uppdatera
-      view_feeds: Visa feeds
       starred_stories: Stjärnmärkta berättelser
+      view_feeds: Visa feeds
     feed:
       last_fetched:
         never: Aldrig
@@ -87,18 +88,18 @@ sv:
       starred_stories: Stjärnmärkta berättelser
     shortcuts:
       keys:
+        a: Lägg till en feed
         jk: Nästa/föregående berättelse
+        left: Föregående sida
         m: Markera som läst/oläst
         np: Gå ner/upp
         oenter: Öppna/stäng berättelse
         or: eller
         r: Uppdatera
+        right: Nästa sida
+        s: Markera som stjärnad/ej stjärnad
         shifta: Markera alla som lästa
         v: Gå till berättelsens URL
-        s: Markera som stjärnad/ej stjärnad
-        left: Föregående sida
-        right: Nästa sida
-        a: Lägg till en feed
       title: Kortkommandon
     zen:
       archive: visa alla objekt
@@ -118,6 +119,11 @@ sv:
       rss: RSS
       subtitle: Välkommen tillbaka, kompis.
       title: Stringer pratar
+  starred:
+    next: Nästa
+    of: av
+    previous: Föregående
+    sorry: Tyvärr, du har inte stjärnmärkt några berättelser än!
   stories:
     keep_unread: Behåll oläst
   time:
@@ -137,8 +143,3 @@ sv:
     title: ! 'Stringer är '
     your_feeds: dina feeds
     your_stories: dina berättelser
-  starred:
-    next: Nästa
-    of: av
-    previous: Föregående
-    sorry: Tyvärr, du har inte stjärnmärkt några berättelser än!

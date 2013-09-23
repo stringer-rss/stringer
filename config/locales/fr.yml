@@ -60,6 +60,7 @@ fr:
     back_to_work: Retournez au travail, fénéant !
     export: Export
     hey: Hé !
+    import: 
     logout: Déconnection
     support: Aide
     title: stringer | votre compagnon rss
@@ -69,8 +70,8 @@ fr:
       archived_stories: Articles archivés
       mark_all: Tout marquer comme lu
       refresh: Rafraîchir
-      view_feeds: Voir vos flux
       starred_stories: Articles favoris
+      view_feeds: Voir vos flux
     feed:
       last_fetched:
         never: Jamais
@@ -87,18 +88,18 @@ fr:
       starred_stories: Articles favoris
     shortcuts:
       keys:
+        a: Ajouter un flux
         jk: Article suivant/précédent
+        left: Page précédente
         m: Marquer ceci comme lu/non lu
         np: Vers le bas/vers le haut
         oenter: Ouvrir/fermer l'article
         or: ou
         r: Rafraîchir
+        right: Page suivante
+        s: Mettre/enlever cet article des favoris
         shifta: Tout marquer comme lu
         v: Aller à l'URL de l'article
-        s: Mettre/enlever cet article des favoris
-        left: Page précédente
-        right: Page suivante
-        a: Ajouter un flux
       title: Raccourcis clavier
     zen:
       archive: voir toutes les entrées
@@ -118,6 +119,11 @@ fr:
       rss: RSS
       subtitle: Content de vous revoir, l'ami.
       title: Stringer parle le
+  starred:
+    next: Suivant
+    of: de
+    previous: Précédent
+    sorry: Désolé, vous n'avez pas encore d'articles favoris!
   stories:
     keep_unread: Marquer comme non lu
   time:
@@ -137,8 +143,3 @@ fr:
     title: ! 'Stringer est '
     your_feeds: vos flux
     your_stories: vos articles
-  starred:
-    next: Suivant
-    of: de
-    previous: Précédent
-    sorry: Désolé, vous n'avez pas encore d'articles favoris!

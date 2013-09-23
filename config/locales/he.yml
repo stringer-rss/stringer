@@ -60,6 +60,7 @@ he:
     back_to_work: תחזור לעבודה, בטלן!
     export: יצוא
     hey: הי!
+    import: 
     logout: יציאה
     support: תמיכה
     title: סטרינגר | עוזר ה- RSS שלך
@@ -69,8 +70,8 @@ he:
       archived_stories: סיפורים ישנים
       mark_all: סמן הכל כנקרא
       refresh: רענון
-      view_feeds: בדוק את הפיד
       starred_stories: 
+      view_feeds: בדוק את הפיד
     feed:
       last_fetched:
         never: לעולם
@@ -87,18 +88,18 @@ he:
       starred_stories: 
     shortcuts:
       keys:
+        a: 
         jk: סיפור הבא/קודם
+        left: 
         m: סמן את הכל כנקרא/לא נקרא
         np: למעלה/למטה
         oenter: תפתח/תסגור את הסיפור
         or: או
         r: רענון
+        right: 
+        s: 
         shifta: סמן הכל כנקרא
         v: תעבור לקישור של הסיפור
-        s: 
-        left: 
-        right: 
-        a: 
       title: קיצורי מקשים
     zen:
       archive: ראה את כל הפריטים
@@ -118,6 +119,11 @@ he:
       rss: RSS
       subtitle: ברוך שובך, חבר!
       title: סטרינגר עושה סדר ב
+  starred:
+    next: 
+    of: 
+    previous: 
+    sorry: 
   stories:
     keep_unread: סמן כלא נקרא
   time:
@@ -137,8 +143,3 @@ he:
     title: סטרינגר זה
     your_feeds: הפידים שלך
     your_stories: הסיפורים שלך
-  starred:
-    next: 
-    of: 
-    previous: 
-    sorry: 

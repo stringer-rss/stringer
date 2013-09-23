@@ -60,6 +60,7 @@ tr:
     back_to_work: Hadi isine geri don!
     export: Disa Aktar
     hey: Hey!
+    import: 
     logout: Cikis Yap
     support: Destekle
     title: stringer | rss kankan
@@ -69,8 +70,8 @@ tr:
       archived_stories: Arsivlenen hikayeler
       mark_all: Hepsini okunmus olarak isaretle
       refresh: Yenile
-      view_feeds: Beslemeleri Goruntule
       starred_stories: 
+      view_feeds: Beslemeleri Goruntule
     feed:
       last_fetched:
         never: Asla
@@ -87,18 +88,18 @@ tr:
       starred_stories: 
     shortcuts:
       keys:
+        a: 
         jk: Sonraki/onceki hikaye
+        left: 
         m: Okundu/okunmadi olarak isaretle
         np: Asagi/yukari hareket et
         oenter: Hikayeyi ac/kapa
         or: yada
         r: Yenile
+        right: 
+        s: 
         shifta: Hepsini okundu olarak isaretle
         v: Hikaye URL'sine git
-        s: 
-        left: 
-        right: 
-        a: 
       title: Klavye kisayollari
     zen:
       archive: butun hikayeleri goster
@@ -118,6 +119,11 @@ tr:
       rss: RSS
       subtitle: Tekrar hosgeldin, dostum.
       title: Stringer diyoki
+  starred:
+    next: 
+    of: 
+    previous: 
+    sorry: 
   stories:
     keep_unread: Okunmadi olarak tut
   time:
@@ -137,8 +143,3 @@ tr:
     title: ! 'Stringer '
     your_feeds: beslemeleriniz
     your_stories: hikayeleriniz
-  starred:
-    next: 
-    of: 
-    previous: 
-    sorry: 

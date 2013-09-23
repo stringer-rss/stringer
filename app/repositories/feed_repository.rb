@@ -3,6 +3,10 @@ require_relative "../models/feed"
 class FeedRepository
   MIN_YEAR = 1970
 
+  def self.fetch(id)
+    Feed.find(id)
+  end
+
   def self.fetch_by_ids(ids)
     Feed.where(id: ids)
   end
@@ -34,3 +38,4 @@ class FeedRepository
       (current_timestamp.nil? || new_timestamp > current_timestamp)
   end
 end
+

@@ -4,11 +4,6 @@ es:
     of: de
     previous: Anterior
     sorry: ¡Lo siento, aún no has leido ninguna historia!
-  starred:
-    next: Siguiente
-    of: de
-    previous: Anterior
-    sorry: ¡Lo siento, aún no has destacado ninguna historia!
   date:
     abbr_month_names:
     - 
@@ -65,6 +60,7 @@ es:
     back_to_work: ¡Regresa a tu trabajo, holgazán!
     export: Exportar
     hey: ¡Oye!
+    import: 
     logout: Salir
     support: Soporte
     title: stringer | tu compadre de rss
@@ -74,8 +70,8 @@ es:
       archived_stories: Historias archivadas
       mark_all: Marcar todo como leido
       refresh: Refrescar
-      view_feeds: Ver feeds
       starred_stories: Historias destacadas
+      view_feeds: Ver feeds
     feed:
       last_fetched:
         never: Nunca
@@ -92,18 +88,18 @@ es:
       starred_stories: Historias destacadas
     shortcuts:
       keys:
+        a: Añadir una feed
         jk: Siguiente/previa historia
+        left: Página anterior
         m: Marcar item como leído/no leído
-        s: Marcar item como destacado/no destacado
         np: Mover hacia abajo/arriba
         oenter: Alternar historia como abierta/cerrada
         or: o
         r: Refrescar
+        right: Siguiente página
+        s: Marcar item como destacado/no destacado
         shifta: Marcar todo como leído
         v: Ir a URL de historia
-        left: Página anterior
-        right: Siguiente página
-        a: Añadir una feed
       title: Atajos de teclado
     zen:
       archive: ver todos los itemes
@@ -123,6 +119,11 @@ es:
       rss: RSS
       subtitle: Bienvenido de vuelta, amigo.
       title: Stringer habla
+  starred:
+    next: Siguiente
+    of: de
+    previous: Anterior
+    sorry: ¡Lo siento, aún no has destacado ninguna historia!
   stories:
     keep_unread: Dejar sin leer
   time:

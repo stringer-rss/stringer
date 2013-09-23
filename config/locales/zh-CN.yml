@@ -4,11 +4,6 @@ zh-CN:
     of: of
     previous: 上一页
     sorry: 呃，你现在还没有已经读过的故事
-  starred:
-    next: 下一页
-    of: of
-    previous: 上一页
-    sorry: 抱歉，你还没有为任何条目加注星标诶
   date:
     abbr_month_names:
     - 
@@ -65,6 +60,7 @@ zh-CN:
     back_to_work: 懒鬼，还不赶紧去干活！
     export: 导出
     hey: 喂！
+    import: 
     logout: 退出
     support: 支持
     title: stringer | your rss buddy
@@ -74,8 +70,8 @@ zh-CN:
       archived_stories: 已读故事
       mark_all: 全部标为已读
       refresh: 刷新
-      view_feeds: 查看订阅列表
       starred_stories: 加星标的故事
+      view_feeds: 查看订阅列表
     feed:
       last_fetched:
         never: 尚未成功读取过
@@ -92,18 +88,18 @@ zh-CN:
       starred_stories: 加星标的故事
     shortcuts:
       keys:
+        a: 添加新订阅
         jk: 下一个/上一个故事
+        left: 上一页
         m: 将一个条目标为已读/未读
-        s: 将条目标为加注星标/取消星标
         np: 向上/向下移动
         oenter: 点击打开/关闭
         or: 或
         r: 刷新
+        right: 下一页
+        s: 将条目标为加注星标/取消星标
         shifta: 全部标为已读
         v: 转到原网址
-        left: 上一页
-        right: 下一页
-        a: 添加新订阅
       title: 快捷键
     zen:
       archive: 查看所有故事
@@ -123,6 +119,11 @@ zh-CN:
       rss: RSS
       subtitle: 欢迎回来，我的朋友。
       title: Stringer speaks
+  starred:
+    next: 下一页
+    of: of
+    previous: 上一页
+    sorry: 抱歉，你还没有为任何条目加注星标诶
   stories:
     keep_unread: 保持未读状态
   time:

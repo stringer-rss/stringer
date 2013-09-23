@@ -157,4 +157,35 @@ describe "StoriesController" do
       URI::parse(last_response.location).path.should eq "/news"
     end
   end
+
+  describe "GET /feed/:feed_id" do
+    it "looks for a particular feed" do
+      FeedRepository.should_receive(:fetch).with(story_one.feed.id.to_s).and_return(story_one.feed)
+      StoryRepository.should_receive(:feed).with(story_one.feed.id.to_s).and_return([story_one])
+
+      get "/feed/#{story_one.feed.id}"
+    end
+
+    it "displays a list of stories" do
+      FeedRepository.stub(:fetch).and_return(story_one.feed)
+      StoryRepository.stub(:feed).and_return(stories)
+
+      get "/feed/#{story_one.feed.id}"
+
+      last_response.body.should have_tag("#stories")
+    end
+
+    it "differentiates between read and unread" do
+      FeedRepository.stub(:fetch).and_return(story_one.feed)
+      StoryRepository.stub(:feed).and_return(stories)
+
+      story_one.is_read = false
+      story_two.is_read = true
+
+      get "/feed/#{story_one.feed.id}"
+
+      last_response.body.should have_tag('li', :class => 'story')
+      last_response.body.should have_tag('li', :class => 'unread')
+    end
+  end
 end

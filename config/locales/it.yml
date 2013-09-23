@@ -60,6 +60,7 @@ it:
     back_to_work: Torna a lavorare, fannullone!
     export: Esporta
     hey: Hey!
+    import: 
     logout: Logout
     support: Supporto
     title: stringer | your rss buddy
@@ -69,8 +70,8 @@ it:
       archived_stories: Storie archiviate
       mark_all: Segna tutte come lette
       refresh: Aggiorna
-      view_feeds: Mostra i feed
       starred_stories: Storie preferite
+      view_feeds: Mostra i feed
     feed:
       last_fetched:
         never: Mai
@@ -87,18 +88,18 @@ it:
       starred_stories: Storie preferite
     shortcuts:
       keys:
+        a: Aggiungi un feed
         jk: Prossima/precedente storia
+        left: Pagina precedente
         m: Segna come letto/non letto
         np: Spostati giù/su
         oenter: Apri/chiudi la storia
         or: o
         r: Aggiorna
+        right: Pagina successiva
+        s: Segna come preferita/non preferita
         shifta: Segna tutte le storie come lette
         v: Vai all'URL della storia
-        s: Segna come preferita/non preferita
-        left: Pagina precedente
-        right: Pagina successiva
-        a: Aggiungi un feed
       title: Shortcuts da tastiera
     zen:
       archive: vai all'archivio
@@ -118,6 +119,11 @@ it:
       rss: RSS
       subtitle: Benvenuto, amico.
       title: Stringer parla
+  starred:
+    next: Prossimo
+    of: di
+    previous: Precedente
+    sorry: Spiacente, non hai ancora segnato nessuna storia come preferita!
   stories:
     keep_unread: Mantieni come non letta
   time:
@@ -137,8 +143,3 @@ it:
     title: ! 'Stringer è '
     your_feeds: i tuoi feed
     your_stories: le tue storie
-  starred:
-    next: Prossimo
-    of: di
-    previous: Precedente
-    sorry: Spiacente, non hai ancora segnato nessuna storia come preferita!

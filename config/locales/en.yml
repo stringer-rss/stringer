@@ -4,11 +4,6 @@ en:
     of: of
     previous: Previous
     sorry: Sorry, you haven't read any stories yet!
-  starred:
-    next: Next
-    of: of
-    previous: Previous
-    sorry: Sorry, you haven't starred any stories yet!
   date:
     abbr_month_names:
     - 
@@ -63,9 +58,9 @@ en:
     title: Welcome aboard.
   layout:
     back_to_work: Get back to work, slacker!
-    import: Import
     export: Export
     hey: Hey!
+    import: Import
     logout: Logout
     support: Support
     title: stringer | your rss buddy
@@ -75,8 +70,8 @@ en:
       archived_stories: Archived stories
       mark_all: Mark all as read
       refresh: Refresh
-      view_feeds: View feeds
       starred_stories: Starred stories
+      view_feeds: View feeds
     feed:
       last_fetched:
         never: Never
@@ -93,18 +88,18 @@ en:
       starred_stories: Starred stories
     shortcuts:
       keys:
+        a: Add a feed
         jk: Next/previous story
+        left: Previous page
         m: Mark item as read/unread
-        s: Mark item as starred/unstarred
         np: Move down/move up
         oenter: Toggle story open/closed
         or: or
         r: Refresh
-        a: Add a feed
+        right: Next page
+        s: Mark item as starred/unstarred
         shifta: Mark all as read
         v: Go to story URL
-        left: Previous page
-        right: Next page
       title: Keyboard shortcuts
     zen:
       archive: view all items
@@ -124,6 +119,11 @@ en:
       rss: RSS
       subtitle: Welcome back, friend.
       title: Stringer speaks
+  starred:
+    next: Next
+    of: of
+    previous: Previous
+    sorry: Sorry, you haven't starred any stories yet!
   stories:
     keep_unread: Keep unread
   time:

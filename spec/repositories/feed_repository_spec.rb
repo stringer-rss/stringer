@@ -42,4 +42,21 @@ describe FeedRepository do
       feed.last_fetched.should eq timestamp
     end
   end
+
+  describe "fetch" do
+    let(:feed) { Feed.new(id: 1) }
+
+    it "finds by id" do
+      Feed.should_receive(:find).with(feed.id).and_return(feed)
+      FeedRepository.fetch(feed.id)
+    end
+
+    it "returns found feed" do
+      Feed.stub(:find).with(feed.id).and_return(feed)
+
+      result = FeedRepository.fetch(feed.id)
+
+      result.should eq feed
+    end
+  end
 end

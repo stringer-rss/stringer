@@ -1,0 +1,20 @@
+<% content_for :title do %>
+  <% unless @unread_stories.empty? %>
+    <%= "(#{@unread_stories.count})" %>
+  <% end %>
+<% end %>
+
+<div id="action-bar">
+  <%= render_partial :action_bar, { stories: @unread_stories } %>
+</div>
+
+<div id="feed-title">
+  <%= @feed.name %>
+</div>
+
+<%= render_js :stories, { stories: @stories } %>
+
+<div id="stories">
+  <ul id="story-list">
+  </ul>
+</div>

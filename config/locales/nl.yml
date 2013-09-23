@@ -60,6 +60,7 @@ nl:
     back_to_work: Aan het werk, luilak!
     export: Exporteren
     hey: Hé!
+    import: 
     logout: Uitloggen
     support: Hulp
     title: stringer | jouw rss-buddy
@@ -69,8 +70,8 @@ nl:
       archived_stories: Gearchiveerde artikelen
       mark_all: Alles als gelezen markeren
       refresh: Vernieuwen
-      view_feeds: Feeds bekijken
       starred_stories: Artikelen met ster
+      view_feeds: Feeds bekijken
     feed:
       last_fetched:
         never: Nooit
@@ -87,18 +88,18 @@ nl:
       starred_stories: Artikelen met ster
     shortcuts:
       keys:
+        a: Een feed toevoegen
         jk: Volgend/vorig artikel
+        left: Vorige pagina
         m: Artikel markeren als gelezen/ongelezen
         np: Naar beneden/boven verplaaten
         oenter: Artikel open-/dichtklappen
         or: of
         r: Vernieuwen
+        right: Volgende pagina
+        s: Artikel markeren met ster/zonder ster
         shifta: Alles als gelezen markeren
         v: Open de URL van het artikel
-        s: Artikel markeren met ster/zonder ster
-        left: Vorige pagina
-        right: Volgende pagina
-        a: Een feed toevoegen
       title: Sneltoetsen
     zen:
       archive: alle artikelen bekijken
@@ -118,6 +119,11 @@ nl:
       rss: RSS
       subtitle: Welkom terug, vriend.
       title: Stringer spreekt
+  starred:
+    next: Volgende
+    of: van
+    previous: Vorige
+    sorry: Sorry, je hebt nog geen artikelen met ster!
   stories:
     keep_unread: Behouden als ongelezen
   time:
@@ -137,8 +143,3 @@ nl:
     title: ! 'Stringer is '
     your_feeds: je feeds
     your_stories: je artikelen
-  starred:
-    next: Volgende
-    of: van
-    previous: Vorige
-    sorry: Sorry, je hebt nog geen artikelen met ster!

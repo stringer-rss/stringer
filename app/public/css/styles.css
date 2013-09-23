@@ -317,6 +317,10 @@ li.feed .feed-title a {
   text-decoration: none;
 }
 
+li.feed .feed-unread {
+  font-weight: bold;
+}
+
 li.feed .feed-title a:hover {
   color: #7F8281;
 }
@@ -575,4 +579,10 @@ li.blank {
   border-bottom: 1px dotted #F59745;
   text-decoration: none;
   margin: 0 7px;
+}
+
+#feed-title {
+  margin-bottom: 10px;
+  font-size: 28px;
+  text-align: center;
 }

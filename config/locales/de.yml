@@ -60,6 +60,7 @@ de:
     back_to_work: Mach dich wieder an die Arbeit, Faulpelz!
     export: Exportieren
     hey: Hey!
+    import: 
     logout: Ausloggen
     support: Support
     title: stringer | dein rss Kumpel
@@ -69,8 +70,8 @@ de:
       archived_stories: Archivierte Geschichten
       mark_all: Alle als gelesen markieren
       refresh: Aktualisieren
-      view_feeds: Zeige Feeds an
       starred_stories: Favoriten
+      view_feeds: Zeige Feeds an
     feed:
       last_fetched:
         never: Nie
@@ -87,18 +88,18 @@ de:
       starred_stories: Favoriten
     shortcuts:
       keys:
+        a: Einen Feed hinzufügen
         jk: Nächste/vorherige Geschichte
+        left: Vorige Seite
         m: Markiere Geschichte als gelesen/ungelesen
         np: Hoch/runter bewegen
         oenter: Klappe Geschichte aus/ein
         or: oder
         r: Aktualisieren
+        right: Nächste Seite
+        s: Eintrag als Favorit markieren
         shifta: Alle als gelesen markieren
         v: Öffne die URL der Geschichte
-        s: Eintrag als Favorit markieren
-        left: Vorige Seite
-        right: Nächste Seite
-        a: Einen Feed hinzufügen
       title: Tastaturkürzel
     zen:
       archive: alle Einträge anzeigen
@@ -118,6 +119,11 @@ de:
       rss: RSS
       subtitle: Wilkommen zurück, Freund.
       title: Stringer sagt
+  starred:
+    next: Nächste
+    of: von
+    previous: Vorherige
+    sorry: Bislang keine Einträge als Favoriten markiert.
   stories:
     keep_unread: Als ungelesen behalten
   time:
@@ -137,8 +143,3 @@ de:
     title: ! 'Stringer ist '
     your_feeds: deine Feeds
     your_stories: deine Geschichten
-  starred:
-    next: Nächste
-    of: von
-    previous: Vorherige
-    sorry: Bislang keine Einträge als Favoriten markiert.

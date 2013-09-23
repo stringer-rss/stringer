@@ -60,6 +60,7 @@ pt:
     back_to_work: Volte ao trabalho, preguiçoso!
     export: Exportar
     hey: Ei!
+    import: 
     logout: Sair
     support: Suporte
     title: stringer | o seu amigo rss
@@ -69,8 +70,8 @@ pt:
       archived_stories: Arquivo de histórias
       mark_all: Marcar tudo como lido
       refresh: Atualizar
-      view_feeds: Visualizar feeds
       starred_stories: Favoritas histórias
+      view_feeds: Visualizar feeds
     feed:
       last_fetched:
         never: Nunca
@@ -87,18 +88,18 @@ pt:
       starred_stories: Favoritas histórias
     shortcuts:
       keys:
+        a: 
         jk: Próxima história/História anterior
+        left: 
         m: Marcar item como lido/não lido
         np: Mover para baixo/Mover para cima
         oenter: Alternar como história aberta/fechada
         or: ou
         r: Atualizar
+        right: 
+        s: 
         shifta: Marcar tudo como lido
         v: Ir para a URL da história
-        s: 
-        left: 
-        right: 
-        a: 
       title: Atalhos do teclado
     zen:
       archive: visualizar todos os itens
@@ -118,6 +119,11 @@ pt:
       rss: RSS
       subtitle: Bem vindo novamente, amigo.
       title: Stringer fala
+  starred:
+    next: 
+    of: 
+    previous: 
+    sorry: 
   stories:
     keep_unread: Continuar como não lido
   time:
@@ -137,8 +143,3 @@ pt:
     title: ! 'Stringer é '
     your_feeds: as seus feeds
     your_stories: as suas histórias
-  starred:
-    next: 
-    of: 
-    previous: 
-    sorry: 
