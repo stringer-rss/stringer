@@ -32,5 +32,14 @@ describe FeedRepository do
 
       feed.last_fetched.should eq timestamp
     end
+
+    it "doesn't update if timestamp is older than the current value" do
+      feed = Feed.new(last_fetched: timestamp)
+      one_week_ago = timestamp - 1.week
+
+      result = FeedRepository.update_last_fetched(feed, one_week_ago)
+
+      feed.last_fetched.should eq timestamp
+    end
   end
 end

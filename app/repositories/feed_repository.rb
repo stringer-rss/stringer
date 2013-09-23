@@ -8,10 +8,14 @@ class FeedRepository
   end
 
   def self.update_last_fetched(feed, timestamp)
-    is_invalid_timestamp = timestamp.nil? || timestamp.year < MIN_YEAR
+    is_invalid_timestamp = timestamp.nil? ||
+      timestamp.year < MIN_YEAR ||
+      (feed.last_fetched && timestamp <= feed.last_fetched)
 
-    feed.last_fetched = timestamp unless is_invalid_timestamp
-    feed.save
+    unless is_invalid_timestamp
+      feed.last_fetched = timestamp
+      feed.save
+    end
   end
 
   def self.delete(feed_id)
