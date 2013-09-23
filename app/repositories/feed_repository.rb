@@ -8,7 +8,7 @@ class FeedRepository
   end
 
   def self.update_last_fetched(feed, timestamp)
-    unless self.is_invalid_timestamp(timestamp, feed.last_fetched)
+    if self.valid_timestamp?(timestamp, feed.last_fetched)
       feed.last_fetched = timestamp
       feed.save
     end
@@ -29,9 +29,8 @@ class FeedRepository
 
   private
 
-  def self.is_invalid_timestamp(new_timestamp, current_timestamp)
-    new_timestamp.nil? ||
-      new_timestamp.year < MIN_YEAR ||
-      (current_timestamp && new_timestamp <= current_timestamp)
+  def self.valid_timestamp?(new_timestamp, current_timestamp)
+    new_timestamp && new_timestamp.year >= MIN_YEAR &&
+      (current_timestamp.nil? || new_timestamp > current_timestamp)
   end
 end
