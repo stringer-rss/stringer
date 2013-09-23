@@ -12,7 +12,7 @@ class FetchFeeds
     @feeds.each do |feed|
       @pool.process do
         FetchFeed.new(feed).fetch
-        
+
         ActiveRecord::Base.connection.close
       end
     end

@@ -3,11 +3,19 @@ require_relative "../models/feed"
 class FeedRepository
   MIN_YEAR = 1970
 
-  def self.update_last_fetched(feed, timestamp)
-    is_invalid_timestamp = timestamp.nil? || timestamp.year < MIN_YEAR
+  def self.fetch(id)
+    Feed.find(id)
+  end
 
-    feed.last_fetched = timestamp unless is_invalid_timestamp
-    feed.save
+  def self.fetch_by_ids(ids)
+    Feed.where(id: ids)
+  end
+
+  def self.update_last_fetched(feed, timestamp)
+    if self.valid_timestamp?(timestamp, feed.last_fetched)
+      feed.last_fetched = timestamp
+      feed.save
+    end
   end
 
   def self.delete(feed_id)
@@ -23,8 +31,11 @@ class FeedRepository
     Feed.order('lower(name)')
   end
 
-  def self.fetch(id)
-    Feed.find(id)
+  private
+
+  def self.valid_timestamp?(new_timestamp, current_timestamp)
+    new_timestamp && new_timestamp.year >= MIN_YEAR &&
+      (current_timestamp.nil? || new_timestamp > current_timestamp)
   end
 end
 
