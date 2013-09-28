@@ -15,7 +15,7 @@ describe ImportFromGoogleReaderStars do
     it "imports starred items" do
       ImportFromGoogleReaderStars.import(starred_text)
 
-      StoryRepository.starred.count.should eq 2
+      StoryRepository.all_starred.count.should eq 2
       
       story1 = Story.where(title: "Thanks to modders, gamers can play Super Mareo Bruhs inside Counter-Strike: GO")
       story1.count.should eq 1
@@ -26,6 +26,22 @@ describe ImportFromGoogleReaderStars do
       story2.count.should eq 1
       story2.first.body.should include "We can tell you exactly why robbing banks is a bad idea"
       story2.first.is_starred.should eq true
+    end
+
+    it "stars unstarred items" do
+      story1 = Story.where(title: "Thanks to modders, gamers can play Super Mareo Bruhs inside Counter-Strike: GO")
+      story1.first.is_starred = false
+      story1.first.entry_id = "the importer should rely on my permalink not my entry_id to decide i should be starred"
+      StoryRepository.save(story1.first)
+
+      StoryRepository.all_starred.count.should eq 1
+
+      ImportFromGoogleReaderStars.import(starred_text)
+
+      StoryRepository.all_starred.count.should eq 2
+
+      story1 = Story.where(title: "Thanks to modders, gamers can play Super Mareo Bruhs inside Counter-Strike: GO")
+      story1.first.is_starred.should eq true
     end
   end
 end
