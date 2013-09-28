@@ -7,12 +7,15 @@ class ImportFromGoogleReaderStars
     json = JSON.parse(starredjson_contents, symbolize_names: true)
     items = json[:items]
 
+    skipped_feeds = []
+
     items.each do |item|
       feed_url = item[:origin][:streamId].sub('feed/', '')
       feed = FeedRepository.fetch_by_url(feed_url).first
 
+      # Skip this item if its feed is not subscribed to
       if feed.nil?
-        # TODO: create a new feed? just skip for now
+        skipped_feeds.push feed_url unless skipped_feeds.include? feed_url
         next
       end
 
@@ -29,6 +32,8 @@ class ImportFromGoogleReaderStars
       story.is_starred = true
       StoryRepository.save(story)
     end
+
+    skipped_feeds
   end
 
   private

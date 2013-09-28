@@ -21,7 +21,12 @@ class ImportGoogleReaderStars
       return
     end
 
-    ImportFromGoogleReaderStars.import json_str
+    skipped_feeds = ImportFromGoogleReaderStars.import json_str
+
+    skipped_feeds.each do |feed|
+      @ui.say "\nSkipped unsubscribed feed: #{feed}"
+    end
+    @ui.say "To import stars from these feeds, subscribe to them and run this task again." if not skipped_feeds.empty?
   end
 
   private
