@@ -16,6 +16,8 @@ class ImportFromGoogleReaderStars
         next
       end
 
+      # Check for whether this story already exists by permalink
+      # NOT by entry_id as the json doesn't contain the guid supplied by the feed
       stories = StoryRepository.fetch_by_feed_id(feed.id)
       story = stories.where(permalink: item[:alternate][0][:href]).first
 
@@ -37,7 +39,8 @@ class ImportFromGoogleReaderStars
       url: item[:alternate][0][:href],
       content: item[:content].nil? ? nil : item[:content][:content],
       summary: item[:summary].nil? ? nil : item[:summary][:content],
-      published: Time.at(item[:published])
+      published: Time.at(item[:published]),
+      id: item[:id] # since json doesn't provide guid just use the Google Reader id
     }
     OpenStruct.new entry
   end
