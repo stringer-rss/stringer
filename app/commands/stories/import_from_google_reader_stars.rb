@@ -1,6 +1,5 @@
 require_relative "../../models/feed"
 require_relative "../../utils/opml_parser"
-require "ostruct"
 
 class ImportFromGoogleReaderStars
   def self.import(starredjson_contents)
@@ -25,7 +24,7 @@ class ImportFromGoogleReaderStars
       story = stories.where(permalink: item[:alternate][0][:href]).first
 
       if story.nil?
-        story = StoryRepository.add(create_story_from_item(item), feed)
+        story = create_story_from_item(item, feed)
         story.is_read = true
       end
 
@@ -38,15 +37,14 @@ class ImportFromGoogleReaderStars
 
   private
 
-  def self.create_story_from_item(item)
-    entry = {
-      title: item[:title],
-      url: item[:alternate][0][:href],
-      content: item[:content].nil? ? nil : item[:content][:content],
-      summary: item[:summary].nil? ? nil : item[:summary][:content],
-      published: Time.at(item[:published]),
-      id: item[:id] # since json doesn't provide guid just use the Google Reader id
-    }
-    OpenStruct.new entry
+  def self.create_story_from_item(item, feed)
+    Story.create(feed: feed,
+                title: item[:title],
+                permalink: item[:alternate][0][:href],
+                body: StoryRepository.sanitize(!item[:content].nil? ? item[:content][:content] : (!item[:summary].nil? ? item[:summary][:content] : '')),
+                is_read: false,
+                is_starred: false,
+                published: Time.at(item[:published]),
+                entry_id: item[:id]) # since json doesn't provide guid just use the Google Reader id
   end
 end
