@@ -124,6 +124,19 @@ By default, this removes read stories that are more than 30 days old (that
 are not starred). You can either run this manually or add it as a scheduled
 task.
 
+---
+
+Import Google Reader stars
+
+If you still have your Takeout file from way back when Google Reader was still a thing,
+you can import your starred items by putting your starred.json somewhere,
+then running either of:
+
+```sh
+rake import_google_reader_stars['/local/path/to/starred.json']
+rake import_google_reader_stars['http://www.example.com/path/to/starred.json']
+```
+
 # Development
 
 Run the Ruby tests with `rspec`. 
