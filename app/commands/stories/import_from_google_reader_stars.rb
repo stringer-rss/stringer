@@ -1,6 +1,6 @@
 require_relative "../../models/feed"
 require_relative "../../utils/opml_parser"
-require "ostruct" # TODO: remove me, need a better way to create stories
+require "ostruct"
 
 class ImportFromGoogleReaderStars
   def self.import(starredjson_contents)
@@ -20,20 +20,25 @@ class ImportFromGoogleReaderStars
       story = stories.where(permalink: item[:alternate][0][:href]).first
 
       if story.nil?
-        entry = {
-          title: item[:title],
-          url: item[:alternate][0][:href],
-          content: item[:content].nil? ? nil : item[:content][:content],
-          summary: item[:summary].nil? ? nil : item[:summary][:content],
-          published: Time.at(item[:published])
-        }
-        entry_obj = OpenStruct.new entry
-        story = StoryRepository.add(entry_obj, feed)
+        story = StoryRepository.add(create_story_from_item(item), feed)
         story.is_read = true
       end
 
       story.is_starred = true
       StoryRepository.save(story)
     end
+  end
+
+  private
+
+  def self.create_story_from_item(item)
+    entry = {
+      title: item[:title],
+      url: item[:alternate][0][:href],
+      content: item[:content].nil? ? nil : item[:content][:content],
+      summary: item[:summary].nil? ? nil : item[:summary][:content],
+      published: Time.at(item[:published])
+    }
+    OpenStruct.new entry
   end
 end
