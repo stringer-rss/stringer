@@ -3,12 +3,9 @@ require_relative "../../utils/opml_parser"
 
 class ImportFromGoogleReaderStars
   def self.import(starredjson_contents)
-    json = JSON.parse(starredjson_contents, symbolize_names: true)
-    items = json[:items]
-
     skipped_feeds = []
 
-    items.each do |item|
+    items_from_json_content(starredjson_contents).each do |item|
       feed_url = item[:origin][:streamId].sub('feed/', '')
       feed = FeedRepository.fetch_by_url(feed_url).first
 
@@ -36,6 +33,10 @@ class ImportFromGoogleReaderStars
   end
 
   private
+
+  def self.items_from_json_content(json_content)
+    JSON.parse(json_content, symbolize_names: true)[:items]
+  end
 
   def self.create_story_from_item(item, feed)
     Story.create(feed: feed,
