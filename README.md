@@ -41,10 +41,11 @@ heroku addons:open scheduler
 Add an hourly task that runs `rake fetch_feeds`
 
 Load the app and follow the instructions to import your feeds and start using the app.
+To skip the inital setup screen and setup your user programmatically run `heroku run rake ensure_user_with_password[foobar]` which will create a user with that password or change the password of an already present user. 
 
 ---
 
-In the event that you need to change your password, run `heroku run rake change_password`  from the app folder.
+In the event that you need to change your password, run `heroku run rake change_password`  from the app folder or `heroku run rake change_password[foobar]` if you want to skip reading the new password.
 
 ## Updating the app
 
