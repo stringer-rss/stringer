@@ -13,7 +13,7 @@ class FetchFeed
 
   def fetch
     begin
-      raw_feed = @parser.fetch_and_parse(@feed.url, user_agent: "Stringer", if_modified_since: @feed.last_fetched, timeout: 30)
+      raw_feed = @parser.fetch_and_parse(@feed.url, user_agent: "Stringer (https://github.com/swanson/stringer)", if_modified_since: @feed.last_fetched, timeout: 30)
 
       if raw_feed == 304
         @logger.info "#{@feed.url} has not been modified since last fetch" if @logger
