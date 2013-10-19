@@ -5,6 +5,9 @@ require_relative "../repositories/feed_repository"
 require_relative "../commands/feeds/find_new_stories"
 
 class FetchFeed
+
+  USER_AGENT = "Stringer (https://github.com/swanson/stringer)"
+
   def initialize(feed, feed_parser = Feedzirra::Feed, logger = nil)
     @feed = feed
     @parser = feed_parser
@@ -13,7 +16,7 @@ class FetchFeed
 
   def fetch
     begin
-      raw_feed = @parser.fetch_and_parse(@feed.url, user_agent: "Stringer", if_modified_since: @feed.last_fetched, timeout: 30)
+      raw_feed = @parser.fetch_and_parse(@feed.url, user_agent: USER_AGENT, if_modified_since: @feed.last_fetched, timeout: 30)
 
       if raw_feed == 304
         @logger.info "#{@feed.url} has not been modified since last fetch" if @logger
