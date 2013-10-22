@@ -3,11 +3,11 @@
     <div class="span6">
       <ul class="footer-links">
         <% if current_user %>
-          <li><a href="/logout"><%= t('layout.logout') %></a></li>
+          <li><a href="<%= url('/logout') %>"><%= t('layout.logout') %></a></li>
           <li class="muted">·</li>
-          <li><a href="/feeds/import"><%= t('layout.import') %></a></li>
+          <li><a href="<%= url('/feeds/import') %>"><%= t('layout.import') %></a></li>
           <li class="muted">·</li>
-          <li><a href="/feeds/export"><%= t('layout.export') %></a></li>
+          <li><a href="<%= url('/feeds/export') %>"><%= t('layout.export') %></a></li>
           <li class="muted">·</li>
           <li><a href="#shortcuts" data-toggle="modal"><i class="icon-keyboard"></i></a></li>
           <li class="muted">·</li>
