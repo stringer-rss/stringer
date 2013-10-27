@@ -1,29 +1,29 @@
 <div class="row-fluid">
   <div class="pull-left">
-	  <a class="btn" id="home" href="<%= url('/news') %>" title="<%= t('partials.feed_action_bar.home') %>">
-		<i class="icon-reply"></i>
-	</a>
+    <a class="btn" id="home" href="<%= url('/news') %>" title="<%= t('partials.feed_action_bar.home') %>">
+	  <i class="icon-reply"></i>
+    </a>
     <a class="btn" id="mark-all" title="<%= t('partials.action_bar.mark_all') %>">
       <i class="icon-ok"></i>
       <%= render_partial :mark_all_as_read_form,
                         {stories: stories} %>
     </a>
-	<a class="btn" href="<%= url("/feed/#{@feed_id}") %>" id="refresh" title="<%= t('partials.action_bar.refresh') %>">
+    <a class="btn" href="<%= url("/feed/#{@feed.id}") %>" id="refresh" title="<%= t('partials.action_bar.refresh') %>">
       <i class="icon-repeat"></i>
     </a>
   </div>
 
   <div class="pull-right">
-	  <a class="btn btn-primary" id="starred" href="<%= url('/starred') %>" title="<%= t('partials.action_bar.starred_stories') %>">
+    <a class="btn btn-primary" id="starred" href="<%= url('/starred') %>" title="<%= t('partials.action_bar.starred_stories') %>">
       <i class="icon-star"></i>
     </a>
-	<a class="btn btn-primary" id="archive" href="<%= url('/archive') %>" title="<%= t('partials.action_bar.archived_stories') %>">
+    <a class="btn btn-primary" id="archive" href="<%= url('/archive') %>" title="<%= t('partials.action_bar.archived_stories') %>">
       <i class="icon-time"></i>
     </a>
-	<a class="btn btn-primary" id="feeds" href="<%= url('/feeds') %>" title="<%= t('partials.action_bar.view_feeds') %>">
+    <a class="btn btn-primary" id="feeds" href="<%= url('/feeds') %>" title="<%= t('partials.action_bar.view_feeds') %>">
       <i class="icon-list"></i>
     </a>
-	<a class="btn btn-primary" id="add-feed" href="<%= url('/feeds/new') %>" title="<%= t('partials.action_bar.add_feed') %>">
+    <a class="btn btn-primary" id="add-feed" href="<%= url('/feeds/new') %>" title="<%= t('partials.action_bar.add_feed') %>">
       <i class="icon-plus"></i>
     </a>
   </div>

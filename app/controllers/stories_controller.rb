@@ -14,8 +14,6 @@ class Stringer < Sinatra::Base
     @stories = StoryRepository.feed(params[:feed_id])
     @unread_stories = @stories.find_all {|story| !story.is_read }
 
-	@feed_id = params[:feed_id]
-
     erb :feed
   end
 
