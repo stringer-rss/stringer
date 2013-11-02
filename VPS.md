@@ -19,7 +19,7 @@ On CentOS after installing Postgres, I needed to run these commands, Fedora like
 
     pacman -S git postgresql base-devel libxml2 libxslt curl sqlite readline postgresql-libs
     
-Here are ome Arch specific instructions for setting up postgres
+Here are some Arch specific instructions for setting up postgres
 
     systemd-tmpfiles --create postgresql.conf
     chown -c -R postgres:postgres /var/lib/postgres
