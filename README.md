@@ -29,6 +29,7 @@ cd stringer
 heroku create
 git push heroku master
 
+heroku config:set APP_URL=`heroku apps:info | grep -o 'http[^"]*'`
 heroku config:set SECRET_TOKEN=`openssl rand -hex 20`
 
 heroku run rake db:migrate
