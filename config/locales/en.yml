@@ -89,6 +89,7 @@ en:
     shortcuts:
       keys:
         a: Add a feed
+        f: Go to feeds page
         jk: Next/previous story
         left: Previous page
         m: Mark item as read/unread
