@@ -4,10 +4,10 @@ app_require "commands/users/sign_in_user"
 
 describe SignInUser do
   let(:valid_password) { "valid-pw" }
-  let(:repo) { stub(first: user) }
+  let(:repo) { double(first: user) }
   
   let(:user) do
-    stub(password_digest: BCrypt::Password.create(valid_password), id: 1)
+    double(password_digest: BCrypt::Password.create(valid_password), id: 1)
   end
 
 

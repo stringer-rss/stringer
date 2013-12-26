@@ -56,12 +56,12 @@ describe StoryRepository do
 
   describe ".extract_content" do
     let(:entry) do 
-      stub(url: "http://mdswanson.com",
+      double(url: "http://mdswanson.com",
            content: "Some test content<script></script>")
     end
 
     let(:summary_only) do
-      stub(url: "http://mdswanson.com",
+      double(url: "http://mdswanson.com",
            content: nil,
            summary: "Dumb publisher")
     end

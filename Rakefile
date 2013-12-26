@@ -1,8 +1,9 @@
-require "sinatra/activerecord/rake"
-require "rubygems"
 require "bundler"
-require "net/http"
 Bundler.require
+
+require "rubygems"
+require "net/http"
+require "sinatra/activerecord/rake"
 
 require "./app"
 require_relative "./app/jobs/fetch_feed_job"

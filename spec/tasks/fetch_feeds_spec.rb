@@ -3,9 +3,9 @@ require "spec_helper"
 describe FetchFeeds do
   describe "#fetch_all" do
     let(:feeds) { [FeedFactory.build, FeedFactory.build] }
-    let(:fetcher_one) { stub }
-    let(:fetcher_two) { stub }
-    let(:pool) { stub }
+    let(:fetcher_one) { double }
+    let(:fetcher_two) { double }
+    let(:pool) { double }
 
     it "calls FetchFeed#fetch for every feed" do
       pool.stub(:process).and_yield

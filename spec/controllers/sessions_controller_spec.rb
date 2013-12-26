@@ -24,7 +24,7 @@ describe "SessionsController" do
     end
 
     it "allows access when password is correct" do
-      SignInUser.stub(:sign_in).and_return(stub(id: 1))
+      SignInUser.stub(:sign_in).and_return(double(id: 1))
 
       post "/login", password: "the-password"
 

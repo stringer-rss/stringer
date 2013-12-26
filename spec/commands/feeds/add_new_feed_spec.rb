@@ -5,7 +5,7 @@ app_require "/commands/feeds/add_new_feed"
 describe AddNewFeed do
   describe "#add" do
     context "feed cannot be discovered" do
-      let(:discoverer) { stub(discover: false) }
+      let(:discoverer) { double(discover: false) }
       it "returns false if cant discover any feeds" do
         result = AddNewFeed.add("http://not-a-feed.com", discoverer)
 
@@ -15,10 +15,10 @@ describe AddNewFeed do
 
     context "feed can be discovered" do
       let(:feed_url) { "http://feed.com/atom.xml" }
-      let(:feed_result) { stub(title: feed.name, feed_url: feed.url) }
-      let(:discoverer) { stub(discover: feed_result) }
+      let(:feed_result) { double(title: feed.name, feed_url: feed.url) }
+      let(:discoverer) { double(discover: feed_result) }
       let(:feed) { FeedFactory.build }
-      let(:repo) { stub }
+      let(:repo) { double }
       
       it "parses and creates the feed if discovered" do
         repo.should_receive(:create).and_return(feed)
