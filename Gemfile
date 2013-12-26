@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-ruby '1.9.3'
+#ruby '1.9.3'
 
 group :production do
   gem "unicorn", "~> 4.6.2"
@@ -8,24 +8,15 @@ end
 
 group :development do
   gem "sqlite3", "~> 1.3.7"
-  gem "coveralls", "~> 0.6.7", require: false
-  gem "pry-debugger", "~> 0.2.2"
-  gem "rspec", "~> 2.13.0"
-  gem "rspec-html-matchers", "~> 0.4.1"
-  gem "rack-test", "~> 0.6.2"
-  gem "shotgun", "~> 0.9"
-  gem "faker", "~> 1.1.2"
-  gem "foreman", "~> 0.63.0"
 end
 
-group :test do
+group :development, :test do
   gem "coveralls", "~> 0.6.7", require: false
-  gem "pry-debugger", "~> 0.2.2"
+  gem "pry-byebug" #, "~> 0.2.2"
   gem "rspec", "~> 2.13.0"
   gem "rspec-html-matchers", "~> 0.4.1"
   gem "rack-test", "~> 0.6.2"
   gem "shotgun", "~> 0.9"
-  gem "racksh", "~> 1.0.0"
   gem "faker", "~> 1.1.2"
   gem "foreman", "~> 0.63.0"
 end
