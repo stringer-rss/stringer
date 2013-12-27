@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/rails/arel.git
+  revision: 454a25f18c95cdfba5520a6fc5bdb6d476e20a85
+  branch: 4-0-stable
+  specs:
+    arel (4.0.1.20131022201058)
+
+GIT
   remote: git://github.com/swanson/loofah.git
   revision: 825d715e6f1281501882d886cf34e82aebabb356
   specs:
@@ -23,7 +30,6 @@ GEM
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
-    arel (4.0.1)
     atomic (1.1.14)
     backports (3.3.5)
     bcrypt-ruby (3.1.2)
@@ -160,8 +166,10 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord (~> 4.0)
+  arel!
   bcrypt-ruby (~> 3.1.2)
   coveralls (~> 0.7)
+  delayed_job (~> 4.0)
   delayed_job_active_record (~> 4.0)
   excon (~> 0.31.0)
   faker (~> 1.2)

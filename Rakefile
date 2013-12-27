@@ -5,6 +5,7 @@ require "rubygems"
 require "net/http"
 require 'active_record'
 require 'delayed_job'
+require 'delayed_job_active_record'
 
 require "sinatra/activerecord/rake"
 
