@@ -15,6 +15,11 @@ I18n.load_path += Dir[File.join(File.dirname(__FILE__), 'config/locales', '*.yml
 I18n.config.enforce_available_locales=false
 
 class Stringer < Sinatra::Base
+  register Sinatra::ActiveRecordExtension
+  register Sinatra::Flash
+  register Sinatra::Contrib
+  register Sinatra::AssetPack
+
   configure do
     set :database_file, "config/database.yml"
     set :views, "app/views"
@@ -24,11 +29,6 @@ class Stringer < Sinatra::Base
     enable :sessions
     set :session_secret, ENV["SECRET_TOKEN"] || "secret!"
     enable :logging
-
-    register Sinatra::ActiveRecordExtension
-    register Sinatra::Flash
-    register Sinatra::Contrib
-    register Sinatra::AssetPack
 
     ActiveRecord::Base.include_root_in_json = false
   end

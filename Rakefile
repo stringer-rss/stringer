@@ -3,6 +3,9 @@ Bundler.setup
 
 require "rubygems"
 require "net/http"
+require 'active_record'
+require 'delayed_job'
+
 require "sinatra/activerecord/rake"
 
 require "./app"
