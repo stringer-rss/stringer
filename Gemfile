@@ -27,8 +27,8 @@ group :heroku do
   gem "rendezvous", "~> 0.0.2"
 end
 
-gem "activerecord", "~> 3.1"
-gem "bcrypt-ruby", "~> 3.0.0"
+gem "activerecord", "~> 4.0"
+gem "bcrypt-ruby", "~> 3.1.2"
 gem "delayed_job_active_record", "~> 4.0"
 gem "feedbag", github: "dwillis/feedbag"
 gem "feedzirra", github: "swanson/feedzirra"
@@ -38,7 +38,7 @@ gem "loofah", github: "swanson/loofah"
 gem "nokogiri", "~> 1.5.11"
 gem "racksh", "~> 1.0"
 gem "rake", "~> 10.1", ">= 10.1.1"
-gem "sinatra", "~> 1.4", ">= 1.4.4", require: false
+gem "sinatra", "~> 1.4", ">= 1.4.4"
 gem "sinatra-assetpack", "~> 0.3.1", require: "sinatra/assetpack"
 gem "sinatra-activerecord", "~> 1.2", ">= 1.2.3"
 gem "sinatra-contrib", github: "sinatra/sinatra-contrib"

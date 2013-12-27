@@ -1,5 +1,5 @@
 require "bundler"
-Bundler.require
+Bundler.setup
 
 require "rubygems"
 require "net/http"
