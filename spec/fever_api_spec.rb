@@ -17,7 +17,7 @@ describe FeverAPI do
   let(:headers) { { api_key: api_key } }
 
   before do
-    user = stub(api_key: api_key)
+    user = double(api_key: api_key)
     User.stub(:first).and_return(user)
   end
 
@@ -128,35 +128,35 @@ describe FeverAPI do
     end
 
     it "commands to mark story as read" do
-      MarkAsRead.should_receive(:new).with('10').and_return(stub(mark_as_read: true))
+      MarkAsRead.should_receive(:new).with('10').and_return(double(mark_as_read: true))
       make_request({ mark: 'item', as: 'read', id: 10 })
       last_response.should be_ok
       last_response.body.should == answer.to_json
     end
 
     it "commands to mark story as unread" do
-      MarkAsUnread.should_receive(:new).with('10').and_return(stub(mark_as_unread: true))
+      MarkAsUnread.should_receive(:new).with('10').and_return(double(mark_as_unread: true))
       make_request({ mark: 'item', as: 'unread', id: 10 })
       last_response.should be_ok
       last_response.body.should == answer.to_json
     end
 
     it "commands to save story" do
-      MarkAsStarred.should_receive(:new).with('10').and_return(stub(mark_as_starred: true))
+      MarkAsStarred.should_receive(:new).with('10').and_return(double(mark_as_starred: true))
       make_request({ mark: 'item', as: 'saved', id: 10 })
       last_response.should be_ok
       last_response.body.should == answer.to_json
     end
 
     it "commands to unsave story" do
-      MarkAsUnstarred.should_receive(:new).with('10').and_return(stub(mark_as_unstarred: true))
+      MarkAsUnstarred.should_receive(:new).with('10').and_return(double(mark_as_unstarred: true))
       make_request({ mark: 'item', as: 'unsaved', id: 10 })
       last_response.should be_ok
       last_response.body.should == answer.to_json
     end
 
     it "commands to mark group as read" do
-      MarkGroupAsRead.should_receive(:new).with('10', '1375080946').and_return(stub(mark_group_as_read: true))
+      MarkGroupAsRead.should_receive(:new).with('10', '1375080946').and_return(double(mark_group_as_read: true))
       make_request({ mark: 'group', as: 'read', id: 10, before: 1375080946 })
       last_response.should be_ok
       last_response.body.should == answer.to_json

@@ -3,9 +3,9 @@ require "spec_helper"
 app_require "utils/feed_discovery"
 
 describe FeedDiscovery do
-  let(:finder) { stub }
-  let(:parser) { stub }
-  let(:feed) { stub(feed_url: url) }
+  let(:finder) { double }
+  let(:parser) { double }
+  let(:feed) { double(feed_url: url) }
   let(:url) { "http://example.com" }
 
   let(:invalid_discovered_url) { "http://not-a-valid-feed.com" }

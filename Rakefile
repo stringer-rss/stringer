@@ -1,8 +1,13 @@
-require "sinatra/activerecord/rake"
-require "rubygems"
 require "bundler"
+Bundler.setup
+
+require "rubygems"
 require "net/http"
-Bundler.require
+require 'active_record'
+require 'delayed_job'
+require 'delayed_job_active_record'
+
+require "sinatra/activerecord/rake"
 
 require "./app"
 require_relative "./app/jobs/fetch_feed_job"

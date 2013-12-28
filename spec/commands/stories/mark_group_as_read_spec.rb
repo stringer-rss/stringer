@@ -4,8 +4,8 @@ app_require "commands/stories/mark_group_as_read"
 
 describe MarkGroupAsRead do
   describe "#mark_group_as_read" do
-    let(:stories) { stub }
-    let(:repo){ stub(fetch_unread_by_timestamp: stories) }
+    let(:stories) { double }
+    let(:repo){ double(fetch_unread_by_timestamp: stories) }
 
     it "marks group 0 as read" do
       command = MarkGroupAsRead.new(0, Time.now.to_i, repo)

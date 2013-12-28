@@ -4,7 +4,7 @@ require "support/active_record"
 app_require "commands/users/change_user_password"
 
 describe ChangeUserPassword do
-  let(:repo) { stub }
+  let(:repo) { double }
   let(:user) { User.create(password: old_password) }
 
   let(:old_password) { "old-pw" }
