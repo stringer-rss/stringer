@@ -49,7 +49,7 @@ he:
     cookies_required: 
     js_required: 
   import:
-    description: ! '%{link} את הפיד שלך מ- Google Reader ויבא אותו.'
+    description: '%{link} את הפיד שלך מ- Google Reader ויבא אותו.'
     export: יצוא
     fields:
       import: יבוא
@@ -128,7 +128,7 @@ he:
     keep_unread: סמן כלא נקרא
   time:
     formats:
-      default: ! '%b %d, %H:%M%'
+      default: '%b %d, %H:%M%'
   tutorial:
     add_feed: הוסף פיד
     as_read: כנקרא

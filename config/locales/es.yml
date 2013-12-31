@@ -43,13 +43,13 @@ es:
         password_confirmation: Confirmar
       flash:
         passwords_dont_match: Oye, tus contraseñas no coinciden. Inténtalo de vuelta.
-      subtitle: ! 'Nada mas hay un usuario: tu.'
+      subtitle: 'Nada mas hay un usuario: tu.'
       title: Stringer es
   flash:
     cookies_required: Bueno esto es incomodo. Cookies son requeridas para que la aplicación funcione correctamente.
     js_required: Bueno esto es incomodo. JavaScript es requerido para que la aplicación funcione correctamente.
   import:
-    description: ! '%{link} tus feeds desde Google Reader e importalas.'
+    description: '%{link} tus feeds desde Google Reader e importalas.'
     export: Exportar
     fields:
       import: Importar
@@ -60,7 +60,7 @@ es:
     back_to_work: ¡Regresa a tu trabajo, holgazán!
     export: Exportar
     hey: ¡Oye!
-    import: 
+    import: Importar
     logout: Salir
     support: Soporte
     title: stringer | tu compadre de rss
@@ -128,7 +128,7 @@ es:
     keep_unread: Dejar sin leer
   time:
     formats:
-      default: ! '%d de %b, %H:%M'
+      default: '%d de %b, %H:%M'
   tutorial:
     add_feed: agregar feed
     as_read: como leído
@@ -140,6 +140,6 @@ es:
     simple: simple
     start: Comenzar a Leer
     subtitle: Aqui esta el manual de instrucciones
-    title: ! 'Stringer es '
+    title: 'Stringer es '
     your_feeds: tus feeds
     your_stories: tus historias

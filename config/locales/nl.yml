@@ -43,13 +43,13 @@ nl:
         password_confirmation: Bevestigen
       flash:
         passwords_dont_match: Hé, je wachtwoordbevestiging kwam niet overeen. Probeer het opnieuw.
-      subtitle: ! 'Er is maar één gebruiker: jij.'
+      subtitle: 'Er is maar één gebruiker: jij.'
       title: Stringer is
   flash:
-    cookies_required: ! 'Wel, dit is vervelend: deze applicatie heeft cookies nodig om goed te werken.'
-    js_required: ! 'Wel, dit is vervelend: deze applicatie heeft Javascript nodig om goed te werken.'
+    cookies_required: 'Wel, dit is vervelend: deze applicatie heeft cookies nodig om goed te werken.'
+    js_required: 'Wel, dit is vervelend: deze applicatie heeft Javascript nodig om goed te werken.'
   import:
-    description: ! '%{link} je feeds uit Google Reader en importeer ze.'
+    description: '%{link} je feeds uit Google Reader en importeer ze.'
     export: Exporteer
     fields:
       import: Importeren
@@ -60,7 +60,7 @@ nl:
     back_to_work: Aan het werk, luilak!
     export: Exporteren
     hey: Hé!
-    import: 
+    import: Importeren
     logout: Uitloggen
     support: Hulp
     title: stringer | jouw rss-buddy
@@ -128,7 +128,7 @@ nl:
     keep_unread: Behouden als ongelezen
   time:
     formats:
-      default: ! '%d %b, %H:%M'
+      default: '%d %b, %H:%M'
   tutorial:
     add_feed: feeds toevoegen
     as_read: als gelezen markeren
@@ -140,6 +140,6 @@ nl:
     simple: simpel
     start: Je kunt beginnen met lezen
     subtitle: Hier is de handleiding.
-    title: ! 'Stringer is '
+    title: 'Stringer is '
     your_feeds: je feeds
     your_stories: je artikelen

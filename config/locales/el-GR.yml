@@ -43,7 +43,7 @@ el-GR:
         password_confirmation: Επιβεβαίωση
       flash:
         passwords_dont_match: Ψψψιιτ, η επιβεβαίωση του κωδικού σου δεν ταιριάζει με τον κωδικό. Δοκίμασε ξανά.
-      subtitle: ! 'Υπάρχει μόνο ένας χρήστης: Εσύ!'
+      subtitle: 'Υπάρχει μόνο ένας χρήστης: Εσύ!'
       title: Το Stringer είναι
   flash:
     cookies_required: Έχετε την καλοσύνη να ενεργοποιήσετε τα Cookies ώστε να λειτουργήσει κανονικά η εφαρμογή?
@@ -104,7 +104,7 @@ el-GR:
     zen:
       archive: εμφάνισης όλων των αντικειμένων
       go_make: και δράσε
-      gtfo: ! 'Τώρα σταμάτα να διαβάζεις ιστολόγια '
+      gtfo: 'Τώρα σταμάτα να διαβάζεις ιστολόγια '
       rss_zero: Έχεις Μηδέν RSS Ειδήσεις
   sessions:
     destroy:
@@ -128,7 +128,7 @@ el-GR:
     keep_unread: Φύλαξη στα μη αναγνωσμένα
   time:
     formats:
-      default: ! '%d %b %H:%M'
+      default: '%d %b %H:%M'
   tutorial:
     add_feed: προσθήκη ιστολογίου
     as_read: ως αναγνωσμένα
@@ -140,6 +140,6 @@ el-GR:
     simple: απλό
     start: Ξεκίνα την ανάγνωση
     subtitle: Εδώ είναι το εγχειρίδιο.
-    title: ! 'Το Stringer είναι '
+    title: 'Το Stringer είναι '
     your_feeds: τα ιστολόγια σου
     your_stories: οι ειδήσεις σου

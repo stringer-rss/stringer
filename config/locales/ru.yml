@@ -43,13 +43,13 @@ ru:
         password_confirmation: Подтвердить
       flash:
         passwords_dont_match: Эй, Ваше подтверждение пароля не совпадает с паролем. Попробуйте еще раз.
-      subtitle: ! 'Существует только один пользователь: ВЫ.'
+      subtitle: 'Существует только один пользователь: ВЫ.'
       title: Stringer это
   flash:
     cookies_required: Ну, это неудобно. Cookies необходимы, чтобы приложение работало корректно.
     js_required: Ну, это неудобно. Javascript необходим, чтобы приложение работало корректно.
   import:
-    description: ! '%{link} фиды из Google Reader и импортировать их.'
+    description: '%{link} фиды из Google Reader и импортировать их.'
     export: Экспортировать
     fields:
       import: Импортировать
@@ -128,7 +128,7 @@ ru:
     keep_unread: Пометить как непрочитанное
   time:
     formats:
-      default: ! '%b %d, %H:%M'
+      default: '%b %d, %H:%M'
   tutorial:
     add_feed: добавить фид
     as_read: как прочитанное
@@ -140,6 +140,6 @@ ru:
     simple: просто
     start: Начать читать
     subtitle: Вот руководство по эксплуатации.
-    title: ! 'Stringer это '
+    title: 'Stringer это '
     your_feeds: ваши фиды
     your_stories: Ваши истории

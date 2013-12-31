@@ -49,7 +49,7 @@ zh-CN:
     cookies_required: 抱歉，你的浏览器禁用了Cookie记录功能。为了你的正常使用，请开启浏览器的Cookie功能。
     js_required: 抱歉，你的浏览器禁用了Javascript脚本。为了你的正常使用，请开启脚本功能。
   import:
-    description: ! '%{link}你在Google Reader上的订阅列表然后再将它们导入这里'
+    description: '%{link}你在Google Reader上的订阅列表然后再将它们导入这里'
     export: 导出
     fields:
       import: 导入
@@ -60,7 +60,7 @@ zh-CN:
     back_to_work: 懒鬼，还不赶紧去干活！
     export: 导出
     hey: 喂！
-    import: 
+    import: 导入
     logout: 退出
     support: 支持
     title: stringer | your rss buddy
@@ -128,7 +128,7 @@ zh-CN:
     keep_unread: 保持未读状态
   time:
     formats:
-      default: ! '%b%d日 %H:%M'
+      default: '%b%d日 %H:%M'
   tutorial:
     add_feed: 添加新订阅
     as_read: 已读
@@ -140,6 +140,6 @@ zh-CN:
     simple: simple
     start: 开始阅读吧！
     subtitle: 这是一份简单的指导手册。
-    title: ! 'Stringer is '
+    title: 'Stringer is '
     your_feeds: 你的订阅列表
     your_stories: 你订阅的内容

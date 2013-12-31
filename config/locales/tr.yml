@@ -43,7 +43,7 @@ tr:
         password_confirmation: Tekrar
       flash:
         passwords_dont_match: Sifrelerin tekrari farkli. Tekrardan dene.
-      subtitle: ! 'Sadece bir kullanici var: Sen!'
+      subtitle: 'Sadece bir kullanici var: Sen!'
       title: Stringer is
   flash:
     cookies_required: Aaa, garip!. Uygulamanin duzgun calismasi icin Cookies gerekli.
@@ -128,7 +128,7 @@ tr:
     keep_unread: Okunmadi olarak tut
   time:
     formats:
-      default: ! '%b %d, %H:%M'
+      default: '%b %d, %H:%M'
   tutorial:
     add_feed: feed ekle
     as_read: okundu olarak
@@ -140,6 +140,6 @@ tr:
     simple: basit
     start: Okumaya basla
     subtitle: Iste kullanma klavuzu.
-    title: ! 'Stringer '
+    title: 'Stringer '
     your_feeds: beslemeleriniz
     your_stories: hikayeleriniz

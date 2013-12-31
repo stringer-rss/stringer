@@ -43,13 +43,13 @@ de:
         password_confirmation: Bestätigung
       flash:
         passwords_dont_match: Hey, deine Passwortbestätigung stimmte nicht überein. Probiere es noch einmal.
-      subtitle: ! 'Es gibt nur einen Benutzer: Dich.'
+      subtitle: 'Es gibt nur einen Benutzer: Dich.'
       title: Stringer ist
   flash:
     cookies_required: Das ist jetzt peinlich. Die App benötigt Cookies um richtig zu funktionieren.
     js_required: Das ist jetzt peinlich. Die App benötigt JavaScript um richtig zu funktionieren.
   import:
-    description: ! '%{link} deine Feeds aus Google Reader und importiere sie hier.'
+    description: '%{link} deine Feeds aus Google Reader und importiere sie hier.'
     export: Exportiere
     fields:
       import: Importieren
@@ -60,7 +60,7 @@ de:
     back_to_work: Mach dich wieder an die Arbeit, Faulpelz!
     export: Exportieren
     hey: Hey!
-    import: 
+    import: Importieren
     logout: Ausloggen
     support: Support
     title: stringer | dein rss Kumpel
@@ -128,7 +128,7 @@ de:
     keep_unread: Als ungelesen behalten
   time:
     formats:
-      default: ! '%e. %b, %H:%M Uhr'
+      default: '%e. %b, %H:%M Uhr'
   tutorial:
     add_feed: Feed hinzufügen
     as_read: als gelesen markieren
@@ -140,6 +140,6 @@ de:
     simple: einfach
     start: Fang an zu lesen
     subtitle: Hier ist die Bedienungsanleitung.
-    title: ! 'Stringer ist '
+    title: 'Stringer ist '
     your_feeds: deine Feeds
     your_stories: deine Geschichten

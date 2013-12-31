@@ -43,13 +43,13 @@ pt:
         password_confirmation: Confirmar
       flash:
         passwords_dont_match: Ei, a password de confirmação não está correcta. Tente novamente.
-      subtitle: ! 'Existe apenas um utilizador: você.'
+      subtitle: 'Existe apenas um utilizador: você.'
       title: Stringer é
   flash:
     cookies_required: 
     js_required: 
   import:
-    description: ! '%{link} as suas feeds do Google Reader e importe-as.'
+    description: '%{link} as suas feeds do Google Reader e importe-as.'
     export: Exportar
     fields:
       import: Importar
@@ -128,7 +128,7 @@ pt:
     keep_unread: Continuar como não lido
   time:
     formats:
-      default: ! '%d de %b, %H:%M'
+      default: '%d de %b, %H:%M'
   tutorial:
     add_feed: adicionar feed
     as_read: como lido
@@ -140,6 +140,6 @@ pt:
     simple: simples
     start: Começar a ler
     subtitle: Aqui está o manual de instruções.
-    title: ! 'Stringer é '
+    title: 'Stringer é '
     your_feeds: as seus feeds
     your_stories: as suas histórias

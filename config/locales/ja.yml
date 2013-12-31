@@ -49,7 +49,7 @@ ja:
     cookies_required: 正常に動作するためにクッキーを有効にして下さい
     js_required: 正常に動作するためにJavascriptを有効にして下さい
   import:
-    description: ! '%{link} あなたのGoogle Readerからのフィードです、それを取り込めます'
+    description: '%{link} あなたのGoogle Readerからのフィードです、それを取り込めます'
     export: 書き出し
     fields:
       import: 取り込み
@@ -60,7 +60,7 @@ ja:
     back_to_work: 怠け者さん！仕事に戻りましょう
     export: 書き出し
     hey: やぁ！
-    import: 
+    import: 読み込み
     logout: ログアウト
     support: サポート
     title: stringer | your rss buddy
@@ -128,7 +128,7 @@ ja:
     keep_unread: 未読にする
   time:
     formats:
-      default: ! '%b%d日 %H:%M'
+      default: '%b%d日 %H:%M'
   tutorial:
     add_feed: add feed
     as_read: as read

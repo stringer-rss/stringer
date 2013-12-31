@@ -21,13 +21,13 @@ sv:
     - dec
   feeds:
     add:
-      description: Kopiera in URL:en till bloggen du vill läsa.
+      description: Klistra in URL:en till bloggen du vill läsa.
       fields:
         feed_url: Feedens URL
         submit: Lägg till
       flash:
         added_successfully: Vi har lagt till din nya feed. Kom tillbaks om en stund.
-        already_subscribed_error: Du har redan prenumererat på den här feeden...
+        already_subscribed_error: Du prenumererar redan på den här feeden...
         feed_not_found_error: Vi kunde inte hitta feeden. Prova igen.
       title: Behöver du nya berättelser?
     index:
@@ -43,13 +43,13 @@ sv:
         password_confirmation: Bekräfta
       flash:
         passwords_dont_match: Din bekräftelse matchade inte. Försök igen.
-      subtitle: ! 'Det finns bara en användare: du.'
+      subtitle: 'Det finns bara en användare: du.'
       title: Stringer är
   flash:
     cookies_required: Jaha, det här var tråkigt. Cookies behövs för att appen ska fungera.
     js_required: Jaha, det här var tråkigt. Javascript behövs för att appen ska fungera.
   import:
-    description: ! '%{link} dina feeds från Google Reader och importera dom.'
+    description: '%{link} dina feeds från Google Reader och importera dem.'
     export: Exportera
     fields:
       import: Importera
@@ -60,7 +60,7 @@ sv:
     back_to_work: Tillbaks till arbetet, slöfock!
     export: Exportera
     hey: Hallå!
-    import: 
+    import: Importera
     logout: Logga ut
     support: Hjälp
     title: stringer | din rss-polare
@@ -97,7 +97,7 @@ sv:
         or: eller
         r: Uppdatera
         right: Nästa sida
-        s: Markera som stjärnad/ej stjärnad
+        s: Markera som stjärnmärkt/ej stjärnmärkt
         shifta: Markera alla som lästa
         v: Gå till berättelsens URL
       title: Kortkommandon
@@ -128,7 +128,7 @@ sv:
     keep_unread: Behåll oläst
   time:
     formats:
-      default: ! '%e %b %H:%M'
+      default: '%e %b %H:%M'
   tutorial:
     add_feed: lägg till feed
     as_read: som lästa
@@ -140,6 +140,6 @@ sv:
     simple: enkelt
     start: Börja läsa
     subtitle: Här är manualen.
-    title: ! 'Stringer är '
+    title: 'Stringer är '
     your_feeds: dina feeds
     your_stories: dina berättelser

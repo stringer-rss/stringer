@@ -43,13 +43,13 @@ fr:
         password_confirmation: Confirmez
       flash:
         passwords_dont_match: Les mots de passe sont différents. Essayez à nouveau.
-      subtitle: ! 'Il n''y a qu''un seul utilisateur : vous.'
+      subtitle: 'Il n''y a qu''un seul utilisateur : vous.'
       title: Stringer est
   flash:
-    cookies_required: ! 'C''est embêtant : les cookies sont obligatoires pour le bon fonctionnement de l''application.'
-    js_required: ! 'C''est embêtant : Javascript est obligatoire pour le bon fonctionnement de l''application.'
+    cookies_required: 'C''est embêtant : les cookies sont obligatoires pour le bon fonctionnement de l''application.'
+    js_required: 'C''est embêtant : Javascript est obligatoire pour le bon fonctionnement de l''application.'
   import:
-    description: ! '%{link} vos flux provenant de Google Reader et importez-les.'
+    description: '%{link} vos flux provenant de Google Reader et importez-les.'
     export: Exportez
     fields:
       import: Importez
@@ -60,7 +60,7 @@ fr:
     back_to_work: Retournez au travail, fénéant !
     export: Export
     hey: Hé !
-    import: 
+    import: Import
     logout: Déconnection
     support: Aide
     title: stringer | votre compagnon rss
@@ -128,7 +128,7 @@ fr:
     keep_unread: Marquer comme non lu
   time:
     formats:
-      default: ! '%d %b %H:%M'
+      default: '%d %b %H:%M'
   tutorial:
     add_feed: ajouter un flux
     as_read: comme lu
@@ -140,6 +140,6 @@ fr:
     simple: simple
     start: Commencez à lire
     subtitle: Voici le manuel d'utilisation.
-    title: ! 'Stringer est '
+    title: 'Stringer est '
     your_feeds: vos flux
     your_stories: vos articles

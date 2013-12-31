@@ -43,13 +43,13 @@ en:
         password_confirmation: Confirm
       flash:
         passwords_dont_match: Hey, your password confirmation didn't match. Try again.
-      subtitle: ! 'There is only one user: you.'
+      subtitle: 'There is only one user: you.'
       title: Stringer is
   flash:
     cookies_required: Well, this is awkward. Cookies are required for the app to work properly.
     js_required: Well, this is awkward. Javascript is required for the app to work properly.
   import:
-    description: ! '%{link} your feeds from Google Reader and import them.'
+    description: '%{link} your feeds from Google Reader and import them.'
     export: Export
     fields:
       import: Import
@@ -128,7 +128,7 @@ en:
     keep_unread: Keep unread
   time:
     formats:
-      default: ! '%b %d, %H:%M'
+      default: '%b %d, %H:%M'
   tutorial:
     add_feed: add feed
     as_read: as read
@@ -140,6 +140,6 @@ en:
     simple: simple
     start: Start Reading
     subtitle: Here's the instruction manual.
-    title: ! 'Stringer is '
+    title: 'Stringer is '
     your_feeds: your feeds
     your_stories: your stories
