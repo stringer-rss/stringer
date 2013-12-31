@@ -39,7 +39,7 @@ heroku addons:add scheduler
 heroku addons:open scheduler
 ```
 
-Add an hourly task that runs `rake fetch_feeds`
+Add an hourly task that runs `rake lazy_fetch` (if you are not on Heroku you may want `rake fetch_feeds` instead).
 
 Load the app and follow the instructions to import your feeds and start using the app.
 
