@@ -52,9 +52,27 @@ task :work_jobs do
   end
 end
 
+desc "Ensure user with password"
+task :ensure_user_with_password, [:password] do |t, args|
+  unless args[:password].present?
+    puts("Please provide a password")
+    next
+  end
+  if User.count > 0
+    Rake::Task["change_password"].execute(args)
+  else
+    puts "Creating a new user"
+    CreateUser.new.create(args[:password]).update_attribute(:setup_complete,  true)
+  end
+end
+
 desc "Change your password"
-task :change_password do
-  ChangePassword.new.change_password
+task :change_password, [:password] do |t, args|
+  if args[:password].present?
+    ChangeUserPassword.new.change_user_password(args[:password])
+  else
+    ChangePassword.new.change_password
+  end
 end
 
 desc "Clean up old stories that are read and unstarred"
