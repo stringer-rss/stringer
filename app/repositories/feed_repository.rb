@@ -31,6 +31,10 @@ class FeedRepository
     Feed.order('lower(name)')
   end
 
+  def self.fetch_by_url(url)
+    Feed.where(url: url)
+  end
+
   private
 
   def self.valid_timestamp?(new_timestamp, current_timestamp)
