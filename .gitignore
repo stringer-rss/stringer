@@ -2,6 +2,7 @@
 *.rbc
 .bundle
 .config
+.ruby-version
 coverage
 InstalledFiles
 lib/bundler/man
