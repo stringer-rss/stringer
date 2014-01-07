@@ -59,10 +59,16 @@ Deploying into OpenShift
 8. Due to an older version of bundler being used in OpenShift (1.1.4), it does not support indicating the ruby version in the Gemfile. Remove the line from the Gemfile below. (Referencing issue #266)
 
  ```
-    ruby '1.9.3'
+    ruby '2.0.0'
  ```
 
-9. Finally, once completed, all changes should be committed and pushed to OpenShift. Note that it might take a while when pushing to OpenShift.
+9. As OpenShift is still using Ruby 1.9.3 and the gem 'pry-byebug' needs Ruby 2.0, remove the 'pry-byebug' gem in the Gemfile. (Referencing issue #294)
+
+ ```
+    gem "pry-byebug", "~> 1.2"
+ ```
+
+10. Finally, once completed, all changes should be committed and pushed to OpenShift. Note that it might take a while when pushing to OpenShift.
 
  ```sh
 	git add .
@@ -70,7 +76,7 @@ Deploying into OpenShift
 	git push origin
  ```
 
-10. Check that you are able to access the website at the URL given, i.e. feeds-username.rhcloud.com. Then set your password, import your feeds and all good to go!
+11. Check that you are able to access the website at the URL given, i.e. feeds-username.rhcloud.com. Then set your password, import your feeds and all good to go!
 
 
 Adding Cronjob to Fetch Feeds
