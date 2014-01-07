@@ -62,7 +62,7 @@ Deploying into OpenShift
     ruby '2.0.0'
  ```
 
-9. As OpenShift is still using Ruby 1.9.3 and the gem 'pry-byebug' needs Ruby 2.0, remove the 'pry-byebug' gem in the Gemfile. (Referencing issue #294)
+9. As OpenShift is still using Ruby 1.9.3 and the [gem 'pry-byebug'](https://github.com/deivid-rodriguez/pry-byebug) needs Ruby 2.0, we can try to just install the production environment from the Gemfile but there seems to be a [bug in OpenShift](https://bugzilla.redhat.com/show_bug.cgi?id=1049411). A temporary work-around is to remove the 'pry-byebug' gem in the Gemfile. Note that this is only for deploying into OpenShift production. (Referencing issue [#294](https://github.com/swanson/stringer/pull/294) ) 
 
  ```
     gem "pry-byebug", "~> 1.2"
