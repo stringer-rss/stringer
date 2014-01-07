@@ -56,7 +56,7 @@ Deploying into OpenShift
 		password: <%= ENV["OPENSHIFT_POSTGRESQL_DB_PASSWORD"] %> 
  ```
 
-8. Due to an older version of bundler being used in OpenShift (1.1.4), it does not support indicating the ruby version in the Gemfile. Remove the line from the Gemfile below. (Referencing issue #266)
+8. Due to an older version of bundler being used in OpenShift (1.1.4), it does not support indicating the ruby version in the Gemfile. Remove the line from the Gemfile below. (Referencing issue [#266](https://github.com/swanson/stringer/issues/266))
 
  ```
     ruby '2.0.0'
