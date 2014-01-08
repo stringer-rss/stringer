@@ -61,8 +61,8 @@ We are going to use Rbenv to manage the version of Ruby you use.
     git clone git://github.com/sstephenson/ruby-build.git $HOME/.rbenv/plugins/ruby-build
     source ~/.bash_profile
 
-    rbenv install 1.9.3-p0
-    rbenv local 1.9.3-p0
+    rbenv install 2.0.0-p0
+    rbenv local 2.0.0-p0
     rbenv rehash
 
 We also need to install bundler which will handle Stringer's dependencies
