@@ -5,7 +5,7 @@
 
 ### A [work-in-progress] self-hosted, anti-social RSS reader.
 
-Stringer has no external dependencies, no social recommendations/sharing, and no fancy machine learning algorithms. 
+Stringer has no external dependencies, no social recommendations/sharing, and no fancy machine learning algorithms.
 
 But it does have keyboard shortcuts and was made with love!
 
@@ -110,7 +110,7 @@ If you would like to translate Stringer to your preferred language, please use [
 
 Clean up old read stories
 
-If you are on the Heroku free plan, there is a 10k row limit so you will 
+If you are on the Heroku free plan, there is a 10k row limit so you will
 eventually run out of space.
 
 You can clean up old stories by running:
@@ -123,7 +123,7 @@ task.
 
 # Development
 
-Run the Ruby tests with `rspec`. 
+Run the Ruby tests with `rspec`.
 
 Run the Javascript tests with `rake test_js` and then open a browser to `http://localhost:4567/test`.
 
