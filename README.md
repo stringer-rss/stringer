@@ -1,4 +1,5 @@
 # Stringer
+
 [![Build Status](https://travis-ci.org/swanson/stringer.png)](https://travis-ci.org/swanson/stringer)
 [![Code Climate](https://codeclimate.com/github/swanson/stringer.png)](https://codeclimate.com/github/swanson/stringer)
 [![Coverage Status](https://coveralls.io/repos/swanson/stringer/badge.png?branch=master)](https://coveralls.io/r/swanson/stringer)
@@ -41,7 +42,7 @@ Load the app and follow the instructions to import your feeds and start using th
 
 ---
 
-In the event that you need to change your password, run `heroku run rake change_password`  from the app folder.
+In the event that you need to change your password, run `heroku run rake change_password` from the app folder.
 
 ## Updating the app
 
@@ -111,9 +112,7 @@ If you would like to translate Stringer to your preferred language, please use [
 If you are on the Heroku free plan, there is a 10k row limit so you will
 eventually run out of space.
 
-You can clean up old stories by running:
-
-`rake cleanup_old_stories`
+You can clean up old stories by running: `rake cleanup_old_stories`
 
 By default, this removes read stories that are more than 30 days old (that
 are not starred). You can either run this manually or add it as a scheduled
@@ -135,14 +134,16 @@ rake db:migrate
 foreman start
 ```
 
-The application will be running on port `5000`
+The application will be running on port `5000`.
 
-You can launch an interactive console (ala `rails c`) using `racksh`
+You can launch an interactive console (ala `rails c`) using `racksh`.
 
 ## Acknowledgements
+
 Most of the heavy-lifting is done by [`feedzirra`](https://github.com/pauldix/feedzirra) and [`feedbag`](https://github.com/dwillis/feedbag).
 
 General sexiness courtesy of [`Twitter Bootstrap`](http://twitter.github.io/bootstrap/) and [`Flat UI`](http://designmodo.github.io/Flat-UI/).
 
 ## Contact
+
 Matt Swanson, [mdswanson.com](http://mdswanson.com) [@_swanson](http://twitter.com/_swanson)
