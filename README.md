@@ -9,8 +9,6 @@ Stringer has no external dependencies, no social recommendations/sharing, and no
 
 But it does have keyboard shortcuts and was made with love!
 
-When `BIG_FREE_READER` shuts down, your instance of Stringer will still be kicking.
-
 ![](screenshots/instructions.png)
 ![](screenshots/stories.png)
 ![](screenshots/feed.png)
