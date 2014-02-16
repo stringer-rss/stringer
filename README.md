@@ -1,4 +1,4 @@
-##Stringer
+# Stringer
 [![Build Status](https://travis-ci.org/swanson/stringer.png)](https://travis-ci.org/swanson/stringer)
 [![Code Climate](https://codeclimate.com/github/swanson/stringer.png)](https://codeclimate.com/github/swanson/stringer)
 [![Coverage Status](https://coveralls.io/repos/swanson/stringer/badge.png?branch=master)](https://coveralls.io/r/swanson/stringer)
@@ -15,7 +15,7 @@ When `BIG_FREE_READER` shuts down, your instance of Stringer will still be kicki
 ![](screenshots/stories.png)
 ![](screenshots/feed.png)
 
-# Installation
+## Installation
 
 Stringer is a Ruby (2.0.0+) app based on Sinatra, ActiveRecord, PostgreSQL, Backbone.js and DelayedJob.
 
@@ -56,21 +56,23 @@ heroku run rake db:migrate
 heroku restart
 ```
 
-# Niceties
+## Niceties
 
-Keyboard Shortcuts
+### Keyboard Shortcuts
 
 You can access the keyboard shortcuts when using the app by hitting `?`.
 
 ![](screenshots/keyboard_shortcuts.png)
 
----
+### Using you own domain with Heroku
 
 You can run Stringer at `http://reader.yourdomain.com` using a CNAME.
 
 If you are on Heroku:
 
-`heroku domains:add reader.yourdomain.com`
+```
+heroku domains:add reader.yourdomain.com
+```
 
 Go to your registrar and add a CNAME:
 ```
@@ -81,7 +83,7 @@ Target: your-heroku-instance.herokuapp.com
 
 Wait a few minutes for changes to propagate.
 
----
+### Fever API
 
 Stringer implements a clone of [Fever's API](http://www.feedafever.com/api) so it can be used with any mobile client that supports Fever.
 
@@ -98,7 +100,7 @@ Password: {your-stringer-password}
 
 If you have previously setup Stringer, you will need to migrate your database and run `rake change_password` for the API key to be setup properly.
 
----
+### Translations
 
 Stringer has been translated to [several other languages](config/locales). Your language can be set with the `LOCALE` environment variable.
 
@@ -106,9 +108,7 @@ To set your locale on Heroku, run `heroku config:set LOCALE=en`.
 
 If you would like to translate Stringer to your preferred language, please use [LocaleApp](http://www.localeapp.com/projects/4637).
 
----
-
-Clean up old read stories
+### Clean up old read stories
 
 If you are on the Heroku free plan, there is a 10k row limit so you will
 eventually run out of space.
@@ -121,13 +121,13 @@ By default, this removes read stories that are more than 30 days old (that
 are not starred). You can either run this manually or add it as a scheduled
 task.
 
-# Development
+## Development
 
 Run the Ruby tests with `rspec`.
 
 Run the Javascript tests with `rake test_js` and then open a browser to `http://localhost:4567/test`.
 
-## Getting Started
+### Getting Started
 
 To get started using Stringer for development simply run the following:
 
@@ -141,11 +141,10 @@ The application will be running on port `5000`
 
 You can launch an interactive console (ala `rails c`) using `racksh`
 
-# Acknowledgements
+## Acknowledgements
 Most of the heavy-lifting is done by [`feedzirra`](https://github.com/pauldix/feedzirra) and [`feedbag`](https://github.com/dwillis/feedbag).
 
 General sexiness courtesy of [`Twitter Bootstrap`](http://twitter.github.io/bootstrap/) and [`Flat UI`](http://designmodo.github.io/Flat-UI/).
 
-# Contact
+## Contact
 Matt Swanson, [mdswanson.com](http://mdswanson.com) [@_swanson](http://twitter.com/_swanson)
-
