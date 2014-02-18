@@ -94,20 +94,10 @@ Use the following settings:
 Server: {path-to-stringer}/fever (e.g. http://reader.example.com/fever)
 
 Email: stringer (case-sensitive)
-Password: {your-stringer-api-key}
+Password: {your-stringer-password}
 ```
 
-If you are running Stringer revision `0d35ec2` (May 15th 2013) or older, you
-will need to migrate your database and run `rake change_password` for the API
-key to be setup properly.
-
-Your API key is the md5 checksum of the string `stringer:{your-stringer-password}`.
-Assuming your password is "opensesame", the following command will calculate
-your API key for you:
-
-```sh
-echo "stringer:opensesame" | md5sum | cut -d' ' -f1
-```
+If you have previously setup Stringer, you will need to migrate your database and run `rake change_password` for the API key to be setup properly.
 
 ### Translations
 
