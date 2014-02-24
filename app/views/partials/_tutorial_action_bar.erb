@@ -5,16 +5,16 @@
       <%= render_partial :mark_all_as_read_form,
                         {stories: stories} %>
     </a>
-    <a class="btn" href="/" id="refresh" title="<%= t('partials.action_bar.refresh') %>">
+    <a class="btn" href="<%= url('/') %>" id="refresh" title="<%= t('partials.action_bar.refresh') %>">
       <i class="icon-repeat"></i>
     </a>
   </div>
 
   <div class="pull-right">
-    <a class="btn btn-primary" id="feeds" href="/feeds" title="<%= t('partials.action_bar.view_feeds') %>">
+    <a class="btn btn-primary" id="feeds" href="<%= url('/feeds') %>" title="<%= t('partials.action_bar.view_feeds') %>">
       <i class="icon-list"></i>
     </a>
-    <a class="btn btn-primary" id="add-feed" href="/feeds/new" title="<%= t('partials.action_bar.add_feed') %>">
+    <a class="btn btn-primary" id="add-feed" href="<%= url('/feeds/new') %>" title="<%= t('partials.action_bar.add_feed') %>">
       <i class="icon-plus"></i>
     </a>
   </div>

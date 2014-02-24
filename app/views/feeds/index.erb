@@ -12,7 +12,7 @@
 </div>
 <% else %>
   <div id="add-some-feeds">
-    <p><%= t('feeds.index.add_some_feeds', :add => '<a href="/feeds/new">'+t('feeds.index.add')+'</a>') %></p>
+    <p><%= t('feeds.index.add_some_feeds', :add => "<a href=\"#{url('/feeds/new')}\">#{t('feeds.index.add')}</a>") %></p>
   </div>
 <% end %>
 

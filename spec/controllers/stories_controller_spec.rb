@@ -13,7 +13,7 @@ describe "StoriesController" do
       StoryRepository.stub(:unread).and_return(stories)
       UserRepository.stub(fetch: double)
     end
-    
+
     it "display list of unread stories" do
       get "/news"
 
@@ -42,8 +42,8 @@ describe "StoriesController" do
       get "/news"
 
       page = last_response.body
-      page.should have_tag("a", with: { href: "/feeds/export"})
-      page.should have_tag("a", with: { href: "/logout"})
+      page.should have_tag("a", with: { href: "http://#{last_request.env['HTTP_HOST']}/feeds/export"})
+      page.should have_tag("a", with: { href: "http://#{last_request.env['HTTP_HOST']}/logout"})
       page.should have_tag("a", with: { href: "https://github.com/swanson/stringer"})
     end
 
