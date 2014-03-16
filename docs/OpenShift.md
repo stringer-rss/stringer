@@ -68,6 +68,12 @@ Deploying into OpenShift
     gem "pry-byebug", "~> 1.2"
  ```
 
+ After removing the `pry-byebug` gem from `Gemfile`, the bundle has to be updated.
+
+ ```sh
+	bundle install
+ ```
+
 10. Finally, once completed, all changes should be committed and pushed to OpenShift. Note that it might take a while when pushing to OpenShift.
 
  ```sh
