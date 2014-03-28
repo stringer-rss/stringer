@@ -86,6 +86,11 @@ describe StoryRepository do
         result = StoryRepository.sanitize("<figure>some code</figure>")
         result.should eq "<figure>some code</figure>"
       end
+
+      it "handles unprintable characters" do
+        result = StoryRepository.sanitize("n ")
+        result.should eq "n"
+      end
     end
   end
 end
