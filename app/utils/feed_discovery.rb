@@ -1,8 +1,8 @@
 require "feedbag"
-require "feedzirra"
+require "feedjira"
 
 class FeedDiscovery
-  def discover(url, finder = Feedbag, parser = Feedzirra::Feed)
+  def discover(url, finder = Feedbag, parser = Feedjira::Feed)
     get_feed_for_url(url, finder, parser) do
       urls = finder.find(url)
       return false if urls.empty?

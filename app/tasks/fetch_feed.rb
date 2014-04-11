@@ -1,4 +1,4 @@
-require "feedzirra"
+require "feedjira"
 
 require_relative "../repositories/story_repository"
 require_relative "../repositories/feed_repository"
@@ -8,7 +8,7 @@ class FetchFeed
 
   USER_AGENT = "Stringer (https://github.com/swanson/stringer)"
 
-  def initialize(feed, feed_parser = Feedzirra::Feed, logger = nil)
+  def initialize(feed, feed_parser = Feedjira::Feed, logger = nil)
     @feed = feed
     @parser = feed_parser
     @logger = logger
