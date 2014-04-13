@@ -2,6 +2,7 @@
 *.rbc
 .bundle
 .config
+.ruby-gemset
 .ruby-version
 coverage
 InstalledFiles
@@ -12,6 +13,7 @@ spec/reports
 test/tmp
 test/version_tmp
 tmp
+log
 
 # YARD artifacts
 .yardoc
