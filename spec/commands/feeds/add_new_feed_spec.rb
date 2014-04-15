@@ -19,7 +19,7 @@ describe AddNewFeed do
       let(:discoverer) { double(discover: feed_result) }
       let(:feed) { FeedFactory.build }
       let(:repo) { double }
-      
+
       it "parses and creates the feed if discovered" do
         repo.should_receive(:create).and_return(feed)
 

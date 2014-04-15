@@ -3,14 +3,23 @@ require "spec_helper"
 app_require "fever_api/read_groups"
 
 describe FeverAPI::ReadGroups do
-  subject { FeverAPI::ReadGroups.new }
+  let(:group_1) { double('group_1', as_fever_json: { id: 1, title: 'IT news' }) }
+  let(:group_2) { double('group_2', as_fever_json: { id: 2, title: 'World news' }) }
+  let(:group_repository) { double('repo') }
 
-  it "returns a fixed group list if requested" do
+  subject { FeverAPI::ReadGroups.new(group_repository: group_repository) }
+
+  it "returns a group list if requested" do
+    group_repository.should_receive(:list).and_return([group_1, group_2])
     subject.call('groups' => nil).should == {
       groups: [
         {
           id: 1,
-          title: "All items"
+          title: "IT news"
+        },
+        {
+          id: 2,
+          title: 'World news'
         }
       ]
     }

@@ -31,6 +31,10 @@ class FeedRepository
     Feed.order('lower(name)')
   end
 
+  def self.in_group
+    Feed.where('group_id IS NOT NULL')
+  end
+
   private
 
   def self.valid_timestamp?(new_timestamp, current_timestamp)

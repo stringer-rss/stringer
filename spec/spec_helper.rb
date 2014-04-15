@@ -14,6 +14,7 @@ Coveralls.wear!
 require "factories/feed_factory"
 require "factories/story_factory"
 require "factories/user_factory"
+require "factories/group_factory"
 
 require "./app"
 
