@@ -88,8 +88,13 @@ describe StoryRepository do
       end
 
       it "handles unprintable characters" do
-        result = StoryRepository.sanitize("n ")
+        result = StoryRepository.sanitize("n\u2028\u2029")
         result.should eq "n"
+      end
+
+      it "preserves line endings" do
+        result = StoryRepository.sanitize("test\r\ncase")
+        result.should eq "test\r\ncase"
       end
     end
   end
