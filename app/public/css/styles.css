@@ -550,6 +550,11 @@ kbd {
   white-space: nowrap;
 }
 
+
+#shortcuts .modal-body {
+  max-height: 500px;
+}
+
 ul.shortcut-legend li {
   margin-bottom: 10px;
 }
