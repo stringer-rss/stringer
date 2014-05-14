@@ -85,9 +85,8 @@ class StoryRepository
   def self.sanitize(content)
     Loofah.fragment(content.gsub(/<wbr\s*>/i, ""))
           .scrub!(:prune)
+          .scrub!(:unprintable)
           .to_s
-          .gsub("\u2028", '')
-          .gsub("\u2029", '')
   end
 
   def self.expand_absolute_urls(content, base_url)
