@@ -146,6 +146,6 @@ General sexiness courtesy of [`Twitter Bootstrap`](http://twitter.github.io/boot
 
 ## Contact
 
-Matt Swanson, [mdswanson.com](http://mdswanson.com) [@_swanson](http://twitter.com/_swanson)
+Matt Swanson, [mdswanson.com](http://mdswanson.com), [@_swanson](http://twitter.com/_swanson)
 
 Victor Koronen, [victor.koronen.se](http://victor.koronen.se/), [@victorkoronen](https://twitter.com/victorkoronen)
