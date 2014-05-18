@@ -4,7 +4,7 @@
 [![Code Climate](https://codeclimate.com/github/swanson/stringer.png)](https://codeclimate.com/github/swanson/stringer)
 [![Coverage Status](https://coveralls.io/repos/swanson/stringer/badge.png?branch=master)](https://coveralls.io/r/swanson/stringer)
 
-### A [work-in-progress] self-hosted, anti-social RSS reader.
+### A self-hosted, anti-social RSS reader.
 
 Stringer has no external dependencies, no social recommendations/sharing, and no fancy machine learning algorithms.
 
