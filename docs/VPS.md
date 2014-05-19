@@ -89,6 +89,7 @@ Stringer uses environment variables to determine information about your database
     echo 'export STRINGER_DATABASE_USERNAME="stringer"' >> $HOME/.bash_profile
     echo 'export STRINGER_DATABASE_PASSWORD="EDIT_ME"' >> $HOME/.bash_profile
     echo 'export RACK_ENV="production"' >> $HOME/.bash_profile
+    echo "export SECRET_TOKEN=`openssl rand -hex 20`" >> $HOME/.bash_profile
     source ~/.bash_profile
     
 Tell stringer to run the database in production mode, using the postgres database you created earlier.
