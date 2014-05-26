@@ -54,6 +54,10 @@ class Stringer < Sinatra::Base
   end
 
   post "/feeds/:id" do
+    feed = FeedRepository.fetch(params[:id])
+
+    FeedRepository.update_url(feed, params[:feed_url])
+
     redirect to('/feeds')
   end
 
