@@ -37,6 +37,8 @@ en:
       fields:
         feed_url: Feed URL
         submit: Update
+      flash:
+        updated_successfully: Updated the feed URL for ya'!
   first_run:
     password:
       anti_social: anti-social

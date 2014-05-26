@@ -58,6 +58,7 @@ class Stringer < Sinatra::Base
 
     FeedRepository.update_url(feed, params[:feed_url])
 
+    flash[:success] = t('feeds.edit.flash.updated_successfully')
     redirect to('/feeds')
   end
 
