@@ -26,6 +26,18 @@ describe "FeedsController" do
     end
   end
 
+  describe "GET /feeds/:feed_id/edit" do
+    it "fetches a feed given the id" do
+      feed = Feed.new(name: 'Rainbows and unicorns', url: 'example.com/feed')
+      FeedRepository.should_receive(:fetch).with("123").and_return(feed)
+
+      get "/feeds/123/edit"
+
+      last_response.body.should include('Rainbows and unicorns')
+      last_response.body.should include('example.com/feed')
+    end
+  end
+
   describe "DELETE /feeds/:feed_id" do
     it "deletes a feed given the id" do
       FeedRepository.should_receive(:delete).with("123")

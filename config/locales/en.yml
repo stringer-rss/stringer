@@ -33,6 +33,10 @@ en:
     index:
       add: add
       add_some_feeds: Hey, you should %{add} some feeds.
+    edit:
+      fields:
+        feed_url: Feed URL
+        submit: Update
   first_run:
     password:
       anti_social: anti-social
