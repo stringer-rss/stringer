@@ -36,7 +36,7 @@ en:
     edit:
       fields:
         feed_url: Feed URL
-        submit: Update
+        submit: Save
       flash:
         updated_successfully: Updated the feed URL for ya'!
   first_run:
