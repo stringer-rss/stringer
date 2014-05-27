@@ -6,6 +6,7 @@
   <h1><%= @feed.name %></h1>
   <hr />
     <form id="add-feed-setup" method="POST" action="/feeds/<%= @feed.id %>">
+      <input type="hidden" name="_method" value="PUT">
       <input type="hidden" name="feed_id" value="<%= @feed.id %>">
       <div class="control-group">
         <input name="feed_url" id="feed-url" type="text" autofocus="autofocus" value="<%= @feed.url %>"/>

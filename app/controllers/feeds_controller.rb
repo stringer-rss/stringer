@@ -15,6 +15,15 @@ class Stringer < Sinatra::Base
     erb :'feeds/edit'
   end
 
+  put "/feeds/:id" do
+    feed = FeedRepository.fetch(params[:id])
+
+    FeedRepository.update_url(feed, params[:feed_url])
+
+    flash[:success] = t('feeds.edit.flash.updated_successfully')
+    redirect to('/feeds')
+  end
+
   delete "/feeds/:feed_id" do
     FeedRepository.delete(params[:feed_id])
 
@@ -51,15 +60,6 @@ class Stringer < Sinatra::Base
     ImportFromOpml.import(params["opml_file"][:tempfile].read)
 
     redirect to("/setup/tutorial")
-  end
-
-  post "/feeds/:id" do
-    feed = FeedRepository.fetch(params[:id])
-
-    FeedRepository.update_url(feed, params[:feed_url])
-
-    flash[:success] = t('feeds.edit.flash.updated_successfully')
-    redirect to('/feeds')
   end
 
   get "/feeds/export" do
