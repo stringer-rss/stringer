@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="1.0">
+    <head>
+        <title>subscriptions title</title>
+    </head>
+    <body>
+        <outline text="Autoblog" title="Autoblog" type="rss"
+            xmlUrl="http://feeds.autoblog.com/weblogsinc/autoblog/" htmlUrl="http://www.autoblog.com"/>
+        <outline text="City Guide News" title="City Guide News"
+            type="rss"
+            xmlUrl="http://www.probki.net/news/RSS_news_feed.asp" htmlUrl="http://www.probki.net"/>
+        <outline title="Football News" text="Football News">
+            <outline text="TMW Football Transfer News"
+                title="TMW Football Transfer News" type="rss"
+                xmlUrl="http://www.transfermarketweb.com/rss" htmlUrl="http://www.transfermarketweb.com"/>
+        </outline>
+        <outline title="RoR" text="RoR">
+            <outline
+                text="GIANT ROBOTS SMASHING INTO OTHER GIANT ROBOTS - Home"
+                title="GIANT ROBOTS SMASHING INTO OTHER GIANT ROBOTS - Home"
+                type="rss"
+                xmlUrl="http://feeds.feedburner.com/GiantRobotsSmashingIntoOtherGiantRobots" htmlUrl="http://robots.thoughtbot.com/"/>
+            <outline text="igvita.com" title="igvita.com" type="rss"
+                xmlUrl="http://www.igvita.com/feed/" htmlUrl="http://www.igvita.com"/>
+        </outline>
+    </body>
+</opml>

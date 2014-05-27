@@ -16,6 +16,7 @@ class FeedFactory
   def self.build(params = {})
     FakeFeed.new(
       id: rand(100),
+      group_id: params[:group_id] || rand(100),
       name: params[:name] || Faker::Name.name + " on Software",
       url: params[:url] || Faker::Internet.url,
       last_fetched: params[:last_fetched] || Time.now,

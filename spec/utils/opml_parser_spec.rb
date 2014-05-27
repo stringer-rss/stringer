@@ -22,12 +22,14 @@ describe OpmlParser do
         </opml>
       eos
 
-      result.count.should eq 2
-      result.first[:name].should eq "a sample feed"
-      result.first[:url].should eq "http://feeds.feedburner.com/foobar"
-    
-      result.last[:name].should eq "Matt's Blog"
-      result.last[:url].should eq "http://mdswanson.com/atom.xml"
+      resulted_values = result.values.flatten
+      resulted_values.size.should eq 2
+      resulted_values.first[:name].should eq "a sample feed"
+      resulted_values.first[:url].should eq "http://feeds.feedburner.com/foobar"
+
+      resulted_values.last[:name].should eq "Matt's Blog"
+      resulted_values.last[:url].should eq "http://mdswanson.com/atom.xml"
+      result.keys.first.should eq "Ungrouped"
     end
 
     it "handles nested groups of feeds" do
@@ -45,10 +47,12 @@ describe OpmlParser do
         </body>
         </opml>
       eos
+      resulted_values = result.values.flatten
 
-      result.count.should eq 1
-      result.first[:name].should eq "a sample feed"
-      result.first[:url].should eq "http://feeds.feedburner.com/foobar"
+      resulted_values.count.should eq 1
+      resulted_values.first[:name].should eq "a sample feed"
+      resulted_values.first[:url].should eq "http://feeds.feedburner.com/foobar"
+      result.keys.first.should eq "Technology News"
     end
 
     it "doesn't explode when there are no feeds" do
@@ -79,9 +83,10 @@ describe OpmlParser do
         </body>
         </opml>
       eos
+      resulted_values = result.values.flatten
 
-      result.count.should eq 1
-      result.first[:name].should eq "a sample feed"
+      resulted_values.count.should eq 1
+      resulted_values.first[:name].should eq "a sample feed"
     end
   end
 end

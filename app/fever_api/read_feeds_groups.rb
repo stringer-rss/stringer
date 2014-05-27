@@ -17,16 +17,12 @@ module FeverAPI
     private
 
     def feeds_groups
-      [
+      @feed_repository.in_group.order('LOWER(name)').group_by(&:group_id).map do |group_id, feeds|
         {
-          group_id: 1,
-          feed_ids: feeds.map{|f| f.id}.join(",")
+          group_id: group_id,
+          feed_ids: feeds.map(&:id).join(',')
         }
-      ]
-    end
-
-    def feeds
-      @feed_repository.list
+      end
     end
   end
 end
