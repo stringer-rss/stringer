@@ -362,6 +362,18 @@ li.feed .last-updated-time {
   display: inline-block;
 }
 
+li.feed .edit-feed {
+  cursor: pointer;
+}
+
+li.feed .edit-feed a {
+  text-align: right;
+  padding-left: 3px;
+  padding-right: 3px;
+  margin-left: 5px;
+  color: #000;
+}
+
 li.feed .remove-feed {
   cursor: pointer;
 }
@@ -370,7 +382,7 @@ li.feed .remove-feed a {
   text-align: center;
   padding-left: 3px;
   padding-right: 3px;
-  margin-left: 10px;
+  margin-left: 5px;
   color: #C0392B;
 }
 

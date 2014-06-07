@@ -11,7 +11,7 @@
         </a>
       </p>
     </div>
-    <div class="span4 feed-last-updated">
+    <div class="span3 feed-last-updated">
       <span class="last-updated"><%= t('partials.feed.last_updated') %></span>
       <span class="last-updated-time">
         <% if feed.last_fetched %>
@@ -21,13 +21,16 @@
         <% end %>
       </span>
     </div>
-    <div class="span1">
+    <div class="span2">
       <span class="read-feed">
         <a class="icon-external-link" href="<%= feed.url %>"></a>
-      <span/>
+      </span>
+      <span class="edit-feed">
+        <a class="icon-edit" href="<%= "/feeds/#{feed.id}/edit" %>"></a>
+      </span>
       <span class="remove-feed">
         <a class="icon-remove"></a>
-      <span/>
+      </span>
     </div>
   </div>
 </li>

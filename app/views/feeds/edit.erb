@@ -1,0 +1,18 @@
+<div id="action-bar">
+  <%= render_partial :feed_action_bar %>
+</div>
+
+<div class="setup" id="add-feed-container">
+  <h1><%= @feed.name %></h1>
+  <hr />
+    <form id="add-feed-setup" method="POST" action="/feeds/<%= @feed.id %>">
+      <input type="hidden" name="_method" value="PUT">
+      <input type="hidden" name="feed_id" value="<%= @feed.id %>">
+      <div class="control-group">
+        <input name="feed_url" id="feed-url" type="text" autofocus="autofocus" value="<%= @feed.url %>"/>
+        <i class="icon-rss field-icon"></i>
+        <label id="feed_url-label" class="field-label" for="feed_url"><%= t('feeds.edit.fields.feed_url') %></label>
+      </div>
+    <input type="submit" id="submit" class="btn btn-primary pull-right" value="<%= t('feeds.edit.fields.submit') %>"/>
+  </form>
+</div>
