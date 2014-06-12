@@ -13,6 +13,11 @@
         <i class="icon-rss field-icon"></i>
         <label id="feed_url-label" class="field-label" for="feed_url"><%= t('feeds.edit.fields.feed_url') %></label>
       </div>
+      <div class="control-group">
+        <input name="feed_alias" id="feed-alias" type="text" autofocus="autofocus" value="<%= @feed.alias %>" placeholder="<%= @feed.name(false) %>"/>
+        <i class="icon-pencil field-icon"></i>
+        <label id="feed_alias-label" class="field-label" for="feed_alias"><%= t('feeds.edit.fields.feed_alias') %></label>
+      </div>
     <input type="submit" id="submit" class="btn btn-primary pull-right" value="<%= t('feeds.edit.fields.submit') %>"/>
   </form>
 </div>
