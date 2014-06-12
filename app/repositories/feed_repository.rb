@@ -11,9 +11,11 @@ class FeedRepository
     Feed.where(id: ids)
   end
 
-  def self.update_url_and_alias(feed, feed_url, feed_alias)
-    feed.url = feed_url
-    feed.alias = feed_alias == "" ? nil : feed_alias
+  def self.update_attributes(feed, attributes)
+    new_url = attributes[:url]
+    new_alias = attributes[:alias]
+    feed.url = new_url
+    feed.alias = new_alias == "" ? nil : new_alias
     feed.save
   end
 
