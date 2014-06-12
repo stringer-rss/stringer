@@ -226,7 +226,7 @@ li.story.cursor {
   border: 3px solid #484948;
 }
 
-li.story .story-body-container { 
+li.story .story-body-container {
   display: none;
 }
 
@@ -477,7 +477,7 @@ li.feed .remove-feed a:hover {
   transition: 0.25s;
 }
 
-.setup #password, .setup #password-confirmation, .setup #feed-url {
+.setup #password, .setup #password-confirmation, .setup #feed-url, .setup #feed-alias {
   padding-left: 100px;
   padding-right: 36px;
 }

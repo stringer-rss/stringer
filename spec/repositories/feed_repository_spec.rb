@@ -43,13 +43,32 @@ describe FeedRepository do
     end
   end
 
-  describe ".update_url" do
-    it "saves the url" do
+  describe ".update_attributes" do
+    it "saves the url and alias" do
       feed = Feed.new
 
-      FeedRepository.update_url(feed, 'example.com/feed')
+      FeedRepository.update_attributes(feed, url: 'example.com/feed', alias: 'Example Feed')
 
       feed.url.should eq 'example.com/feed'
+      feed.alias.should eq 'Example Feed'
+    end
+
+    it "saves the url when alias is nil" do
+      feed = Feed.new
+
+      FeedRepository.update_attributes(feed, url: 'example.com/feed')
+
+      feed.url.should eq 'example.com/feed'
+      feed.alias.should be_nil
+    end
+
+    it "saves the url when alias is empty string" do
+      feed = Feed.new
+
+      FeedRepository.update_attributes(feed, url: 'example.com/feed', alias: '')
+
+      feed.url.should eq 'example.com/feed'
+      feed.alias.should be_nil
     end
   end
 

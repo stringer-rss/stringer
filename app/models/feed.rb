@@ -6,6 +6,10 @@ class Feed < ActiveRecord::Base
 
   STATUS = { green: 0, yellow: 1, red: 2 }
 
+  def name(use_alias = true)
+    use_alias ? (read_attribute(:alias) || read_attribute(:name)) : read_attribute(:name)
+  end
+
   def status
     STATUS.key(read_attribute(:status))
   end
