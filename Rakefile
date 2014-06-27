@@ -4,6 +4,7 @@ Bundler.setup
 require "rubygems"
 require "net/http"
 require 'active_record'
+require 'clockwork'
 require 'delayed_job'
 require 'delayed_job_active_record'
 
@@ -18,6 +19,14 @@ require_relative "./app/tasks/remove_old_stories.rb"
 desc "Fetch all feeds."
 task :fetch_feeds do
   FetchFeeds.new(Feed.all).fetch_all
+end
+
+desc "Fetch all feeds every 30m."
+task :fetch_feeds_worker do
+  Clockwork.every(30.minutes, 'Queueing fetch all feeds.') do
+    FetchFeeds.new(Feed.all).fetch_all
+  end
+  Clockwork.run
 end
 
 desc "Lazily fetch all feeds."
