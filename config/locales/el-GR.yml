@@ -30,6 +30,13 @@ el-GR:
         already_subscribed_error: Είστε ήδη εγγεγραμενος σ' αυτο το ιστολόγιο...
         feed_not_found_error: Δεν μπορέσαμε να βρούμε αυτο το ιστολόγιο. Προσπαθήστε ξανά.
       title: Όρεξη για καινούριες ειδήσεις?
+    edit:
+      fields:
+        feed_name: 
+        feed_url: 
+        submit: 
+      flash:
+        updated_successfully: 
     index:
       add: εισάγεις
       add_some_feeds: Επ! Γιατί δεν %{add} μερικά ιστολόγια στη συλλογή σου?
@@ -89,6 +96,7 @@ el-GR:
     shortcuts:
       keys:
         a: 
+        f: 
         jk: Επόμενη/Προηγούμενη είδηση
         left: 
         m: Σημειώστε το νέο ως αναγνωσμένο ή όχι

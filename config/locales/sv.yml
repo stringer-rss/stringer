@@ -30,6 +30,13 @@ sv:
         already_subscribed_error: Du prenumererar redan på den här feeden...
         feed_not_found_error: Vi kunde inte hitta feeden. Prova igen.
       title: Behöver du nya berättelser?
+    edit:
+      fields:
+        feed_name: 
+        feed_url: 
+        submit: 
+      flash:
+        updated_successfully: 
     index:
       add: lägga till
       add_some_feeds: Hej, du borde %{add} några feeds.
@@ -89,6 +96,7 @@ sv:
     shortcuts:
       keys:
         a: Lägg till en feed
+        f: 
         jk: Nästa/föregående berättelse
         left: Föregående sida
         m: Markera som läst/oläst

@@ -30,6 +30,13 @@ fr:
         already_subscribed_error: Vous suivez déjà ce flux...
         feed_not_found_error: Nous n'avons pas pu trouver ce flux. Essayez de nouveau.
       title: Besoin de nouveaux articles ?
+    edit:
+      fields:
+        feed_name: 
+        feed_url: 
+        submit: 
+      flash:
+        updated_successfully: 
     index:
       add: ajouter
       add_some_feeds: Vous devriez %{add} quelques flux.
@@ -89,6 +96,7 @@ fr:
     shortcuts:
       keys:
         a: Ajouter un flux
+        f: 
         jk: Article suivant/précédent
         left: Page précédente
         m: Marquer ceci comme lu/non lu

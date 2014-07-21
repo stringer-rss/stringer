@@ -30,6 +30,13 @@ he:
         already_subscribed_error: הפיד הנ"ל כבר נמצא במעקב.
         feed_not_found_error: לא הצלחנו למצוא את הפיד. נסה שוב.
       title: מחפש מה לקרוא?
+    edit:
+      fields:
+        feed_name: 
+        feed_url: 
+        submit: 
+      flash:
+        updated_successfully: 
     index:
       add: להוסיף
       add_some_feeds: הי, כדאי %{add} קצת פידים.
@@ -89,6 +96,7 @@ he:
     shortcuts:
       keys:
         a: 
+        f: 
         jk: סיפור הבא/קודם
         left: 
         m: סמן את הכל כנקרא/לא נקרא

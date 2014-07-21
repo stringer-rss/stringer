@@ -30,6 +30,13 @@ ja:
         already_subscribed_error: このフィードは既に登録されてます
         feed_not_found_error: フィードを見つけられませんでした、もう一度試して下さい
       title: 新しいストーリーが必要ですか?
+    edit:
+      fields:
+        feed_name: 
+        feed_url: 
+        submit: 
+      flash:
+        updated_successfully: 
     index:
       add: 追加
       add_some_feeds: 何かフィードを%{add}する必要があります
@@ -89,6 +96,7 @@ ja:
     shortcuts:
       keys:
         a: フィードを追加
+        f: 
         jk: 次／前のストーリー
         left: 前ページ
         m: 既読／未読切り替え

@@ -30,6 +30,13 @@ nl:
         already_subscribed_error: Je bent al geabonneerd op deze feed...
         feed_not_found_error: Die feed konden we niet vinden. Probeer het opnieuw.
       title: Nieuwe artikelen nodig?
+    edit:
+      fields:
+        feed_name: 
+        feed_url: 
+        submit: 
+      flash:
+        updated_successfully: 
     index:
       add: toevoegen
       add_some_feeds: Hé, je zou eens wat feeds kunnen %{add}.
@@ -89,6 +96,7 @@ nl:
     shortcuts:
       keys:
         a: Een feed toevoegen
+        f: 
         jk: Volgend/vorig artikel
         left: Vorige pagina
         m: Artikel markeren als gelezen/ongelezen

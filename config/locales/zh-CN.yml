@@ -30,6 +30,13 @@ zh-CN:
         already_subscribed_error: 你已经订阅过这个供稿了哟...
         feed_not_found_error: 呃，我们无法识别这个供稿地址。麻烦你检查后再试一次。
       title: 想要添加新内容？
+    edit:
+      fields:
+        feed_name: 
+        feed_url: 
+        submit: 
+      flash:
+        updated_successfully: 
     index:
       add: 添加
       add_some_feeds: 你应该%{add}一些订阅哟~
@@ -89,6 +96,7 @@ zh-CN:
     shortcuts:
       keys:
         a: 添加新订阅
+        f: 
         jk: 下一个/上一个故事
         left: 上一页
         m: 将一个条目标为已读/未读

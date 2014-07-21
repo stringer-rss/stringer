@@ -30,6 +30,13 @@ pt:
         already_subscribed_error: Você já subscreveu esta feed...
         feed_not_found_error: Não foi possível encontrar a feed. Tente novamente.
       title: Precisa de novas histórias?
+    edit:
+      fields:
+        feed_name: 
+        feed_url: 
+        submit: 
+      flash:
+        updated_successfully: 
     index:
       add: adicionar
       add_some_feeds: Ei, você deveria %{add} algumas feeds.
@@ -89,6 +96,7 @@ pt:
     shortcuts:
       keys:
         a: 
+        f: 
         jk: Próxima história/História anterior
         left: 
         m: Marcar item como lido/não lido

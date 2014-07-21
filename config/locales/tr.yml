@@ -30,6 +30,13 @@ tr:
         already_subscribed_error: Bu beslemeye zaten kayitlisiniz...
         feed_not_found_error: Bu beslemeyi bulamadik. Tekrar deneyiniz.
       title: Yeni hikayelere mi ihtiyaciniz var?
+    edit:
+      fields:
+        feed_name: 
+        feed_url: 
+        submit: 
+      flash:
+        updated_successfully: 
     index:
       add: ekle
       add_some_feeds: Hey, you should %{add} some feeds.
@@ -89,6 +96,7 @@ tr:
     shortcuts:
       keys:
         a: 
+        f: 
         jk: Sonraki/onceki hikaye
         left: 
         m: Okundu/okunmadi olarak isaretle

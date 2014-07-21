@@ -30,6 +30,13 @@ de:
         already_subscribed_error: Du hast diesen Feed bereits abonniert...
         feed_not_found_error: Wir konnten diesen Feed nicht finden. Probiere es noch einmal
       title: Benötigst du neue Geschichten?
+    edit:
+      fields:
+        feed_name: 
+        feed_url: 
+        submit: 
+      flash:
+        updated_successfully: 
     index:
       add: hinzufügen
       add_some_feeds: Hey, du solltest ein paar Feeds %{add}.
@@ -89,6 +96,7 @@ de:
     shortcuts:
       keys:
         a: Einen Feed hinzufügen
+        f: 
         jk: Nächste/vorherige Geschichte
         left: Vorige Seite
         m: Markiere Geschichte als gelesen/ungelesen
