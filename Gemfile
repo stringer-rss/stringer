@@ -32,6 +32,7 @@ gem "activerecord", "~> 4.0"
 # need to work around bug in 4.0.1 https://github.com/rails/arel/pull/216
 gem 'arel', git: 'git://github.com/rails/arel.git', branch: '4-0-stable'
 gem "bcrypt-ruby", "~> 3.1.2"
+gem "clockwork", "0.7.5"
 gem "delayed_job", "~> 4.0"
 gem "delayed_job_active_record", "~> 4.0"
 gem "feedbag", "~> 0.9.2"
