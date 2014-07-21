@@ -42,9 +42,9 @@ describe "FeedsController" do
     it "updates a feed given the id" do
       feed = FeedFactory.build(url: 'example.com/atom')
       FeedRepository.should_receive(:fetch).with("123").and_return(feed)
-      FeedRepository.should_receive(:update_url).with(feed, 'example.com/feed')
+      FeedRepository.should_receive(:update_feed).with(feed, 'Test', 'example.com/feed')
 
-      put "/feeds/123", feed_id: "123", feed_url: "example.com/feed"
+      put "/feeds/123", feed_id: "123", feed_name: "Test", feed_url: "example.com/feed"
 
       last_response.should be_redirect
     end

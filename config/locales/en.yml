@@ -36,9 +36,10 @@ en:
     edit:
       fields:
         feed_url: Feed URL
+        feed_name: Feed Name
         submit: Save
       flash:
-        updated_successfully: Updated the feed URL for ya'!
+        updated_successfully: Updated the feed for ya'!
   first_run:
     password:
       anti_social: anti-social
