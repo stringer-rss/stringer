@@ -15,6 +15,10 @@ hr {
   margin: 20px auto;
 }
 
+code {
+  white-space: normal;
+}
+
 .container {
   width: 100%;
   max-width: 720px;
