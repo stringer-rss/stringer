@@ -136,6 +136,10 @@ li.story.read {
   opacity: 0.5;
 }
 
+li.story.keepUnread .story-preview {
+  font-weight: bold;
+}
+
 li.story.open {
   opacity: 1.0;
 }
