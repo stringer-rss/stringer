@@ -16,7 +16,15 @@ class FetchFeed
 
   def fetch
     begin
-      raw_feed = @parser.fetch_and_parse(@feed.url, user_agent: USER_AGENT, if_modified_since: @feed.last_fetched, timeout: 30, max_redirects: 2)
+      options = {
+        user_agent: USER_AGENT, 
+        if_modified_since: @feed.last_fetched, 
+        timeout: 30, 
+        max_redirects: 2,
+        compress: true
+      }
+      
+      raw_feed = @parser.fetch_and_parse(@feed.url, options)
 
       if raw_feed == 304
         @logger.info "#{@feed.url} has not been modified since last fetch" if @logger
