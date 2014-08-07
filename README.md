@@ -1,8 +1,8 @@
 # Stringer
 
-[![Build Status](https://travis-ci.org/swanson/stringer.png)](https://travis-ci.org/swanson/stringer)
-[![Code Climate](https://codeclimate.com/github/swanson/stringer.png)](https://codeclimate.com/github/swanson/stringer)
-[![Coverage Status](https://coveralls.io/repos/swanson/stringer/badge.png?branch=master)](https://coveralls.io/r/swanson/stringer)
+[![Build Status](http://img.shields.io/travis/swanson/stringer.svg)](https://travis-ci.org/swanson/stringer)
+[![Code Climate](http://img.shields.io/codeclimate/github/swanson/stringer.svg)](https://codeclimate.com/github/swanson/stringer)
+[![Coverage Status](http://img.shields.io/coveralls/swanson/stringer.svg)](https://coveralls.io/r/swanson/stringer)
 
 ### A self-hosted, anti-social RSS reader.
 
