@@ -1,0 +1,27 @@
+{
+  "name": "Stringer",
+  "description": "A self-hosted, anti-social RSS reader.",
+  "logo": "https://raw.githubusercontent.com/swanson/testing-hb/master/screenshots/logo.png",
+  "keywords": [
+    "RSS",
+    "Ruby"
+  ],
+  "website": "https://github.com/swanson/stringer",
+  "success_url": "/heroku",
+  "scripts": {
+    "postdeploy": "rake db:migrate"
+  },
+  "env": {
+    "SECRET_TOKEN": {
+      "description": "Secret key used as the session secret",
+      "generator": "secret"
+    },
+    "LOCALE": {
+      "description": "Specify the translation locale you wish to use",
+      "value": "en"
+    }
+  },
+  "addons": [
+    "scheduler:standard"
+  ]
+}

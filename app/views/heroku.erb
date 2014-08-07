@@ -1,0 +1,19 @@
+<div class="setup" id="heroku-setup">
+  <h1><%= t('tutorial.heroku_one_more_thing') %></h1>
+
+  <p>
+    <%= t('tutorial.heroku_hourly_task') %>
+  </p>
+  <p>
+    <%= t('tutorial.heroku_scheduler') %>:
+  </p>
+  <pre>
+    Task: rake lazy_fetch
+    Dyno Size: 1X
+    Frequency: Hourly
+  </pre>
+</div>
+
+<div class="center">
+  <a href="/" id="start" class="btn btn-primary"><%= t('tutorial.ready') %></a>
+</div>

@@ -7,4 +7,8 @@ class Stringer < Sinatra::Base
       pending_migrations: MigrationStatus.new.pending_migrations
     }
   end
+
+  get "/heroku" do
+    erb :heroku
+  end
 end

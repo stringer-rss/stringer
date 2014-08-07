@@ -13,6 +13,7 @@ module Sinatra
       return false if !UserRepository.setup_complete?
       return false if path == "/login" || path == "/logout"
       return false if path =~ /css/ || path =~ /js/ || path =~ /img/
+      return false if path == "/heroku"
       true
     end
 

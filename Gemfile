@@ -21,13 +21,6 @@ group :development, :test do
   gem "shotgun", "~> 0.9.0"
 end
 
-group :heroku do
-  gem "excon", "~> 0.31.0"
-  gem "formatador", "~> 0.2.4"
-  gem "netrc", "~> 0.7.7"
-  gem "rendezvous", "~> 0.0.2"
-end
-
 gem "activerecord", "~> 4.0"
 # need to work around bug in 4.0.1 https://github.com/rails/arel/pull/216
 gem 'arel', git: 'git://github.com/rails/arel.git', branch: '4-0-stable'
