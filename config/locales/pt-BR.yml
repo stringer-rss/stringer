@@ -142,6 +142,9 @@ pt-BR:
     as_read: como lido
     click_to_read: (clique para ler)
     description: Nós estamos pegando algumas histórias para leitura, dê-nos um segundo.
+    heroku_hourly_task: 
+    heroku_one_more_thing: 
+    heroku_scheduler: 
     mark_all: marcar todos
     ready: Ok, está pronto!
     refresh: atualizar

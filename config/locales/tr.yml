@@ -142,6 +142,9 @@ tr:
     as_read: okundu olarak
     click_to_read: (okumak icin tikla)
     description: Sana okuman icin hikayeler getirecegiz, bize biraz zaman ver.
+    heroku_hourly_task: 
+    heroku_one_more_thing: 
+    heroku_scheduler: 
     mark_all: hepsini isaretle
     ready: Tamam hazir!
     refresh: yenile

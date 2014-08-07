@@ -142,6 +142,9 @@ ru:
     as_read: как прочитанное
     click_to_read: (нажмите, чтобы прочитать)
     description: Мы получаем ваши истории для чтения, секунду.
+    heroku_hourly_task: 
+    heroku_one_more_thing: 
+    heroku_scheduler: 
     mark_all: пометить все
     ready: Все готово!
     refresh: обновить

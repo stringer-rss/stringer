@@ -142,6 +142,9 @@ fr:
     as_read: comme lu
     click_to_read: (cliquer pour lire)
     description: Nous récupérons quelques articles à lire, donnez-nous une seconde.
+    heroku_hourly_task: 
+    heroku_one_more_thing: 
+    heroku_scheduler: 
     mark_all: tout marquer
     ready: Ok, c'est prêt !
     refresh: rafraîchir

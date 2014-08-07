@@ -142,7 +142,7 @@ en:
     as_read: as read
     click_to_read: (click to read)
     description: We're getting you some stories to read, give us a second.
-    heroku_hourly_task: You need to add an hourly task to check for new stories. 
+    heroku_hourly_task: You need to add an hourly task to check for new stories.
     heroku_one_more_thing: One more thing...
     heroku_scheduler: Go to the Heroku Scheduler and add this task
     mark_all: mark all

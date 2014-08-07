@@ -142,6 +142,9 @@ it:
     as_read: come lette
     click_to_read: (clicca per leggere)
     description: Stiamo importando alcune storie da leggere, dacci un secondo.
+    heroku_hourly_task: 
+    heroku_one_more_thing: 
+    heroku_scheduler: 
     mark_all: segna tutte
     ready: Okay, è pronto!
     refresh: aggiorna
