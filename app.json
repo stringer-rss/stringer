@@ -1,7 +1,7 @@
 {
   "name": "Stringer",
   "description": "A self-hosted, anti-social RSS reader.",
-  "logo": "https://raw.githubusercontent.com/swanson/testing-hb/master/screenshots/logo.png",
+  "logo": "https://raw.githubusercontent.com/swanson/stringer/master/screenshots/logo.png",
   "keywords": [
     "RSS",
     "Ruby"
