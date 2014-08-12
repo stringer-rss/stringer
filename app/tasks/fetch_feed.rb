@@ -8,9 +8,9 @@ class FetchFeed
 
   USER_AGENT = "Stringer (https://github.com/swanson/stringer)"
 
-  def initialize(feed, feed_parser = Feedjira::Feed, logger = nil)
+  def initialize(feed, parser: Feedjira::Feed, logger: nil)
     @feed = feed
-    @parser = feed_parser
+    @parser = parser
     @logger = logger
   end
 

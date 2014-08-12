@@ -21,7 +21,7 @@ describe FetchFeed do
 
         StoryRepository.should_not_receive(:add)
 
-        FetchFeed.new(daring_fireball, parser)
+        FetchFeed.new(daring_fireball, parser: parser)
       end
     end
 
@@ -34,7 +34,7 @@ describe FetchFeed do
 
         StoryRepository.should_not_receive(:add)
 
-        FetchFeed.new(daring_fireball, parser).fetch
+        FetchFeed.new(daring_fireball, parser: parser).fetch
       end
     end
 
@@ -52,14 +52,14 @@ describe FetchFeed do
         StoryRepository.should_receive(:add).with(new_story, daring_fireball)
         StoryRepository.should_not_receive(:add).with(old_story, daring_fireball)
 
-        FetchFeed.new(daring_fireball, fake_parser).fetch
+        FetchFeed.new(daring_fireball, parser: fake_parser).fetch
       end
 
       it "should update the last fetched time for the feed" do
         FeedRepository.should_receive(:update_last_fetched)
           .with(daring_fireball, now)
 
-        FetchFeed.new(daring_fireball, fake_parser).fetch
+        FetchFeed.new(daring_fireball, parser: fake_parser).fetch
       end
     end
 
@@ -71,7 +71,7 @@ describe FetchFeed do
         FeedRepository.should_receive(:set_status)
           .with(:green, daring_fireball)
 
-        FetchFeed.new(daring_fireball, parser).fetch
+        FetchFeed.new(daring_fireball, parser: parser).fetch
       end
 
       it "sets the status to red if things go wrong" do
@@ -80,7 +80,7 @@ describe FetchFeed do
         FeedRepository.should_receive(:set_status)
           .with(:red, daring_fireball)
 
-        FetchFeed.new(daring_fireball, parser).fetch
+        FetchFeed.new(daring_fireball, parser: parser).fetch
       end
     end
   end
