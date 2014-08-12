@@ -32,11 +32,11 @@ sv:
       title: Behöver du nya berättelser?
     edit:
       fields:
-        feed_name: 
-        feed_url: 
-        submit: 
+        feed_name: Feednamn
+        feed_url: Feed-URL
+        submit: Spara
       flash:
-        updated_successfully: 
+        updated_successfully: Uppdaterade feeden åt dig!
     index:
       add: lägga till
       add_some_feeds: Hej, du borde %{add} några feeds.
@@ -96,7 +96,7 @@ sv:
     shortcuts:
       keys:
         a: Lägg till en feed
-        f: 
+        f: Gå till feed-sidan
         jk: Nästa/föregående berättelse
         left: Föregående sida
         m: Markera som läst/oläst
@@ -142,9 +142,9 @@ sv:
     as_read: som lästa
     click_to_read: (klicka för att läsa)
     description: Vi hämtar några berättelser åt dig, ge oss en stund.
-    heroku_hourly_task: 
-    heroku_one_more_thing: 
-    heroku_scheduler: 
+    heroku_hourly_task: Du behöver lägga till ett timvis återkommande jobb för att ladda nya berättelser.
+    heroku_one_more_thing: En sak till...
+    heroku_scheduler: Gå till Heroku Scheduler och lägg till detta jobb
     mark_all: markera alla
     ready: Ok, det är klart!
     refresh: uppdatera
