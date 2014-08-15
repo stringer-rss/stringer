@@ -1,4 +1,5 @@
 require "spec_helper"
+require "time"
 require "support/active_record"
 require "support/feed_server"
 require "capybara"
@@ -45,6 +46,26 @@ describe "Feed importing" do
           @server.response = sample_data('feeds/feed01_valid_feed/feed_updated.xml')
           expect { fetch_feed(feed) }.to change{ feed.stories.count }.by(1).to(6)
         end
+      end
+    end
+  end
+
+  describe "Feed with incorrect pubdates" do
+    context "has been fetched before" do
+      it "imports all new stories" do
+        # This spec describes a scenario where the feed is reporting incorrect
+        # published dates for stories.
+        # The feed in question is feeds.feedburner.com/GiantRobotsSmashingIntoOtherGiantRobots.
+        # When an article is published the published date is always set to 00:00 of
+        # the day the article was published.
+        # This specs shows that with the current behaviour (08-15-2014) Stringer
+        # will not detect this article, if the last time this feed was fetched is
+        # after 00:00 the day the article was published.
+
+        feed.last_fetched = Time.parse '2014-08-12T00:01:00Z'
+        @server.response = sample_data('feeds/feed02_invalid_published_dates/feed.xml')
+
+        expect { fetch_feed(feed) }.to change{ feed.stories.count }.by(1)
       end
     end
   end
