@@ -4,7 +4,8 @@ app_require "tasks/fetch_feed"
 describe FetchFeed do
   describe "#fetch" do
     let(:daring_fireball) do
-     double(url: "http://daringfireball.com/feed",
+     double(id: 1,
+          url: "http://daringfireball.com/feed",
           last_fetched: Time.new(2013,1,1),
           stories: [])
     end
@@ -65,7 +66,7 @@ describe FetchFeed do
 
     context "feed status" do
       it "sets the status to green if things are all good" do
-        fake_feed = double(last_modified: Time.new(2012, 12, 31))
+        fake_feed = double(last_modified: Time.new(2012, 12, 31), entries: [])
         parser = double(fetch_and_parse: fake_feed)
 
         FeedRepository.should_receive(:set_status)

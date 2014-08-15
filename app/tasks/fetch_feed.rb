@@ -46,7 +46,7 @@ class FetchFeed
 
   private
   def new_entries_from(raw_feed)
-    finder = FindNewStories.new(raw_feed, @feed.last_fetched, latest_entry_id)
+    finder = FindNewStories.new(raw_feed, @feed.id, @feed.last_fetched, latest_entry_id)
     finder.new_stories
   end
 
