@@ -52,6 +52,17 @@ describe StoryRepository do
 </div>
       EOS
     end
+
+    it "leaves the url as-is if it cannot be parsed" do
+      weird_url = "https://github.com/aphyr/jepsen/blob/1403f2d6e61c595bafede0d404fd4a893371c036/elasticsearch/src/jepsen/system/elasticsearch.clj#L161-L226.%20Then%20we'll%20write%20a%20%5Bregister%20test%5D(https://github.com/aphyr/jepsen/blob/1403f2d6e61c595bafede0d404fd4a893371c036/elasticsearch/test/jepsen/system/elasticsearch_test.clj#L18-L50)"
+
+      content = <<-EOS
+      <a href="#{weird_url}"></a>
+      EOS
+
+      result = StoryRepository.expand_absolute_urls(content, "http://oodl.io/d/")
+      result.should include(weird_url)
+    end
   end
 
   describe ".extract_content" do
