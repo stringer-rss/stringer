@@ -112,13 +112,10 @@ class StoryRepository
   end
 
   def self.normalize_url(url, base_url)
-    uri = URI.parse(url)
+    uri      = URI.parse(url)
+    base_uri = URI.parse(base_url)
 
-    unless uri.scheme
-      base_uri = URI.parse(base_url)
-      uri.scheme = base_uri.scheme || 'http'
-    end
-
+    uri.scheme ||= base_uri.scheme || 'http'
     uri.to_s
   end
 
