@@ -3,6 +3,8 @@ require_relative "../utils/sample_story"
 
 class StoryRepository
   def self.add(entry, feed)
+    entry.url = normalize_url(entry.url, feed.url)
+
     Story.create(feed: feed,
                 title: entry.title,
                 permalink: entry.url,
@@ -107,6 +109,17 @@ class StoryRepository
     end
 
     doc.to_html
+  end
+
+  def self.normalize_url(url, base_url)
+    uri = URI.parse(url)
+
+    unless uri.scheme
+      base_uri = URI.parse(base_url)
+      uri.scheme = base_uri.scheme || 'http'
+    end
+
+    uri.to_s
   end
 
   def self.samples
