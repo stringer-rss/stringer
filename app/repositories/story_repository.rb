@@ -115,7 +115,10 @@ class StoryRepository
     uri      = URI.parse(url)
     base_uri = URI.parse(base_url)
 
-    uri.scheme ||= base_uri.scheme || 'http'
+    unless uri.scheme
+      uri.scheme = base_uri.scheme || 'http'
+    end
+
     uri.to_s
   end
 
