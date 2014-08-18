@@ -3,6 +3,20 @@ require "spec_helper"
 app_require "repositories/story_repository"
 
 describe StoryRepository do
+  describe '.add' do
+    let(:feed) { double(url: 'http://blog.golang.org/feed.atom') }
+    before do
+      Story.stub(:create)
+    end
+
+    it 'normalizes story urls' do
+      entry = double(url: '//blog.golang.org/context', content: '').as_null_object
+      StoryRepository.should receive(:normalize_url).with(entry.url, feed.url)
+
+      StoryRepository.add(entry, feed)
+    end
+  end
+
   describe ".expand_absolute_urls" do
     it "preserves existing absolute urls" do
       content = '<a href="http://foo">bar</a>'
@@ -96,6 +110,28 @@ describe StoryRepository do
         result = StoryRepository.sanitize("test\r\ncase")
         result.should eq "test\r\ncase"
       end
+    end
+  end
+
+  describe ".normalize_url" do
+    it "resolves scheme-less urls" do
+      %w{http https}.each do |scheme|
+        feed_url = "#{scheme}://blog.golang.org/feed.atom"
+
+        url = StoryRepository.normalize_url("//blog.golang.org/context", feed_url)
+        url.should eq "#{scheme}://blog.golang.org/context"
+      end
+    end
+
+    it "leaves urls with a scheme intact" do
+      input = 'http://blog.golang.org/context'
+      normalized_url = StoryRepository.normalize_url(input, 'http://blog.golang.org/feed.atom')
+      normalized_url.should eq(input)
+    end
+
+    it "falls back to http if the base_url is also sheme less" do
+      url = StoryRepository.normalize_url("//blog.golang.org/context", "//blog.golang.org/feed.atom")
+      url.should eq 'http://blog.golang.org/context'
     end
   end
 end
