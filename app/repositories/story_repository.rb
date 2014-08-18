@@ -104,7 +104,7 @@ class StoryRepository
           begin
             node.set_attribute(attr, URI.join(base_url, url).to_s)
           rescue URI::InvalidURIError
-            # Just ignore. If we cannot parse the url, we dno't want the entire
+            # Just ignore. If we cannot parse the url, we don't want the entire
             # import to blow up.
           end
         end
