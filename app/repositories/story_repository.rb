@@ -103,7 +103,12 @@ class StoryRepository
       doc.css("#{tag}[#{attr}]").each do |node|
         url = node.get_attribute(attr)
         unless url =~ abs_re
-          node.set_attribute(attr, URI.join(base_url, url).to_s)
+          begin
+            node.set_attribute(attr, URI.join(base_url, url).to_s)
+          rescue URI::InvalidURIError
+            # Just ignore. If we cannot parse the url, we don't want the entire
+            # import to blow up.
+          end
         end
       end
     end
