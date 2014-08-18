@@ -19,7 +19,8 @@ group :development, :test do
   gem "rspec", "~> 2.14", ">= 2.14.1"
   gem "rspec-html-matchers", "~> 0.4.3"
   gem "shotgun", "~> 0.9.0"
-  gem "capybara"
+  gem "capybara", "~> 2.4.1"
+  gem "timecop", "~> 0.7.1"
 end
 
 gem "activerecord", "~> 4.0"

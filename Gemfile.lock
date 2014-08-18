@@ -149,6 +149,7 @@ GEM
     thread_safe (0.1.3)
       atomic
     tilt (1.4.1)
+    timecop (0.7.1)
     tins (0.13.1)
     tzinfo (0.3.38)
     unicorn (4.7.0)
@@ -166,7 +167,7 @@ DEPENDENCIES
   activerecord (~> 4.0)
   arel!
   bcrypt-ruby (~> 3.1.2)
-  capybara
+  capybara (~> 2.4.1)
   coveralls (~> 0.7)
   delayed_job (~> 4.0)
   delayed_job_active_record (~> 4.0)
@@ -193,5 +194,6 @@ DEPENDENCIES
   sinatra-flash (~> 0.3.0)
   sqlite3 (~> 1.3, >= 1.3.8)
   thread (~> 0.1.3)
+  timecop (~> 0.7.1)
   unicorn (~> 4.7)
   will_paginate (~> 3.0, >= 3.0.5)

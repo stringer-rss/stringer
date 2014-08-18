@@ -4,6 +4,7 @@ require "support/active_record"
 require "support/feed_server"
 require "capybara"
 require "capybara/server"
+require "timecop"
 
 app_require "tasks/fetch_feed"
 
@@ -21,6 +22,12 @@ describe "Feed importing" do
   end
 
   describe "Valid feed" do
+    before(:all) do
+      # articles older than 3 days are ignored, so freeze time within
+      # applicable range of the stories in the sample feed
+      Timecop.freeze Time.parse("2014-08-15T17:30:00Z")
+    end
+
     describe "Importing for the first time" do
       it "imports all entries" do
         @server.response = sample_data("feeds/feed01_valid_feed/feed.xml")
@@ -51,6 +58,10 @@ describe "Feed importing" do
   end
 
   describe "Feed with incorrect pubdates" do
+    before(:all) do
+      Timecop.freeze Time.parse("2014-08-12T17:30:00Z")
+    end
+
     context "has been fetched before" do
       it "imports all new stories" do
         # This spec describes a scenario where the feed is reporting incorrect
