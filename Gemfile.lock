@@ -84,6 +84,8 @@ GEM
     rack (1.5.2)
     rack-protection (1.5.1)
       rack
+    rack-ssl (1.4.1)
+      rack
     rack-test (0.6.2)
       rack (>= 1.0)
     racksh (1.0.0)
@@ -171,6 +173,7 @@ DEPENDENCIES
   nokogiri (~> 1.6)
   pg (~> 0.17.1)
   pry-byebug (~> 1.2)
+  rack-ssl
   rack-test (~> 0.6.2)
   racksh (~> 1.0)
   rake (~> 10.1, >= 10.1.1)

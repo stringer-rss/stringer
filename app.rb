@@ -3,6 +3,7 @@ require "sinatra/activerecord"
 require "sinatra/flash"
 require "sinatra/contrib/all"
 require "sinatra/assetpack"
+require "rack/ssl"
 require "json"
 require "i18n"
 require "will_paginate"
@@ -15,6 +16,9 @@ I18n.load_path += Dir[File.join(File.dirname(__FILE__), 'config/locales', '*.yml
 I18n.config.enforce_available_locales=false
 
 class Stringer < Sinatra::Base
+  # need to exclude assets for sinatra assetpack, see https://github.com/swanson/stringer/issues/112
+  use Rack::SSL, exclude: ->(env) { env['PATH_INFO'] =~ /^\/(js|css|img)/ } if ENV["ENFORCE_SSL"] == 'true'
+
   register Sinatra::ActiveRecordExtension
   register Sinatra::Flash
   register Sinatra::Contrib
