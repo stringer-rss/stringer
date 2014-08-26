@@ -1,49 +1,63 @@
 require "spec_helper"
 
+app_require "repositories/story_repository"
 app_require "commands/feeds/find_new_stories"
 
 describe FindNewStories do
   describe "#new_stories" do
-    context "the feed has not been updated" do
-      it "should find zero new stories" do
-        feed = double(last_modified: Time.new(2013, 1, 1))
+    context "the feed contains no new stories" do
+      before do
+        StoryRepository.stub(:exists?).and_return(true)
+      end
 
-        result = FindNewStories.new(feed, Time.new(2013, 1, 2)).new_stories
+      it "should find zero new stories" do
+        story1 = double(published: nil, id: "story1")
+        story2 = double(published: nil, id: "story2")
+        feed   = double(entries: [story1, story2])
+
+        result = FindNewStories.new(feed, 1, Time.new(2013, 1, 2)).new_stories
         result.should be_empty
       end
     end
 
-    context "the feed has been updated" do
-      it "should return stories that are new based on published date" do
-        new_story = double(published: Time.new(2013, 1, 5))
-        old_story = double(published: Time.new(2013, 1, 1))
-        feed = double(last_modified: Time.new(2013, 1, 5), entries: [new_story, old_story])
+    context "the feed contains new stories" do
+      it "should return stories that are not found in the database" do
+        story1 = double(published: nil, id: "story1")
+        story2 = double(published: nil, id: "story2")
+        feed   = double(entries: [story1, story2])
 
-        result = FindNewStories.new(feed, Time.new(2013, 1, 3)).new_stories
-        result.should eq [new_story]
+        StoryRepository.stub(:exists?).with("story1", 1).and_return(true)
+        StoryRepository.stub(:exists?).with("story2", 1).and_return(false)
+
+        result = FindNewStories.new(feed, 1, Time.new(2013, 1, 2)).new_stories
+        result.should eq [story2]
       end
     end
 
-    context "the feed does not report last_modified" do
-      it "should check all stories and compare published time" do
-        new_story = double(published: Time.new(2013, 1, 5))
-        old_story = double(published: Time.new(2013, 1, 1))
-        feed = double(last_modified: nil, entries: [new_story, old_story])
+    it "should scan until matching the last story id" do
+      new_story = double(published: nil, id: "new-story")
+      old_story = double(published: nil, id: "old-story")
+      feed = double(last_modified: nil, entries: [new_story, old_story])
 
-        result = FindNewStories.new(feed, Time.new(2013, 1, 3)).new_stories
-        result.should eq [new_story]
-      end
+      result = FindNewStories.new(feed, 1, Time.new(2013, 1, 3), "old-story").new_stories
+      result.should eq [new_story]
     end
 
-    context "the feed has no timekeeping" do
-      it "should scan until matching the last story id" do
-        new_story = double(published: nil, id: "new-story")
-        old_story = double(published: nil, id: "old-story")
-        feed = double(last_modified: nil, entries: [new_story, old_story])
+    it "should ignore stories older than 3 days" do
+      new_stories = [
+        double(published: 1.hour.ago, id: "new-story"),
+        double(published: 2.days.ago, id: "new-story")
+      ]
 
-        result = FindNewStories.new(feed, Time.new(2013, 1, 3), "old-story").new_stories
-        result.should eq [new_story]
-      end
+      stories_older_than_3_days = [
+        double(published: 3.days.ago, id: "new-story"),
+        double(published: 4.days.ago, id: "new-story")
+      ]
+
+      feed = double(last_modified: nil, entries: new_stories + stories_older_than_3_days)
+
+      result = FindNewStories.new(feed, 1, nil, nil).new_stories
+      result.should_not include(stories_older_than_3_days)
     end
   end
 end

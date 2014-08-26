@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" media="screen" href="/~d/styles/atom10full.xsl"?><?xml-stylesheet type="text/css" media="screen" href="http://feeds.feedburner.com/~d/styles/itemcontent.css"?><feed xmlns="http://www.w3.org/2005/Atom" xmlns:feedburner="http://rssnamespace.org/feedburner/ext/1.0">
+  <title>Giant Robots Smashing Into Other Giant Robots</title>
+  <subtitle>Written by thoughtbot</subtitle>
+  <id>http://robots.thoughtbot.com</id>
+  <link href="http://robots.thoughtbot.com" />
+  
+  <updated>2014-08-12T00:00:00Z</updated>
+  <author>
+    <name>thoughtbot</name>
+  </author>
+  <atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="self" type="application/atom+xml" href="http://feeds.feedburner.com/GiantRobotsSmashingIntoOtherGiantRobots" /><feedburner:info uri="giantrobotssmashingintoothergiantrobots" /><atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="hub" href="http://pubsubhubbub.appspot.com/" /><feedburner:emailServiceId>GiantRobotsSmashingIntoOtherGiantRobots</feedburner:emailServiceId><feedburner:feedburnerHostname>http://feedburner.google.com</feedburner:feedburnerHostname><feedburner:browserFriendly>This is an XML content feed. It is intended to be viewed in a newsreader or syndicated to another site, subject to copyright and fair use.</feedburner:browserFriendly><entry>
+    <title>Buttons with Hold Events in Angular.js</title>
+    <link rel="alternate" href="http://feedproxy.google.com/~r/GiantRobotsSmashingIntoOtherGiantRobots/~3/CuTP9r6XZzE/buttons-with-hold-events-in-angularjs" />
+    <author>
+      <name>Sean Griffin</name>
+    </author>
+    <id>http://robots.thoughtbot.com/buttons-with-hold-events-in-angularjs</id>
+    <published>2014-08-12T00:00:00Z</published>
+    <updated>2014-08-12T14:08:35+00:00</updated>
+    <content type="html">&lt;p&gt;Creating an interaction with a simple button in Angular only requires adding the
+&lt;a href="https://docs.angularjs.org/api/ng/directive/ngClick"&gt;ngClick&lt;/a&gt; directive. However, sometimes an on click style interaction isn&amp;rsquo;t
+sufficient.  Let&amp;rsquo;s take a look at how we can have a button which performs an
+action as long as it&amp;rsquo;s pressed.&lt;/p&gt;
+
+&lt;p&gt;For the example, we&amp;rsquo;ll use two buttons which can be used to zoom a camera in and
+out. We want the camera to continue zooming, until the button is released. The
+final effect will work like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://www.martialcodex.com"&gt;&lt;img alt="Zooming in Martial Codex" src="http://images.thoughtbot.com/martial-codex/zoom-demo.gif" /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Our template might look something like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="html"&gt;&amp;lt;a href while-pressed=&amp;quot;zoomOut()&amp;quot;&amp;gt;
+  &amp;lt;i class=&amp;quot;fa fa-minus&amp;quot;&amp;gt;&amp;lt;/i&amp;gt;
+&amp;lt;/a&amp;gt;
+&amp;lt;a href while-pressed=&amp;quot;zoomIn()&amp;quot;&amp;gt;
+  &amp;lt;i class=&amp;quot;fa fa-plus&amp;quot;&amp;gt;&amp;lt;/i&amp;gt;
+&amp;lt;/a&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We&amp;rsquo;re making a subtle assumption with this interface. By adding the parenthesis,
+we imply that &lt;code&gt;whilePressed&lt;/code&gt; will behave similarly to &lt;code&gt;ngClick&lt;/code&gt;. The given value
+is an expression that will get evaluated continuously when the button is
+pressed, rather than us handing it a function object for it to call. In
+practice, we can use the &lt;code&gt;&amp;#39;&amp;amp;&amp;#39;&lt;/code&gt; style of arguments in our directive to capture
+the expression. You can find more information about the different styles of
+scopes &lt;a href="https://docs.angularjs.org/api/ng/service/$compile#-scope-"&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="coffeescript"&gt;whilePressed = -&amp;gt;
+  restrict: &amp;quot;A&amp;quot;
+
+  scope:
+    whilePressed: &amp;#39;&amp;amp;&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2&gt;Binding the Events&lt;/h2&gt;
+
+&lt;p&gt;When defining more complex interactions such as this one, Angular&amp;rsquo;s built-in
+directives won&amp;rsquo;t give us the control we need. Instead, we&amp;rsquo;ll fall back to manual
+event binding on the element. For clarity, I tend prefer to separate the
+callback function from the event bindings. Since we&amp;rsquo;re manipulating the DOM, our
+code will go into a &lt;a href="https://docs.angularjs.org/guide/directive#creating-a-directive-that-manipulates-the-dom"&gt;link function&lt;/a&gt;. Our initial link function will look
+like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="coffeescript"&gt;link: (scope, elem, attrs) -&amp;gt;
+  action = scope.whilePressed
+
+  bindWhilePressed = -&amp;gt;
+    elem.on(&amp;quot;mousedown&amp;quot;, beginAction)
+
+  beginAction = (e) -&amp;gt;
+    e.preventDefault()
+    # Do stuff
+
+  bindWhilePressed()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Inside of our action we&amp;rsquo;ll need to do two things:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Start running the action&lt;/li&gt;
+&lt;li&gt;Bind to &lt;code&gt;mouseup&lt;/code&gt; to stop running the action.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;For running the action, we&amp;rsquo;ll use Angular&amp;rsquo;s &lt;a href="https://docs.angularjs.org/api/ngMock/service/$interval"&gt;&lt;code&gt;$interval&lt;/code&gt;&lt;/a&gt; service.
+&lt;code&gt;$interval&lt;/code&gt; is a wrapper around JavaScript&amp;rsquo;s &lt;a href="https://developer.mozilla.org/en-US/docs/Web/API/Window.setInterval"&gt;&lt;code&gt;setInterval&lt;/code&gt;&lt;/a&gt;, but
+gives us a promise interface, better testability, and hooks into Angular&amp;rsquo;s
+digest cycle.&lt;/p&gt;
+
+&lt;p&gt;In addition to running the action continuously, we&amp;rsquo;ll also want to run it
+immediately to avoid a delay. We&amp;rsquo;ll run the action every 15 milliseconds, as
+this will roughly translate to once per browser frame.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="patch"&gt;+TICK_LENGTH = 15
++
+-whilePressed = -&amp;gt;
++whilePressed = ($interval) -&amp;gt;
+   restrict: &amp;quot;A&amp;quot;
+
+   link:
+     action = scope.whilePressed
+
+@@ -23,7 +24,7 @@
+     beginAction = (e) -&amp;gt;
+       e.preventDefault()
++      action()
++      $interval(action, TICK_LENGTH)
++      bindEndAction()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In our &lt;code&gt;beginAction&lt;/code&gt; function, we call &lt;code&gt;bindEndAction&lt;/code&gt; to set up the events to
+stop running the event. We know that we&amp;rsquo;ll at least want to bind to &lt;code&gt;mouseup&lt;/code&gt; on
+our button, but we have to decide how to handle users who move the mouse off of
+the button before releasing it. We can handle this by listening for &lt;code&gt;mouseleave&lt;/code&gt;
+on the element, in addition to &lt;code&gt;mouseup&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="coffeescript"&gt;bindEndAction = -&amp;gt;
+  elem.on(&amp;#39;mouseup&amp;#39;, endAction)
+  elem.on(&amp;#39;mouseleave&amp;#39;, endAction)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In our &lt;code&gt;endAction&lt;/code&gt; function, we&amp;rsquo;ll want to cancel the &lt;code&gt;$interval&lt;/code&gt; for our
+action, and unbind the event listeners for &lt;code&gt;mouseup&lt;/code&gt; and &lt;code&gt;mouseleave&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="coffeescript"&gt;unbindEndAction = -&amp;gt;
+  elem.off(&amp;#39;mouseup&amp;#39;, endAction)
+  elem.off(&amp;#39;mouseleave&amp;#39;, endAction)
+
+endAction = -&amp;gt;
+  $interval.cancel(intervalPromise)
+  unbindEndAction()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We&amp;rsquo;ll also need to store the promise that &lt;code&gt;$interval&lt;/code&gt; returned so that we can
+cancel it when the mouse is released.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="patch"&gt; whilePressed = ($parse, $interval) -&amp;gt;
+   link: (scope, elem, attrs) -&amp;gt;
+     action = scope.whilePressed
++    intervalPromise = null
+
+     bindWhilePressed = -&amp;gt;
+       elem.on(&amp;#39;mousedown&amp;#39;, beginAction)
+@@ -23,7 +24,7 @@
+     beginAction = (e) -&amp;gt;
+       e.preventDefault()
+       action()
+-      $interval(action, TICK_LENGTH)
++      intervalPromise = $interval(action, TICK_LENGTH)
+       bindEndAction()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2&gt;Cleaning Up&lt;/h2&gt;
+
+&lt;p&gt;Generally I consider it a smell to have an isolated scope on any directive that
+isn&amp;rsquo;t an element. Each DOM element can only have one isolated scope, and
+attribute directives are generally meant to be composed. So let&amp;rsquo;s replace our
+scope with a manual use of &lt;a href="https://docs.angularjs.org/api/ng/service/$parse"&gt;&lt;code&gt;$parse&lt;/code&gt;&lt;/a&gt; instead.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$parse&lt;/code&gt; takes in an expression, and will return a function that can be called
+with a scope and an optional hash of local variables. This means we can&amp;rsquo;t call
+&lt;code&gt;action&lt;/code&gt; directly anymore, and instead need a wrapper function which will pass in
+the scope for us.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="patch"&gt;-whilePressed = ($interval) -&amp;gt;
+-  scope:
+-    whilePressed: &amp;quot;&amp;amp;&amp;quot;
+-
++whilePressed = ($parse, $interval) -&amp;gt;
+   link: (scope, elem, attrs) -&amp;gt;
+-    action = scope.whilePressed
++    action = $parse(attrs.whilePressed)
+     intervalPromise = null
+
+     bindWhilePressed = -&amp;gt;
+@@ -26,14 +23,17 @@ whilePressed = ($interval) -&amp;gt;
+
+     beginAction = (e) -&amp;gt;
+       e.preventDefault()
+-      action()
+-      intervalPromise = $interval(action, TICK_LENGTH)
++      tickAction()
++      intervalPromise = $interval(tickAction, TICK_LENGTH)
+       bindEndAction()
+
+     endAction = -&amp;gt;
+       $interval.cancel(intervalPromise)
+       unbindEndAction()
+
++    tickAction = -&amp;gt;
++      action(scope)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And that&amp;rsquo;s it. Our end result is a nicely decoupled Angular UI component that
+can easily be reused across applications. The final code looks like this.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="coffeescript"&gt;TICK_LENGTH = 15
+
+whilePressed = ($parse, $interval) -&amp;gt;
+  restrict: &amp;quot;A&amp;quot;
+
+  link: (scope, elem, attrs) -&amp;gt;
+    action = $parse(attrs.whilePressed)
+    intervalPromise = null
+
+    bindWhilePressed = -&amp;gt;
+      elem.on(&amp;#39;mousedown&amp;#39;, beginAction)
+
+    bindEndAction = -&amp;gt;
+      elem.on(&amp;#39;mouseup&amp;#39;, endAction)
+      elem.on(&amp;#39;mouseleave&amp;#39;, endAction)
+
+    unbindEndAction = -&amp;gt;
+      elem.off(&amp;#39;mouseup&amp;#39;, endAction)
+      elem.off(&amp;#39;mouseleave&amp;#39;, endAction)
+
+    beginAction = (e) -&amp;gt;
+      e.preventDefault()
+      tickAction()
+      intervalPromise = $interval(tickAction, TICK_LENGTH)
+      bindEndAction()
+
+    endAction = -&amp;gt;
+      $interval.cancel(intervalPromise)
+      unbindEndAction()
+
+    tickAction = -&amp;gt;
+      action(scope)
+
+    bindWhilePressed()
+&lt;/code&gt;&lt;/pre&gt;
+</content>
+    <summary>&lt;p&gt;Creating an interaction with a simple button in Angular only requires adding the
+&lt;a href="https://docs.angularjs.org/api/ng/directive/ngClick"&gt;ngClick&lt;/a&gt; directive. However, sometimes an on click style interaction isn’t
+sufficient.  Let’s take a look at how we can have a button which performs an
+action as long as...&lt;/p&gt;</summary>
+  <feedburner:origLink>http://robots.thoughtbot.com/buttons-with-hold-events-in-angularjs</feedburner:origLink></entry>
+</feed>
