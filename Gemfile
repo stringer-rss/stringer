@@ -13,7 +13,6 @@ end
 group :development, :test do
   gem "coveralls", "~> 0.7", require: false
   gem "faker", "~> 1.2"
-  gem "foreman", "~> 0.63.0"
   gem "pry-byebug", "~> 1.2"
   gem "rack-test", "~> 0.6.2"
   gem "rspec", "~> 2.14", ">= 2.14.1"

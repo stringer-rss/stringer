@@ -96,7 +96,11 @@ Run the Javascript tests with `rake test_js` and then open a browser to `http://
 
 ### Getting Started
 
-To get started using Stringer for development simply run the following:
+To get started using Stringer for development you first need to install `foreman`.
+
+    gem install foreman
+
+Then run the following commands.
 
 ```sh
 bundle install
