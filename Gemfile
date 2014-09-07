@@ -29,7 +29,6 @@ gem "delayed_job", "~> 4.0"
 gem "delayed_job_active_record", "~> 4.0"
 gem "feedbag", "~> 0.9.2"
 gem "feedjira", "~> 1.3.0"
-gem "highline", "~> 1.6", ">= 1.6.20", require: false
 gem "i18n", "~> 0.6.9"
 gem "loofah", "~> 2.0.0"
 gem "nokogiri", "~> 1.6"

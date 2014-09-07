@@ -8,7 +8,7 @@ class ChangeUserPassword
 
   def change_user_password(new_password)
     user = @repo.first
-    user.password = new_password
+    user.password = user.password_confirmation = new_password
     user.api_key = ApiKey.compute(new_password)
 
     @repo.save(user)
