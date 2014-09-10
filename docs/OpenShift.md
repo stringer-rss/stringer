@@ -4,10 +4,10 @@ Stringer on OpenShift
 Deploying into OpenShift
 ------------------------
 
-1. Creating new OpenShift Ruby 1.9 application with the Postgresql cartridge (command-line).
+1. Creating new OpenShift Ruby 2.0 application with the Postgresql cartridge (command-line).
 
  ```sh
-    rhc app create feeds ruby-1.9 postgresql-9.2
+    rhc app create feeds ruby-2.0 postgresql-9.2
  ```
 
 2. Pull the code from the Stringer Github repository.
@@ -32,7 +32,7 @@ Deploying into OpenShift
     openssl rand -hex 20
  ```
 
-5. Add the generated secret into a new file, .openshift/action_hooks/pre_start_ruby-1.9, in the format below.
+5. Add the generated secret into a new file, .openshift/action_hooks/pre_start_ruby-2.0, in the format below.
 
  ```
     export SECRET_TOKEN="generated_secret"
@@ -41,7 +41,7 @@ Deploying into OpenShift
 6. Make sure that the 2 files created above are executable on Unix-like systems.
 
  ```sh
-    chmod +x .openshift/action_hooks/deploy .openshift/action_hooks/pre_start_ruby-1.9
+    chmod +x .openshift/action_hooks/deploy .openshift/action_hooks/pre_start_ruby-2.0
  ```
 
 7. Configuration of the database server is next. Open the file config/database.yml and add in the configuration for Production as shown below. OpenShift is able to use environment variables to push the information into the application.
@@ -56,25 +56,27 @@ Deploying into OpenShift
 		password: <%= ENV["OPENSHIFT_POSTGRESQL_DB_PASSWORD"] %> 
  ```
 
-8. Due to an older version of bundler being used in OpenShift (1.1.4), it does not support indicating the ruby version in the Gemfile. Remove the line from the Gemfile below. (Referencing issue [#266](https://github.com/swanson/stringer/issues/266))
+8. Due to an older version of bundler being used in OpenShift (1.3.5), some changes need to be made in the Gemfile. 
+
+	Remove the Ruby version specification from the Gemfile below (error reporting wrong Ruby version when deploying to OpenShift). 
 
  ```
-    ruby '2.0.0'
+	ruby '2.0.0'
  ```
 
-9. As OpenShift is still using Ruby 1.9.3 and the [gem 'pry-byebug'](https://github.com/deivid-rodriguez/pry-byebug) needs Ruby 2.0, we can try to just install the production environment from the Gemfile but there seems to be a [bug in OpenShift](https://bugzilla.redhat.com/show_bug.cgi?id=1049411). A temporary work-around is to remove the 'pry-byebug' gem in the Gemfile. Note that this is only for deploying into OpenShift production. (Referencing issue [#294](https://github.com/swanson/stringer/pull/294) ) 
+	Then change the two gem dependencies below to use the hash rocket syntax for the "require" option.
 
  ```
-    gem "pry-byebug", "~> 1.2"
+	gem "coveralls", "~> 0.7", require: false
+	gem "sinatra-assetpack", "~> 0.3.1", require: "sinatra/assetpack"
+ ```
+	to
+ ```
+	gem "coveralls", "~> 0.7", :require => false
+	gem "sinatra-assetpack", "~> 0.3.1", :require => "sinatra/assetpack"
  ```
 
- After removing the `pry-byebug` gem from `Gemfile`, the bundle has to be updated.
-
- ```sh
-	bundle install
- ```
-
-10. Finally, once completed, all changes should be committed and pushed to OpenShift. Note that it might take a while when pushing to OpenShift.
+9. Finally, once completed, all changes should be committed and pushed to OpenShift. Note that it might take a while when pushing to OpenShift.
 
  ```sh
 	git add .
@@ -82,7 +84,7 @@ Deploying into OpenShift
 	git push origin
  ```
 
-11. Check that you are able to access the website at the URL given, i.e. feeds-username.rhcloud.com. Then set your password, import your feeds and all good to go!
+10. Check that you are able to access the website at the URL given, i.e. feeds-username.rhcloud.com. Then set your password, import your feeds and all good to go!
 
 
 Adding Cronjob to Fetch Feeds
