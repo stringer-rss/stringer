@@ -96,6 +96,7 @@ it:
     shortcuts:
       keys:
         a: Aggiungi un feed
+        bv: Vai all'URL della storia
         f: 
         jk: Prossima/precedente storia
         left: Pagina precedente
@@ -107,7 +108,6 @@ it:
         right: Pagina successiva
         s: Segna come preferita/non preferita
         shifta: Segna tutte le storie come lette
-        v: Vai all'URL della storia
       title: Shortcuts da tastiera
     zen:
       archive: vai all'archivio

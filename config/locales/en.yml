@@ -96,6 +96,7 @@ en:
     shortcuts:
       keys:
         a: Add a feed
+        bv: Go to story URL
         f: Go to feeds page
         jk: Next/previous story
         left: Previous page
@@ -107,7 +108,6 @@ en:
         right: Next page
         s: Mark item as starred/unstarred
         shifta: Mark all as read
-        v: Go to story URL
       title: Keyboard shortcuts
     zen:
       archive: view all items
