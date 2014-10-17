@@ -69,6 +69,10 @@ We also need to install bundler which will handle Stringer's dependencies
 
     gem install bundler
     rbenv rehash
+    
+We will also need foreman to run our app
+
+    gem install foreman
 
 Install Stringer and set it up
 ==============================
@@ -99,7 +103,7 @@ Tell stringer to run the database in production mode, using the postgres databas
 
 Run the application:
 
-    bundle exec foreman start
+    foreman start
 
 Set up a cron job to parse the rss feeds. 
 
