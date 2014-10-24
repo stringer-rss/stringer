@@ -96,6 +96,7 @@ de:
     shortcuts:
       keys:
         a: Einen Feed hinzufügen
+        bv: Öffne die URL der Geschichte
         f: 
         jk: Nächste/vorherige Geschichte
         left: Vorige Seite
@@ -107,7 +108,6 @@ de:
         right: Nächste Seite
         s: Eintrag als Favorit markieren
         shifta: Alle als gelesen markieren
-        v: Öffne die URL der Geschichte
       title: Tastaturkürzel
     zen:
       archive: alle Einträge anzeigen

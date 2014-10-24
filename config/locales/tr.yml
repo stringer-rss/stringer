@@ -96,6 +96,7 @@ tr:
     shortcuts:
       keys:
         a: 
+        bv: Hikaye URL'sine git
         f: 
         jk: Sonraki/onceki hikaye
         left: 
@@ -107,7 +108,6 @@ tr:
         right: 
         s: 
         shifta: Hepsini okundu olarak isaretle
-        v: Hikaye URL'sine git
       title: Klavye kisayollari
     zen:
       archive: butun hikayeleri goster

@@ -96,7 +96,8 @@ nl:
     shortcuts:
       keys:
         a: Een feed toevoegen
-        f: Naar de feeds-pagina
+        bv: Open de URL van het artikel
+        f: Naar de feeds-pagina 
         jk: Volgend/vorig artikel
         left: Vorige pagina
         m: Artikel markeren als gelezen/ongelezen
@@ -107,7 +108,6 @@ nl:
         right: Volgende pagina
         s: Artikel markeren met ster/zonder ster
         shifta: Alles als gelezen markeren
-        v: Open de URL van het artikel
       title: Sneltoetsen
     zen:
       archive: alle artikelen bekijken
