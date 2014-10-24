@@ -97,7 +97,7 @@ es:
       keys:
         a: Añadir una feed
         bv: Ir a URL de historia
-        f: Vaya a la pagina de las fuentes 
+        f: Vaya a la pagina de las fuentes
         jk: Siguiente/previa historia
         left: Página anterior
         m: Marcar item como leído/no leído

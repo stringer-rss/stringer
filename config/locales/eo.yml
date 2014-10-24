@@ -96,6 +96,7 @@ eo:
     shortcuts:
       keys:
         a: Aldoni fluon
+        bv: Iri URL de rakonto
         f: Iri paĝon de fluoj
         jk: Sekva/antaŭa rakonto
         left: Antaŭa paĝo
@@ -107,7 +108,6 @@ eo:
         right: Sekva paĝo
         s: Marki eron kiel (mal)stelita
         shifta: Marki ciŭ kiel legita
-        v: Iri URL de rakonto
       title: 'Fulmoklavoj '
     zen:
       archive: Montri ĉiajn erojn
