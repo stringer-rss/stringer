@@ -96,6 +96,7 @@ es:
     shortcuts:
       keys:
         a: Añadir una feed
+        bv: Ir a URL de historia
         f: Vaya a la pagina de las fuentes
         jk: Siguiente/previa historia
         left: Página anterior
@@ -107,7 +108,6 @@ es:
         right: Siguiente página
         s: Marcar item como destacado/no destacado
         shifta: Marcar todo como leído
-        v: Ir a URL de historia
       title: Atajos de teclado
     zen:
       archive: ver todos los itemes

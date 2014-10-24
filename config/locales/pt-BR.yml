@@ -96,6 +96,7 @@ pt-BR:
     shortcuts:
       keys:
         a: Adicione um feed
+        bv: Ir para a URL da história
         f: 
         jk: História próxima/anterior
         left: Página anterior
@@ -107,7 +108,6 @@ pt-BR:
         right: Próxima Página
         s: Marcar item com estrela/Remover estrela
         shifta: Marcar tudo como lido
-        v: Ir para a URL da história
       title: Atalhos de teclado
     zen:
       archive: visualizar todos os itens
