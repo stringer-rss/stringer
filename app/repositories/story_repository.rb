@@ -6,7 +6,7 @@ class StoryRepository
     entry.url = normalize_url(entry.url, feed.url)
 
     Story.create(feed: feed,
-                title: entry.title,
+                title: sanitize(entry.title),
                 permalink: entry.url,
                 body: extract_content(entry),
                 is_read: false,
