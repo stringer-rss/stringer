@@ -3,6 +3,7 @@ require "sinatra/activerecord"
 require "sinatra/flash"
 require "sinatra/contrib/all"
 require "sinatra/assetpack"
+require "sinatra-helpers/escape/html"
 require "rack/ssl"
 require "json"
 require "i18n"
@@ -40,6 +41,7 @@ class Stringer < Sinatra::Base
 
   helpers do
     include Sinatra::AuthenticationHelpers
+    include Sinatra::Helpers::Escape::HTML
 
     def render_partial(name, locals = {})
       erb "partials/_#{name}".to_sym, layout: false, locals: locals
