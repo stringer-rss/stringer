@@ -25,6 +25,10 @@ code {
   margin: 0 auto;
 }
 
+.hidden {
+  display: none;
+}
+
 /* Wrapper for page content to push down footer */
 #wrap {
   min-height: 100%;

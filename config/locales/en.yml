@@ -48,8 +48,11 @@ en:
         next: Next
         password: Password
         password_confirmation: Confirm
+        username: User name
       flash:
         passwords_dont_match: Hey, your password confirmation didn't match. Try again.
+      help:
+        username: Please do not change the user name.
       subtitle: 'There is only one user: you.'
       title: Stringer is
   flash:
@@ -122,8 +125,11 @@ en:
       fields:
         password: Password
         submit: Login
+        username: User name
       flash:
         wrong_password: That's the wrong password. Try again.
+      help:
+        username: Please do not change the user name.
       rss: RSS
       subtitle: Welcome back, friend.
       title: Stringer speaks
