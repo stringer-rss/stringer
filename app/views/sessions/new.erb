@@ -5,11 +5,7 @@
   <hr />
 
   <form method="POST" id="login" action="/login">
-    <div class="control-group hidden">
-      <input name="username" id="username" type="text" value="stringer" />
-      <label id="username-label" class="field-label" for="username"><%= t('sessions.new.fields.username') %></label>
-      <span class="help-block"><%= t('sessions.new.help.username') %></span>
-    </div>
+    <input class="hidden" value="username" />
     <div class="control-group">
       <input name="password" id="password" type="password" autofocus="autofocus" />
       <i class="icon-lock field-icon"></i>
