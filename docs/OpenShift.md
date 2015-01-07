@@ -121,7 +121,7 @@ Password Reset
 --------------
 In the event that you need to change your password, run the following commands
 ```
-rhc ssh app-name
+rhc ssh feeds
 cd app-root/repo	
 bundle exec rake change_password RACK_ENV="production"
 ```
