@@ -116,3 +116,12 @@ After importing feeds, a cron job is needed on OpenShift to fetch feeds.
  ```
 
 5. Done! The cron job should fetch feeds every hour.
+
+Password Reset
+--------------
+In the event that you need to change your password, run the following commands
+```
+rhc ssh feeds
+cd app-root/repo	
+bundle exec rake change_password RACK_ENV="production"
+```
