@@ -86,7 +86,7 @@ GEM
     racksh (1.0.0)
       rack (>= 1.0)
       rack-test (>= 0.5)
-    raindrops (0.12.0)
+    raindrops (0.13.0)
     rake (10.1.1)
     rest-client (1.6.7)
       mime-types (>= 1.16)
