@@ -38,7 +38,7 @@ GEM
       simplecov (>= 0.7)
       term-ansicolor
       thor
-    curb (0.8.5)
+    curb (0.8.6)
     debugger-linecache (1.2.0)
     delayed_job (4.0.0)
       activesupport (>= 3.0, < 4.1)
