@@ -5,22 +5,21 @@
       <%= render_partial :mark_all_as_read_form,
                         {stories: stories} %>
     </a>
-    <a class="btn" href="/" id="refresh" title="<%= t('partials.action_bar.refresh') %>">
+    <a class="btn" href="<%= u("/") %>" id="refresh" title="<%= t('partials.action_bar.refresh') %>">
       <i class="icon-repeat"></i>
     </a>
   </div>
-
   <div class="pull-right">
-    <a class="btn btn-primary" id="starred" href="/starred" title="<%= t('partials.action_bar.starred_stories') %>">
+    <a class="btn btn-primary" id="starred" href="<%= u("/starred") %>" title="<%= t('partials.action_bar.starred_stories') %>">
       <i class="icon-star"></i>
     </a>
-    <a class="btn btn-primary" id="archive" href="/archive" title="<%= t('partials.action_bar.archived_stories') %>">
+    <a class="btn btn-primary" id="archive" href="<%= u("/archive") %>" title="<%= t('partials.action_bar.archived_stories') %>">
       <i class="icon-time"></i>
     </a>
-    <a class="btn btn-primary" id="feeds" href="/feeds" title="<%= t('partials.action_bar.view_feeds') %>">
+    <a class="btn btn-primary" id="feeds" href="<%= u("/feeds") %>" title="<%= t('partials.action_bar.view_feeds') %>">
       <i class="icon-list"></i>
     </a>
-    <a class="btn btn-primary" id="add-feed" href="/feeds/new" title="<%= t('partials.action_bar.add_feed') %>">
+    <a class="btn btn-primary" id="add-feed" href="<%= u("/feeds/new") %>" title="<%= t('partials.action_bar.add_feed') %>">
       <i class="icon-plus"></i>
     </a>
   </div>

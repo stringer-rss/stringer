@@ -9,6 +9,7 @@ module Sinatra
     end
 
     def needs_authentication?(path)
+      path = uri(nil, false, false)
       return false if ENV['RACK_ENV'] == 'test'
       return false if !UserRepository.setup_complete?
       return false if path == "/login" || path == "/logout"

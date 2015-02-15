@@ -34,6 +34,7 @@ class Stringer < Sinatra::Base
     set :session_secret, ENV["SECRET_TOKEN"] || "secret!"
     enable :logging
     enable :method_override
+    enable :prefixed_redirects
 
     ActiveRecord::Base.include_root_in_json = false
   end
@@ -55,6 +56,10 @@ class Stringer < Sinatra::Base
 
     def t(*args)
       I18n.t(*args)
+    end
+
+    def u(addr)
+      uri(addr, false, true)
     end
   end
 
