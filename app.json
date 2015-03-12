@@ -22,6 +22,7 @@
     }
   },
   "addons": [
+    "heroku-postgresql:hobby-dev",
     "scheduler:standard"
   ]
 }
