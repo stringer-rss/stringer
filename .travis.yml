@@ -2,7 +2,8 @@ language: ruby
 rvm:
   - 2.0.0
   - 2.1.0
-before_install: 
+  - 2.2.0
+before_install:
   - gem update bundler
   - sed -i '1d' Gemfile
 before_script:
@@ -15,3 +16,4 @@ script:
 matrix:
   allow_failures:
     - rvm: 2.1.0
+    - rvm: 2.2.0
