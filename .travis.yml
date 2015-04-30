@@ -5,6 +5,7 @@ before_script:
   - npm install -g mocha-phantomjs@2.0.2
   - bundle exec rake test_js &> /dev/null &
   - sleep 5
+cache: bundler
 language: ruby
 matrix:
   allow_failures:
