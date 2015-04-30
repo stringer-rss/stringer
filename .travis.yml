@@ -1,8 +1,3 @@
-language: ruby
-rvm:
-  - 2.0.0
-  - 2.1.0
-  - 2.2.0
 before_install:
   - gem update bundler
   - sed -i '1d' Gemfile
@@ -10,10 +5,15 @@ before_script:
   - npm install -g mocha-phantomjs@2.0.2
   - bundle exec rake test_js &> /dev/null &
   - sleep 5
-script:
-  - bundle exec rspec
-  - mocha-phantomjs http://localhost:4567/test
+language: ruby
 matrix:
   allow_failures:
     - rvm: 2.1.0
     - rvm: 2.2.0
+rvm:
+  - 2.0.0
+  - 2.1.0
+  - 2.2.0
+script:
+  - bundle exec rspec
+  - mocha-phantomjs http://localhost:4567/test
