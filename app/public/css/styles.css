@@ -25,6 +25,10 @@ code {
   margin: 0 auto;
 }
 
+.hidden {
+  display: none !important;
+}
+
 /* Wrapper for page content to push down footer */
 #wrap {
   min-height: 100%;
@@ -234,7 +238,7 @@ li.story.cursor {
   border: 3px solid #484948;
 }
 
-li.story .story-body-container { 
+li.story .story-body-container {
   display: none;
 }
 

@@ -96,6 +96,7 @@ fr:
     shortcuts:
       keys:
         a: Ajouter un flux
+        bv: Aller à l'URL de l'article
         f: 
         jk: Article suivant/précédent
         left: Page précédente
@@ -107,7 +108,6 @@ fr:
         right: Page suivante
         s: Mettre/enlever cet article des favoris
         shifta: Tout marquer comme lu
-        v: Aller à l'URL de l'article
       title: Raccourcis clavier
     zen:
       archive: voir toutes les entrées

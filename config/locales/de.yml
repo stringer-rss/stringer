@@ -32,11 +32,11 @@ de:
       title: Benötigst du neue Geschichten?
     edit:
       fields:
-        feed_name: 
-        feed_url: 
-        submit: 
+        feed_name: Feed-Name
+        feed_url: Feed-URL
+        submit: Speichern
       flash:
-        updated_successfully: 
+        updated_successfully: Feed updaten
     index:
       add: hinzufügen
       add_some_feeds: Hey, du solltest ein paar Feeds %{add}.
@@ -96,18 +96,18 @@ de:
     shortcuts:
       keys:
         a: Einen Feed hinzufügen
-        f: 
-        jk: Nächste/vorherige Geschichte
-        left: Vorige Seite
-        m: Markiere Geschichte als gelesen/ungelesen
+        bv: Öffne die URL des Artikels
+        f: Zur Feed-Seite
+        jk: Nächster/vorheriger Artikel
+        left: Vorherige Seite
+        m: Markiere Eintrag als gelesen/ungelesen
         np: Hoch/runter bewegen
-        oenter: Klappe Geschichte aus/ein
+        oenter: Klappe Artikel aus/ein
         or: oder
         r: Aktualisieren
         right: Nächste Seite
         s: Eintrag als Favorit markieren
         shifta: Alle als gelesen markieren
-        v: Öffne die URL der Geschichte
       title: Tastaturkürzel
     zen:
       archive: alle Einträge anzeigen
@@ -142,9 +142,9 @@ de:
     as_read: als gelesen markieren
     click_to_read: (klicken um zu lesen)
     description: Wir besorgen dir Geschichten zum Lesen, gib uns eine Sekunde.
-    heroku_hourly_task: 
-    heroku_one_more_thing: 
-    heroku_scheduler: 
+    heroku_hourly_task: Du brauchst einen stündlichen Cronjob, um auf neue Artikel zu prüfen
+    heroku_one_more_thing: Eine kleine Sache noch...
+    heroku_scheduler: Geh zum Heroku Scheduler und füge folgenden Task hinzu
     mark_all: alle
     ready: Okay, es ist bereit!
     refresh: aktualisieren

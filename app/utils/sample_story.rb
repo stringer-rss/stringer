@@ -12,7 +12,7 @@ class SampleStory < Struct.new(:source, :title, :lead, :is_read, :published)
     tattooed. Keffiyeh mumblecore fingerstache, sartorial sriracha disrupt biodiesel cred. 
     Skateboard yr cosby sweater, narwhal beard ethnic jean shorts aesthetic. Post-ironic 
     flannel mlkshk, pickled VHS wolf banjo forage portland wayfarers.</p>
-    <img src='http://placekitten.com/g/500/300' />
+    <img src='https://placekitten.com/g/500/300' />
     <p>Selfies mumblecore odd future <a href="#">irony DIY messenger bag</a>. Authentic neutra next 
     level selvage squid. Four loko freegan occupy, tousled vinyl leggings selvage messenger 
     bag. Four loko wayfarers kale chips, next level banksy banh mi umami flannel hella. 

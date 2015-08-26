@@ -1,0 +1,156 @@
+eo:
+  archive:
+    next: Sekva
+    of: de
+    previous: Antaŭ
+    sorry: Bedaŭrinde, vi ankoraŭ ne legis ajnajn rakontojn.
+  date:
+    abbr_month_names:
+    - 
+    - jan
+    - feb
+    - mar
+    - apr
+    - maj
+    - jun
+    - jul
+    - aŭg
+    - sep
+    - okt
+    - nov
+    - dec
+  feeds:
+    add:
+      description: Algluu la URL de la blogo kiu vi volas legi.
+      fields:
+        feed_url: URL de fluo
+        submit: Aldoni
+      flash:
+        added_successfully: Ni aldonis vian nova fluon. Revenu pli poste.
+        already_subscribed_error: Vi abonis tiun fluon jam...
+        feed_not_found_error: Ni ne eblas trovi tion fluon. Reprovu.
+      title: Ĉu vi bezonas novajn rakontojn?
+    edit:
+      fields:
+        feed_name: Nomo de fluo
+        feed_url: URL de fluo
+        submit: Konservi
+      flash:
+        updated_successfully: La fluo ĝisdatiĝis por vi.
+    index:
+      add: aldoni
+      add_some_feeds: He, vi devas %{add} kelkajn fluojn.
+  first_run:
+    password:
+      anti_social: kontraŭsocia
+      description: Ek elektas pasvorton por ke sole vi eblas legi viajn rakontojn.
+      fields:
+        next: Sekva
+        password: Pasvorto
+        password_confirmation: Konfirmi
+      flash:
+        passwords_dont_match: He, vian pasvorta konfirmacio ne kongruis. Reprovu.
+      subtitle: 'Estas unu uzanto: vi.'
+      title: Stringer estas
+  flash:
+    cookies_required: Nu, mallerteco. Kuketoj estas postulita por funkcii dece.
+    js_required: Nu, mallerteco. JavaScript estas postulita por funkcii dece.
+  import:
+    description: '%{link} viajn fluojn de Google Reader kaj importi ilin.'
+    export: Eksporti
+    fields:
+      import: Importi
+      not_now: Ne nun
+    subtitle: Ek agordas viajn fluojn.
+    title: Bonvenon surŝipe.
+  layout:
+    back_to_work: Revenu al laboro, malviglanto!
+    export: Eksporti
+    hey: He!
+    import: Importi
+    logout: Elsaluti
+    support: Subteno
+    title: stringer | via RSS amiko
+  partials:
+    action_bar:
+      add_feed: Aldoni fluo
+      archived_stories: Arĥivitaj rakontoj
+      mark_all: Marki ĉiu kiel legita
+      refresh: Aktualigi
+      starred_stories: Stelitaj rakontoj
+      view_feeds: Montri fluojn
+    feed:
+      last_fetched:
+        never: Neniam
+      last_updated: Pastine ĝisdatigita
+      status_bubble:
+        green: Sukcesa!
+        red: Eraro okazis dum sintakse analizado. Neniam funkcias antaŭ.
+        yellow: Eraro okazis dum sintaskse analizado, probable malpermanenta.
+    feed_action_bar:
+      add_feed: Aldoni fluon
+      archived_stories: Arĥivitaj rakontoj
+      feeds: Montru fluojn
+      home: Alreveni rakontojn
+      starred_stories: Stelitaj rakontoj
+    shortcuts:
+      keys:
+        a: Aldoni fluon
+        bv: Iri URL de rakonto
+        f: Iri paĝon de fluoj
+        jk: Sekva/antaŭa rakonto
+        left: Antaŭa paĝo
+        m: Marki ero kiel legita/mallegita
+        np: Movi (mal)supren
+        oenter: Baskuligi (mal)fermecon de rakonto
+        or: aŭ
+        r: Aktualigi
+        right: Sekva paĝo
+        s: Marki eron kiel (mal)stelita
+        shifta: Marki ciŭ kiel legita
+      title: 'Fulmoklavoj '
+    zen:
+      archive: Montri ĉiajn erojn
+      go_make: Iru fari ion!
+      gtfo: Ĉesu legadon de blogoj kaj
+      rss_zero: Vi atingis RSS-nul&trade;
+  sessions:
+    destroy:
+      flash:
+        logged_out_successfully: Vi elsalutis.
+    new:
+      fields:
+        password: Pasvorto
+        submit: Ensaluti
+      flash:
+        wrong_password: Malĝusta pasvorto. Reprovu.
+      rss: RSS
+      subtitle: Bonrevenon, amiko.
+      title: Stringer parolas
+  starred:
+    next: Sekva
+    of: de
+    previous: Antaŭa
+    sorry: Bedaŭrinde, vi ankoraŭ ne stelis rakontojn.
+  stories:
+    keep_unread: Preservi mallegita
+  time:
+    formats:
+      default: '%d %b, %H:%M'
+  tutorial:
+    add_feed: Aldoni fluon
+    as_read: kiel legita
+    click_to_read: (klaku legi)
+    description: Ni ekhavas nuntempe kelkajn rakontojn legi, bonvolu atendi.
+    heroku_hourly_task: Vi bezonas aldoni hora tasko kontroli novajn fluojn.
+    heroku_one_more_thing: Unu pli aro...
+    heroku_scheduler: Iru Heroku kaj aldonu tiun horaran taskon
+    mark_all: Marki ĉia
+    ready: Okej, estas preta!
+    refresh: aktualigi
+    simple: simpla
+    start: Komencu legado!
+    subtitle: Tiu estas la instrukcia manlibro.
+    title: Stringer estas
+    your_feeds: viaj fluoj
+    your_stories: viaj rakontoj

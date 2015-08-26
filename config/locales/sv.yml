@@ -96,6 +96,7 @@ sv:
     shortcuts:
       keys:
         a: Lägg till en feed
+        bv: Gå till berättelsens URL
         f: Gå till feed-sidan
         jk: Nästa/föregående berättelse
         left: Föregående sida
@@ -107,7 +108,6 @@ sv:
         right: Nästa sida
         s: Markera som stjärnmärkt/ej stjärnmärkt
         shifta: Markera alla som lästa
-        v: Gå till berättelsens URL
       title: Kortkommandon
     zen:
       archive: visa alla objekt

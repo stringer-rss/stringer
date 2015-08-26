@@ -10,8 +10,17 @@ describe StoryRepository do
     end
 
     it 'normalizes story urls' do
-      entry = double(url: '//blog.golang.org/context', content: '').as_null_object
+      entry = double(url: '//blog.golang.org/context', title: '', content: '').as_null_object
       StoryRepository.should receive(:normalize_url).with(entry.url, feed.url)
+
+      StoryRepository.add(entry, feed)
+    end
+
+    it "sanitizes titles" do
+      entry = double(title: "n\u2028\u2029", content: '').as_null_object
+      StoryRepository.stub(:normalize_url)
+
+      Story.should receive(:create).with(hash_including(title: "n"))
 
       StoryRepository.add(entry, feed)
     end

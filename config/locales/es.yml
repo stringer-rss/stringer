@@ -32,11 +32,11 @@ es:
       title: ¿Necesitas nuevas historias?
     edit:
       fields:
-        feed_name: 
-        feed_url: 
-        submit: 
+        feed_name: Nombre fuente
+        feed_url: Fuente URL
+        submit: Guardar
       flash:
-        updated_successfully: 
+        updated_successfully: la fuente ha sido actualizada para ti!
     index:
       add: agregar
       add_some_feeds: Oye, deberias %{add} algunas feeds.
@@ -96,7 +96,8 @@ es:
     shortcuts:
       keys:
         a: Añadir una feed
-        f: 
+        bv: Ir a URL de historia
+        f: Vaya a la pagina de las fuentes
         jk: Siguiente/previa historia
         left: Página anterior
         m: Marcar item como leído/no leído
@@ -107,7 +108,6 @@ es:
         right: Siguiente página
         s: Marcar item como destacado/no destacado
         shifta: Marcar todo como leído
-        v: Ir a URL de historia
       title: Atajos de teclado
     zen:
       archive: ver todos los itemes
@@ -142,9 +142,9 @@ es:
     as_read: como leído
     click_to_read: (haz click para leer)
     description: Estamos consiguiendo unas historias para leer, danos un moment.
-    heroku_hourly_task: 
-    heroku_one_more_thing: 
-    heroku_scheduler: 
+    heroku_hourly_task: Debe añadir una hora de trabajo para poder buscar nuevas historias
+    heroku_one_more_thing: Una cosa mas...
+    heroku_scheduler: Vaya al Programador Heroku y añada esta tarea
     mark_all: Marcar todas
     ready: ¡Bueno esta listo!
     refresh: refrescar

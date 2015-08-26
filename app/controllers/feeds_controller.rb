@@ -31,6 +31,7 @@ class Stringer < Sinatra::Base
   end
 
   get "/feeds/new" do
+    @feed_url = params[:feed_url]
     erb :'feeds/add'
   end
 

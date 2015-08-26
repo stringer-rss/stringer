@@ -96,6 +96,7 @@ pt:
     shortcuts:
       keys:
         a: 
+        bv: Ir para a URL da história
         f: 
         jk: Próxima história/História anterior
         left: 
@@ -107,7 +108,6 @@ pt:
         right: 
         s: 
         shifta: Marcar tudo como lido
-        v: Ir para a URL da história
       title: Atalhos do teclado
     zen:
       archive: visualizar todos os itens

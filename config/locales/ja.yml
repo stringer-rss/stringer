@@ -32,11 +32,11 @@ ja:
       title: 新しいストーリーが必要ですか?
     edit:
       fields:
-        feed_name: 
-        feed_url: 
-        submit: 
+        feed_name: フィード名
+        feed_url: フィードURL
+        submit: 保存
       flash:
-        updated_successfully: 
+        updated_successfully: フィードが更新されました！
     index:
       add: 追加
       add_some_feeds: 何かフィードを%{add}する必要があります
@@ -78,7 +78,7 @@ ja:
       mark_all: すべて既読にする
       refresh: リフレッシュ
       starred_stories: スター付きストーリー
-      view_feeds: 購読フィードを見る
+      view_feeds: フィード一覧
     feed:
       last_fetched:
         never: まだない
@@ -90,13 +90,14 @@ ja:
     feed_action_bar:
       add_feed: フィードを追加
       archived_stories: アーカイブ
-      feeds: 購読フィードを見る
+      feeds: フィード一覧
       home: ストーリーに戻る
       starred_stories: スター付きストーリー
     shortcuts:
       keys:
         a: フィードを追加
-        f: 
+        bv: ストーリーURLを開く
+        f: フィード一覧ページ
         jk: 次／前のストーリー
         left: 前ページ
         m: 既読／未読切り替え
@@ -107,7 +108,6 @@ ja:
         right: 次ページ
         s: スターを付ける／外す
         shifta: すべてのストーリーを既読にする
-        v: ストーリーURLを開く
       title: キーボードショートカット
     zen:
       archive: すべてのアイテムをみる
@@ -142,9 +142,9 @@ ja:
     as_read: as read
     click_to_read: (click to read)
     description: あなたのストーリーを読み込んでます、しばらくお待ち下さい
-    heroku_hourly_task: 
-    heroku_one_more_thing: 
-    heroku_scheduler: 
+    heroku_hourly_task: 新しいストーリーをチェックする毎時タスクを追加する必要があります
+    heroku_one_more_thing: もうひとつ…
+    heroku_scheduler: Heroku Scheduler ページに行き、このタスクを追加する
     mark_all: mark all
     ready: 準備OK!
     refresh: refresh

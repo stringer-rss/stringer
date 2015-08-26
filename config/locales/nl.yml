@@ -21,22 +21,22 @@ nl:
     - dec
   feeds:
     add:
-      description: Plak de URL van de feed die je wilt lezen.
+      description: Plak de URL van de blog die je wilt lezen.
       fields:
         feed_url: Feed-URL
         submit: Toevoegen
       flash:
-        added_successfully: We hebben je nieuwe feed toegevoegd, kijk over een tijdje nog eens.
+        added_successfully: We hebben je nieuwe feed toegevoegd. Kijk over een tijdje nog eens.
         already_subscribed_error: Je bent al geabonneerd op deze feed...
         feed_not_found_error: Die feed konden we niet vinden. Probeer het opnieuw.
       title: Nieuwe artikelen nodig?
     edit:
       fields:
-        feed_name: 
-        feed_url: 
-        submit: 
+        feed_name: Feednaam
+        feed_url: Feed-URL
+        submit: Opslaan
       flash:
-        updated_successfully: 
+        updated_successfully: De feed is voor je bijgewerkt!
     index:
       add: toevoegen
       add_some_feeds: Hé, je zou eens wat feeds kunnen %{add}.
@@ -64,16 +64,16 @@ nl:
     subtitle: Laten we je feeds instellen.
     title: Welkom aan boord.
   layout:
-    back_to_work: Aan het werk, luilak!
+    back_to_work: Ga weer aan het werk, luilak!
     export: Exporteren
     hey: Hé!
     import: Importeren
     logout: Uitloggen
-    support: Hulp
+    support: Ondersteuning
     title: stringer | jouw rss-buddy
   partials:
     action_bar:
-      add_feed: Feed toevoegen
+      add_feed: Een feed toevoegen
       archived_stories: Gearchiveerde artikelen
       mark_all: Alles als gelezen markeren
       refresh: Vernieuwen
@@ -96,7 +96,8 @@ nl:
     shortcuts:
       keys:
         a: Een feed toevoegen
-        f: 
+        bv: Open de URL van het artikel
+        f: Naar de feeds-pagina
         jk: Volgend/vorig artikel
         left: Vorige pagina
         m: Artikel markeren als gelezen/ongelezen
@@ -107,7 +108,6 @@ nl:
         right: Volgende pagina
         s: Artikel markeren met ster/zonder ster
         shifta: Alles als gelezen markeren
-        v: Open de URL van het artikel
       title: Sneltoetsen
     zen:
       archive: alle artikelen bekijken
@@ -142,9 +142,9 @@ nl:
     as_read: als gelezen markeren
     click_to_read: (klik om te lezen)
     description: We zijn je artikelen aan het ophalen, geef ons even.
-    heroku_hourly_task: 
-    heroku_one_more_thing: 
-    heroku_scheduler: 
+    heroku_hourly_task: Om nieuwe artikelen binnen te halen is het nodig dat je een taak instelt die elk uur uitgevoerd wordt.
+    heroku_one_more_thing: Nog een ding...
+    heroku_scheduler: Ga naar de Heroku Scheduler en voeg deze taak toe
     mark_all: alles
     ready: Okay, klaar!
     refresh: vernieuwen
