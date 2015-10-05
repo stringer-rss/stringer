@@ -33,6 +33,16 @@ describe "SessionsController" do
       last_response.status.should be 302
       URI::parse(last_response.location).path.should eq "/"
     end
+
+    it "redirects to the previous path when present" do
+      SignInUser.stub(:sign_in).and_return(double(id: 1))
+
+      post "/login", { password: "the-password" },
+        'rack.session' => { redirect_to: '/archive' }
+
+      session[:redirect_to].should be_nil
+      URI::parse(last_response.location).path.should eq "/archive"
+    end
   end
 
   describe "GET /logout" do

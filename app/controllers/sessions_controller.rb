@@ -10,7 +10,8 @@ class Stringer < Sinatra::Base
     if user
       session[:user_id] = user.id
 
-      redirect to("/")
+      redirect_uri = session.delete(:redirect_to) || '/'
+      redirect to(redirect_uri)
     else
       flash.now[:error] = t('sessions.new.flash.wrong_password')
       erb :"sessions/new"
