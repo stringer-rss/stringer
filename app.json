@@ -19,6 +19,10 @@
     "LOCALE": {
       "description": "Specify the translation locale you wish to use",
       "value": "en"
+    },
+    "ENFORCE_SSL": {
+      "description": "Force all clients to connect over SSL",
+      "value": "true"
     }
   },
   "addons": [
