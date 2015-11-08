@@ -153,5 +153,10 @@ describe StoryRepository do
       url = StoryRepository.normalize_url("//blog.golang.org/context", "//blog.golang.org/feed.atom")
       url.should eq 'http://blog.golang.org/context'
     end
+
+    it "resolves relative urls" do
+      url = StoryRepository.normalize_url("/progrium/dokku/releases/tag/v0.4.4", "https://github.com/progrium/dokku/releases.atom")
+      url.should eq "https://github.com/progrium/dokku/releases/tag/v0.4.4"
+    end
   end
 end

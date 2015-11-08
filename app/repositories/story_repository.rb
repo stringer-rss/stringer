@@ -124,8 +124,10 @@ class StoryRepository
     uri      = URI.parse(url)
     base_uri = URI.parse(base_url)
 
-    unless uri.scheme
-      uri.scheme = base_uri.scheme || 'http'
+    # resolve (protocol) relative URIs
+    if uri.relative?
+      scheme = base_uri.scheme || 'http'
+      uri = URI.join("#{scheme}://#{base_uri.host}", uri)
     end
 
     uri.to_s
