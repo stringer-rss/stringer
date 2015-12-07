@@ -47,7 +47,7 @@ task :work_jobs do
   Delayed::Job.delete_all
 
   3.times do
-    Delayed::Worker.new(:min_priority => ENV['MIN_PRIORITY'], 
+    Delayed::Worker.new(:min_priority => ENV['MIN_PRIORITY'],
       :max_priority => ENV['MAX_PRIORITY']).start
   end
 end

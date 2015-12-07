@@ -1,5 +1,5 @@
 class Feed < ActiveRecord::Base
-  has_many :stories, -> {order "published desc"} , dependent: :delete_all
+  has_many :stories, -> {order "published desc"}, dependent: :delete_all
   belongs_to :group
 
   validates_uniqueness_of :url

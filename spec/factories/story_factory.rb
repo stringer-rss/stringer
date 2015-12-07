@@ -34,6 +34,6 @@ class StoryFactory
       feed: params[:feed] || FeedFactory.build,
       is_read: params[:is_read] || false,
       is_starred: params[:is_starred] || false,
-      published: params[:published] ||Time.now)
+      published: params[:published] || Time.now)
   end
 end

@@ -141,4 +141,3 @@ class StoryRepository
     ]
   end
 end
-

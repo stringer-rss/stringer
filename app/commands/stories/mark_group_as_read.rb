@@ -20,4 +20,3 @@ class MarkGroupAsRead
     end
   end
 end
-

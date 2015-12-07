@@ -13,7 +13,7 @@ require_relative "app/helpers/authentication_helpers"
 require_relative "app/repositories/user_repository"
 
 I18n.load_path += Dir[File.join(File.dirname(__FILE__), 'config/locales', '*.yml').to_s]
-I18n.config.enforce_available_locales=false
+I18n.config.enforce_available_locales = false
 
 class Stringer < Sinatra::Base
   # need to exclude assets for sinatra assetpack, see https://github.com/swanson/stringer/issues/112
@@ -81,7 +81,7 @@ class Stringer < Sinatra::Base
       "/css/styles.css"
     ]
 
-    js_compression  :jsmin
+    js_compression :jsmin
     css_compression :simple
 
     prebuild true unless ENV['RACK_ENV'] == 'test'

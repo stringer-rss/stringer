@@ -14,5 +14,3 @@ describe MarkAsUnstarred do
     end
   end
 end
-
-

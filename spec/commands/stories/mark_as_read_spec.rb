@@ -14,4 +14,3 @@ describe MarkAsRead do
     end
   end
 end
-

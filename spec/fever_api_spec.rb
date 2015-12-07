@@ -158,7 +158,7 @@ describe FeverAPI do
       last_response.should be_ok
       last_response_as_object.should include(standard_answer)
       last_response_as_object.should include(
-        unread_item_ids: [story_one.id,story_two.id].join(',')
+        unread_item_ids: [story_one.id, story_two.id].join(',')
       )
     end
 
@@ -170,7 +170,7 @@ describe FeverAPI do
       last_response.should be_ok
       last_response_as_object.should include(standard_answer)
       last_response_as_object.should include(
-        saved_item_ids: [story_one.id,story_two.id].join(',')
+        saved_item_ids: [story_one.id, story_two.id].join(',')
       )
     end
   end

@@ -7,8 +7,8 @@ class CreateUser
 
   def create(password)
     @repo.delete_all
-    @repo.create(password: password, 
-                 password_confirmation: password, 
+    @repo.create(password: password,
+                 password_confirmation: password,
                  setup_complete: false,
                  api_key: ApiKey.compute(password))
   end

@@ -36,4 +36,3 @@ class FeverAPI::Endpoint < Sinatra::Base
     FeverAPI::Response.new(params).to_json
   end
 end
-
