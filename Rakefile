@@ -79,6 +79,6 @@ begin
   RSpec::Core::RakeTask.new(:spec)
 
   task :default => [:speedy_tests]
-rescue LoadError
+rescue LoadError # rubocop:disable Lint/HandleExceptions
   # allow for bundle install --without development:test
 end
