@@ -33,7 +33,7 @@ task :lazy_fetch do
 end
 
 desc "Fetch single feed"
-task :fetch_feed, :id do |t, args|
+task :fetch_feed, :id do |_t, args|
   FetchFeed.new(Feed.find(args[:id])).fetch
 end
 
@@ -58,7 +58,7 @@ task :change_password do
 end
 
 desc "Clean up old stories that are read and unstarred"
-task :cleanup_old_stories, :number_of_days do |t, args|
+task :cleanup_old_stories, :number_of_days do |_t, args|
   args.with_defaults(:number_of_days => 30)
   RemoveOldStories.remove!(args[:number_of_days].to_i)
 end
