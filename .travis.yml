@@ -18,4 +18,5 @@ rvm:
 script:
   - bundle exec rspec
   - mocha-phantomjs http://localhost:4567/test
+  - bundle exec rubocop
 sudo: false
