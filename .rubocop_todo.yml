@@ -12,11 +12,6 @@ Lint/RescueException:
     - 'app/tasks/fetch_feed.rb'
     - 'app/utils/feed_discovery.rb'
 
-# Offense count: 1
-Lint/UselessAccessModifier:
-  Exclude:
-    - 'app/repositories/feed_repository.rb'
-
 # Offense count: 5
 Lint/UselessAssignment:
   Exclude:
