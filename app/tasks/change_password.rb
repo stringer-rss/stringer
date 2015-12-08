@@ -8,7 +8,7 @@ class ChangePassword
   end
 
   def change_password
-    while (password = ask_password) != (confirmation = ask_confirmation)
+    while (password = ask_password) != ask_confirmation
       puts "The confirmation doesn't match the password. Please try again."
     end
     @command.change_user_password(password)

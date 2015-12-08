@@ -13,12 +13,6 @@ Lint/RescueException:
     - 'app/utils/feed_discovery.rb'
 
 # Offense count: 5
-Lint/UselessAssignment:
-  Exclude:
-    - 'app/tasks/change_password.rb'
-    - 'spec/repositories/feed_repository_spec.rb'
-
-# Offense count: 5
 Metrics/AbcSize:
   Max: 37
 
