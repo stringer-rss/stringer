@@ -3,7 +3,7 @@ require_relative "../models/user"
 class UserRepository
   def self.fetch(id)
     return nil unless id
-    
+
     User.find(id)
   end
 

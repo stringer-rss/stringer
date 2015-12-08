@@ -4,7 +4,7 @@ class OpmlParser
   def parse_feeds(contents)
     doc = Nokogiri.XML(contents)
 
-    feeds_with_groups = Hash.new { |h,k| h[k] = [] }
+    feeds_with_groups = Hash.new { |h, k| h[k] = [] }
 
     doc.xpath('//body/outline').each do |outline|
 

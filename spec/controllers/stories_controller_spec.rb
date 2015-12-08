@@ -13,7 +13,7 @@ describe "StoriesController" do
       StoryRepository.stub(:unread).and_return(stories)
       UserRepository.stub(fetch: double)
     end
-    
+
     it "display list of unread stories" do
       get "/news"
 

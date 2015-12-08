@@ -1,7 +1,7 @@
 class MigrationStatus
   attr_reader :migrator
 
-  def initialize(migrator=ActiveRecord::Migrator)
+  def initialize(migrator = ActiveRecord::Migrator)
     @migrator = migrator
   end
 

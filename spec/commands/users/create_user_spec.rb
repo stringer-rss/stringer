@@ -11,7 +11,7 @@ describe CreateUser do
 
       repo.should_receive(:create)
       repo.should_receive(:delete_all)
-      
+
       command.create("password")
     end
   end

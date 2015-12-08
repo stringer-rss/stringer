@@ -10,4 +10,3 @@ class MarkAsStarred
     @repo.fetch(@story_id).update_attributes(is_starred: true)
   end
 end
-

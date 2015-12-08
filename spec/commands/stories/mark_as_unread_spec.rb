@@ -14,5 +14,3 @@ describe MarkAsUnread do
     end
   end
 end
-
-

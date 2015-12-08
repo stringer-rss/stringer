@@ -49,7 +49,7 @@ describe "FirstRunController" do
       let(:user) { double }
       let(:feeds) {[double, double]}
 
-      before do 
+      before do
         UserRepository.stub(fetch: user)
         Feed.stub(all: feeds)
       end
@@ -57,7 +57,7 @@ describe "FirstRunController" do
       it "displays the tutorial and completes setup" do
         CompleteSetup.should_receive(:complete).with(user).once
         FetchFeeds.should_receive(:enqueue).with(feeds).once
-        
+
         get "/setup/tutorial"
 
         page = last_response.body

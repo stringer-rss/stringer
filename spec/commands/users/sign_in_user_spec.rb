@@ -5,7 +5,7 @@ app_require "commands/users/sign_in_user"
 describe SignInUser do
   let(:valid_password) { "valid-pw" }
   let(:repo) { double(first: user) }
-  
+
   let(:user) do
     double(password_digest: BCrypt::Password.create(valid_password), id: 1)
   end

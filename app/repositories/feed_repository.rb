@@ -48,4 +48,3 @@ class FeedRepository
       (current_timestamp.nil? || new_timestamp > current_timestamp)
   end
 end
-

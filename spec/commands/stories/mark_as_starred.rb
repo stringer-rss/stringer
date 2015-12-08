@@ -14,4 +14,3 @@ describe MarkAsStarred do
     end
   end
 end
-
