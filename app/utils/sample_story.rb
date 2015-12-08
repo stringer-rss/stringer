@@ -28,7 +28,7 @@ eos
   def is_starred; false; end
   def published; Time.now; end
 
-  def as_json(options = {})
+  def as_json(_options = {})
     {
       id: id,
       headline: headline,

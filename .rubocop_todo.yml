@@ -12,16 +12,6 @@ Lint/RescueException:
     - 'app/tasks/fetch_feed.rb'
     - 'app/utils/feed_discovery.rb'
 
-# Offense count: 5
-# Cop supports --auto-correct.
-Lint/UnusedMethodArgument:
-  Exclude:
-    - 'app/fever_api/authentication.rb'
-    - 'app/models/story.rb'
-    - 'app/utils/feed_discovery.rb'
-    - 'app/utils/sample_story.rb'
-    - 'spec/support/feed_server.rb'
-
 # Offense count: 1
 Lint/UselessAccessModifier:
   Exclude:
