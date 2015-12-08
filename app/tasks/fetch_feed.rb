@@ -15,15 +15,7 @@ class FetchFeed
 
   def fetch
     begin
-      options = {
-        user_agent: USER_AGENT,
-        if_modified_since: @feed.last_fetched,
-        timeout: 30,
-        max_redirects: 2,
-        compress: true
-      }
-
-      raw_feed = @parser.fetch_and_parse(@feed.url, options)
+      raw_feed = fetch_raw_feed
 
       if raw_feed == 304
         @logger.info "#{@feed.url} has not been modified since last fetch" if @logger
@@ -44,9 +36,24 @@ class FetchFeed
   end
 
   private
+
+  def fetch_raw_feed
+    @parser.fetch_and_parse(@feed.url, options)
+  end
+
   def new_entries_from(raw_feed)
     finder = FindNewStories.new(raw_feed, @feed.id, @feed.last_fetched, latest_entry_id)
     finder.new_stories
+  end
+
+  def options
+    {
+      user_agent: USER_AGENT,
+      if_modified_since: @feed.last_fetched,
+      timeout: 30,
+      max_redirects: 2,
+      compress: true
+    }
   end
 
   def latest_entry_id
