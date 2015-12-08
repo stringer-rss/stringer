@@ -12,11 +12,6 @@ Lint/RescueException:
     - 'app/tasks/fetch_feed.rb'
     - 'app/utils/feed_discovery.rb'
 
-# Offense count: 1
-Lint/ShadowingOuterLocalVariable:
-  Exclude:
-    - 'spec/support/active_record.rb'
-
 # Offense count: 6
 # Cop supports --auto-correct.
 Lint/UnusedBlockArgument:
