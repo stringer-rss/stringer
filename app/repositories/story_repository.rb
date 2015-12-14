@@ -109,7 +109,7 @@ class StoryRepository
         unless url =~ abs_re
           begin
             node.set_attribute(attr, URI.join(base_url, url).to_s)
-          rescue URI::InvalidURIError
+          rescue URI::InvalidURIError # rubocop:disable Lint/HandleExceptions
             # Just ignore. If we cannot parse the url, we don't want the entire
             # import to blow up.
           end

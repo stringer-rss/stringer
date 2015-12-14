@@ -5,7 +5,7 @@ class FeedServer
     @server = Capybara::Server.new(method(:response)).boot
   end
 
-  def response(env)
+  def response(_env)
     [200, {}, [@response]]
   end
 

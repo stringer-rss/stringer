@@ -23,7 +23,7 @@ class Story < ActiveRecord::Base
     I18n.l(self.published)
   end
 
-  def as_json(options = {})
+  def as_json(_options = {})
     super(methods: [:headline, :lead, :source, :pretty_date])
   end
 

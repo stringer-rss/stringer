@@ -5,7 +5,6 @@ require_relative "../repositories/feed_repository"
 require_relative "../commands/feeds/find_new_stories"
 
 class FetchFeed
-
   USER_AGENT = "Stringer (https://github.com/swanson/stringer)"
 
   def initialize(feed, parser: Feedjira::Feed, logger: nil)
@@ -37,7 +36,7 @@ class FetchFeed
       end
 
       FeedRepository.set_status(:green, @feed)
-    rescue Exception => ex
+    rescue => ex
       FeedRepository.set_status(:red, @feed)
 
       @logger.error "Something went wrong when parsing #{@feed.url}: #{ex}" if @logger

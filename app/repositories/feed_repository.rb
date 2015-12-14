@@ -41,8 +41,6 @@ class FeedRepository
     Feed.where('group_id IS NOT NULL')
   end
 
-  private
-
   def self.valid_timestamp?(new_timestamp, current_timestamp)
     new_timestamp && new_timestamp.year >= MIN_YEAR &&
       (current_timestamp.nil? || new_timestamp > current_timestamp)
