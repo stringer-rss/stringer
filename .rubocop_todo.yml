@@ -6,12 +6,6 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 2
-Lint/RescueException:
-  Exclude:
-    - 'app/tasks/fetch_feed.rb'
-    - 'app/utils/feed_discovery.rb'
-
 # Offense count: 5
 Metrics/AbcSize:
   Max: 37

@@ -17,7 +17,7 @@ class FeedDiscovery
     feed = parser.fetch_and_parse(url, user_agent: "Stringer")
     feed.feed_url ||= url
     feed
-  rescue Exception
+  rescue
     yield if block_given?
   end
 end
