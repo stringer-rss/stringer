@@ -9,7 +9,7 @@
   <hr />
   <form id="add-feed-setup" method="POST" action="/feeds">
     <div class="control-group">
-      <input name="feed_url" id="feed-url" type="text" autofocus="autofocus" value="<%= @feed_url %>"/>
+      <input name="feed_url" id="feed-url" type="text" value="<%= @feed_url %>" autofocus/>
       <i class="icon-rss field-icon"></i>
       <label id="feed_url-label" class="field-label" for="feed_url"><%= t('feeds.add.fields.feed_url') %></label>
     </div>
