@@ -10,7 +10,6 @@ describe SignInUser do
     double(password_digest: BCrypt::Password.create(valid_password), id: 1)
   end
 
-
   describe "#sign_in" do
     it "returns the user if the password is valid" do
       result = SignInUser.sign_in(valid_password, repo)
