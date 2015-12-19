@@ -6,12 +6,6 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 1
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-Style/ClassAndModuleChildren:
-  Exclude:
-    - 'fever_api.rb'
-
 # Offense count: 11
 # Cop supports --auto-correct.
 Style/ColonMethodCall:
