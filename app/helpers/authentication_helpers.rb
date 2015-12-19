@@ -10,7 +10,7 @@ module Sinatra
 
     def needs_authentication?(path)
       return false if ENV['RACK_ENV'] == 'test'
-      return false if !UserRepository.setup_complete?
+      return false unless UserRepository.setup_complete?
       return false if %w(/login /logout /heroku).include?(path)
       return false if path =~ /css|js|img/
       true
