@@ -8,12 +8,6 @@
 
 # Offense count: 4
 # Cop supports --auto-correct.
-Style/MultilineBlockLayout:
-  Exclude:
-    - 'spec/commands/feeds/import_from_opml_spec.rb'
-
-# Offense count: 4
-# Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 Style/MultilineOperationIndentation:
   Enabled: false
