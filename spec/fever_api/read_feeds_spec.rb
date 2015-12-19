@@ -4,7 +4,7 @@ app_require "fever_api/read_feeds"
 
 describe FeverAPI::ReadFeeds do
   let(:feed_ids) { [5, 7, 11] }
-  let(:feeds) { feed_ids.map { |id| double('feed', id: id, as_fever_json: { id: id } ) } }
+  let(:feeds) { feed_ids.map { |id| double('feed', id: id, as_fever_json: { id: id }) } }
   let(:feed_repository) { double('repo') }
 
   subject do

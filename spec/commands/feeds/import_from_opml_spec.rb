@@ -14,8 +14,8 @@ describe ImportFromOpml do
     Group.delete_all
   end
 
-  let(:group_1 ) { Group.find_by_name('Football News') }
-  let(:group_2 ) { Group.find_by_name('RoR') }
+  let(:group_1) { Group.find_by_name('Football News') }
+  let(:group_2) { Group.find_by_name('RoR') }
 
   context 'adding group_id for existing feeds' do
     let!(:feed_1) do

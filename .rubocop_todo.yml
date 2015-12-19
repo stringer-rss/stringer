@@ -11,14 +11,6 @@
 Style/NumericLiterals:
   MinDigits: 11
 
-# Offense count: 13
-# Cop supports --auto-correct.
-Style/SpaceInsideParens:
-  Exclude:
-    - 'spec/commands/feeds/import_from_opml_spec.rb'
-    - 'spec/fever_api/read_feeds_spec.rb'
-    - 'spec/fever_api/read_items_spec.rb'
-
 # Offense count: 906
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles.
