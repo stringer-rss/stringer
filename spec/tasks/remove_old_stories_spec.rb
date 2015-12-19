@@ -43,8 +43,8 @@ describe RemoveOldStories do
       RemoveOldStories.stub(:pruned_feeds){ feeds }
       RemoveOldStories.stub(:old_stories){ stories_mock }
 
-      FeedRepository.should_receive(:update_last_fetched).with(feeds.first, anything())
-      FeedRepository.should_receive(:update_last_fetched).with(feeds.last, anything())
+      FeedRepository.should_receive(:update_last_fetched).with(feeds.first, anything)
+      FeedRepository.should_receive(:update_last_fetched).with(feeds.last, anything)
 
       RemoveOldStories.remove!(13)
     end
