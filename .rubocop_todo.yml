@@ -17,12 +17,6 @@ Style/NumericLiterals:
 Style/StringLiterals:
   Enabled: false
 
-# Offense count: 2
-Style/StructInheritance:
-  Exclude:
-    - 'app/jobs/fetch_feed_job.rb'
-    - 'app/utils/sample_story.rb'
-
 # Offense count: 1
 # Cop supports --auto-correct.
 Style/SymbolLiteral:

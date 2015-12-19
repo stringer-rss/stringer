@@ -1,4 +1,4 @@
-class SampleStory < Struct.new(:source, :title, :lead, :is_read, :published)
+SampleStory = Struct.new(:source, :title, :lead, :is_read, :published) do
   BODY = <<-eos
 <p>Tofu shoreditch intelligentsia <a href="#">umami</a>, fashion axe photo booth
 try-hard terry richardson quinoa actually fingerstache meggings fixie. Aesthetic
