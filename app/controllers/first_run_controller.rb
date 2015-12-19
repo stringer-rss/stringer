@@ -39,6 +39,7 @@ class Stringer < Sinatra::Base
   end
 
   private
+
   def no_password(params)
     params[:password].nil? || params[:password] == ""
   end

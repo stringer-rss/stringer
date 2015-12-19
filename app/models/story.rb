@@ -42,6 +42,7 @@ class Story < ActiveRecord::Base
   end
 
   private
+
   def strip_html(contents)
     Loofah.fragment(contents).text
   end
