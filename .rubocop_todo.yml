@@ -12,14 +12,6 @@ Style/NumericLiterals:
   MinDigits: 11
 
 # Offense count: 4
-# Cop supports --auto-correct.
-# Configuration parameters: PreferredDelimiters.
-Style/PercentLiteralDelimiters:
-  Exclude:
-    - 'spec/javascript/test_controller.rb'
-    - 'spec/repositories/story_repository_spec.rb'
-
-# Offense count: 4
 # Configuration parameters: NamePrefix, NamePrefixBlacklist.
 Style/PredicateName:
   Exclude:
