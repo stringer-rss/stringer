@@ -90,7 +90,7 @@ describe "FeedsController" do
         post "/feeds", feed_url: feed_url
 
         last_response.status.should be 302
-        URI::parse(last_response.location).path.should eq "/"
+        URI.parse(last_response.location).path.should eq "/"
       end
     end
 
@@ -141,7 +141,7 @@ describe "FeedsController" do
       post "/feeds/import", "opml_file" => opml_file
 
       last_response.status.should be 302
-      URI::parse(last_response.location).path.should eq "/setup/tutorial"
+      URI.parse(last_response.location).path.should eq "/setup/tutorial"
     end
   end
 

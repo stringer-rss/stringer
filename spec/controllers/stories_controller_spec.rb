@@ -154,7 +154,7 @@ describe "StoriesController" do
       post "/stories/mark_all_as_read", story_ids: ["1", "2", "3"]
 
       last_response.status.should be 302
-      URI::parse(last_response.location).path.should eq "/news"
+      URI.parse(last_response.location).path.should eq "/news"
     end
   end
 

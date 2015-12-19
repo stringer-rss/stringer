@@ -31,7 +31,7 @@ describe "SessionsController" do
       session[:user_id].should eq 1
 
       last_response.status.should be 302
-      URI::parse(last_response.location).path.should eq "/"
+      URI.parse(last_response.location).path.should eq "/"
     end
 
     it "redirects to the previous path when present" do
@@ -41,7 +41,7 @@ describe "SessionsController" do
            'rack.session' => { redirect_to: '/archive' }
 
       session[:redirect_to].should be_nil
-      URI::parse(last_response.location).path.should eq "/archive"
+      URI.parse(last_response.location).path.should eq "/archive"
     end
   end
 
@@ -52,7 +52,7 @@ describe "SessionsController" do
       session[:user_id].should be_nil
 
       last_response.status.should be 302
-      URI::parse(last_response.location).path.should eq "/"
+      URI.parse(last_response.location).path.should eq "/"
     end
   end
 end
