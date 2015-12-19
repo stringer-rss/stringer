@@ -5,10 +5,6 @@ class SignInUser
     user = repository.first
     user_password = BCrypt::Password.new(user.password_digest)
 
-    if user_password == submitted_password
-      user
-    else
-      nil
-    end
+    user if user_password == submitted_password
   end
 end
