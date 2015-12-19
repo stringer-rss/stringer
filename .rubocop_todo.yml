@@ -17,16 +17,6 @@ Style/NumericLiterals:
 Style/StringLiterals:
   Enabled: false
 
-# Offense count: 4
-# Cop supports --auto-correct.
-# Configuration parameters: IgnoredMethods.
-Style/SymbolProc:
-  Exclude:
-    - 'app/fever_api/read_feeds.rb'
-    - 'app/fever_api/read_items.rb'
-    - 'app/fever_api/sync_saved_item_ids.rb'
-    - 'app/fever_api/sync_unread_item_ids.rb'
-
 # Offense count: 3
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyleForMultiline, SupportedStyles.

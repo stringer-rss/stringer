@@ -17,7 +17,7 @@ module FeverAPI
     private
 
     def feeds
-      @feed_repository.list.map { |f| f.as_fever_json }
+      @feed_repository.list.map(&:as_fever_json)
     end
   end
 end

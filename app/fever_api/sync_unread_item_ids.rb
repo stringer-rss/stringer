@@ -17,7 +17,7 @@ module FeverAPI
     private
 
     def unread_item_ids
-      unread_stories.map { |s| s.id }.join(',')
+      unread_stories.map(&:id).join(',')
     end
 
     def unread_stories
