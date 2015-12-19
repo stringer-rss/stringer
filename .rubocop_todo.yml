@@ -13,13 +13,6 @@ Style/NumericLiterals:
 
 # Offense count: 1
 # Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles, AllowInnerSlashes.
-Style/RegexpLiteral:
-  Exclude:
-    - 'app.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
 Style/RescueModifier:
   Exclude:
     - 'app/fever_api/read_items.rb'

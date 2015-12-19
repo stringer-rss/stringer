@@ -17,7 +17,7 @@ I18n.config.enforce_available_locales = false
 
 class Stringer < Sinatra::Base
   # need to exclude assets for sinatra assetpack, see https://github.com/swanson/stringer/issues/112
-  use Rack::SSL, exclude: ->(env) { env['PATH_INFO'] =~ /^\/(js|css|img)/ } if ENV["ENFORCE_SSL"] == 'true'
+  use Rack::SSL, exclude: ->(env) { env['PATH_INFO'] =~ %r{^/(js|css|img)} } if ENV["ENFORCE_SSL"] == 'true'
 
   register Sinatra::ActiveRecordExtension
   register Sinatra::Flash
