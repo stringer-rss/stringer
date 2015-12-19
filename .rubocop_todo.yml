@@ -11,14 +11,6 @@
 Style/NumericLiterals:
   MinDigits: 11
 
-# Offense count: 4
-# Configuration parameters: NamePrefix, NamePrefixBlacklist.
-Style/PredicateName:
-  Exclude:
-    - 'app/helpers/authentication_helpers.rb'
-    - 'app/models/feed.rb'
-    - 'app/utils/sample_story.rb'
-
 # Offense count: 1
 # Cop supports --auto-correct.
 Style/RedundantBegin:

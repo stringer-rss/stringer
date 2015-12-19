@@ -90,7 +90,7 @@ class Stringer < Sinatra::Base
   before do
     I18n.locale = ENV["LOCALE"].blank? ? :en : ENV["LOCALE"].to_sym
 
-    if !is_authenticated? && needs_authentication?(request.path)
+    if !authenticated? && needs_authentication?(request.path)
       session[:redirect_to] = request.path
       redirect '/login'
     end

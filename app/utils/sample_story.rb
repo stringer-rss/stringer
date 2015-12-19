@@ -32,11 +32,11 @@ booth vice literally.</p>
 
   def body; BODY; end
 
-  def is_read; false; end
+  def is_read; false; end # rubocop:disable Style/PredicateName
 
   def keep_unread; false; end
 
-  def is_starred; false; end
+  def is_starred; false; end # rubocop:disable Style/PredicateName
 
   def published; Time.now; end
 

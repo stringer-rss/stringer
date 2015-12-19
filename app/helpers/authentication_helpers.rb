@@ -4,7 +4,7 @@ require_relative "../repositories/user_repository"
 
 module Sinatra
   module AuthenticationHelpers
-    def is_authenticated?
+    def authenticated?
       session[:user_id]
     end
 
