@@ -11,8 +11,8 @@ module FeverAPI
         item_ids = params[:with_ids].split(',') rescue nil
 
         {
-            items: items(item_ids, params[:since_id]),
-            total_items: total_items(item_ids)
+          items: items(item_ids, params[:since_id]),
+          total_items: total_items(item_ids)
         }
       else
         {}
