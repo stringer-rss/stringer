@@ -8,9 +8,7 @@ def need_to_migrate?
   ActiveRecord::Migrator.new(:up, ActiveRecord::Migrator.migrations('db/migrate')).pending_migrations.any?
 end
 
-if need_to_migrate?
-  ActiveRecord::Migrator.up "db/migrate"
-end
+ActiveRecord::Migrator.up "db/migrate" if need_to_migrate?
 
 RSpec.configure do |config|
   config.around do |example|
