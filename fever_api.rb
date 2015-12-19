@@ -17,10 +17,9 @@ module FeverAPI
     end
 
     def authenticated?(api_key)
-      if api_key
-        user = User.first
-        user.api_key && api_key.downcase == user.api_key.downcase
-      end
+      return unless api_key
+      user = User.first
+      user.api_key && api_key.downcase == user.api_key.downcase
     end
 
     get "/" do
