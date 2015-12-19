@@ -8,13 +8,6 @@
 
 # Offense count: 1
 # Cop supports --auto-correct.
-# Configuration parameters: Width.
-Style/IndentationWidth:
-  Exclude:
-    - 'spec/tasks/fetch_feed_spec.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
 Style/LeadingCommentSpace:
   Exclude:
     - 'db/migrate/20130821020313_update_nil_entry_ids.rb'
