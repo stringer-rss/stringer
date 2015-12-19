@@ -11,13 +11,6 @@
 Style/NumericLiterals:
   MinDigits: 11
 
-# Offense count: 8
-# Cop supports --auto-correct.
-# Configuration parameters: AllowIfMethodIsEmpty.
-Style/SingleLineMethods:
-  Exclude:
-    - 'app/utils/sample_story.rb'
-
 # Offense count: 6
 # Cop supports --auto-correct.
 Style/SingleSpaceBeforeFirstArg:

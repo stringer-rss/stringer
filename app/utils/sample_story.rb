@@ -20,25 +20,41 @@ blue bottle scenester bushwick. Skateboard squid fanny pack bushwick, photo
 booth vice literally.</p>
     eos
 
-  def id; -1 * rand(100); end
+  def id
+    -1 * rand(100)
+  end
 
-  def headline; title; end
+  def headline
+    title
+  end
 
-  def permalink; "#"; end
+  def permalink
+    "#"
+  end
 
   def lead
     "Tofu shoreditch intelligentsia umami, fashion axe photo booth try-hard"
   end
 
-  def body; BODY; end
+  def body
+    BODY
+  end
 
-  def is_read; false; end # rubocop:disable Style/PredicateName
+  def is_read # rubocop:disable Style/PredicateName
+    false
+  end
 
-  def keep_unread; false; end
+  def keep_unread
+    false
+  end
 
-  def is_starred; false; end # rubocop:disable Style/PredicateName
+  def is_starred # rubocop:disable Style/PredicateName
+    false
+  end
 
-  def published; Time.now; end
+  def published
+    Time.now
+  end
 
   def as_json(_options = {})
     {
