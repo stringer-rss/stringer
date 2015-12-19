@@ -17,12 +17,6 @@ Style/NumericLiterals:
 Style/StringLiterals:
   Enabled: false
 
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/SymbolLiteral:
-  Exclude:
-    - 'app/controllers/debug_controller.rb'
-
 # Offense count: 4
 # Cop supports --auto-correct.
 # Configuration parameters: IgnoredMethods.
