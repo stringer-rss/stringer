@@ -18,10 +18,15 @@ describe ImportFromOpml do
   let(:group_2 ) { Group.find_by_name('RoR') }
 
   context 'adding group_id for existing feeds' do
-    let!(:feed_1) { Feed.create(name: 'TMW Football Transfer News',
-                                url: 'http://www.transfermarketweb.com/rss') }
-    let!(:feed_2) { Feed.create(name: 'GIANT ROBOTS SMASHING INTO OTHER GIANT ROBOTS - Home',
-                                url: 'http://feeds.feedburner.com/GiantRobotsSmashingIntoOtherGiantRobots') }
+    let!(:feed_1) do
+      Feed.create(name: 'TMW Football Transfer News', url: 'http://www.transfermarketweb.com/rss')
+    end
+    let!(:feed_2) do
+      Feed.create(
+        name: 'GIANT ROBOTS SMASHING INTO OTHER GIANT ROBOTS - Home',
+        url: 'http://feeds.feedburner.com/GiantRobotsSmashingIntoOtherGiantRobots'
+      )
+    end
     before { import }
 
     it 'retains exising feeds' do
@@ -41,11 +46,15 @@ describe ImportFromOpml do
   end
 
   context 'creates new feeds with groups' do
-    let(:feed_1) { Feed.where(name: 'TMW Football Transfer News',
-                              url: 'http://www.transfermarketweb.com/rss') }
-
-    let(:feed_2) { Feed.where(name: 'GIANT ROBOTS SMASHING INTO OTHER GIANT ROBOTS - Home',
-                              url: 'http://feeds.feedburner.com/GiantRobotsSmashingIntoOtherGiantRobots') }
+    let(:feed_1) do
+      Feed.where(name: 'TMW Football Transfer News', url: 'http://www.transfermarketweb.com/rss')
+    end
+    let(:feed_2) do
+      Feed.where(
+        name: 'GIANT ROBOTS SMASHING INTO OTHER GIANT ROBOTS - Home',
+        url: 'http://feeds.feedburner.com/GiantRobotsSmashingIntoOtherGiantRobots'
+      )
+    end
     before { import }
 
     it 'creates groups' do

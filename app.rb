@@ -58,7 +58,7 @@ class Stringer < Sinatra::Base
     end
   end
 
-  assets {
+  assets do
     serve "/js",     from: "app/public/js"
     serve "/css",    from: "app/public/css"
     serve "/images", from: "app/public/img"
@@ -85,7 +85,7 @@ class Stringer < Sinatra::Base
     css_compression :simple
 
     prebuild true unless ENV['RACK_ENV'] == 'test'
-  }
+  end
 
   before do
     I18n.locale = ENV["LOCALE"].blank? ? :en : ENV["LOCALE"].to_sym
