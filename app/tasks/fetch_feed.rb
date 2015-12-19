@@ -18,13 +18,9 @@ class FetchFeed
       raw_feed = fetch_raw_feed
 
       if raw_feed == 304
-        @logger.info "#{@feed.url} has not been modified since last fetch" if @logger
+        feed_not_modified
       else
-        new_entries_from(raw_feed).each do |entry|
-          StoryRepository.add(entry, @feed)
-        end
-
-        FeedRepository.update_last_fetched(@feed, raw_feed.last_modified)
+        feed_modified(raw_feed)
       end
 
       FeedRepository.set_status(:green, @feed)
@@ -39,6 +35,18 @@ class FetchFeed
 
   def fetch_raw_feed
     @parser.fetch_and_parse(@feed.url, options)
+  end
+
+  def feed_not_modified
+    @logger.info "#{@feed.url} has not been modified since last fetch" if @logger
+  end
+
+  def feed_modified(raw_feed)
+    new_entries_from(raw_feed).each do |entry|
+      StoryRepository.add(entry, @feed)
+    end
+
+    FeedRepository.update_last_fetched(@feed, raw_feed.last_modified)
   end
 
   def new_entries_from(raw_feed)
