@@ -11,12 +11,6 @@
 Style/NumericLiterals:
   MinDigits: 11
 
-# Offense count: 6
-# Cop supports --auto-correct.
-Style/SingleSpaceBeforeFirstArg:
-  Exclude:
-    - 'db/migrate/20130425222157_add_delayed_job.rb'
-
 # Offense count: 32
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles.
