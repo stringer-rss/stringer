@@ -10,10 +10,8 @@ class MigrationStatus
     migrations = migrator.migrations(migrations_path)
     current_version = migrator.current_version
 
-    migrations.select do |m|
-      current_version < m.version
-    end.map do |m|
-      "#{m.name} - #{m.version}"
-    end
+    migrations
+      .select { |m| current_version < m.version }
+      .map { |m| "#{m.name} - #{m.version}" }
   end
 end
