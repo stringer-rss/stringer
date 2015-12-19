@@ -28,17 +28,17 @@ describe FeverAPI::ReadItems do
   it "returns a list of unread items since id including total count" do
     story_repository.should_receive(:unread_since_id).with(3).and_return([
       double('story', as_fever_json: { id: 5 }),
-      double('story', as_fever_json: { id: 7 }),
+      double('story', as_fever_json: { id: 7 })
     ])
     story_repository.should_receive(:unread).and_return([
       double('story', as_fever_json: { id: 2 }),
       double('story', as_fever_json: { id: 5 }),
-      double('story', as_fever_json: { id: 7 }),
+      double('story', as_fever_json: { id: 7 })
     ])
     subject.call('items' => nil, since_id: 3).should == {
       items: [
         { id: 5 },
-        { id: 7 },
+        { id: 7 }
       ],
       total_items: 3
     }
