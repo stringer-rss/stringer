@@ -48,8 +48,8 @@ task :work_jobs do
 
   3.times do
     Delayed::Worker.new(
-      :min_priority => ENV['MIN_PRIORITY'],
-      :max_priority => ENV['MAX_PRIORITY']
+      min_priority: ENV['MIN_PRIORITY'],
+      max_priority: ENV['MAX_PRIORITY']
     ).start
   end
 end
@@ -61,7 +61,7 @@ end
 
 desc "Clean up old stories that are read and unstarred"
 task :cleanup_old_stories, :number_of_days do |_t, args|
-  args.with_defaults(:number_of_days => 30)
+  args.with_defaults(number_of_days: 30)
   RemoveOldStories.remove!(args[:number_of_days].to_i)
 end
 
@@ -80,7 +80,7 @@ begin
 
   RSpec::Core::RakeTask.new(:spec)
 
-  task :default => [:speedy_tests]
+  task default: [:speedy_tests]
 rescue LoadError # rubocop:disable Lint/HandleExceptions
   # allow for bundle install --without development:test
 end
