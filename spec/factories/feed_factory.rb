@@ -2,13 +2,13 @@ class FeedFactory
   class FakeFeed < OpenStruct
     def as_fever_json
       {
-        id: self.id,
+        id: id,
         favicon_id: 0,
-        title: self.name,
-        url: self.url,
-        site_url: self.url,
+        title: name,
+        url: url,
+        site_url: url,
         is_spark: 0,
-        last_updated_on_time: self.last_fetched.to_i
+        last_updated_on_time: last_fetched.to_i
       }
     end
   end

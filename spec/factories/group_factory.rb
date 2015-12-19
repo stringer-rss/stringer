@@ -2,8 +2,8 @@ class GroupFactory
   class FakeGroup < OpenStruct
     def as_fever_json
       {
-        id: self.id,
-        title: self.name
+        id: id,
+        title: name
       }
     end
   end

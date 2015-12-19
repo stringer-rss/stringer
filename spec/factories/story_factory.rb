@@ -3,24 +3,24 @@ require_relative "./feed_factory"
 class StoryFactory
   class FakeStory < OpenStruct
     def headline
-      self.title[0, 50]
+      title[0, 50]
     end
 
     def source
-      self.feed.name
+      feed.name
     end
 
     def as_fever_json
       {
-        id: self.id,
-        feed_id: self.feed_id,
-        title: self.title,
+        id: id,
+        feed_id: feed_id,
+        title: title,
         author: source,
         html: body,
-        url: self.permalink,
-        is_saved: self.is_starred ? 1 : 0,
-        is_read: self.is_read ? 1 : 0,
-        created_on_time: self.published.to_i
+        url: permalink,
+        is_saved: is_starred ? 1 : 0,
+        is_read: is_read ? 1 : 0,
+        created_on_time: published.to_i
       }
     end
   end

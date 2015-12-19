@@ -21,6 +21,6 @@ class FetchFeeds
   end
 
   def self.enqueue(feeds)
-    self.new(feeds).delay.fetch_all
+    new(feeds).delay.fetch_all
   end
 end
