@@ -39,7 +39,7 @@ class Stringer < Sinatra::Base
     @feed_url = params[:feed_url]
     feed = AddNewFeed.add(@feed_url)
 
-    if feed and feed.valid?
+    if feed && feed.valid?
       FetchFeeds.enqueue([feed])
 
       flash[:success] = t('feeds.add.flash.added_successfully')
