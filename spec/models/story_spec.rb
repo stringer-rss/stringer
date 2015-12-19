@@ -4,7 +4,6 @@ require "support/active_record"
 app_require "models/story"
 
 describe "Story" do
-
   let(:story) do
     Story.new(
       title: Faker::Lorem.sentence(50),
