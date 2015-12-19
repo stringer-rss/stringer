@@ -6,16 +6,6 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 5
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-Style/BracesAroundHashParameters:
-  Exclude:
-    - 'spec/controllers/debug_controller_spec.rb'
-    - 'spec/controllers/feeds_controller_spec.rb'
-    - 'spec/controllers/first_run_controller_spec.rb'
-    - 'spec/fever_api_spec.rb'
-
 # Offense count: 1
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 Style/ClassAndModuleChildren:

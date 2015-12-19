@@ -29,7 +29,7 @@ describe "FirstRunController" do
       end
 
       it "rejects when password isn't confirmed" do
-        post "/setup/password", {password: "foo", password_confirmation: "bar"}
+        post "/setup/password", password: "foo", password_confirmation: "bar"
 
         page = last_response.body
         page.should have_tag("div.error")
@@ -38,7 +38,7 @@ describe "FirstRunController" do
       it "accepts confirmed passwords and redirects to next step" do
         CreateUser.any_instance.should_receive(:create).with("foo").and_return(double(id: 1))
 
-        post "/setup/password", {password: "foo", password_confirmation: "foo"}
+        post "/setup/password", password: "foo", password_confirmation: "foo"
 
         last_response.status.should be 302
         URI::parse(last_response.location).path.should eq "/feeds/import"

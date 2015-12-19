@@ -163,7 +163,7 @@ describe FeverAPI do
     end
 
     it "returns starred items when 'saved_item_ids' header is provided" do
-      Story.should_receive(:where).with({ is_starred: true }).and_return([story_one, story_two])
+      Story.should_receive(:where).with(is_starred: true).and_return([story_one, story_two])
 
       make_request(saved_item_ids: nil)
 

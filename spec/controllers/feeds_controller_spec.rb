@@ -138,7 +138,7 @@ describe "FeedsController" do
     it "parse OPML and starts fetching" do
       ImportFromOpml.should_receive(:import).once
 
-      post "/feeds/import", {"opml_file" => opml_file}
+      post "/feeds/import", "opml_file" => opml_file
 
       last_response.status.should be 302
       URI::parse(last_response.location).path.should eq "/setup/tutorial"
