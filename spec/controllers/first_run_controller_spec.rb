@@ -47,7 +47,7 @@ describe "FirstRunController" do
 
     describe "GET /setup/tutorial" do
       let(:user) { double }
-      let(:feeds) {[double, double]}
+      let(:feeds) { [double, double] }
 
       before do
         UserRepository.stub(fetch: user)
