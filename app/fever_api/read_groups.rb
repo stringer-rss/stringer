@@ -3,7 +3,7 @@ require_relative "../repositories/group_repository"
 module FeverAPI
   class ReadGroups
     def initialize(options = {})
-      @group_repository = options.fetch(:group_repository){ GroupRepository }
+      @group_repository = options.fetch(:group_repository) { GroupRepository }
     end
 
     def call(params = {})

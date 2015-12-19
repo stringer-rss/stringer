@@ -3,7 +3,7 @@ require_relative "../repositories/feed_repository"
 module FeverAPI
   class ReadFeedsGroups
     def initialize(options = {})
-      @feed_repository = options.fetch(:feed_repository){ FeedRepository }
+      @feed_repository = options.fetch(:feed_repository) { FeedRepository }
     end
 
     def call(params = {})

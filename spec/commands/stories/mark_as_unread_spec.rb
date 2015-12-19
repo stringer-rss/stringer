@@ -5,7 +5,7 @@ app_require "commands/stories/mark_as_unread"
 describe MarkAsUnread do
   describe "#mark_as_unread" do
     let(:story) { double }
-    let(:repo){ double(fetch: story) }
+    let(:repo) { double(fetch: story) }
 
     it "marks a story as unread" do
       command = MarkAsUnread.new(1, repo)

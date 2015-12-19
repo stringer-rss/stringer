@@ -3,7 +3,7 @@ require_relative "../repositories/story_repository"
 module FeverAPI
   class ReadItems
     def initialize(options = {})
-      @story_repository = options.fetch(:story_repository){ StoryRepository }
+      @story_repository = options.fetch(:story_repository) { StoryRepository }
     end
 
     def call(params = {})
@@ -27,7 +27,7 @@ module FeverAPI
 
     def items(item_ids, since_id)
       items = item_ids ? stories_by_ids(item_ids) : unread_stories(since_id)
-      items.map{|s| s.as_fever_json }
+      items.map {|s| s.as_fever_json }
     end
 
     def total_items(item_ids)

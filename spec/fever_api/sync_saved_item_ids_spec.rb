@@ -4,7 +4,7 @@ app_require "fever_api/sync_saved_item_ids"
 
 describe FeverAPI::SyncSavedItemIds do
   let(:story_ids) { [5, 7, 11] }
-  let(:stories) { story_ids.map{|id| double('story', id: id) } }
+  let(:stories) { story_ids.map {|id| double('story', id: id) } }
   let(:story_repository) { double('repo') }
 
   subject do
