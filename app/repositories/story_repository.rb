@@ -67,7 +67,7 @@ class StoryRepository
 
   def self.starred(page = 1)
     Story.where(is_starred: true).includes(:feed)
-          .order("published desc").page(page).per_page(20)
+      .order("published desc").page(page).per_page(20)
   end
 
   def self.all_starred
@@ -97,9 +97,9 @@ class StoryRepository
 
   def self.sanitize(content)
     Loofah.fragment(content.gsub(/<wbr\s*>/i, ""))
-          .scrub!(:prune)
-          .scrub!(:unprintable)
-          .to_s
+      .scrub!(:prune)
+      .scrub!(:unprintable)
+      .to_s
   end
 
   def self.samples

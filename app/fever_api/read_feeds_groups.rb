@@ -17,7 +17,9 @@ module FeverAPI
     private
 
     def feeds_groups
-      @feed_repository.in_group.order('LOWER(name)').group_by(&:group_id).map do |group_id, feeds|
+      grouped_feeds = @feed_repository.in_group.order('LOWER(name)')
+                      .group_by(&:group_id)
+      grouped_feeds.map do |group_id, feeds|
         {
           group_id: group_id,
           feed_ids: feeds.map(&:id).join(',')
