@@ -45,7 +45,7 @@ describe FeverAPI::ReadItems do
   end
 
   it "returns a list of specified items including total count" do
-    story_repository.should_receive(:fetch_by_ids).with(['5', '11']).twice.and_return([
+    story_repository.should_receive(:fetch_by_ids).with(%w(5 11)).twice.and_return([
       double('story', as_fever_json: { id: 5 }),
       double('story', as_fever_json: { id: 11 })
     ])

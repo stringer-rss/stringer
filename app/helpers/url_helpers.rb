@@ -7,7 +7,7 @@ module UrlHelpers
   def expand_absolute_urls(content, base_url)
     doc = Nokogiri::HTML.fragment(content)
 
-    [["a", "href"], ["img", "src"], ["video", "src"]].each do |tag, attr|
+    [%w(a href), %w(img src), %w(video src)].each do |tag, attr|
       doc.css("#{tag}[#{attr}]").each do |node|
         url = node.get_attribute(attr)
         next if url =~ ABS_RE
