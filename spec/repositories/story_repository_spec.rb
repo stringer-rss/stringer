@@ -29,13 +29,13 @@ describe StoryRepository do
   describe ".extract_content" do
     let(:entry) do
       double(url: "http://mdswanson.com",
-           content: "Some test content<script></script>")
+             content: "Some test content<script></script>")
     end
 
     let(:summary_only) do
       double(url: "http://mdswanson.com",
-           content: nil,
-           summary: "Dumb publisher")
+             content: nil,
+             summary: "Dumb publisher")
     end
 
     it "sanitizes content" do

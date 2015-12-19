@@ -5,9 +5,9 @@ describe FetchFeed do
   describe "#fetch" do
     let(:daring_fireball) do
      double(id: 1,
-          url: "http://daringfireball.com/feed",
-          last_fetched: Time.new(2013, 1, 1),
-          stories: [])
+            url: "http://daringfireball.com/feed",
+            last_fetched: Time.new(2013, 1, 1),
+            stories: [])
     end
 
     before do

@@ -9,13 +9,13 @@ class StoryRepository
     entry.url = normalize_url(entry.url, feed.url)
 
     Story.create(feed: feed,
-                title: sanitize(entry.title),
-                permalink: entry.url,
-                body: extract_content(entry),
-                is_read: false,
-                is_starred: false,
-                published: entry.published || Time.now,
-                entry_id: entry.id)
+                 title: sanitize(entry.title),
+                 permalink: entry.url,
+                 body: extract_content(entry),
+                 is_read: false,
+                 is_starred: false,
+                 published: entry.published || Time.now,
+                 entry_id: entry.id)
   end
 
   def self.fetch(id)
