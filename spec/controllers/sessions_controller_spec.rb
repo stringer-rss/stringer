@@ -47,7 +47,7 @@ describe "SessionsController" do
 
   describe "GET /logout" do
     it "clears the session and redirects" do
-      get "/logout", {}, 'rack.session' => {userid: 1}
+      get "/logout", {}, 'rack.session' => { userid: 1 }
 
       session[:user_id].should be_nil
 

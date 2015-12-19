@@ -42,9 +42,9 @@ describe "StoriesController" do
       get "/news"
 
       page = last_response.body
-      page.should have_tag("a", with: { href: "/feeds/export"})
-      page.should have_tag("a", with: { href: "/logout"})
-      page.should have_tag("a", with: { href: "https://github.com/swanson/stringer"})
+      page.should have_tag("a", with: { href: "/feeds/export" })
+      page.should have_tag("a", with: { href: "/logout" })
+      page.should have_tag("a", with: { href: "https://github.com/swanson/stringer" })
     end
 
     it "displays a zen-like message when there are no unread stories" do
@@ -93,7 +93,7 @@ describe "StoriesController" do
         it "marks a story as read" do
           StoryRepository.should_receive(:save).once
 
-          put "/stories/#{story_one.id}", {is_read: true}.to_json
+          put "/stories/#{story_one.id}", { is_read: true }.to_json
 
           story_one.is_read.should eq true
         end
@@ -103,7 +103,7 @@ describe "StoriesController" do
         it "marks a story as read" do
           StoryRepository.should_receive(:save).once
 
-          put "/stories/#{story_one.id}", {is_read: "malformed"}.to_json
+          put "/stories/#{story_one.id}", { is_read: "malformed" }.to_json
 
           story_one.is_read.should eq true
         end
@@ -113,7 +113,7 @@ describe "StoriesController" do
     context "keep_unread parameter" do
       context "when it is not malformed" do
         it "marks a story as permanently unread" do
-          put "/stories/#{story_one.id}", {keep_unread: false}.to_json
+          put "/stories/#{story_one.id}", { keep_unread: false }.to_json
 
           story_one.keep_unread.should eq false
         end
@@ -121,7 +121,7 @@ describe "StoriesController" do
 
       context "when it is malformed" do
         it "marks a story as permanently unread" do
-          put "/stories/#{story_one.id}", {keep_unread: "malformed"}.to_json
+          put "/stories/#{story_one.id}", { keep_unread: "malformed" }.to_json
 
           story_one.keep_unread.should eq true
         end
@@ -131,7 +131,7 @@ describe "StoriesController" do
     context "is_starred parameter" do
       context "when it is not malformed" do
         it "marks a story as permanently starred" do
-          put "/stories/#{story_one.id}", {is_starred: true}.to_json
+          put "/stories/#{story_one.id}", { is_starred: true }.to_json
 
           story_one.is_starred.should eq true
         end
@@ -139,7 +139,7 @@ describe "StoriesController" do
 
       context "when it is malformed" do
         it "marks a story as permanently starred" do
-          put "/stories/#{story_one.id}", {is_starred: "malformed"}.to_json
+          put "/stories/#{story_one.id}", { is_starred: "malformed" }.to_json
 
           story_one.is_starred.should eq true
         end
