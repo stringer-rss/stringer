@@ -33,13 +33,6 @@ Metrics/MethodLength:
 Metrics/PerceivedComplexity:
   Max: 9
 
-# Offense count: 4
-# Cop supports --auto-correct.
-Performance/StringReplacement:
-  Exclude:
-    - 'db/migrate/20140421224454_fix_invalid_unicode.rb'
-    - 'db/migrate/20141102103617_fix_invalid_titles_with_unicode_line_endings.rb'
-
 # Offense count: 14
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedHashRocketStyle, EnforcedColonStyle, EnforcedLastArgumentHashStyle, SupportedLastArgumentHashStyles.
