@@ -9,12 +9,12 @@
       <input type="hidden" name="_method" value="PUT">
       <input type="hidden" name="feed_id" value="<%= @feed.id %>">
       <div class="control-group">
-        <input name="feed_name" id="feed-name" type="text" autofocus="autofocus" value="<%= @feed.name %>" required />
+        <input name="feed_name" id="feed-name" type="text" value="<%= @feed.name %>" required />
         <i class="icon-pencil field-icon"></i>
         <label id="feed_alias-label" class="field-label" for="feed_alias"><%= t('feeds.edit.fields.feed_name') %></label>
       </div>
       <div class="control-group">
-        <input name="feed_url" id="feed-url" type="text" autofocus="autofocus" value="<%= @feed.url %>" required/>
+        <input name="feed_url" id="feed-url" type="text" value="<%= @feed.url %>" autofocus required />
         <i class="icon-rss field-icon"></i>
         <label id="feed_url-label" class="field-label" for="feed_url"><%= t('feeds.edit.fields.feed_url') %></label>
       </div>
