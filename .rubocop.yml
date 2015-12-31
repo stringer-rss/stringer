@@ -20,5 +20,8 @@ Style/DoubleNegation:
 Style/IfUnlessModifier:
   MaxLineLength: 120
 
+Style/NumericLiterals:
+  Enabled: false
+
 Style/WhileUntilModifier:
   MaxLineLength: 120

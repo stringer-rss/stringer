@@ -6,11 +6,6 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 10
-# Cop supports --auto-correct.
-Style/NumericLiterals:
-  MinDigits: 11
-
 # Offense count: 906
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles.
