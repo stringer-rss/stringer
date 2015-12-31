@@ -11,11 +11,6 @@
 Metrics/ClassLength:
   Max: 108
 
-# Offense count: 131
-# Configuration parameters: AllowURI, URISchemes.
-Metrics/LineLength:
-  Max: 352
-
 # Offense count: 11
 # Configuration parameters: CountComments.
 Metrics/MethodLength:
