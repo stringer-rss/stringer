@@ -16,28 +16,33 @@ require_relative "write_mark_group"
 
 module FeverAPI
   class Response
+    ACTIONS = [
+      Authentication,
+
+      ReadFeeds,
+      ReadGroups,
+      ReadFeedsGroups,
+      ReadFavicons,
+      ReadItems,
+      ReadLinks,
+
+      SyncUnreadItemIds,
+      SyncSavedItemIds,
+
+      WriteMarkItem,
+      WriteMarkFeed,
+      WriteMarkGroup
+    ]
+
     def initialize(params)
-      @response = { api_version: 3 }
-
-      @response.merge! Authentication.new.call(params)
-
-      @response.merge! ReadFeeds.new.call(params)
-      @response.merge! ReadGroups.new.call(params)
-      @response.merge! ReadFeedsGroups.new.call(params)
-      @response.merge! ReadFavicons.new.call(params)
-      @response.merge! ReadItems.new.call(params)
-      @response.merge! ReadLinks.new.call(params)
-
-      @response.merge! SyncUnreadItemIds.new.call(params)
-      @response.merge! SyncSavedItemIds.new.call(params)
-
-      @response.merge! WriteMarkItem.new.call(params)
-      @response.merge! WriteMarkFeed.new.call(params)
-      @response.merge! WriteMarkGroup.new.call(params)
+      @params = params
     end
 
     def to_json
-      @response.to_json
+      base_response = { api_version: 3 }
+      ACTIONS
+        .inject(base_response) { |a, e| a.merge!(e.new.call(@params)) }
+        .to_json
     end
   end
 end

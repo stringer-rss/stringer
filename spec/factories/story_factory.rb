@@ -26,14 +26,16 @@ class StoryFactory
   end
 
   def self.build(params = {})
-    FakeStory.new(
+    default_params = {
       id: rand(100),
-      title: params[:title] || Faker::Lorem.sentence,
-      permalink: params[:permalink] || Faker::Internet.url,
-      body: params[:body] || Faker::Lorem.paragraph,
-      feed: params[:feed] || FeedFactory.build,
-      is_read: params[:is_read] || false,
-      is_starred: params[:is_starred] || false,
-      published: params[:published] || Time.now)
+      title: Faker::Lorem.sentence,
+      permalink: Faker::Internet.url,
+      body: Faker::Lorem.paragraph,
+      feed: FeedFactory.build,
+      is_read: false,
+      is_starred: false,
+      published: Time.now
+    }
+    FakeStory.new(default_params.merge(params))
   end
 end

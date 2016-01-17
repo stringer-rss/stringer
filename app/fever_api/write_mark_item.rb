@@ -13,20 +13,24 @@ module FeverAPI
     end
 
     def call(params = {})
-      if params[:mark] == "item"
-        case params[:as]
-        when "read"
-          @read_marker_class.new(params[:id]).mark_as_read
-        when "unread"
-          @unread_marker_class.new(params[:id]).mark_as_unread
-        when "saved"
-          @starred_marker_class.new(params[:id]).mark_as_starred
-        when "unsaved"
-          @unstarred_marker_class.new(params[:id]).mark_as_unstarred
-        end
-      end
+      mark_item_as(params[:id], params[:as]) if params[:mark] == "item"
 
       {}
+    end
+
+    private
+
+    def mark_item_as(id, as)
+      case as
+      when "read"
+        @read_marker_class.new(id).mark_as_read
+      when "unread"
+        @unread_marker_class.new(id).mark_as_unread
+      when "saved"
+        @starred_marker_class.new(id).mark_as_starred
+      when "unsaved"
+        @unstarred_marker_class.new(id).mark_as_unstarred
+      end
     end
   end
 end

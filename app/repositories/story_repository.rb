@@ -1,7 +1,10 @@
+require_relative "../helpers/url_helpers"
 require_relative "../models/story"
 require_relative "../utils/sample_story"
 
 class StoryRepository
+  extend UrlHelpers
+
   def self.add(entry, feed)
     entry.url = normalize_url(entry.url, feed.url)
 
@@ -97,40 +100,6 @@ class StoryRepository
           .scrub!(:prune)
           .scrub!(:unprintable)
           .to_s
-  end
-
-  def self.expand_absolute_urls(content, base_url)
-    doc = Nokogiri::HTML.fragment(content)
-    abs_re = URI::DEFAULT_PARSER.regexp[:ABS_URI]
-
-    [["a", "href"], ["img", "src"], ["video", "src"]].each do |tag, attr|
-      doc.css("#{tag}[#{attr}]").each do |node|
-        url = node.get_attribute(attr)
-        unless url =~ abs_re
-          begin
-            node.set_attribute(attr, URI.join(base_url, url).to_s)
-          rescue URI::InvalidURIError # rubocop:disable Lint/HandleExceptions
-            # Just ignore. If we cannot parse the url, we don't want the entire
-            # import to blow up.
-          end
-        end
-      end
-    end
-
-    doc.to_html
-  end
-
-  def self.normalize_url(url, base_url)
-    uri      = URI.parse(url)
-    base_uri = URI.parse(base_url)
-
-    # resolve (protocol) relative URIs
-    if uri.relative?
-      scheme = base_uri.scheme || 'http'
-      uri = URI.join("#{scheme}://#{base_uri.host}", uri)
-    end
-
-    uri.to_s
   end
 
   def self.samples
