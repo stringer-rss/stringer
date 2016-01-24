@@ -9,7 +9,7 @@ describe MarkAllAsRead do
 
     it "marks all stories as read" do
       command = MarkAllAsRead.new([1, 2], repo)
-      stories.should_receive(:update_all).with(is_read: true)
+      expect(stories).to receive(:update_all).with(is_read: true)
       command.mark_as_read
     end
   end

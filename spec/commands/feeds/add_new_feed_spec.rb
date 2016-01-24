@@ -21,11 +21,11 @@ describe AddNewFeed do
       let(:repo) { double }
 
       it "parses and creates the feed if discovered" do
-        repo.should_receive(:create).and_return(feed)
+        expect(repo).to receive(:create).and_return(feed)
 
         result = AddNewFeed.add("http://feed.com", discoverer, repo)
 
-        result.should be feed
+        expect(result).to be feed
       end
     end
   end

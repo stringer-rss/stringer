@@ -30,18 +30,18 @@ describe ImportFromOpml do
     before { import }
 
     it "retains exising feeds" do
-      feed_1.should be_valid
-      feed_2.should be_valid
+      expect(feed_1).to be_valid
+      expect(feed_2).to be_valid
     end
 
     it "creates new groups" do
-      group_1.should be
-      group_2.should be
+      expect(group_1).to be
+      expect(group_2).to be
     end
 
     it "sets group_id for existing feeds" do
-      feed_1.reload.group.should eq group_1
-      feed_2.reload.group.should eq group_2
+      expect(feed_1.reload.group).to eq group_1
+      expect(feed_2.reload.group).to eq group_2
     end
   end
 
@@ -58,18 +58,18 @@ describe ImportFromOpml do
     before { import }
 
     it "creates groups" do
-      group_1.should be
-      group_1.should be
+      expect(group_1).to be
+      expect(group_1).to be
     end
 
     it "creates feeds" do
-      feed_1.should exist
-      feed_2.should exist
+      expect(feed_1).to exist
+      expect(feed_2).to exist
     end
 
     it "sets group" do
-      feed_1.first.group.should eq group_1
-      feed_2.first.group.should eq group_2
+      expect(feed_1.first.group).to eq group_1
+      expect(feed_2.first.group).to eq group_2
     end
   end
 
@@ -80,12 +80,12 @@ describe ImportFromOpml do
     before { import }
 
     it "does not create any new group for feeds without group" do
-      Group.where("id NOT IN (?)", [group_1.id, group_2.id]).count.should eq 0
+      expect(Group.where("id NOT IN (?)", [group_1.id, group_2.id]).count).to eq 0
     end
 
     it "creates feeds without group_id" do
-      feed_1.group_id.should be_nil
-      feed_2.group_id.should be_nil
+      expect(feed_1.group_id).to be_nil
+      expect(feed_2.group_id).to be_nil
     end
   end
 end
