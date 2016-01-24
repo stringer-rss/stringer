@@ -28,7 +28,7 @@ class StoryRepository
 
   def self.fetch_unread_by_timestamp(timestamp)
     timestamp = Time.at(timestamp.to_i)
-    Story.where('stories.created_at < ?', timestamp).where(is_read: false)
+    Story.where("stories.created_at < ?", timestamp).where(is_read: false)
   end
 
   def self.fetch_unread_by_timestamp_and_group(timestamp, group_id)
@@ -53,11 +53,11 @@ class StoryRepository
   end
 
   def self.unread_since_id(since_id)
-    unread.where('id > ?', since_id)
+    unread.where("id > ?", since_id)
   end
 
   def self.feed(feed_id)
-    Story.where('feed_id = ?', feed_id).order("published desc").includes(:feed)
+    Story.where("feed_id = ?", feed_id).order("published desc").includes(:feed)
   end
 
   def self.read(page = 1)
@@ -76,7 +76,7 @@ class StoryRepository
 
   def self.unstarred_read_stories_older_than(num_days)
     Story.where(is_read: true, is_starred: false)
-      .where('published <= ?', num_days.days.ago)
+      .where("published <= ?", num_days.days.ago)
   end
 
   def self.read_count

@@ -1,4 +1,4 @@
-require 'thread/pool'
+require "thread/pool"
 
 require_relative "fetch_feed"
 

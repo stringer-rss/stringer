@@ -47,10 +47,10 @@ describe FeedRepository do
     it "saves the name and url" do
       feed = Feed.new
 
-      FeedRepository.update_feed(feed, 'Test Feed', 'example.com/feed')
+      FeedRepository.update_feed(feed, "Test Feed", "example.com/feed")
 
-      feed.name.should eq 'Test Feed'
-      feed.url.should eq 'example.com/feed'
+      feed.name.should eq "Test Feed"
+      feed.url.should eq "example.com/feed"
     end
   end
 

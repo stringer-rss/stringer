@@ -1,5 +1,5 @@
-require 'spec_helper'
-require './fever_api'
+require "spec_helper"
+require "./fever_api"
 
 describe FeverAPI do
   include Rack::Test::Methods
@@ -8,7 +8,7 @@ describe FeverAPI do
     FeverAPI::Endpoint
   end
 
-  let(:api_key) { 'apisecretkey' }
+  let(:api_key) { "apisecretkey" }
   let(:story_one) { StoryFactory.build }
   let(:story_two) { StoryFactory.build }
   let(:group) { GroupFactory.build }
@@ -37,7 +37,7 @@ describe FeverAPI do
     end
 
     it "does not authenticate request with incorrect api_key" do
-      get "/", api_key: 'foo'
+      get "/", api_key: "foo"
       last_response.should_not be_ok
     end
 
@@ -103,7 +103,7 @@ describe FeverAPI do
     end
 
     it "returns stories when 'items' header is provided along with 'since_id'" do
-      StoryRepository.should_receive(:unread_since_id).with('5').and_return([story_one])
+      StoryRepository.should_receive(:unread_since_id).with("5").and_return([story_one])
       StoryRepository.should_receive(:unread).and_return([story_one, story_two])
 
       make_request(items: nil, since_id: 5)
@@ -130,7 +130,7 @@ describe FeverAPI do
     end
 
     it "returns stories ids when 'items' header is provided along with 'with_ids'" do
-      StoryRepository.should_receive(:fetch_by_ids).twice.with(['5']).and_return([story_one])
+      StoryRepository.should_receive(:fetch_by_ids).twice.with(["5"]).and_return([story_one])
 
       make_request(items: nil, with_ids: 5)
 
@@ -158,7 +158,7 @@ describe FeverAPI do
       last_response.should be_ok
       last_response_as_object.should include(standard_answer)
       last_response_as_object.should include(
-        unread_item_ids: [story_one.id, story_two.id].join(',')
+        unread_item_ids: [story_one.id, story_two.id].join(",")
       )
     end
 
@@ -170,7 +170,7 @@ describe FeverAPI do
       last_response.should be_ok
       last_response_as_object.should include(standard_answer)
       last_response_as_object.should include(
-        saved_item_ids: [story_one.id, story_two.id].join(',')
+        saved_item_ids: [story_one.id, story_two.id].join(",")
       )
     end
   end
@@ -181,54 +181,54 @@ describe FeverAPI do
     end
 
     it "commands to mark story as read" do
-      MarkAsRead.should_receive(:new).with('10').and_return(double(mark_as_read: true))
+      MarkAsRead.should_receive(:new).with("10").and_return(double(mark_as_read: true))
 
-      make_request(mark: 'item', as: 'read', id: 10)
+      make_request(mark: "item", as: "read", id: 10)
 
       last_response.should be_ok
       last_response_as_object.should include(standard_answer)
     end
 
     it "commands to mark story as unread" do
-      MarkAsUnread.should_receive(:new).with('10').and_return(double(mark_as_unread: true))
+      MarkAsUnread.should_receive(:new).with("10").and_return(double(mark_as_unread: true))
 
-      make_request(mark: 'item', as: 'unread', id: 10)
+      make_request(mark: "item", as: "unread", id: 10)
 
       last_response.should be_ok
       last_response_as_object.should include(standard_answer)
     end
 
     it "commands to save story" do
-      MarkAsStarred.should_receive(:new).with('10').and_return(double(mark_as_starred: true))
+      MarkAsStarred.should_receive(:new).with("10").and_return(double(mark_as_starred: true))
 
-      make_request(mark: 'item', as: 'saved', id: 10)
+      make_request(mark: "item", as: "saved", id: 10)
 
       last_response.should be_ok
       last_response_as_object.should include(standard_answer)
     end
 
     it "commands to unsave story" do
-      MarkAsUnstarred.should_receive(:new).with('10').and_return(double(mark_as_unstarred: true))
+      MarkAsUnstarred.should_receive(:new).with("10").and_return(double(mark_as_unstarred: true))
 
-      make_request(mark: 'item', as: 'unsaved', id: 10)
+      make_request(mark: "item", as: "unsaved", id: 10)
 
       last_response.should be_ok
       last_response_as_object.should include(standard_answer)
     end
 
     it "commands to mark group as read" do
-      MarkGroupAsRead.should_receive(:new).with('10', '1375080946').and_return(double(mark_group_as_read: true))
+      MarkGroupAsRead.should_receive(:new).with("10", "1375080946").and_return(double(mark_group_as_read: true))
 
-      make_request(mark: 'group', as: 'read', id: 10, before: 1375080946)
+      make_request(mark: "group", as: "read", id: 10, before: 1375080946)
 
       last_response.should be_ok
       last_response_as_object.should include(standard_answer)
     end
 
     it "commands to mark entire feed as read" do
-      MarkFeedAsRead.should_receive(:new).with('20', '1375080945').and_return(double(mark_feed_as_read: true))
+      MarkFeedAsRead.should_receive(:new).with("20", "1375080945").and_return(double(mark_feed_as_read: true))
 
-      make_request(mark: 'feed', as: 'read', id: 20, before: 1375080945)
+      make_request(mark: "feed", as: "read", id: 20, before: 1375080945)
 
       last_response.should be_ok
       last_response_as_object.should include(standard_answer)

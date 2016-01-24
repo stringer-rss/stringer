@@ -7,7 +7,7 @@ module FeverAPI
     end
 
     def call(params = {})
-      if params.keys.include?('saved_item_ids')
+      if params.keys.include?("saved_item_ids")
         { saved_item_ids: saved_item_ids }
       else
         {}
@@ -17,7 +17,7 @@ module FeverAPI
     private
 
     def saved_item_ids
-      all_starred_stories.map(&:id).join(',')
+      all_starred_stories.map(&:id).join(",")
     end
 
     def all_starred_stories

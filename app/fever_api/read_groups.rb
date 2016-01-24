@@ -7,7 +7,7 @@ module FeverAPI
     end
 
     def call(params = {})
-      if params.keys.include?('groups')
+      if params.keys.include?("groups")
         { groups: groups }
       else
         {}

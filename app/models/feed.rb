@@ -20,7 +20,7 @@ class Feed < ActiveRecord::Base
   end
 
   def unread_stories
-    stories.where('is_read = ?', false)
+    stories.where("is_read = ?", false)
   end
 
   def as_fever_json

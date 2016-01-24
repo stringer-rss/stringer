@@ -1,5 +1,5 @@
 require "spec_helper"
-require 'will_paginate/array'
+require "will_paginate/array"
 
 app_require "controllers/stories_controller"
 
@@ -184,8 +184,8 @@ describe "StoriesController" do
 
       get "/feed/#{story_one.feed.id}"
 
-      last_response.body.should have_tag('li', class: 'story')
-      last_response.body.should have_tag('li', class: 'unread')
+      last_response.body.should have_tag("li", class: "story")
+      last_response.body.should have_tag("li", class: "unread")
     end
   end
 end

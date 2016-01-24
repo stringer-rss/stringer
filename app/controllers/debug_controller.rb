@@ -1,4 +1,4 @@
-require_relative '../models/migration_status'
+require_relative "../models/migration_status"
 
 class Stringer < Sinatra::Base
   get "/debug" do

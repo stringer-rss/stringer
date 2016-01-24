@@ -3,21 +3,21 @@ require "spec_helper"
 app_require "repositories/story_repository"
 
 describe StoryRepository do
-  describe '.add' do
-    let(:feed) { double(url: 'http://blog.golang.org/feed.atom') }
+  describe ".add" do
+    let(:feed) { double(url: "http://blog.golang.org/feed.atom") }
     before do
       Story.stub(:create)
     end
 
-    it 'normalizes story urls' do
-      entry = double(url: '//blog.golang.org/context', title: '', content: '').as_null_object
+    it "normalizes story urls" do
+      entry = double(url: "//blog.golang.org/context", title: "", content: "").as_null_object
       StoryRepository.should receive(:normalize_url).with(entry.url, feed.url)
 
       StoryRepository.add(entry, feed)
     end
 
     it "sanitizes titles" do
-      entry = double(title: "n\u2028\u2029", content: '').as_null_object
+      entry = double(title: "n\u2028\u2029", content: "").as_null_object
       StoryRepository.stub(:normalize_url)
 
       Story.should receive(:create).with(hash_including(title: "n"))

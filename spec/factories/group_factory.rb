@@ -11,6 +11,6 @@ class GroupFactory
   def self.build(params = {})
     FakeGroup.new(
       id: rand(100),
-      name: params[:name] || Faker::Name.name + ' group')
+      name: params[:name] || Faker::Name.name + " group")
   end
 end

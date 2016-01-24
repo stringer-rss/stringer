@@ -3,9 +3,9 @@ Bundler.setup
 
 require "rubygems"
 require "net/http"
-require 'active_record'
-require 'delayed_job'
-require 'delayed_job_active_record'
+require "active_record"
+require "delayed_job"
+require "delayed_job_active_record"
 
 require "sinatra/activerecord/rake"
 
@@ -22,8 +22,8 @@ end
 
 desc "Lazily fetch all feeds."
 task :lazy_fetch do
-  if ENV['APP_URL']
-    uri = URI(ENV['APP_URL'])
+  if ENV["APP_URL"]
+    uri = URI(ENV["APP_URL"])
     Net::HTTP.get_response(uri)
   end
 
@@ -48,8 +48,8 @@ task :work_jobs do
 
   3.times do
     Delayed::Worker.new(
-      min_priority: ENV['MIN_PRIORITY'],
-      max_priority: ENV['MAX_PRIORITY']
+      min_priority: ENV["MIN_PRIORITY"],
+      max_priority: ENV["MAX_PRIORITY"]
     ).start
   end
 end
@@ -72,7 +72,7 @@ task :test_js do
 end
 
 begin
-  require 'rspec/core/rake_task'
+  require "rspec/core/rake_task"
 
   RSpec::Core::RakeTask.new(:speedy_tests) do |t|
     t.rspec_opts = "--tag ~speed:slow"

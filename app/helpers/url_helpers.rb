@@ -30,7 +30,7 @@ module UrlHelpers
     # resolve (protocol) relative URIs
     if uri.relative?
       base_uri = URI.parse(base_url)
-      scheme = base_uri.scheme || 'http'
+      scheme = base_uri.scheme || "http"
       uri = URI.join("#{scheme}://#{base_uri.host}", uri)
     end
 

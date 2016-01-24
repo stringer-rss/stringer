@@ -87,9 +87,9 @@ RSpec.describe UrlHelpers do
     end
 
     it "leaves urls with a scheme intact" do
-      input = 'http://blog.golang.org/context'
+      input = "http://blog.golang.org/context"
       normalized_url = helper.normalize_url(
-        input, 'http://blog.golang.org/feed.atom'
+        input, "http://blog.golang.org/feed.atom"
       )
       normalized_url.should eq(input)
     end
@@ -98,7 +98,7 @@ RSpec.describe UrlHelpers do
       url = helper.normalize_url(
         "//blog.golang.org/context", "//blog.golang.org/feed.atom"
       )
-      url.should eq 'http://blog.golang.org/context'
+      url.should eq "http://blog.golang.org/context"
     end
 
     it "resolves relative urls" do

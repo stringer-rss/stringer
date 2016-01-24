@@ -38,7 +38,7 @@ describe "SessionsController" do
       SignInUser.stub(:sign_in).and_return(double(id: 1))
 
       post "/login", { password: "the-password" },
-           'rack.session' => { redirect_to: '/archive' }
+           "rack.session" => { redirect_to: "/archive" }
 
       session[:redirect_to].should be_nil
       URI.parse(last_response.location).path.should eq "/archive"
@@ -47,7 +47,7 @@ describe "SessionsController" do
 
   describe "GET /logout" do
     it "clears the session and redirects" do
-      get "/logout", {}, 'rack.session' => { userid: 1 }
+      get "/logout", {}, "rack.session" => { userid: 1 }
 
       session[:user_id].should be_nil
 

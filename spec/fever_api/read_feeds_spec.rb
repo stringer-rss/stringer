@@ -4,8 +4,8 @@ app_require "fever_api/read_feeds"
 
 describe FeverAPI::ReadFeeds do
   let(:feed_ids) { [5, 7, 11] }
-  let(:feeds) { feed_ids.map { |id| double('feed', id: id, as_fever_json: { id: id }) } }
-  let(:feed_repository) { double('repo') }
+  let(:feeds) { feed_ids.map { |id| double("feed", id: id, as_fever_json: { id: id }) } }
+  let(:feed_repository) { double("repo") }
 
   subject do
     FeverAPI::ReadFeeds.new(feed_repository: feed_repository)
@@ -13,7 +13,7 @@ describe FeverAPI::ReadFeeds do
 
   it "returns a list of feeds" do
     feed_repository.should_receive(:list).and_return(feeds)
-    subject.call('feeds' => nil).should == {
+    subject.call("feeds" => nil).should == {
       feeds: [
         { id: 5 },
         { id: 7 },

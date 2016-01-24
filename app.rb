@@ -12,12 +12,12 @@ require "will_paginate/active_record"
 require_relative "app/helpers/authentication_helpers"
 require_relative "app/repositories/user_repository"
 
-I18n.load_path += Dir[File.join(File.dirname(__FILE__), 'config/locales', '*.yml').to_s]
+I18n.load_path += Dir[File.join(File.dirname(__FILE__), "config/locales", "*.yml").to_s]
 I18n.config.enforce_available_locales = false
 
 class Stringer < Sinatra::Base
   # need to exclude assets for sinatra assetpack, see https://github.com/swanson/stringer/issues/112
-  use Rack::SSL, exclude: ->(env) { env['PATH_INFO'] =~ %r{^/(js|css|img)} } if ENV["ENFORCE_SSL"] == 'true'
+  use Rack::SSL, exclude: ->(env) { env["PATH_INFO"] =~ %r{^/(js|css|img)} } if ENV["ENFORCE_SSL"] == "true"
 
   register Sinatra::ActiveRecordExtension
   register Sinatra::Flash
@@ -84,7 +84,7 @@ class Stringer < Sinatra::Base
     js_compression :jsmin
     css_compression :simple
 
-    prebuild true unless ENV['RACK_ENV'] == 'test'
+    prebuild true unless ENV["RACK_ENV"] == "test"
   end
 
   before do
@@ -92,7 +92,7 @@ class Stringer < Sinatra::Base
 
     if !authenticated? && needs_authentication?(request.path)
       session[:redirect_to] = request.path
-      redirect '/login'
+      redirect "/login"
     end
   end
 

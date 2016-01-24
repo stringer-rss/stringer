@@ -17,7 +17,7 @@ class Stringer < Sinatra::Base
 
     post "/password" do
       if no_password(params) || password_mismatch?(params)
-        flash.now[:error] = t('first_run.password.flash.passwords_dont_match')
+        flash.now[:error] = t("first_run.password.flash.passwords_dont_match")
         erb :"first_run/password"
       else
         user = CreateUser.new.create(params[:password])

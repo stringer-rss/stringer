@@ -16,7 +16,7 @@ class ImportFromOpml
       feeds_with_groups.each do |group_name, parsed_feeds|
         next if parsed_feeds.empty?
 
-        group = Group.where(name: group_name).first_or_create unless group_name == 'Ungrouped'
+        group = Group.where(name: group_name).first_or_create unless group_name == "Ungrouped"
 
         parsed_feeds.each { |parsed_feed| create_feed(parsed_feed, group) }
       end

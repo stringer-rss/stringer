@@ -39,7 +39,7 @@ describe "Story" do
   end
 
   describe "#source" do
-    let(:feed) { Feed.new(name: 'Superfeed') }
+    let(:feed) { Feed.new(name: "Superfeed") }
     before { story.feed = feed }
 
     it "returns the feeds name" do

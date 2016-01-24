@@ -7,7 +7,7 @@ module FeverAPI
     end
 
     def call(params = {})
-      if params.keys.include?('unread_item_ids')
+      if params.keys.include?("unread_item_ids")
         { unread_item_ids: unread_item_ids }
       else
         {}
@@ -17,7 +17,7 @@ module FeverAPI
     private
 
     def unread_item_ids
-      unread_stories.map(&:id).join(',')
+      unread_stories.map(&:id).join(",")
     end
 
     def unread_stories

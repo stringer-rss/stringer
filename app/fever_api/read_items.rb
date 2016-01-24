@@ -7,9 +7,9 @@ module FeverAPI
     end
 
     def call(params = {})
-      if params.keys.include?('items')
+      if params.keys.include?("items")
         item_ids = begin
-                     params[:with_ids].split(',')
+                     params[:with_ids].split(",")
                    rescue
                      nil
                    end
