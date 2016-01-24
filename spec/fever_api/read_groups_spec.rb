@@ -11,7 +11,7 @@ describe FeverAPI::ReadGroups do
 
   it "returns a group list if requested" do
     expect(group_repository).to receive(:list).and_return([group_1, group_2])
-    expect(subject.call("groups" => nil)).to eq({
+    expect(subject.call("groups" => nil)).to eq(
       groups: [
         {
           id: 1,
@@ -22,7 +22,7 @@ describe FeverAPI::ReadGroups do
           title: "World news"
         }
       ]
-    })
+    )
   end
 
   it "returns an empty hash otherwise" do

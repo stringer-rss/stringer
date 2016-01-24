@@ -15,14 +15,14 @@ describe FeverAPI::ReadItems do
       double("story", as_fever_json: { id: 7 }),
       double("story", as_fever_json: { id: 11 })
     ])
-    expect(subject.call("items" => nil)).to eq({
+    expect(subject.call("items" => nil)).to eq(
       items: [
         { id: 5 },
         { id: 7 },
         { id: 11 }
       ],
       total_items: 3
-    })
+    )
   end
 
   it "returns a list of unread items since id including total count" do
@@ -35,13 +35,13 @@ describe FeverAPI::ReadItems do
       double("story", as_fever_json: { id: 5 }),
       double("story", as_fever_json: { id: 7 })
     ])
-    expect(subject.call("items" => nil, since_id: 3)).to eq({
+    expect(subject.call("items" => nil, since_id: 3)).to eq(
       items: [
         { id: 5 },
         { id: 7 }
       ],
       total_items: 3
-    })
+    )
   end
 
   it "returns a list of specified items including total count" do
@@ -50,13 +50,13 @@ describe FeverAPI::ReadItems do
       double("story", as_fever_json: { id: 11 })
     ])
 
-    expect(subject.call("items" => nil, with_ids: "5,11")).to eq({
+    expect(subject.call("items" => nil, with_ids: "5,11")).to eq(
       items: [
         { id: 5 },
         { id: 11 }
       ],
       total_items: 2
-    })
+    )
   end
 
   it "returns an empty hash otherwise" do

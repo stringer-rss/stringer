@@ -7,6 +7,6 @@ describe FeverAPI::Authentication do
     fake_clock = double("clock")
     expect(fake_clock).to receive(:now).and_return(1234567890)
     result = FeverAPI::Authentication.new(clock: fake_clock).call(double)
-    expect(result).to eq({ auth: 1, last_refreshed_on_time: 1234567890 })
+    expect(result).to eq(auth: 1, last_refreshed_on_time: 1234567890)
   end
 end
