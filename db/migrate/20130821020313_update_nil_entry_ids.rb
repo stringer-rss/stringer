@@ -7,6 +7,6 @@ class UpdateNilEntryIds < ActiveRecord::Migration
   end
 
   def self.down
-    #skip
+    # skip
   end
 end

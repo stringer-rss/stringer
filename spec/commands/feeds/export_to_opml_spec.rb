@@ -6,7 +6,7 @@ describe ExportToOpml do
   describe "#to_xml" do
     let(:feed_one) { FeedFactory.build }
     let(:feed_two) { FeedFactory.build }
-    let(:feeds) { [feed_one, feed_two]}
+    let(:feeds) { [feed_one, feed_two] }
 
     it "returns OPML XML" do
       result = ExportToOpml.new(feeds).to_xml

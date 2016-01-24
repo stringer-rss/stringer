@@ -1,4 +1,4 @@
-class SampleStory < Struct.new(:source, :title, :lead, :is_read, :published)
+SampleStory = Struct.new(:source, :title, :lead, :is_read, :published) do
   BODY = <<-eos
 <p>Tofu shoreditch intelligentsia <a href="#">umami</a>, fashion axe photo booth
 try-hard terry richardson quinoa actually fingerstache meggings fixie. Aesthetic
@@ -20,17 +20,41 @@ blue bottle scenester bushwick. Skateboard squid fanny pack bushwick, photo
 booth vice literally.</p>
     eos
 
-  def id; -1 * rand(100); end
-  def headline; title; end
-  def permalink; "#"; end
+  def id
+    -1 * rand(100)
+  end
+
+  def headline
+    title
+  end
+
+  def permalink
+    "#"
+  end
+
   def lead
     "Tofu shoreditch intelligentsia umami, fashion axe photo booth try-hard"
   end
-  def body; BODY; end
-  def is_read; false; end
-  def keep_unread; false; end
-  def is_starred; false; end
-  def published; Time.now; end
+
+  def body
+    BODY
+  end
+
+  def is_read # rubocop:disable Style/PredicateName
+    false
+  end
+
+  def keep_unread
+    false
+  end
+
+  def is_starred # rubocop:disable Style/PredicateName
+    false
+  end
+
+  def published
+    Time.now
+  end
 
   def as_json(_options = {})
     {

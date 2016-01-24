@@ -1,5 +1,3 @@
-inherit_from: .rubocop_todo.yml
-
 AllCops:
   Exclude:
     - 'db/schema.rb'
@@ -11,8 +9,20 @@ Metrics/LineLength:
 Metrics/MethodLength:
   Max: 15
 
+Style/Documentation:
+  Enabled: false
+
+Style/DoubleNegation:
+  Enabled: false
+
 Style/IfUnlessModifier:
   MaxLineLength: 120
+
+Style/NumericLiterals:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
 
 Style/WhileUntilModifier:
   MaxLineLength: 120

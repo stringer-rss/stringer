@@ -8,9 +8,7 @@ require_relative "../tasks/fetch_feeds"
 class Stringer < Sinatra::Base
   namespace "/setup" do
     before do
-      if UserRepository.setup_complete?
-        redirect to("/news")
-      end
+      redirect to("/news") if UserRepository.setup_complete?
     end
 
     get "/password" do
@@ -18,8 +16,8 @@ class Stringer < Sinatra::Base
     end
 
     post "/password" do
-      if no_password(params) or password_mismatch?(params)
-        flash.now[:error] = t('first_run.password.flash.passwords_dont_match')
+      if no_password(params) || password_mismatch?(params)
+        flash.now[:error] = t("first_run.password.flash.passwords_dont_match")
         erb :"first_run/password"
       else
         user = CreateUser.new.create(params[:password])
@@ -39,6 +37,7 @@ class Stringer < Sinatra::Base
   end
 
   private
+
   def no_password(params)
     params[:password].nil? || params[:password] == ""
   end

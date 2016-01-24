@@ -1,7 +1,7 @@
 module FeverAPI
   class Authentication
     def initialize(options = {})
-      @clock = options.fetch(:clock){ Time }
+      @clock = options.fetch(:clock) { Time }
     end
 
     def call(_params)

@@ -8,19 +8,19 @@ class Story < ActiveRecord::Base
   UNTITLED = "[untitled]"
 
   def headline
-    self.title.nil? ? UNTITLED : strip_html(self.title)[0, 50]
+    title.nil? ? UNTITLED : strip_html(title)[0, 50]
   end
 
   def lead
-    strip_html(self.body)[0, 100]
+    strip_html(body)[0, 100]
   end
 
   def source
-    self.feed.name
+    feed.name
   end
 
   def pretty_date
-    I18n.l(self.published)
+    I18n.l(published)
   end
 
   def as_json(_options = {})
@@ -29,19 +29,20 @@ class Story < ActiveRecord::Base
 
   def as_fever_json
     {
-      id: self.id,
-      feed_id: self.feed_id,
-      title: self.title,
+      id: id,
+      feed_id: feed_id,
+      title: title,
       author: source,
       html: body,
-      url: self.permalink,
-      is_saved: self.is_starred ? 1 : 0,
-      is_read: self.is_read ? 1 : 0,
-      created_on_time: self.published.to_i
+      url: permalink,
+      is_saved: is_starred ? 1 : 0,
+      is_read: is_read ? 1 : 0,
+      created_on_time: published.to_i
     }
   end
 
   private
+
   def strip_html(contents)
     Loofah.fragment(contents).text
   end

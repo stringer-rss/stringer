@@ -25,7 +25,7 @@ describe "DebugController" do
     end
 
     it "displays the user agent" do
-      get "/debug", {}, { "HTTP_USER_AGENT" => "test" }
+      get "/debug", {}, "HTTP_USER_AGENT" => "test"
 
       page = last_response.body
       page.should have_tag("dd", text: /test/)

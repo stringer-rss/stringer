@@ -1,7 +1,7 @@
 module FeverAPI
   class ReadFavicons
     def call(params = {})
-      if params.keys.include?('favicons')
+      if params.keys.include?("favicons")
         { favicons: favicons }
       else
         {}

@@ -1,5 +1,5 @@
 class Feed < ActiveRecord::Base
-  has_many :stories, -> {order "published desc"}, dependent: :delete_all
+  has_many :stories, -> { order "published desc" }, dependent: :delete_all
   belongs_to :group
 
   validates_uniqueness_of :url
@@ -20,22 +20,18 @@ class Feed < ActiveRecord::Base
   end
 
   def unread_stories
-    stories.where('is_read = ?', false)
-  end
-
-  def has_unread_stories
-    unread_stories.any?
+    stories.where("is_read = ?", false)
   end
 
   def as_fever_json
     {
-      id: self.id,
+      id: id,
       favicon_id: 0,
-      title: self.name,
-      url: self.url,
-      site_url: self.url,
+      title: name,
+      url: url,
+      site_url: url,
       is_spark: 0,
-      last_updated_on_time: self.last_fetched.to_i
+      last_updated_on_time: last_fetched.to_i
     }
   end
 end

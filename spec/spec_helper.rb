@@ -1,4 +1,4 @@
-ENV['RACK_ENV'] = 'test'
+ENV["RACK_ENV"] = "test"
 
 require "rspec"
 require "rspec-html-matchers"
@@ -31,5 +31,5 @@ def app
 end
 
 def session
-  last_request.env['rack.session']
+  last_request.env["rack.session"]
 end

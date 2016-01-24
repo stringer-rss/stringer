@@ -4,7 +4,7 @@ class RemoveOldStories
     feeds = pruned_feeds(stories)
 
     stories.delete_all
-    feeds.each{|feed| FeedRepository.update_last_fetched(feed, Time.now) }
+    feeds.each { |feed| FeedRepository.update_last_fetched(feed, Time.now) }
   end
 
   def self.old_stories(number_of_days)
