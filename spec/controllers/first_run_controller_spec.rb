@@ -50,8 +50,8 @@ describe "FirstRunController" do
       let(:feeds) { [double, double] }
 
       before do
-        UserRepository.stub(fetch: user)
-        Feed.stub(all: feeds)
+        allow(UserRepository).to receive(:fetch).and_return(user)
+        allow(Feed).to receive(:all).and_return(feeds)
       end
 
       it "displays the tutorial and completes setup" do

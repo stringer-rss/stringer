@@ -12,7 +12,7 @@ describe FeverAPI::ReadFeedsGroups do
   end
 
   it "returns a list of groups requested through feeds" do
-    feed_repository.stub_chain(:in_group, :order).and_return(feeds)
+    allow(feed_repository).to receive_message_chain(:in_group, :order).and_return(feeds)
 
     expect(subject.call("feeds" => nil)).to eq(
       feeds_groups: [
@@ -25,7 +25,7 @@ describe FeverAPI::ReadFeedsGroups do
   end
 
   it "returns a list of groups requested through groups" do
-    feed_repository.stub_chain(:in_group, :order).and_return(feeds)
+    allow(feed_repository).to receive_message_chain(:in_group, :order).and_return(feeds)
 
     expect(subject.call("groups" => nil)).to eq(
       feeds_groups: [

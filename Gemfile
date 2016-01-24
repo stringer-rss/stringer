@@ -16,8 +16,8 @@ group :development, :test do
   gem "faker", "~> 1.2"
   gem "pry-byebug", "~> 1.2"
   gem "rack-test", "~> 0.6.2"
-  gem "rspec", "~> 2.99"
-  gem "rspec-html-matchers", "~> 0.4.3"
+  gem "rspec", "~> 3.4"
+  gem "rspec-html-matchers", "~> 0.7"
   gem "rubocop", "~> 0.35.1", require: false
   gem "shotgun", "~> 0.9.0"
   gem "timecop", "~> 0.7.1"

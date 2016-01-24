@@ -61,7 +61,7 @@ describe FeverAPI do
 
     it "returns groups and feeds by groups when 'groups' header is provided" do
       allow(GroupRepository).to receive(:list).and_return([group])
-      FeedRepository.stub_chain(:in_group, :order).and_return([feed])
+      allow(FeedRepository).to receive_message_chain(:in_group, :order).and_return([feed])
 
       make_request(groups: nil)
 
@@ -75,7 +75,7 @@ describe FeverAPI do
 
     it "returns feeds and feeds by groups when 'feeds' header is provided" do
       allow(FeedRepository).to receive(:list).and_return([feed])
-      FeedRepository.stub_chain(:in_group, :order).and_return([feed])
+      allow(FeedRepository).to receive_message_chain(:in_group, :order).and_return([feed])
 
       make_request(feeds: nil)
 

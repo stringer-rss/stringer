@@ -11,7 +11,7 @@ describe "StoriesController" do
   describe "GET /news" do
     before do
       allow(StoryRepository).to receive(:unread).and_return(stories)
-      UserRepository.stub(fetch: double)
+      allow(UserRepository).to receive(:fetch).and_return(double)
     end
 
     it "display list of unread stories" do
