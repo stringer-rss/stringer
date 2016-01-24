@@ -8,6 +8,6 @@ describe CompleteSetup do
     user.should_receive(:save).once
 
     result = CompleteSetup.complete(user)
-    result.setup_complete.should be_true
+    expect(result.setup_complete).to eq(true)
   end
 end
