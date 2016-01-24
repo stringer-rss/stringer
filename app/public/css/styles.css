@@ -489,9 +489,17 @@ li.feed .remove-feed a:hover {
   transition: 0.25s;
 }
 
-.setup #password, .setup #password-confirmation, .setup #feed-url, .setup #feed-name {
+.setup #password, .setup #password-confirmation, .setup #feed-url, .setup #feed-name, .setup input.select-dummy {
   padding-left: 100px;
   padding-right: 36px;
+}
+
+.setup select {
+  display: block;
+  position: absolute;
+  left: 100px;
+  top: 5px;
+  width: 244px;
 }
 
 .setup .control-group {

@@ -18,6 +18,18 @@
         <i class="icon-rss field-icon"></i>
         <label id="feed_url-label" class="field-label" for="feed_url"><%= t('feeds.edit.fields.feed_url') %></label>
       </div>
+      <% if Group.any? %>
+        <div class="control-group">
+          <input type="text" class="select-dummy" tabindex="-1">
+          <select name="group_id" id="group-id">
+            <option value=""></option>
+            <% Group.all.each do |group| %>
+              <option value="<%= group.id %>" <%= "selected" if @feed.group_id == group.id %>><%= group.name %></option>
+            <% end %>
+          </select>
+          <label id="group_id-label" class="field-label" for="group_id"><%= t('feeds.edit.fields.group') %></label>
+        </div>
+      <% end %>
 
     <input type="submit" id="submit" class="btn btn-primary pull-right" value="<%= t('feeds.edit.fields.submit') %>"/>
   </form>
