@@ -62,11 +62,13 @@ Deploying into OpenShift
 
  ```
 	gem "coveralls", "~> 0.7", require: false
+	gem "rubocop", "~> 0.35.1", require: false
 	gem "sinatra-assetpack", "~> 0.3.1", require: "sinatra/assetpack"
  ```
 	to
  ```
 	gem "coveralls", "~> 0.7", :require => false
+	gem "rubocop", "~> 0.35.1", :require => false
 	gem "sinatra-assetpack", "~> 0.3.1", :require => "sinatra/assetpack"
  ```
 
