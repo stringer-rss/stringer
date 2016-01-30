@@ -14,11 +14,11 @@ The first step is installing some essential dependencies from your VPS's package
 On CentOS after installing Postgres, I needed to run these commands, Fedora likely the same.
 
     service postgresql initdb && service postgresql start
-    
+
 #### Arch Linux
 
     pacman -S git postgresql base-devel libxml2 libxslt curl sqlite readline postgresql-libs
-    
+
 Here are some Arch specific instructions for setting up postgres
 
     systemd-tmpfiles --create postgresql.conf
@@ -47,7 +47,7 @@ We will run stringer as it's own user for security, also we will be installing a
     useradd stringer -m -s /bin/bash
     su -l stringer
 
-Always use -l switch when you switch user to your stringer user, without it your modified .bash_profile or .profile file will be ignored. 
+Always use -l switch when you switch user to your stringer user, without it your modified .bash_profile or .profile file will be ignored.
 
 Install Ruby for your stringer user
 ===================================
@@ -69,7 +69,7 @@ We also need to install bundler which will handle Stringer's dependencies
 
     gem install bundler
     rbenv rehash
-    
+
 We will also need foreman to run our app
 
     gem install foreman
@@ -87,16 +87,14 @@ Use bundler to grab and build Stringer's dependencies
     bundle install
     rbenv rehash
 
-Stringer uses environment variables to determine information about your database, edit these values to reflect your database and the password you chose earlier
+Stringer uses environment variables to configure the application. Edit these values to reflect your settings.
 
-    echo 'export STRINGER_DATABASE="stringer_live"' >> $HOME/.bash_profile
-    echo 'export STRINGER_DATABASE_USERNAME="stringer"' >> $HOME/.bash_profile
-    echo 'export STRINGER_DATABASE_PASSWORD="EDIT_ME"' >> $HOME/.bash_profile
+    echo 'export DATABASE_URL="postgres://stringer:EDIT_ME@localhost/stringer_live"' >> $HOME/.bash_profile
     echo 'export RACK_ENV="production"' >> $HOME/.bash_profile
     echo "export SECRET_TOKEN=`openssl rand -hex 20`" >> $HOME/.bash_profile
     source ~/.bash_profile
-    
-Tell stringer to run the database in production mode, using the postgres database you created earlier.
+
+Tell stringer to run the database in production mode, using the `postgres` database you created earlier.
 
     cd $HOME/stringer
     rake db:migrate RACK_ENV=production
@@ -105,7 +103,7 @@ Run the application:
 
     foreman start
 
-Set up a cron job to parse the rss feeds. 
+Set up a cron job to parse the rss feeds.
 
     crontab -e
 

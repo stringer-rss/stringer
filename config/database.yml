@@ -9,11 +9,6 @@ test:
   database: db/stringer_test.sqlite
 
 production:
-  adapter: postgresql
+  url: <%= ENV["DATABASE_URL"] %>
   encoding: unicode
   pool: 5
-  database: <%= ENV['STRINGER_DATABASE'] || "stringer" %>
-  username: <%= ENV['STRINGER_DATABASE_USERNAME'] %>
-  password: <%= ENV['STRINGER_DATABASE_PASSWORD'] %>
-  host: <%= ENV['STRINGER_DATABASE_HOST'] %>
-  port: <%= ENV['STRINGER_DATABASE_PORT'] %>
