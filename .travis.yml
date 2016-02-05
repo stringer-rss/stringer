@@ -7,15 +7,12 @@ before_script:
   - sleep 5
 cache: bundler
 language: ruby
-matrix:
-  allow_failures:
-    - rvm: 2.1.0
-    - rvm: 2.2.0
 rvm:
   - 2.0.0
-  - 2.1.0
-  - 2.2.0
+  - 2.1
+  - 2.2
 script:
   - bundle exec rspec
   - mocha-phantomjs http://localhost:4567/test
+  - bundle exec rubocop
 sudo: false

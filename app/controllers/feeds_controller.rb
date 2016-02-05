@@ -18,10 +18,10 @@ class Stringer < Sinatra::Base
   put "/feeds/:id" do
     feed = FeedRepository.fetch(params[:id])
 
-    FeedRepository.update_feed(feed, params[:feed_name], params[:feed_url])
+    FeedRepository.update_feed(feed, params[:feed_name], params[:feed_url], params[:group_id])
 
-    flash[:success] = t('feeds.edit.flash.updated_successfully')
-    redirect to('/feeds')
+    flash[:success] = t("feeds.edit.flash.updated_successfully")
+    redirect to("/feeds")
   end
 
   delete "/feeds/:feed_id" do
@@ -39,16 +39,16 @@ class Stringer < Sinatra::Base
     @feed_url = params[:feed_url]
     feed = AddNewFeed.add(@feed_url)
 
-    if feed and feed.valid?
+    if feed && feed.valid?
       FetchFeeds.enqueue([feed])
 
-      flash[:success] = t('feeds.add.flash.added_successfully')
+      flash[:success] = t("feeds.add.flash.added_successfully")
       redirect to("/")
     elsif feed
-      flash.now[:error] = t('feeds.add.flash.already_subscribed_error')
+      flash.now[:error] = t("feeds.add.flash.already_subscribed_error")
       erb :'feeds/add'
     else
-      flash.now[:error] = t('feeds.add.flash.feed_not_found_error')
+      flash.now[:error] = t("feeds.add.flash.feed_not_found_error")
       erb :'feeds/add'
     end
   end
@@ -64,8 +64,8 @@ class Stringer < Sinatra::Base
   end
 
   get "/feeds/export" do
-    content_type 'application/xml'
-    attachment 'stringer.opml'
+    content_type "application/xml"
+    attachment "stringer.opml"
 
     ExportToOpml.new(Feed.all).to_xml
   end

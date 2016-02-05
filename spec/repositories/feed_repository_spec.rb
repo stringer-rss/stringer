@@ -10,7 +10,7 @@ describe FeedRepository do
     it "saves the last_fetched timestamp" do
       feed = Feed.new
 
-      result = FeedRepository.update_last_fetched(feed, timestamp)
+      FeedRepository.update_last_fetched(feed, timestamp)
 
       feed.last_fetched.should eq timestamp
     end
@@ -20,7 +20,7 @@ describe FeedRepository do
     it "rejects weird timestamps" do
       feed = Feed.new(last_fetched: timestamp)
 
-      result = FeedRepository.update_last_fetched(feed, weird_timestamp)
+      FeedRepository.update_last_fetched(feed, weird_timestamp)
 
       feed.last_fetched.should eq timestamp
     end
@@ -28,7 +28,7 @@ describe FeedRepository do
     it "doesn't update if timestamp is nil (feed does not report last modified)" do
       feed = Feed.new(last_fetched: timestamp)
 
-      result = FeedRepository.update_last_fetched(feed, nil)
+      FeedRepository.update_last_fetched(feed, nil)
 
       feed.last_fetched.should eq timestamp
     end
@@ -37,7 +37,7 @@ describe FeedRepository do
       feed = Feed.new(last_fetched: timestamp)
       one_week_ago = timestamp - 1.week
 
-      result = FeedRepository.update_last_fetched(feed, one_week_ago)
+      FeedRepository.update_last_fetched(feed, one_week_ago)
 
       feed.last_fetched.should eq timestamp
     end
@@ -47,10 +47,10 @@ describe FeedRepository do
     it "saves the name and url" do
       feed = Feed.new
 
-      FeedRepository.update_feed(feed, 'Test Feed', 'example.com/feed')
+      FeedRepository.update_feed(feed, "Test Feed", "example.com/feed")
 
-      feed.name.should eq 'Test Feed'
-      feed.url.should eq 'example.com/feed'
+      feed.name.should eq "Test Feed"
+      feed.url.should eq "example.com/feed"
     end
   end
 

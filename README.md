@@ -1,8 +1,8 @@
 # Stringer
 
-[![Build Status](https://img.shields.io/travis/swanson/stringer.svg?style=flat)](https://travis-ci.org/swanson/stringer)
-[![Code Climate](https://img.shields.io/codeclimate/github/swanson/stringer.svg?style=flat)](https://codeclimate.com/github/swanson/stringer)
-[![Coverage Status](https://img.shields.io/coveralls/swanson/stringer.svg?style=flat)](https://coveralls.io/r/swanson/stringer)
+[![Build Status](https://api.travis-ci.org/swanson/stringer.svg?style=flat)](https://travis-ci.org/swanson/stringer)
+[![Code Climate](https://codeclimate.com/github/swanson/stringer.svg?style=flat)](https://codeclimate.com/github/swanson/stringer)
+[![Coverage Status](https://coveralls.io/repos/swanson/stringer/badge.svg?style=flat)](https://coveralls.io/r/swanson/stringer)
 
 ### A self-hosted, anti-social RSS reader.
 
@@ -117,6 +117,10 @@ You can launch an interactive console (ala `rails c`) using `racksh`.
 Most of the heavy-lifting is done by [`feedjira`](https://github.com/feedjira/feedjira) and [`feedbag`](https://github.com/dwillis/feedbag).
 
 General sexiness courtesy of [`Twitter Bootstrap`](http://twitter.github.io/bootstrap/) and [`Flat UI`](http://designmodo.github.io/Flat-UI/).
+
+ReenieBeanie Font Copyright &copy; 2010 Typeco (james@typeco.com). Licensed under [SIL Open Font License, 1.1](scripts.sil.org/OFL).
+
+Lato Font Copyright &copy; 2010-2011 by tyPoland Lukasz Dziedzic (team@latofonts.com). Licensed under [SIL Open Font License, 1.1](scripts.sil.org/OFL).
 
 ## Contact
 

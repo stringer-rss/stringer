@@ -17,7 +17,7 @@ describe FeedDiscovery do
       finder.should_receive(:find).and_return([])
 
       result = FeedDiscovery.new.discover(url, finder, parser)
-      
+
       result.should be_false
     end
 
@@ -25,7 +25,7 @@ describe FeedDiscovery do
       parser.should_receive(:fetch_and_parse).with(url, anything).and_return(feed)
 
       result = FeedDiscovery.new.discover(url, finder, parser)
-      
+
       result.should eq feed
     end
 
@@ -35,7 +35,7 @@ describe FeedDiscovery do
       parser.should_receive(:fetch_and_parse).with(invalid_discovered_url, anything).and_raise(StandardError)
 
       result = FeedDiscovery.new.discover(url, finder, parser)
-      
+
       result.should be_false
     end
 
@@ -45,7 +45,7 @@ describe FeedDiscovery do
       parser.should_receive(:fetch_and_parse).with(valid_discovered_url, anything).and_return(feed)
 
       result = FeedDiscovery.new.discover(url, finder, parser)
-      
+
       result.should eq feed
     end
   end

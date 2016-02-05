@@ -4,10 +4,10 @@ app_require "tasks/fetch_feed"
 describe FetchFeed do
   describe "#fetch" do
     let(:daring_fireball) do
-     double(id: 1,
-          url: "http://daringfireball.com/feed",
-          last_fetched: Time.new(2013,1,1),
-          stories: [])
+      double(id: 1,
+             url: "http://daringfireball.com/feed",
+             last_fetched: Time.new(2013, 1, 1),
+             stories: [])
     end
 
     before do
@@ -41,7 +41,7 @@ describe FetchFeed do
 
     context "when new posts have been added" do
       let(:now) { Time.now }
-      let(:new_story){ double }
+      let(:new_story) { double }
       let(:old_story) { double }
 
       let(:fake_feed) { double(last_modified: now, entries: [new_story, old_story]) }

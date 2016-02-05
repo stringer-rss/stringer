@@ -13,13 +13,12 @@ class ImportFromOpml
       # so it's possible to re-import the same subscriptions.xml just to set group_id
       # for existing feeds. Feeds without groups are in 'Ungrouped' group, we don't
       # create such group and create such feeds with group_id = nil.
-      #
       feeds_with_groups.each do |group_name, parsed_feeds|
-        if parsed_feeds.size > 0
-          group = Group.where(name: group_name).first_or_create unless group_name == 'Ungrouped'
+        next if parsed_feeds.empty?
 
-          parsed_feeds.each { |parsed_feed| create_feed(parsed_feed, group) }
-        end
+        group = Group.where(name: group_name).first_or_create unless group_name == "Ungrouped"
+
+        parsed_feeds.each { |parsed_feed| create_feed(parsed_feed, group) }
       end
     end
 

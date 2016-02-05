@@ -10,5 +10,3 @@ class MarkAsUnread
     @repo.fetch(@story_id).update_attributes(is_read: false)
   end
 end
-
-

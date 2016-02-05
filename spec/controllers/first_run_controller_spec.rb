@@ -29,7 +29,7 @@ describe "FirstRunController" do
       end
 
       it "rejects when password isn't confirmed" do
-        post "/setup/password", {password: "foo", password_confirmation: "bar"}
+        post "/setup/password", password: "foo", password_confirmation: "bar"
 
         page = last_response.body
         page.should have_tag("div.error")
@@ -38,18 +38,18 @@ describe "FirstRunController" do
       it "accepts confirmed passwords and redirects to next step" do
         CreateUser.any_instance.should_receive(:create).with("foo").and_return(double(id: 1))
 
-        post "/setup/password", {password: "foo", password_confirmation: "foo"}
+        post "/setup/password", password: "foo", password_confirmation: "foo"
 
         last_response.status.should be 302
-        URI::parse(last_response.location).path.should eq "/feeds/import"
+        URI.parse(last_response.location).path.should eq "/feeds/import"
       end
     end
 
     describe "GET /setup/tutorial" do
       let(:user) { double }
-      let(:feeds) {[double, double]}
+      let(:feeds) { [double, double] }
 
-      before do 
+      before do
         UserRepository.stub(fetch: user)
         Feed.stub(all: feeds)
       end
@@ -57,7 +57,7 @@ describe "FirstRunController" do
       it "displays the tutorial and completes setup" do
         CompleteSetup.should_receive(:complete).with(user).once
         FetchFeeds.should_receive(:enqueue).with(feeds).once
-        
+
         get "/setup/tutorial"
 
         page = last_response.body
@@ -79,15 +79,15 @@ describe "FirstRunController" do
     it "should redirect any requests to first run stuff" do
       get "/"
       last_response.status.should be 302
-      URI::parse(last_response.location).path.should eq "/news"
+      URI.parse(last_response.location).path.should eq "/news"
 
       get "/setup/password"
       last_response.status.should be 302
-      URI::parse(last_response.location).path.should eq "/news"
+      URI.parse(last_response.location).path.should eq "/news"
 
       get "/setup/tutorial"
       last_response.status.should be 302
-      URI::parse(last_response.location).path.should eq "/news"
+      URI.parse(last_response.location).path.should eq "/news"
     end
   end
 end

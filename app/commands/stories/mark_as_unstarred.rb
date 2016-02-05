@@ -10,5 +10,3 @@ class MarkAsUnstarred
     @repo.fetch(@story_id).update_attributes(is_starred: false)
   end
 end
-
-

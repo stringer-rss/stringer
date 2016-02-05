@@ -31,7 +31,7 @@ describe "Feed importing" do
     describe "Importing for the first time" do
       it "imports all entries" do
         @server.response = sample_data("feeds/feed01_valid_feed/feed.xml")
-        expect { fetch_feed(feed) }.to change{ feed.stories.count }.to(5)
+        expect { fetch_feed(feed) }.to change { feed.stories.count }.to(5)
       end
     end
 
@@ -44,14 +44,14 @@ describe "Feed importing" do
       context "no new entries" do
         it "does not create new stories" do
           @server.response = sample_data("feeds/feed01_valid_feed/feed.xml")
-          expect { fetch_feed(feed) }.to_not change{ feed.stories.count }
+          expect { fetch_feed(feed) }.to_not change { feed.stories.count }
         end
       end
 
       context "new entries" do
         it "creates new stories" do
           @server.response = sample_data("feeds/feed01_valid_feed/feed_updated.xml")
-          expect { fetch_feed(feed) }.to change{ feed.stories.count }.by(1).to(6)
+          expect { fetch_feed(feed) }.to change { feed.stories.count }.by(1).to(6)
         end
       end
     end
@@ -76,7 +76,7 @@ describe "Feed importing" do
         feed.last_fetched = Time.parse("2014-08-12T00:01:00Z")
         @server.response = sample_data("feeds/feed02_invalid_published_dates/feed.xml")
 
-        expect { fetch_feed(feed) }.to change{ feed.stories.count }.by(1)
+        expect { fetch_feed(feed) }.to change { feed.stories.count }.by(1)
       end
     end
   end

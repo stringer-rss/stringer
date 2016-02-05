@@ -34,6 +34,7 @@ en:
       fields:
         feed_name: Feed Name
         feed_url: Feed URL
+        group: Group
         submit: Save
       flash:
         updated_successfully: Updated the feed for ya'!

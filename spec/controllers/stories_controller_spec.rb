@@ -1,5 +1,5 @@
 require "spec_helper"
-require 'will_paginate/array'
+require "will_paginate/array"
 
 app_require "controllers/stories_controller"
 
@@ -13,7 +13,7 @@ describe "StoriesController" do
       StoryRepository.stub(:unread).and_return(stories)
       UserRepository.stub(fetch: double)
     end
-    
+
     it "display list of unread stories" do
       get "/news"
 
@@ -42,9 +42,9 @@ describe "StoriesController" do
       get "/news"
 
       page = last_response.body
-      page.should have_tag("a", with: { href: "/feeds/export"})
-      page.should have_tag("a", with: { href: "/logout"})
-      page.should have_tag("a", with: { href: "https://github.com/swanson/stringer"})
+      page.should have_tag("a", with: { href: "/feeds/export" })
+      page.should have_tag("a", with: { href: "/logout" })
+      page.should have_tag("a", with: { href: "https://github.com/swanson/stringer" })
     end
 
     it "displays a zen-like message when there are no unread stories" do
@@ -93,7 +93,7 @@ describe "StoriesController" do
         it "marks a story as read" do
           StoryRepository.should_receive(:save).once
 
-          put "/stories/#{story_one.id}", {is_read: true}.to_json
+          put "/stories/#{story_one.id}", { is_read: true }.to_json
 
           story_one.is_read.should eq true
         end
@@ -103,7 +103,7 @@ describe "StoriesController" do
         it "marks a story as read" do
           StoryRepository.should_receive(:save).once
 
-          put "/stories/#{story_one.id}", {is_read: "malformed"}.to_json
+          put "/stories/#{story_one.id}", { is_read: "malformed" }.to_json
 
           story_one.is_read.should eq true
         end
@@ -113,7 +113,7 @@ describe "StoriesController" do
     context "keep_unread parameter" do
       context "when it is not malformed" do
         it "marks a story as permanently unread" do
-          put "/stories/#{story_one.id}", {keep_unread: false}.to_json
+          put "/stories/#{story_one.id}", { keep_unread: false }.to_json
 
           story_one.keep_unread.should eq false
         end
@@ -121,7 +121,7 @@ describe "StoriesController" do
 
       context "when it is malformed" do
         it "marks a story as permanently unread" do
-          put "/stories/#{story_one.id}", {keep_unread: "malformed"}.to_json
+          put "/stories/#{story_one.id}", { keep_unread: "malformed" }.to_json
 
           story_one.keep_unread.should eq true
         end
@@ -131,7 +131,7 @@ describe "StoriesController" do
     context "is_starred parameter" do
       context "when it is not malformed" do
         it "marks a story as permanently starred" do
-          put "/stories/#{story_one.id}", {is_starred: true}.to_json
+          put "/stories/#{story_one.id}", { is_starred: true }.to_json
 
           story_one.is_starred.should eq true
         end
@@ -139,7 +139,7 @@ describe "StoriesController" do
 
       context "when it is malformed" do
         it "marks a story as permanently starred" do
-          put "/stories/#{story_one.id}", {is_starred: "malformed"}.to_json
+          put "/stories/#{story_one.id}", { is_starred: "malformed" }.to_json
 
           story_one.is_starred.should eq true
         end
@@ -151,10 +151,10 @@ describe "StoriesController" do
     it "marks all unread stories as read and reload the page" do
       MarkAllAsRead.any_instance.should_receive(:mark_as_read).once
 
-      post "/stories/mark_all_as_read", story_ids: ["1", "2", "3"]
+      post "/stories/mark_all_as_read", story_ids: %w(1 2 3)
 
       last_response.status.should be 302
-      URI::parse(last_response.location).path.should eq "/news"
+      URI.parse(last_response.location).path.should eq "/news"
     end
   end
 
@@ -184,8 +184,8 @@ describe "StoriesController" do
 
       get "/feed/#{story_one.feed.id}"
 
-      last_response.body.should have_tag('li', :class => 'story')
-      last_response.body.should have_tag('li', :class => 'unread')
+      last_response.body.should have_tag("li", class: "story")
+      last_response.body.should have_tag("li", class: "unread")
     end
   end
 end

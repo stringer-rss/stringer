@@ -15,10 +15,8 @@ class FindNewStories
 
     @raw_feed.entries.each do |story|
       break if @latest_entry_id && story.id == @latest_entry_id
-
-      unless story_age_exceeds_threshold?(story) || StoryRepository.exists?(story.id, @feed_id)
-        stories << story
-      end
+      next if story_age_exceeds_threshold?(story) || StoryRepository.exists?(story.id, @feed_id)
+      stories << story
     end
 
     stories

@@ -4,7 +4,6 @@ require "support/active_record"
 app_require "models/story"
 
 describe "Story" do
-
   let(:story) do
     Story.new(
       title: Faker::Lorem.sentence(50),
@@ -40,7 +39,7 @@ describe "Story" do
   end
 
   describe "#source" do
-    let(:feed) { Feed.new(name: 'Superfeed') }
+    let(:feed) { Feed.new(name: "Superfeed") }
     before { story.feed = feed }
 
     it "returns the feeds name" do

@@ -4,9 +4,9 @@ class CreateStories < ActiveRecord::Migration
       t.string :title
       t.string :permalink
       t.text :body
-      
+
       t.references :feed
-      
+
       t.timestamps
     end
   end

@@ -10,4 +10,3 @@ class MarkAsRead
     @repo.fetch(@story_id).update_attributes(is_read: true)
   end
 end
-

@@ -6,7 +6,7 @@ describe FeverAPI::ReadFavicons do
   subject { FeverAPI::ReadFavicons.new }
 
   it "returns a fixed icon list if requested" do
-    subject.call('favicons' => nil).should == {
+    subject.call("favicons" => nil).should == {
       favicons: [
         {
           id: 0,
