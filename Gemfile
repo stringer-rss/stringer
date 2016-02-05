@@ -1,4 +1,19 @@
-ruby "2.0.0"
+# Add a Gemfile.local to locally bundle gems outside of version control
+# and/or specify alternate Ruby versions to bundle
+local_gemfile = File.join(File.expand_path("..", __FILE__), "Gemfile.local")
+if File.readable?(local_gemfile)
+  eval_gemfile local_gemfile
+else
+  ruby_version = ENV.fetch("RUBY_VERSION") do
+    ruby_version_file = File.join(File.expand_path("..", __FILE__), ".ruby-version")
+    if File.readable?(ruby_version_file)
+      File.read(ruby_version_file)
+    else
+      "2.0.0"
+    end
+  end.split("-")[-1] # e.g. {jruby,ruby,rbx}-2.0.0 -> 2.0.0
+  ruby ruby_version
+end
 source "https://rubygems.org"
 
 group :production do
