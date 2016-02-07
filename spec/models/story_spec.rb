@@ -13,28 +13,28 @@ describe "Story" do
 
   describe "#headline" do
     it "truncates to 50 chars" do
-      story.headline.size.should eq(50)
+      expect(story.headline.size).to eq(50)
     end
 
     it "uses a fallback string if story has no title" do
       story.title = nil
-      story.headline.should eq(Story::UNTITLED)
+      expect(story.headline).to eq(Story::UNTITLED)
     end
 
     it "strips html out" do
       story.title = "<b>Super cool</b> stuff"
-      story.headline.should eq "Super cool stuff"
+      expect(story.headline).to eq "Super cool stuff"
     end
   end
 
   describe "#lead" do
     it "truncates to 100 chars" do
-      story.lead.size.should eq(100)
+      expect(story.lead.size).to eq(100)
     end
 
     it "strips html out" do
       story.body = "<a href='http://github.com'>Yo</a> dawg"
-      story.lead.should eq "Yo dawg"
+      expect(story.lead).to eq "Yo dawg"
     end
   end
 
@@ -43,7 +43,7 @@ describe "Story" do
     before { story.feed = feed }
 
     it "returns the feeds name" do
-      story.source.should eq(feed.name)
+      expect(story.source).to eq(feed.name)
     end
   end
 end

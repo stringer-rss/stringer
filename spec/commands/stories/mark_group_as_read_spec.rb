@@ -14,22 +14,22 @@ describe MarkGroupAsRead do
 
     it "marks group as read" do
       command = run_command(2)
-      stories.should_receive(:update_all).with(is_read: true)
-      repo.should_receive(:fetch_unread_by_timestamp_and_group).with(timestamp, 2).and_return(stories)
+      expect(stories).to receive(:update_all).with(is_read: true)
+      expect(repo).to receive(:fetch_unread_by_timestamp_and_group).with(timestamp, 2).and_return(stories)
       command.mark_group_as_read
     end
 
     it "does not mark any group as read when group is not provided" do
       command = run_command(nil)
-      repo.should_not_receive(:fetch_unread_by_timestamp_and_group)
-      repo.should_not_receive(:fetch_unread_by_timestamp)
+      expect(repo).not_to receive(:fetch_unread_by_timestamp_and_group)
+      expect(repo).not_to receive(:fetch_unread_by_timestamp)
       command.mark_group_as_read
     end
 
     context "SPARKS_GROUP_ID and KINDLING_GROUP_ID" do
       before do
-        stories.should_receive(:update_all).with(is_read: true)
-        repo.should_receive(:fetch_unread_by_timestamp).and_return(stories)
+        expect(stories).to receive(:update_all).with(is_read: true)
+        expect(repo).to receive(:fetch_unread_by_timestamp).and_return(stories)
       end
 
       it "marks as read all feeds when group is 0" do

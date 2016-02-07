@@ -8,40 +8,40 @@ describe "SessionsController" do
       get "/login"
 
       page = last_response.body
-      page.should have_tag("input#password")
-      page.should have_tag("#login")
+      expect(page).to have_tag("input#password")
+      expect(page).to have_tag("#login")
     end
   end
 
   describe "POST /login" do
     it "denies access when password is incorrect" do
-      SignInUser.stub(:sign_in).and_return(nil)
+      allow(SignInUser).to receive(:sign_in).and_return(nil)
 
       post "/login", password: "not-the-password"
 
       page = last_response.body
-      page.should have_tag(".error")
+      expect(page).to have_tag(".error")
     end
 
     it "allows access when password is correct" do
-      SignInUser.stub(:sign_in).and_return(double(id: 1))
+      allow(SignInUser).to receive(:sign_in).and_return(double(id: 1))
 
       post "/login", password: "the-password"
 
-      session[:user_id].should eq 1
+      expect(session[:user_id]).to eq 1
 
-      last_response.status.should be 302
-      URI.parse(last_response.location).path.should eq "/"
+      expect(last_response.status).to be 302
+      expect(URI.parse(last_response.location).path).to eq "/"
     end
 
     it "redirects to the previous path when present" do
-      SignInUser.stub(:sign_in).and_return(double(id: 1))
+      allow(SignInUser).to receive(:sign_in).and_return(double(id: 1))
 
       post "/login", { password: "the-password" },
            "rack.session" => { redirect_to: "/archive" }
 
-      session[:redirect_to].should be_nil
-      URI.parse(last_response.location).path.should eq "/archive"
+      expect(session[:redirect_to]).to be_nil
+      expect(URI.parse(last_response.location).path).to eq "/archive"
     end
   end
 
@@ -49,10 +49,10 @@ describe "SessionsController" do
     it "clears the session and redirects" do
       get "/logout", {}, "rack.session" => { userid: 1 }
 
-      session[:user_id].should be_nil
+      expect(session[:user_id]).to be_nil
 
-      last_response.status.should be 302
-      URI.parse(last_response.location).path.should eq "/"
+      expect(last_response.status).to be 302
+      expect(URI.parse(last_response.location).path).to eq "/"
     end
   end
 end

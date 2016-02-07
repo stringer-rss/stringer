@@ -9,7 +9,7 @@ describe MarkAsStarred do
 
     it "marks a story as starred" do
       command = MarkAsStarred.new(1, repo)
-      story.should_receive(:update_attributes).with(is_starred: true)
+      expect(story).to receive(:update_attributes).with(is_starred: true)
       command.mark_as_starred
     end
   end

@@ -6,10 +6,10 @@ describe FeverAPI::ReadLinks do
   subject { FeverAPI::ReadLinks.new }
 
   it "returns a fixed link list if requested" do
-    subject.call("links" => nil).should == { links: [] }
+    expect(subject.call("links" => nil)).to eq(links: [])
   end
 
   it "returns an empty hash otherwise" do
-    subject.call.should == {}
+    expect(subject.call).to eq({})
   end
 end

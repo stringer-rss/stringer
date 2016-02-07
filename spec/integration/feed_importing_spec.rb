@@ -51,7 +51,7 @@ describe "Feed importing" do
       context "new entries" do
         it "creates new stories" do
           @server.response = sample_data("feeds/feed01_valid_feed/feed_updated.xml")
-          expect { fetch_feed(feed) }.to change { feed.stories.count }.by(1).to(6)
+          expect { fetch_feed(feed) }.to change { feed.stories.count }.by(1)
         end
       end
     end

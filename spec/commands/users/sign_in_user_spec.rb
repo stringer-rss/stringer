@@ -14,13 +14,13 @@ describe SignInUser do
     it "returns the user if the password is valid" do
       result = SignInUser.sign_in(valid_password, repo)
 
-      result.id.should eq 1
+      expect(result.id).to eq 1
     end
 
     it "returns nil if password is invalid" do
       result = SignInUser.sign_in("not-the-pw", repo)
 
-      result.should be_nil
+      expect(result).to be_nil
     end
   end
 end
