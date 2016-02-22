@@ -1,4 +1,5 @@
-ruby "2.0.0"
+ruby_version_file = File.join(File.expand_path("..", __FILE__), ".ruby-version")
+ruby File.read(ruby_version_file).chomp if File.readable?(ruby_version_file)
 source "https://rubygems.org"
 
 group :production do
