@@ -3,7 +3,6 @@
 .bundle
 .config
 .ruby-gemset
-.ruby-version
 coverage
 InstalledFiles
 lib/bundler/man
