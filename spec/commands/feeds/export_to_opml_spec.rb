@@ -12,25 +12,25 @@ describe ExportToOpml do
       result = ExportToOpml.new(feeds).to_xml
 
       outlines = Nokogiri.XML(result).xpath("//body//outline")
-      outlines.should have(2).items
-      outlines.first["title"].should eq feed_one.name
-      outlines.first["xmlUrl"].should eq feed_one.url
-      outlines.last["title"].should eq feed_two.name
-      outlines.last["xmlUrl"].should eq feed_two.url
+      expect(outlines.size).to eq(2)
+      expect(outlines.first["title"]).to eq feed_one.name
+      expect(outlines.first["xmlUrl"]).to eq feed_one.url
+      expect(outlines.last["title"]).to eq feed_two.name
+      expect(outlines.last["xmlUrl"]).to eq feed_two.url
     end
 
     it "handles empty feeds" do
       result = ExportToOpml.new([]).to_xml
 
       outlines = Nokogiri.XML(result).xpath("//body//outline")
-      outlines.should have(0).items
+      expect(outlines).to be_empty
     end
 
     it "has a proper title" do
       result = ExportToOpml.new(feeds).to_xml
 
       title = Nokogiri.XML(result).xpath("//head//title").first
-      title.content.should eq "Feeds from Stringer"
+      expect(title.content).to eq "Feeds from Stringer"
     end
   end
 end

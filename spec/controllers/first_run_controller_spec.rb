@@ -5,7 +5,7 @@ app_require "controllers/first_run_controller"
 describe "FirstRunController" do
   context "when a user has not been setup" do
     before do
-      UserRepository.stub(:setup_complete?).and_return(false)
+      allow(UserRepository).to receive(:setup_complete?).and_return(false)
     end
 
     describe "GET /setup/password" do
@@ -13,10 +13,10 @@ describe "FirstRunController" do
         get "/setup/password"
 
         page = last_response.body
-        page.should have_tag("form#password_setup")
-        page.should have_tag("input#password")
-        page.should have_tag("input#password-confirmation")
-        page.should have_tag("input#submit")
+        expect(page).to have_tag("form#password_setup")
+        expect(page).to have_tag("input#password")
+        expect(page).to have_tag("input#password-confirmation")
+        expect(page).to have_tag("input#submit")
       end
     end
 
@@ -25,23 +25,23 @@ describe "FirstRunController" do
         post "/setup/password"
 
         page = last_response.body
-        page.should have_tag("div.error")
+        expect(page).to have_tag("div.error")
       end
 
       it "rejects when password isn't confirmed" do
         post "/setup/password", password: "foo", password_confirmation: "bar"
 
         page = last_response.body
-        page.should have_tag("div.error")
+        expect(page).to have_tag("div.error")
       end
 
       it "accepts confirmed passwords and redirects to next step" do
-        CreateUser.any_instance.should_receive(:create).with("foo").and_return(double(id: 1))
+        expect_any_instance_of(CreateUser).to receive(:create).with("foo").and_return(double(id: 1))
 
         post "/setup/password", password: "foo", password_confirmation: "foo"
 
-        last_response.status.should be 302
-        URI.parse(last_response.location).path.should eq "/feeds/import"
+        expect(last_response.status).to be 302
+        expect(URI.parse(last_response.location).path).to eq "/feeds/import"
       end
     end
 
@@ -50,44 +50,44 @@ describe "FirstRunController" do
       let(:feeds) { [double, double] }
 
       before do
-        UserRepository.stub(fetch: user)
-        Feed.stub(all: feeds)
+        allow(UserRepository).to receive(:fetch).and_return(user)
+        allow(Feed).to receive(:all).and_return(feeds)
       end
 
       it "displays the tutorial and completes setup" do
-        CompleteSetup.should_receive(:complete).with(user).once
-        FetchFeeds.should_receive(:enqueue).with(feeds).once
+        expect(CompleteSetup).to receive(:complete).with(user).once
+        expect(FetchFeeds).to receive(:enqueue).with(feeds).once
 
         get "/setup/tutorial"
 
         page = last_response.body
-        page.should have_tag("#mark-all-instruction")
-        page.should have_tag("#refresh-instruction")
-        page.should have_tag("#feeds-instruction")
-        page.should have_tag("#add-feed-instruction")
-        page.should have_tag("#story-instruction")
-        page.should have_tag("#start")
+        expect(page).to have_tag("#mark-all-instruction")
+        expect(page).to have_tag("#refresh-instruction")
+        expect(page).to have_tag("#feeds-instruction")
+        expect(page).to have_tag("#add-feed-instruction")
+        expect(page).to have_tag("#story-instruction")
+        expect(page).to have_tag("#start")
       end
     end
   end
 
   context "when a user has been setup" do
     before do
-      UserRepository.stub(:setup_complete?).and_return(true)
+      allow(UserRepository).to receive(:setup_complete?).and_return(true)
     end
 
     it "should redirect any requests to first run stuff" do
       get "/"
-      last_response.status.should be 302
-      URI.parse(last_response.location).path.should eq "/news"
+      expect(last_response.status).to be 302
+      expect(URI.parse(last_response.location).path).to eq "/news"
 
       get "/setup/password"
-      last_response.status.should be 302
-      URI.parse(last_response.location).path.should eq "/news"
+      expect(last_response.status).to be 302
+      expect(URI.parse(last_response.location).path).to eq "/news"
 
       get "/setup/tutorial"
-      last_response.status.should be 302
-      URI.parse(last_response.location).path.should eq "/news"
+      expect(last_response.status).to be 302
+      expect(URI.parse(last_response.location).path).to eq "/news"
     end
   end
 end

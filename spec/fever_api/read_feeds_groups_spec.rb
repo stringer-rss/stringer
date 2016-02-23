@@ -12,32 +12,32 @@ describe FeverAPI::ReadFeedsGroups do
   end
 
   it "returns a list of groups requested through feeds" do
-    feed_repository.stub_chain(:in_group, :order).and_return(feeds)
+    allow(feed_repository).to receive_message_chain(:in_group, :order).and_return(feeds)
 
-    subject.call("feeds" => nil).should == {
+    expect(subject.call("feeds" => nil)).to eq(
       feeds_groups: [
         {
           group_id: 1,
           feed_ids: feed_ids.join(",")
         }
       ]
-    }
+    )
   end
 
   it "returns a list of groups requested through groups" do
-    feed_repository.stub_chain(:in_group, :order).and_return(feeds)
+    allow(feed_repository).to receive_message_chain(:in_group, :order).and_return(feeds)
 
-    subject.call("groups" => nil).should == {
+    expect(subject.call("groups" => nil)).to eq(
       feeds_groups: [
         {
           group_id: 1,
           feed_ids: feed_ids.join(",")
         }
       ]
-    }
+    )
   end
 
   it "returns an empty hash otherwise" do
-    subject.call.should == {}
+    expect(subject.call).to eq({})
   end
 end

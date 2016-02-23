@@ -9,7 +9,7 @@ describe MarkFeedAsRead do
 
     it "marks feed 1 as read" do
       command = MarkFeedAsRead.new(1, Time.now.to_i, repo)
-      stories.should_receive(:update_all).with(is_read: true)
+      expect(stories).to receive(:update_all).with(is_read: true)
       command.mark_feed_as_read
     end
   end

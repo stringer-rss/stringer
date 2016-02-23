@@ -23,13 +23,13 @@ describe OpmlParser do
       eos
 
       resulted_values = result.values.flatten
-      resulted_values.size.should eq 2
-      resulted_values.first[:name].should eq "a sample feed"
-      resulted_values.first[:url].should eq "http://feeds.feedburner.com/foobar"
+      expect(resulted_values.size).to eq 2
+      expect(resulted_values.first[:name]).to eq "a sample feed"
+      expect(resulted_values.first[:url]).to eq "http://feeds.feedburner.com/foobar"
 
-      resulted_values.last[:name].should eq "Matt's Blog"
-      resulted_values.last[:url].should eq "http://mdswanson.com/atom.xml"
-      result.keys.first.should eq "Ungrouped"
+      expect(resulted_values.last[:name]).to eq "Matt's Blog"
+      expect(resulted_values.last[:url]).to eq "http://mdswanson.com/atom.xml"
+      expect(result.keys.first).to eq "Ungrouped"
     end
 
     it "handles nested groups of feeds" do
@@ -49,10 +49,10 @@ describe OpmlParser do
       eos
       resulted_values = result.values.flatten
 
-      resulted_values.count.should eq 1
-      resulted_values.first[:name].should eq "a sample feed"
-      resulted_values.first[:url].should eq "http://feeds.feedburner.com/foobar"
-      result.keys.first.should eq "Technology News"
+      expect(resulted_values.count).to eq 1
+      expect(resulted_values.first[:name]).to eq "a sample feed"
+      expect(resulted_values.first[:url]).to eq "http://feeds.feedburner.com/foobar"
+      expect(result.keys.first).to eq "Technology News"
     end
 
     it "doesn't explode when there are no feeds" do
@@ -67,7 +67,7 @@ describe OpmlParser do
         </opml>
       eos
 
-      result.should be_empty
+      expect(result).to be_empty
     end
 
     it "handles Feedly's exported OPML (missing :title)" do
@@ -85,8 +85,8 @@ describe OpmlParser do
       eos
       resulted_values = result.values.flatten
 
-      resulted_values.count.should eq 1
-      resulted_values.first[:name].should eq "a sample feed"
+      expect(resulted_values.count).to eq 1
+      expect(resulted_values.first[:name]).to eq "a sample feed"
     end
   end
 end

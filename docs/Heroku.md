@@ -10,7 +10,7 @@ heroku config:set SECRET_TOKEN=`openssl rand -hex 20`
 heroku run rake db:migrate
 heroku restart
 
-heroku addons:add scheduler
+heroku addons:create scheduler
 heroku addons:open scheduler
 ```
 

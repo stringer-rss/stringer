@@ -12,7 +12,7 @@ describe FeedRepository do
 
       FeedRepository.update_last_fetched(feed, timestamp)
 
-      feed.last_fetched.should eq timestamp
+      expect(feed.last_fetched).to eq timestamp
     end
 
     let(:weird_timestamp) { Time.parse("Mon, 01 Jan 0001 00:00:00 +0100") }
@@ -22,7 +22,7 @@ describe FeedRepository do
 
       FeedRepository.update_last_fetched(feed, weird_timestamp)
 
-      feed.last_fetched.should eq timestamp
+      expect(feed.last_fetched).to eq timestamp
     end
 
     it "doesn't update if timestamp is nil (feed does not report last modified)" do
@@ -30,7 +30,7 @@ describe FeedRepository do
 
       FeedRepository.update_last_fetched(feed, nil)
 
-      feed.last_fetched.should eq timestamp
+      expect(feed.last_fetched).to eq timestamp
     end
 
     it "doesn't update if timestamp is older than the current value" do
@@ -39,7 +39,7 @@ describe FeedRepository do
 
       FeedRepository.update_last_fetched(feed, one_week_ago)
 
-      feed.last_fetched.should eq timestamp
+      expect(feed.last_fetched).to eq timestamp
     end
   end
 
@@ -49,8 +49,8 @@ describe FeedRepository do
 
       FeedRepository.update_feed(feed, "Test Feed", "example.com/feed")
 
-      feed.name.should eq "Test Feed"
-      feed.url.should eq "example.com/feed"
+      expect(feed.name).to eq "Test Feed"
+      expect(feed.url).to eq "example.com/feed"
     end
   end
 
@@ -58,16 +58,16 @@ describe FeedRepository do
     let(:feed) { Feed.new(id: 1) }
 
     it "finds by id" do
-      Feed.should_receive(:find).with(feed.id).and_return(feed)
+      expect(Feed).to receive(:find).with(feed.id).and_return(feed)
       FeedRepository.fetch(feed.id)
     end
 
     it "returns found feed" do
-      Feed.stub(:find).with(feed.id).and_return(feed)
+      allow(Feed).to receive(:find).with(feed.id).and_return(feed)
 
       result = FeedRepository.fetch(feed.id)
 
-      result.should eq feed
+      expect(result).to eq feed
     end
   end
 end

@@ -1,4 +1,5 @@
-ruby "2.0.0"
+ruby_version_file = File.join(File.expand_path("..", __FILE__), ".ruby-version")
+ruby File.read(ruby_version_file).chomp if File.readable?(ruby_version_file)
 source "https://rubygems.org"
 
 group :production do
@@ -16,23 +17,23 @@ group :development, :test do
   gem "faker", "~> 1.2"
   gem "pry-byebug", "~> 1.2"
   gem "rack-test", "~> 0.6.2"
-  gem "rspec", "~> 2.14", ">= 2.14.1"
-  gem "rspec-html-matchers", "~> 0.4.3"
+  gem "rspec", "~> 3.4"
+  gem "rspec-html-matchers", "~> 0.7"
   gem "rubocop", "~> 0.35.1", require: false
   gem "shotgun", "~> 0.9.0"
   gem "timecop", "~> 0.7.1"
 end
 
-gem "activerecord", "~> 4.0"
-gem "arel", "~> 4.0.2"
+gem "activerecord", "~> 4.1.11"
+gem "arel", "~> 5.0"
 gem "bcrypt-ruby", "~> 3.1.2"
-gem "delayed_job", "~> 4.0"
-gem "delayed_job_active_record", "~> 4.0"
+gem "delayed_job", "~> 4.1"
+gem "delayed_job_active_record", "~> 4.1"
 gem "feedbag", "~> 0.9.2"
 gem "feedjira", "~> 1.3.0"
 gem "i18n", "~> 0.6.9"
 gem "loofah", "~> 2.0.0"
-gem "nokogiri", "~> 1.6"
+gem "nokogiri", "~> 1.6", ">= 1.6.7.2"
 gem "rack-ssl", "~> 1.4.1"
 gem "racksh", "~> 1.0"
 gem "rake", "~> 10.1", ">= 10.1.1"

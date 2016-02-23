@@ -12,23 +12,23 @@ describe ChangeUserPassword do
 
   describe "#change_user_password" do
     it "changes the password of the user" do
-      repo.should_receive(:first).and_return(user)
-      repo.should_receive(:save)
+      expect(repo).to receive(:first).and_return(user)
+      expect(repo).to receive(:save)
 
       command = ChangeUserPassword.new(repo)
       result = command.change_user_password(new_password)
 
-      BCrypt::Password.new(result.password_digest).should eq new_password
+      expect(BCrypt::Password.new(result.password_digest)).to eq new_password
     end
 
     it "changes the API key of the user" do
-      repo.should_receive(:first).and_return(user)
-      repo.should_receive(:save)
+      expect(repo).to receive(:first).and_return(user)
+      expect(repo).to receive(:save)
 
       command = ChangeUserPassword.new(repo)
       result = command.change_user_password(new_password)
 
-      result.api_key.should eq ApiKey.compute(new_password)
+      expect(result.api_key).to eq ApiKey.compute(new_password)
     end
   end
 end
