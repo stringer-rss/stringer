@@ -8,10 +8,11 @@ before_script:
 cache: bundler
 language: ruby
 rvm:
-  - 2.0.0
-  - 2.1
-  - 2.2
   - 2.3.0
+  - ruby-head
+matrix:
+  allow_failures:
+    - rvm: ruby-head
 script:
   - bundle exec rspec
   - mocha-phantomjs http://localhost:4567/test
