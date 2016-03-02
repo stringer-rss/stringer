@@ -9,7 +9,7 @@
   "website": "https://github.com/swanson/stringer",
   "success_url": "/heroku",
   "scripts": {
-    "postdeploy": "rake db:migrate"
+    "postdeploy": "bundle exec rake db:migrate"
   },
   "env": {
     "SECRET_TOKEN": {
