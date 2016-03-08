@@ -124,6 +124,10 @@ Lato Font Copyright &copy; 2010-2011 by tyPoland Lukasz Dziedzic (team@latofonts
 
 ## Contact
 
+If you have a question, feature idea, or are running into problems, our preferred method of contact is to open an issue on GitHub. This allows multiple people to weigh in and we can keep everything in one place. Thanks!
+
+## Maintainers
+
 Matt Swanson, [mdswanson.com](http://mdswanson.com), [@_swanson](http://twitter.com/_swanson)
 
 Victor Koronen, [victor.koronen.se](http://victor.koronen.se/), [@victorkoronen](https://twitter.com/victorkoronen)
