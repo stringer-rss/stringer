@@ -46,7 +46,7 @@ desc "Work the delayed_job queue."
 task :work_jobs do
   Delayed::Job.delete_all
 
-  worker_retry = Integer(ENV["WORKER_RETRY"]) rescue 3
+  worker_retry = Integer(ENV["WORKER_RETRY"] || 3)
   worker_retry.times do
     Delayed::Worker.new(
       min_priority: ENV["MIN_PRIORITY"],

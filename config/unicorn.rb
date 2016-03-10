@@ -9,9 +9,7 @@ before_fork do |_server, _worker|
   # as there's no need for the master process to hold a connection
   ActiveRecord::Base.connection.disconnect! if defined?(ActiveRecord::Base)
 
-  unless ENV["WORKER_EMBEDDED"] == "false"
-    @delayed_job_pid ||= spawn("bundle exec rake work_jobs")
-  end
+  @delayed_job_pid ||= spawn("bundle exec rake work_jobs") unless ENV["WORKER_EMBEDDED"] == "false"
 
   sleep 1
 end

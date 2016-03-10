@@ -12,9 +12,7 @@ class FetchFeeds
   def fetch_all
     @pool ||= Thread.pool(10)
 
-    if @feeds.blank? and !@feeds_ids.blank?
-      @feeds = FeedRepository.fetch_by_ids(@feeds_ids)
-    end
+    @feeds = FeedRepository.fetch_by_ids(@feeds_ids) if @feeds.blank? && !@feeds_ids.blank?
 
     @feeds.each do |feed|
       @pool.process do
@@ -28,9 +26,9 @@ class FetchFeeds
   end
 
   def prepare_to_delay
-    @feeds_ids = @feeds.map { |feed| feed.id }
+    @feeds_ids = @feeds.map(&:id)
     @feeds = []
-    return self
+    self
   end
 
   def self.enqueue(feeds)
