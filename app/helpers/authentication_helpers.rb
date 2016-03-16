@@ -17,7 +17,11 @@ module Sinatra
     end
 
     def current_user
-      UserRepository.fetch(session[:user_id])
+      begin
+        UserRepository.fetch(session[:user_id])
+      rescue
+        session[:user_id] = nil
+      end
     end
   end
 end
