@@ -8,7 +8,17 @@ require_relative "../tasks/fetch_feeds"
 class Stringer < Sinatra::Base
   namespace "/setup" do
     before do
-      redirect to("/news") if UserRepository.setup_complete?
+      return unless request.request_method == "GET"
+
+      if authenticated?
+        if UserRepository.setup_complete?
+          redirect to("/news")
+        else
+          redirect to("/setup/tutorial") if needs_setup_complete?(request.path)
+        end
+      else
+        redirect to("/login") if UserRepository.created?
+      end
     end
 
     get "/password" do
@@ -16,6 +26,8 @@ class Stringer < Sinatra::Base
     end
 
     post "/password" do
+      halt 403 if UserRepository.created?
+
       if no_password(params) || password_mismatch?(params)
         flash.now[:error] = t("first_run.password.flash.passwords_dont_match")
         erb :"first_run/password"

@@ -25,14 +25,6 @@ RSpec.describe Sinatra::AuthenticationHelpers do
       end
     end
 
-    context "when setup in not complete" do
-      it "returns false" do
-        allow(UserRepository).to receive(:setup_complete?).and_return(false)
-
-        expect(helper.needs_authentication?(authenticated_path)).to eq(false)
-      end
-    end
-
     %w(/login /logout /heroku).each do |path|
       context "when `path` is '#{path}'" do
         it "returns false" do
