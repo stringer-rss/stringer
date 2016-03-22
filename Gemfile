@@ -24,14 +24,13 @@ group :development, :test do
   gem "timecop", "~> 0.7.1"
 end
 
-gem "activerecord", "~> 4.1.11"
-gem "arel", "~> 5.0"
+gem "activerecord", "~> 4.2.6"
 gem "bcrypt-ruby", "~> 3.1.2"
 gem "delayed_job", "~> 4.1"
 gem "delayed_job_active_record", "~> 4.1"
 gem "feedbag", "~> 0.9.2"
 gem "feedjira", "~> 1.3.0"
-gem "i18n", "~> 0.6.9"
+gem "i18n"
 gem "loofah", "~> 2.0.0"
 gem "nokogiri", "~> 1.6", ">= 1.6.7.2"
 gem "rack-ssl", "~> 1.4.1"
