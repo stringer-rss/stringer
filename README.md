@@ -3,6 +3,7 @@
 [![Build Status](https://api.travis-ci.org/swanson/stringer.svg?style=flat)](https://travis-ci.org/swanson/stringer)
 [![Code Climate](https://codeclimate.com/github/swanson/stringer.svg?style=flat)](https://codeclimate.com/github/swanson/stringer)
 [![Coverage Status](https://coveralls.io/repos/swanson/stringer/badge.svg?style=flat)](https://coveralls.io/r/swanson/stringer)
+[![Dependency Status](https://gemnasium.com/swanson/stringer.svg)](https://gemnasium.com/swanson/stringer)
 
 ### A self-hosted, anti-social RSS reader.
 
