@@ -4,7 +4,7 @@ class Feed < ActiveRecord::Base
 
   validates_uniqueness_of :url
 
-  STATUS = { green: 0, yellow: 1, red: 2 }
+  STATUS = { green: 0, yellow: 1, red: 2 }.freeze
 
   def status
     STATUS.key(read_attribute(:status))

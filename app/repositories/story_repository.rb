@@ -62,12 +62,12 @@ class StoryRepository
 
   def self.read(page = 1)
     Story.where(is_read: true).includes(:feed)
-      .order("published desc").page(page).per_page(20)
+         .order("published desc").page(page).per_page(20)
   end
 
   def self.starred(page = 1)
     Story.where(is_starred: true).includes(:feed)
-      .order("published desc").page(page).per_page(20)
+         .order("published desc").page(page).per_page(20)
   end
 
   def self.all_starred
@@ -76,7 +76,7 @@ class StoryRepository
 
   def self.unstarred_read_stories_older_than(num_days)
     Story.where(is_read: true, is_starred: false)
-      .where("published <= ?", num_days.days.ago)
+         .where("published <= ?", num_days.days.ago)
   end
 
   def self.read_count
@@ -97,9 +97,9 @@ class StoryRepository
 
   def self.sanitize(content)
     Loofah.fragment(content.gsub(/<wbr\s*>/i, ""))
-      .scrub!(:prune)
-      .scrub!(:unprintable)
-      .to_s
+          .scrub!(:prune)
+          .scrub!(:unprintable)
+          .to_s
   end
 
   def self.samples

@@ -1,5 +1,5 @@
 SampleStory = Struct.new(:source, :title, :lead, :is_read, :published) do
-  BODY = <<-eos
+  BODY = <<-eos.freeze
 <p>Tofu shoreditch intelligentsia <a href="#">umami</a>, fashion axe photo booth
 try-hard terry richardson quinoa actually fingerstache meggings fixie. Aesthetic
 salvia vinyl raw denim, keffiyeh master cleanse tonx selfies mlkshk occupy twee

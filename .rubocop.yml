@@ -1,7 +1,10 @@
+inherit_from: .rubocop_todo.yml
+
 AllCops:
   Exclude:
     - 'db/schema.rb'
     - 'vendor/**/*'
+  TargetRubyVersion: 2.3
 
 Metrics/LineLength:
   Max: 120
