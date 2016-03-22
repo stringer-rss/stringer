@@ -19,7 +19,7 @@ class FeedRepository
   end
 
   def self.update_last_fetched(feed, timestamp)
-    if self.valid_timestamp?(timestamp, feed.last_fetched)
+    if valid_timestamp?(timestamp, feed.last_fetched)
       feed.last_fetched = timestamp
       feed.save
     end

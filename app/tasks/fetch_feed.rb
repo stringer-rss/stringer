@@ -5,7 +5,7 @@ require_relative "../repositories/feed_repository"
 require_relative "../commands/feeds/find_new_stories"
 
 class FetchFeed
-  USER_AGENT = "Stringer (https://github.com/swanson/stringer)"
+  USER_AGENT = "Stringer (https://github.com/swanson/stringer)".freeze
 
   def initialize(feed, parser: Feedjira::Feed, logger: nil)
     @feed = feed

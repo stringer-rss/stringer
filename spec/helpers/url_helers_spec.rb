@@ -26,7 +26,7 @@ RSpec.describe UrlHelpers do
       EOS
 
       result = helper.expand_absolute_urls(content, "http://oodl.io/d/")
-      expect(result.gsub(/\n/, "")).to eq <<-EOS.gsub(/\n/, "")
+      expect(result.delete("\n")).to eq <<-EOS.delete("\n")
 <div>
 <img src="https://foo">
 <a href="http://oodl.io/bar/baz">tee</a>
@@ -50,7 +50,7 @@ RSpec.describe UrlHelpers do
       EOS
 
       result = helper.expand_absolute_urls(content, "http://oodl.io/d/")
-      expect(result.gsub(/\n/, "")).to eq <<-EOS.gsub(/\n/, "")
+      expect(result.delete("\n")).to eq <<-EOS.delete("\n")
 <div>
 <img foo="bar">
 <a name="something"></a>
