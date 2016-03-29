@@ -2,14 +2,17 @@ worker_processes 1
 timeout 30
 preload_app true
 
-@delayed_job_pid = nil
+work_pids = {}
 
 before_fork do |_server, _worker|
   # the following is highly recommended for Rails + "preload_app true"
   # as there's no need for the master process to hold a connection
   ActiveRecord::Base.connection.disconnect! if defined?(ActiveRecord::Base)
 
-  @delayed_job_pid ||= spawn("bundle exec rake work_jobs") unless ENV["WORKER_EMBEDDED"] == "false"
+  unless ENV["WORKER_EMBEDDED"] == "false"
+    work_pids[:delayed_job] ||= spawn("bundle exec rake work_jobs")
+    work_pids[:recurring_jobs] ||= spawn("bundle exec clockwork lib/clock.rb")
+  end
 
   sleep 1
 end

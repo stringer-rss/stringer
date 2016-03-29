@@ -30,6 +30,9 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    clockwork (1.2.0)
+      activesupport
+      tzinfo
     coderay (1.1.0)
     columnize (0.3.6)
     coveralls (0.7.0)
@@ -187,6 +190,7 @@ DEPENDENCIES
   arel (~> 5.0)
   bcrypt-ruby (~> 3.1.2)
   capybara (~> 2.4.1)
+  clockwork (~> 1.2.0)
   coveralls (~> 0.7)
   delayed_job (~> 4.1)
   delayed_job_active_record (~> 4.1)
@@ -217,3 +221,6 @@ DEPENDENCIES
   timecop (~> 0.7.1)
   unicorn (~> 4.7)
   will_paginate (~> 3.0, >= 3.0.5)
+
+BUNDLED WITH
+   1.11.2

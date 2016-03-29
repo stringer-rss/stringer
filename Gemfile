@@ -27,6 +27,7 @@ end
 gem "activerecord", "~> 4.1.11"
 gem "arel", "~> 5.0"
 gem "bcrypt-ruby", "~> 3.1.2"
+gem "clockwork", "~> 1.2.0"
 gem "delayed_job", "~> 4.1"
 gem "delayed_job_active_record", "~> 4.1"
 gem "feedbag", "~> 0.9.2"
