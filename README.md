@@ -110,7 +110,7 @@ foreman start
 
 The application will be running on port `5000`.
 
-You can launch an interactive console (ala `rails c`) using `racksh`.
+You can launch an interactive console (a la `rails c`) using `racksh`.
 
 ## Acknowledgements
 
@@ -118,9 +118,9 @@ Most of the heavy-lifting is done by [`feedjira`](https://github.com/feedjira/fe
 
 General sexiness courtesy of [`Twitter Bootstrap`](http://twitter.github.io/bootstrap/) and [`Flat UI`](http://designmodo.github.io/Flat-UI/).
 
-ReenieBeanie Font Copyright &copy; 2010 Typeco (james@typeco.com). Licensed under [SIL Open Font License, 1.1](scripts.sil.org/OFL).
+ReenieBeanie Font Copyright &copy; 2010 Typeco (james@typeco.com). Licensed under [SIL Open Font License, 1.1](http://scripts.sil.org/OFL).
 
-Lato Font Copyright &copy; 2010-2011 by tyPoland Lukasz Dziedzic (team@latofonts.com). Licensed under [SIL Open Font License, 1.1](scripts.sil.org/OFL).
+Lato Font Copyright &copy; 2010-2011 by tyPoland Lukasz Dziedzic (team@latofonts.com). Licensed under [SIL Open Font License, 1.1](http://scripts.sil.org/OFL).
 
 ## Contact
 
