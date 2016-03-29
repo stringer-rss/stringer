@@ -90,11 +90,23 @@ task.
 
 ## Development
 
+### Using azk
+
+Click the button bellow to quickly and safely install this project on your local machine.
+
+[![Run project](https://s3-sa-east-1.amazonaws.com/assets.azk.io/run-project.png)](http://run.azk.io/start/?repo=swanson/stringer)
+
+The `Run Project` button employs `azk`, a lightweight open source orchestration tool that will automatically isolate and configure the application's environment for you.
+
+Learn more about `azk` [here](https://github.com/azukiapp/azk).
+
+### Without azk
+
 Run the Ruby tests with `rspec`.
 
 Run the Javascript tests with `rake test_js` and then open a browser to `http://localhost:4567/test`.
 
-### Getting Started
+#### Getting Started
 
 To get started using Stringer for development you first need to install `foreman`.
 
