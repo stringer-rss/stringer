@@ -80,11 +80,11 @@ systems({
       POSTGRESQL_DB: 'stringer_live',
     },
     export_envs: {
-      DATABASE_URL: 'postgres://#{envs.POSTGRESQL_USER}:#{envs.POSTGRESQL_PASS}@#{net.host}:#{net.port.data}/${envs.POSTGRESQL_DB}',
+      DATABASE_URL: 'postgres://#{envs.POSTGRESQL_USER}:#{envs.POSTGRESQL_PASS}@#{net.host}:#{net.port.data}/#{envs.POSTGRESQL_DB}',
 
-      STRINGER_DATABASE: '${envs.POSTGRESQL_DB}',
-      STRINGER_DATABASE_USERNAME: '${envs.POSTGRESQL_USER}',
-      STRINGER_DATABASE_PASSWORD: '${envs.POSTGRESQL_PASS}',
+      STRINGER_DATABASE: '#{envs.POSTGRESQL_DB}',
+      STRINGER_DATABASE_USERNAME: '#{envs.POSTGRESQL_USER}',
+      STRINGER_DATABASE_PASSWORD: '#{envs.POSTGRESQL_PASS}',
       STRINGER_DATABASE_HOST: '#{net.host}',
       STRINGER_DATABASE_PORT: '#{net.port.data}',
     },
