@@ -3,6 +3,12 @@ require "spec_helper"
 app_require "controllers/sessions_controller"
 
 describe "SessionsController" do
+  before do
+    allow(UserRepository).to receive(:created?).and_return(true)
+    allow(UserRepository).to receive(:setup_complete?).and_return(true)
+    allow(UserRepository).to receive(:fetch).and_return(nil)
+  end
+
   describe "GET /login" do
     it "has a password input and login button" do
       get "/login"
@@ -31,7 +37,7 @@ describe "SessionsController" do
       expect(session[:user_id]).to eq 1
 
       expect(last_response.status).to be 302
-      expect(URI.parse(last_response.location).path).to eq "/"
+      expect(URI.parse(last_response.location).path).to eq "/news"
     end
 
     it "redirects to the previous path when present" do

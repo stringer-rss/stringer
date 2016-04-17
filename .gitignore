@@ -3,6 +3,7 @@
 .bundle
 .config
 .ruby-gemset
+.azk
 coverage
 InstalledFiles
 lib/bundler/man
