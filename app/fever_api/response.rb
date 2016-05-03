@@ -32,7 +32,7 @@ module FeverAPI
       WriteMarkItem,
       WriteMarkFeed,
       WriteMarkGroup
-    ]
+    ].freeze
 
     def initialize(params)
       @params = params
