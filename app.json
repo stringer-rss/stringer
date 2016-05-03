@@ -23,6 +23,14 @@
     "ENFORCE_SSL": {
       "description": "Force all clients to connect over SSL",
       "value": "true"
+    },
+    "WORKER_EMBEDDED": {
+      "description": "Force worker threads to be spawned by main process",
+      "value": "true"
+    },
+    "WORKER_RETRY": {
+      "description": "Number of times to respawn the worker thread if it fails",
+      "value": "3"
     }
   },
   "addons": [
