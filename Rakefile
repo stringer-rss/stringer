@@ -8,6 +8,7 @@ require "delayed_job"
 require "delayed_job_active_record"
 
 require "sinatra/activerecord/rake"
+ActiveRecord::Tasks::DatabaseTasks.db_dir = "db"
 
 require "./app"
 require_relative "./app/jobs/fetch_feed_job"
