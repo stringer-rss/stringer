@@ -113,3 +113,25 @@ add the lines
     PATH=/home/stringer/.rbenv/bin:/bin/:/usr/bin:/usr/local/bin/:/usr/local/sbin
     */10 * * * *  source $HOME/.bash_profile; cd $HOME/stringer/; bundle exec rake fetch_feeds;
 
+Reverse Proxy With Nginx
+========================
+
+You may want to use nginx as reverse proxy server to add SSL/TLS for security
+reason. Here is a sample configuration:
+
+``` nginx
+server {
+    listen 80;
+    # listen 443 ssl;
+    # ssl_certificate ssl/fullchain.pem;
+    # ssl_certificate_key ssl/privatekey.pem;
+    # you can try to use Mozilla SSL Configuration Generator
+    # to harden your TLS configuration
+    # https://mozilla.github.io/server-side-tls/ssl-config-generator/
+    server_name example.com;
+    location / {
+        proxy_pass http://127.0.0.1:1337/;
+        proxy_set_header Host $host;
+    }
+}
+```
