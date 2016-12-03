@@ -87,21 +87,23 @@ class Stringer < Sinatra::Base
     prebuild true unless ENV["RACK_ENV"] == "test"
   end
 
-  before do
-    I18n.locale = ENV["LOCALE"].blank? ? :en : ENV["LOCALE"].to_sym
+  def check_redirections
+    return unless needs_authentication?(request.path)
 
-    if !authenticated? && needs_authentication?(request.path)
-      session[:redirect_to] = request.path
-      redirect "/login"
+    if authenticated?
+      redirect to("/setup/tutorial") if needs_setup_complete?(request.path) && !UserRepository.setup_complete?
+    else
+      redirect to(UserRepository.created? ? "/login" : "/setup/password")
     end
   end
 
+  before do
+    I18n.locale = ENV["LOCALE"].blank? ? :en : ENV["LOCALE"].to_sym
+    check_redirections
+  end
+
   get "/" do
-    if UserRepository.setup_complete?
-      redirect to("/news")
-    else
-      redirect to("/setup/password")
-    end
+    redirect to("/news")
   end
 end
 
