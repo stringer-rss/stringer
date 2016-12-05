@@ -22,7 +22,7 @@
 
   <div class="story-body-container" class="row-fluid">
     <div class="story-body">
-      <h1><a href="{{= permalink }}">{{= title }}</a></h1>
+      <h1><a href="{{= permalink }}" rel="noopener noreferrer">{{= title }}</a></h1>
       {{= body }}
     </div>
     <div class="row-fluid story-actions-container">
@@ -38,7 +38,7 @@
         <div class="story-starred">
           <i class="icon-star{{ if(!is_starred) { }}-empty{{ } }}"></i>
         </div>
-        <a class="story-permalink" target="_blank" href="{{= permalink }}">
+        <a class="story-permalink" target="_blank" href="{{= permalink }}" rel="noopener noreferrer">
           <i class="icon-external-link"></i>
         </a>
       </div>

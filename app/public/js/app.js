@@ -73,7 +73,9 @@ var Story = Backbone.Model.extend({
   },
 
   openInTab: function() {
-    window.open(this.get("permalink"), '_blank');
+    var otherWindow = window.open();
+    otherWindow.opener = null;
+    otherWindow.location = this.get("permalink");
   }
 });
 
@@ -144,8 +146,12 @@ var StoryView = Backbone.View.extend({
 
   storyClicked: function(e) {
     if (e.metaKey || e.ctrlKey || e.which == 2) {
-      var backgroundTab = window.open(this.model.get("permalink"));
-      if (backgroundTab) backgroundTab.blur();
+      var backgroundTab = window.open();
+      if (backgroundTab) {
+        backgroundTab.opener = null;
+        backgroundTab.location = this.model.get("permalink");
+        backgroundTab.blur();
+      }
       window.focus();
       if (!this.model.get("keep_unread")) this.model.set("is_read", true);
       if (this.model.shouldSave()) this.model.save();
