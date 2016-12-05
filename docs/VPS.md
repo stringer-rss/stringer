@@ -130,8 +130,10 @@ server {
     # https://mozilla.github.io/server-side-tls/ssl-config-generator/
     server_name example.com;
     location / {
-        proxy_pass http://127.0.0.1:1337/;
-        proxy_set_header Host $host;
+        proxy_pass http://127.0.0.1:1337/; # edit this
+        proxy_set_header Host $http_host;
+        proxy_redirect off;
+        proxy_set_header X-Forwarded-Proto $scheme;
     }
 }
 ```
