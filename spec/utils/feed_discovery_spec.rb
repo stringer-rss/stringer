@@ -13,7 +13,7 @@ describe FeedDiscovery do
 
   describe "#discover" do
     it "returns false if url is not a feed and feed url cannot be discovered" do
-      expect(parser).to receive(:fetch_and_parse).with(url, anything).and_raise(StandardError)
+      expect(parser).to receive(:fetch_and_parse).with(url).and_raise(StandardError)
       expect(finder).to receive(:find).and_return([])
 
       result = FeedDiscovery.new.discover(url, finder, parser)
@@ -22,7 +22,7 @@ describe FeedDiscovery do
     end
 
     it "returns a feed if the url provided is parsable" do
-      expect(parser).to receive(:fetch_and_parse).with(url, anything).and_return(feed)
+      expect(parser).to receive(:fetch_and_parse).with(url).and_return(feed)
 
       result = FeedDiscovery.new.discover(url, finder, parser)
 
@@ -30,9 +30,9 @@ describe FeedDiscovery do
     end
 
     it "returns false if the discovered feed is not parsable" do
-      expect(parser).to receive(:fetch_and_parse).with(url, anything).and_raise(StandardError)
+      expect(parser).to receive(:fetch_and_parse).with(url).and_raise(StandardError)
       expect(finder).to receive(:find).and_return([invalid_discovered_url])
-      expect(parser).to receive(:fetch_and_parse).with(invalid_discovered_url, anything).and_raise(StandardError)
+      expect(parser).to receive(:fetch_and_parse).with(invalid_discovered_url).and_raise(StandardError)
 
       result = FeedDiscovery.new.discover(url, finder, parser)
 
@@ -40,9 +40,9 @@ describe FeedDiscovery do
     end
 
     it "returns the feed if the discovered feed is parsable" do
-      expect(parser).to receive(:fetch_and_parse).with(url, anything).and_raise(StandardError)
+      expect(parser).to receive(:fetch_and_parse).with(url).and_raise(StandardError)
       expect(finder).to receive(:find).and_return([valid_discovered_url])
-      expect(parser).to receive(:fetch_and_parse).with(valid_discovered_url, anything).and_return(feed)
+      expect(parser).to receive(:fetch_and_parse).with(valid_discovered_url).and_return(feed)
 
       result = FeedDiscovery.new.discover(url, finder, parser)
 
