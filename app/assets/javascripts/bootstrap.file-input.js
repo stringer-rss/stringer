@@ -91,7 +91,7 @@ $('input[type=file]').each(function(i,elem){
     $(this).trigger("filePicked");
   });
 
-  
+
 
 });
 

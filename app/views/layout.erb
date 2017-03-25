@@ -9,12 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" href="/img/favicon.png">
     <link rel="apple-touch-icon-precomposed" href="/img/apple-touch-icon-precomposed.png">
-    <link href="/css/lato-fonts.css" rel="stylesheet" type="text/css">
 
     <%= yield_content :head %>
 
-    <%= css :application %>
-    <%= js  :application %>
+    <link href="<%= stylesheet_path 'application' %>" rel="stylesheet" />
+    <script src="<%= javascript_path 'application' %>"></script>
   </head>
   <body>
     <div id="wrap">
