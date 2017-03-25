@@ -5,7 +5,6 @@ require_relative "../repositories/feed_repository"
 require_relative "../commands/feeds/find_new_stories"
 
 class FetchFeed
-
   def initialize(feed, parser: Feedjira::Feed, logger: nil)
     @feed = feed
     @parser = parser
