@@ -49,7 +49,7 @@ class StoryRepository
   end
 
   def self.unread
-    Story.where(is_read: false).order("published desc").includes(:feed)
+    Story.where(is_read: false).order("published").includes(:feed)
   end
 
   def self.unread_since_id(since_id)
