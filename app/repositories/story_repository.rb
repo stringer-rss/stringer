@@ -6,7 +6,7 @@ class StoryRepository
   extend UrlHelpers
 
   def self.add(entry, feed)
-    entry.url = normalize_url(entry.url, feed.url)
+    entry.url = normalize_url(entry.url, feed.url) unless entry.url.nil?
 
     Story.create(feed: feed,
                  title: sanitize(entry.title),
