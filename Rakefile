@@ -15,6 +15,12 @@ require_relative "./app/jobs/fetch_feed_job"
 require_relative "./app/tasks/fetch_feeds"
 require_relative "./app/tasks/change_password"
 require_relative "./app/tasks/remove_old_stories.rb"
+require_relative "./app/commands/feeds/import_from_text"
+
+desc "Import list of feeds."
+task :import_feeds_list do
+  ImportFromText.import("import_list.txt")
+end
 
 desc "Fetch all feeds."
 task :fetch_feeds do
