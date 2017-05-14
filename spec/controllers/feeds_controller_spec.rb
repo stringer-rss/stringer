@@ -159,4 +159,25 @@ describe "FeedsController" do
       expect(last_response.header["Content-Disposition"]).to eq("attachment; filename=\"stringer.opml\"")
     end
   end
+
+  describe "GET /feeds/refresh" do
+    it "Fetches all the feeds" do
+      Feed.stub(all: ['feed'])
+
+      FetchFeeds.should_receive(:enqueue).with(['feed'])
+
+      get "/feeds/refresh"
+    end
+  end
+
+  describe "GET /feeds/:feed_id/refresh" do
+    it "Fetches a feed given an id" do
+      feed_id = '123'
+
+      Feed.should_receive(:find).with(feed_id).and_return(['feed'])
+      FetchFeeds.should_receive(:enqueue).with(['feed'])
+
+      get "/feeds/#{feed_id}/refresh"
+    end
+  end
 end
