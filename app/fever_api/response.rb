@@ -15,7 +15,6 @@ require_relative "write_mark_feed"
 require_relative "write_mark_group"
 
 module FeverAPI
-
   API_VERSION = 3
 
   class Response
