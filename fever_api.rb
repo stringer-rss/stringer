@@ -13,7 +13,9 @@ module FeverAPI
     end
 
     before do
-      halt 403 unless authenticated?(params[:api_key])
+      headers = { "Content-Type" => "application/json" }
+      body = { api_version: FeverAPI::API_VERSION, auth: 0 }.to_json
+      halt 200, headers, body unless authenticated?(params[:api_key])
     end
 
     def authenticated?(api_key)

@@ -17,6 +17,9 @@ describe FeverAPI do
   let(:standard_answer) do
     { api_version: 3, auth: 1, last_refreshed_on_time: 123456789 }
   end
+  let(:cannot_auth) do
+    { api_version: 3, auth: 0 }
+  end
   let(:headers) { { api_key: api_key } }
 
   before do
@@ -34,16 +37,19 @@ describe FeverAPI do
     it "authenticates request with correct api_key" do
       get "/", headers
       expect(last_response).to be_ok
+      expect(last_response_as_object).to include(standard_answer)
     end
 
     it "does not authenticate request with incorrect api_key" do
       get "/", api_key: "foo"
-      expect(last_response).not_to be_ok
+      expect(last_response).to be_ok
+      expect(last_response_as_object).to include(cannot_auth)
     end
 
     it "does not authenticate request when api_key is not provided" do
       get "/"
-      expect(last_response).not_to be_ok
+      expect(last_response).to be_ok
+      expect(last_response_as_object).to include(cannot_auth)
     end
   end
 
