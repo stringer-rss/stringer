@@ -24,7 +24,7 @@ Stringer is a Ruby (2.3.0+) app based on Sinatra, ActiveRecord, PostgreSQL, Back
 Stringer will run just fine on the Heroku free plan.
 
 Instructions are provided for deploying to [Heroku manually](/docs/Heroku.md), to any Ruby 
-compatible [Linux-based VPS](/docs/VPS.md), and to [OpenShift](/docs/OpenShift.md).
+compatible [Linux-based VPS](/docs/VPS.md), to [Docker](docs/docker.md) and to [OpenShift](/docs/OpenShift.md).
 
 ## Niceties
 
