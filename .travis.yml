@@ -2,7 +2,7 @@ before_install:
   - gem update bundler
   - 'echo "RUBY_VERSION: $RUBY_VERSION"'
 before_script:
-  - npm install -g mocha-phantomjs@2.0.2
+  - npm install -g mocha-phantomjs@4.1.0
   - bundle exec rake test_js &> /dev/null &
   - sleep 5
 cache: bundler
