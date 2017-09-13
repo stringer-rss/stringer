@@ -1,5 +1,20 @@
 # Stringer on Docker
 
+## Quick test setup
+
+To quickly try out Stringer on your local machine run the following one liner:
+
+```sh
+docker run --rm -it -e DATABASE_URL="sqlite3:':memory:'" -p 8080:8080 mdswanson/stringer
+```
+
+Visit `http://localhost:8080` and enjoy Stringer!
+
+**One caveat**: Stringer was not designed to be used with sqlite so you might run into some issues if you
+have Stringer fetch many feeds. See [this issue](https://github.com/swanson/stringer/issues/164) for details.
+
+## Production ready setup
+
 The following steps can be used to setup Stringer on Docker, using a Postgres database also running on Docker.
 
 1. Setup a Docker network so the two containers we're going to create can communicate:
@@ -21,13 +36,7 @@ docker run --detach \
     postgres:9.5-alpine
 ```
 
-3. Build the Stringer Docker image:
-
-```sh
-docker build -t stringer .
-```
-
-4. And run it:
+3. Run the Stringer Docker image:
 
 ```sh
 docker run --detach \
@@ -40,7 +49,7 @@ docker run --detach \
     -e FETCH_FEEDS_CRON="*/5 * * * *" \ # optional
     -e CLEANUP_CRON="0 0 * * *" \ # optional
     -p 127.0.0.1:8080:8080 \
-    stringer
+    mdswanson/stringer
 ```
 
 That's it! You now have a fully working Stringer instance up and running!
