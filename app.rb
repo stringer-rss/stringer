@@ -9,6 +9,7 @@ require "will_paginate"
 require "will_paginate/active_record"
 require "sprockets"
 require "sprockets-helpers"
+require "securerandom"
 
 require_relative "app/helpers/authentication_helpers"
 require_relative "app/repositories/user_repository"
@@ -33,7 +34,7 @@ class Stringer < Sinatra::Base
     set :root, File.dirname(__FILE__)
 
     enable :sessions
-    set :session_secret, ENV["SECRET_TOKEN"] || "secret!"
+    set :session_secret, ENV["SECRET_TOKEN"] || SecureRandom.hex(32)
     enable :logging
     enable :method_override
 
