@@ -22,13 +22,13 @@ after_fork do |_server, _worker|
              else
                YAML.load(ERB.new(File.read("config/database.yml")).result)[env]
              end
-    ActiveRecord::Base.establish_connection(config)
+    level = if ENV["LOG_LEVEL"] == "info"
+              Logger::INFO
+            else
+              Logger::DEBUG
+            end
 
-    case ENV["LOG_LEVEL"]
-    when "info"
-      ActiveRecord::Base.logger.level = Logger::INFO
-    else
-      ActiveRecord::Base.logger.level = Logger::DEBUG
-    end
+    ActiveRecord::Base.establish_connection(config)
+    ActiveRecord::Base.logger.level = level
   end
 end
