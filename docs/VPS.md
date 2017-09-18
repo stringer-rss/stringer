@@ -44,8 +44,8 @@ Create your stringer user
 
 We will run stringer as it's own user for security, also we will be installing a specific version of ruby to stringer user's home directory, this saves us worrying whether the version of ruby and some dependencies provided by your distro are compatible with Stringer.
 
-    useradd stringer -m -s /bin/bash
-    su -l stringer
+    sudo useradd stringer -m -s /bin/bash
+    sudo su -l stringer
 
 Always use -l switch when you switch user to your stringer user, without it your modified .bash_profile or .profile file will be ignored.
 
