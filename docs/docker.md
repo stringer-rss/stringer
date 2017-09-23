@@ -13,7 +13,11 @@ Visit `http://localhost:8080` and enjoy Stringer!
 **One caveat**: Stringer was not designed to be used with sqlite so you might run into some issues if you
 have Stringer fetch many feeds. See [this issue](https://github.com/swanson/stringer/issues/164) for details.
 
-## Production ready setup
+## Production ready setup using docker-compose
+
+Download [docker-compose.yml](../docker-compose.yml) and in the corresponding foler, run `docker-compose up -d`, give it a second and visit `localhost`
+
+## Production ready manual setup
 
 The following steps can be used to setup Stringer on Docker, using a Postgres database also running on Docker.
 
