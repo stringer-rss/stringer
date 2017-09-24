@@ -1,0 +1,23 @@
+version: '2'
+services:
+  postgres:
+    image: postgres:9.5-alpine
+    restart: always
+    volumes:
+      - ~/stringer:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=super_secret_password
+      - POSTGRES_USER=db_user
+      - POSTGRES_DB=stringer
+
+  web:
+    image: mdswanson/stringer
+    depends_on:
+      - postgres
+    restart: always
+    ports:
+      - 80:8080
+    environment:
+      - SECRET_TOKEN=YOUR_SECRET_TOKEN
+      - PORT=8080
+      - DATABASE_URL=postgres://db_user:super_secret_password@postgres:5432/stringer
