@@ -113,6 +113,30 @@ add the lines
     PATH=/home/stringer/.rbenv/bin:/bin/:/usr/bin:/usr/local/bin/:/usr/local/sbin
     */10 * * * *  source $HOME/.bash_profile; cd $HOME/stringer/; bundle exec rake fetch_feeds;
 
+Manage Stringer With Systemd
+============================
+
+You may want to manage Stringer as a systemd service on distributions come with systemd.
+
+As stringer user, export app service files with foreman:
+
+    cd ~/stringer
+    mkdir systemd-services
+    foreman export systemd systemd-services -a stringer -u stringer
+
+Logout stringer user, install systemd services:
+
+    sudo cp -a ~stringer/stringer/systemd-services/* /etc/systemd/system
+
+As stringer user, close existing Stringer instance:
+
+    exit # exit racksh and app
+
+Start app as a systemd service and make app run at startup
+
+    sudo systemctl start stringer.target
+    sudo systemctl enable stringer.target
+
 Reverse Proxy With Nginx
 ========================
 
