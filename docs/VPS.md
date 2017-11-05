@@ -159,3 +159,50 @@ server {
     }
 }
 ```
+
+Deploy Stringer With Passenger And Apache
+=========================================
+
+You may want to run Stringer with the existing Apache server. We need to install
+*mod_passenger* and edit few files.
+
+The installation of *mod_passenger* depends on VPS's system distribution release.
+Offical installation guide is available at [Passenger Library](https://www.phusionpassenger.com/library/install/apache/install/oss/)
+
+After validating the *mod_passenger* install, we will fetch dependencies again
+to meet Passenger's default GEM_HOME set. As stringer user:
+
+    cd ~/stringer
+    bundle install --path vendor/bundle
+
+Edit database.yml with correct database url:
+
+    cd ~/stringer
+    sed -i "s|url: .*|url: $DATABASE_URL|" config/database.yml
+
+Add VirtualHost to your Apache installation, here's a sample configuration:
+
+```bash
+<VirtualHost *:80>
+    ServerName example.com
+    DocumentRoot /home/stringer/stringer/app/public
+
+    PassengerEnabled On
+    PassengerAppRoot /home/stringer/stringer
+    PassengerRuby /home/stringer/.rbenv/shims/ruby
+    # PassengerLogFile /dev/null # don't flow logs to apache error.log
+
+    <Directory /home/stringer/stringer/app/public>
+        Options FollowSymLinks
+        Require all granted
+        AllowOverride All
+    </Directory>
+
+
+    # you can harden your connection with https, don't forget
+    # change to <VirtualHost *:443>
+    # SSLCertificateFile /etc/path/to/example.com/fullchain.pem
+    # SSLCertificateKeyFile /etc/path/to/example.com/privkey.pem
+    # Include /etc/path/to/options-ssl-apache.conf
+</VirtualHost>
+```
