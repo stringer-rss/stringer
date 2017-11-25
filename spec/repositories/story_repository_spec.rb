@@ -26,6 +26,23 @@ describe StoryRepository do
     end
   end
 
+  describe ".extract_title" do
+    let(:entry) do
+    end
+
+    it "returns the title if there is a title" do
+      entry = double(title: "title", summary: "summary")
+
+      expect(StoryRepository.extract_title(entry)).to eq "title"
+    end
+
+    it "returns the summary if there isn't a title" do
+      entry = double(title: "", summary: "summary")
+
+      expect(StoryRepository.extract_title(entry)).to eq "summary"
+    end
+  end
+
   describe ".extract_content" do
     let(:entry) do
       double(url: "http://mdswanson.com",
