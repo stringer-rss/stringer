@@ -9,7 +9,7 @@ class StoryRepository
     entry.url = normalize_url(entry.url, feed.url) unless entry.url.nil?
 
     Story.create(feed: feed,
-                 title: sanitize(entry.title),
+                 title: extract_title(entry),
                  permalink: entry.url,
                  body: extract_content(entry),
                  is_read: false,
@@ -93,6 +93,12 @@ class StoryRepository
     end
 
     expand_absolute_urls(sanitized_content, entry.url)
+  end
+
+  def self.extract_title(entry)
+    return sanitize(entry.title) if entry.title.present?
+    return sanitize(entry.summary) if entry.summary.present?
+    "There isn't a title for this story"
   end
 
   def self.sanitize(content)
