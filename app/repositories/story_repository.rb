@@ -6,11 +6,9 @@ class StoryRepository
   extend UrlHelpers
 
   def self.add(entry, feed)
-    entry.url = normalize_url(entry.url, feed.url) unless entry.url.nil?
-
     Story.create(feed: feed,
                  title: extract_title(entry),
-                 permalink: entry.url,
+                 permalink: extract_url(entry, feed),
                  body: extract_content(entry),
                  is_read: false,
                  is_starred: false,
@@ -81,6 +79,12 @@ class StoryRepository
 
   def self.read_count
     Story.where(is_read: true).count
+  end
+
+  def self.extract_url(entry, feed)
+    return entry.enclosure_url if entry.url.nil? && entry.enclosure_url.present?
+
+    normalize_url(entry.url, feed.url) unless entry.url.nil?
   end
 
   def self.extract_content(entry)
