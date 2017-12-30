@@ -25,11 +25,11 @@ module UrlHelpers
   end
 
   def normalize_url(url, base_url)
-    uri = URI.parse(url)
+    uri = URI.parse(url.strip)
 
     # resolve (protocol) relative URIs
     if uri.relative?
-      base_uri = URI.parse(base_url)
+      base_uri = URI.parse(base_url.strip)
       scheme = base_uri.scheme || "http"
       uri = URI.join("#{scheme}://#{base_uri.host}", uri)
     end
