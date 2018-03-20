@@ -65,7 +65,7 @@ GEM
       concurrent-ruby (~> 1.0)
     json (1.8.6)
     kgio (2.10.0)
-    loofah (2.1.1)
+    loofah (2.2.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     method_source (0.8.2)
