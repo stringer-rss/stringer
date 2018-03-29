@@ -40,6 +40,13 @@ describe StoryRepository do
 
       expect(StoryRepository.extract_url(entry, feed)).to eq "https://github.com/swanson/stringer"
     end
+
+    it "does not crash if url is nil but enclosure_url does not exist" do
+      feed = double(url: "http://github.com")
+      entry = double(url: nil)
+
+      expect(StoryRepository.extract_url(entry, feed)).to eq nil
+    end
   end
 
   describe ".extract_title" do
