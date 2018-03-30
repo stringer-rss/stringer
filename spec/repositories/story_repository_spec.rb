@@ -85,6 +85,22 @@ describe StoryRepository do
     it "falls back to summary if there is no content" do
       expect(StoryRepository.extract_content(summary_only)).to eq "Dumb publisher"
     end
+
+    it "expands urls" do
+      entry = double(url: "http://mdswanson.com",
+                     content: nil,
+                     summary: "<a href=\"page\">Page</a>")
+
+      expect(StoryRepository.extract_content(entry)).to eq "<a href=\"http://mdswanson.com/page\">Page</a>"
+    end
+
+    it "ignores URL expansion if entry url is nil" do
+      entry = double(url: nil,
+                     content: nil,
+                     summary: "<a href=\"page\">Page</a>")
+
+      expect(StoryRepository.extract_content(entry)).to eq "<a href=\"page\">Page</a>"
+    end
   end
 
   describe ".sanitize" do
