@@ -13,6 +13,7 @@ test/tmp
 test/version_tmp
 tmp
 log
+vendor
 
 # YARD artifacts
 .yardoc
@@ -23,3 +24,4 @@ bin/
 db/*.sqlite
 .DS_Store
 .localeapp
+.vscode
