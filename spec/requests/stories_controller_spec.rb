@@ -59,6 +59,16 @@ RSpec.describe StoriesController do
 
       expect(rendered).to have_css("#zen")
     end
+
+    it "groups stories by feed when the user enables grouping" do
+      default_user.update!(group_stories: true)
+      login_as(default_user)
+      create(:story)
+
+      get "/news"
+
+      expect(rendered).to have_css("#stories")
+    end
   end
 
   describe "#archived" do

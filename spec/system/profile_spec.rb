@@ -49,6 +49,13 @@ RSpec.describe "profile page" do
     expect(page).to have_select("Stories feed order", selected: "Oldest first")
   end
 
+  it "allows the user to group stories by feed" do
+    check("Group stories by feed")
+    click_on("Update")
+
+    expect(default_user.reload.group_stories).to be(true)
+  end
+
   it "rejects username change with wrong password" do
     fill_in_username_fields("wrong_password")
     click_on("Update username")
