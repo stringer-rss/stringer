@@ -50,6 +50,10 @@ class StoryRepository
     Story.where(is_read: false).order("published #{order}").includes(:feed)
   end
 
+  def self.unread_by_feed_stories_count
+    Story.where.not(is_read: true).joins("JOIN (SELECT COUNT(stories.*) AS stories_count, feeds.id, feeds.name FROM feeds JOIN stories on stories.feed_id = feeds.id AND stories.is_read != 't' GROUP BY feeds.id) a ON a.id = stories.feed_id").order("a.stories_count DESC, a.name, published")
+  end
+
   def self.unread_since_id(since_id)
     unread.where(Story.arel_table[:id].gt(since_id))
   end
