@@ -21,3 +21,7 @@ after_fork do |_server, _worker|
     ActiveRecord::Base.establish_connection(config)
   end
 end
+
+after_worker_exit do |_server, _worker, _status|
+  Process.kill("QUIT", @delayed_job_pid) if !ENV["RACK_ENV"] || ENV["RACK_ENV"] == "development"
+end

@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 group :production do
   gem "pg", "~> 0.18.4"
-  gem "unicorn", "~> 4.7"
+  gem "unicorn", "~> 5.3"
 end
 
 group :development do

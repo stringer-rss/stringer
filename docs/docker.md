@@ -98,7 +98,6 @@ server {
         ssl_certificate ssl/fullchain.pem;;
         ssl_certificate_key ssl/privatekey.pem;
 
-
         location    / {
                 gzip on;
                 gzip_min_length  1100;

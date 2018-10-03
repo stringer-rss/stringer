@@ -163,13 +163,13 @@ server {
 Deploy Stringer With Passenger And Apache
 =========================================
 
-You may want to run Stringer with the existing Apache server. We need to install
+You may want to run Stringer with the existing Apache server. We need to install 
 *mod_passenger* and edit few files.
 
 The installation of *mod_passenger* depends on VPS's system distribution release.
 Offical installation guide is available at [Passenger Library](https://www.phusionpassenger.com/library/install/apache/install/oss/)
 
-After validating the *mod_passenger* install, we will fetch dependencies again
+After validating the *mod_passenger* install, we will fetch dependencies again 
 to meet Passenger's default GEM_HOME set. As stringer user:
 
     cd ~/stringer
