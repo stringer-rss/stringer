@@ -76,7 +76,7 @@ GEM
     minitest (5.11.3)
     multi_json (1.12.1)
     multipart-post (2.0.0)
-    nokogiri (1.8.2)
+    nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
     parser (2.3.0.6)
       ast (~> 2.2)
@@ -222,4 +222,4 @@ RUBY VERSION
    ruby 2.3.3p222
 
 BUNDLED WITH
-   1.16.1
+   1.17.1
