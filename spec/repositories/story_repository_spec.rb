@@ -111,28 +111,4 @@ describe StoryRepository do
       expect(StoryRepository.extract_content(entry)).to eq "<a href=\"page\">Page</a>"
     end
   end
-
-  describe ".sanitize" do
-    context "regressions" do
-      it "handles <wbr> tag properly" do
-        result = StoryRepository.sanitize("<code>WM_<wbr\t\n >ERROR</code> asdf")
-        expect(result).to eq "<code>WM_ERROR</code> asdf"
-      end
-
-      it "handles <figure> tag properly" do
-        result = StoryRepository.sanitize("<figure>some code</figure>")
-        expect(result).to eq "<figure>some code</figure>"
-      end
-
-      it "handles unprintable characters" do
-        result = StoryRepository.sanitize("n\u2028\u2029")
-        expect(result).to eq "n"
-      end
-
-      it "preserves line endings" do
-        result = StoryRepository.sanitize("test\r\ncase")
-        expect(result).to eq "test\r\ncase"
-      end
-    end
-  end
 end
