@@ -16,8 +16,17 @@ describe StoryRepository do
       StoryRepository.add(entry, feed)
     end
 
-    it "sanitizes titles" do
+    it "deletes line and paragraph separator characters from titles" do
       entry = double(title: "n\u2028\u2029", content: "").as_null_object
+      allow(StoryRepository).to receive(:normalize_url)
+
+      expect(Story).to receive(:create).with(hash_including(title: "n"))
+
+      StoryRepository.add(entry, feed)
+    end
+
+    it "deletes script tags from titles" do
+      entry = double(title: "n<script>alert('xss');</script>", content: "").as_null_object
       allow(StoryRepository).to receive(:normalize_url)
 
       expect(Story).to receive(:create).with(hash_including(title: "n"))
