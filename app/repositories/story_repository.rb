@@ -1,5 +1,6 @@
 require_relative "../helpers/url_helpers"
 require_relative "../models/story"
+require_relative "../utils/content_sanitizer"
 require_relative "../utils/sample_story"
 
 class StoryRepository
@@ -91,9 +92,9 @@ class StoryRepository
     sanitized_content = ""
 
     if entry.content
-      sanitized_content = sanitize(entry.content)
+      sanitized_content = ContentSanitizer.sanitize(entry.content)
     elsif entry.summary
-      sanitized_content = sanitize(entry.summary)
+      sanitized_content = ContentSanitizer.sanitize(entry.summary)
     end
 
     if entry.url.present?
@@ -104,16 +105,9 @@ class StoryRepository
   end
 
   def self.extract_title(entry)
-    return sanitize(entry.title) if entry.title.present?
-    return sanitize(entry.summary) if entry.summary.present?
+    return ContentSanitizer.sanitize(entry.title) if entry.title.present?
+    return ContentSanitizer.sanitize(entry.summary) if entry.summary.present?
     "There isn't a title for this story"
-  end
-
-  def self.sanitize(content)
-    Loofah.fragment(content.gsub(/<wbr\s*>/i, ""))
-          .scrub!(:prune)
-          .scrub!(:unprintable)
-          .to_s
   end
 
   def self.samples
