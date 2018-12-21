@@ -40,8 +40,8 @@ GEM
       tins (~> 1.6.0)
     crass (1.0.3)
     debugger-linecache (1.2.0)
-    delayed_job (4.1.1)
-      activesupport (>= 3.0, < 5.0)
+    delayed_job (4.1.5)
+      activesupport (>= 3.0, < 5.3)
     delayed_job_active_record (4.1.0)
       activerecord (>= 3.0, < 5)
       delayed_job (>= 3.0, < 5)
@@ -185,7 +185,7 @@ DEPENDENCIES
   bcrypt (~> 3.1)
   capybara (~> 2.6)
   coveralls (~> 0.7)
-  delayed_job (~> 4.1)
+  delayed_job (~> 4.1, >= 4.1.4)
   delayed_job_active_record (~> 4.1)
   faker (~> 1.2)
   feedbag (~> 0.9.5)
@@ -219,7 +219,7 @@ DEPENDENCIES
   will_paginate (~> 3.1)
 
 RUBY VERSION
-   ruby 2.3.3p222
+   ruby 2.5.3p105
 
 BUNDLED WITH
    1.16.1

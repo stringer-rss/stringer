@@ -26,7 +26,7 @@ end
 
 gem "activerecord", "~> 4.2.6"
 gem "bcrypt", "~> 3.1"
-gem "delayed_job", "~> 4.1"
+gem "delayed_job", "~> 4.1", ">= 4.1.4"
 gem "delayed_job_active_record", "~> 4.1"
 gem "feedbag", "~> 0.9.5"
 gem "feedjira", "~> 2.1.3"
