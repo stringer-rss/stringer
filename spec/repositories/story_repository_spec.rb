@@ -16,8 +16,17 @@ describe StoryRepository do
       StoryRepository.add(entry, feed)
     end
 
-    it "sanitizes titles" do
+    it "deletes line and paragraph separator characters from titles" do
       entry = double(title: "n\u2028\u2029", content: "").as_null_object
+      allow(StoryRepository).to receive(:normalize_url)
+
+      expect(Story).to receive(:create).with(hash_including(title: "n"))
+
+      StoryRepository.add(entry, feed)
+    end
+
+    it "deletes script tags from titles" do
+      entry = double(title: "n<script>alert('xss');</script>", content: "").as_null_object
       allow(StoryRepository).to receive(:normalize_url)
 
       expect(Story).to receive(:create).with(hash_including(title: "n"))
@@ -100,30 +109,6 @@ describe StoryRepository do
                      summary: "<a href=\"page\">Page</a>")
 
       expect(StoryRepository.extract_content(entry)).to eq "<a href=\"page\">Page</a>"
-    end
-  end
-
-  describe ".sanitize" do
-    context "regressions" do
-      it "handles <wbr> tag properly" do
-        result = StoryRepository.sanitize("<code>WM_<wbr\t\n >ERROR</code> asdf")
-        expect(result).to eq "<code>WM_ERROR</code> asdf"
-      end
-
-      it "handles <figure> tag properly" do
-        result = StoryRepository.sanitize("<figure>some code</figure>")
-        expect(result).to eq "<figure>some code</figure>"
-      end
-
-      it "handles unprintable characters" do
-        result = StoryRepository.sanitize("n\u2028\u2029")
-        expect(result).to eq "n"
-      end
-
-      it "preserves line endings" do
-        result = StoryRepository.sanitize("test\r\ncase")
-        expect(result).to eq "test\r\ncase"
-      end
     end
   end
 end

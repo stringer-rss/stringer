@@ -34,7 +34,7 @@ You can access the keyboard shortcuts when using the app by hitting `?`.
 
 ![](screenshots/keyboard_shortcuts.png)
 
-### Using you own domain with Heroku
+### Using your own domain with Heroku
 
 You can run Stringer at `http://reader.yourdomain.com` using a CNAME.
 
@@ -113,7 +113,7 @@ The application will be running on port `5000`.
 
 You can launch an interactive console (a la `rails c`) using `racksh`.
 
-## Acknowledgements
+## Acknowledgments
 
 Most of the heavy-lifting is done by [`feedjira`](https://github.com/feedjira/feedjira) and [`feedbag`](https://github.com/dwillis/feedbag).
 
@@ -125,7 +125,7 @@ Lato Font Copyright &copy; 2010-2011 by tyPoland Lukasz Dziedzic (team@latofonts
 
 ## Contact
 
-If you have a question, feature idea, or are running into problems, our preferred method of contact is to open an issue on GitHub. This allows multiple people to weigh in and we can keep everything in one place. Thanks!
+If you have a question, feature idea, or are running into problems, our preferred method of contact is to open an issue on GitHub. This allows multiple people to weigh in, and we can keep everything in one place. Thanks!
 
 ## Maintainers
 
