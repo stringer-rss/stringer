@@ -219,7 +219,7 @@ DEPENDENCIES
   will_paginate (~> 3.1)
 
 RUBY VERSION
-   ruby 2.3.3p222
+   ruby 2.5.3p105
 
 BUNDLED WITH
-   1.16.1
+   1.17.3
