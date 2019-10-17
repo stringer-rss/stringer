@@ -31,7 +31,7 @@ GEM
       xpath (~> 2.0)
     coderay (1.1.1)
     columnize (0.9.0)
-    concurrent-ruby (1.0.2)
+    concurrent-ruby (1.1.5)
     coveralls (0.8.13)
       json (~> 1.8)
       simplecov (~> 0.11.0)
@@ -40,8 +40,8 @@ GEM
       tins (~> 1.6.0)
     crass (1.0.3)
     debugger-linecache (1.2.0)
-    delayed_job (4.1.1)
-      activesupport (>= 3.0, < 5.0)
+    delayed_job (4.1.8)
+      activesupport (>= 3.0, < 6.1)
     delayed_job_active_record (4.1.0)
       activerecord (>= 3.0, < 5)
       delayed_job (>= 3.0, < 5)
@@ -73,7 +73,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0221)
     mini_portile2 (2.3.0)
-    minitest (5.11.3)
+    minitest (5.12.2)
     multi_json (1.12.1)
     multipart-post (2.0.0)
     nokogiri (1.8.2)
@@ -219,7 +219,7 @@ DEPENDENCIES
   will_paginate (~> 3.1)
 
 RUBY VERSION
-   ruby 2.3.3p222
+   ruby 2.6.5p114
 
 BUNDLED WITH
-   1.16.1
+   1.17.2
