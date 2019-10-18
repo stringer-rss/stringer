@@ -8,7 +8,7 @@ before_script:
 cache: bundler
 language: ruby
 rvm:
-  - 2.3.3
+  - 2.6.5
   - ruby-head
 matrix:
   allow_failures:
