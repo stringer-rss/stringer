@@ -40,7 +40,7 @@ booth vice literally.</p>
     BODY
   end
 
-  def is_read # rubocop:disable Style/PredicateName
+  def is_read # rubocop:disable Naming/PredicateName
     false
   end
 
@@ -48,7 +48,7 @@ booth vice literally.</p>
     false
   end
 
-  def is_starred # rubocop:disable Style/PredicateName
+  def is_starred # rubocop:disable Naming/PredicateName
     false
   end
 
