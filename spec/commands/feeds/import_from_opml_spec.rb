@@ -3,7 +3,7 @@ require "spec_helper"
 app_require "commands/feeds/import_from_opml"
 
 describe ImportFromOpml do
-  let(:subscriptions) { File.open(File.expand_path("../../../support/files/subscriptions.xml", __FILE__)) }
+  let(:subscriptions) { File.open(File.expand_path("../../support/files/subscriptions.xml", __dir__)) }
 
   def import
     described_class.import(subscriptions)

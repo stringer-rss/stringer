@@ -17,7 +17,7 @@ class FeedDiscovery
     feed = parser.fetch_and_parse(url)
     feed.feed_url ||= url
     feed
-  rescue
+  rescue StandardError
     yield if block_given?
   end
 end

@@ -7,7 +7,7 @@ describe OpmlParser do
 
   describe "#parse_feeds" do
     it "it returns a hash of feed details from an OPML file" do
-      result = parser.parse_feeds(<<-eos)
+      result = parser.parse_feeds(<<-EOS)
         <?xml version="1.0" encoding="UTF-8"?>
         <opml version="1.0">
         <head>
@@ -20,7 +20,7 @@ describe OpmlParser do
               xmlUrl="http://mdswanson.com/atom.xml" htmlUrl="http://mdswanson.com/"/>
         </body>
         </opml>
-      eos
+      EOS
 
       resulted_values = result.values.flatten
       expect(resulted_values.size).to eq 2
@@ -33,7 +33,7 @@ describe OpmlParser do
     end
 
     it "handles nested groups of feeds" do
-      result = parser.parse_feeds(<<-eos)
+      result = parser.parse_feeds(<<-EOS)
         <?xml version="1.0" encoding="UTF-8"?>
         <opml version="1.0">
         <head>
@@ -46,7 +46,7 @@ describe OpmlParser do
           </outline>
         </body>
         </opml>
-      eos
+      EOS
       resulted_values = result.values.flatten
 
       expect(resulted_values.count).to eq 1
@@ -56,7 +56,7 @@ describe OpmlParser do
     end
 
     it "doesn't explode when there are no feeds" do
-      result = parser.parse_feeds(<<-eos)
+      result = parser.parse_feeds(<<-EOS)
         <?xml version="1.0" encoding="UTF-8"?>
         <opml version="1.0">
         <head>
@@ -65,13 +65,13 @@ describe OpmlParser do
         <body>
         </body>
         </opml>
-      eos
+      EOS
 
       expect(result).to be_empty
     end
 
     it "handles Feedly's exported OPML (missing :title)" do
-      result = parser.parse_feeds(<<-eos)
+      result = parser.parse_feeds(<<-EOS)
         <?xml version="1.0" encoding="UTF-8"?>
         <opml version="1.0">
         <head>
@@ -82,7 +82,7 @@ describe OpmlParser do
               xmlUrl="http://feeds.feedburner.com/foobar" htmlUrl="http://www.example.org/"/>
         </body>
         </opml>
-      eos
+      EOS
       resulted_values = result.values.flatten
 
       expect(resulted_values.count).to eq 1

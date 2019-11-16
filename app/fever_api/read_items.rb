@@ -10,7 +10,7 @@ module FeverAPI
       if params.keys.include?("items")
         item_ids = begin
                      params[:with_ids].split(",")
-                   rescue
+                   rescue StandardError
                      nil
                    end
 
