@@ -19,7 +19,7 @@ group :development, :test do
   gem "rack-test", "~> 0.6"
   gem "rspec", "~> 3.4"
   gem "rspec-html-matchers", "~> 0.7"
-  gem "rubocop", "~> 0.38", require: false
+  gem "rubocop", "~> 0.48", require: false
   gem "shotgun", "~> 0.9"
   gem "timecop", "~> 0.8"
 end
