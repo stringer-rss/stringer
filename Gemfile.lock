@@ -151,7 +151,7 @@ GEM
     sinatra-flash (0.3.0)
       sinatra (>= 1.0.0)
     slop (3.6.0)
-    sprockets (3.7.0)
+    sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     sprockets-helpers (1.2.1)
@@ -209,7 +209,7 @@ DEPENDENCIES
   sinatra-activerecord (~> 1.2, >= 1.2.3)
   sinatra-contrib (~> 1.4.7)
   sinatra-flash (~> 0.3)
-  sprockets (~> 3.0)
+  sprockets (~> 3.7)
   sprockets-helpers
   sqlite3 (~> 1.3, >= 1.3.8)
   thread (~> 0.2)
