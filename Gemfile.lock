@@ -89,7 +89,7 @@ GEM
     pry-byebug (1.3.3)
       byebug (~> 2.7)
       pry (~> 0.10)
-    rack (1.6.11)
+    rack (1.6.12)
     rack-protection (1.5.5)
       rack
     rack-ssl (1.4.1)
