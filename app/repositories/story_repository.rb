@@ -107,6 +107,7 @@ class StoryRepository
   def self.extract_title(entry)
     return ContentSanitizer.sanitize(entry.title) if entry.title.present?
     return ContentSanitizer.sanitize(entry.summary) if entry.summary.present?
+
     "There isn't a title for this story"
   end
 

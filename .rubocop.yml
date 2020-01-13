@@ -4,7 +4,6 @@ AllCops:
   Exclude:
     - 'db/schema.rb'
     - 'vendor/**/*'
-  TargetRubyVersion: 2.3
 
 Metrics/LineLength:
   Max: 120
@@ -18,14 +17,8 @@ Style/Documentation:
 Style/DoubleNegation:
   Enabled: false
 
-Style/IfUnlessModifier:
-  MaxLineLength: 120
-
 Style/NumericLiterals:
   Enabled: false
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
-
-Style/WhileUntilModifier:
-  MaxLineLength: 120

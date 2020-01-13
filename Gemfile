@@ -1,4 +1,4 @@
-ruby_version_file = File.join(File.expand_path("..", __FILE__), ".ruby-version")
+ruby_version_file = File.expand_path(".ruby-version", __dir__)
 ruby File.read(ruby_version_file).chomp if File.readable?(ruby_version_file)
 source "https://rubygems.org"
 
@@ -8,6 +8,7 @@ group :production do
 end
 
 group :development do
+  gem "rubocop", ">= 0.61.1", require: false
   gem "sqlite3", "~> 1.3", ">= 1.3.8"
 end
 
@@ -19,7 +20,6 @@ group :development, :test do
   gem "rack-test", "~> 0.6"
   gem "rspec", "~> 3.4"
   gem "rspec-html-matchers", "~> 0.7"
-  gem "rubocop", "~> 0.38", require: false
   gem "shotgun", "~> 0.9"
   gem "timecop", "~> 0.8"
 end

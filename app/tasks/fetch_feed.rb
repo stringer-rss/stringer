@@ -21,10 +21,10 @@ class FetchFeed
     end
 
     FeedRepository.set_status(:green, @feed)
-  rescue => ex
+  rescue StandardError => e
     FeedRepository.set_status(:red, @feed)
 
-    @logger.error "Something went wrong when parsing #{@feed.url}: #{ex}" if @logger
+    @logger.error "Something went wrong when parsing #{@feed.url}: #{e}" if @logger
   end
 
   private

@@ -1,6 +1,6 @@
 require "active_record"
 
-db_config = YAML.load(File.read("config/database.yml"))
+db_config = YAML.safe_load(File.read("config/database.yml"))
 ActiveRecord::Base.establish_connection(db_config["test"])
 ActiveRecord::Base.logger = Logger.new("log/test.log")
 

@@ -4,18 +4,11 @@ class Feed < ActiveRecord::Base
 
   validates_uniqueness_of :url
 
-  STATUS = { green: 0, yellow: 1, red: 2 }.freeze
-
-  def status
-    STATUS.key(read_attribute(:status))
-  end
-
-  def status=(s)
-    write_attribute(:status, STATUS[s])
-  end
+  enum status: { green: 0, yellow: 1, red: 2 }
 
   def status_bubble
     return :yellow if status == :red && stories.any?
+
     status
   end
 
