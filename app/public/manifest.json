@@ -1,0 +1,7 @@
+{
+  "name": "Stringer",
+  "theme_color": "#F67100",
+  "background_color": "#FAF2E5",
+  "display": "standalone",
+  "start_url": "/"
+}
