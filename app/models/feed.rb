@@ -7,7 +7,7 @@ class Feed < ActiveRecord::Base
   enum status: { green: 0, yellow: 1, red: 2 }
 
   def status_bubble
-    return :yellow if status == :red && stories.any?
+    return "yellow" if status == "red" && stories.any?
 
     status
   end
