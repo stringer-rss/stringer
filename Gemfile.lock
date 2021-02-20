@@ -209,6 +209,7 @@ DEPENDENCIES
   rubocop (>= 0.61.1)
   sass
   shotgun (~> 0.9)
+  simplecov
   sinatra (~> 1.4.8, >= 1.4.8)
   sinatra-activerecord (~> 1.2, >= 1.2.3)
   sinatra-contrib (~> 1.4.7)

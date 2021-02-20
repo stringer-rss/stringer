@@ -8,6 +8,7 @@ require "faker"
 require "ostruct"
 require "date"
 
+require_relative "support/coverage"
 require "factories/feed_factory"
 require "factories/story_factory"
 require "factories/user_factory"
