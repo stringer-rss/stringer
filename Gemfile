@@ -21,6 +21,7 @@ group :development, :test do
   gem "rspec", "~> 3.4"
   gem "rspec-html-matchers", "~> 0.7"
   gem "shotgun", "~> 0.9"
+  gem "simplecov"
   gem "timecop", "~> 0.8"
 end
 
