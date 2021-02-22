@@ -1,4 +1,4 @@
-class AddDelayedJob < ActiveRecord::Migration
+class AddDelayedJob < ActiveRecord::Migration[4.2]
   def self.up
     create_table :delayed_jobs, force: true do |table|
       # Allows some jobs to jump to the front of the queue
