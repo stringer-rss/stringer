@@ -14,6 +14,7 @@ require "factories/story_factory"
 require "factories/user_factory"
 require "factories/group_factory"
 require "factories/feeds"
+require "factories/groups"
 require "factories/stories"
 require "factories/users"
 
