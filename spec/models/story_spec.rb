@@ -94,8 +94,8 @@ describe "Story" do
         keep_unread: true,
         lead: "story body",
         permalink: "www.exampoo.com/perma",
-        pretty_date: I18n.l(published_at),
-        published: published_at,
+        pretty_date: I18n.l(published_at.utc),
+        published: published_at.utc,
         source: "my feed",
         title: "the story title",
         updated_at: updated_at
