@@ -1,4 +1,4 @@
-class UseTextDatatypeForTitleAndEntryId < ActiveRecord::Migration
+class UseTextDatatypeForTitleAndEntryId < ActiveRecord::Migration[4.2]
   def up
     change_column :stories, :title, :text
     change_column :stories, :entry_id, :text

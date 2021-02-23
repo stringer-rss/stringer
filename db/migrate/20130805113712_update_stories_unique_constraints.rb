@@ -1,4 +1,4 @@
-class UpdateStoriesUniqueConstraints < ActiveRecord::Migration
+class UpdateStoriesUniqueConstraints < ActiveRecord::Migration[4.2]
   def up
     remove_index :stories, [:permalink, :feed_id]
     add_index :stories, [:entry_id, :feed_id], unique: true, length: { permalink: 767 }

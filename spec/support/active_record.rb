@@ -5,10 +5,10 @@ ActiveRecord::Base.establish_connection(db_config["test"])
 ActiveRecord::Base.logger = Logger.new("log/test.log")
 
 def need_to_migrate?
-  ActiveRecord::Migrator.new(:up, ActiveRecord::Migrator.migrations("db/migrate")).pending_migrations.any?
+  ActiveRecord::Base.connection.migration_context.needs_migration?
 end
 
-ActiveRecord::Migrator.up "db/migrate" if need_to_migrate?
+ActiveRecord::MigrationContext.new("db/migrate").migrate if need_to_migrate?
 
 RSpec.configure do |config|
   config.around do |example|

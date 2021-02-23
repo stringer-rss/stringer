@@ -1,4 +1,4 @@
-class AddSetupCompleteToUser < ActiveRecord::Migration
+class AddSetupCompleteToUser < ActiveRecord::Migration[4.2]
   def change
     add_column :users, :setup_complete, :boolean
   end
