@@ -2,8 +2,6 @@ require "spec_helper"
 require "time"
 require "support/active_record"
 require "support/feed_server"
-require "capybara"
-require "capybara/server"
 require "timecop"
 
 app_require "tasks/fetch_feed"
@@ -87,7 +85,7 @@ def sample_data(path)
 end
 
 def fetch_feed(feed)
-  logger = Logger.new(STDOUT)
+  logger = Logger.new($stdout)
   logger.level = Logger::DEBUG
 
   FetchFeed.new(feed, logger: logger).fetch

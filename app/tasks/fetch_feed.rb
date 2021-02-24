@@ -26,7 +26,7 @@ class FetchFeed
   rescue StandardError => e
     FeedRepository.set_status(:red, @feed)
 
-    @logger.error "Something went wrong when parsing #{@feed.url}: #{e}" if @logger
+    @logger&.error "Something went wrong when parsing #{@feed.url}: #{e}"
   end
 
   private
@@ -37,7 +37,7 @@ class FetchFeed
   end
 
   def feed_not_modified
-    @logger.info "#{@feed.url} has not been modified since last fetch" if @logger
+    @logger&.info "#{@feed.url} has not been modified since last fetch"
   end
 
   def feed_modified(raw_feed)

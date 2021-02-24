@@ -14,7 +14,7 @@ module UrlHelpers
 
         begin
           node.set_attribute(attr, URI.join(base_url, url).to_s)
-        rescue URI::InvalidURIError # rubocop:disable Lint/HandleExceptions
+        rescue URI::InvalidURIError
           # Just ignore. If we cannot parse the url, we don't want the entire
           # import to blow up.
         end

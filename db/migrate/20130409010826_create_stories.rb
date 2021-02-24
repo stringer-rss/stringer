@@ -7,7 +7,7 @@ class CreateStories < ActiveRecord::Migration[4.2]
 
       t.references :feed
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end
