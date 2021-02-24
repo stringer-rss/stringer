@@ -2,8 +2,6 @@ require "spec_helper"
 require "time"
 require "support/active_record"
 require "support/feed_server"
-require "capybara"
-require "capybara/server"
 require "timecop"
 
 app_require "tasks/fetch_feed"

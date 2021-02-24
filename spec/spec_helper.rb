@@ -1,5 +1,7 @@
 ENV["RACK_ENV"] = "test"
 
+require "capybara"
+require "capybara/server"
 require "rspec"
 require "rspec-html-matchers"
 require "rack/test"
@@ -12,6 +14,8 @@ require_relative "support/coverage"
 require_relative "factories"
 
 require "./app"
+
+Capybara.server = :webrick
 
 RSpec.configure do |config|
   config.include Rack::Test::Methods
