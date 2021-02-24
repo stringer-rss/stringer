@@ -1,4 +1,5 @@
 require "spec_helper"
+require "support/active_record"
 
 app_require "repositories/story_repository"
 
@@ -32,6 +33,52 @@ describe StoryRepository do
       expect(Story).to receive(:create).with(hash_including(title: "n"))
 
       StoryRepository.add(entry, feed)
+    end
+  end
+
+  describe ".fetch" do
+    it "finds the story by id" do
+      story = create_story
+
+      expect(StoryRepository.fetch(story.id)).to eq(story)
+    end
+  end
+
+  describe ".fetch_by_ids" do
+    it "finds all stories by id" do
+      story1 = create_story
+      story2 = create_story
+      expected_stories = [story1, story2]
+
+      actual_stories = StoryRepository.fetch_by_ids(expected_stories.map(&:id))
+
+      expect(actual_stories).to match_array(expected_stories)
+    end
+  end
+
+  describe ".fetch_unread_by_timestamp" do
+    it "returns unread stories from before the timestamp" do
+      story = create_story(created_at: 1.week.ago, is_read: false)
+
+      actual_stories = StoryRepository.fetch_unread_by_timestamp(4.days.ago)
+
+      expect(actual_stories).to eq([story])
+    end
+
+    it "does not return unread stories from after the timestamp" do
+      create_story(created_at: 3.days.ago, is_read: false)
+
+      actual_stories = StoryRepository.fetch_unread_by_timestamp(4.days.ago)
+
+      expect(actual_stories).to be_empty
+    end
+
+    it "does not return read stories from before the timestamp" do
+      create_story(created_at: 1.week.ago, is_read: true)
+
+      actual_stories = StoryRepository.fetch_unread_by_timestamp(4.days.ago)
+
+      expect(actual_stories).to be_empty
     end
   end
 

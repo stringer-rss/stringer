@@ -4,6 +4,6 @@ module Factories
   end
 
   def build_story(params = {})
-    Story.new(feed: build_feed, **params)
+    Story.new(entry_id: next_id, feed: build_feed, **params)
   end
 end
