@@ -50,14 +50,13 @@ Style/PercentLiteralDelimiters:
     - 'spec/helpers/url_helpers_spec.rb'
     - 'spec/javascript/test_controller.rb'
 
-# Offense count: 3
+# Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: ConvertCodeThatCanStartToReturnNil, Whitelist.
 # Whitelist: present?, blank?, presence, try, try!
 Style/SafeNavigation:
   Exclude:
     - 'app/controllers/feeds_controller.rb'
-    - 'app/tasks/fetch_feed.rb'
 
 # Offense count: 7
 # Cop supports --auto-correct.

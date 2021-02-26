@@ -8,8 +8,8 @@ group :production do
 end
 
 group :development do
-  gem "rubocop", ">= 0.61.1", require: false
-  gem "sqlite3", "~> 1.3", ">= 1.3.8"
+  gem "rubocop", require: false
+  gem "sqlite3"
 end
 
 group :development, :test do
@@ -36,8 +36,8 @@ gem "i18n"
 gem "loofah", "~> 2.3"
 gem "nokogiri", "~> 1.11"
 gem "rack-protection", "~> 2.0"
-gem "rack-ssl", "~> 1.4"
 gem "racksh", "~> 1.0"
+gem "rack-ssl", "~> 1.4"
 gem "rake", "~> 12.3"
 gem "sass"
 gem "sinatra", "~> 2.0"

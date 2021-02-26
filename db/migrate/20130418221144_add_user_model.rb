@@ -4,7 +4,7 @@ class AddUserModel < ActiveRecord::Migration[4.2]
       t.string :email
       t.string :password_digest
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

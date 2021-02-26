@@ -26,7 +26,7 @@ class ChangePassword
 
   def ask_hidden(question)
     print(question)
-    input = STDIN.noecho(&:gets).chomp
+    input = $stdin.noecho(&:gets).chomp
     puts
     input
   end
