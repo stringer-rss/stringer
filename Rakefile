@@ -14,7 +14,7 @@ require "./app"
 require_relative "./app/jobs/fetch_feed_job"
 require_relative "./app/tasks/fetch_feeds"
 require_relative "./app/tasks/change_password"
-require_relative "./app/tasks/remove_old_stories.rb"
+require_relative "./app/tasks/remove_old_stories"
 
 desc "Fetch all feeds."
 task :fetch_feeds do
@@ -83,6 +83,6 @@ begin
   RSpec::Core::RakeTask.new(:spec)
 
   task default: [:speedy_tests]
-rescue LoadError # rubocop:disable Lint/HandleExceptions
+rescue LoadError
   # allow for bundle install --without development:test
 end
