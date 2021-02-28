@@ -1,6 +1,8 @@
 inherit_from: .rubocop_todo.yml
 
 AllCops:
+  DisplayCopNames: true
+  EnabledByDefault: true
   Exclude:
     - 'db/schema.rb'
     - 'vendor/**/*'
@@ -10,6 +12,9 @@ Layout/LineLength:
 
 Metrics/MethodLength:
   Max: 15
+
+Style/Copyright:
+  Enabled: false
 
 Style/Documentation:
   Enabled: false
