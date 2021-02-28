@@ -4,6 +4,6 @@ module Factories
   end
 
   def build_feed(params = {})
-    Feed.new(**params)
+    Feed.new(url: "https://exampoo.com/#{next_id}", **params)
   end
 end
