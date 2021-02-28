@@ -13,16 +13,16 @@ group :development do
 end
 
 group :development, :test do
-  gem "capybara", "~> 2.6"
-  gem "coveralls", "~> 0.7", require: false
-  gem "faker", "~> 1.2"
-  gem "pry-byebug", "~> 1.2"
-  gem "rack-test", "~> 1.1"
-  gem "rspec", "~> 3.4"
-  gem "rspec-html-matchers", "~> 0.7"
-  gem "shotgun", "~> 0.9"
+  gem "capybara"
+  gem "coveralls", "> 0.8", require: false
+  gem "faker"
+  gem "pry-byebug"
+  gem "rack-test"
+  gem "rspec"
+  gem "rspec-html-matchers"
+  gem "shotgun"
   gem "simplecov"
-  gem "timecop", "~> 0.8"
+  gem "timecop"
 end
 
 gem "activerecord", "~> 5.0"
