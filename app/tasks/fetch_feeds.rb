@@ -1,6 +1,7 @@
 require "thread/pool"
 
 require_relative "fetch_feed"
+require "delayed_job_active_record"
 
 class FetchFeeds
   def initialize(feeds, pool = nil)
