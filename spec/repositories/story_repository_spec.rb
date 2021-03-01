@@ -82,6 +82,68 @@ describe StoryRepository do
     end
   end
 
+  describe ".fetch_unread_by_timestamp_and_group" do
+    it "returns unread stories before timestamp for group_id" do
+      feed = create_feed(group_id: 52)
+      story = create_story(:unread, feed: feed, created_at: 5.minutes.ago)
+      time = Time.now
+
+      stories = StoryRepository.fetch_unread_by_timestamp_and_group(time, 52)
+
+      expect(stories).to eq([story])
+    end
+
+    it "does not return read stories before timestamp for group_id" do
+      feed = create_feed(group_id: 52)
+      create_story(feed: feed, created_at: 5.minutes.ago)
+      time = Time.now
+
+      stories = StoryRepository.fetch_unread_by_timestamp_and_group(time, 52)
+
+      expect(stories).to be_empty
+    end
+
+    it "does not return unread stories after timestamp for group_id" do
+      feed = create_feed(group_id: 52)
+      create_story(:unread, feed: feed, created_at: 5.minutes.ago)
+      time = 6.minutes.ago
+
+      stories = StoryRepository.fetch_unread_by_timestamp_and_group(time, 52)
+
+      expect(stories).to be_empty
+    end
+
+    it "does not return stories before timestamp for other group_id" do
+      feed = create_feed(group_id: 52)
+      create_story(:unread, feed: feed, created_at: 5.minutes.ago)
+      time = Time.now
+
+      stories = StoryRepository.fetch_unread_by_timestamp_and_group(time, 55)
+
+      expect(stories).to be_empty
+    end
+
+    it "does not return stories with no group_id before timestamp" do
+      feed = create_feed
+      create_story(:unread, feed: feed, created_at: 5.minutes.ago)
+      time = Time.now
+
+      stories = StoryRepository.fetch_unread_by_timestamp_and_group(time, 52)
+
+      expect(stories).to be_empty
+    end
+
+    it "returns unread stories before timestamp for nil group_id" do
+      feed = create_feed
+      story = create_story(:unread, feed: feed, created_at: 5.minutes.ago)
+      time = Time.now
+
+      stories = StoryRepository.fetch_unread_by_timestamp_and_group(time, nil)
+
+      expect(stories).to eq([story])
+    end
+  end
+
   describe ".extract_url" do
     it "returns the url" do
       feed = double(url: "http://github.com")

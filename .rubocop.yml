@@ -13,6 +13,9 @@ Layout/LineLength:
 Metrics/MethodLength:
   Max: 15
 
+Style/ConstantVisibility:
+  Enabled: false
+
 Style/Copyright:
   Enabled: false
 
