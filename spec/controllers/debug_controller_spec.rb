@@ -46,4 +46,12 @@ describe "DebugController" do
       expect(page).to have_tag("li", text: /Migration C - 3/)
     end
   end
+
+  describe "#heroku" do
+    it "displays Heroku instructions" do
+      get("/heroku")
+
+      expect(last_response.body).to include("add an hourly task")
+    end
+  end
 end
