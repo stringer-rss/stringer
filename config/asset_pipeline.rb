@@ -22,13 +22,13 @@ module AssetPipeline
   end
 
   def configure_development(app)
-    app.configure :development do
+    app.configure :development, :test do
       app.sprockets.cache = Sprockets::Cache::FileStore.new("./tmp")
     end
   end
 
   def configure_production(app)
-    app.configure :production do
+    app.configure :production, :test do
       app.sprockets.css_compressor = :scss
       app.sprockets.js_compressor = :uglify
     end
