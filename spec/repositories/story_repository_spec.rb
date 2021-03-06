@@ -144,6 +144,102 @@ describe StoryRepository do
     end
   end
 
+  describe ".fetch_unread_for_feed_by_timestamp" do
+    it "returns unread stories for the feed before timestamp" do
+      feed = create_feed
+      story = create_story(:unread, feed: feed, created_at: 5.minutes.ago)
+      time = 4.minutes.ago
+
+      stories =
+        StoryRepository.fetch_unread_for_feed_by_timestamp(feed.id, time)
+
+      expect(stories).to eq([story])
+    end
+
+    it "returns unread stories for the feed before string timestamp" do
+      feed = create_feed
+      story = create_story(:unread, feed: feed, created_at: 5.minutes.ago)
+      timestamp = Integer(4.minutes.ago).to_s
+
+      stories =
+        StoryRepository.fetch_unread_for_feed_by_timestamp(feed.id, timestamp)
+
+      expect(stories).to eq([story])
+    end
+
+    it "does not return read stories for the feed before timestamp" do
+      feed = create_feed
+      create_story(feed: feed, created_at: 5.minutes.ago)
+      time = 4.minutes.ago
+
+      stories =
+        StoryRepository.fetch_unread_for_feed_by_timestamp(feed.id, time)
+
+      expect(stories).to be_empty
+    end
+
+    it "does not return unread stories for the feed after timestamp" do
+      feed = create_feed
+      create_story(:unread, feed: feed, created_at: 5.minutes.ago)
+      time = 6.minutes.ago
+
+      stories =
+        StoryRepository.fetch_unread_for_feed_by_timestamp(feed.id, time)
+
+      expect(stories).to be_empty
+    end
+
+    it "does not return unread stories for another feed before timestamp" do
+      feed = create_feed
+      create_story(:unread, created_at: 5.minutes.ago)
+      time = 4.minutes.ago
+
+      stories =
+        StoryRepository.fetch_unread_for_feed_by_timestamp(feed.id, time)
+
+      expect(stories).to be_empty
+    end
+  end
+
+  describe ".unread" do
+    it "returns unread stories ordered by published date descending" do
+      story1 = create_story(:unread, published: 5.minutes.ago)
+      story2 = create_story(:unread, published: 4.minutes.ago)
+
+      expect(StoryRepository.unread).to eq([story2, story1])
+    end
+
+    it "does not return read stories" do
+      create_story(published: 5.minutes.ago)
+      create_story(published: 4.minutes.ago)
+
+      expect(StoryRepository.unread).to be_empty
+    end
+  end
+
+  describe ".unread_since_id" do
+    it "returns unread stories with id greater than given id" do
+      story1 = create_story(:unread)
+      story2 = create_story(:unread)
+
+      expect(StoryRepository.unread_since_id(story1.id)).to eq([story2])
+    end
+
+    it "does not return read stories with id greater than given id" do
+      story1 = create_story(:unread)
+      create_story
+
+      expect(StoryRepository.unread_since_id(story1.id)).to be_empty
+    end
+
+    it "does not return unread stories with id less than given id" do
+      create_story(:unread)
+      story2 = create_story(:unread)
+
+      expect(StoryRepository.unread_since_id(story2.id)).to be_empty
+    end
+  end
+
   describe ".extract_url" do
     it "returns the url" do
       feed = double(url: "http://github.com")
