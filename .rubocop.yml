@@ -10,6 +10,10 @@ AllCops:
 Layout/LineLength:
   Max: 120
 
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*_spec.rb'
+
 Metrics/MethodLength:
   Max: 15
 
