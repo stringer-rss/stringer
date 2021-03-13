@@ -134,6 +134,15 @@ GEM
       unicode-display_width (>= 1.4.0, < 3.0)
     rubocop-ast (1.4.1)
       parser (>= 2.7.1.5)
+    rubocop-rails (2.9.1)
+      activesupport (>= 4.2.0)
+      rack (>= 1.1)
+      rubocop (>= 0.90.0, < 2.0)
+    rubocop-rake (0.5.1)
+      rubocop
+    rubocop-rspec (2.2.0)
+      rubocop (~> 1.0)
+      rubocop-ast (>= 1.1.0)
     ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.4)
     sass (3.7.4)
@@ -220,6 +229,9 @@ DEPENDENCIES
   rspec
   rspec-html-matchers
   rubocop
+  rubocop-rails
+  rubocop-rake
+  rubocop-rspec
   sass
   shotgun
   simplecov
