@@ -1,4 +1,8 @@
 inherit_from: .rubocop_todo.yml
+require:
+  - rubocop-rails
+  - rubocop-rake
+  - rubocop-rspec
 
 AllCops:
   DisplayCopNames: true
