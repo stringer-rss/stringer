@@ -240,6 +240,50 @@ describe StoryRepository do
     end
   end
 
+  describe ".feed" do
+    it "returns stories for the given feed id" do
+      feed = create_feed
+      story = create_story(feed: feed)
+
+      expect(StoryRepository.feed(feed.id)).to eq([story])
+    end
+
+    it "sorts stories by published" do
+      feed = create_feed
+      story1 = create_story(feed: feed, published: 1.day.ago)
+      story2 = create_story(feed: feed, published: 1.hour.ago)
+
+      expect(StoryRepository.feed(feed.id)).to eq([story2, story1])
+    end
+
+    it "does not return stories for other feeds" do
+      feed1 = create_feed
+      feed2 = create_feed
+      create_story(feed: feed2)
+      create_story
+
+      expect(StoryRepository.feed(feed1.id)).to be_empty
+    end
+  end
+
+  describe ".read_count" do
+    it "returns the count of read stories" do
+      create_story(:read)
+      create_story(:read)
+      create_story(:read)
+
+      expect(StoryRepository.read_count).to eq(3)
+    end
+
+    it "does not count unread stories" do
+      create_story(:unread)
+      create_story(:unread)
+      create_story(:unread)
+
+      expect(StoryRepository.read_count).to eq(0)
+    end
+  end
+
   describe ".extract_url" do
     it "returns the url" do
       feed = double(url: "http://github.com")
