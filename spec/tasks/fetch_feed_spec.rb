@@ -23,7 +23,7 @@ describe FetchFeed do
 
         expect(StoryRepository).not_to receive(:add)
 
-        FetchFeed.new(daring_fireball, parser: parser, client: client)
+        FetchFeed.new(daring_fireball, parser: parser, client: client).fetch
       end
     end
 
