@@ -257,12 +257,39 @@ describe StoryRepository do
     end
 
     it "does not return stories for other feeds" do
-      feed1 = create_feed
-      feed2 = create_feed
-      create_story(feed: feed2)
+      feed = create_feed
       create_story
 
-      expect(StoryRepository.feed(feed1.id)).to be_empty
+      expect(StoryRepository.feed(feed.id)).to be_empty
+    end
+  end
+
+  describe ".read" do
+    it "returns read stories" do
+      story = create_story(:read)
+
+      expect(StoryRepository.read).to eq([story])
+    end
+
+    it "sorts stories by published" do
+      story1 = create_story(:read, published: 1.day.ago)
+      story2 = create_story(:read, published: 1.hour.ago)
+
+      expect(StoryRepository.read).to eq([story2, story1])
+    end
+
+    it "does not return unread stories" do
+      create_story(:unread)
+
+      expect(StoryRepository.read).to be_empty
+    end
+
+    it "paginates results" do
+      stories =
+        21.times.map { |num| create_story(:read, published: num.days.ago) }
+
+      expect(StoryRepository.read).to eq(stories[0...20])
+      expect(StoryRepository.read(2)).to eq([stories.last])
     end
   end
 
