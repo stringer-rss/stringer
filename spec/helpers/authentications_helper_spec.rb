@@ -13,16 +13,7 @@ RSpec.describe Sinatra::AuthenticationHelpers do
     let(:authenticated_path) { "/news" }
 
     before do
-      stub_const("ENV", "RACK_ENV" => "not-test")
       allow(UserRepository).to receive(:setup_complete?).and_return(true)
-    end
-
-    context "when `RACK_ENV` is 'test'" do
-      it "returns false" do
-        stub_const("ENV", "RACK_ENV" => "test")
-
-        expect(helper.needs_authentication?(authenticated_path)).to eq(false)
-      end
     end
 
     context "when setup in not complete" do
