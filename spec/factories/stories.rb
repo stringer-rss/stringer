@@ -1,6 +1,7 @@
 module Factories
   STORY_TRAITS = {
     read: -> { { is_read: true } },
+    starred: -> { { is_starred: true } },
     unread: -> { { is_read: false } }
   }.freeze
 

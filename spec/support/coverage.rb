@@ -14,4 +14,6 @@ SimpleCov.start("test_frameworks") do
   add_group("Repositories", "app/repositories")
   add_group("Tasks", "app/tasks")
   add_group("Utils", "app/utils")
+  add_filter("/db/migrate/")
 end
+SimpleCov.minimum_coverage(100)
