@@ -5,11 +5,11 @@ The first step is installing some essential dependencies from your VPS's package
 
 #### Ubuntu/Debian
 
-    sudo apt-get install git libxml2-dev libxslt-dev libcurl4-openssl-dev libpq-dev libsqlite3-dev build-essential postgresql libreadline-dev
+    sudo apt-get install git libxml2-dev libxslt-dev libcurl4-openssl-dev libpq-dev build-essential postgresql libreadline-dev
 
 #### CentOS/Fedora
 
-    sudo yum install git libxml2-devel libxslt-devel curl-devel postgresql-devel sqlite-devel  make automake gcc gcc-c++ postgresql-server readline-devel openssl-devel
+    sudo yum install git libxml2-devel libxslt-devel curl-devel postgresql-devel make automake gcc gcc-c++ postgresql-server readline-devel openssl-devel
 
 On CentOS after installing Postgres, I needed to run these commands, Fedora likely the same.
 
@@ -17,7 +17,7 @@ On CentOS after installing Postgres, I needed to run these commands, Fedora like
 
 #### Arch Linux
 
-    pacman -S git postgresql base-devel libxml2 libxslt curl sqlite readline postgresql-libs
+    pacman -S git postgresql base-devel libxml2 libxslt curl readline postgresql-libs
 
 Here are some Arch specific instructions for setting up postgres
 
