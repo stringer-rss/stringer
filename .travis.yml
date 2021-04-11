@@ -2,6 +2,7 @@ before_install:
   - gem update bundler
   - 'echo "RUBY_VERSION: $RUBY_VERSION"'
 before_script:
+  - bundle exec rake db:create db:schema:load
   - npm install -g mocha-phantomjs@4.1.0
   - bundle exec rake test_js &> /dev/null &
   - sleep 5
@@ -10,6 +11,8 @@ language: ruby
 rvm:
   - 2.7.2
   - ruby-head
+services:
+  - postgresql
 matrix:
   allow_failures:
     - rvm: ruby-head
