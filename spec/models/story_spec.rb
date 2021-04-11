@@ -84,7 +84,7 @@ describe "Story" do
 
       expect(story.as_json).to eq({
         body: "story body",
-        created_at: created_at,
+        created_at: created_at.utc.as_json,
         entry_id: "5",
         feed_id: feed.id,
         headline: "the story title",
@@ -95,10 +95,10 @@ describe "Story" do
         lead: "story body",
         permalink: "www.exampoo.com/perma",
         pretty_date: I18n.l(published_at.utc),
-        published: published_at.utc,
+        published: published_at.utc.as_json,
         source: "my feed",
         title: "the story title",
-        updated_at: updated_at
+        updated_at: updated_at.utc.as_json
       }.stringify_keys)
     end
   end

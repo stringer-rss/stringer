@@ -27,7 +27,7 @@ group :development, :test do
   gem "timecop"
 end
 
-gem "activerecord", "~> 5.0"
+gem "activerecord"
 gem "bcrypt"
 gem "delayed_job"
 gem "delayed_job_active_record"
