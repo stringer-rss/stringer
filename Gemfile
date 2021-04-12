@@ -16,7 +16,7 @@ end
 
 group :development, :test do
   gem "capybara"
-  gem "coveralls", "> 0.8", require: false
+  gem "coveralls_reborn", require: false
   gem "faker"
   gem "pry-byebug"
   gem "rack-test"
