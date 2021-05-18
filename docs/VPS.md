@@ -5,11 +5,11 @@ The first step is installing some essential dependencies from your VPS's package
 
 #### Ubuntu/Debian
 
-    sudo apt-get install git libxml2-dev libxslt-dev libcurl4-openssl-dev libpq-dev libsqlite3-dev build-essential postgresql libreadline-dev
+    sudo apt-get install git libxml2-dev libxslt-dev libcurl4-openssl-dev libpq-dev build-essential postgresql libreadline-dev
 
 #### CentOS/Fedora
 
-    sudo yum install git libxml2-devel libxslt-devel curl-devel postgresql-devel sqlite-devel  make automake gcc gcc-c++ postgresql-server readline-devel openssl-devel
+    sudo yum install git libxml2-devel libxslt-devel curl-devel postgresql-devel make automake gcc gcc-c++ postgresql-server readline-devel openssl-devel
 
 On CentOS after installing Postgres, I needed to run these commands, Fedora likely the same.
 
@@ -17,7 +17,7 @@ On CentOS after installing Postgres, I needed to run these commands, Fedora like
 
 #### Arch Linux
 
-    pacman -S git postgresql base-devel libxml2 libxslt curl sqlite readline postgresql-libs
+    pacman -S git postgresql base-devel libxml2 libxslt curl readline postgresql-libs
 
 Here are some Arch specific instructions for setting up postgres
 
@@ -61,8 +61,8 @@ We are going to use Rbenv to manage the version of Ruby you use.
     git clone git://github.com/sstephenson/ruby-build.git $HOME/.rbenv/plugins/ruby-build
     source ~/.bash_profile
 
-    rbenv install 2.3.3
-    rbenv local 2.3.3
+    rbenv install 2.7.2
+    rbenv local 2.7.2
     rbenv rehash
 
 We also need to install bundler which will handle Stringer's dependencies
@@ -163,13 +163,13 @@ server {
 Deploy Stringer With Passenger And Apache
 =========================================
 
-You may want to run Stringer with the existing Apache server. We need to install 
+You may want to run Stringer with the existing Apache server. We need to install
 *mod_passenger* and edit few files.
 
 The installation of *mod_passenger* depends on VPS's system distribution release.
 Offical installation guide is available at [Passenger Library](https://www.phusionpassenger.com/library/install/apache/install/oss/)
 
-After validating the *mod_passenger* install, we will fetch dependencies again 
+After validating the *mod_passenger* install, we will fetch dependencies again
 to meet Passenger's default GEM_HOME set. As stringer user:
 
     cd ~/stringer

@@ -1,7 +1,5 @@
-class User < ActiveRecord::Base
-  has_secure_password
+require_relative "./application_record"
 
-  def setup_complete?
-    setup_complete
-  end
+class User < ApplicationRecord
+  has_secure_password
 end

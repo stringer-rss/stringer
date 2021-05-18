@@ -1,4 +1,5 @@
 require "spec_helper"
+require "support/active_record"
 
 app_require "controllers/first_run_controller"
 
@@ -72,20 +73,19 @@ describe "FirstRunController" do
   end
 
   context "when a user has been setup" do
-    before do
-      allow(UserRepository).to receive(:setup_complete?).and_return(true)
-    end
-
     it "should redirect any requests to first run stuff" do
-      get "/"
+      user = create_user(:setup_complete)
+      session = { "rack.session" => { user_id: user.id } }
+
+      get "/", {}, session
       expect(last_response.status).to be 302
       expect(URI.parse(last_response.location).path).to eq "/news"
 
-      get "/setup/password"
+      get "/setup/password", {}, session
       expect(last_response.status).to be 302
       expect(URI.parse(last_response.location).path).to eq "/news"
 
-      get "/setup/tutorial"
+      get "/setup/tutorial", {}, session
       expect(last_response.status).to be 302
       expect(URI.parse(last_response.location).path).to eq "/news"
     end

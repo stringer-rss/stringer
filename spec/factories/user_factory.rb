@@ -6,6 +6,7 @@ class UserFactory
   def self.build
     FakeUser.new(
       id: rand(100),
-      setup_complete: false)
+      setup_complete: false
+    )
   end
 end

@@ -5,8 +5,10 @@ development:
   pool: 5
 
 test:
-  adapter: sqlite3
-  database: db/stringer_test.sqlite
+  adapter: postgresql
+  database: stringer_test
+  encoding: unicode
+  pool: 5
 
 production:
   url: <%= ENV["DATABASE_URL"] %>

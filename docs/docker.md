@@ -1,18 +1,5 @@
 # Stringer on Docker
 
-## Quick test setup
-
-To quickly try out Stringer on your local machine run the following one liner:
-
-```sh
-docker run --rm -it -e DATABASE_URL="sqlite3:':memory:'" -p 8080:8080 mdswanson/stringer
-```
-
-Visit `http://localhost:8080` and enjoy Stringer!
-
-**One caveat**: Stringer was not designed to be used with sqlite so you might run into some issues if you
-have Stringer fetch many feeds. See [this issue](https://github.com/swanson/stringer/issues/164) for details.
-
 ## Production ready setup using docker-compose
 
 Download [docker-compose.yml](../docker-compose.yml) and in the corresponding foler, run `docker-compose up -d`, give it a second and visit `localhost`

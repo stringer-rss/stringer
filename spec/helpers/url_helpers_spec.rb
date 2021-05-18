@@ -3,7 +3,7 @@ require "spec_helper"
 app_require "helpers/url_helpers"
 
 RSpec.describe UrlHelpers do
-  class Helper
+  class Helper # rubocop:disable Lint/ConstantDefinitionInBlock
     include UrlHelpers
   end
 
@@ -17,22 +17,22 @@ RSpec.describe UrlHelpers do
     end
 
     it "replaces relative urls in a, img and video tags" do
-      content = <<-EOS
-<div>
-<img src="https://foo">
-<a href="/bar/baz">tee</a><img src="bar/bar">
-<video src="/tee"></video>
-</div>
+      content = <<~EOS
+        <div>
+        <img src="https://foo">
+        <a href="/bar/baz">tee</a><img src="bar/bar">
+        <video src="/tee"></video>
+        </div>
       EOS
 
       result = helper.expand_absolute_urls(content, "http://oodl.io/d/")
-      expect(result.delete("\n")).to eq <<-EOS.delete("\n")
-<div>
-<img src="https://foo">
-<a href="http://oodl.io/bar/baz">tee</a>
-<img src="http://oodl.io/d/bar/bar">
-<video src="http://oodl.io/tee"></video>
-</div>
+      expect(result.delete("\n")).to eq <<~EOS.delete("\n")
+        <div>
+        <img src="https://foo">
+        <a href="http://oodl.io/bar/baz">tee</a>
+        <img src="http://oodl.io/d/bar/bar">
+        <video src="http://oodl.io/tee"></video>
+        </div>
       EOS
     end
 
@@ -41,21 +41,21 @@ RSpec.describe UrlHelpers do
     end
 
     it "doesn't modify tags that do not have url attributes" do
-      content = <<-EOS
-<div>
-<img foo="bar">
-<a name="something"/></a>
-<video foo="bar"></video>
-</div>
+      content = <<~EOS
+        <div>
+        <img foo="bar">
+        <a name="something"/></a>
+        <video foo="bar"></video>
+        </div>
       EOS
 
       result = helper.expand_absolute_urls(content, "http://oodl.io/d/")
-      expect(result.delete("\n")).to eq <<-EOS.delete("\n")
-<div>
-<img foo="bar">
-<a name="something"></a>
-<video foo="bar"></video>
-</div>
+      expect(result.delete("\n")).to eq <<~EOS.delete("\n")
+        <div>
+        <img foo="bar">
+        <a name="something"></a>
+        <video foo="bar"></video>
+        </div>
       EOS
     end
 

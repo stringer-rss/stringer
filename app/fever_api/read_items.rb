@@ -9,10 +9,10 @@ module FeverAPI
     def call(params = {})
       if params.keys.include?("items")
         item_ids = begin
-                     params[:with_ids].split(",")
-                   rescue
-                     nil
-                   end
+          params[:with_ids].split(",")
+        rescue StandardError
+          nil
+        end
 
         {
           items: items(item_ids, params[:since_id]),

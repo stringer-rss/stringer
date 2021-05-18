@@ -1,49 +1,53 @@
-ruby_version_file = File.join(File.expand_path("..", __FILE__), ".ruby-version")
+ruby_version_file = File.expand_path(".ruby-version", __dir__)
 ruby File.read(ruby_version_file).chomp if File.readable?(ruby_version_file)
 source "https://rubygems.org"
 
 group :production do
-  gem "pg", "~> 0.18.4"
-  gem "unicorn", "~> 5.3"
+  gem "pg"
+  gem "unicorn"
 end
 
 group :development do
-  gem "sqlite3", "~> 1.3", ">= 1.3.8"
+  gem "rubocop", require: false
+  gem "rubocop-rails", require: false
+  gem "rubocop-rake", require: false
+  gem "rubocop-rspec", require: false
 end
 
 group :development, :test do
-  gem "capybara", "~> 2.6"
-  gem "coveralls", "~> 0.7", require: false
-  gem "faker", "~> 1.2"
-  gem "pry-byebug", "~> 1.2"
-  gem "rack-test", "~> 0.6"
-  gem "rspec", "~> 3.4"
-  gem "rspec-html-matchers", "~> 0.7"
-  gem "rubocop", "~> 0.38", require: false
-  gem "shotgun", "~> 0.9"
-  gem "timecop", "~> 0.8"
+  gem "capybara"
+  gem "coveralls_reborn", require: false
+  gem "faker"
+  gem "pry-byebug"
+  gem "rack-test"
+  gem "rspec"
+  gem "rspec-html-matchers"
+  gem "shotgun"
+  gem "simplecov"
+  gem "timecop"
 end
 
-gem "activerecord", "~> 4.2.6"
-gem "bcrypt", "~> 3.1"
-gem "delayed_job", "~> 4.1"
-gem "delayed_job_active_record", "~> 4.1"
-gem "feedbag", "~> 0.9.5"
-gem "feedjira", "~> 2.1.3"
+gem "activerecord"
+gem "bcrypt"
+gem "delayed_job"
+gem "delayed_job_active_record"
+gem "feedbag"
+gem "feedjira"
+gem "httparty"
 gem "i18n"
-gem "loofah", "~> 2.0"
-gem "nokogiri", "~> 1.6", ">= 1.6.7.2"
-gem "rack-protection", "~> 1.5"
-gem "rack-ssl", "~> 1.4"
-gem "racksh", "~> 1.0"
-gem "rake", "~> 10.1", ">= 10.1.1"
+gem "loofah"
+gem "nokogiri"
+gem "rack-protection"
+gem "racksh"
+gem "rack-ssl"
+gem "rake"
 gem "sass"
-gem "sinatra", "~> 1.4.8", ">= 1.4.8"
-gem "sinatra-activerecord", "~> 1.2", ">= 1.2.3"
-gem "sinatra-contrib", "~> 1.4.7"
-gem "sinatra-flash", "~> 0.3"
-gem "sprockets", "~> 3.0"
+gem "sinatra"
+gem "sinatra-activerecord"
+gem "sinatra-contrib"
+gem "sinatra-flash"
+gem "sprockets"
 gem "sprockets-helpers"
-gem "thread", "~> 0.2"
+gem "thread"
 gem "uglifier"
-gem "will_paginate", "~> 3.1"
+gem "will_paginate"

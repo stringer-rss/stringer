@@ -1,16 +1,31 @@
 inherit_from: .rubocop_todo.yml
+require:
+  - rubocop-rails
+  - rubocop-rake
+  - rubocop-rspec
 
 AllCops:
+  DisplayCopNames: true
+  EnabledByDefault: true
   Exclude:
     - 'db/schema.rb'
     - 'vendor/**/*'
-  TargetRubyVersion: 2.3
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 120
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*_spec.rb'
 
 Metrics/MethodLength:
   Max: 15
+
+Style/ConstantVisibility:
+  Enabled: false
+
+Style/Copyright:
+  Enabled: false
 
 Style/Documentation:
   Enabled: false
@@ -18,14 +33,8 @@ Style/Documentation:
 Style/DoubleNegation:
   Enabled: false
 
-Style/IfUnlessModifier:
-  MaxLineLength: 120
-
 Style/NumericLiterals:
   Enabled: false
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
-
-Style/WhileUntilModifier:
-  MaxLineLength: 120

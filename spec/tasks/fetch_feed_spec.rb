@@ -18,24 +18,26 @@ describe FetchFeed do
 
     context "when feed has not been modified" do
       it "should not try to fetch posts" do
-        parser = double(fetch_and_parse: 304)
+        client = class_spy(HTTParty)
+        parser = class_double(Feedjira, parse: 304)
 
         expect(StoryRepository).not_to receive(:add)
 
-        FetchFeed.new(daring_fireball, parser: parser)
+        FetchFeed.new(daring_fireball, parser: parser, client: client).fetch
       end
     end
 
     context "when no new posts have been added" do
       it "should not add any new posts" do
         fake_feed = double(last_modified: Time.new(2012, 12, 31))
-        parser = double(fetch_and_parse: fake_feed)
+        client = class_spy(HTTParty)
+        parser = class_double(Feedjira, parse: fake_feed)
 
         allow_any_instance_of(FindNewStories).to receive(:new_stories).and_return([])
 
         expect(StoryRepository).not_to receive(:add)
 
-        FetchFeed.new(daring_fireball, parser: parser).fetch
+        FetchFeed.new(daring_fireball, parser: parser, client: client).fetch
       end
     end
 
@@ -45,7 +47,8 @@ describe FetchFeed do
       let(:old_story) { double }
 
       let(:fake_feed) { double(last_modified: now, entries: [new_story, old_story]) }
-      let(:fake_parser) { double(fetch_and_parse: fake_feed) }
+      let(:fake_client) { class_spy(HTTParty) }
+      let(:fake_parser) { class_double(Feedjira, parse: fake_feed) }
 
       before { allow_any_instance_of(FindNewStories).to receive(:new_stories).and_return([new_story]) }
 
@@ -53,35 +56,45 @@ describe FetchFeed do
         expect(StoryRepository).to receive(:add).with(new_story, daring_fireball)
         expect(StoryRepository).not_to receive(:add).with(old_story, daring_fireball)
 
-        FetchFeed.new(daring_fireball, parser: fake_parser).fetch
+        FetchFeed.new(
+          daring_fireball,
+          parser: fake_parser,
+          client: fake_client
+        ).fetch
       end
 
       it "should update the last fetched time for the feed" do
         expect(FeedRepository).to receive(:update_last_fetched)
           .with(daring_fireball, now)
 
-        FetchFeed.new(daring_fireball, parser: fake_parser).fetch
+        FetchFeed.new(
+          daring_fireball,
+          parser: fake_parser,
+          client: fake_client
+        ).fetch
       end
     end
 
     context "feed status" do
       it "sets the status to green if things are all good" do
         fake_feed = double(last_modified: Time.new(2012, 12, 31), entries: [])
-        parser = double(fetch_and_parse: fake_feed)
+        client = class_spy(HTTParty)
+        parser = class_double(Feedjira, parse: fake_feed)
 
         expect(FeedRepository).to receive(:set_status)
           .with(:green, daring_fireball)
 
-        FetchFeed.new(daring_fireball, parser: parser).fetch
+        FetchFeed.new(daring_fireball, parser: parser, client: client).fetch
       end
 
       it "sets the status to red if things go wrong" do
-        parser = double(fetch_and_parse: 404)
+        client = class_spy(HTTParty)
+        parser = class_double(Feedjira, parse: 404)
 
         expect(FeedRepository).to receive(:set_status)
           .with(:red, daring_fireball)
 
-        FetchFeed.new(daring_fireball, parser: parser).fetch
+        FetchFeed.new(daring_fireball, parser: parser, client: client).fetch
       end
     end
   end

@@ -40,7 +40,7 @@ module FeverAPI
       @params = params
     end
 
-    def to_json
+    def to_json(*_args)
       base_response = { api_version: API_VERSION }
       ACTIONS
         .inject(base_response) { |a, e| a.merge!(e.new.call(@params)) }

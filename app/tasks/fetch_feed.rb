@@ -1,13 +1,15 @@
 require "feedjira"
+require "httparty"
 
 require_relative "../repositories/story_repository"
 require_relative "../repositories/feed_repository"
 require_relative "../commands/feeds/find_new_stories"
 
 class FetchFeed
-  def initialize(feed, parser: Feedjira::Feed, logger: nil)
+  def initialize(feed, parser: Feedjira, client: HTTParty, logger: nil)
     @feed = feed
     @parser = parser
+    @client = client
     @logger = logger
   end
 
@@ -21,20 +23,21 @@ class FetchFeed
     end
 
     FeedRepository.set_status(:green, @feed)
-  rescue => ex
+  rescue StandardError => e
     FeedRepository.set_status(:red, @feed)
 
-    @logger.error "Something went wrong when parsing #{@feed.url}: #{ex}" if @logger
+    @logger&.error "Something went wrong when parsing #{@feed.url}: #{e}"
   end
 
   private
 
   def fetch_raw_feed
-    @parser.fetch_and_parse(@feed.url)
+    response = @client.get(@feed.url).to_s
+    @parser.parse(response)
   end
 
   def feed_not_modified
-    @logger.info "#{@feed.url} has not been modified since last fetch" if @logger
+    @logger&.info "#{@feed.url} has not been modified since last fetch"
   end
 
   def feed_modified(raw_feed)

@@ -3,13 +3,15 @@ require "io/console"
 require_relative "../commands/users/change_user_password"
 
 class ChangePassword
-  def initialize(command = ChangeUserPassword.new)
+  def initialize(command = ChangeUserPassword.new, output: $stdout, input: $stdin)
     @command = command
+    @output = output
+    @input = input
   end
 
   def change_password
     while (password = ask_password) != ask_confirmation
-      puts "The confirmation doesn't match the password. Please try again."
+      @output.puts "The confirmation doesn't match the password. Please try again."
     end
     @command.change_user_password(password)
   end
@@ -25,9 +27,9 @@ class ChangePassword
   end
 
   def ask_hidden(question)
-    print(question)
-    input = STDIN.noecho(&:gets).chomp
-    puts
-    input
+    @output.print(question)
+    user_input = $stdin.noecho { @input.gets }.chomp
+    @output.puts
+    user_input
   end
 end
