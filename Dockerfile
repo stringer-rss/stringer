@@ -1,4 +1,4 @@
-FROM ruby:2.3.3
+FROM ruby:2.7.2
 
 ENV RACK_ENV=production
 ENV PORT=8080
@@ -7,7 +7,7 @@ EXPOSE 8080
 
 WORKDIR /app
 ADD Gemfile Gemfile.lock /app/
-RUN bundle install --deployment
+RUN bundle config set --local deployment 'true' && bundle install
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
@@ -36,7 +36,7 @@ ADD docker/start.sh /app/
 ADD . /app
 
 RUN useradd -m stringer
-RUN chown -R stringer:stringer /app
+RUN chown -R stringer:stringer /app /etc/supervisord.conf
 USER stringer
 
 CMD /app/start.sh
