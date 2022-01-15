@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: Run tests
+
+    env:
+      RACK_ENV: test
+
+    services:
+      postgres:
+        image: postgres:9.5
+        env:
+          POSTGRES_DB: stringer_test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 2.7.5
+        bundler-cache: true
+
+    - name: Run linters
+      run: bundle exec rubocop
+
+    - name: Setup database
+      run: bundle exec rake db:setup
+
+    - name: Run unit tests
+      run: bundle exec rake
