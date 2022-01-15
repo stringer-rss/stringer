@@ -10,6 +10,7 @@ test:
   encoding: unicode
   username: <%= ENV["POSTGRES_USER"] %>
   password: <%= ENV["POSTGRES_PASSWORD"] %>
+  host: <%= ENV["POSTGRES_HOST"] %>
   pool: 5
 
 production:
