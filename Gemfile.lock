@@ -47,7 +47,7 @@ GEM
     feedbag (0.10.1)
       nokogiri (~> 1.8, >= 1.8.2)
       open_uri_redirections (~> 0.2)
-    feedjira (3.2.0)
+    feedjira (3.2.1)
       loofah (>= 2.3.1)
       sax-machine (>= 1.0)
     ffi (1.15.4)
