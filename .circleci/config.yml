@@ -1,0 +1,103 @@
+version: 2.1
+
+orbs:
+  browser-tools: circleci/browser-tools@1.2.3
+  node: circleci/node@5.0.0
+
+jobs:
+  build:
+    parallelism: 1
+    docker:
+      - image: cimg/ruby:2.7.5-browsers
+        environment:
+          BUNDLE_JOBS: 3
+          BUNDLE_RETRY: 3
+          BUNDLE_PATH: vendor/bundle
+          PGHOST: 127.0.0.1
+          PGUSER: postgres
+          RAILS_ENV: test
+      - image: cimg/postgres:10.18
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_DB: app_test
+          POSTGRES_PASSWORD:
+
+    working_directory: ~/app
+
+    steps:
+      - checkout
+      - browser-tools/install-browser-tools
+
+      # - node/install:
+      #     node-version: 16.13.1
+      #     install-yarn: true
+
+      - run:
+          name: Which bundler?
+          command: bundle -v
+
+      # https://circleci.com/docs/2.0/caching/
+      - restore_cache:
+          keys:
+            - bundle-{{ checksum "Gemfile.lock" }}
+            - bundle-
+
+      - run: # Install Ruby dependencies
+          name: Bundle Install
+          command: bundle check || bundle install
+
+      # - run:
+      #     name: Bundler Audit
+      #     command: bundle exec bundle audit
+
+      - save_cache:
+          key: bundle-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+
+      # - restore_cache:
+      #     keys:
+      #       - yarn-{{ checksum "yarn.lock" }}
+      #       - yarn-
+
+      # - run:
+      #     name: Yarn Install
+      #     command: yarn install --cache-folder ~/.cache/yarn
+
+      # - save_cache:
+      #     key: yarn-{{ checksum "yarn.lock" }}
+      #     paths:
+      #       - ~/.cache/yarn
+
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      - run:
+          name: Database setup
+          command: bundle exec rake db:create db:schema:load --trace
+
+      # - run:
+      #     name: Brakeman
+      #     command: bundle exec brakeman
+
+      # - run:
+      #     name: Stylelint
+      #     command: yarn stylelint
+
+      - run:
+          name: Rubocop
+          command: bundle exec rubocop
+
+      - run:
+          name: Run rspec in parallel
+          command: |
+            bundle exec rspec
+            # bundle exec rspec --profile 10 \
+            #                   --format RspecJunitFormatter \
+            #                   --out test_results/rspec.xml \
+            #                   --format progress \
+            #                   $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+
+      - store_test_results: # https://circleci.com/docs/2.0/collect-test-data/
+          path: test_results
