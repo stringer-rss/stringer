@@ -15,6 +15,7 @@ jobs:
       RACK_ENV: test
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
+      PGPASSWORD: postgres
 
     services:
       postgres:
@@ -40,11 +41,14 @@ jobs:
         ruby-version: 2.7.5
         bundler-cache: true
 
-    - name: Run linters
-      run: bundle exec rubocop
+    - name: Query database
+      run: psql -h postgres -d stringer_test -U postgres -c 'SELECT 1;'
 
     - name: Setup database
       run: bundle exec rake db:setup
+
+    - name: Run linters
+      run: bundle exec rubocop
 
     - name: Run unit tests
       run: bundle exec rake
