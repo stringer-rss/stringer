@@ -8,6 +8,8 @@ test:
   adapter: postgresql
   database: stringer_test
   encoding: unicode
+  username: <%= ENV["POSTGRES_USER"] %>
+  password: <%= ENV["POSTGRES_PASSWORD"] %>
   pool: 5
 
 production:
