@@ -41,3 +41,11 @@ Style/NumericLiterals:
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
+
+################################################################################
+#
+# Rules we don't want to enable
+#
+################################################################################
+
+Rails/SchemaComment: { Enabled: false }
