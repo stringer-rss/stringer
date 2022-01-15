@@ -12,13 +12,17 @@ jobs:
     name: Run tests
 
     env:
+      RACK_ENV: test
+      POSTGRES_USER: postgres
       POSTGRES_HOST: localhost
+      POSTGRES_PASSWORD: postgres
       POSTGRES_PORT: 5432
 
     services:
       postgres:
-        image: postgres:9.5
+        image: postgres:12
         env:
+          POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
         options: >-
           --health-cmd pg_isready
@@ -38,7 +42,7 @@ jobs:
         bundler-cache: true
 
     - name: Setup database
-      run: bundle exec rake db:setup
+      run: bundle exec rake db:create db:schema:load
 
     - name: Run linters
       run: bundle exec rubocop
