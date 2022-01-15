@@ -12,17 +12,13 @@ jobs:
     name: Run tests
 
     env:
-      RACK_ENV: test
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      PGPASSWORD: postgres
+      POSTGRES_HOST: localhost
+      POSTGRES_PORT: 5432
 
     services:
       postgres:
         image: postgres:9.5
         env:
-          POSTGRES_DB: stringer_test
-          POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
         options: >-
           --health-cmd pg_isready
@@ -40,9 +36,6 @@ jobs:
       with:
         ruby-version: 2.7.5
         bundler-cache: true
-
-    - name: Query database
-      run: psql -h postgres -d stringer_test -U postgres -c 'SELECT 1;'
 
     - name: Setup database
       run: bundle exec rake db:setup
