@@ -1,4 +1,4 @@
-FROM ruby:2.3.3
+FROM ruby:2.7.5
 
 ENV RACK_ENV=production
 ENV PORT=8080
@@ -7,7 +7,7 @@ EXPOSE 8080
 
 WORKDIR /app
 ADD Gemfile Gemfile.lock /app/
-RUN bundle install --deployment
+RUN bundle install
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \

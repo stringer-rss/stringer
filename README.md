@@ -16,7 +16,7 @@ But it does have keyboard shortcuts and was made with love!
 
 ## Installation
 
-Stringer is a Ruby (2.3.0+) app based on Sinatra, ActiveRecord, PostgreSQL, Backbone.js and DelayedJob.
+Stringer is a Ruby app based on Sinatra, ActiveRecord, PostgreSQL, Backbone.js and DelayedJob.
 
 [![Deploy to Heroku](https://cdn.herokuapp.com/deploy/button.svg)](https://heroku.com/deploy)
 
