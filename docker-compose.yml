@@ -11,7 +11,7 @@ services:
       - POSTGRES_DB=stringer
 
   web:
-    image: mdswanson/stringer
+    image: mockdeep/stringer
     depends_on:
       - postgres
     restart: always
