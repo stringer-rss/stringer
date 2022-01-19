@@ -1,4 +1,4 @@
-FROM ruby:2.7.5
+FROM ruby:3.1.0
 
 ENV RACK_ENV=production
 ENV PORT=8080
