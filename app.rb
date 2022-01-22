@@ -56,8 +56,8 @@ class Stringer < Sinatra::Base
       erb "js/#{name}.js".to_sym, layout: false, locals: locals
     end
 
-    def t(*args)
-      I18n.t(*args)
+    def t(*args, **kwargs)
+      I18n.t(*args, **kwargs)
     end
   end
 
