@@ -12,6 +12,7 @@ services:
 
   web:
     image: mockdeep/stringer
+    build: .
     depends_on:
       - postgres
     restart: always
