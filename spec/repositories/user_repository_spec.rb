@@ -6,7 +6,7 @@ app_require "repositories/user_repository"
 describe UserRepository do
   describe ".fetch" do
     it "returns nil when given id is nil" do
-      expect(UserRepository.fetch(nil)).to be(nil)
+      expect(UserRepository.fetch(nil)).to be_nil
     end
 
     it "returns the user for the given id" do
