@@ -20,7 +20,7 @@ describe FeedDiscovery do
 
       result = FeedDiscovery.new.discover(url, finder, parser, client)
 
-      expect(result).to eq(false)
+      expect(result).to be(false)
     end
 
     it "returns a feed if the url provided is parsable" do
@@ -43,7 +43,7 @@ describe FeedDiscovery do
 
       result = FeedDiscovery.new.discover(url, finder, parser, client)
 
-      expect(result).to eq(false)
+      expect(result).to be(false)
     end
 
     it "returns the feed if the discovered feed is parsable" do

@@ -385,7 +385,7 @@ describe StoryRepository do
       feed = double(url: "http://github.com")
       entry = double(url: nil)
 
-      expect(StoryRepository.extract_url(entry, feed)).to eq nil
+      expect(StoryRepository.extract_url(entry, feed)).to be_nil
     end
   end
 

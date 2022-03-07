@@ -95,7 +95,7 @@ describe "StoriesController" do
 
           put "/stories/#{story_one.id}", { is_read: true }.to_json
 
-          expect(story_one.is_read).to eq true
+          expect(story_one.is_read).to be true
         end
       end
 
@@ -105,7 +105,7 @@ describe "StoriesController" do
 
           put "/stories/#{story_one.id}", { is_read: "malformed" }.to_json
 
-          expect(story_one.is_read).to eq true
+          expect(story_one.is_read).to be true
         end
       end
     end
@@ -115,7 +115,7 @@ describe "StoriesController" do
         it "marks a story as permanently unread" do
           put "/stories/#{story_one.id}", { keep_unread: false }.to_json
 
-          expect(story_one.keep_unread).to eq false
+          expect(story_one.keep_unread).to be false
         end
       end
 
@@ -123,7 +123,7 @@ describe "StoriesController" do
         it "marks a story as permanently unread" do
           put "/stories/#{story_one.id}", { keep_unread: "malformed" }.to_json
 
-          expect(story_one.keep_unread).to eq true
+          expect(story_one.keep_unread).to be true
         end
       end
     end
@@ -133,7 +133,7 @@ describe "StoriesController" do
         it "marks a story as permanently starred" do
           put "/stories/#{story_one.id}", { is_starred: true }.to_json
 
-          expect(story_one.is_starred).to eq true
+          expect(story_one.is_starred).to be true
         end
       end
 
@@ -141,7 +141,7 @@ describe "StoriesController" do
         it "marks a story as permanently starred" do
           put "/stories/#{story_one.id}", { is_starred: "malformed" }.to_json
 
-          expect(story_one.is_starred).to eq true
+          expect(story_one.is_starred).to be true
         end
       end
     end

@@ -20,14 +20,14 @@ RSpec.describe Sinatra::AuthenticationHelpers do
       it "returns false" do
         allow(UserRepository).to receive(:setup_complete?).and_return(false)
 
-        expect(helper.needs_authentication?(authenticated_path)).to eq(false)
+        expect(helper.needs_authentication?(authenticated_path)).to be(false)
       end
     end
 
     %w(/login /logout /heroku).each do |path|
       context "when `path` is '#{path}'" do
         it "returns false" do
-          expect(helper.needs_authentication?(path)).to eq(false)
+          expect(helper.needs_authentication?(path)).to be(false)
         end
       end
     end
@@ -35,14 +35,14 @@ RSpec.describe Sinatra::AuthenticationHelpers do
     %w(css js img).each do |path|
       context "when `path` contains '#{path}'" do
         it "returns false" do
-          expect(helper.needs_authentication?("/#{path}/file.ext")).to eq(false)
+          expect(helper.needs_authentication?("/#{path}/file.ext")).to be(false)
         end
       end
     end
 
     context "otherwise" do
       it "returns true" do
-        expect(helper.needs_authentication?(authenticated_path)).to eq(true)
+        expect(helper.needs_authentication?(authenticated_path)).to be(true)
       end
     end
   end

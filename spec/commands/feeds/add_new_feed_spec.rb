@@ -9,7 +9,7 @@ describe AddNewFeed do
       it "returns false if cant discover any feeds" do
         result = AddNewFeed.add("http://not-a-feed.com", discoverer)
 
-        expect(result).to eq(false)
+        expect(result).to be(false)
       end
     end
 

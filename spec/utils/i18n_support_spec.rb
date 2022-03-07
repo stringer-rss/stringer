@@ -12,7 +12,7 @@ describe "i18n" do
 
     it "should load default locale" do
       expect(I18n.locale.to_s).to eq "en"
-      expect(I18n.locale.to_s).not_to eq nil
+      expect(I18n.locale.to_s).not_to be_nil
     end
   end
 
