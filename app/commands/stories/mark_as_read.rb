@@ -7,6 +7,6 @@ class MarkAsRead
   end
 
   def mark_as_read
-    @repo.fetch(@story_id).update_attributes(is_read: true)
+    @repo.fetch(@story_id).update(is_read: true)
   end
 end

@@ -7,6 +7,6 @@ class MarkAsUnread
   end
 
   def mark_as_unread
-    @repo.fetch(@story_id).update_attributes(is_read: false)
+    @repo.fetch(@story_id).update(is_read: false)
   end
 end

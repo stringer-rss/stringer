@@ -9,7 +9,7 @@ describe MarkAsUnread do
 
     it "marks a story as unread" do
       command = MarkAsUnread.new(1, repo)
-      expect(story).to receive(:update_attributes).with(is_read: false)
+      expect(story).to receive(:update).with(is_read: false)
       command.mark_as_unread
     end
   end
