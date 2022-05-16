@@ -1,6 +1,7 @@
 require "thread/pool"
 
 require_relative "fetch_feed"
+require "active_support/core_ext/kernel/reporting"
 require "delayed_job_active_record"
 
 class FetchFeeds
