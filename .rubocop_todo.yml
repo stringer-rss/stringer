@@ -1299,8 +1299,4 @@ Style/SymbolArray:
   EnforcedStyle: brackets
 
 # Offense count: 6
-Style/TopLevelMethodDefinition:
-  Exclude:
-    - 'spec/integration/feed_importing_spec.rb'
-    - 'spec/spec_helper.rb'
-    - 'spec/support/active_record.rb'
+Style/TopLevelMethodDefinition: { Enabled: false }
