@@ -30,6 +30,9 @@ Style/Copyright:
 Style/Documentation:
   Enabled: false
 
+Style/DocumentationMethod:
+  Enabled: false
+
 Style/DoubleNegation:
   Enabled: false
 
