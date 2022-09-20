@@ -1,6 +1,7 @@
 require "rubygems"
 require "bundler"
 
+require "active_support/core_ext/kernel/reporting"
 Bundler.require
 
 require "./fever_api"
