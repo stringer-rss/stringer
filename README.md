@@ -18,7 +18,7 @@ But it does have keyboard shortcuts and was made with love!
 
 Stringer is a Ruby app based on Sinatra, ActiveRecord, PostgreSQL, Backbone.js and DelayedJob.
 
-[![Deploy to Heroku](https://cdn.herokuapp.com/deploy/button.svg)](https://heroku.com/deploy)
+[![Deploy to Heroku](https://cdn.herokuapp.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/stringer-rss/stringer)
 
 Stringer will run just fine on the Heroku free plan.
 
