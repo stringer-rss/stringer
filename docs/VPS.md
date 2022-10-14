@@ -79,7 +79,7 @@ Install Stringer and set it up
 
 Grab Stringer from github
 
-    git clone https://github.com/swanson/stringer.git
+    git clone git@github.com:stringer-rss/stringer.git
     cd stringer
 
 Use bundler to grab and build Stringer's dependencies

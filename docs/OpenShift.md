@@ -14,8 +14,8 @@ Deploying into OpenShift
 
  ```sh
 	cd feeds
-	git remote add upstream git://github.com/swanson/stringer.git
-	git pull -s recursive -X theirs upstream master
+	git remote add upstream git@github.com:stringer-rss/stringer.git
+	git pull -s recursive -X theirs upstream main
  ```
 
 3. To enable migrations for the application, a new action_hook is required. Add the file, .openshift/action_hooks/deploy,  with the below 3 lines into it.
