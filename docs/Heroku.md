@@ -1,8 +1,8 @@
 ```sh
-git clone git://github.com/swanson/stringer.git
+git clone git@github.com:stringer-rss/stringer.git
 cd stringer
 heroku create
-git push heroku master
+git push heroku main
 
 heroku config:set APP_URL=`heroku apps:info --shell | grep web_url | cut -d= -f2`
 heroku config:set SECRET_TOKEN=`openssl rand -hex 20`
@@ -26,7 +26,7 @@ From the app's directory:
 
 ```sh
 git pull
-git push heroku master
+git push heroku main
 heroku run rake db:migrate
 heroku restart
 ```

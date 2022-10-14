@@ -44,7 +44,7 @@ describe "StoriesController" do
       page = last_response.body
       expect(page).to have_tag("a", with: { href: "/feeds/export" })
       expect(page).to have_tag("a", with: { href: "/logout" })
-      expect(page).to have_tag("a", with: { href: "https://github.com/swanson/stringer" })
+      expect(page).to have_tag("a", with: { href: "https://github.com/stringer-rss/stringer" })
     end
 
     it "displays a zen-like message when there are no unread stories" do

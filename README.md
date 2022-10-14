@@ -1,8 +1,8 @@
 # Stringer
 
 [![CircleCI](https://circleci.com/gh/stringer-rss/stringer/tree/main.svg?style=svg)](https://circleci.com/gh/stringer-rss/stringer/tree/main)
-[![Code Climate](https://codeclimate.com/github/swanson/stringer.svg?style=flat)](https://codeclimate.com/github/swanson/stringer)
-[![Coverage Status](https://coveralls.io/repos/swanson/stringer/badge.svg?style=flat)](https://coveralls.io/r/swanson/stringer)
+[![Code Climate](https://api.codeclimate.com/v1/badges/899c5407c870e541af4e/maintainability)](https://codeclimate.com/github/stringer-rss/stringer/maintainability)
+[![Coverage Status](https://coveralls.io/repos/github/stringer-rss/stringer/badge.svg?branch=main)](https://coveralls.io/github/stringer-rss/stringer?branch=main)
 
 ### A self-hosted, anti-social RSS reader.
 
@@ -128,6 +128,9 @@ If you have a question, feature idea, or are running into problems, our preferre
 
 ## Maintainers
 
-Matt Swanson, [mdswanson.com](http://mdswanson.com), [@_swanson](http://twitter.com/_swanson)
+Robert Fletcher [boon.gl](https://boon.gl)
 
+## Alumni
+
+Matt Swanson (creator), [mdswanson.com](http://mdswanson.com), [@_swanson](http://twitter.com/_swanson)
 Victor Koronen, [victor.koronen.se](http://victor.koronen.se/), [@victorkoronen](https://twitter.com/victorkoronen)

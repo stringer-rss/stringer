@@ -369,16 +369,16 @@ describe StoryRepository do
   describe ".extract_url" do
     it "returns the url" do
       feed = double(url: "http://github.com")
-      entry = double(url: "https://github.com/swanson/stringer")
+      entry = double(url: "https://github.com/stringer-rss/stringer")
 
-      expect(StoryRepository.extract_url(entry, feed)).to eq "https://github.com/swanson/stringer"
+      expect(StoryRepository.extract_url(entry, feed)).to eq "https://github.com/stringer-rss/stringer"
     end
 
     it "returns the enclosure_url when the url is nil" do
       feed = double(url: "http://github.com")
-      entry = double(url: nil, enclosure_url: "https://github.com/swanson/stringer")
+      entry = double(url: nil, enclosure_url: "https://github.com/stringer-rss/stringer")
 
-      expect(StoryRepository.extract_url(entry, feed)).to eq "https://github.com/swanson/stringer"
+      expect(StoryRepository.extract_url(entry, feed)).to eq "https://github.com/stringer-rss/stringer"
     end
 
     it "does not crash if url is nil but enclosure_url does not exist" do
