@@ -2,7 +2,6 @@ workers workers Integer(ENV.fetch("WEB_CONCURRENCY", 1))
 threads_count = Integer(ENV.fetch("MAX_THREADS", 2))
 threads threads_count, threads_count
 
-rackup DefaultRackup
 port ENV.fetch("PORT", 3000)
 environment ENV.fetch("RACK_ENV", "development")
 
