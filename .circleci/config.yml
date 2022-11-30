@@ -8,7 +8,7 @@ jobs:
   build:
     parallelism: 1
     docker:
-      - image: cimg/ruby:3.1.2-browsers
+      - image: cimg/ruby:3.1.3-browsers
         environment:
           BUNDLE_JOBS: 3
           BUNDLE_RETRY: 3
@@ -39,8 +39,8 @@ jobs:
       # https://circleci.com/docs/2.0/caching/
       - restore_cache:
           keys:
-            - bundle-{{ checksum "Gemfile.lock" }}
-            - bundle-
+            - bundle-v1-{{ checksum "Gemfile.lock" }}
+            - bundle-v1-
 
       - run: # Install Ruby dependencies
           name: Bundle Install
@@ -51,7 +51,7 @@ jobs:
       #     command: bundle exec bundle audit
 
       - save_cache:
-          key: bundle-{{ checksum "Gemfile.lock" }}
+          key: bundle-v1-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
 
