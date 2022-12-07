@@ -38,6 +38,11 @@
         <div class="story-starred">
           <i class="icon-star{{ if(!is_starred) { }}-empty{{ } }}"></i>
         </div>
+        {{ if (enclosure_url) { }}
+          <a class="story-enclosure" target="_blank" href="{{= enclosure_url }}">
+            <i class="icon-download"></i>
+          </a>
+        {{ } }}
         <a class="story-permalink" target="_blank" href="{{= permalink }}">
           <i class="icon-external-link"></i>
         </a>

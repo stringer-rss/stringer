@@ -34,6 +34,28 @@ describe StoryRepository do
 
       StoryRepository.add(entry, feed)
     end
+
+    it "sets the enclosure url when present" do
+      entry = instance_double(Feedjira::Parser::ITunesRSSItem,
+                              enclosure_url: "http://example.com/audio.mp3",
+                              title: "",
+                              summary: "",
+                              content: "").as_null_object
+      allow(StoryRepository).to receive(:normalize_url)
+
+      expect(Story).to receive(:create).with(hash_including(enclosure_url: "http://example.com/audio.mp3"))
+
+      StoryRepository.add(entry, feed)
+    end
+
+    it "does not set the enclosure url when not present" do
+      entry = instance_double(Feedjira::Parser::RSSEntry, title: "", summary: "", content: "").as_null_object
+      allow(StoryRepository).to receive(:normalize_url)
+
+      expect(Story).to receive(:create).with(hash_including(enclosure_url: nil))
+
+      StoryRepository.add(entry, feed)
+    end
   end
 
   describe ".fetch" do

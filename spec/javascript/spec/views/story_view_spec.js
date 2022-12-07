@@ -9,6 +9,7 @@ describe("Storyiew", function(){
     before(function() {
       this.story = new Story({
         source: "TechKrunch",
+        enclosure_url: null,
         headline: "Every startups acquired by Yahoo!",
         lead: "This is the lead.",
         title: "Every startups acquired by Yahoo! NOT!!",
@@ -32,6 +33,10 @@ describe("Storyiew", function(){
     var assertTagExists = function(el, tagName, count) {
       count = typeof count !== "undefined" ? count : 1;
       el.find(tagName).should.have.length(count);
+    };
+
+    var assertNoTagExists = function(el, tagName) {
+      el.find(tagName).should.have.length(0);
     };
 
     var assertPropertyRendered = function(el, model, propName) {
@@ -102,6 +107,18 @@ describe("Storyiew", function(){
       this.view.render();
 
       assertTagExists(this.view.$el, ".story-starred .icon-star", 2);
+    });
+
+    it("should not render enclosure link when not present", function(){
+      assertNoTagExists(this.view.$el, ".story-enclosure");
+    });
+
+    it("should render enclosure link when present", function(){
+      this.story.set("enclosure_url", "http://example.com/enclosure");
+      this.view.render();
+
+      assertTagExists(this.view.$el, ".story-enclosure");
+      assertPropertyRendered(this.view.$el, this.story, "enclosure_url");
     });
 
     describe("Handling click on story", function(){

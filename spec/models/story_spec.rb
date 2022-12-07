@@ -85,6 +85,7 @@ describe "Story" do
       expect(story.as_json).to eq({
         body: "story body",
         created_at: created_at.utc.as_json,
+        enclosure_url: nil,
         entry_id: "5",
         feed_id: feed.id,
         headline: "the story title",
