@@ -184,6 +184,7 @@ Lint/ConstantResolution:
     - 'db/migrate/20140413100725_add_groups_table_and_foreign_keys_to_feeds.rb'
     - 'db/migrate/20140421224454_fix_invalid_unicode.rb'
     - 'db/migrate/20141102103617_fix_invalid_titles_with_unicode_line_endings.rb'
+    - 'db/migrate/20221206231914_add_enclosure_url_to_stories.rb'
     - 'fever_api.rb'
     - 'spec/commands/feeds/add_new_feed_spec.rb'
     - 'spec/commands/feeds/export_to_opml_spec.rb'

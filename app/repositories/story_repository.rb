@@ -7,9 +7,11 @@ class StoryRepository
   extend UrlHelpers
 
   def self.add(entry, feed)
+    enclosure_url = entry.enclosure_url if entry.respond_to?(:enclosure_url)
     Story.create(feed: feed,
                  title: extract_title(entry),
                  permalink: extract_url(entry, feed),
+                 enclosure_url: enclosure_url,
                  body: extract_content(entry),
                  is_read: false,
                  is_starred: false,

@@ -207,7 +207,7 @@ li.story.open .story-preview {
   margin-left: 20px;
 }
 
-.story-keep-unread, .story-starred  {
+.story-keep-unread, .story-starred, .story-enclosure {
   display: inline-block;
   cursor: pointer;
   -webkit-touch-callout: none;
