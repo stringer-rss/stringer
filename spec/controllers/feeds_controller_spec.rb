@@ -87,7 +87,7 @@ describe "FeedsController" do
         expect(AddNewFeed).to receive(:add).with(feed_url).and_return(valid_feed)
         expect(FetchFeeds).to receive(:enqueue).with([valid_feed])
 
-        post "/feeds", feed_url: feed_url
+        post("/feeds", feed_url:)
 
         expect(last_response.status).to be 302
         expect(URI.parse(last_response.location).path).to eq "/"
@@ -100,7 +100,7 @@ describe "FeedsController" do
       it "adds the feed and queues it to be fetched" do
         expect(AddNewFeed).to receive(:add).with(feed_url).and_return(false)
 
-        post "/feeds", feed_url: feed_url
+        post("/feeds", feed_url:)
 
         page = last_response.body
         expect(page).to have_tag(".error")
@@ -114,7 +114,7 @@ describe "FeedsController" do
       it "adds the feed and queues it to be fetched" do
         expect(AddNewFeed).to receive(:add).with(feed_url).and_return(invalid_feed)
 
-        post "/feeds", feed_url: feed_url
+        post("/feeds", feed_url:)
 
         page = last_response.body
         expect(page).to have_tag(".error")
