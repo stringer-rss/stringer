@@ -207,7 +207,11 @@ li.story.open .story-preview {
   margin-left: 20px;
 }
 
-.story-keep-unread, .story-starred, .story-enclosure {
+.story-enclosure {
+  float: right;
+}
+
+.story-keep-unread, .story-starred {
   display: inline-block;
   cursor: pointer;
   -webkit-touch-callout: none;
