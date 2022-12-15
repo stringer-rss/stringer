@@ -17,6 +17,7 @@ require_relative "config/asset_pipeline"
 
 I18n.load_path += Dir[File.join(File.dirname(__FILE__), "config/locales", "*.yml").to_s]
 I18n.config.enforce_available_locales = false
+Time.zone = ENV.fetch("TZ", "UTC")
 
 class Stringer < Sinatra::Base
   # need to exclude assets for sinatra assetpack, see https://github.com/stringer-rss/stringer/issues/112
