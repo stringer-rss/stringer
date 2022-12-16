@@ -21,14 +21,6 @@ Bundler/GemVersion:
   Exclude:
     - 'Gemfile'
 
-# Offense count: 4
-# This cop supports safe autocorrection (--autocorrect).
-Layout/MultilineMethodArgumentLineBreaks:
-  Exclude:
-    - 'app/controllers/debug_controller.rb'
-    - 'spec/controllers/sessions_controller_spec.rb'
-    - 'spec/javascript/test_controller.rb'
-
 # Offense count: 47
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: InspectBlocks.

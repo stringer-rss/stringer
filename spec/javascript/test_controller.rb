@@ -4,10 +4,12 @@ class Stringer < Sinatra::Base
   end
 
   get "/test" do
-    erb File.read(self.class.test_path("support", "views", "index.erb")), layout: false, locals: {
-      js_files: js_files,
-      js_templates: js_templates
-    }
+    erb File.read(self.class.test_path("support", "views", "index.erb")),
+        layout: false,
+        locals: {
+          js_files: js_files,
+          js_templates: js_templates
+        }
   end
 
   get "/spec/*" do
