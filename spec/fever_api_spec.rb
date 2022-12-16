@@ -223,7 +223,9 @@ describe FeverAPI do
     end
 
     it "commands to mark group as read" do
-      expect(MarkGroupAsRead).to receive(:new).with("10", "1375080946").and_return(double(mark_group_as_read: true))
+      expect(MarkGroupAsRead)
+        .to receive(:new).with("10", "1375080946")
+        .and_return(double(mark_group_as_read: true))
 
       make_request(mark: "group", as: "read", id: 10, before: 1375080946)
 
@@ -232,7 +234,9 @@ describe FeverAPI do
     end
 
     it "commands to mark entire feed as read" do
-      expect(MarkFeedAsRead).to receive(:new).with("20", "1375080945").and_return(double(mark_feed_as_read: true))
+      expect(MarkFeedAsRead)
+        .to receive(:new).with("20", "1375080945")
+        .and_return(double(mark_feed_as_read: true))
 
       make_request(mark: "feed", as: "read", id: 20, before: 1375080945)
 
