@@ -23,7 +23,8 @@ describe FetchFeeds do
     it "finds feeds when run after a delay" do
       allow(pool).to receive(:process).and_yield
       allow(FetchFeed).to receive(:new).and_return(fetcher_one, fetcher_two)
-      expect(FeedRepository).to receive(:fetch_by_ids).with(feeds.map(&:id)).and_return(feeds)
+      expect(FeedRepository)
+        .to receive(:fetch_by_ids).with(feeds.map(&:id)).and_return(feeds)
       expect(fetcher_one).to receive(:fetch).once
       expect(fetcher_two).to receive(:fetch).once
 

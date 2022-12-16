@@ -14,7 +14,9 @@ class ImportFromOpml
       # for existing feeds. Feeds without groups are in 'Ungrouped' group, we don't
       # create such group and create such feeds with group_id = nil.
       feeds_with_groups.each do |group_name, parsed_feeds|
-        group = Group.where(name: group_name).first_or_create unless group_name == "Ungrouped"
+        unless group_name == "Ungrouped"
+          group = Group.where(name: group_name).first_or_create
+        end
 
         parsed_feeds.each { |parsed_feed| create_feed(parsed_feed, group) }
       end
@@ -23,7 +25,7 @@ class ImportFromOpml
     private
 
     def create_feed(parsed_feed, group)
-      feed = Feed.where(name: parsed_feed[:name], url: parsed_feed[:url]).first_or_initialize
+      feed = Feed.where(parsed_feed.slice(:name, :url)).first_or_initialize
       feed.last_fetched = Time.now - ONE_DAY if feed.new_record?
       feed.group_id = group.id if group
       feed.save

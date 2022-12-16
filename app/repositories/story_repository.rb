@@ -40,7 +40,9 @@ class StoryRepository
 
   def self.fetch_unread_for_feed_by_timestamp(feed_id, timestamp)
     timestamp = Time.at(timestamp.to_i)
-    Story.where(feed_id: feed_id).where("created_at < ? AND is_read = ?", timestamp, false)
+    Story
+      .where(feed_id: feed_id)
+      .where("created_at < ? AND is_read = ?", timestamp, false)
   end
 
   def self.save(story)
@@ -95,11 +97,8 @@ class StoryRepository
   def self.extract_content(entry)
     sanitized_content = ""
 
-    if entry.content
-      sanitized_content = ContentSanitizer.sanitize(entry.content)
-    elsif entry.summary
-      sanitized_content = ContentSanitizer.sanitize(entry.summary)
-    end
+    content = entry.content || entry.summary
+    sanitized_content = ContentSanitizer.sanitize(content) if content
 
     if entry.url.present?
       expand_absolute_urls(sanitized_content, entry.url)

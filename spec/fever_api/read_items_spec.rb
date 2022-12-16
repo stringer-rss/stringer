@@ -53,7 +53,8 @@ describe FeverAPI::ReadItems do
       double("story", as_fever_json: { id: 5 }),
       double("story", as_fever_json: { id: 11 })
     ]
-    expect(story_repository).to receive(:fetch_by_ids).with(%w(5 11)).twice.and_return(stories)
+    expect(story_repository)
+      .to receive(:fetch_by_ids).with(%w(5 11)).twice.and_return(stories)
 
     expect(subject.call("items" => nil, with_ids: "5,11")).to eq(
       items: [

@@ -14,7 +14,9 @@ class FetchFeeds
   def fetch_all
     @pool ||= Thread.pool(10)
 
-    @feeds = FeedRepository.fetch_by_ids(@feeds_ids) if @feeds.blank? && !@feeds_ids.blank?
+    if @feeds.blank? && !@feeds_ids.blank?
+      @feeds = FeedRepository.fetch_by_ids(@feeds_ids)
+    end
 
     @feeds.each do |feed|
       @pool.process do

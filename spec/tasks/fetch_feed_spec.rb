@@ -64,7 +64,8 @@ describe FetchFeed do
       let(:fake_parser) { class_double(Feedjira, parse: fake_feed) }
 
       before do
-        allow_any_instance_of(FindNewStories).to receive(:new_stories).and_return([new_story])
+        allow_any_instance_of(FindNewStories)
+          .to receive(:new_stories).and_return([new_story])
       end
 
       it "should only add posts that are new" do
@@ -118,7 +119,12 @@ describe FetchFeed do
         output = StringIO.new
         logger = Logger.new(output)
 
-        FetchFeed.new(daring_fireball, parser: parser, client: client, logger: logger).fetch
+        FetchFeed.new(
+          daring_fireball,
+          parser: parser,
+          client: client,
+          logger: logger
+        ).fetch
 
         expect(output.string).to include("Something went wrong")
       end

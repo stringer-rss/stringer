@@ -11,7 +11,11 @@ describe StoryRepository do
     end
 
     it "normalizes story urls" do
-      entry = double(url: "//blog.golang.org/context", title: "", content: "").as_null_object
+      entry = double(
+        url: "//blog.golang.org/context",
+        title: "",
+        content: ""
+      ).as_null_object
       expect(StoryRepository).to receive(:normalize_url).with(entry.url, feed.url)
 
       StoryRepository.add(entry, feed)
