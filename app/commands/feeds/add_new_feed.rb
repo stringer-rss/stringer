@@ -9,8 +9,10 @@ class AddNewFeed
     result = discoverer.discover(url)
     return false unless result
 
-    repo.create(name: ContentSanitizer.sanitize(result.title),
-                url: result.feed_url,
-                last_fetched: Time.now - ONE_DAY)
+    repo.create(
+      name: ContentSanitizer.sanitize(result.title),
+      url: result.feed_url,
+      last_fetched: Time.now - ONE_DAY
+    )
   end
 end
