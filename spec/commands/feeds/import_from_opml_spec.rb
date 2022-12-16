@@ -3,7 +3,9 @@ require "spec_helper"
 app_require "commands/feeds/import_from_opml"
 
 describe ImportFromOpml do
-  let(:subscriptions) { File.open(File.expand_path("../../support/files/subscriptions.xml", __dir__)) }
+  let(:subscriptions) do
+    File.open(File.expand_path("../../support/files/subscriptions.xml", __dir__))
+  end
 
   def import
     described_class.import(subscriptions)
@@ -15,7 +17,7 @@ describe ImportFromOpml do
   end
 
   let(:group1) { Group.find_by_name("Football News") }
-  let(:group2) { Group.find_by_name("RoR") }
+  let(:group2) { Group.find_by_name("RoR")           }
 
   context "adding group_id for existing feeds" do
     let!(:feed1) do

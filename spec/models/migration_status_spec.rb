@@ -15,7 +15,8 @@ describe "MigrationStatus" do
       allow(migrator).to receive(:migrations_path)
       allow(migrator).to receive(:current_version).and_return 1
 
-      expect(MigrationStatus.new(migrator).pending_migrations).to eq ["Migration B - 2", "Migration C - 3"]
+      expect(MigrationStatus.new(migrator).pending_migrations)
+        .to eq(["Migration B - 2", "Migration C - 3"])
     end
   end
 end

@@ -51,7 +51,12 @@ describe StoryRepository do
     end
 
     it "does not set the enclosure url when not present" do
-      entry = instance_double(Feedjira::Parser::RSSEntry, title: "", summary: "", content: "").as_null_object
+      entry = instance_double(
+        Feedjira::Parser::RSSEntry,
+        title: "",
+        summary: "",
+        content: ""
+      ).as_null_object
       allow(StoryRepository).to receive(:normalize_url)
 
       expect(Story).to receive(:create).with(hash_including(enclosure_url: nil))

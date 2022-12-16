@@ -52,7 +52,9 @@ describe FetchFeed do
       let(:fake_client) { class_spy(HTTParty) }
       let(:fake_parser) { class_double(Feedjira, parse: fake_feed) }
 
-      before { allow_any_instance_of(FindNewStories).to receive(:new_stories).and_return([new_story]) }
+      before do
+        allow_any_instance_of(FindNewStories).to receive(:new_stories).and_return([new_story])
+      end
 
       it "should only add posts that are new" do
         expect(StoryRepository).to receive(:add).with(new_story, daring_fireball)

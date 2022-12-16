@@ -15,7 +15,9 @@ describe MarkGroupAsRead do
     it "marks group as read" do
       command = run_command(2)
       expect(stories).to receive(:update_all).with(is_read: true)
-      expect(repo).to receive(:fetch_unread_by_timestamp_and_group).with(timestamp, 2).and_return(stories)
+      expect(repo).to receive(:fetch_unread_by_timestamp_and_group)
+        .with(timestamp, 2).and_return(stories)
+
       command.mark_group_as_read
     end
 

@@ -133,7 +133,9 @@ describe "FeedsController" do
   end
 
   describe "POST /feeds/import" do
-    let(:opml_file) { Rack::Test::UploadedFile.new("spec/sample_data/subscriptions.xml", "application/xml") }
+    let(:opml_file) do
+      Rack::Test::UploadedFile.new("spec/sample_data/subscriptions.xml", "application/xml")
+    end
 
     it "parse OPML and starts fetching" do
       expect(ImportFromOpml).to receive(:import).once
@@ -155,8 +157,16 @@ describe "FeedsController" do
       get "/feeds/export"
 
       expect(last_response.body).to eq some_xml
+    end
+
+    it "responds with OPML headers" do
+      expect_any_instance_of(ExportToOpml).to receive(:to_xml).and_return(some_xml)
+
+      get "/feeds/export"
+
       expect(last_response.header["Content-Type"]).to include "application/xml"
-      expect(last_response.header["Content-Disposition"]).to eq("attachment; filename=\"stringer.opml\"")
+      expect(last_response.header["Content-Disposition"])
+        .to eq("attachment; filename=\"stringer.opml\"")
     end
   end
 end
