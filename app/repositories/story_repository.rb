@@ -117,7 +117,10 @@ class StoryRepository
 
   def self.samples
     [
-      SampleStory.new("Darin' Fireballs", "Why you should trade your firstborn for a Retina iPad"),
+      SampleStory.new(
+        "Darin' Fireballs",
+        "Why you should trade your firstborn for a Retina iPad"
+      ),
       SampleStory.new(
         "TechKrunch",
         "SugarGlidr raises $1.2M Series A for Social Network for Photo Filters"

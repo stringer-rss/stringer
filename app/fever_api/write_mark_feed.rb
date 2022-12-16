@@ -7,7 +7,9 @@ module FeverAPI
     end
 
     def call(params = {})
-      @marker_class.new(params[:id], params[:before]).mark_feed_as_read if params[:mark] == "feed"
+      if params[:mark] == "feed"
+        @marker_class.new(params[:id], params[:before]).mark_feed_as_read
+      end
 
       {}
     end

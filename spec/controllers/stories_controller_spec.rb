@@ -162,7 +162,8 @@ describe "StoriesController" do
     it "looks for a particular feed" do
       expect(FeedRepository).to receive(:fetch)
         .with(story_one.feed.id.to_s).and_return(story_one.feed)
-      expect(StoryRepository).to receive(:feed).with(story_one.feed.id.to_s).and_return([story_one])
+      expect(StoryRepository)
+        .to receive(:feed).with(story_one.feed.id.to_s).and_return([story_one])
 
       get "/feed/#{story_one.feed.id}"
     end

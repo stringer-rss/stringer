@@ -31,7 +31,8 @@ describe FeverAPI::ReadItems do
       double("story", as_fever_json: { id: 5 }),
       double("story", as_fever_json: { id: 7 })
     ]
-    expect(story_repository).to receive(:unread_since_id).with(3).and_return(unread_since_stories)
+    expect(story_repository)
+      .to receive(:unread_since_id).with(3).and_return(unread_since_stories)
     unread_stories = [
       double("story", as_fever_json: { id: 2 }),
       double("story", as_fever_json: { id: 5 }),
