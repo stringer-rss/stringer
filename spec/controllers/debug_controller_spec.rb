@@ -11,7 +11,9 @@ describe "DebugController" do
       stub_const("Delayed::Job", delayed_job)
 
       migration_status_instance = double "migration_status_instance"
-      allow(migration_status_instance).to receive(:pending_migrations).and_return ["Migration B - 2", "Migration C - 3"]
+      allow(migration_status_instance)
+        .to receive(:pending_migrations)
+        .and_return(["Migration B - 2", "Migration C - 3"])
       migration_status = double "MigrationStatus"
       allow(migration_status).to receive(:new).and_return(migration_status_instance)
       stub_const("MigrationStatus", migration_status)
