@@ -23,18 +23,6 @@ Bundler/GemVersion:
 
 # Offense count: 4
 # This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: EnforcedStyle.
-# SupportedTypes: block, case, class, if, kwbegin, module
-# SupportedStyles: same_line, new_line
-Layout/MultilineAssignmentLayout:
-  Exclude:
-    - 'app/commands/feeds/export_to_opml.rb'
-    - 'app/fever_api/read_items.rb'
-    - 'app/jobs/fetch_feed_job.rb'
-    - 'app/utils/sample_story.rb'
-
-# Offense count: 4
-# This cop supports safe autocorrection (--autocorrect).
 Layout/MultilineMethodArgumentLineBreaks:
   Exclude:
     - 'app/controllers/debug_controller.rb'
