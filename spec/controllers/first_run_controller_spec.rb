@@ -37,7 +37,8 @@ describe "FirstRunController" do
       end
 
       it "accepts confirmed passwords and redirects to next step" do
-        expect_any_instance_of(CreateUser).to receive(:create).with("foo").and_return(double(id: 1))
+        expect_any_instance_of(CreateUser)
+          .to receive(:create).with("foo").and_return(double(id: 1))
 
         post "/setup/password", password: "foo", password_confirmation: "foo"
 

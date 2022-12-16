@@ -7,7 +7,9 @@ module FeverAPI
     end
 
     def call(params = {})
-      @marker_class.new(params[:id], params[:before]).mark_group_as_read if params[:mark] == "group"
+      if params[:mark] == "group"
+        @marker_class.new(params[:id], params[:before]).mark_group_as_read
+      end
 
       {}
     end

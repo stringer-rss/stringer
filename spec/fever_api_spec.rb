@@ -102,7 +102,7 @@ describe FeverAPI do
         favicons: [
           {
             id: 0,
-            data: "image/gif;base64,R0lGODlhAQABAIAAAObm5gAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+            data: a_string_including("image/gif;base64")
           }
         ]
       )
@@ -136,7 +136,8 @@ describe FeverAPI do
     end
 
     it "returns stories ids when 'items' header is provided along with 'with_ids'" do
-      expect(StoryRepository).to receive(:fetch_by_ids).twice.with(["5"]).and_return([story_one])
+      expect(StoryRepository)
+        .to receive(:fetch_by_ids).twice.with(["5"]).and_return([story_one])
 
       make_request(items: nil, with_ids: 5)
 
@@ -169,7 +170,12 @@ describe FeverAPI do
     end
 
     it "returns starred items when 'saved_item_ids' header is provided" do
-      expect(Story).to receive(:where).with(is_starred: true).and_return([story_one, story_two])
+      expect(Story).to receive(:where).with(is_starred: true).and_return(
+        [
+          story_one,
+          story_two
+        ]
+      )
 
       make_request(saved_item_ids: nil)
 
@@ -205,7 +211,8 @@ describe FeverAPI do
     end
 
     it "commands to save story" do
-      expect(MarkAsStarred).to receive(:new).with("10").and_return(double(mark_as_starred: true))
+      expect(MarkAsStarred)
+        .to receive(:new).with("10").and_return(double(mark_as_starred: true))
 
       make_request(mark: "item", as: "saved", id: 10)
 

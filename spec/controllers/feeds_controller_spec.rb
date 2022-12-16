@@ -38,11 +38,25 @@ describe "FeedsController" do
     end
   end
 
+  def mock_feed(feed, name, url, group_id = nil)
+    expect(FeedRepository).to receive(:fetch).with("123").and_return(feed)
+    expect(FeedRepository).to receive(:update_feed).with(feed, name, url, group_id)
+  end
+
+  def params(feed, **overrides)
+    {
+      feed_id: feed.id,
+      feed_name: feed.name,
+      feed_url: feed.url,
+      group_id: feed.group_id,
+      **overrides
+    }
+  end
+
   describe "PUT /feeds/:feed_id" do
     it "updates a feed given the id" do
       feed = FeedFactory.build(url: "example.com/atom")
-      expect(FeedRepository).to receive(:fetch).with("123").and_return(feed)
-      expect(FeedRepository).to receive(:update_feed).with(feed, "Test", "example.com/feed", nil)
+      mock_feed(feed, "Test", "example.com/feed")
 
       put "/feeds/123", feed_id: "123", feed_name: "Test", feed_url: "example.com/feed"
 
@@ -51,10 +65,9 @@ describe "FeedsController" do
 
     it "updates a feed group given the id" do
       feed = FeedFactory.build(url: "example.com/atom")
-      expect(FeedRepository).to receive(:fetch).with("123").and_return(feed)
-      expect(FeedRepository).to receive(:update_feed).with(feed, feed.name, feed.url, "321")
+      mock_feed(feed, feed.name, feed.url, "321")
 
-      put "/feeds/123", feed_id: "123", feed_name: feed.name, feed_url: feed.url, group_id: "321"
+      put "/feeds/123", **params(feed, feed_id: "123", group_id: "321")
 
       expect(last_response).to be_redirect
     end
