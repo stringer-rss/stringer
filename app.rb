@@ -21,7 +21,7 @@ Time.zone = ENV.fetch("TZ", "UTC")
 
 class Stringer < Sinatra::Base
   # need to exclude assets for sinatra assetpack, see https://github.com/stringer-rss/stringer/issues/112
-  use Rack::SSL, exclude: ->(env) { env["PATH_INFO"] =~ %r{^/(js|css|img)} } if ENV["ENFORCE_SSL"] == "true"
+  use Rack::SSL, exclude: ->(env) { env["PATH_INFO"] =~ %r{^/(js|css|img)} }
 
   register Sinatra::ActiveRecordExtension
   register Sinatra::Flash

@@ -29,7 +29,8 @@ describe "i18n" do
     let(:locale) { "xx" }
 
     it "should not find localization strings" do
-      expect(I18n.t("layout.title", locale: ENV["LOCALE"].to_sym)).not_to eq "stringer | your rss buddy"
+      expect(I18n.t("layout.title", locale: ENV["LOCALE"].to_sym))
+        .not_to eq "stringer | your rss buddy"
     end
   end
 end

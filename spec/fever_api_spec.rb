@@ -214,7 +214,8 @@ describe FeverAPI do
     end
 
     it "commands to unsave story" do
-      expect(MarkAsUnstarred).to receive(:new).with("10").and_return(double(mark_as_unstarred: true))
+      expect(MarkAsUnstarred).to receive(:new)
+        .with("10").and_return(double(mark_as_unstarred: true))
 
       make_request(mark: "item", as: "unsaved", id: 10)
 

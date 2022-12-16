@@ -12,7 +12,8 @@ describe RemoveOldStories do
     it "should pass along the number of days to the story repository query" do
       allow(RemoveOldStories).to receive(:pruned_feeds) { [] }
 
-      expect(StoryRepository).to receive(:unstarred_read_stories_older_than).with(7).and_return(stories_mock)
+      expect(StoryRepository).to receive(:unstarred_read_stories_older_than)
+        .with(7).and_return(stories_mock)
 
       RemoveOldStories.remove!(7)
     end
