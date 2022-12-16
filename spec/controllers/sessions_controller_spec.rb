@@ -37,8 +37,8 @@ describe "SessionsController" do
     it "redirects to the previous path when present" do
       allow(SignInUser).to receive(:sign_in).and_return(double(id: 1))
 
-      post "/login", { password: "the-password" },
-           "rack.session" => { redirect_to: "/archive" }
+      params = { password: "the-password" }
+      post "/login", params, "rack.session" => { redirect_to: "/archive" }
 
       expect(session[:redirect_to]).to be_nil
       expect(URI.parse(last_response.location).path).to eq "/archive"
