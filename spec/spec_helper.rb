@@ -17,6 +17,19 @@ require "./app"
 
 Capybara.server = :puma, { Silent: true }
 
+module Rack
+  module Test
+    class Session
+      alias old_custom_request custom_request
+
+      def custom_request(method, path, params = {}, env = {}, &)
+        env["HTTPS"] = "on"
+        old_custom_request(method, path, params, env, &)
+      end
+    end
+  end
+end
+
 RSpec.configure do |config|
   config.include Rack::Test::Methods
   config.include RSpecHtmlMatchers
