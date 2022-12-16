@@ -36,11 +36,13 @@ describe StoryRepository do
     end
 
     it "sets the enclosure url when present" do
-      entry = instance_double(Feedjira::Parser::ITunesRSSItem,
-                              enclosure_url: "http://example.com/audio.mp3",
-                              title: "",
-                              summary: "",
-                              content: "").as_null_object
+      entry = instance_double(
+        Feedjira::Parser::ITunesRSSItem,
+        enclosure_url: "http://example.com/audio.mp3",
+        title: "",
+        summary: "",
+        content: ""
+      ).as_null_object
       allow(StoryRepository).to receive(:normalize_url)
 
       expect(Story).to receive(:create).with(hash_including(enclosure_url: "http://example.com/audio.mp3"))
@@ -430,14 +432,18 @@ describe StoryRepository do
 
   describe ".extract_content" do
     let(:entry) do
-      double(url: "http://mdswanson.com",
-             content: "Some test content<script></script>")
+      double(
+        url: "http://mdswanson.com",
+        content: "Some test content<script></script>"
+      )
     end
 
     let(:summary_only) do
-      double(url: "http://mdswanson.com",
-             content: nil,
-             summary: "Dumb publisher")
+      double(
+        url: "http://mdswanson.com",
+        content: nil,
+        summary: "Dumb publisher"
+      )
     end
 
     it "sanitizes content" do
@@ -449,17 +455,21 @@ describe StoryRepository do
     end
 
     it "expands urls" do
-      entry = double(url: "http://mdswanson.com",
-                     content: nil,
-                     summary: "<a href=\"page\">Page</a>")
+      entry = double(
+        url: "http://mdswanson.com",
+        content: nil,
+        summary: "<a href=\"page\">Page</a>"
+      )
 
       expect(StoryRepository.extract_content(entry)).to eq "<a href=\"http://mdswanson.com/page\">Page</a>"
     end
 
     it "ignores URL expansion if entry url is nil" do
-      entry = double(url: nil,
-                     content: nil,
-                     summary: "<a href=\"page\">Page</a>")
+      entry = double(
+        url: nil,
+        content: nil,
+        summary: "<a href=\"page\">Page</a>"
+      )
 
       expect(StoryRepository.extract_content(entry)).to eq "<a href=\"page\">Page</a>"
     end

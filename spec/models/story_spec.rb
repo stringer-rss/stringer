@@ -82,25 +82,27 @@ describe "Story" do
         updated_at: updated_at
       )
 
-      expect(story.as_json).to eq({
-        body: "story body",
-        created_at: created_at.utc.as_json,
-        enclosure_url: nil,
-        entry_id: "5",
-        feed_id: feed.id,
-        headline: "the story title",
-        id: story.id,
-        is_read: true,
-        is_starred: false,
-        keep_unread: true,
-        lead: "story body",
-        permalink: "www.exampoo.com/perma",
-        pretty_date: I18n.l(published_at.utc),
-        published: published_at.utc.as_json,
-        source: "my feed",
-        title: "the story title",
-        updated_at: updated_at.utc.as_json
-      }.stringify_keys)
+      expect(story.as_json).to eq(
+        {
+          body: "story body",
+          created_at: created_at.utc.as_json,
+          enclosure_url: nil,
+          entry_id: "5",
+          feed_id: feed.id,
+          headline: "the story title",
+          id: story.id,
+          is_read: true,
+          is_starred: false,
+          keep_unread: true,
+          lead: "story body",
+          permalink: "www.exampoo.com/perma",
+          pretty_date: I18n.l(published_at.utc),
+          published: published_at.utc.as_json,
+          source: "my feed",
+          title: "the story title",
+          updated_at: updated_at.utc.as_json
+        }.stringify_keys
+      )
     end
   end
 

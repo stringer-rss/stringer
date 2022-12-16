@@ -21,17 +21,6 @@ Bundler/GemVersion:
   Exclude:
     - 'Gemfile'
 
-# Offense count: 9
-# This cop supports safe autocorrection (--autocorrect).
-Layout/FirstMethodArgumentLineBreak:
-  Exclude:
-    - 'app/commands/feeds/add_new_feed.rb'
-    - 'app/commands/users/create_user.rb'
-    - 'app/repositories/story_repository.rb'
-    - 'spec/models/story_spec.rb'
-    - 'spec/repositories/story_repository_spec.rb'
-    - 'spec/tasks/fetch_feed_spec.rb'
-
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: EnforcedStyle, IndentationWidth.
