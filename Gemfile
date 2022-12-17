@@ -2,22 +2,18 @@ ruby_version_file = File.expand_path(".ruby-version", __dir__)
 ruby File.read(ruby_version_file).chomp if File.readable?(ruby_version_file)
 source "https://rubygems.org"
 
-gem "activerecord"
+gem "rails", "~> 7.0.1"
+
 gem "bcrypt"
 gem "delayed_job"
 gem "delayed_job_active_record"
 gem "feedbag"
 gem "feedjira"
 gem "httparty"
-gem "i18n"
-gem "loofah"
-gem "nokogiri"
 gem "pg"
 gem "puma", "~> 6.0"
-gem "rack-protection"
 gem "racksh"
 gem "rack-ssl"
-gem "rake"
 gem "sass"
 gem "sinatra"
 gem "sinatra-activerecord"
@@ -41,7 +37,6 @@ group :development, :test do
   gem "coveralls_reborn", require: false
   gem "faker"
   gem "pry-byebug"
-  gem "rack-test"
   gem "rspec"
   gem "rspec-html-matchers"
   gem "shotgun"
