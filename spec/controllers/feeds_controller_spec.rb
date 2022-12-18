@@ -1,6 +1,6 @@
 require "spec_helper"
 
-app_require "controllers/sinatra/feeds_controller"
+app_require "controllers/feeds_controller"
 
 describe "FeedsController" do
   let(:feeds) { [FeedFactory.build, FeedFactory.build] }
@@ -132,54 +132,6 @@ describe "FeedsController" do
         page = last_response.body
         expect(page).to have_tag(".error")
       end
-    end
-  end
-
-  describe "GET /feeds/import" do
-    it "displays the import options" do
-      get "/feeds/import"
-
-      page = last_response.body
-      expect(page).to have_tag("input#opml_file")
-      expect(page).to have_tag("a#skip")
-    end
-  end
-
-  describe "POST /feeds/import" do
-    let(:opml_file) do
-      Rack::Test::UploadedFile.new("spec/sample_data/subscriptions.xml", "application/xml")
-    end
-
-    it "parse OPML and starts fetching" do
-      expect(ImportFromOpml).to receive(:import).once
-
-      post "/feeds/import", "opml_file" => opml_file
-
-      expect(last_response.status).to be 302
-      expect(URI.parse(last_response.location).path).to eq "/setup/tutorial"
-    end
-  end
-
-  describe "GET /feeds/export" do
-    let(:some_xml) { "<xml>some dummy opml</xml>" }
-    before { allow(Feed).to receive(:all) }
-
-    it "returns an OPML file" do
-      expect_any_instance_of(ExportToOpml).to receive(:to_xml).and_return(some_xml)
-
-      get "/feeds/export"
-
-      expect(last_response.body).to eq some_xml
-    end
-
-    it "responds with OPML headers" do
-      expect_any_instance_of(ExportToOpml).to receive(:to_xml).and_return(some_xml)
-
-      get "/feeds/export"
-
-      expect(last_response.header["Content-Type"]).to include "application/xml"
-      expect(last_response.header["Content-Disposition"])
-        .to eq("attachment; filename=\"stringer.opml\"")
     end
   end
 end

@@ -22,6 +22,8 @@ require_relative "config/asset_pipeline"
 require_relative "app/controllers/application_controller"
 require_relative "app/controllers/debug_controller"
 require_relative "app/controllers/feeds_controller"
+require_relative "app/controllers/exports_controller"
+require_relative "app/controllers/imports_controller"
 
 module Rails
   def self.application
@@ -105,9 +107,11 @@ class Stringer < Sinatra::Base
   rails_route(:delete, "/feeds/:id", to: "feeds#destroy")
   rails_route(:get, "/feeds/new", to: "feeds#new")
   rails_route(:post, "/feeds", to: "feeds#create")
+  rails_route(:get, "/feeds/export", to: "exports#index")
+  rails_route(:get, "/feeds/import", to: "imports#new")
+  rails_route(:post, "/feeds/import", to: "imports#create")
 end
 
 require_relative "app/controllers/sinatra/stories_controller"
 require_relative "app/controllers/sinatra/first_run_controller"
 require_relative "app/controllers/sinatra/sessions_controller"
-require_relative "app/controllers/sinatra/feeds_controller"
