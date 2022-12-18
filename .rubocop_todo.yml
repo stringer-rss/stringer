@@ -79,6 +79,12 @@ Lint/NumberConversion:
     - 'spec/models/feed_spec.rb'
     - 'spec/models/story_spec.rb'
 
+# Offense count: 1
+# Configuration parameters: AllowedMethods, AllowedPatterns, IgnoredMethods, CountRepeatedAttributes, Max.
+Metrics/AbcSize:
+  Exclude:
+    - 'app/controllers/feeds_controller.rb'
+
 # Offense count: 9
 # Configuration parameters: ForbiddenDelimiters.
 # ForbiddenDelimiters: (?-mix:(^|\s)(EO[A-Z]{1}|END)(\s|$))
@@ -1091,14 +1097,6 @@ Style/QuotedSymbols:
 Style/ReturnNil:
   Exclude:
     - 'app/repositories/user_repository.rb'
-
-# Offense count: 1
-# This cop supports unsafe autocorrection (--autocorrect-all).
-# Configuration parameters: ConvertCodeThatCanStartToReturnNil, AllowedMethods, MaxChainLength.
-# AllowedMethods: present?, blank?, presence, try, try!
-Style/SafeNavigation:
-  Exclude:
-    - 'app/controllers/sinatra/feeds_controller.rb'
 
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).
