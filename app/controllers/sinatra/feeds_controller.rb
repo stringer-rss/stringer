@@ -1,6 +1,6 @@
-require_relative "../repositories/feed_repository"
-require_relative "../commands/feeds/add_new_feed"
-require_relative "../commands/feeds/export_to_opml"
+require_relative "../../repositories/feed_repository"
+require_relative "../../commands/feeds/add_new_feed"
+require_relative "../../commands/feeds/export_to_opml"
 
 class Stringer < Sinatra::Base
   get "/feeds" do

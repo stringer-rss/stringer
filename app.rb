@@ -94,7 +94,7 @@ class Stringer < Sinatra::Base
   rails_route(:get, "/heroku", to: "debug#heroku")
 end
 
-require_relative "app/controllers/stories_controller"
-require_relative "app/controllers/first_run_controller"
-require_relative "app/controllers/sessions_controller"
-require_relative "app/controllers/feeds_controller"
+require_relative "app/controllers/sinatra/stories_controller"
+require_relative "app/controllers/sinatra/first_run_controller"
+require_relative "app/controllers/sinatra/sessions_controller"
+require_relative "app/controllers/sinatra/feeds_controller"

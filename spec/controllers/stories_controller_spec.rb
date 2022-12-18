@@ -1,7 +1,7 @@
 require "spec_helper"
 require "will_paginate/array"
 
-app_require "controllers/stories_controller"
+app_require "controllers/sinatra/stories_controller"
 
 describe "StoriesController" do
   let(:story_one) { StoryFactory.build }
