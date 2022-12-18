@@ -39,6 +39,7 @@ group :development, :test do
   gem "pry-byebug"
   gem "rspec"
   gem "rspec-html-matchers"
+  gem "rspec-rails"
   gem "shotgun"
   gem "simplecov"
   gem "timecop"

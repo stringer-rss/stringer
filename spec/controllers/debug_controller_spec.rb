@@ -3,7 +3,12 @@ require "support/active_record"
 
 app_require "controllers/debug_controller"
 
-describe "DebugController" do
+describe DebugController do
+  before do
+    # for Sinatra
+    allow_any_instance_of(described_class).to receive(:session).and_return({ "flash" => {} })
+  end
+
   describe "GET /debug" do
     before do
       delayed_job = double "Delayed::Job"

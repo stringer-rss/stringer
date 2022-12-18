@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      <%= content_for(:title) %>
+      <%= t('layout.title') %>
+    </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" href="/img/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/apple-touch-icon-precomposed.png">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <%= content_for(:head) %>
+
+    <link href="<%= stylesheet_path 'application' %>" rel="stylesheet" />
+    <script src="<%= javascript_path 'application' %>"></script>
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="frame">
+        <%= render 'layouts/flash' %>
+        <%= render 'layouts/shortcuts' if current_user %>
+        <div class="container">
+          <div class="row-fluid">
+            <div class="span12">
+              <%= yield %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="push"></div>
+    </div>
+
+    <div id="footer">
+      <%= render 'layouts/footer' %>
+    </div>
+
+    <script>
+      window.i18n = {};
+      window.i18n.titleName = "<%= t('layout.title') %>";
+    </script>
+  </body>
+</html>

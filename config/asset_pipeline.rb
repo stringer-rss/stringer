@@ -2,9 +2,11 @@ module AssetPipeline
   def registered(app)
     app.set :sprockets, Sprockets::Environment.new(app.root)
 
-    app.get "/assets/*" do
-      env["PATH_INFO"].sub!(%r{^/assets}, "")
-      settings.sprockets.call(env)
+    %w[assets stylesheets javascripts].each do |path|
+      app.get "/#{path}/*" do
+        env["PATH_INFO"].sub!(%r{^/#{path}}, "")
+        settings.sprockets.call(env)
+      end
     end
 
     append_paths(app)

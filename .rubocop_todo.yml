@@ -141,6 +141,7 @@ RSpec/AlignRightLetBrace:
 # Offense count: 6
 RSpec/AnyInstance:
   Exclude:
+    - 'spec/controllers/debug_controller_spec.rb'
     - 'spec/controllers/feeds_controller_spec.rb'
     - 'spec/controllers/first_run_controller_spec.rb'
     - 'spec/controllers/stories_controller_spec.rb'
@@ -1125,6 +1126,7 @@ Style/StaticClass:
 # This cop supports unsafe autocorrection (--autocorrect-all).
 Style/StringHashKeys:
   Exclude:
+    - 'app/helpers/controller_helpers.rb'
     - 'fever_api.rb'
     - 'spec/app_spec.rb'
     - 'spec/controllers/debug_controller_spec.rb'
