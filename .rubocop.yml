@@ -45,6 +45,11 @@ Style/NumericLiterals:
 Style/StringLiterals:
   EnforcedStyle: double_quotes
 
+Style/MethodCallWithArgsParentheses:
+  AllowedMethods:
+    - to
+    - not_to
+
 ################################################################################
 #
 # Rules we don't want to enable
