@@ -1,7 +1,7 @@
 require "spec_helper"
 require "support/active_record"
 
-app_require "controllers/first_run_controller"
+app_require "controllers/sinatra/first_run_controller"
 
 describe "FirstRunController" do
   context "when a user has not been setup" do

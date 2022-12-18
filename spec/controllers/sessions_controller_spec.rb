@@ -1,6 +1,6 @@
 require "spec_helper"
 
-app_require "controllers/sessions_controller"
+app_require "controllers/sinatra/sessions_controller"
 
 describe "SessionsController" do
   describe "GET /login" do

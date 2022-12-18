@@ -1,4 +1,4 @@
-require_relative "../commands/users/sign_in_user"
+require_relative "../../commands/users/sign_in_user"
 
 class Stringer < Sinatra::Base
   get "/login" do
