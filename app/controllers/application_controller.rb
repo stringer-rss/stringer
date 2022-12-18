@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   before_action :append_view_path
+  after_action :rotate_flash
 
   # needed for Sinatra
   def append_view_path
@@ -12,7 +13,11 @@ class ApplicationController < ActionController::Base
   end
 
   def flash
-    session["flash"]
+    @flash ||= Sinatra::Flash::FlashHash.new(session[:flash])
   end
   helper_method :flash
+
+  def rotate_flash
+    session[:flash] = flash.next # for Sinatra
+  end
 end
