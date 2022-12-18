@@ -100,6 +100,8 @@ class Stringer < Sinatra::Base
   rails_route(:get, "/debug", to: "debug#index")
   rails_route(:get, "/heroku", to: "debug#heroku")
   rails_route(:get, "/feeds", to: "feeds#index")
+  rails_route(:get, "/feeds/:id/edit", to: "feeds#edit")
+  rails_route(:put, "/feeds/:id", to: "feeds#update")
 end
 
 require_relative "app/controllers/sinatra/stories_controller"
