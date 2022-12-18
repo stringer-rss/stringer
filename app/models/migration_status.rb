@@ -1,17 +1,13 @@
 class MigrationStatus
   attr_reader :migrator
 
-  def initialize(migrator = ActiveRecord::Migrator)
+  def initialize(migrator = ActiveRecord::Base.connection.migration_context.open)
     @migrator = migrator
   end
 
   def pending_migrations
-    migrations_path = migrator.migrations_path
-    migrations = migrator.migrations(migrations_path)
-    current_version = migrator.current_version
-
-    migrations
-      .select { |m| current_version < m.version }
-      .map { |m| "#{m.name} - #{m.version}" }
+    migrator.pending_migrations.map do |migration|
+      "#{migration.name} - #{migration.version}"
+    end
   end
 end
