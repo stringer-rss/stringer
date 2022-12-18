@@ -23,6 +23,12 @@ require_relative "app/controllers/application_controller"
 require_relative "app/controllers/debug_controller"
 require_relative "app/controllers/feeds_controller"
 
+module Rails
+  def self.application
+    OpenStruct.new(config: OpenStruct.new(cache_classes: true))
+  end
+end
+
 I18n.load_path += Dir[File.join(File.dirname(__FILE__), "config/locales", "*.yml").to_s]
 I18n.config.enforce_available_locales = false
 Time.zone = ENV.fetch("TZ", "UTC")

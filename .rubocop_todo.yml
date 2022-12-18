@@ -1034,6 +1034,7 @@ Style/NumericPredicate:
 # Offense count: 4
 Style/OpenStructUse:
   Exclude:
+    - 'app.rb'
     - 'spec/factories/feed_factory.rb'
     - 'spec/factories/group_factory.rb'
     - 'spec/factories/story_factory.rb'
