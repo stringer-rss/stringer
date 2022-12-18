@@ -51,5 +51,6 @@ Style/StringLiterals:
 #
 ################################################################################
 
+Lint/ConstantResolution: { Enabled: false }
 Rails/SchemaComment: { Enabled: false }
 Style/RequireOrder: { Enabled: false }
