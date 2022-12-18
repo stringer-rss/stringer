@@ -1,3 +1,6 @@
+require "action_pack"
+require "action_view"
+require "action_controller"
 require "sinatra/base"
 require "sinatra/activerecord"
 require "sinatra/flash"
@@ -12,8 +15,12 @@ require "sprockets-helpers"
 require "securerandom"
 
 require_relative "app/helpers/authentication_helpers"
+require_relative "app/helpers/controller_helpers"
 require_relative "app/repositories/user_repository"
 require_relative "config/asset_pipeline"
+
+require_relative "app/controllers/application_controller"
+require_relative "app/controllers/debug_controller"
 
 I18n.load_path += Dir[File.join(File.dirname(__FILE__), "config/locales", "*.yml").to_s]
 I18n.config.enforce_available_locales = false
@@ -24,6 +31,8 @@ class Stringer < Sinatra::Base
   if ENV["ENFORCE_SSL"] == "true"
     use Rack::SSL, exclude: ->(env) { env["PATH_INFO"] =~ %r{^/(js|css|img)} }
   end
+
+  extend Sinatra::ControllerHelpers
 
   register Sinatra::ActiveRecordExtension
   register Sinatra::Flash
@@ -80,10 +89,12 @@ class Stringer < Sinatra::Base
       redirect to("/setup/password")
     end
   end
+
+  rails_route(:get, "/debug", to: "debug#index")
+  rails_route(:get, "/heroku", to: "debug#heroku")
 end
 
 require_relative "app/controllers/stories_controller"
 require_relative "app/controllers/first_run_controller"
 require_relative "app/controllers/sessions_controller"
 require_relative "app/controllers/feeds_controller"
-require_relative "app/controllers/debug_controller"
