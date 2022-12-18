@@ -5,6 +5,11 @@ app_require "controllers/sinatra/feeds_controller"
 describe "FeedsController" do
   let(:feeds) { [FeedFactory.build, FeedFactory.build] }
 
+  before do
+    # for Sinatra
+    allow_any_instance_of(FeedsController).to receive(:session).and_return({ "flash" => {} })
+  end
+
   describe "GET /feeds" do
     it "renders a list of feeds" do
       expect(FeedRepository).to receive(:list).and_return(feeds)

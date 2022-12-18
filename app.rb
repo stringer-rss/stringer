@@ -21,6 +21,7 @@ require_relative "config/asset_pipeline"
 
 require_relative "app/controllers/application_controller"
 require_relative "app/controllers/debug_controller"
+require_relative "app/controllers/feeds_controller"
 
 I18n.load_path += Dir[File.join(File.dirname(__FILE__), "config/locales", "*.yml").to_s]
 I18n.config.enforce_available_locales = false
@@ -92,6 +93,7 @@ class Stringer < Sinatra::Base
 
   rails_route(:get, "/debug", to: "debug#index")
   rails_route(:get, "/heroku", to: "debug#heroku")
+  rails_route(:get, "/feeds", to: "feeds#index")
 end
 
 require_relative "app/controllers/sinatra/stories_controller"

@@ -3,12 +3,6 @@ require_relative "../../commands/feeds/add_new_feed"
 require_relative "../../commands/feeds/export_to_opml"
 
 class Stringer < Sinatra::Base
-  get "/feeds" do
-    @feeds = FeedRepository.list
-
-    erb :'feeds/index'
-  end
-
   get "/feeds/:id/edit" do
     @feed = FeedRepository.fetch(params[:id])
 
