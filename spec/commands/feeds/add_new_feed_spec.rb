@@ -30,7 +30,10 @@ describe AddNewFeed do
 
       context "title includes a script tag" do
         let(:feed_result) do
-          double(title: "foo<script>alert('xss');</script>bar", feed_url: feed.url)
+          double(
+            title: "foo<script>alert('xss');</script>bar",
+            feed_url: feed.url
+          )
         end
 
         it "deletes the script tag from the title" do

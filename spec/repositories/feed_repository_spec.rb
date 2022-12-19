@@ -68,7 +68,7 @@ describe FeedRepository do
       expect(feed.last_fetched).to eq timestamp
     end
 
-    it "doesn't update if timestamp is nil (feed does not report last modified)" do
+    it "doesn't update if timestamp is nil" do
       feed = Feed.new(last_fetched: timestamp)
 
       FeedRepository.update_last_fetched(feed, nil)

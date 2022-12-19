@@ -7,8 +7,13 @@ describe ExportsController do
     let(:some_xml) { "<xml>some dummy opml</xml>" }
     before { allow(Feed).to receive(:all) }
 
+    def mock_export
+      expect_any_instance_of(ExportToOpml)
+        .to receive(:to_xml).and_return(some_xml)
+    end
+
     it "returns an OPML file" do
-      expect_any_instance_of(ExportToOpml).to receive(:to_xml).and_return(some_xml)
+      mock_export
 
       get "/feeds/export"
 
@@ -16,7 +21,7 @@ describe ExportsController do
     end
 
     it "responds with xml content type" do
-      expect_any_instance_of(ExportToOpml).to receive(:to_xml).and_return(some_xml)
+      mock_export
 
       get "/feeds/export"
 
@@ -24,7 +29,7 @@ describe ExportsController do
     end
 
     it "responds with disposition attachment" do
-      expect_any_instance_of(ExportToOpml).to receive(:to_xml).and_return(some_xml)
+      mock_export
 
       get "/feeds/export"
 
