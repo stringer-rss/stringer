@@ -459,6 +459,12 @@ describe StoryRepository do
       expect(StoryRepository.extract_content(summary_only)).to eq "Dumb publisher"
     end
 
+    it "returns empty string if there is no content or summary" do
+      entry = double(url: "http://mdswanson.com", content: nil, summary: nil)
+
+      expect(StoryRepository.extract_content(entry)).to eq ""
+    end
+
     it "expands urls" do
       entry = double(
         url: "http://mdswanson.com",
