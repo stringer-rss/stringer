@@ -12,7 +12,7 @@ AllCops:
     - 'vendor/**/*'
 
 Layout/LineLength:
-  Max: 88
+  Max: 87
 
 Metrics/BlockLength:
   Exclude:
