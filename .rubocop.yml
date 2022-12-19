@@ -11,45 +11,18 @@ AllCops:
     - 'db/schema.rb'
     - 'vendor/**/*'
 
-Layout/LineLength:
-  Max: 80
-
-Metrics/BlockLength:
-  Exclude:
-    - 'spec/**/*_spec.rb'
-
-Metrics/MethodLength:
-  Max: 15
-
-Style/ConstantVisibility:
-  Enabled: false
-
-Style/Copyright:
-  Enabled: false
-
-Style/Documentation:
-  Enabled: false
-
-Style/DocumentationMethod:
-  Enabled: false
-
-Style/DoubleNegation:
-  Enabled: false
-
-Style/MissingElse:
-  Enabled: false
-
-Style/NumericLiterals:
-  Enabled: false
-
-Style/StringLiterals:
-  EnforcedStyle: double_quotes
-
+Layout/LineLength: { Max: 80 }
+Metrics/BlockLength: { Exclude: ['spec/**/*_spec.rb'] }
 Style/MethodCallWithArgsParentheses:
   AllowedMethods:
     - to
     - not_to
     - describe
+Style/StringLiterals: { EnforcedStyle: double_quotes }
+
+# want to enable these, but they don't work right when using `.rubocop_todo.yml`
+Style/DocumentationMethod: { Enabled: false }
+Style/Documentation: { Enabled: false }
 
 ################################################################################
 #
@@ -63,3 +36,6 @@ RSpec/StubbedMock: { Enabled: false }
 Style/InlineComment: { Enabled: false }
 Style/RequireOrder: { Enabled: false }
 Style/SafeNavigation: { Enabled: false }
+Style/ConstantVisibility: { Enabled: false }
+Style/Copyright: { Enabled: false }
+Style/MissingElse: { Enabled: false }
