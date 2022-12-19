@@ -14,8 +14,6 @@ class ImportFromOpml
       # for existing feeds. Feeds without groups are in 'Ungrouped' group, we don't
       # create such group and create such feeds with group_id = nil.
       feeds_with_groups.each do |group_name, parsed_feeds|
-        next if parsed_feeds.empty?
-
         group = Group.where(name: group_name).first_or_create unless group_name == "Ungrouped"
 
         parsed_feeds.each { |parsed_feed| create_feed(parsed_feed, group) }
