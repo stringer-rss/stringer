@@ -28,9 +28,9 @@ describe ExportsController do
 
       get "/feeds/export"
 
-      expected_disposition =
+      expected =
         "attachment; filename=\"stringer.opml\"; filename*=UTF-8''stringer.opml"
-      expect(last_response.header["Content-Disposition"]).to eq(expected_disposition)
+      expect(last_response.header["Content-Disposition"]).to eq(expected)
     end
   end
 end

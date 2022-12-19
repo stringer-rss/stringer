@@ -11,7 +11,8 @@ describe FeverAPI::WriteMarkFeed do
   end
 
   it "instantiates a feed marker and calls mark_feed_as_read if requested" do
-    expect(marker_class).to receive(:new).with(5, 1234567890).and_return(feed_marker)
+    expect(marker_class)
+      .to receive(:new).with(5, 1234567890).and_return(feed_marker)
     expect(feed_marker).to receive(:mark_feed_as_read)
     expect(subject.call(mark: "feed", id: 5, before: 1234567890)).to eq({})
   end
