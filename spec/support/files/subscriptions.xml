@@ -23,5 +23,7 @@
             <outline text="igvita.com" title="igvita.com" type="rss"
                 xmlUrl="http://www.igvita.com/feed/" htmlUrl="http://www.igvita.com"/>
         </outline>
+        <outline title="Empty Group" text="Empty Group">
+        </outline>
     </body>
 </opml>
