@@ -31,7 +31,8 @@ describe StoryRepository do
     end
 
     it "deletes script tags from titles" do
-      entry = double(title: "n<script>alert('xss');</script>", content: "").as_null_object
+      entry = double(title: "n<script>alert('xss');</script>", content: "")
+              .as_null_object
       allow(StoryRepository).to receive(:normalize_url)
 
       expect(Story).to receive(:create).with(hash_including(title: "n"))

@@ -67,7 +67,8 @@ describe FeverAPI do
 
     it "returns groups and feeds by groups when 'groups' header is provided" do
       allow(GroupRepository).to receive(:list).and_return([group])
-      allow(FeedRepository).to receive_message_chain(:in_group, :order).and_return([feed])
+      allow(FeedRepository)
+        .to receive_message_chain(:in_group, :order).and_return([feed])
 
       make_request(groups: nil)
 
@@ -81,7 +82,8 @@ describe FeverAPI do
 
     it "returns feeds and feeds by groups when 'feeds' header is provided" do
       allow(FeedRepository).to receive(:list).and_return([feed])
-      allow(FeedRepository).to receive_message_chain(:in_group, :order).and_return([feed])
+      allow(FeedRepository)
+        .to receive_message_chain(:in_group, :order).and_return([feed])
 
       make_request(feeds: nil)
 
@@ -124,7 +126,8 @@ describe FeverAPI do
     end
 
     it "returns stories when 'items' header is provided without 'since_id'" do
-      expect(StoryRepository).to receive(:unread).twice.and_return([story_one, story_two])
+      expect(StoryRepository)
+        .to receive(:unread).twice.and_return([story_one, story_two])
 
       make_request(items: nil)
 
