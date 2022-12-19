@@ -39,7 +39,12 @@ describe FindNewStories do
       old_story = double(published: nil, id: "old-story")
       feed = double(last_modified: nil, entries: [new_story, old_story])
 
-      result = FindNewStories.new(feed, 1, Time.new(2013, 1, 3), "old-story").new_stories
+      result = FindNewStories.new(
+        feed,
+        1,
+        Time.new(2013, 1, 3),
+        "old-story"
+      ).new_stories
       expect(result).to eq [new_story]
     end
 
@@ -54,7 +59,10 @@ describe FindNewStories do
         double(published: 4.days.ago, id: "new-story")
       ]
 
-      feed = double(last_modified: nil, entries: new_stories + stories_older_than_3_days)
+      feed = double(
+        last_modified: nil,
+        entries: new_stories + stories_older_than_3_days
+      )
 
       result = FindNewStories.new(feed, 1, nil, nil).new_stories
       expect(result).not_to include(stories_older_than_3_days)
