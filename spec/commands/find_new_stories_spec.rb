@@ -26,7 +26,8 @@ describe FindNewStories do
         story2 = double(published: nil, id: "story2")
         feed   = double(entries: [story1, story2])
 
-        allow(StoryRepository).to receive(:exists?).with("story1", 1).and_return(true)
+        allow(StoryRepository)
+          .to receive(:exists?).with("story1", 1).and_return(true)
         allow(StoryRepository)
           .to receive(:exists?).with("story2", 1).and_return(false)
 
