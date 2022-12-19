@@ -49,6 +49,7 @@ Style/MethodCallWithArgsParentheses:
   AllowedMethods:
     - to
     - not_to
+    - describe
 
 ################################################################################
 #
