@@ -39,7 +39,12 @@ describe FetchFeed do
         output = StringIO.new
         logger = Logger.new(output)
 
-        FetchFeed.new(daring_fireball, parser: parser, client: client, logger:).fetch
+        FetchFeed.new(
+          daring_fireball,
+          parser: parser,
+          client: client,
+          logger:
+        ).fetch
 
         expect(output.string).to include("has not been modified")
       end
@@ -51,7 +56,8 @@ describe FetchFeed do
         client = class_spy(HTTParty)
         parser = class_double(Feedjira, parse: fake_feed)
 
-        allow_any_instance_of(FindNewStories).to receive(:new_stories).and_return([])
+        allow_any_instance_of(FindNewStories)
+          .to receive(:new_stories).and_return([])
 
         expect(StoryRepository).not_to receive(:add)
 
@@ -64,7 +70,9 @@ describe FetchFeed do
       let(:new_story) { double }
       let(:old_story) { double }
 
-      let(:fake_feed) { double(last_modified: now, entries: [new_story, old_story]) }
+      let(:fake_feed) do
+        double(last_modified: now, entries: [new_story, old_story])
+      end
       let(:fake_client) { class_spy(HTTParty) }
       let(:fake_parser) { class_double(Feedjira, parse: fake_feed) }
 
@@ -75,7 +83,8 @@ describe FetchFeed do
 
       it "should only add posts that are new" do
         expect(StoryRepository).to receive(:add).with(new_story, daring_fireball)
-        expect(StoryRepository).not_to receive(:add).with(old_story, daring_fireball)
+        expect(StoryRepository)
+          .not_to receive(:add).with(old_story, daring_fireball)
 
         FetchFeed.new(
           daring_fireball,

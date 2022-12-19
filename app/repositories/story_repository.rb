@@ -90,9 +90,9 @@ class StoryRepository
   end
 
   def self.extract_url(entry, feed)
-    return entry.enclosure_url if entry.url.nil? && entry.respond_to?(:enclosure_url)
+    return normalize_url(entry.url, feed.url) if entry.url.present?
 
-    normalize_url(entry.url, feed.url) unless entry.url.nil?
+    entry.enclosure_url if entry.respond_to?(:enclosure_url)
   end
 
   def self.extract_content(entry)

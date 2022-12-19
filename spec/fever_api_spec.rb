@@ -110,7 +110,7 @@ describe FeverAPI do
       )
     end
 
-    it "returns stories when 'items' header is provided along with 'since_id'" do
+    it "returns stories when 'items' and 'since_id'" do
       expect(StoryRepository)
         .to receive(:unread_since_id).with("5").and_return([story_one])
       expect(StoryRepository).to receive(:unread).and_return([story_one, story_two])
@@ -139,7 +139,7 @@ describe FeverAPI do
       )
     end
 
-    it "returns stories ids when 'items' header is provided along with 'with_ids'" do
+    it "returns stories ids when 'items' and 'with_ids'" do
       expect(StoryRepository)
         .to receive(:fetch_by_ids).twice.with(["5"]).and_return([story_one])
 
