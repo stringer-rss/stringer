@@ -3,7 +3,11 @@ require "io/console"
 require_relative "../commands/users/change_user_password"
 
 class ChangePassword
-  def initialize(command = ChangeUserPassword.new, output: $stdout, input: $stdin)
+  def initialize(
+    command = ChangeUserPassword.new,
+    output: $stdout,
+    input: $stdin
+  )
     @command = command
     @output = output
     @input = input

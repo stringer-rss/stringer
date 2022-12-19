@@ -16,7 +16,8 @@ describe StoryRepository do
         title: "",
         content: ""
       ).as_null_object
-      expect(StoryRepository).to receive(:normalize_url).with(entry.url, feed.url)
+      expect(StoryRepository)
+        .to receive(:normalize_url).with(entry.url, feed.url)
 
       StoryRepository.add(entry, feed)
     end
@@ -461,7 +462,8 @@ describe StoryRepository do
     end
 
     it "falls back to summary if there is no content" do
-      expect(StoryRepository.extract_content(summary_only)).to eq "Dumb publisher"
+      expect(StoryRepository.extract_content(summary_only))
+        .to eq "Dumb publisher"
     end
 
     it "returns empty string if there is no content or summary" do
@@ -477,7 +479,8 @@ describe StoryRepository do
         summary: "<a href=\"page\">Page</a>"
       )
 
-      expect(StoryRepository.extract_content(entry)).to eq "<a href=\"http://mdswanson.com/page\">Page</a>"
+      expect(StoryRepository.extract_content(entry))
+        .to eq "<a href=\"http://mdswanson.com/page\">Page</a>"
     end
 
     it "ignores URL expansion if entry url is nil" do

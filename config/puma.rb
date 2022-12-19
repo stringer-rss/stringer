@@ -26,7 +26,8 @@ end
 on_worker_boot do
   if defined?(ActiveRecord::Base)
     env = ENV["RACK_ENV"] || "development"
-    config = YAML.safe_load(ERB.new(File.read("config/database.yml")).result)[env]
+    config =
+      YAML.safe_load(ERB.new(File.read("config/database.yml")).result)[env]
     ActiveRecord::Base.establish_connection(config)
   end
 end
