@@ -27,6 +27,17 @@ describe FetchFeed do
 
         FetchFeed.new(daring_fireball, parser: parser, client: client, logger: nil).fetch
       end
+
+      it "logs a message" do
+        client = class_spy(HTTParty)
+        parser = class_double(Feedjira, parse: 304)
+        output = StringIO.new
+        logger = Logger.new(output)
+
+        FetchFeed.new(daring_fireball, parser: parser, client: client, logger:).fetch
+
+        expect(output.string).to include("has not been modified")
+      end
     end
 
     context "when no new posts have been added" do
@@ -99,6 +110,17 @@ describe FetchFeed do
           .with(:red, daring_fireball)
 
         FetchFeed.new(daring_fireball, parser: parser, client: client, logger: nil).fetch
+      end
+
+      it "outputs a message when things go wrong" do
+        client = class_spy(HTTParty)
+        parser = class_double(Feedjira, parse: 404)
+        output = StringIO.new
+        logger = Logger.new(output)
+
+        FetchFeed.new(daring_fireball, parser: parser, client: client, logger: logger).fetch
+
+        expect(output.string).to include("Something went wrong")
       end
     end
   end
