@@ -35,7 +35,8 @@ class StoryRepository
   end
 
   def self.fetch_unread_by_timestamp_and_group(timestamp, group_id)
-    fetch_unread_by_timestamp(timestamp).joins(:feed).where(feeds: { group_id: group_id })
+    fetch_unread_by_timestamp(timestamp)
+      .joins(:feed).where(feeds: { group_id: group_id })
   end
 
   def self.fetch_unread_for_feed_by_timestamp(feed_id, timestamp)
