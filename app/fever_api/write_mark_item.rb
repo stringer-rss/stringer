@@ -8,7 +8,8 @@ module FeverAPI
     def initialize(options = {})
       @read_marker_class = options.fetch(:read_marker_class) { MarkAsRead }
       @unread_marker_class = options.fetch(:unread_marker_class) { MarkAsUnread }
-      @starred_marker_class = options.fetch(:starred_marker_class) { MarkAsStarred }
+      @starred_marker_class =
+        options.fetch(:starred_marker_class) { MarkAsStarred }
       @unstarred_marker_class =
         options.fetch(:unstarred_marker_class) { MarkAsUnstarred }
     end

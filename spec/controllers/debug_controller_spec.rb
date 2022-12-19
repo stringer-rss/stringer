@@ -15,7 +15,8 @@ describe DebugController do
         .to receive(:pending_migrations)
         .and_return(["Migration B - 2", "Migration C - 3"])
       migration_status = double "MigrationStatus"
-      allow(migration_status).to receive(:new).and_return(migration_status_instance)
+      allow(migration_status)
+        .to receive(:new).and_return(migration_status_instance)
       stub_const("MigrationStatus", migration_status)
     end
 
