@@ -6,21 +6,6 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 35
-# Configuration parameters: Include, IgnoredGems, OnlyFor.
-# Include: **/*.gemfile, **/Gemfile, **/gems.rb
-Bundler/GemComment:
-  Exclude:
-    - 'Gemfile'
-
-# Offense count: 33
-# Configuration parameters: EnforcedStyle, Include, AllowedGems.
-# SupportedStyles: required, forbidden
-# Include: **/*.gemfile, **/Gemfile, **/gems.rb
-Bundler/GemVersion:
-  Exclude:
-    - 'Gemfile'
-
 # Offense count: 2
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: InspectBlocks.
