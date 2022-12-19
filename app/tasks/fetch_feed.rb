@@ -6,7 +6,12 @@ require_relative "../repositories/feed_repository"
 require_relative "../commands/feeds/find_new_stories"
 
 class FetchFeed
-  def initialize(feed, parser: Feedjira, client: HTTParty, logger: Logger.new($stdout))
+  def initialize(
+    feed,
+    parser: Feedjira,
+    client: HTTParty,
+    logger: Logger.new($stdout)
+  )
     @feed = feed
     @parser = parser
     @client = client

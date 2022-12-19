@@ -55,10 +55,11 @@ describe "FeedsController" do
 
   describe "PUT /feeds/:feed_id" do
     it "updates a feed given the id" do
-      feed = FeedFactory.build(url: "example.com/atom")
+      feed = FeedFactory.build(url: "example.com/atom", id: "12", group_id: nil)
       mock_feed(feed, "Test", "example.com/feed")
 
-      put "/feeds/123", feed_id: "123", feed_name: "Test", feed_url: "example.com/feed"
+      feed_url = "example.com/feed"
+      put "/feeds/123", **params(feed, feed_name: "Test", feed_url:)
 
       expect(last_response).to be_redirect
     end

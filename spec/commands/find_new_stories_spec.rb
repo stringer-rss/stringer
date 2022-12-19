@@ -27,7 +27,8 @@ describe FindNewStories do
         feed   = double(entries: [story1, story2])
 
         allow(StoryRepository).to receive(:exists?).with("story1", 1).and_return(true)
-        allow(StoryRepository).to receive(:exists?).with("story2", 1).and_return(false)
+        allow(StoryRepository)
+          .to receive(:exists?).with("story2", 1).and_return(false)
 
         result = FindNewStories.new(feed, 1, Time.new(2013, 1, 2)).new_stories
         expect(result).to eq [story2]
