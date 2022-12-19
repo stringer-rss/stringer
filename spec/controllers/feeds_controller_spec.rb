@@ -40,7 +40,12 @@ describe "FeedsController" do
 
   def mock_feed(feed, name, url, group_id = nil)
     expect(FeedRepository).to receive(:fetch).with("123").and_return(feed)
-    expect(FeedRepository).to receive(:update_feed).with(feed, name, url, group_id)
+    expect(FeedRepository).to receive(:update_feed).with(
+      feed,
+      name,
+      url,
+      group_id
+    )
   end
 
   def params(feed, **overrides)
@@ -126,7 +131,8 @@ describe "FeedsController" do
       let(:invalid_feed) { double(valid?: false) }
 
       it "adds the feed and queues it to be fetched" do
-        expect(AddNewFeed).to receive(:add).with(feed_url).and_return(invalid_feed)
+        expect(AddNewFeed)
+          .to receive(:add).with(feed_url).and_return(invalid_feed)
 
         post("/feeds", feed_url:)
 
