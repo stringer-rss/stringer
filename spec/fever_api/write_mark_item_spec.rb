@@ -55,6 +55,6 @@ describe FeverAPI::WriteMarkItem do
   end
 
   it "returns an empty hash otherwise" do
-    expect(subject.call).to eq({})
+    expect(subject.call({ mark: "item" })).to eq({})
   end
 end
