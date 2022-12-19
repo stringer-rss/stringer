@@ -32,6 +32,7 @@ Style/Documentation: { Enabled: false }
 
 Bundler/GemComment: { Enabled: false }
 Bundler/GemVersion: { Enabled: false }
+Layout/SingleLineBlockChain: { Enabled: false }
 Lint/ConstantResolution: { Enabled: false }
 RSpec/StubbedMock: { Enabled: false }
 Rails/SchemaComment: { Enabled: false }
