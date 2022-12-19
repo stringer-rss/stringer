@@ -4,8 +4,8 @@ require "support/active_record"
 describe FetchFeeds do
   describe "#fetch_all" do
     let(:feeds) { [FeedFactory.build, FeedFactory.build] }
-    let(:fetcher_one) { double }
-    let(:fetcher_two) { double }
+    let(:fetcher_one) { instance_double(FetchFeed) }
+    let(:fetcher_two) { instance_double(FetchFeed) }
     let(:pool) { double }
 
     it "calls FetchFeed#fetch for every feed" do
@@ -18,6 +18,18 @@ describe FetchFeeds do
       expect(pool).to receive(:shutdown)
 
       FetchFeeds.new(feeds, pool).fetch_all
+    end
+
+    it "finds feeds when run after a delay" do
+      allow(pool).to receive(:process).and_yield
+      allow(FetchFeed).to receive(:new).and_return(fetcher_one, fetcher_two)
+      expect(FeedRepository).to receive(:fetch_by_ids).with(feeds.map(&:id)).and_return(feeds)
+      expect(fetcher_one).to receive(:fetch).once
+      expect(fetcher_two).to receive(:fetch).once
+
+      expect(pool).to receive(:shutdown)
+
+      FetchFeeds.new(feeds, pool).prepare_to_delay.fetch_all
     end
   end
 

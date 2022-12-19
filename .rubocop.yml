@@ -59,6 +59,7 @@ Style/MethodCallWithArgsParentheses:
 
 Lint/ConstantResolution: { Enabled: false }
 Rails/SchemaComment: { Enabled: false }
+RSpec/StubbedMock: { Enabled: false }
 Style/InlineComment: { Enabled: false }
 Style/RequireOrder: { Enabled: false }
 Style/SafeNavigation: { Enabled: false }
