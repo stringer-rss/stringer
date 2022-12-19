@@ -3,7 +3,7 @@ require "spec_helper"
 app_require "helpers/authentication_helpers"
 
 RSpec.describe Sinatra::AuthenticationHelpers do
-  class Helper # rubocop:disable Lint/ConstantDefinitionInBlock
+  class Helper
     include Sinatra::AuthenticationHelpers
   end
 

@@ -17,7 +17,7 @@ class FeedFactory
     FakeFeed.new(
       id: rand(100),
       group_id: rand(100),
-      name: Faker::Name.name + " on Software", # rubocop:disable Style/StringConcatenation
+      name: Faker::Name.name + " on Software",
       url: Faker::Internet.url,
       last_fetched: Time.now,
       stories: [],
