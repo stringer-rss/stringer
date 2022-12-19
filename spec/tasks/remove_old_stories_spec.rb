@@ -35,7 +35,8 @@ describe RemoveOldStories do
         stories
       end
 
-      expect(FeedRepository).to receive(:fetch_by_ids).with([3, 5]).and_return([])
+      expect(FeedRepository)
+        .to receive(:fetch_by_ids).with([3, 5]).and_return([])
 
       RemoveOldStories.remove!(13)
     end

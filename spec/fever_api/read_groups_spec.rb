@@ -4,7 +4,9 @@ app_require "fever_api/read_groups"
 
 describe FeverAPI::ReadGroups do
   let(:group1) { double("group1", as_fever_json: { id: 1, title: "IT news" }) }
-  let(:group2) { double("group2", as_fever_json: { id: 2, title: "World news" }) }
+  let(:group2) do
+    double("group2", as_fever_json: { id: 2, title: "World news" })
+  end
   let(:group_repository) { double("repo") }
 
   subject { FeverAPI::ReadGroups.new(group_repository: group_repository) }
