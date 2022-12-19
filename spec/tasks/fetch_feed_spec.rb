@@ -25,7 +25,12 @@ describe FetchFeed do
 
         expect(StoryRepository).not_to receive(:add)
 
-        FetchFeed.new(daring_fireball, parser: parser, client: client, logger: nil).fetch
+        FetchFeed.new(
+          daring_fireball,
+          parser: parser,
+          client: client,
+          logger: nil
+        ).fetch
       end
 
       it "logs a message" do
@@ -110,7 +115,12 @@ describe FetchFeed do
         expect(FeedRepository).to receive(:set_status)
           .with(:red, daring_fireball)
 
-        FetchFeed.new(daring_fireball, parser: parser, client: client, logger: nil).fetch
+        FetchFeed.new(
+          daring_fireball,
+          parser: parser,
+          client: client,
+          logger: nil
+        ).fetch
       end
 
       it "outputs a message when things go wrong" do

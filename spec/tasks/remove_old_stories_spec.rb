@@ -45,7 +45,10 @@ describe RemoveOldStories do
       allow(RemoveOldStories).to receive(:pruned_feeds) { feeds }
       allow(RemoveOldStories).to receive(:old_stories) { stories_mock }
 
-      expect(FeedRepository).to receive(:update_last_fetched).with(feeds.first, anything)
+      expect(FeedRepository).to receive(:update_last_fetched).with(
+        feeds.first,
+        anything
+      )
       expect(FeedRepository).to receive(:update_last_fetched).with(feeds.last, anything)
 
       RemoveOldStories.remove!(13)
