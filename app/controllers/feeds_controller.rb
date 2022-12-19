@@ -34,7 +34,12 @@ class FeedsController < ApplicationController
   def update
     feed = FeedRepository.fetch(params[:id])
 
-    FeedRepository.update_feed(feed, params[:feed_name], params[:feed_url], params[:group_id])
+    FeedRepository.update_feed(
+      feed,
+      params[:feed_name],
+      params[:feed_url],
+      params[:group_id]
+    )
 
     flash[:success] = t("feeds.edit.flash.updated_successfully")
     redirect_to("/feeds")

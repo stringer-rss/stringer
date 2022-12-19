@@ -20,7 +20,8 @@ describe RemoveOldStories do
 
     it "should request deletion of all old stories" do
       allow(RemoveOldStories).to receive(:pruned_feeds) { [] }
-      allow(StoryRepository).to receive(:unstarred_read_stories_older_than) { stories_mock }
+      allow(StoryRepository)
+        .to receive(:unstarred_read_stories_older_than) { stories_mock }
 
       expect(stories_mock).to receive(:delete_all)
 

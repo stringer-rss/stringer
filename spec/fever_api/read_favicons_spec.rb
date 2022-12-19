@@ -10,7 +10,7 @@ describe FeverAPI::ReadFavicons do
       favicons: [
         {
           id: 0,
-          data: "image/gif;base64,R0lGODlhAQABAIAAAObm5gAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          data: "image/gif;base64,#{described_class::ICON}"
         }
       ]
     )

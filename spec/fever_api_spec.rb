@@ -109,7 +109,8 @@ describe FeverAPI do
     end
 
     it "returns stories when 'items' header is provided along with 'since_id'" do
-      expect(StoryRepository).to receive(:unread_since_id).with("5").and_return([story_one])
+      expect(StoryRepository)
+        .to receive(:unread_since_id).with("5").and_return([story_one])
       expect(StoryRepository).to receive(:unread).and_return([story_one, story_two])
 
       make_request(items: nil, since_id: 5)
@@ -193,7 +194,8 @@ describe FeverAPI do
     end
 
     it "commands to mark story as read" do
-      expect(MarkAsRead).to receive(:new).with("10").and_return(double(mark_as_read: true))
+      expect(MarkAsRead)
+        .to receive(:new).with("10").and_return(double(mark_as_read: true))
 
       make_request(mark: "item", as: "read", id: 10)
 
@@ -202,7 +204,8 @@ describe FeverAPI do
     end
 
     it "commands to mark story as unread" do
-      expect(MarkAsUnread).to receive(:new).with("10").and_return(double(mark_as_unread: true))
+      expect(MarkAsUnread)
+        .to receive(:new).with("10").and_return(double(mark_as_unread: true))
 
       make_request(mark: "item", as: "unread", id: 10)
 

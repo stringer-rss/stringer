@@ -23,7 +23,14 @@ class Stringer < Sinatra::Base
   private
 
   def vendor_js_files
-    %w(mocha.js sinon.js chai.js chai-changes.js chai-backbone.js sinon-chai.js).map do |name|
+    %w(
+      mocha.js
+      sinon.js
+      chai.js
+      chai-changes.js
+      chai-backbone.js
+      sinon-chai.js
+    ).map do |name|
       File.join "vendor", "js", name
     end
   end

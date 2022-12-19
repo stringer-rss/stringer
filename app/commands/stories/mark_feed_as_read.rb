@@ -8,6 +8,8 @@ class MarkFeedAsRead
   end
 
   def mark_feed_as_read
-    @repo.fetch_unread_for_feed_by_timestamp(@feed_id, @timestamp).update_all(is_read: true)
+    @repo
+      .fetch_unread_for_feed_by_timestamp(@feed_id, @timestamp)
+      .update_all(is_read: true)
   end
 end

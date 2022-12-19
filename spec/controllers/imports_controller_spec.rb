@@ -15,7 +15,10 @@ describe ImportsController do
 
   describe "POST /feeds/import" do
     let(:opml_file) do
-      Rack::Test::UploadedFile.new("spec/sample_data/subscriptions.xml", "application/xml")
+      Rack::Test::UploadedFile.new(
+        "spec/sample_data/subscriptions.xml",
+        "application/xml"
+      )
     end
 
     it "parse OPML and starts fetching" do
