@@ -20,6 +20,6 @@ class FeedDiscovery
     feed.feed_url ||= url
     feed
   rescue StandardError
-    yield if block_given?
+    yield
   end
 end
