@@ -481,13 +481,11 @@ describe StoryRepository do
     end
 
     it "ignores URL expansion if entry url is nil" do
-      entry = double(
-        url: nil,
-        content: nil,
-        summary: "<a href=\"page\">Page</a>"
-      )
+      entry =
+        double(url: nil, content: nil, summary: "<a href=\"page\">Page</a>")
 
-      expect(StoryRepository.extract_content(entry)).to eq "<a href=\"page\">Page</a>"
+      expect(StoryRepository.extract_content(entry))
+        .to eq "<a href=\"page\">Page</a>"
     end
   end
 end
