@@ -16,12 +16,13 @@ class FeedFactory
   def self.build(params = {})
     FakeFeed.new(
       id: rand(100),
-      group_id: params[:group_id] || rand(100),
-      name: params[:name] || Faker::Name.name + " on Software", # rubocop:disable Style/StringConcatenation
-      url: params[:url] || Faker::Internet.url,
-      last_fetched: params[:last_fetched] || Time.now,
-      stories: params[:stories] || [],
-      unread_stories: []
+      group_id: rand(100),
+      name: Faker::Name.name + " on Software", # rubocop:disable Style/StringConcatenation
+      url: Faker::Internet.url,
+      last_fetched: Time.now,
+      stories: [],
+      unread_stories: [],
+      **params
     )
   end
 end

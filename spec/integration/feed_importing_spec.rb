@@ -72,7 +72,8 @@ describe "Feed importing" do
         # was published.
 
         feed.last_fetched = Time.parse("2014-08-12T00:01:00Z")
-        @server.response = sample_data("feeds/feed02_invalid_published_dates/feed.xml")
+        @server.response =
+          sample_data("feeds/feed02_invalid_published_dates/feed.xml")
 
         expect { fetch_feed(feed) }.to change { feed.stories.count }.by(1)
       end
