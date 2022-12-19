@@ -113,7 +113,8 @@ describe FeverAPI do
     it "returns stories when 'items' and 'since_id'" do
       expect(StoryRepository)
         .to receive(:unread_since_id).with("5").and_return([story_one])
-      expect(StoryRepository).to receive(:unread).and_return([story_one, story_two])
+      expect(StoryRepository)
+        .to receive(:unread).and_return([story_one, story_two])
 
       make_request(items: nil, since_id: 5)
 
@@ -162,7 +163,8 @@ describe FeverAPI do
     end
 
     it "returns unread items ids when 'unread_item_ids' header is provided" do
-      expect(StoryRepository).to receive(:unread).and_return([story_one, story_two])
+      expect(StoryRepository)
+        .to receive(:unread).and_return([story_one, story_two])
 
       make_request(unread_item_ids: nil)
 
@@ -174,12 +176,8 @@ describe FeverAPI do
     end
 
     it "returns starred items when 'saved_item_ids' header is provided" do
-      expect(Story).to receive(:where).with(is_starred: true).and_return(
-        [
-          story_one,
-          story_two
-        ]
-      )
+      expect(Story).to receive(:where).with(is_starred: true)
+                                      .and_return([story_one, story_two])
 
       make_request(saved_item_ids: nil)
 
