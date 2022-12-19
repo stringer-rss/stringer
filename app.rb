@@ -31,7 +31,8 @@ module Rails
   end
 end
 
-I18n.load_path += Dir[File.join(File.dirname(__FILE__), "config/locales", "*.yml").to_s]
+I18n.load_path +=
+  Dir[File.join(File.dirname(__FILE__), "config/locales", "*.yml").to_s]
 I18n.config.enforce_available_locales = false
 Time.zone = ENV.fetch("TZ", "UTC")
 
