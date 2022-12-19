@@ -4,7 +4,12 @@ app_require "commands/feeds/import_from_opml"
 
 describe ImportFromOpml do
   let(:subscriptions) do
-    File.open(File.expand_path("../../support/files/subscriptions.xml", __dir__))
+    File.open(
+      File.expand_path(
+        "../../support/files/subscriptions.xml",
+        __dir__
+      )
+    )
   end
 
   def import

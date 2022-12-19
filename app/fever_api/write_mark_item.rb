@@ -7,7 +7,10 @@ module FeverAPI
   class WriteMarkItem
     def initialize(options = {})
       @read_marker_class = options.fetch(:read_marker_class) { MarkAsRead }
-      @unread_marker_class = options.fetch(:unread_marker_class) { MarkAsUnread }
+      @unread_marker_class =
+        options.fetch(:unread_marker_class) do
+          MarkAsUnread
+        end
       @starred_marker_class =
         options.fetch(:starred_marker_class) { MarkAsStarred }
       @unstarred_marker_class =

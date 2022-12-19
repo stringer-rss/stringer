@@ -1,8 +1,8 @@
 class MigrationStatus
   attr_reader :migrator
 
-  def initialize(migrator = ActiveRecord::Base.connection.migration_context.open)
-    @migrator = migrator
+  def initialize(migrator = nil)
+    @migrator = migrator || ActiveRecord::Base.connection.migration_context.open
   end
 
   def pending_migrations

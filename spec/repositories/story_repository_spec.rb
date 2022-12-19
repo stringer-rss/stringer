@@ -361,7 +361,8 @@ describe StoryRepository do
     it "returns unstarred read stories older than given number of days" do
       story = create_story(:read, published: 6.days.ago)
 
-      expect(StoryRepository.unstarred_read_stories_older_than(5)).to eq([story])
+      expect(StoryRepository.unstarred_read_stories_older_than(5))
+        .to eq([story])
     end
 
     it "does not return starred stories older than the given number of days" do
