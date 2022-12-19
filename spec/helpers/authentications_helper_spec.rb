@@ -3,11 +3,10 @@ require "spec_helper"
 app_require "helpers/authentication_helpers"
 
 RSpec.describe Sinatra::AuthenticationHelpers do
-  class Helper
-    include Sinatra::AuthenticationHelpers
+  let(:helper) do
+    helper_class = Class.new { include Sinatra::AuthenticationHelpers }
+    helper_class.new
   end
-
-  let(:helper) { Helper.new }
 
   describe "#needs_authentication?" do
     let(:authenticated_path) { "/news" }
