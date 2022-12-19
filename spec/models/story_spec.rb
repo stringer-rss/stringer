@@ -131,5 +131,15 @@ describe "Story" do
         created_on_time: published_at.to_i
       )
     end
+
+    it "returns is_read as 0 if story is unread" do
+      story = create_story(is_read: false)
+      expect(story.as_fever_json[:is_read]).to eq(0)
+    end
+
+    it "returns is_saved as 1 if story is starred" do
+      story = create_story(is_starred: true)
+      expect(story.as_fever_json[:is_saved]).to eq(1)
+    end
   end
 end
