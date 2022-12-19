@@ -6,14 +6,6 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 2
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: InspectBlocks.
-Layout/RedundantLineBreak:
-  Exclude:
-    - 'spec/factories/user_factory.rb'
-    - 'spec/factories/users.rb'
-
 # Offense count: 8
 # This cop supports safe autocorrection (--autocorrect).
 Layout/SingleLineBlockChain:
