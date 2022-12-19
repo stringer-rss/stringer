@@ -82,7 +82,10 @@ describe FetchFeed do
       end
 
       it "should only add posts that are new" do
-        expect(StoryRepository).to receive(:add).with(new_story, daring_fireball)
+        expect(StoryRepository).to receive(:add).with(
+          new_story,
+          daring_fireball
+        )
         expect(StoryRepository)
           .not_to receive(:add).with(old_story, daring_fireball)
 

@@ -19,8 +19,18 @@ module AssetPipeline
 
   def append_paths(app)
     app.sprockets.append_path File.join(app.root, "app", "assets")
-    app.sprockets.append_path File.join(app.root, "app", "assets", "stylesheets")
-    app.sprockets.append_path File.join(app.root, "app", "assets", "javascripts")
+    app.sprockets.append_path File.join(
+      app.root,
+      "app",
+      "assets",
+      "stylesheets"
+    )
+    app.sprockets.append_path File.join(
+      app.root,
+      "app",
+      "assets",
+      "javascripts"
+    )
   end
 
   def configure_development(app)

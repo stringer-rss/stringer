@@ -100,11 +100,11 @@ describe "FeedsController" do
   describe "POST /feeds" do
     context "when the feed url is valid" do
       let(:feed_url) { "http://example.com/" }
-      let(:valid_feed) { double(valid?: true) }
+      let(:feed) { double(valid?: true) }
 
       it "adds the feed and queues it to be fetched" do
-        expect(AddNewFeed).to receive(:add).with(feed_url).and_return(valid_feed)
-        expect(FetchFeeds).to receive(:enqueue).with([valid_feed])
+        expect(AddNewFeed).to receive(:add).with(feed_url).and_return(feed)
+        expect(FetchFeeds).to receive(:enqueue).with([feed])
 
         post("/feeds", feed_url:)
 
