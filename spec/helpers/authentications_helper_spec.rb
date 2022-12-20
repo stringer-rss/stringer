@@ -23,7 +23,7 @@ RSpec.describe Sinatra::AuthenticationHelpers do
       end
     end
 
-    %w(/login /logout /heroku).each do |path|
+    ["/login", "/logout", "/heroku"].each do |path|
       context "when `path` is '#{path}'" do
         it "returns false" do
           expect(helper.needs_authentication?(path)).to be(false)
@@ -31,7 +31,7 @@ RSpec.describe Sinatra::AuthenticationHelpers do
       end
     end
 
-    %w(css js img).each do |path|
+    ["css", "js", "img"].each do |path|
       context "when `path` contains '#{path}'" do
         it "returns false" do
           expect(helper.needs_authentication?("/#{path}/file.ext")).to be(false)

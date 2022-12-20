@@ -966,19 +966,6 @@ Style/OptionHash:
     - 'spec/factories/feeds.rb'
     - 'spec/factories/groups.rb'
 
-# Offense count: 12
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: PreferredDelimiters.
-Style/PercentLiteralDelimiters:
-  Exclude:
-    - 'app/helpers/authentication_helpers.rb'
-    - 'app/helpers/url_helpers.rb'
-    - 'spec/controllers/stories_controller_spec.rb'
-    - 'spec/fever_api/read_items_spec.rb'
-    - 'spec/helpers/authentications_helper_spec.rb'
-    - 'spec/helpers/url_helpers_spec.rb'
-    - 'spec/javascript/test_controller.rb'
-
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: EnforcedStyle.
