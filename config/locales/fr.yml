@@ -25,11 +25,11 @@ fr:
       fields:
         feed_url: URL du flux
         submit: Ajouter
-      flash:
-        added_successfully: Le nouveau flux a été ajouté. Patientez quelques instants.
-        already_subscribed_error: Vous suivez déjà ce flux...
-        feed_not_found_error: Nous n'avons pas pu trouver ce flux. Essayez de nouveau.
       title: Besoin de nouveaux articles ?
+    create:
+      success: Le nouveau flux a été ajouté. Patientez quelques instants.
+      already_subscribed: Vous suivez déjà ce flux...
+      feed_not_found: Nous n'avons pas pu trouver ce flux. Essayez de nouveau.
     edit:
       fields:
         feed_name: 

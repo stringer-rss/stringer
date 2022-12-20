@@ -25,11 +25,11 @@ ja:
       fields:
         feed_url: フィードURL
         submit: 追加
-      flash:
-        added_successfully: 新しいフィードを追加しました、少し経ってから確認して下さい
-        already_subscribed_error: このフィードは既に登録されてます
-        feed_not_found_error: フィードを見つけられませんでした、もう一度試して下さい
       title: 新しいストーリーが必要ですか?
+    create:
+      success: 新しいフィードを追加しました、少し経ってから確認して下さい
+      already_subscribed: このフィードは既に登録されてます
+      feed_not_found: フィードを見つけられませんでした、もう一度試して下さい
     edit:
       fields:
         feed_name: フィード名

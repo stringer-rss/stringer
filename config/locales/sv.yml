@@ -25,11 +25,11 @@ sv:
       fields:
         feed_url: Feedens URL
         submit: Lägg till
-      flash:
-        added_successfully: Vi har lagt till din nya feed. Kom tillbaks om en stund.
-        already_subscribed_error: Du prenumererar redan på den här feeden...
-        feed_not_found_error: Vi kunde inte hitta feeden. Prova igen.
       title: Behöver du nya berättelser?
+    create:
+      success: Vi har lagt till din nya feed. Kom tillbaks om en stund.
+      already_subscribed: Du prenumererar redan på den här feeden...
+      feed_not_found: Vi kunde inte hitta feeden. Prova igen.
     edit:
       fields:
         feed_name: Feednamn

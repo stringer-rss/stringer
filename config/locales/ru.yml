@@ -25,11 +25,11 @@ ru:
       fields:
         feed_url: URL фида
         submit: Добавить
-      flash:
-        added_successfully: Мы добавили новый фид. Скоро информация обновится.
-        already_subscribed_error: Вы уже подписаны на этот фид...
-        feed_not_found_error: Мы не смогли найти этот фид. Попробуйте еще раз.
       title: Нужны новые истории?
+    create:
+      success: Мы добавили новый фид. Скоро информация обновится.
+      already_subscribed: Вы уже подписаны на этот фид...
+      feed_not_found: Мы не смогли найти этот фид. Попробуйте еще раз.
     edit:
       fields:
         feed_name: 

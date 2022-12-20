@@ -25,11 +25,11 @@ tr:
       fields:
         feed_url: Besleme URL'si
         submit: Ekle
-      flash:
-        added_successfully: Yeni besleme eklenmistir. Sonra kontrol edin.
-        already_subscribed_error: Bu beslemeye zaten kayitlisiniz...
-        feed_not_found_error: Bu beslemeyi bulamadik. Tekrar deneyiniz.
       title: Yeni hikayelere mi ihtiyaciniz var?
+    create:
+      success: Yeni besleme eklenmistir. Sonra kontrol edin.
+      already_subscribed: Bu beslemeye zaten kayitlisiniz...
+      feed_not_found: Bu beslemeyi bulamadik. Tekrar deneyiniz.
     edit:
       fields:
         feed_name: 
