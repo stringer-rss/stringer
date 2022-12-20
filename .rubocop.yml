@@ -14,18 +14,20 @@ AllCops:
 Layout/LineLength: { Max: 80 }
 Layout/RedundantLineBreak: { InspectBlocks: true }
 Metrics/BlockLength: { Exclude: ['spec/**/*_spec.rb'] }
+RSpec/MessageExpectation: { EnforcedStyle: expect }
+RSpec/MessageSpies: { EnforcedStyle: receive }
 Style/MethodCallWithArgsParentheses:
   AllowedMethods:
     - to
     - not_to
     - describe
 Style/StringLiterals: { EnforcedStyle: double_quotes }
+Style/SymbolArray: { EnforcedStyle: brackets }
+Style/WordArray: { EnforcedStyle: brackets }
 
 # want to enable these, but they don't work right when using `.rubocop_todo.yml`
 Style/DocumentationMethod: { Enabled: false }
 Style/Documentation: { Enabled: false }
-Style/SymbolArray: { EnforcedStyle: brackets }
-Style/WordArray: { EnforcedStyle: brackets }
 
 ################################################################################
 #
@@ -37,6 +39,8 @@ Bundler/GemComment: { Enabled: false }
 Bundler/GemVersion: { Enabled: false }
 Layout/SingleLineBlockChain: { Enabled: false }
 Lint/ConstantResolution: { Enabled: false }
+RSpec/AlignLeftLetBrace: { Enabled: false }
+RSpec/AlignRightLetBrace: { Enabled: false }
 RSpec/StubbedMock: { Enabled: false }
 Rails/SchemaComment: { Enabled: false }
 Style/ConstantVisibility: { Enabled: false }
