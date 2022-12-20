@@ -1,7 +1,5 @@
 module Factories
-  USER_TRAITS = {
-    setup_complete: -> { { setup_complete: true } }
-  }.freeze
+  USER_TRAITS = { setup_complete: -> { { setup_complete: true } } }.freeze
 
   def create_user(*traits, **params)
     build_user(*traits, **params).tap(&:save!)
