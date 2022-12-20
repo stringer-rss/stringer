@@ -99,6 +99,11 @@ GEM
     docile (1.4.0)
     erubi (1.11.0)
     execjs (2.8.1)
+    factory_bot (6.2.1)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
     faker (3.0.0)
       i18n (>= 1.8.11, < 2)
     feedbag (1.0.0)
@@ -319,6 +324,7 @@ DEPENDENCIES
   coveralls_reborn
   delayed_job
   delayed_job_active_record
+  factory_bot_rails
   faker
   feedbag
   feedjira

@@ -1,6 +1,5 @@
 require_relative "factories/feed_factory"
 require_relative "factories/story_factory"
-require_relative "factories/user_factory"
 require_relative "factories/group_factory"
 require_relative "factories/feeds"
 require_relative "factories/groups"

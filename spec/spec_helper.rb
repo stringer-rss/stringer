@@ -12,6 +12,7 @@ require "ostruct"
 require "date"
 
 require_relative "support/coverage"
+require_relative "support/factory_bot"
 require_relative "factories"
 
 require "./app"

@@ -35,6 +35,7 @@ end
 group :development, :test do
   gem "capybara"
   gem "coveralls_reborn", require: false
+  gem "factory_bot_rails"
   gem "faker"
   gem "pry-byebug"
   gem "rspec"

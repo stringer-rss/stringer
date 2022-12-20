@@ -10,7 +10,7 @@ describe "App" do
 
   context "when user is not authenticated and page requires authentication" do
     it "sets the session redirect_to" do
-      create_user(:setup_complete)
+      create(:user, :setup_complete)
 
       get("/news")
 
@@ -18,7 +18,7 @@ describe "App" do
     end
 
     it "redirects to /login" do
-      create_user(:setup_complete)
+      create(:user, :setup_complete)
 
       get("/news")
 
@@ -28,7 +28,7 @@ describe "App" do
   end
 
   it "does not redirect when page needs no authentication" do
-    create_user(:setup_complete)
+    create(:user, :setup_complete)
 
     get("/login")
 
@@ -36,7 +36,7 @@ describe "App" do
   end
 
   it "does not redirect when user is authenticated" do
-    user = create_user(:setup_complete)
+    user = create(:user, :setup_complete)
 
     get("/news", {}, "rack.session" => { user_id: user.id })
 
