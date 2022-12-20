@@ -799,7 +799,6 @@ Style/FrozenStringLiteralComment:
     - 'spec/factories.rb'
     - 'spec/factories/feed_factory.rb'
     - 'spec/factories/feeds.rb'
-    - 'spec/factories/group_factory.rb'
     - 'spec/factories/groups.rb'
     - 'spec/factories/stories.rb'
     - 'spec/factories/story_factory.rb'
@@ -864,7 +863,6 @@ Style/HashSyntax:
     - 'app/repositories/story_repository.rb'
     - 'app/utils/sample_story.rb'
     - 'spec/factories/feed_factory.rb'
-    - 'spec/factories/group_factory.rb'
     - 'spec/factories/story_factory.rb'
     - 'spec/fever_api/read_feeds_groups_spec.rb'
     - 'spec/fever_api/read_feeds_spec.rb'
@@ -957,7 +955,6 @@ Style/OpenStructUse:
   Exclude:
     - 'app.rb'
     - 'spec/factories/feed_factory.rb'
-    - 'spec/factories/group_factory.rb'
     - 'spec/factories/story_factory.rb'
 
 # Offense count: 28
@@ -979,7 +976,6 @@ Style/OptionHash:
     - 'app/fever_api/write_mark_item.rb'
     - 'spec/factories/feed_factory.rb'
     - 'spec/factories/feeds.rb'
-    - 'spec/factories/group_factory.rb'
     - 'spec/factories/groups.rb'
     - 'spec/factories/story_factory.rb'
 

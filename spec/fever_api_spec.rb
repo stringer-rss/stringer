@@ -11,7 +11,7 @@ describe FeverAPI do
   let(:api_key) { "apisecretkey" }
   let(:story_one) { StoryFactory.build }
   let(:story_two) { StoryFactory.build }
-  let(:group) { GroupFactory.build }
+  let(:group) { build(:group) }
   let(:feed) { FeedFactory.build(group_id: group.id) }
   let(:stories) { [story_one, story_two] }
   let(:standard_answer) do
