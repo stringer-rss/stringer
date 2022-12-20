@@ -11,7 +11,7 @@ class GroupFactory
   def self.build(params = {})
     FakeGroup.new(
       id: rand(100),
-      name: params[:name] || Faker::Name.name + " group" # rubocop:disable Style/StringConcatenation
+      name: params[:name] || "#{Faker::Name.name} group"
     )
   end
 end
