@@ -119,7 +119,7 @@ describe StoryRepository do
 
   describe ".fetch_unread_by_timestamp_and_group" do
     it "returns unread stories before timestamp for group_id" do
-      feed = create_feed(group_id: 52)
+      feed = create(:feed, group_id: 52)
       story = create_story(:unread, feed: feed, created_at: 5.minutes.ago)
       time = Time.now
 
@@ -129,7 +129,7 @@ describe StoryRepository do
     end
 
     it "does not return read stories before timestamp for group_id" do
-      feed = create_feed(group_id: 52)
+      feed = create(:feed, group_id: 52)
       create_story(feed: feed, created_at: 5.minutes.ago)
       time = Time.now
 
@@ -139,7 +139,7 @@ describe StoryRepository do
     end
 
     it "does not return unread stories after timestamp for group_id" do
-      feed = create_feed(group_id: 52)
+      feed = create(:feed, group_id: 52)
       create_story(:unread, feed: feed, created_at: 5.minutes.ago)
       time = 6.minutes.ago
 
@@ -149,7 +149,7 @@ describe StoryRepository do
     end
 
     it "does not return stories before timestamp for other group_id" do
-      feed = create_feed(group_id: 52)
+      feed = create(:feed, group_id: 52)
       create_story(:unread, feed: feed, created_at: 5.minutes.ago)
       time = Time.now
 
@@ -159,7 +159,7 @@ describe StoryRepository do
     end
 
     it "does not return stories with no group_id before timestamp" do
-      feed = create_feed
+      feed = create(:feed)
       create_story(:unread, feed: feed, created_at: 5.minutes.ago)
       time = Time.now
 
@@ -169,7 +169,7 @@ describe StoryRepository do
     end
 
     it "returns unread stories before timestamp for nil group_id" do
-      feed = create_feed
+      feed = create(:feed)
       story = create_story(:unread, feed: feed, created_at: 5.minutes.ago)
       time = Time.now
 
@@ -181,7 +181,7 @@ describe StoryRepository do
 
   describe ".fetch_unread_for_feed_by_timestamp" do
     it "returns unread stories for the feed before timestamp" do
-      feed = create_feed
+      feed = create(:feed)
       story = create_story(:unread, feed: feed, created_at: 5.minutes.ago)
       time = 4.minutes.ago
 
@@ -192,7 +192,7 @@ describe StoryRepository do
     end
 
     it "returns unread stories for the feed before string timestamp" do
-      feed = create_feed
+      feed = create(:feed)
       story = create_story(:unread, feed: feed, created_at: 5.minutes.ago)
       timestamp = Integer(4.minutes.ago).to_s
 
@@ -203,7 +203,7 @@ describe StoryRepository do
     end
 
     it "does not return read stories for the feed before timestamp" do
-      feed = create_feed
+      feed = create(:feed)
       create_story(feed: feed, created_at: 5.minutes.ago)
       time = 4.minutes.ago
 
@@ -214,7 +214,7 @@ describe StoryRepository do
     end
 
     it "does not return unread stories for the feed after timestamp" do
-      feed = create_feed
+      feed = create(:feed)
       create_story(:unread, feed: feed, created_at: 5.minutes.ago)
       time = 6.minutes.ago
 
@@ -225,7 +225,7 @@ describe StoryRepository do
     end
 
     it "does not return unread stories for another feed before timestamp" do
-      feed = create_feed
+      feed = create(:feed)
       create_story(:unread, created_at: 5.minutes.ago)
       time = 4.minutes.ago
 
@@ -277,14 +277,14 @@ describe StoryRepository do
 
   describe ".feed" do
     it "returns stories for the given feed id" do
-      feed = create_feed
+      feed = create(:feed)
       story = create_story(feed: feed)
 
       expect(StoryRepository.feed(feed.id)).to eq([story])
     end
 
     it "sorts stories by published" do
-      feed = create_feed
+      feed = create(:feed)
       story1 = create_story(feed: feed, published: 1.day.ago)
       story2 = create_story(feed: feed, published: 1.hour.ago)
 
@@ -292,7 +292,7 @@ describe StoryRepository do
     end
 
     it "does not return stories for other feeds" do
-      feed = create_feed
+      feed = create(:feed)
       create_story
 
       expect(StoryRepository.feed(feed.id)).to be_empty

@@ -23,14 +23,13 @@ describe FeedRepository do
 
   describe ".fetch_by_ids" do
     it "finds all feeds by id" do
-      feeds = [create_feed, create_feed]
+      feeds = create_pair(:feed)
 
       expect(FeedRepository.fetch_by_ids(feeds.map(&:id))).to match_array(feeds)
     end
 
     it "does not find other feeds" do
-      feed1 = create_feed
-      create_feed
+      feed1, = create_pair(:feed)
 
       expect(FeedRepository.fetch_by_ids(feed1.id)).to eq([feed1])
     end
@@ -88,7 +87,7 @@ describe FeedRepository do
 
   describe ".delete" do
     it "deletes the feed by id" do
-      feed = create_feed
+      feed = create(:feed)
 
       FeedRepository.delete(feed.id)
 
@@ -96,8 +95,7 @@ describe FeedRepository do
     end
 
     it "does not delete other feeds" do
-      feed1 = create_feed
-      feed2 = create_feed
+      feed1, feed2 = create_pair(:feed)
 
       FeedRepository.delete(feed1.id)
 
@@ -107,10 +105,10 @@ describe FeedRepository do
 
   describe ".list" do
     it "returns all feeds ordered by name, case insensitive" do
-      feed1 = create_feed(name: "foo")
-      feed2 = create_feed(name: "Fabulous")
-      feed3 = create_feed(name: "Zooby")
-      feed4 = create_feed(name: "zabby")
+      feed1 = create(:feed, name: "foo")
+      feed2 = create(:feed, name: "Fabulous")
+      feed3 = create(:feed, name: "Zooby")
+      feed4 = create(:feed, name: "zabby")
 
       expect(FeedRepository.list).to eq([feed2, feed1, feed4, feed3])
     end
@@ -118,15 +116,14 @@ describe FeedRepository do
 
   describe ".in_group" do
     it "returns feeds that are in a group" do
-      feed1 = create_feed(group_id: 5)
-      feed2 = create_feed(group_id: 6)
+      feed1 = create(:feed, group_id: 5)
+      feed2 = create(:feed, group_id: 6)
 
       expect(FeedRepository.in_group).to match_array([feed1, feed2])
     end
 
     it "does not return feeds that are not in a group" do
-      create_feed
-      create_feed
+      create_pair(:feed)
 
       expect(FeedRepository.in_group).to be_empty
     end

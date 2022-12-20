@@ -64,7 +64,7 @@ describe "Story" do
 
   describe "#as_json" do
     it "returns a hash of the story" do
-      feed = create_feed(name: "my feed")
+      feed = create(:feed, name: "my feed")
       published_at = 1.day.ago
       created_at = 1.hour.ago
       updated_at = 1.minute.ago
@@ -108,7 +108,7 @@ describe "Story" do
 
   describe "#as_fever_json" do
     it "returns a hash of the story in fever format" do
-      feed = create_feed(name: "my feed")
+      feed = create(:feed, name: "my feed")
       published_at = 1.day.ago
       story = create_story(
         feed: feed,

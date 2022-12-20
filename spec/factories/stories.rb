@@ -12,6 +12,6 @@ module Factories
   def build_story(*traits, **params)
     traits.each { |trait| params.merge!(STORY_TRAITS.fetch(trait).call) }
 
-    Story.new(entry_id: next_id, feed: build_feed, **params)
+    Story.new(entry_id: next_id, feed: FactoryBot.build(:feed), **params)
   end
 end
