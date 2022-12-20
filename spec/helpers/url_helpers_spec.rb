@@ -3,7 +3,7 @@ require "spec_helper"
 app_require "helpers/url_helpers"
 
 RSpec.describe UrlHelpers do
-  class Helper # rubocop:disable Lint/ConstantDefinitionInBlock
+  class Helper
     include UrlHelpers
   end
 

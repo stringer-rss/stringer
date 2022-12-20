@@ -5,7 +5,7 @@ class ExportToOpml
     @feeds = feeds
   end
 
-  def to_xml # rubocop:disable Metrics/MethodLength
+  def to_xml
     builder =
       Nokogiri::XML::Builder.new do |xml|
         xml.opml(version: "1.0") do

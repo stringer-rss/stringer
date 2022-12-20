@@ -1,6 +1,6 @@
 SampleStory =
   Struct.new(:source, :title, :lead, :is_read, :published) do
-    BODY = <<~EOS.freeze # rubocop:disable Lint/ConstantDefinitionInBlock
+    BODY = <<~EOS.freeze
       <p>Tofu shoreditch intelligentsia <a href="#">umami</a>, fashion axe photo booth
       try-hard terry richardson quinoa actually fingerstache meggings fixie. Aesthetic
       salvia vinyl raw denim, keffiyeh master cleanse tonx selfies mlkshk occupy twee
@@ -41,7 +41,7 @@ SampleStory =
       BODY
     end
 
-    def is_read # rubocop:disable Naming/PredicateName
+    def is_read
       false
     end
 
@@ -49,7 +49,7 @@ SampleStory =
       false
     end
 
-    def is_starred # rubocop:disable Naming/PredicateName
+    def is_starred
       false
     end
 
