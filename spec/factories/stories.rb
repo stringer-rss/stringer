@@ -1,17 +1,19 @@
-module Factories
-  STORY_TRAITS = {
-    read: -> { { is_read: true } },
-    starred: -> { { is_starred: true } },
-    unread: -> { { is_read: false } }
-  }.freeze
+FactoryBot.define do
+  factory(:story) do
+    feed
 
-  def create_story(*traits, **params)
-    build_story(*traits, **params).tap(&:save!)
-  end
+    sequence(:entry_id, 100) { |n| "entry-#{n}" }
 
-  def build_story(*traits, **params)
-    traits.each { |trait| params.merge!(STORY_TRAITS.fetch(trait).call) }
+    trait :read do
+      is_read { true }
+    end
 
-    Story.new(entry_id: next_id, feed: FactoryBot.build(:feed), **params)
+    trait :starred do
+      is_starred { true }
+    end
+
+    trait :unread do
+      is_read { false }
+    end
   end
 end

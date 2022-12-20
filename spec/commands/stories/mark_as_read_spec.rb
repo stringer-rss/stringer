@@ -4,7 +4,7 @@ app_require "commands/stories/mark_as_read"
 
 describe MarkAsRead do
   describe "#mark_as_read" do
-    let(:story) { create_story(is_read: false) }
+    let(:story) { create(:story, is_read: false) }
 
     it "marks a story as read" do
       expect { MarkAsRead.new(story.id).mark_as_read }
