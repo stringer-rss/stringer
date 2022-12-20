@@ -33,16 +33,16 @@ class Stringer < Sinatra::Base
       "chai-backbone.js",
       "sinon-chai.js"
     ].map do |name|
-      File.join "vendor", "js", name
+      File.join("vendor", "js", name)
     end
   end
 
   def vendor_css_files
-    ["mocha.css"].map { |name| File.join "vendor", "css", name }
+    ["mocha.css"].map { |name| File.join("vendor", "css", name) }
   end
 
   def js_helper_files
-    ["spec_helper.js"].map { |name| File.join "spec", name }
+    ["spec_helper.js"].map { |name| File.join("spec", name) }
   end
 
   def js_lib_files

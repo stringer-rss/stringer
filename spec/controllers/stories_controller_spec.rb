@@ -100,7 +100,7 @@ describe "StoriesController" do
 
           put "/stories/#{story_one.id}", { is_read: true }.to_json
 
-          expect(story_one.is_read).to be true
+          expect(story_one.is_read).to be(true)
         end
       end
 
@@ -110,7 +110,7 @@ describe "StoriesController" do
 
           put "/stories/#{story_one.id}", { is_read: "malformed" }.to_json
 
-          expect(story_one.is_read).to be true
+          expect(story_one.is_read).to be(true)
         end
       end
     end
@@ -120,7 +120,7 @@ describe "StoriesController" do
         it "marks a story as permanently unread" do
           put "/stories/#{story_one.id}", { keep_unread: false }.to_json
 
-          expect(story_one.keep_unread).to be false
+          expect(story_one.keep_unread).to be(false)
         end
       end
 
@@ -128,7 +128,7 @@ describe "StoriesController" do
         it "marks a story as permanently unread" do
           put "/stories/#{story_one.id}", { keep_unread: "malformed" }.to_json
 
-          expect(story_one.keep_unread).to be true
+          expect(story_one.keep_unread).to be(true)
         end
       end
     end
@@ -138,7 +138,7 @@ describe "StoriesController" do
         it "marks a story as permanently starred" do
           put "/stories/#{story_one.id}", { is_starred: true }.to_json
 
-          expect(story_one.is_starred).to be true
+          expect(story_one.is_starred).to be(true)
         end
       end
 
@@ -146,7 +146,7 @@ describe "StoriesController" do
         it "marks a story as permanently starred" do
           put "/stories/#{story_one.id}", { is_starred: "malformed" }.to_json
 
-          expect(story_one.is_starred).to be true
+          expect(story_one.is_starred).to be(true)
         end
       end
     end
@@ -158,8 +158,8 @@ describe "StoriesController" do
 
       post "/stories/mark_all_as_read", story_ids: ["1", "2", "3"]
 
-      expect(last_response.status).to be 302
-      expect(URI.parse(last_response.location).path).to eq "/news"
+      expect(last_response.status).to be(302)
+      expect(URI.parse(last_response.location).path).to eq("/news")
     end
   end
 

@@ -30,10 +30,10 @@ describe "SessionsController" do
 
       post "/login", password: "the-password"
 
-      expect(session[:user_id]).to eq 1
+      expect(session[:user_id]).to eq(1)
 
-      expect(last_response.status).to be 302
-      expect(URI.parse(last_response.location).path).to eq "/"
+      expect(last_response.status).to be(302)
+      expect(URI.parse(last_response.location).path).to eq("/")
     end
 
     it "redirects to the previous path when present" do
@@ -43,7 +43,7 @@ describe "SessionsController" do
       post "/login", params, "rack.session" => { redirect_to: "/archive" }
 
       expect(session[:redirect_to]).to be_nil
-      expect(URI.parse(last_response.location).path).to eq "/archive"
+      expect(URI.parse(last_response.location).path).to eq("/archive")
     end
   end
 
@@ -53,8 +53,8 @@ describe "SessionsController" do
 
       expect(session[:user_id]).to be_nil
 
-      expect(last_response.status).to be 302
-      expect(URI.parse(last_response.location).path).to eq "/"
+      expect(last_response.status).to be(302)
+      expect(URI.parse(last_response.location).path).to eq("/")
     end
   end
 end
