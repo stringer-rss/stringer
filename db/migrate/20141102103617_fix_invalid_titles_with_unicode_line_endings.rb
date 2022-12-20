@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FixInvalidTitlesWithUnicodeLineEndings < ActiveRecord::Migration[4.2]
   def up
     Story.find_each do |story|

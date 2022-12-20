@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RemoveOldStories
   def self.remove!(number_of_days)
     stories = old_stories(number_of_days)

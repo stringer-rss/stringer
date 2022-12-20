@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 
 app_require "fever_api/sync_unread_item_ids"

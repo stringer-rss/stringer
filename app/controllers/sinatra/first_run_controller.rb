@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative "../../commands/feeds/import_from_opml"
 require_relative "../../commands/users/create_user"
 require_relative "../../commands/users/complete_setup"

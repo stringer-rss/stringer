@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "active_record"
 
 db_config = YAML.safe_load(File.read("config/database.yml"))

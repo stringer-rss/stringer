@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddGroupsTableAndForeignKeysToFeeds < ActiveRecord::Migration[4.2]
   def up
     create_table :groups do |t|

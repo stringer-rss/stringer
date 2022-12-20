@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UpdateStoriesUniqueConstraints < ActiveRecord::Migration[4.2]
   def up
     remove_index :stories, [:permalink, :feed_id]

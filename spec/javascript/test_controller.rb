@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Stringer < Sinatra::Base
   def self.test_path(*chunks)
     File.expand_path(File.join("..", *chunks), __FILE__)

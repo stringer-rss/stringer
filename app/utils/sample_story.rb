@@ -1,4 +1,6 @@
-SAMPLE_BODY = <<~EOS.freeze
+# frozen_string_literal: true
+
+SAMPLE_BODY = <<~EOS
   <p>Tofu shoreditch intelligentsia <a href="#">umami</a>, fashion axe photo booth
   try-hard terry richardson quinoa actually fingerstache meggings fixie. Aesthetic
   salvia vinyl raw denim, keffiyeh master cleanse tonx selfies mlkshk occupy twee

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 
 app_require "controllers/sinatra/sessions_controller"

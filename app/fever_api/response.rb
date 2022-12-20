@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative "authentication"
 
 require_relative "read_groups"

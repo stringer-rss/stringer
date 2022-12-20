@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative "../commands/stories/mark_feed_as_read"
 
 module FeverAPI

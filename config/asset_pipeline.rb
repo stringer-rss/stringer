@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module AssetPipeline
   def registered(app)
     app.set :sprockets, Sprockets::Environment.new(app.root)

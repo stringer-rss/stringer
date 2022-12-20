@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddDelayedJob < ActiveRecord::Migration[4.2]
   def self.up
     create_table :delayed_jobs, force: true do |table|

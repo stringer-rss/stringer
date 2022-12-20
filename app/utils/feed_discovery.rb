@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "feedbag"
 require "feedjira"
 require "httparty"
