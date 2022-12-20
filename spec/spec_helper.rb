@@ -35,7 +35,6 @@ end
 RSpec.configure do |config|
   config.include Rack::Test::Methods
   config.include RSpecHtmlMatchers
-  config.include Factories
 end
 
 def app_require(file)
