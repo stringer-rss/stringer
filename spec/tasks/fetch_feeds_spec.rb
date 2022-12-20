@@ -36,7 +36,7 @@ describe FetchFeeds do
 
   describe "#prepare_to_delay" do
     it "serializes the instance for backgrounding" do
-      feeds = [create_feed, create_feed]
+      feeds = create_pair(:feed)
       feeds_ids = feeds.map(&:id)
       fetch_feeds = FetchFeeds.new(feeds)
 
@@ -49,7 +49,7 @@ describe FetchFeeds do
 
   describe ".enqueue" do
     it "enqueues a fetch_all job" do
-      feeds = [create_feed, create_feed]
+      feeds = create_pair(:feed)
       feeds_ids = feeds.map(&:id)
 
       expect { FetchFeeds.enqueue(feeds) }.to change(Delayed::Job, :count).by(1)
