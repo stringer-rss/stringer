@@ -36,15 +36,11 @@ class Stringer < Sinatra::Base
   end
 
   def vendor_css_files
-    ["mocha.css"].map do |name|
-      File.join "vendor", "css", name
-    end
+    ["mocha.css"].map { |name| File.join "vendor", "css", name }
   end
 
   def js_helper_files
-    ["spec_helper.js"].map do |name|
-      File.join "spec", name
-    end
+    ["spec_helper.js"].map { |name| File.join "spec", name }
   end
 
   def js_lib_files

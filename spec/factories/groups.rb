@@ -1,3 +1,1 @@
-FactoryBot.define do
-  factory(:group)
-end
+FactoryBot.define { factory(:group) }

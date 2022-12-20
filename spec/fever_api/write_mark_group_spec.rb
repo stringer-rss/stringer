@@ -6,9 +6,7 @@ describe FeverAPI::WriteMarkGroup do
   let(:group_marker) { double("group marker") }
   let(:marker_class) { double("marker class") }
 
-  subject do
-    FeverAPI::WriteMarkGroup.new(marker_class: marker_class)
-  end
+  subject { FeverAPI::WriteMarkGroup.new(marker_class: marker_class) }
 
   it "instantiates a group marker and calls mark_group_as_read if requested" do
     expect(marker_class)

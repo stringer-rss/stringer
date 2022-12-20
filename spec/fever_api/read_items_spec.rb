@@ -5,9 +5,7 @@ app_require "fever_api/read_items"
 describe FeverAPI::ReadItems do
   let(:story_repository) { double("repo") }
 
-  subject do
-    FeverAPI::ReadItems.new(story_repository: story_repository)
-  end
+  subject { FeverAPI::ReadItems.new(story_repository: story_repository) }
 
   it "returns a list of unread items including total count" do
     stories = [

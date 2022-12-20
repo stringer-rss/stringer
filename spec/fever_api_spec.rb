@@ -17,9 +17,7 @@ describe FeverAPI do
   let(:standard_answer) do
     { api_version: 3, auth: 1, last_refreshed_on_time: 123456789 }
   end
-  let(:cannot_auth) do
-    { api_version: 3, auth: 0 }
-  end
+  let(:cannot_auth) { { api_version: 3, auth: 0 } }
   let(:headers) { { api_key: api_key } }
 
   before do

@@ -7,9 +7,7 @@ describe FeverAPI::WriteMarkItem do
   let(:marker_class) { double("marker class") }
 
   describe "as read" do
-    subject do
-      FeverAPI::WriteMarkItem.new(read_marker_class: marker_class)
-    end
+    subject { FeverAPI::WriteMarkItem.new(read_marker_class: marker_class) }
 
     it "calls mark_item_as_read if requested" do
       expect(marker_class).to receive(:new).with(5).and_return(item_marker)

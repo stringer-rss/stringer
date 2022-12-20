@@ -7,9 +7,7 @@ require "timecop"
 app_require "tasks/fetch_feed"
 
 describe "Feed importing" do
-  before(:all) do
-    @server = FeedServer.new
-  end
+  before(:all) { @server = FeedServer.new }
 
   let(:feed) do
     Feed.create(
@@ -57,9 +55,7 @@ describe "Feed importing" do
   end
 
   describe "Feed with incorrect pubdates" do
-    before(:all) do
-      Timecop.freeze Time.parse("2014-08-12T17:30:00Z")
-    end
+    before(:all) { Timecop.freeze Time.parse("2014-08-12T17:30:00Z") }
 
     context "has been fetched before" do
       it "imports all new stories" do

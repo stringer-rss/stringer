@@ -12,6 +12,7 @@ AllCops:
     - 'vendor/**/*'
 
 Layout/LineLength: { Max: 80 }
+Layout/RedundantLineBreak: { InspectBlocks: true }
 Metrics/BlockLength: { Exclude: ['spec/**/*_spec.rb'] }
 Style/MethodCallWithArgsParentheses:
   AllowedMethods:

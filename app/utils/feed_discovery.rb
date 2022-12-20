@@ -8,9 +8,7 @@ class FeedDiscovery
       urls = finder.find(url)
       return false if urls.empty?
 
-      get_feed_for_url(urls.first, parser, client) do
-        return false
-      end
+      get_feed_for_url(urls.first, parser, client) { return false }
     end
   end
 
