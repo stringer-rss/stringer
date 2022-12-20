@@ -3,11 +3,10 @@ require "spec_helper"
 app_require "helpers/url_helpers"
 
 RSpec.describe UrlHelpers do
-  class Helper
-    include UrlHelpers
+  let(:helper) do
+    helper_class = Class.new { include UrlHelpers }
+    helper_class.new
   end
-
-  let(:helper) { Helper.new }
 
   describe "#expand_absolute_urls" do
     it "preserves existing absolute urls" do
