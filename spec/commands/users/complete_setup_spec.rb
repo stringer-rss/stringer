@@ -3,7 +3,7 @@ require "spec_helper"
 app_require "commands/users/complete_setup"
 
 describe CompleteSetup do
-  let(:user) { UserFactory.build }
+  let(:user) { build(:user) }
   it "marks setup as complete" do
     expect(user).to receive(:save).once
 

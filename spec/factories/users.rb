@@ -1,13 +1,9 @@
-module Factories
-  USER_TRAITS = { setup_complete: -> { { setup_complete: true } } }.freeze
+FactoryBot.define do
+  factory(:user) do
+    password { "super-secret" }
 
-  def create_user(*traits, **params)
-    build_user(*traits, **params).tap(&:save!)
-  end
-
-  def build_user(*traits, **params)
-    traits.each { |trait| params.merge!(USER_TRAITS.fetch(trait).call) }
-
-    User.new(password: "super-secret", **params)
+    trait :setup_complete do
+      setup_complete { true }
+    end
   end
 end

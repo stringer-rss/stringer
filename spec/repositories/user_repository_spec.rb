@@ -10,7 +10,7 @@ describe UserRepository do
     end
 
     it "returns the user for the given id" do
-      user = create_user
+      user = create(:user)
 
       expect(UserRepository.fetch(user.id)).to eq(user)
     end
@@ -22,13 +22,13 @@ describe UserRepository do
     end
 
     it "returns false when user has not completed setup" do
-      create_user
+      create(:user)
 
       expect(UserRepository.setup_complete?).to be(false)
     end
 
     it "returns true when user has completed setup" do
-      create_user(setup_complete: true)
+      create(:user, :setup_complete)
 
       expect(UserRepository.setup_complete?).to be(true)
     end
@@ -36,7 +36,7 @@ describe UserRepository do
 
   describe ".save" do
     it "saves the given user" do
-      user = build_user
+      user = build(:user)
 
       expect { UserRepository.save(user) }
         .to change(user, :persisted?).from(false).to(true)
@@ -51,8 +51,8 @@ describe UserRepository do
 
   describe ".first" do
     it "returns the first user" do
-      user = create_user
-      create_user
+      user = create(:user)
+      create(:user)
 
       expect(UserRepository.first).to eq(user)
     end

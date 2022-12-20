@@ -803,7 +803,6 @@ Style/FrozenStringLiteralComment:
     - 'spec/factories/groups.rb'
     - 'spec/factories/stories.rb'
     - 'spec/factories/story_factory.rb'
-    - 'spec/factories/user_factory.rb'
     - 'spec/factories/users.rb'
     - 'spec/fever_api/authentication_spec.rb'
     - 'spec/fever_api/read_favicons_spec.rb'
@@ -960,7 +959,6 @@ Style/OpenStructUse:
     - 'spec/factories/feed_factory.rb'
     - 'spec/factories/group_factory.rb'
     - 'spec/factories/story_factory.rb'
-    - 'spec/factories/user_factory.rb'
 
 # Offense count: 28
 # Configuration parameters: SuspiciousParamNames, Allowlist.

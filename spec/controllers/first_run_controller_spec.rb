@@ -75,7 +75,7 @@ describe "FirstRunController" do
 
   context "when a user has been setup" do
     it "should redirect any requests to first run stuff" do
-      user = create_user(:setup_complete)
+      user = create(:user, :setup_complete)
       session = { "rack.session" => { user_id: user.id } }
 
       get "/", {}, session
