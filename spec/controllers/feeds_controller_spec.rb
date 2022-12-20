@@ -3,7 +3,7 @@ require "spec_helper"
 app_require "controllers/feeds_controller"
 
 describe "FeedsController" do
-  let(:feeds) { [FeedFactory.build, FeedFactory.build] }
+  let(:feeds) { build_pair(:feed) }
 
   describe "GET /feeds" do
     it "renders a list of feeds" do
@@ -60,7 +60,7 @@ describe "FeedsController" do
 
   describe "PUT /feeds/:feed_id" do
     it "updates a feed given the id" do
-      feed = FeedFactory.build(url: "example.com/atom", id: "12", group_id: nil)
+      feed = build(:feed, url: "example.com/atom", id: "12", group_id: nil)
       mock_feed(feed, "Test", "example.com/feed")
 
       feed_url = "example.com/feed"
@@ -70,7 +70,7 @@ describe "FeedsController" do
     end
 
     it "updates a feed group given the id" do
-      feed = FeedFactory.build(url: "example.com/atom")
+      feed = build(:feed, url: "example.com/atom")
       mock_feed(feed, feed.name, feed.url, "321")
 
       put "/feeds/123", **params(feed, feed_id: "123", group_id: "321")

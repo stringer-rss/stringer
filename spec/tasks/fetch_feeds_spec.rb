@@ -3,7 +3,7 @@ require "support/active_record"
 
 describe FetchFeeds do
   describe "#fetch_all" do
-    let(:feeds) { [FeedFactory.build, FeedFactory.build] }
+    let(:feeds) { build_pair(:feed) }
     let(:fetcher_one) { instance_double(FetchFeed) }
     let(:fetcher_two) { instance_double(FetchFeed) }
     let(:pool) { double }

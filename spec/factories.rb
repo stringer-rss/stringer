@@ -1,4 +1,3 @@
-require_relative "factories/feed_factory"
 require_relative "factories/feeds"
 require_relative "factories/groups"
 require_relative "factories/stories"
