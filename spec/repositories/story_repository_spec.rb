@@ -426,9 +426,6 @@ describe StoryRepository do
   end
 
   describe ".extract_title" do
-    let(:entry) do
-    end
-
     it "returns the title if there is a title" do
       entry = double(title: "title", summary: "summary")
 
