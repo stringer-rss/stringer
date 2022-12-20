@@ -22,7 +22,6 @@ Lint/NumberConversion:
     - 'app/models/story.rb'
     - 'app/repositories/story_repository.rb'
     - 'spec/factories/feed_factory.rb'
-    - 'spec/factories/story_factory.rb'
     - 'spec/models/feed_spec.rb'
     - 'spec/models/story_spec.rb'
 
@@ -47,7 +46,6 @@ Metrics/MethodLength:
     - 'app/utils/sample_story.rb'
     - 'config/asset_pipeline.rb'
     - 'db/migrate/20130425222157_add_delayed_job.rb'
-    - 'spec/factories/story_factory.rb'
 
 # Offense count: 9
 # Configuration parameters: ForbiddenDelimiters.
@@ -629,7 +627,6 @@ Rails/TimeZone:
     - 'app/utils/sample_story.rb'
     - 'spec/commands/find_new_stories_spec.rb'
     - 'spec/factories/feed_factory.rb'
-    - 'spec/factories/story_factory.rb'
     - 'spec/fever_api_spec.rb'
     - 'spec/integration/feed_importing_spec.rb'
     - 'spec/models/story_spec.rb'
@@ -801,7 +798,6 @@ Style/FrozenStringLiteralComment:
     - 'spec/factories/feeds.rb'
     - 'spec/factories/groups.rb'
     - 'spec/factories/stories.rb'
-    - 'spec/factories/story_factory.rb'
     - 'spec/factories/users.rb'
     - 'spec/fever_api/authentication_spec.rb'
     - 'spec/fever_api/read_favicons_spec.rb'
@@ -863,7 +859,6 @@ Style/HashSyntax:
     - 'app/repositories/story_repository.rb'
     - 'app/utils/sample_story.rb'
     - 'spec/factories/feed_factory.rb'
-    - 'spec/factories/story_factory.rb'
     - 'spec/fever_api/read_feeds_groups_spec.rb'
     - 'spec/fever_api/read_feeds_spec.rb'
     - 'spec/fever_api/read_groups_spec.rb'
@@ -955,7 +950,6 @@ Style/OpenStructUse:
   Exclude:
     - 'app.rb'
     - 'spec/factories/feed_factory.rb'
-    - 'spec/factories/story_factory.rb'
 
 # Offense count: 28
 # Configuration parameters: SuspiciousParamNames, Allowlist.
@@ -977,7 +971,6 @@ Style/OptionHash:
     - 'spec/factories/feed_factory.rb'
     - 'spec/factories/feeds.rb'
     - 'spec/factories/groups.rb'
-    - 'spec/factories/story_factory.rb'
 
 # Offense count: 12
 # This cop supports safe autocorrection (--autocorrect).

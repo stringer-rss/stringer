@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "factory_bot"
+require "support/active_record"
 
 module FactoryCache
   def self.user

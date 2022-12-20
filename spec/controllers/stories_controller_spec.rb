@@ -4,8 +4,8 @@ require "will_paginate/array"
 app_require "controllers/sinatra/stories_controller"
 
 describe "StoriesController" do
-  let(:story_one) { StoryFactory.build }
-  let(:story_two) { StoryFactory.build }
+  let(:story_one) { create(:story) }
+  let(:story_two) { create(:story) }
   let(:stories) { [story_one, story_two] }
 
   describe "GET /news" do
@@ -60,8 +60,8 @@ describe "StoriesController" do
   end
 
   describe "GET /archive" do
-    let(:read_one) { StoryFactory.build(is_read: true) }
-    let(:read_two) { StoryFactory.build(is_read: true) }
+    let(:read_one) { build(:story, :read) }
+    let(:read_two) { build(:story, :read) }
     let(:stories) { [read_one, read_two].paginate }
     before { allow(StoryRepository).to receive(:read).and_return(stories) }
 
@@ -75,8 +75,8 @@ describe "StoriesController" do
   end
 
   describe "GET /starred" do
-    let(:starred_one) { StoryFactory.build(is_starred: true) }
-    let(:starred_two) { StoryFactory.build(is_starred: true) }
+    let(:starred_one) { build(:story, :starred) }
+    let(:starred_two) { build(:story, :starred) }
     let(:stories) { [starred_one, starred_two].paginate }
     before { allow(StoryRepository).to receive(:starred).and_return(stories) }
 

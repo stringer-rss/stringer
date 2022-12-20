@@ -9,8 +9,8 @@ describe FeverAPI do
   end
 
   let(:api_key) { "apisecretkey" }
-  let(:story_one) { StoryFactory.build }
-  let(:story_two) { StoryFactory.build }
+  let(:story_one) { build(:story) }
+  let(:story_two) { build(:story) }
   let(:group) { build(:group) }
   let(:feed) { FeedFactory.build(group_id: group.id) }
   let(:stories) { [story_one, story_two] }
