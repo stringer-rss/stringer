@@ -8,18 +8,14 @@ app_require "controllers/debug_controller"
 describe DebugController do
   describe "GET /debug" do
     before do
-      delayed_job = double("Delayed::Job")
-      allow(delayed_job).to receive(:count).and_return(42)
-      stub_const("Delayed::Job", delayed_job)
+      allow(Delayed::Job).to receive(:count).and_return(42)
 
-      migration_status_instance = double("migration_status_instance")
+      migration_status_instance = instance_double(MigrationStatus)
       allow(migration_status_instance)
         .to receive(:pending_migrations)
         .and_return(["Migration B - 2", "Migration C - 3"])
-      migration_status = double("MigrationStatus")
-      allow(migration_status)
+      allow(MigrationStatus)
         .to receive(:new).and_return(migration_status_instance)
-      stub_const("MigrationStatus", migration_status)
     end
 
     it "displays the current Ruby version" do

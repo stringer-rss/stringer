@@ -102,7 +102,7 @@ describe "FeedsController" do
   describe "POST /feeds" do
     context "when the feed url is valid" do
       let(:feed_url) { "http://example.com/" }
-      let(:feed) { double(valid?: true) }
+      let(:feed) { instance_double(Feed, valid?: true) }
 
       it "adds the feed and queues it to be fetched" do
         expect(AddNewFeed).to receive(:add).with(feed_url).and_return(feed)
@@ -130,7 +130,7 @@ describe "FeedsController" do
 
     context "when the feed url is one we already subscribe to" do
       let(:feed_url) { "http://example.com/" }
-      let(:invalid_feed) { double(valid?: false) }
+      let(:invalid_feed) { instance_double(Feed, valid?: false) }
 
       it "adds the feed and queues it to be fetched" do
         expect(AddNewFeed)
