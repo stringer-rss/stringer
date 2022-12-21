@@ -35,11 +35,7 @@ class Stringer < Sinatra::Base
     json_params = JSON.parse(request.body.read, symbolize_names: true)
 
     story = StoryRepository.fetch(params[:id])
-    story.is_read = !!json_params[:is_read]
-    story.keep_unread = !!json_params[:keep_unread]
-    story.is_starred = !!json_params[:is_starred]
-
-    story.save!
+    story.update!(json_params.slice(:is_read, :is_starred, :keep_unread))
   end
 
   post "/stories/mark_all_as_read" do
