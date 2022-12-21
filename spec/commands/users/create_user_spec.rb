@@ -5,16 +5,12 @@ require "spec_helper"
 app_require "commands/users/create_user"
 
 describe CreateUser do
-  let(:repo) { double }
-
-  describe "#create" do
+  describe "#call" do
     it "removes existing users and create a user with the password supplied" do
-      command = CreateUser.new(repo)
+      expect(User).to receive(:create)
+      expect(User).to receive(:delete_all)
 
-      expect(repo).to receive(:create)
-      expect(repo).to receive(:delete_all)
-
-      command.call("password")
+      described_class.call("password")
     end
   end
 end

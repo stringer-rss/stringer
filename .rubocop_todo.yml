@@ -61,8 +61,6 @@ Naming/PredicateName:
 # Offense count: 5
 RSpec/AnyInstance:
   Exclude:
-    - 'spec/controllers/first_run_controller_spec.rb'
-    - 'spec/controllers/stories_controller_spec.rb'
     - 'spec/tasks/fetch_feed_spec.rb'
 
 # Offense count: 4
