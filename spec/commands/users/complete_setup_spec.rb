@@ -6,6 +6,7 @@ app_require "commands/users/complete_setup"
 
 describe CompleteSetup do
   let(:user) { build(:user) }
+
   it "marks setup as complete" do
     expect(user).to receive(:save).once
 

@@ -65,6 +65,7 @@ describe "StoriesController" do
     let(:read_one) { build(:story, :read) }
     let(:read_two) { build(:story, :read) }
     let(:stories) { [read_one, read_two].paginate }
+
     before { allow(StoryRepository).to receive(:read).and_return(stories) }
 
     it "displays the list of read stories with pagination" do
@@ -80,6 +81,7 @@ describe "StoriesController" do
     let(:starred_one) { build(:story, :starred) }
     let(:starred_two) { build(:story, :starred) }
     let(:stories) { [starred_one, starred_two].paginate }
+
     before { allow(StoryRepository).to receive(:starred).and_return(stories) }
 
     it "displays the list of starred stories with pagination" do
@@ -93,6 +95,7 @@ describe "StoriesController" do
 
   describe "PUT /stories/:id" do
     before { allow(StoryRepository).to receive(:fetch).and_return(story_one) }
+
     context "is_read parameter" do
       it "marks a story as read when it is not malformed" do
         expect(story_one).to receive(:save!).once

@@ -8,6 +8,7 @@ app_require "repositories/story_repository"
 describe StoryRepository do
   describe ".add" do
     let(:feed) { double(url: "http://blog.golang.org/feed.atom") }
+
     before { allow(Story).to receive(:create) }
 
     it "normalizes story urls" do
