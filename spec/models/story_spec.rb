@@ -68,7 +68,8 @@ describe "Story" do
       published_at = 1.day.ago
       created_at = 1.hour.ago
       updated_at = 1.minute.ago
-      story = create_story(
+      story = create(
+        :story,
         body: "story body",
         created_at: created_at,
         entry_id: 5,
@@ -110,7 +111,8 @@ describe "Story" do
     it "returns a hash of the story in fever format" do
       feed = create(:feed, name: "my feed")
       published_at = 1.day.ago
-      story = create_story(
+      story = create(
+        :story,
         feed: feed,
         title: "the story title",
         body: "story body",
@@ -133,12 +135,12 @@ describe "Story" do
     end
 
     it "returns is_read as 0 if story is unread" do
-      story = create_story(is_read: false)
+      story = create(:story, is_read: false)
       expect(story.as_fever_json[:is_read]).to eq(0)
     end
 
     it "returns is_saved as 1 if story is starred" do
-      story = create_story(is_starred: true)
+      story = create(:story, is_starred: true)
       expect(story.as_fever_json[:is_saved]).to eq(1)
     end
   end
