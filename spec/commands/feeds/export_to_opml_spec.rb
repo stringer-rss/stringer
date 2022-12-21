@@ -4,8 +4,8 @@ app_require "commands/feeds/export_to_opml"
 
 describe ExportToOpml do
   describe "#to_xml" do
-    let(:feed_one) { FeedFactory.build }
-    let(:feed_two) { FeedFactory.build }
+    let(:feed_one) { build(:feed)      }
+    let(:feed_two) { build(:feed)      }
     let(:feeds) { [feed_one, feed_two] }
 
     it "returns OPML XML" do

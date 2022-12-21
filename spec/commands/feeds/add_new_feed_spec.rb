@@ -17,7 +17,7 @@ describe AddNewFeed do
       let(:feed_url) { "http://feed.com/atom.xml" }
       let(:feed_result) { double(title: feed.name, feed_url: feed.url) }
       let(:discoverer) { double(discover: feed_result) }
-      let(:feed) { FeedFactory.build }
+      let(:feed) { build(:feed) }
       let(:repo) { double }
 
       it "parses and creates the feed if discovered" do

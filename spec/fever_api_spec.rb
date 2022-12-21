@@ -12,7 +12,7 @@ describe FeverAPI do
   let(:story_one) { build(:story) }
   let(:story_two) { build(:story) }
   let(:group) { build(:group) }
-  let(:feed) { FeedFactory.build(group_id: group.id) }
+  let(:feed) { build(:feed, group: group) }
   let(:stories) { [story_one, story_two] }
   let(:standard_answer) do
     { api_version: 3, auth: 1, last_refreshed_on_time: 123456789 }
