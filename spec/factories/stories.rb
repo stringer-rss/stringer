@@ -4,6 +4,8 @@ FactoryBot.define do
 
     sequence(:entry_id, 100) { |n| "entry-#{n}" }
 
+    published { Time.zone.now }
+
     trait :read do
       is_read { true }
     end
