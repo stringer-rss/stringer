@@ -2,10 +2,3 @@ require_relative "factories/feeds"
 require_relative "factories/groups"
 require_relative "factories/stories"
 require_relative "factories/users"
-
-module Factories
-  def next_id
-    @next_id ||= 0
-    @next_id += 1
-  end
-end
