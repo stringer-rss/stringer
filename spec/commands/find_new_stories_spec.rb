@@ -10,7 +10,7 @@ describe FindNewStories do
     context "the feed contains no new stories" do
       before { allow(StoryRepository).to receive(:exists?).and_return(true) }
 
-      it "should find zero new stories" do
+      it "finds zero new stories" do
         story1 = double(published: nil, id: "story1")
         story2 = double(published: nil, id: "story2")
         feed   = double(entries: [story1, story2])
@@ -21,7 +21,7 @@ describe FindNewStories do
     end
 
     context "the feed contains new stories" do
-      it "should return stories that are not found in the database" do
+      it "returns stories that are not found in the database" do
         story1 = double(published: nil, id: "story1")
         story2 = double(published: nil, id: "story2")
         feed   = double(entries: [story1, story2])
@@ -36,7 +36,7 @@ describe FindNewStories do
       end
     end
 
-    it "should scan until matching the last story id" do
+    it "scans until matching the last story id" do
       new_story = double(published: nil, id: "new-story")
       old_story = double(published: nil, id: "old-story")
       feed = double(last_modified: nil, entries: [new_story, old_story])
@@ -50,7 +50,7 @@ describe FindNewStories do
       expect(result).to eq [new_story]
     end
 
-    it "should ignore stories older than 3 days" do
+    it "ignores stories older than 3 days" do
       new_stories = [
         double(published: 1.hour.ago, id: "new-story"),
         double(published: 2.days.ago, id: "new-story")

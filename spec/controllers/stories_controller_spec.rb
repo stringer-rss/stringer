@@ -40,7 +40,7 @@ describe "StoriesController" do
       expect(last_response.body).to have_tag("#add-feed")
     end
 
-    it "should have correct footer links" do
+    it "has correct footer links" do
       get "/news"
 
       page = last_response.body
