@@ -96,7 +96,7 @@ describe "StoriesController" do
     context "is_read parameter" do
       context "when it is not malformed" do
         it "marks a story as read" do
-          expect(StoryRepository).to receive(:save).once
+          expect(story_one).to receive(:save!).once
 
           put "/stories/#{story_one.id}", { is_read: true }.to_json
 
@@ -106,7 +106,7 @@ describe "StoriesController" do
 
       context "when it is malformed" do
         it "marks a story as read" do
-          expect(StoryRepository).to receive(:save).once
+          expect(story_one).to receive(:save!).once
 
           put "/stories/#{story_one.id}", { is_read: "malformed" }.to_json
 

@@ -488,8 +488,6 @@ Rails/SaveBang:
     - 'app/commands/users/change_user_password.rb'
     - 'app/commands/users/complete_setup.rb'
     - 'app/commands/users/create_user.rb'
-    - 'app/controllers/sinatra/first_run_controller.rb'
-    - 'app/controllers/sinatra/stories_controller.rb'
     - 'app/repositories/feed_repository.rb'
     - 'app/repositories/story_repository.rb'
     - 'app/repositories/user_repository.rb'
