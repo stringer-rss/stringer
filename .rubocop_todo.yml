@@ -343,7 +343,6 @@ RSpec/NamedSubject:
 RSpec/NestedGroups:
   Exclude:
     - 'spec/commands/feeds/add_new_feed_spec.rb'
-    - 'spec/controllers/stories_controller_spec.rb'
     - 'spec/integration/feed_importing_spec.rb'
 
 # Offense count: 2
