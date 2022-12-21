@@ -43,7 +43,7 @@ class Stringer < Sinatra::Base
   end
 
   post "/stories/mark_all_as_read" do
-    MarkAllAsRead.new(params[:story_ids]).mark_as_read
+    MarkAllAsRead.call(params[:story_ids])
 
     redirect to("/news")
   end

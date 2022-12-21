@@ -8,6 +8,10 @@ class MarkAllAsRead
     @repo = repository
   end
 
+  def self.call(*args)
+    new(*args).call
+  end
+
   def mark_as_read
     @repo.fetch_by_ids(@story_ids).update_all(is_read: true)
   end
