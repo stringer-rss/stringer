@@ -45,5 +45,16 @@ describe AddNewFeed do
         end
       end
     end
+
+    it "uses feed_url as name when title is not present" do
+      feed_url = "https://protomen.com/news/feed"
+      result = instance_double(Feedjira::Parser::RSS, title: nil, feed_url:)
+      discoverer = instance_double(FeedDiscovery, discover: result)
+
+      expect { AddNewFeed.add(feed_url, discoverer) }
+        .to change(Feed, :count).by(1)
+
+      expect(Feed.last.name).to eq(feed_url)
+    end
   end
 end
