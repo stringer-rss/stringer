@@ -23,6 +23,8 @@ Style/StringLiterals: { EnforcedStyle: double_quotes }
 # want to enable these, but they don't work right when using `.rubocop_todo.yml`
 Style/DocumentationMethod: { Enabled: false }
 Style/Documentation: { Enabled: false }
+Style/SymbolArray: { EnforcedStyle: brackets }
+Style/WordArray: { EnforcedStyle: brackets }
 
 ################################################################################
 #

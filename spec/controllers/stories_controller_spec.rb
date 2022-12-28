@@ -154,7 +154,7 @@ describe "StoriesController" do
     it "marks all unread stories as read and reload the page" do
       expect_any_instance_of(MarkAllAsRead).to receive(:mark_as_read).once
 
-      post "/stories/mark_all_as_read", story_ids: %w(1 2 3)
+      post "/stories/mark_all_as_read", story_ids: ["1", "2", "3"]
 
       expect(last_response.status).to be 302
       expect(URI.parse(last_response.location).path).to eq "/news"

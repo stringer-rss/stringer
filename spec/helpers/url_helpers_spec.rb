@@ -77,7 +77,7 @@ RSpec.describe UrlHelpers do
 
   describe "#normalize_url" do
     it "resolves scheme-less urls" do
-      %w(http https).each do |scheme|
+      ["http", "https"].each do |scheme|
         feed_url = "#{scheme}://blog.golang.org/feed.atom"
 
         url = helper.normalize_url("//blog.golang.org/context", feed_url)
