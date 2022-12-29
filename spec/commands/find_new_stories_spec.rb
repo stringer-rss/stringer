@@ -6,9 +6,7 @@ app_require "commands/feeds/find_new_stories"
 describe FindNewStories do
   describe "#new_stories" do
     context "the feed contains no new stories" do
-      before do
-        allow(StoryRepository).to receive(:exists?).and_return(true)
-      end
+      before { allow(StoryRepository).to receive(:exists?).and_return(true) }
 
       it "should find zero new stories" do
         story1 = double(published: nil, id: "story1")

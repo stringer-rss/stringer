@@ -7,9 +7,7 @@ describe FeverAPI::ReadFeedsGroups do
   let(:feeds) { feed_ids.map { |id| double("feed", id: id, group_id: 1) } }
   let(:feed_repository) { double("repo") }
 
-  subject do
-    FeverAPI::ReadFeedsGroups.new(feed_repository: feed_repository)
-  end
+  subject { FeverAPI::ReadFeedsGroups.new(feed_repository: feed_repository) }
 
   it "returns a list of groups requested through feeds" do
     allow(feed_repository)

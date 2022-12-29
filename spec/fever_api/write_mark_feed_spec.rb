@@ -6,9 +6,7 @@ describe FeverAPI::WriteMarkFeed do
   let(:feed_marker) { double("feed marker") }
   let(:marker_class) { double("marker class") }
 
-  subject do
-    FeverAPI::WriteMarkFeed.new(marker_class: marker_class)
-  end
+  subject { FeverAPI::WriteMarkFeed.new(marker_class: marker_class) }
 
   it "instantiates a feed marker and calls mark_feed_as_read if requested" do
     expect(marker_class)
