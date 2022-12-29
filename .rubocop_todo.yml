@@ -144,7 +144,6 @@ RSpec/ExampleLength:
     - 'spec/commands/feeds/add_new_feed_spec.rb'
     - 'spec/commands/feeds/export_to_opml_spec.rb'
     - 'spec/commands/find_new_stories_spec.rb'
-    - 'spec/controllers/stories_controller_spec.rb'
     - 'spec/fever_api/read_favicons_spec.rb'
     - 'spec/fever_api/read_feeds_groups_spec.rb'
     - 'spec/fever_api/read_feeds_spec.rb'
