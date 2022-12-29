@@ -25,11 +25,11 @@ zh-TW:
       fields:
         feed_url: RSS 訊息來源
         submit: 新增
-      flash:
-        added_successfully: 你的訂閱已經新增完畢，請稍等一段時間再回來查看
-        already_subscribed_error: 你已經訂閱過這個訊息來源了
-        feed_not_found_error: 我們找不到這個訊息來源，麻煩檢查並稍後後再試一次
       title: 想要新增新內容？
+    create:
+      success: 你的訂閱已經新增完畢，請稍等一段時間再回來查看
+      already_subscribed: 你已經訂閱過這個訊息來源了
+      feed_not_found: 我們找不到這個訊息來源，麻煩檢查並稍後後再試一次
     edit:
       fields:
         feed_name: 訊息來源名稱

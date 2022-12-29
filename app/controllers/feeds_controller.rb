@@ -21,18 +21,17 @@ class FeedsController < ApplicationController
     @feed_url = params[:feed_url]
     feed = AddNewFeed.add(@feed_url)
 
-    if feed && feed.valid?
-      FetchFeeds.enqueue([feed])
+    unless feed && feed.valid?
+      flash.now[:error] = feed ? t(".already_subscribed") : t(".feed_not_found")
 
-      flash[:success] = t("feeds.add.flash.added_successfully")
-      redirect_to("/")
-    elsif feed
-      flash.now[:error] = t("feeds.add.flash.already_subscribed_error")
       render(:new)
-    else
-      flash.now[:error] = t("feeds.add.flash.feed_not_found_error")
-      render(:new)
+      return
     end
+
+    FetchFeeds.enqueue([feed])
+
+    flash[:success] = t(".success")
+    redirect_to("/")
   end
 
   def update

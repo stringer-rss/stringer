@@ -25,11 +25,11 @@ pt:
       fields:
         feed_url: URL da Feed
         submit: Adicionar
-      flash:
-        added_successfully: Adicionamos a sua nova feed. Verifique novamente mais tarde.
-        already_subscribed_error: Você já subscreveu esta feed...
-        feed_not_found_error: Não foi possível encontrar a feed. Tente novamente.
       title: Precisa de novas histórias?
+    create:
+      success: Adicionamos a sua nova feed. Verifique novamente mais tarde.
+      already_subscribed: Você já subscreveu esta feed...
+      feed_not_found: Não foi possível encontrar a feed. Tente novamente.
     edit:
       fields:
         feed_name: 

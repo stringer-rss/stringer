@@ -25,11 +25,11 @@ eo:
       fields:
         feed_url: URL de fluo
         submit: Aldoni
-      flash:
-        added_successfully: Ni aldonis vian nova fluon. Revenu pli poste.
-        already_subscribed_error: Vi abonis tiun fluon jam...
-        feed_not_found_error: Ni ne eblas trovi tion fluon. Reprovu.
       title: Ĉu vi bezonas novajn rakontojn?
+    create:
+      success: Ni aldonis vian nova fluon. Revenu pli poste.
+      already_subscribed: Vi abonis tiun fluon jam...
+      feed_not_found: Ni ne eblas trovi tion fluon. Reprovu.
     edit:
       fields:
         feed_name: Nomo de fluo

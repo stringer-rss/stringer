@@ -25,11 +25,11 @@ nl:
       fields:
         feed_url: Feed-URL
         submit: Toevoegen
-      flash:
-        added_successfully: We hebben je nieuwe feed toegevoegd. Kijk over een tijdje nog eens.
-        already_subscribed_error: Je bent al geabonneerd op deze feed...
-        feed_not_found_error: Die feed konden we niet vinden. Probeer het opnieuw.
       title: Nieuwe artikelen nodig?
+    create:
+      success: We hebben je nieuwe feed toegevoegd. Kijk over een tijdje nog eens.
+      already_subscribed: Je bent al geabonneerd op deze feed...
+      feed_not_found: Die feed konden we niet vinden. Probeer het opnieuw.
     edit:
       fields:
         feed_name: Feednaam

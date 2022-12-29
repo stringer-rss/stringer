@@ -25,11 +25,11 @@ he:
       fields:
         feed_url: כתובת של הפיד
         submit: להוסיף
-      flash:
-        added_successfully: אנחנו הוספנו את הפיד החדש. עוד מעט תקבל עידכונים.
-        already_subscribed_error: הפיד הנ"ל כבר נמצא במעקב.
-        feed_not_found_error: לא הצלחנו למצוא את הפיד. נסה שוב.
       title: מחפש מה לקרוא?
+    create:
+      success: אנחנו הוספנו את הפיד החדש. עוד מעט תקבל עידכונים.
+      already_subscribed: הפיד הנ"ל כבר נמצא במעקב.
+      feed_not_found: לא הצלחנו למצוא את הפיד. נסה שוב.
     edit:
       fields:
         feed_name: 
