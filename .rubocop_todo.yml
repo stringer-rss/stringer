@@ -998,26 +998,6 @@ Style/StaticClass:
     - 'app/utils/api_key.rb'
     - 'app/utils/content_sanitizer.rb'
 
-# Offense count: 19
-# This cop supports unsafe autocorrection (--autocorrect-all).
-Style/StringHashKeys:
-  Exclude:
-    - 'app/helpers/controller_helpers.rb'
-    - 'fever_api.rb'
-    - 'spec/app_spec.rb'
-    - 'spec/controllers/debug_controller_spec.rb'
-    - 'spec/controllers/first_run_controller_spec.rb'
-    - 'spec/controllers/imports_controller_spec.rb'
-    - 'spec/controllers/sessions_controller_spec.rb'
-    - 'spec/fever_api/read_favicons_spec.rb'
-    - 'spec/fever_api/read_feeds_groups_spec.rb'
-    - 'spec/fever_api/read_feeds_spec.rb'
-    - 'spec/fever_api/read_groups_spec.rb'
-    - 'spec/fever_api/read_items_spec.rb'
-    - 'spec/fever_api/read_links_spec.rb'
-    - 'spec/fever_api/sync_saved_item_ids_spec.rb'
-    - 'spec/fever_api/sync_unread_item_ids_spec.rb'
-
 # Offense count: 7
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: MinSize.
