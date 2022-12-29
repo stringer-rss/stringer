@@ -17,7 +17,7 @@ describe "SessionsController" do
 
   describe "POST /login" do
     it "denies access when password is incorrect" do
-      allow(SignInUser).to receive(:sign_in).and_return(nil)
+      expect(SignInUser).to receive(:sign_in).and_return(nil)
 
       post "/login", password: "not-the-password"
 
