@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UseTextDatatypeForTitleAndEntryId < ActiveRecord::Migration[4.2]
   def up
     change_column :stories, :title, :text

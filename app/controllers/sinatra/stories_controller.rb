@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative "../../repositories/story_repository"
 require_relative "../../commands/stories/mark_all_as_read"
 

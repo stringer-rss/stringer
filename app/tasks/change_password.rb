@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "io/console"
 
 require_relative "../commands/users/change_user_password"

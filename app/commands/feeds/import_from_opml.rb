@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative "../../models/feed"
 require_relative "../../models/group"
 require_relative "../../utils/opml_parser"

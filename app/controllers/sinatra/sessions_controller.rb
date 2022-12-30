@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative "../../commands/users/sign_in_user"
 
 class Stringer < Sinatra::Base

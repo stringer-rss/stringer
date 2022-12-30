@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ContentSanitizer
   def self.sanitize(content)
     Loofah.fragment(content.gsub(/<wbr\s*>/i, ""))

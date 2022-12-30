@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative "./application_record"
 require_relative "./feed"
 
@@ -6,7 +8,7 @@ class Story < ApplicationRecord
 
   validates_uniqueness_of :entry_id, scope: :feed_id
 
-  UNTITLED = "[untitled]".freeze
+  UNTITLED = "[untitled]"
 
   def headline
     title.nil? ? UNTITLED : strip_html(title)[0, 50]

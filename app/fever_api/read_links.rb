@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module FeverAPI
   class ReadLinks
     def call(params = {})

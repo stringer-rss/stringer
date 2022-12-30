@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative "../commands/stories/mark_as_read"
 require_relative "../commands/stories/mark_as_unread"
 require_relative "../commands/stories/mark_as_starred"

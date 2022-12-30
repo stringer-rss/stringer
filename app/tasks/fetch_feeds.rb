@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "thread/pool"
 
 require_relative "fetch_feed"

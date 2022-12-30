@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FetchFeedJob =
   Struct.new(:feed_id) do
     def perform
