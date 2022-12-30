@@ -26,20 +26,20 @@ describe "SessionsController" do
     end
 
     it "allows access when password is correct" do
-      allow(SignInUser).to receive(:sign_in).and_return(double(id: 1))
+      user = create(:user)
 
-      post "/login", password: "the-password"
+      post "/login", password: user.password
 
-      expect(session[:user_id]).to eq(1)
+      expect(session[:user_id]).to eq(user.id)
 
       expect(last_response.status).to be(302)
       expect(URI.parse(last_response.location).path).to eq("/")
     end
 
     it "redirects to the previous path when present" do
-      allow(SignInUser).to receive(:sign_in).and_return(double(id: 1))
+      user = create(:user)
 
-      params = { password: "the-password" }
+      params = { password: user.password }
       post "/login", params, "rack.session" => { redirect_to: "/archive" }
 
       expect(session[:redirect_to]).to be_nil

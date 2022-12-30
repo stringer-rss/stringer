@@ -39,8 +39,9 @@ describe "FirstRunController" do
       end
 
       it "accepts confirmed passwords and redirects to next step" do
+        user = instance_double(User, id: 1)
         expect_any_instance_of(CreateUser)
-          .to receive(:create).with("foo").and_return(double(id: 1))
+          .to receive(:create).with("foo").and_return(user)
 
         post "/setup/password", password: "foo", password_confirmation: "foo"
 
@@ -50,8 +51,8 @@ describe "FirstRunController" do
     end
 
     describe "GET /setup/tutorial" do
-      let(:user) { double }
-      let(:feeds) { [double, double] }
+      let(:user) { instance_double(User) }
+      let(:feeds) { [instance_double(Feed), instance_double(Feed)] }
 
       before do
         allow(UserRepository).to receive(:fetch).and_return(user)
