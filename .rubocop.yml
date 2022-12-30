@@ -18,6 +18,7 @@ RSpec/MessageExpectation: { EnforcedStyle: expect }
 RSpec/MessageSpies: { EnforcedStyle: receive }
 Style/MethodCallWithArgsParentheses:
   AllowedMethods:
+    - and
     - to
     - not_to
     - describe
