@@ -61,17 +61,17 @@ SampleStory =
 
     def as_json(_options = {})
       {
-        id: id,
-        headline: headline,
-        lead: lead,
-        source: source,
-        title: title,
+        id:,
+        headline:,
+        lead:,
+        source:,
+        title:,
         pretty_date: published.strftime("%A, %B %d"),
-        body: body,
-        permalink: permalink,
-        is_read: is_read,
-        is_starred: is_starred,
-        keep_unread: keep_unread
+        body:,
+        permalink:,
+        is_read:,
+        is_starred:,
+        keep_unread:
       }
     end
   end

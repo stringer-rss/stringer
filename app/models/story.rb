@@ -32,9 +32,9 @@ class Story < ApplicationRecord
 
   def as_fever_json
     {
-      id: id,
-      feed_id: feed_id,
-      title: title,
+      id:,
+      feed_id:,
+      title:,
       author: source,
       html: body,
       url: permalink,

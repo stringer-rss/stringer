@@ -9,8 +9,8 @@ class Stringer < Sinatra::Base
     erb File.read(self.class.test_path("support", "views", "index.erb")),
         layout: false,
         locals: {
-          js_files: js_files,
-          js_templates: js_templates
+          js_files:,
+          js_templates:
         }
   end
 

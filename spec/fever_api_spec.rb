@@ -14,16 +14,16 @@ describe FeverAPI do
   let(:story_one) { build(:story) }
   let(:story_two) { build(:story) }
   let(:group) { build(:group) }
-  let(:feed) { build(:feed, group: group) }
+  let(:feed) { build(:feed, group:) }
   let(:stories) { [story_one, story_two] }
   let(:standard_answer) do
     { api_version: 3, auth: 1, last_refreshed_on_time: 123456789 }
   end
   let(:cannot_auth) { { api_version: 3, auth: 0 } }
-  let(:headers) { { api_key: api_key } }
+  let(:headers) { { api_key: } }
 
   before do
-    user = double(api_key: api_key)
+    user = double(api_key:)
     allow(User).to receive(:first) { user }
 
     allow(Time).to receive(:now) { Time.at(123456789) }

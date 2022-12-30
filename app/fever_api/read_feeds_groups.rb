@@ -10,7 +10,7 @@ module FeverAPI
 
     def call(params = {})
       if params.keys.include?("feeds") || params.keys.include?("groups")
-        { feeds_groups: feeds_groups }
+        { feeds_groups: }
       else
         {}
       end
@@ -23,7 +23,7 @@ module FeverAPI
         @feed_repository.in_group.order("LOWER(name)").group_by(&:group_id)
       grouped_feeds.map do |group_id, feeds|
         {
-          group_id: group_id,
+          group_id:,
           feed_ids: feeds.map(&:id).join(",")
         }
       end

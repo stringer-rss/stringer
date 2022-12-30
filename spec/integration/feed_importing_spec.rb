@@ -88,5 +88,5 @@ def fetch_feed(feed)
   logger = Logger.new($stdout)
   logger.level = Logger::DEBUG
 
-  FetchFeed.new(feed, logger: logger).fetch
+  FetchFeed.new(feed, logger:).fetch
 end

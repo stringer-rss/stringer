@@ -6,7 +6,7 @@ module FeverAPI
 
     def call(params = {})
       if params.keys.include?("favicons")
-        { favicons: favicons }
+        { favicons: }
       else
         {}
       end

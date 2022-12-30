@@ -27,12 +27,7 @@ describe FetchFeed do
 
         expect(StoryRepository).not_to receive(:add)
 
-        FetchFeed.new(
-          daring_fireball,
-          parser: parser,
-          client: client,
-          logger: nil
-        ).fetch
+        FetchFeed.new(daring_fireball, parser:, client:, logger: nil).fetch
       end
 
       it "logs a message" do
@@ -41,12 +36,7 @@ describe FetchFeed do
         output = StringIO.new
         logger = Logger.new(output)
 
-        FetchFeed.new(
-          daring_fireball,
-          parser: parser,
-          client: client,
-          logger:
-        ).fetch
+        FetchFeed.new(daring_fireball, parser:, client:, logger:).fetch
 
         expect(output.string).to include("has not been modified")
       end
@@ -63,7 +53,7 @@ describe FetchFeed do
 
         expect(StoryRepository).not_to receive(:add)
 
-        FetchFeed.new(daring_fireball, parser: parser, client: client).fetch
+        FetchFeed.new(daring_fireball, parser:, client:).fetch
       end
     end
 
@@ -119,7 +109,7 @@ describe FetchFeed do
         expect(FeedRepository).to receive(:set_status)
           .with(:green, daring_fireball)
 
-        FetchFeed.new(daring_fireball, parser: parser, client: client).fetch
+        FetchFeed.new(daring_fireball, parser:, client:).fetch
       end
 
       it "sets the status to red if things go wrong" do
@@ -129,12 +119,7 @@ describe FetchFeed do
         expect(FeedRepository).to receive(:set_status)
           .with(:red, daring_fireball)
 
-        FetchFeed.new(
-          daring_fireball,
-          parser: parser,
-          client: client,
-          logger: nil
-        ).fetch
+        FetchFeed.new(daring_fireball, parser:, client:, logger: nil).fetch
       end
 
       it "outputs a message when things go wrong" do
@@ -143,12 +128,7 @@ describe FetchFeed do
         output = StringIO.new
         logger = Logger.new(output)
 
-        FetchFeed.new(
-          daring_fireball,
-          parser: parser,
-          client: client,
-          logger: logger
-        ).fetch
+        FetchFeed.new(daring_fireball, parser:, client:, logger:).fetch
 
         expect(output.string).to include("Something went wrong")
       end

@@ -74,16 +74,16 @@ describe "Story" do
       story = create(
         :story,
         body: "story body",
-        created_at: created_at,
+        created_at:,
         entry_id: 5,
-        feed: feed,
+        feed:,
         is_read: true,
         is_starred: false,
         keep_unread: true,
         permalink: "www.exampoo.com/perma",
         published: published_at,
         title: "the story title",
-        updated_at: updated_at
+        updated_at:
       )
 
       expect(story.as_json).to eq(
@@ -116,7 +116,7 @@ describe "Story" do
       published_at = 1.day.ago
       story = create(
         :story,
-        feed: feed,
+        feed:,
         title: "the story title",
         body: "story body",
         permalink: "www.exampoo.com/perma",
