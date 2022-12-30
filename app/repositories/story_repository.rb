@@ -48,10 +48,6 @@ class StoryRepository
       .where("created_at < ? AND is_read = ?", timestamp, false)
   end
 
-  def self.save(story)
-    story.save
-  end
-
   def self.exists?(id, feed_id)
     Story.exists?(entry_id: id, feed_id: feed_id)
   end

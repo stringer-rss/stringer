@@ -22,7 +22,7 @@ class Stringer < Sinatra::Base
         flash.now[:error] = t("first_run.password.flash.passwords_dont_match")
         erb :"first_run/password"
       else
-        user = CreateUser.new.create(params[:password])
+        user = CreateUser.new.call(params[:password])
         session[:user_id] = user.id
 
         redirect to("/feeds/import")

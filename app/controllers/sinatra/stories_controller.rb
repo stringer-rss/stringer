@@ -39,7 +39,7 @@ class Stringer < Sinatra::Base
     story.keep_unread = !!json_params[:keep_unread]
     story.is_starred = !!json_params[:is_starred]
 
-    StoryRepository.save(story)
+    story.save!
   end
 
   post "/stories/mark_all_as_read" do

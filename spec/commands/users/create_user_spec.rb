@@ -14,7 +14,7 @@ describe CreateUser do
       expect(repo).to receive(:create)
       expect(repo).to receive(:delete_all)
 
-      command.create("password")
+      command.call("password")
     end
   end
 end
