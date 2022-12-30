@@ -28,8 +28,8 @@ describe ImportsController do
 
       post "/feeds/import", "opml_file" => opml_file
 
-      expect(last_response.status).to be 302
-      expect(URI.parse(last_response.location).path).to eq "/setup/tutorial"
+      expect(last_response.status).to be(302)
+      expect(URI.parse(last_response.location).path).to eq("/setup/tutorial")
     end
   end
 end

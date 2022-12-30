@@ -110,8 +110,8 @@ describe "FeedsController" do
 
         post("/feeds", feed_url:)
 
-        expect(last_response.status).to be 302
-        expect(URI.parse(last_response.location).path).to eq "/"
+        expect(last_response.status).to be(302)
+        expect(URI.parse(last_response.location).path).to eq("/")
       end
     end
 
