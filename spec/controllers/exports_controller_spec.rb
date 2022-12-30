@@ -6,33 +6,31 @@ app_require "controllers/exports_controller"
 
 describe ExportsController do
   describe "GET /feeds/export" do
-    let(:some_xml) { "<xml>some dummy opml</xml>" }
-    before { allow(Feed).to receive(:all) }
-
-    def mock_export
-      expect_any_instance_of(ExportToOpml)
-        .to receive(:to_xml).and_return(some_xml)
+    def expected_xml
+      <<~XML
+        <?xml version="1.0"?>
+        <opml version="1.0">
+          <head>
+            <title>Feeds from Stringer</title>
+          </head>
+          <body/>
+        </opml>
+      XML
     end
 
     it "returns an OPML file" do
-      mock_export
-
       get "/feeds/export"
 
-      expect(last_response.body).to eq(some_xml)
+      expect(last_response.body).to eq(expected_xml)
     end
 
     it "responds with xml content type" do
-      mock_export
-
       get "/feeds/export"
 
       expect(last_response.header["Content-Type"]).to include("application/xml")
     end
 
     it "responds with disposition attachment" do
-      mock_export
-
       get "/feeds/export"
 
       expected =
