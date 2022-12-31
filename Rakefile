@@ -19,6 +19,11 @@ require_relative "./app/tasks/fetch_feeds"
 require_relative "./app/tasks/change_password"
 require_relative "./app/tasks/remove_old_stories"
 
+desc "Open an irb session preloaded with the app"
+task :console do
+  sh "irb -r ./app.rb"
+end
+
 desc "Fetch all feeds."
 task :fetch_feeds do
   FetchFeeds.new(Feed.all).fetch_all

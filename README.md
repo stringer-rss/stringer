@@ -107,7 +107,7 @@ foreman start
 
 The application will be running on port `5000`.
 
-You can launch an interactive console (a la `rails c`) using `racksh`.
+You can launch an interactive console (a la `rails c`) using `rake console`.
 
 ## Acknowledgments
 
