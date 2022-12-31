@@ -7,6 +7,10 @@ class CreateUser
     @repo = repository
   end
 
+  def self.call(password)
+    new.call(password)
+  end
+
   def call(password)
     @repo.delete_all
     @repo.create(
