@@ -20,7 +20,7 @@ Stringer is a Ruby app based on Sinatra, ActiveRecord, PostgreSQL, Backbone.js a
 
 [![Deploy to Heroku](https://cdn.herokuapp.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/stringer-rss/stringer)
 
-Stringer will run just fine on the Heroku free plan.
+Stringer will run just fine on the Eco/Basic Heroku plans.
 
 Instructions are provided for deploying to [Heroku manually](/docs/Heroku.md), to any Ruby 
 compatible [Linux-based VPS](/docs/VPS.md), to [Docker](docs/docker.md) and to [OpenShift](/docs/OpenShift.md).
@@ -78,9 +78,6 @@ To set your locale on Heroku, run `heroku config:set LOCALE=en`.
 If you would like to translate Stringer to your preferred language, please use [LocaleApp](http://www.localeapp.com/projects/4637).
 
 ### Clean up old read stories on Heroku
-
-If you are on the Heroku free plan, there is a 10k row limit so you will
-eventually run out of space.
 
 You can clean up old stories by running: `rake cleanup_old_stories`
 
