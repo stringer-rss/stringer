@@ -94,60 +94,48 @@ describe "StoriesController" do
   describe "PUT /stories/:id" do
     before { allow(StoryRepository).to receive(:fetch).and_return(story_one) }
     context "is_read parameter" do
-      context "when it is not malformed" do
-        it "marks a story as read" do
-          expect(story_one).to receive(:save!).once
+      it "marks a story as read when it is not malformed" do
+        expect(story_one).to receive(:save!).once
 
-          put "/stories/#{story_one.id}", { is_read: true }.to_json
+        put "/stories/#{story_one.id}", { is_read: true }.to_json
 
-          expect(story_one.is_read).to be(true)
-        end
+        expect(story_one.is_read).to be(true)
       end
 
-      context "when it is malformed" do
-        it "marks a story as read" do
-          expect(story_one).to receive(:save!).once
+      it "marks a story as read when it is malformed" do
+        expect(story_one).to receive(:save!).once
 
-          put "/stories/#{story_one.id}", { is_read: "malformed" }.to_json
+        put "/stories/#{story_one.id}", { is_read: "malformed" }.to_json
 
-          expect(story_one.is_read).to be(true)
-        end
+        expect(story_one.is_read).to be(true)
       end
     end
 
     context "keep_unread parameter" do
-      context "when it is not malformed" do
-        it "marks a story as permanently unread" do
-          put "/stories/#{story_one.id}", { keep_unread: false }.to_json
+      it "marks a story as permanently unread when it is not malformed" do
+        put "/stories/#{story_one.id}", { keep_unread: false }.to_json
 
-          expect(story_one.keep_unread).to be(false)
-        end
+        expect(story_one.keep_unread).to be(false)
       end
 
-      context "when it is malformed" do
-        it "marks a story as permanently unread" do
-          put "/stories/#{story_one.id}", { keep_unread: "malformed" }.to_json
+      it "marks a story as permanently unread when it is malformed" do
+        put "/stories/#{story_one.id}", { keep_unread: "malformed" }.to_json
 
-          expect(story_one.keep_unread).to be(true)
-        end
+        expect(story_one.keep_unread).to be(true)
       end
     end
 
     context "is_starred parameter" do
-      context "when it is not malformed" do
-        it "marks a story as permanently starred" do
-          put "/stories/#{story_one.id}", { is_starred: true }.to_json
+      it "marks a story as permanently starred when it is not malformed" do
+        put "/stories/#{story_one.id}", { is_starred: true }.to_json
 
-          expect(story_one.is_starred).to be(true)
-        end
+        expect(story_one.is_starred).to be(true)
       end
 
-      context "when it is malformed" do
-        it "marks a story as permanently starred" do
-          put "/stories/#{story_one.id}", { is_starred: "malformed" }.to_json
+      it "marks a story as permanently starred when it is malformed" do
+        put "/stories/#{story_one.id}", { is_starred: "malformed" }.to_json
 
-          expect(story_one.is_starred).to be(true)
-        end
+        expect(story_one.is_starred).to be(true)
       end
     end
   end
