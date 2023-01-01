@@ -130,7 +130,7 @@ Logout stringer user, install systemd services:
 
 As stringer user, close existing Stringer instance:
 
-    exit # exit racksh and app
+    exit # exit app
 
 Start app as a systemd service and make app run at startup
 
