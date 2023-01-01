@@ -11,7 +11,7 @@ describe RemoveOldStories do
       stories
     end
 
-    it "should pass along the number of days to the story repository query" do
+    it "passes along the number of days to the story repository query" do
       allow(RemoveOldStories).to receive(:pruned_feeds) { [] }
 
       expect(StoryRepository).to receive(:unstarred_read_stories_older_than)
@@ -20,7 +20,7 @@ describe RemoveOldStories do
       RemoveOldStories.remove!(7)
     end
 
-    it "should request deletion of all old stories" do
+    it "requests deletion of all old stories" do
       allow(RemoveOldStories).to receive(:pruned_feeds) { [] }
       allow(StoryRepository)
         .to receive(:unstarred_read_stories_older_than) { stories_mock }
@@ -30,7 +30,7 @@ describe RemoveOldStories do
       RemoveOldStories.remove!(11)
     end
 
-    it "should fetch affected feeds by id" do
+    it "fetches affected feeds by id" do
       allow(RemoveOldStories).to receive(:old_stories) do
         stories = [double("story", feed_id: 3), double("story", feed_id: 5)]
         allow(stories).to receive(:delete_all)
@@ -43,7 +43,7 @@ describe RemoveOldStories do
       RemoveOldStories.remove!(13)
     end
 
-    it "should update last_fetched on affected feeds" do
+    it "updates last_fetched on affected feeds" do
       feeds = [double("feed a"), double("feed b")]
       allow(RemoveOldStories).to receive(:pruned_feeds) { feeds }
       allow(RemoveOldStories).to receive(:old_stories) { stories_mock }

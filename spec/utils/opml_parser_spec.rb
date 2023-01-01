@@ -8,7 +8,7 @@ describe OpmlParser do
   let(:parser) { OpmlParser.new }
 
   describe "#parse_feeds" do
-    it "it returns a hash of feed details from an OPML file" do
+    it "returns a hash of feed details from an OPML file" do
       result = parser.parse_feeds(<<-EOS)
         <?xml version="1.0" encoding="UTF-8"?>
         <opml version="1.0">

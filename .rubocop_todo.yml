@@ -165,20 +165,6 @@ RSpec/ExampleLength:
     - 'spec/utils/feed_discovery_spec.rb'
     - 'spec/utils/opml_parser_spec.rb'
 
-# Offense count: 18
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: CustomTransform, IgnoredWords, DisallowedExamples.
-# DisallowedExamples: works
-RSpec/ExampleWording:
-  Exclude:
-    - 'spec/commands/find_new_stories_spec.rb'
-    - 'spec/controllers/first_run_controller_spec.rb'
-    - 'spec/controllers/stories_controller_spec.rb'
-    - 'spec/tasks/fetch_feed_spec.rb'
-    - 'spec/tasks/remove_old_stories_spec.rb'
-    - 'spec/utils/i18n_support_spec.rb'
-    - 'spec/utils/opml_parser_spec.rb'
-
 # Offense count: 2
 RSpec/ExpectInHook:
   Exclude:

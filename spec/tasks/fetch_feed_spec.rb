@@ -21,7 +21,7 @@ describe FetchFeed do
     end
 
     context "when feed has not been modified" do
-      it "should not try to fetch posts" do
+      it "does not try to fetch posts" do
         client = class_spy(HTTParty)
         parser = class_double(Feedjira, parse: 304)
 
@@ -53,7 +53,7 @@ describe FetchFeed do
     end
 
     context "when no new posts have been added" do
-      it "should not add any new posts" do
+      it "does not add any new posts" do
         fake_feed = double(last_modified: Time.new(2012, 12, 31))
         client = class_spy(HTTParty)
         parser = class_double(Feedjira, parse: fake_feed)
@@ -83,7 +83,7 @@ describe FetchFeed do
           .to receive(:new_stories).and_return([new_story])
       end
 
-      it "should only add posts that are new" do
+      it "only adds posts that are new" do
         expect(StoryRepository).to receive(:add).with(
           new_story,
           daring_fireball
@@ -98,7 +98,7 @@ describe FetchFeed do
         ).fetch
       end
 
-      it "should update the last fetched time for the feed" do
+      it "updates the last fetched time for the feed" do
         expect(FeedRepository).to receive(:update_last_fetched)
           .with(daring_fireball, now)
 
