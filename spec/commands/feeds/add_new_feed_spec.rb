@@ -8,6 +8,7 @@ describe AddNewFeed do
   describe "#add" do
     context "feed cannot be discovered" do
       let(:discoverer) { double(discover: false) }
+
       it "returns false if cant discover any feeds" do
         result = AddNewFeed.add("http://not-a-feed.com", discoverer)
 
