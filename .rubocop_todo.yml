@@ -543,15 +543,6 @@ Rails/WhereNot:
   Exclude:
     - 'spec/commands/feeds/import_from_opml_spec.rb'
 
-# Offense count: 2
-# This cop supports unsafe autocorrection (--autocorrect-all).
-# Configuration parameters: PreferredMethods, MethodsAcceptingSymbol.
-# MethodsAcceptingSymbol: inject, reduce
-Style/CollectionMethods:
-  Exclude:
-    - 'app/controllers/sinatra/stories_controller.rb'
-    - 'app/fever_api/response.rb'
-
 # Offense count: 3
 # This cop supports unsafe autocorrection (--autocorrect-all).
 # Configuration parameters: EnforcedStyle.
