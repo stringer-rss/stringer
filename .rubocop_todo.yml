@@ -82,7 +82,6 @@ RSpec/ContextWording:
     - 'spec/commands/feeds/import_from_opml_spec.rb'
     - 'spec/commands/find_new_stories_spec.rb'
     - 'spec/commands/stories/mark_group_as_read_spec.rb'
-    - 'spec/controllers/stories_controller_spec.rb'
     - 'spec/helpers/authentications_helper_spec.rb'
     - 'spec/integration/feed_importing_spec.rb'
     - 'spec/tasks/fetch_feed_spec.rb'
