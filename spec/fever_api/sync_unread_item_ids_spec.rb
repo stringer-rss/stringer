@@ -5,11 +5,11 @@ require "spec_helper"
 app_require "fever_api/sync_unread_item_ids"
 
 describe FeverAPI::SyncUnreadItemIds do
+  subject { described_class.new(story_repository:) }
+
   let(:story_ids) { [5, 7, 11] }
   let(:stories) { story_ids.map { |id| double("story", id:) } }
   let(:story_repository) { double("repo") }
-
-  subject { described_class.new(story_repository:) }
 
   it "returns a list of unread items if requested" do
     expect(story_repository).to receive(:unread).and_return(stories)

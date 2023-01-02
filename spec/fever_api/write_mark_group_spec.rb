@@ -5,10 +5,10 @@ require "spec_helper"
 app_require "fever_api/write_mark_group"
 
 describe FeverAPI::WriteMarkGroup do
+  subject { described_class.new(marker_class:) }
+
   let(:group_marker) { double("group marker") }
   let(:marker_class) { double("marker class") }
-
-  subject { described_class.new(marker_class:) }
 
   it "instantiates a group marker and calls mark_group_as_read if requested" do
     expect(marker_class)

@@ -117,19 +117,6 @@ RSpec/FilePath:
   Exclude:
     - 'spec/helpers/authentications_helper_spec.rb'
 
-# Offense count: 8
-# This cop supports safe autocorrection (--autocorrect).
-RSpec/LeadingSubject:
-  Exclude:
-    - 'spec/fever_api/read_feeds_groups_spec.rb'
-    - 'spec/fever_api/read_feeds_spec.rb'
-    - 'spec/fever_api/read_groups_spec.rb'
-    - 'spec/fever_api/read_items_spec.rb'
-    - 'spec/fever_api/sync_saved_item_ids_spec.rb'
-    - 'spec/fever_api/sync_unread_item_ids_spec.rb'
-    - 'spec/fever_api/write_mark_feed_spec.rb'
-    - 'spec/fever_api/write_mark_group_spec.rb'
-
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).
 RSpec/LetBeforeExamples:
