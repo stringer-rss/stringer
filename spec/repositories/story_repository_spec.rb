@@ -406,14 +406,14 @@ describe StoryRepository do
       feed = double(url: "http://github.com")
       entry = double(url: "https://github.com/stringer-rss/stringer")
 
-      expect(described_class.extract_url(entry, feed)).to eq "https://github.com/stringer-rss/stringer"
+      expect(described_class.extract_url(entry, feed)).to eq("https://github.com/stringer-rss/stringer")
     end
 
     it "returns the enclosure_url when the url is nil" do
       feed = double(url: "http://github.com")
       entry = double(url: nil, enclosure_url: "https://github.com/stringer-rss/stringer")
 
-      expect(described_class.extract_url(entry, feed)).to eq "https://github.com/stringer-rss/stringer"
+      expect(described_class.extract_url(entry, feed)).to eq("https://github.com/stringer-rss/stringer")
     end
 
     it "does not crash if url is nil but enclosure_url does not exist" do
@@ -428,13 +428,13 @@ describe StoryRepository do
     it "returns the title if there is a title" do
       entry = double(title: "title", summary: "summary")
 
-      expect(described_class.extract_title(entry)).to eq "title"
+      expect(described_class.extract_title(entry)).to eq("title")
     end
 
     it "returns the summary if there isn't a title" do
       entry = double(title: "", summary: "summary")
 
-      expect(described_class.extract_title(entry)).to eq "summary"
+      expect(described_class.extract_title(entry)).to eq("summary")
     end
   end
 
@@ -455,18 +455,18 @@ describe StoryRepository do
     end
 
     it "sanitizes content" do
-      expect(described_class.extract_content(entry)).to eq "Some test content"
+      expect(described_class.extract_content(entry)).to eq("Some test content")
     end
 
     it "falls back to summary if there is no content" do
       expect(described_class.extract_content(summary_only))
-        .to eq "Dumb publisher"
+        .to eq("Dumb publisher")
     end
 
     it "returns empty string if there is no content or summary" do
       entry = double(url: "http://mdswanson.com", content: nil, summary: nil)
 
-      expect(described_class.extract_content(entry)).to eq ""
+      expect(described_class.extract_content(entry)).to eq("")
     end
 
     it "expands urls" do
@@ -477,7 +477,7 @@ describe StoryRepository do
       )
 
       expect(described_class.extract_content(entry))
-        .to eq "<a href=\"http://mdswanson.com/page\">Page</a>"
+        .to eq("<a href=\"http://mdswanson.com/page\">Page</a>")
     end
 
     it "ignores URL expansion if entry url is nil" do
@@ -485,7 +485,7 @@ describe StoryRepository do
         double(url: nil, content: nil, summary: "<a href=\"page\">Page</a>")
 
       expect(described_class.extract_content(entry))
-        .to eq "<a href=\"page\">Page</a>"
+        .to eq("<a href=\"page\">Page</a>")
     end
   end
 end

@@ -379,17 +379,6 @@ Style/MethodCallWithArgsParentheses:
     - 'db/migrate/20130805113712_update_stories_unique_constraints.rb'
     - 'db/migrate/20130905204142_use_text_datatype_for_title_and_entry_id.rb'
     - 'db/migrate/20140413100725_add_groups_table_and_foreign_keys_to_feeds.rb'
-    - 'spec/fever_api_spec.rb'
-    - 'spec/helpers/url_helpers_spec.rb'
-    - 'spec/integration/feed_importing_spec.rb'
-    - 'spec/models/story_spec.rb'
-    - 'spec/repositories/feed_repository_spec.rb'
-    - 'spec/repositories/story_repository_spec.rb'
-    - 'spec/spec_helper.rb'
-    - 'spec/utils/content_sanitizer_spec.rb'
-    - 'spec/utils/feed_discovery_spec.rb'
-    - 'spec/utils/i18n_support_spec.rb'
-    - 'spec/utils/opml_parser_spec.rb'
 
 # Offense count: 10
 # This cop supports safe autocorrection (--autocorrect).

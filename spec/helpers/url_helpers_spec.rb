@@ -14,7 +14,7 @@ RSpec.describe UrlHelpers do
     it "preserves existing absolute urls" do
       content = '<a href="http://foo">bar</a>'
 
-      expect(helper.expand_absolute_urls(content, nil)).to eq content
+      expect(helper.expand_absolute_urls(content, nil)).to eq(content)
     end
 
     it "replaces relative urls in a, img and video tags" do
@@ -27,7 +27,7 @@ RSpec.describe UrlHelpers do
       HTML
 
       result = helper.expand_absolute_urls(content, "http://oodl.io/d/")
-      expect(result.delete("\n")).to eq <<~HTML.delete("\n")
+      expect(result.delete("\n")).to eq(<<~HTML.delete("\n"))
         <div>
         <img src="https://foo">
         <a href="http://oodl.io/bar/baz">tee</a>
@@ -38,7 +38,7 @@ RSpec.describe UrlHelpers do
     end
 
     it "handles empty body" do
-      expect(helper.expand_absolute_urls("", nil)).to eq ""
+      expect(helper.expand_absolute_urls("", nil)).to eq("")
     end
 
     it "doesn't modify tags that do not have url attributes" do
@@ -51,7 +51,7 @@ RSpec.describe UrlHelpers do
       HTML
 
       result = helper.expand_absolute_urls(content, "http://oodl.io/d/")
-      expect(result.delete("\n")).to eq <<~HTML.delete("\n")
+      expect(result.delete("\n")).to eq(<<~HTML.delete("\n"))
         <div>
         <img foo="bar">
         <a name="something"></a>
@@ -84,7 +84,7 @@ RSpec.describe UrlHelpers do
 
         url = helper.normalize_url("//blog.golang.org/context", feed_url)
 
-        expect(url).to eq "#{scheme}://blog.golang.org/context"
+        expect(url).to eq("#{scheme}://blog.golang.org/context")
       end
     end
 
@@ -100,7 +100,7 @@ RSpec.describe UrlHelpers do
       url = helper.normalize_url(
         "//blog.golang.org/context", "//blog.golang.org/feed.atom"
       )
-      expect(url).to eq "http://blog.golang.org/context"
+      expect(url).to eq("http://blog.golang.org/context")
     end
 
     it "resolves relative urls" do
@@ -108,7 +108,7 @@ RSpec.describe UrlHelpers do
         "/progrium/dokku/releases/tag/v0.4.4",
         "https://github.com/progrium/dokku/releases.atom"
       )
-      expect(url).to eq "https://github.com/progrium/dokku/releases/tag/v0.4.4"
+      expect(url).to eq("https://github.com/progrium/dokku/releases/tag/v0.4.4")
     end
   end
 end

@@ -25,13 +25,13 @@ describe OpmlParser do
       XML
 
       resulted_values = result.values.flatten
-      expect(resulted_values.size).to eq 2
-      expect(resulted_values.first[:name]).to eq "a sample feed"
-      expect(resulted_values.first[:url]).to eq "http://feeds.feedburner.com/foobar"
+      expect(resulted_values.size).to eq(2)
+      expect(resulted_values.first[:name]).to eq("a sample feed")
+      expect(resulted_values.first[:url]).to eq("http://feeds.feedburner.com/foobar")
 
-      expect(resulted_values.last[:name]).to eq "Matt's Blog"
-      expect(resulted_values.last[:url]).to eq "http://mdswanson.com/atom.xml"
-      expect(result.keys.first).to eq "Ungrouped"
+      expect(resulted_values.last[:name]).to eq("Matt's Blog")
+      expect(resulted_values.last[:url]).to eq("http://mdswanson.com/atom.xml")
+      expect(result.keys.first).to eq("Ungrouped")
     end
 
     it "handles nested groups of feeds" do
@@ -51,10 +51,10 @@ describe OpmlParser do
       XML
       resulted_values = result.values.flatten
 
-      expect(resulted_values.count).to eq 1
-      expect(resulted_values.first[:name]).to eq "a sample feed"
-      expect(resulted_values.first[:url]).to eq "http://feeds.feedburner.com/foobar"
-      expect(result.keys.first).to eq "Technology News"
+      expect(resulted_values.count).to eq(1)
+      expect(resulted_values.first[:name]).to eq("a sample feed")
+      expect(resulted_values.first[:url]).to eq("http://feeds.feedburner.com/foobar")
+      expect(result.keys.first).to eq("Technology News")
     end
 
     it "doesn't explode when there are no feeds" do
@@ -87,8 +87,8 @@ describe OpmlParser do
       XML
       resulted_values = result.values.flatten
 
-      expect(resulted_values.count).to eq 1
-      expect(resulted_values.first[:name]).to eq "a sample feed"
+      expect(resulted_values.count).to eq(1)
+      expect(resulted_values.first[:name]).to eq("a sample feed")
     end
   end
 end
