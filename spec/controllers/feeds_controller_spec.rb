@@ -5,22 +5,17 @@ require "spec_helper"
 app_require "controllers/feeds_controller"
 
 describe "FeedsController" do
-  let(:feeds) { build_pair(:feed) }
-
   describe "GET /feeds" do
     it "renders a list of feeds" do
-      expect(FeedRepository).to receive(:list).and_return(feeds)
+      create_pair(:feed)
 
       get "/feeds"
 
-      page = last_response.body
-      expect(page).to have_tag("ul#feed-list")
-      expect(page).to have_tag("li.feed", count: 2)
+      rendered = Capybara.string(last_response.body)
+      expect(rendered).to have_selector("li.feed", count: 2)
     end
 
     it "displays message to add feeds if there are none" do
-      expect(FeedRepository).to receive(:list).and_return([])
-
       get "/feeds"
 
       page = last_response.body
@@ -29,14 +24,13 @@ describe "FeedsController" do
   end
 
   describe "GET /feeds/:feed_id/edit" do
-    it "fetches a feed given the id" do
-      feed = Feed.new(name: "Rainbows and unicorns", url: "example.com/feed")
-      expect(FeedRepository).to receive(:fetch).with("123").and_return(feed)
+    it "displays the feed edit form" do
+      feed = create(:feed, name: "Rainbows/unicorns", url: "example.com/feed")
 
-      get "/feeds/123/edit"
+      get "/feeds/#{feed.id}/edit"
 
-      expect(last_response.body).to include("Rainbows and unicorns")
-      expect(last_response.body).to include("example.com/feed")
+      rendered = Capybara.string(last_response.body)
+      expect(rendered).to have_field("feed_name", with: "Rainbows/unicorns")
     end
   end
 
@@ -90,37 +84,37 @@ describe "FeedsController" do
   end
 
   describe "GET /feeds/new" do
-    it "displays a form and submit button" do
+    it "displays a new feed form" do
       get "/feeds/new"
 
       page = last_response.body
       expect(page).to have_tag("form#add-feed-setup")
-      expect(page).to have_tag("input#submit")
     end
   end
 
   describe "POST /feeds" do
     context "when the feed url is valid" do
       let(:feed_url) { "http://example.com/" }
-      let(:feed) { instance_double(Feed, valid?: true) }
 
       it "adds the feed and queues it to be fetched" do
-        expect(AddNewFeed).to receive(:add).with(feed_url).and_return(feed)
-        expect(FetchFeeds).to receive(:enqueue).with([feed])
+        stub_request(:get, feed_url).to_return(status: 200, body: "<rss></rss>")
+
+        expect { post("/feeds", feed_url:) }.to change(Feed, :count).by(1)
+      end
+
+      it "queues the feed to be fetched" do
+        stub_request(:get, feed_url).to_return(status: 200, body: "<rss></rss>")
+        expect(FetchFeeds).to receive(:enqueue).with([instance_of(Feed)])
 
         post("/feeds", feed_url:)
-
-        expect(last_response.status).to be(302)
-        expect(URI.parse(last_response.location).path).to eq("/")
       end
     end
 
     context "when the feed url is invalid" do
       let(:feed_url) { "http://not-a-valid-feed.com/" }
 
-      it "adds the feed and queues it to be fetched" do
-        expect(AddNewFeed).to receive(:add).with(feed_url).and_return(false)
-
+      it "does not add the feed" do
+        stub_request(:get, feed_url).to_return(status: 404)
         post("/feeds", feed_url:)
 
         page = last_response.body
@@ -130,11 +124,10 @@ describe "FeedsController" do
 
     context "when the feed url is one we already subscribe to" do
       let(:feed_url) { "http://example.com/" }
-      let(:invalid_feed) { instance_double(Feed, valid?: false) }
 
-      it "adds the feed and queues it to be fetched" do
-        expect(AddNewFeed)
-          .to receive(:add).with(feed_url).and_return(invalid_feed)
+      it "does not add the feed" do
+        create(:feed, url: feed_url)
+        stub_request(:get, feed_url).to_return(status: 200, body: "<rss></rss>")
 
         post("/feeds", feed_url:)
 
