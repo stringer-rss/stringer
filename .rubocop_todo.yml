@@ -211,14 +211,6 @@ RSpec/NestedGroups:
     - 'spec/commands/feeds/add_new_feed_spec.rb'
     - 'spec/integration/feed_importing_spec.rb'
 
-# Offense count: 1
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: not_to, to_not
-RSpec/NotToNot:
-  Exclude:
-    - 'spec/integration/feed_importing_spec.rb'
-
 # Offense count: 2
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: EnforcedStyle.
