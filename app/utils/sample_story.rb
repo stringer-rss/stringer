@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-SAMPLE_BODY = <<~EOS
+SAMPLE_BODY = <<~HTML
   <p>Tofu shoreditch intelligentsia <a href="#">umami</a>, fashion axe photo booth
   try-hard terry richardson quinoa actually fingerstache meggings fixie. Aesthetic
   salvia vinyl raw denim, keffiyeh master cleanse tonx selfies mlkshk occupy twee
@@ -19,7 +19,7 @@ SAMPLE_BODY = <<~EOS
   Single-origin coffee direct trade retro biodiesel, truffaut fanny pack portland
   blue bottle scenester bushwick. Skateboard squid fanny pack bushwick, photo
   booth vice literally.</p>
-EOS
+HTML
 
 SampleStory =
   Struct.new(:source, :title, :lead, :is_read, :published) do
