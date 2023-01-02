@@ -360,8 +360,6 @@ Style/FetchEnvVar:
 # SupportedStyles: require_parentheses, omit_parentheses
 Style/MethodCallWithArgsParentheses:
   Exclude:
-    - 'config/asset_pipeline.rb'
-    - 'config/puma.rb'
     - 'db/migrate/20130409010818_create_feeds.rb'
     - 'db/migrate/20130409010826_create_stories.rb'
     - 'db/migrate/20130412185253_add_new_fields_to_stories.rb'

@@ -2,10 +2,10 @@
 
 module AssetPipeline
   def registered(app)
-    app.set :sprockets, Sprockets::Environment.new(app.root)
+    app.set(:sprockets, Sprockets::Environment.new(app.root))
 
     ["assets", "stylesheets", "javascripts"].each do |path|
-      app.get "/#{path}/*" do
+      app.get("/#{path}/*") do
         env["PATH_INFO"].sub!(%r{^/#{path}}, "")
         settings.sprockets.call(env)
       end
@@ -20,29 +20,33 @@ module AssetPipeline
   private
 
   def append_paths(app)
-    app.sprockets.append_path File.join(app.root, "app", "assets")
-    app.sprockets.append_path File.join(
-      app.root,
-      "app",
-      "assets",
-      "stylesheets"
+    app.sprockets.append_path(File.join(app.root, "app", "assets"))
+    app.sprockets.append_path(
+      File.join(
+        app.root,
+        "app",
+        "assets",
+        "stylesheets"
+      )
     )
-    app.sprockets.append_path File.join(
-      app.root,
-      "app",
-      "assets",
-      "javascripts"
+    app.sprockets.append_path(
+      File.join(
+        app.root,
+        "app",
+        "assets",
+        "javascripts"
+      )
     )
   end
 
   def configure_development(app)
-    app.configure :development, :test do
+    app.configure(:development, :test) do
       app.sprockets.cache = Sprockets::Cache::FileStore.new("./tmp")
     end
   end
 
   def configure_production(app)
-    app.configure :production, :test do
+    app.configure(:production, :test) do
       app.sprockets.css_compressor = :scss
       app.sprockets.js_compressor = :uglify
     end
@@ -56,7 +60,7 @@ module AssetPipeline
       config.digest = true if app.production?
     end
 
-    app.helpers Sprockets::Helpers
+    app.helpers(Sprockets::Helpers)
   end
 
   module_function :registered,
