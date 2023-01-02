@@ -24,6 +24,8 @@ Style/MethodCallWithArgsParentheses:
     - describe
     - require
     - task
+  Exclude:
+    - db/**/*.rb
 Style/StringLiterals: { EnforcedStyle: double_quotes }
 Style/SymbolArray: { EnforcedStyle: brackets }
 Style/WordArray: { EnforcedStyle: brackets }

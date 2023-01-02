@@ -354,32 +354,6 @@ Style/FetchEnvVar:
   Exclude:
     - 'Rakefile'
 
-# Offense count: 184
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: IgnoreMacros, AllowedMethods, IgnoredMethods, AllowedPatterns, IgnoredPatterns, IncludedMacros, AllowParenthesesInMultilineCall, AllowParenthesesInChaining, AllowParenthesesInCamelCaseMethod, AllowParenthesesInStringInterpolation, EnforcedStyle.
-# SupportedStyles: require_parentheses, omit_parentheses
-Style/MethodCallWithArgsParentheses:
-  Exclude:
-    - 'db/migrate/20130409010818_create_feeds.rb'
-    - 'db/migrate/20130409010826_create_stories.rb'
-    - 'db/migrate/20130412185253_add_new_fields_to_stories.rb'
-    - 'db/migrate/20130418221144_add_user_model.rb'
-    - 'db/migrate/20130423001740_drop_email_from_user.rb'
-    - 'db/migrate/20130423180446_remove_author_from_stories.rb'
-    - 'db/migrate/20130425211008_add_setup_complete_to_user.rb'
-    - 'db/migrate/20130425222157_add_delayed_job.rb'
-    - 'db/migrate/20130429232127_add_status_to_feeds.rb'
-    - 'db/migrate/20130504005816_text_url.rb'
-    - 'db/migrate/20130504022615_change_story_permalink_column.rb'
-    - 'db/migrate/20130509131045_add_unique_constraints.rb'
-    - 'db/migrate/20130513025939_add_keep_unread_to_stories.rb'
-    - 'db/migrate/20130513044029_add_is_starred_status_for_stories.rb'
-    - 'db/migrate/20130522014405_add_api_key_to_user.rb'
-    - 'db/migrate/20130730120312_add_entry_id_to_stories.rb'
-    - 'db/migrate/20130805113712_update_stories_unique_constraints.rb'
-    - 'db/migrate/20130905204142_use_text_datatype_for_title_and_entry_id.rb'
-    - 'db/migrate/20140413100725_add_groups_table_and_foreign_keys_to_feeds.rb'
-
 # Offense count: 10
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: MinDigits, Strict, AllowedNumbers, AllowedPatterns.
