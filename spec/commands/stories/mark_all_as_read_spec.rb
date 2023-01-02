@@ -12,7 +12,7 @@ describe MarkAllAsRead do
     it "marks all stories as read" do
       expect(stories).to receive(:update_all).with(is_read: true)
 
-      MarkAllAsRead.call([1, 2], repo)
+      described_class.call([1, 2], repo)
     end
   end
 end

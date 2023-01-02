@@ -17,7 +17,7 @@ describe ChangeUserPassword do
       expect(repo).to receive(:first).and_return(user)
       expect(repo).to receive(:save)
 
-      command = ChangeUserPassword.new(repo)
+      command = described_class.new(repo)
       result = command.change_user_password(new_password)
 
       expect(BCrypt::Password.new(result.password_digest)).to eq new_password
@@ -27,7 +27,7 @@ describe ChangeUserPassword do
       expect(repo).to receive(:first).and_return(user)
       expect(repo).to receive(:save)
 
-      command = ChangeUserPassword.new(repo)
+      command = described_class.new(repo)
       result = command.change_user_password(new_password)
 
       expect(result.api_key).to eq ApiKey.compute(new_password)

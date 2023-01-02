@@ -10,7 +10,7 @@ describe CompleteSetup do
   it "marks setup as complete" do
     expect(user).to receive(:save).once
 
-    result = CompleteSetup.complete(user)
+    result = described_class.complete(user)
     expect(result.setup_complete).to be(true)
   end
 end

@@ -9,7 +9,7 @@ describe MarkAsUnread do
     let(:story) { create(:story, is_read: true) }
 
     it "marks a story as unread" do
-      expect { MarkAsUnread.new(story.id).mark_as_unread }
+      expect { described_class.new(story.id).mark_as_unread }
         .to change { Story.find(story.id).is_read }
         .to(false)
     end

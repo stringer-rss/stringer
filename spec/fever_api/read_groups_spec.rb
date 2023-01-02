@@ -11,7 +11,7 @@ describe FeverAPI::ReadGroups do
   end
   let(:group_repository) { double("repo") }
 
-  subject { FeverAPI::ReadGroups.new(group_repository:) }
+  subject { described_class.new(group_repository:) }
 
   it "returns a group list if requested" do
     expect(group_repository).to receive(:list).and_return([group1, group2])

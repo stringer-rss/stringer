@@ -9,7 +9,7 @@ describe FeverAPI::SyncSavedItemIds do
   let(:stories) { story_ids.map { |id| double("story", id:) } }
   let(:story_repository) { double("repo") }
 
-  subject { FeverAPI::SyncSavedItemIds.new(story_repository:) }
+  subject { described_class.new(story_repository:) }
 
   it "returns a list of starred items if requested" do
     expect(story_repository).to receive(:all_starred).and_return(stories)

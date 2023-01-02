@@ -9,7 +9,7 @@ describe FeverAPI::SyncUnreadItemIds do
   let(:stories) { story_ids.map { |id| double("story", id:) } }
   let(:story_repository) { double("repo") }
 
-  subject { FeverAPI::SyncUnreadItemIds.new(story_repository:) }
+  subject { described_class.new(story_repository:) }
 
   it "returns a list of unread items if requested" do
     expect(story_repository).to receive(:unread).and_return(stories)

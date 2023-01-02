@@ -9,7 +9,7 @@ describe MarkAsStarred do
     let(:story) { create(:story, is_starred: false) }
 
     it "marks a story as starred" do
-      expect { MarkAsStarred.new(story.id).mark_as_starred }
+      expect { described_class.new(story.id).mark_as_starred }
         .to change { Story.find(story.id).is_starred }
         .to(true)
     end
