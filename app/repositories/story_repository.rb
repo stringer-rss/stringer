@@ -61,7 +61,7 @@ class StoryRepository
   end
 
   def self.feed(feed_id)
-    Story.where("feed_id = ?", feed_id).order("published desc").includes(:feed)
+    Story.where(feed_id:).order("published desc").includes(:feed)
   end
 
   def self.read(page = 1)
