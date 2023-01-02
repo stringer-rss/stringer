@@ -9,13 +9,12 @@ require "timecop"
 app_require "tasks/fetch_feed"
 
 describe "Feed importing" do
-  before { @server = FeedServer.new }
-
+  let(:server) { FeedServer.new }
   let(:feed) do
     Feed.create(
       name: "Example feed",
       last_fetched: Time.new(2014, 1, 1),
-      url: @server.url
+      url: server.url
     )
   end
 
@@ -28,27 +27,27 @@ describe "Feed importing" do
 
     describe "Importing for the first time" do
       it "imports all entries" do
-        @server.response = sample_data("feeds/feed01_valid_feed/feed.xml")
+        server.response = sample_data("feeds/feed01_valid_feed/feed.xml")
         expect { fetch_feed(feed) }.to change(feed.stories, :count).to(5)
       end
     end
 
     describe "Importing for the second time" do
       before do
-        @server.response = sample_data("feeds/feed01_valid_feed/feed.xml")
+        server.response = sample_data("feeds/feed01_valid_feed/feed.xml")
         fetch_feed(feed)
       end
 
       context "no new entries" do
         it "does not create new stories" do
-          @server.response = sample_data("feeds/feed01_valid_feed/feed.xml")
+          server.response = sample_data("feeds/feed01_valid_feed/feed.xml")
           expect { fetch_feed(feed) }.to_not change(feed.stories, :count)
         end
       end
 
       context "new entries" do
         it "creates new stories" do
-          @server.response =
+          server.response =
             sample_data("feeds/feed01_valid_feed/feed_updated.xml")
           expect { fetch_feed(feed) }.to change(feed.stories, :count).by(1)
         end
@@ -71,7 +70,7 @@ describe "Feed importing" do
         # was published.
 
         feed.last_fetched = Time.parse("2014-08-12T00:01:00Z")
-        @server.response =
+        server.response =
           sample_data("feeds/feed02_invalid_published_dates/feed.xml")
 
         expect { fetch_feed(feed) }.to change { feed.stories.count }.by(1)
