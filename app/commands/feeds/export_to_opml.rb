@@ -11,7 +11,7 @@ class ExportToOpml
     builder =
       Nokogiri::XML::Builder.new do |xml|
         xml.opml(version: "1.0") do
-          xml.head { xml.title "Feeds from Stringer" }
+          xml.head { xml.title("Feeds from Stringer") }
           xml.body do
             @feeds.each do |feed|
               xml.outline(

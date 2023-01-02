@@ -17,7 +17,7 @@ class ChangePassword
 
   def change_password
     while (password = ask_password) != ask_confirmation
-      @output.puts I18n.t("first_run.flash.passwords_dont_match")
+      @output.puts(I18n.t("first_run.flash.passwords_dont_match"))
     end
     @command.change_user_password(password)
   end
