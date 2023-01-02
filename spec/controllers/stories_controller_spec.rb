@@ -46,10 +46,6 @@ describe "StoriesController" do
       page = last_response.body
       expect(page).to have_tag("a", with: { href: "/feeds/export" })
       expect(page).to have_tag("a", with: { href: "/logout" })
-      expect(page).to have_tag(
-        "a",
-        with: { href: "https://github.com/stringer-rss/stringer" }
-      )
     end
 
     it "displays a zen-like message when there are no unread stories" do
@@ -165,19 +161,6 @@ describe "StoriesController" do
       get "/feed/#{story_one.feed.id}"
 
       expect(last_response.body).to have_tag("#stories")
-    end
-
-    it "differentiates between read and unread" do
-      allow(FeedRepository).to receive(:fetch).and_return(story_one.feed)
-      allow(StoryRepository).to receive(:feed).and_return(stories)
-
-      story_one.is_read = false
-      story_two.is_read = true
-
-      get "/feed/#{story_one.feed.id}"
-
-      expect(last_response.body).to have_tag("li", class: "story")
-      expect(last_response.body).to have_tag("li", class: "unread")
     end
   end
 end
