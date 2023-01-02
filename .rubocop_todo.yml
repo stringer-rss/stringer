@@ -117,12 +117,6 @@ RSpec/FilePath:
   Exclude:
     - 'spec/helpers/authentications_helper_spec.rb'
 
-# Offense count: 1
-# This cop supports safe autocorrection (--autocorrect).
-RSpec/LetBeforeExamples:
-  Exclude:
-    - 'spec/repositories/feed_repository_spec.rb'
-
 # Offense count: 4
 RSpec/MessageChain:
   Exclude:

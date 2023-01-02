@@ -60,9 +60,8 @@ describe FeedRepository do
       expect(feed.last_fetched).to eq timestamp
     end
 
-    let(:weird_timestamp) { Time.parse("Mon, 01 Jan 0001 00:00:00 +0100") }
-
     it "rejects weird timestamps" do
+      weird_timestamp = Time.parse("Mon, 01 Jan 0001 00:00:00 +0100")
       feed = Feed.new(last_fetched: timestamp)
 
       described_class.update_last_fetched(feed, weird_timestamp)
