@@ -31,17 +31,18 @@ describe MarkGroupAsRead do
     end
 
     context "SPARKS_GROUP_ID and KINDLING_GROUP_ID" do
-      before do
+      it "marks as read all feeds when group is 0" do
         expect(stories).to receive(:update_all).with(is_read: true)
         expect(repo).to receive(:fetch_unread_by_timestamp).and_return(stories)
-      end
 
-      it "marks as read all feeds when group is 0" do
         command = run_command(0)
         command.mark_group_as_read
       end
 
       it "marks as read all feeds when group is -1" do
+        expect(stories).to receive(:update_all).with(is_read: true)
+        expect(repo).to receive(:fetch_unread_by_timestamp).and_return(stories)
+
         command = run_command(-1)
         command.mark_group_as_read
       end
