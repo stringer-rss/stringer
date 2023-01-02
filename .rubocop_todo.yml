@@ -117,14 +117,6 @@ RSpec/FilePath:
   Exclude:
     - 'spec/helpers/authentications_helper_spec.rb'
 
-# Offense count: 1
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: implicit, each, example
-RSpec/HookArgument:
-  Exclude:
-    - 'spec/integration/feed_importing_spec.rb'
-
 # Offense count: 6
 # Configuration parameters: AssignmentOnly.
 RSpec/InstanceVariable:
