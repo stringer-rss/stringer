@@ -211,13 +211,6 @@ RSpec/NestedGroups:
     - 'spec/commands/feeds/add_new_feed_spec.rb'
     - 'spec/integration/feed_importing_spec.rb'
 
-# Offense count: 3
-# This cop supports safe autocorrection (--autocorrect).
-RSpec/ScatteredLet:
-  Exclude:
-    - 'spec/commands/feeds/import_from_opml_spec.rb'
-    - 'spec/repositories/feed_repository_spec.rb'
-
 # Offense count: 94
 # Configuration parameters: IgnoreNameless, IgnoreSymbolicNames.
 RSpec/VerifiedDoubles:

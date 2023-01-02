@@ -13,6 +13,8 @@ describe ImportFromOpml do
       )
     )
   end
+  let(:group1) { Group.find_by_name("Football News") }
+  let(:group2) { Group.find_by_name("RoR")           }
 
   def import
     described_class.import(subscriptions)
@@ -22,9 +24,6 @@ describe ImportFromOpml do
     Feed.delete_all
     Group.delete_all
   end
-
-  let(:group1) { Group.find_by_name("Football News") }
-  let(:group2) { Group.find_by_name("RoR")           }
 
   context "adding group_id for existing feeds" do
     let!(:feed1) do
