@@ -220,7 +220,6 @@ RSpec/MessageExpectation:
   Exclude:
     - 'spec/commands/feeds/add_new_feed_spec.rb'
     - 'spec/commands/find_new_stories_spec.rb'
-    - 'spec/controllers/first_run_controller_spec.rb'
     - 'spec/controllers/sessions_controller_spec.rb'
     - 'spec/controllers/stories_controller_spec.rb'
     - 'spec/fever_api_spec.rb'

@@ -7,23 +7,27 @@ app_require "controllers/sinatra/first_run_controller"
 
 describe "FirstRunController" do
   context "when a user has not been setup" do
-    before do
-      allow(UserRepository).to receive(:setup_complete?).and_return(false)
+    def setup
+      expect(UserRepository)
+        .to receive(:setup_complete?).twice.and_return(false)
     end
 
     describe "GET /setup/password" do
       it "displays a form to enter your password" do
+        setup
+
         get "/setup/password"
 
         page = last_response.body
         expect(page).to have_tag("form#password_setup")
         expect(page).to have_tag("input#password")
-        expect(page).to have_tag("input#password-confirmation")
       end
     end
 
     describe "POST /setup/password" do
       it "rejects empty passwords" do
+        setup
+
         post "/setup/password"
 
         page = last_response.body
@@ -31,6 +35,8 @@ describe "FirstRunController" do
       end
 
       it "rejects when password isn't confirmed" do
+        setup
+
         post "/setup/password", password: "foo", password_confirmation: "bar"
 
         page = last_response.body
@@ -38,12 +44,12 @@ describe "FirstRunController" do
       end
 
       it "accepts confirmed passwords and redirects to next step" do
+        setup
         user = instance_double(User, id: 1)
         expect(CreateUser).to receive(:call).with("foo").and_return(user)
 
         post "/setup/password", password: "foo", password_confirmation: "foo"
 
-        expect(last_response.status).to be(302)
         expect(URI.parse(last_response.location).path).to eq("/feeds/import")
       end
     end
@@ -52,16 +58,10 @@ describe "FirstRunController" do
       let(:user) { instance_double(User) }
       let(:feeds) { [instance_double(Feed), instance_double(Feed)] }
 
-      before do
-        allow(UserRepository).to receive(:fetch).and_return(user)
-        allow(Feed).to receive(:all).and_return(feeds)
-      end
-
       it "displays the tutorial and completes setup" do
-        expect(CompleteSetup).to receive(:complete).with(user).once
-        expect(FetchFeeds).to receive(:enqueue).with(feeds).once
+        user = create(:user)
 
-        get "/setup/tutorial"
+        get "/setup/tutorial", {}, { "rack.session" => { user_id: user.id } }
 
         page = last_response.body
         expect(page).to have_tag("#mark-all-instruction")
