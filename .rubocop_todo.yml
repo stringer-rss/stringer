@@ -237,16 +237,6 @@ RSpec/VerifiedDoubles:
     - 'spec/tasks/remove_old_stories_spec.rb'
     - 'spec/utils/feed_discovery_spec.rb'
 
-# Offense count: 3
-# This cop supports unsafe autocorrection (--autocorrect-all).
-# Configuration parameters: Whitelist, AllowedMethods, AllowedReceivers.
-# Whitelist: find_by_sql, find_by_token_for
-# AllowedMethods: find_by_sql, find_by_token_for
-# AllowedReceivers: Gem::Specification, page
-Rails/DynamicFindBy:
-  Exclude:
-    - 'spec/commands/feeds/import_from_opml_spec.rb'
-
 # Offense count: 1
 # Configuration parameters: Include.
 # Include: app/models/**/*.rb
