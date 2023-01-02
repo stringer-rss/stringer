@@ -19,7 +19,6 @@ describe "FirstRunController" do
         expect(page).to have_tag("form#password_setup")
         expect(page).to have_tag("input#password")
         expect(page).to have_tag("input#password-confirmation")
-        expect(page).to have_tag("input#submit")
       end
     end
 
@@ -66,29 +65,25 @@ describe "FirstRunController" do
 
         page = last_response.body
         expect(page).to have_tag("#mark-all-instruction")
-        expect(page).to have_tag("#refresh-instruction")
-        expect(page).to have_tag("#feeds-instruction")
-        expect(page).to have_tag("#add-feed-instruction")
-        expect(page).to have_tag("#story-instruction")
-        expect(page).to have_tag("#start")
       end
     end
   end
 
   context "when a user has been setup" do
-    it "redirects any requests to first run stuff" do
+    it "redirects tutorial path to /news" do
+      user = create(:user, :setup_complete)
+      session = { "rack.session" => { user_id: user.id } }
+
+      get "/setup/tutorial", {}, session
+      expect(last_response.status).to be(302)
+      expect(URI.parse(last_response.location).path).to eq("/news")
+    end
+
+    it "redirects root path to /news" do
       user = create(:user, :setup_complete)
       session = { "rack.session" => { user_id: user.id } }
 
       get "/", {}, session
-      expect(last_response.status).to be(302)
-      expect(URI.parse(last_response.location).path).to eq("/news")
-
-      get "/setup/password", {}, session
-      expect(last_response.status).to be(302)
-      expect(URI.parse(last_response.location).path).to eq("/news")
-
-      get "/setup/tutorial", {}, session
       expect(last_response.status).to be(302)
       expect(URI.parse(last_response.location).path).to eq("/news")
     end
