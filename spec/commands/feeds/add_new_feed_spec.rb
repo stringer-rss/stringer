@@ -28,7 +28,7 @@ describe AddNewFeed do
 
         result = described_class.add("http://feed.com", discoverer, repo)
 
-        expect(result).to be feed
+        expect(result).to be(feed)
       end
 
       context "title includes a script tag" do

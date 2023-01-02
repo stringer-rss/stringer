@@ -32,7 +32,7 @@ describe FindNewStories do
           .to receive(:exists?).with("story2", 1).and_return(false)
 
         result = described_class.new(feed, 1, Time.new(2013, 1, 2)).new_stories
-        expect(result).to eq [story2]
+        expect(result).to eq([story2])
       end
     end
 
@@ -47,7 +47,7 @@ describe FindNewStories do
         Time.new(2013, 1, 3),
         "old-story"
       ).new_stories
-      expect(result).to eq [new_story]
+      expect(result).to eq([new_story])
     end
 
     it "ignores stories older than 3 days" do
