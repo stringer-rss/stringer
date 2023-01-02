@@ -37,7 +37,7 @@ task :lazy_fetch do
   end
 
   FeedRepository.list.each do |feed|
-    Delayed::Job.enqueue FetchFeedJob.new(feed.id)
+    Delayed::Job.enqueue(FetchFeedJob.new(feed.id))
   end
 end
 

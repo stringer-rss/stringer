@@ -22,6 +22,8 @@ Style/MethodCallWithArgsParentheses:
     - to
     - not_to
     - describe
+    - require
+    - task
 Style/StringLiterals: { EnforcedStyle: double_quotes }
 Style/SymbolArray: { EnforcedStyle: brackets }
 Style/WordArray: { EnforcedStyle: brackets }
