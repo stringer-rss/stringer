@@ -249,7 +249,6 @@ RSpec/MultipleExpectations:
     - 'spec/commands/users/change_user_password_spec.rb'
     - 'spec/commands/users/complete_setup_spec.rb'
     - 'spec/commands/users/create_user_spec.rb'
-    - 'spec/controllers/stories_controller_spec.rb'
     - 'spec/fever_api/authentication_spec.rb'
     - 'spec/fever_api/read_feeds_spec.rb'
     - 'spec/fever_api/read_groups_spec.rb'

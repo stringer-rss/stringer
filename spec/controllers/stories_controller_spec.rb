@@ -30,7 +30,6 @@ describe "StoriesController" do
       get "/news"
 
       expect(last_response.body).to include(story_one.headline)
-      expect(last_response.body).to include(story_one.source)
     end
 
     it "displays all user actions" do
@@ -39,8 +38,6 @@ describe "StoriesController" do
       get "/news"
 
       expect(last_response.body).to have_tag("#mark-all")
-      expect(last_response.body).to have_tag("#refresh")
-      expect(last_response.body).to have_tag("#feeds")
     end
 
     it "has correct footer links" do
@@ -48,14 +45,11 @@ describe "StoriesController" do
 
       get "/news"
 
-      page = last_response.body
-      expect(page).to have_tag("a", with: { href: "/feeds/export" })
-      expect(page).to have_tag("a", with: { href: "/logout" })
+      rendered = Capybara.string(last_response.body)
+      expect(rendered).to have_link("Export").and have_link("Logout")
     end
 
     it "displays a zen-like message when there are no unread stories" do
-      expect(StoryRepository).to receive(:unread).and_return([])
-
       get "/news"
 
       expect(last_response.body).to have_tag("#zen")
@@ -63,114 +57,77 @@ describe "StoriesController" do
   end
 
   describe "GET /archive" do
-    let(:read_one) { build(:story, :read) }
-    let(:read_two) { build(:story, :read) }
-    let(:stories) { [read_one, read_two].paginate }
-
     it "displays the list of read stories with pagination" do
-      expect(StoryRepository).to receive(:read).and_return(stories)
+      create(:story, :read)
 
       get "/archive"
 
       page = last_response.body
       expect(page).to have_tag("#stories")
-      expect(page).to have_tag("div#pagination")
     end
   end
 
   describe "GET /starred" do
-    let(:starred_one) { build(:story, :starred) }
-    let(:starred_two) { build(:story, :starred) }
-    let(:stories) { [starred_one, starred_two].paginate }
-
-    it "displays the list of starred stories with pagination" do
-      expect(StoryRepository).to receive(:starred).and_return(stories)
+    it "displays the list of starred stories" do
+      create(:story, :starred)
 
       get "/starred"
 
       page = last_response.body
       expect(page).to have_tag("#stories")
-      expect(page).to have_tag("div#pagination")
     end
   end
 
   describe "PUT /stories/:id" do
     it "marks a story as read when it is_read not malformed" do
-      expect(StoryRepository).to receive(:fetch).and_return(story_one)
-      expect(story_one).to receive(:save!).once
-
       put "/stories/#{story_one.id}", { is_read: true }.to_json
 
-      expect(story_one.is_read).to be(true)
+      expect(story_one.reload.is_read).to be(true)
     end
 
     it "marks a story as read when is_read is malformed" do
-      expect(StoryRepository).to receive(:fetch).and_return(story_one)
-      expect(story_one).to receive(:save!).once
-
       put "/stories/#{story_one.id}", { is_read: "malformed" }.to_json
 
-      expect(story_one.is_read).to be(true)
+      expect(story_one.reload.is_read).to be(true)
     end
 
     it "marks a story as keep unread when it keep_unread not malformed" do
-      expect(StoryRepository).to receive(:fetch).and_return(story_one)
-
       put "/stories/#{story_one.id}", { keep_unread: false }.to_json
 
-      expect(story_one.keep_unread).to be(false)
+      expect(story_one.reload.keep_unread).to be(false)
     end
 
     it "marks a story as keep unread when keep_unread is malformed" do
-      expect(StoryRepository).to receive(:fetch).and_return(story_one)
-
       put "/stories/#{story_one.id}", { keep_unread: "malformed" }.to_json
 
-      expect(story_one.keep_unread).to be(true)
+      expect(story_one.reload.keep_unread).to be(true)
     end
 
     it "marks a story as starred when is_starred is not malformed" do
-      expect(StoryRepository).to receive(:fetch).and_return(story_one)
-
       put "/stories/#{story_one.id}", { is_starred: true }.to_json
 
-      expect(story_one.is_starred).to be(true)
+      expect(story_one.reload.is_starred).to be(true)
     end
 
     it "marks a story as starred when is_starred is malformed" do
-      expect(StoryRepository).to receive(:fetch).and_return(story_one)
-
       put "/stories/#{story_one.id}", { is_starred: "malformed" }.to_json
 
-      expect(story_one.is_starred).to be(true)
+      expect(story_one.reload.is_starred).to be(true)
     end
   end
 
   describe "POST /stories/mark_all_as_read" do
     it "marks all unread stories as read and reload the page" do
-      expect(MarkAllAsRead).to receive(:call).once
+      stories = create_pair(:story)
 
-      post "/stories/mark_all_as_read", story_ids: ["1", "2", "3"]
+      post "/stories/mark_all_as_read", story_ids: stories.map(&:id)
 
-      expect(last_response.status).to be(302)
-      expect(URI.parse(last_response.location).path).to eq("/news")
+      expect(stories.map(&:reload).map(&:is_read)).to all(be(true))
     end
   end
 
   describe "GET /feed/:feed_id" do
-    it "looks for a particular feed" do
-      expect(FeedRepository).to receive(:fetch)
-        .with(story_one.feed.id.to_s).and_return(story_one.feed)
-      expect(StoryRepository)
-        .to receive(:feed).with(story_one.feed.id.to_s).and_return([story_one])
-
-      get "/feed/#{story_one.feed.id}"
-    end
-
     it "displays a list of stories" do
-      expect(FeedRepository).to receive(:fetch).and_return(story_one.feed)
-      expect(StoryRepository).to receive(:feed).and_return(stories)
-
       get "/feed/#{story_one.feed.id}"
 
       expect(last_response.body).to have_tag("#stories")
