@@ -18,23 +18,23 @@ RSpec.describe UrlHelpers do
     end
 
     it "replaces relative urls in a, img and video tags" do
-      content = <<~EOS
+      content = <<~HTML
         <div>
         <img src="https://foo">
         <a href="/bar/baz">tee</a><img src="bar/bar">
         <video src="/tee"></video>
         </div>
-      EOS
+      HTML
 
       result = helper.expand_absolute_urls(content, "http://oodl.io/d/")
-      expect(result.delete("\n")).to eq <<~EOS.delete("\n")
+      expect(result.delete("\n")).to eq <<~HTML.delete("\n")
         <div>
         <img src="https://foo">
         <a href="http://oodl.io/bar/baz">tee</a>
         <img src="http://oodl.io/d/bar/bar">
         <video src="http://oodl.io/tee"></video>
         </div>
-      EOS
+      HTML
     end
 
     it "handles empty body" do
@@ -42,22 +42,22 @@ RSpec.describe UrlHelpers do
     end
 
     it "doesn't modify tags that do not have url attributes" do
-      content = <<~EOS
+      content = <<~HTML
         <div>
         <img foo="bar">
         <a name="something"/></a>
         <video foo="bar"></video>
         </div>
-      EOS
+      HTML
 
       result = helper.expand_absolute_urls(content, "http://oodl.io/d/")
-      expect(result.delete("\n")).to eq <<~EOS.delete("\n")
+      expect(result.delete("\n")).to eq <<~HTML.delete("\n")
         <div>
         <img foo="bar">
         <a name="something"></a>
         <video foo="bar"></video>
         </div>
-      EOS
+      HTML
     end
 
     it "leaves the url as-is if it cannot be parsed" do

@@ -39,15 +39,6 @@ Metrics/MethodLength:
     - 'config/asset_pipeline.rb'
     - 'db/migrate/20130425222157_add_delayed_job.rb'
 
-# Offense count: 9
-# Configuration parameters: ForbiddenDelimiters.
-# ForbiddenDelimiters: (?-mix:(^|\s)(EO[A-Z]{1}|END)(\s|$))
-Naming/HeredocDelimiterNaming:
-  Exclude:
-    - 'app/utils/sample_story.rb'
-    - 'spec/helpers/url_helpers_spec.rb'
-    - 'spec/utils/opml_parser_spec.rb'
-
 # Offense count: 2
 # Configuration parameters: NamePrefix, ForbiddenPrefixes, AllowedMethods, MethodDefinitionMacros.
 # NamePrefix: is_, has_, have_
