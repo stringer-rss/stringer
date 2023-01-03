@@ -50,9 +50,9 @@ describe DebugController do
 
       get "/debug"
 
-      page = last_response.body
-      expect(page).to have_tag("li", text: /Migration B - 2/)
-      expect(page).to have_tag("li", text: /Migration C - 3/)
+      rendered = Capybara.string(last_response.body)
+      expect(rendered).to have_selector("li", text: /Migration B - 2/)
+        .and have_selector("li", text: /Migration C - 3/)
     end
   end
 
