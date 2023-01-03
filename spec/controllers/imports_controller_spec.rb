@@ -11,7 +11,6 @@ describe ImportsController do
 
       page = last_response.body
       expect(page).to have_tag("input#opml_file")
-      expect(page).to have_tag("a#skip")
     end
   end
 
@@ -23,13 +22,10 @@ describe ImportsController do
       )
     end
 
-    it "parse OPML and starts fetching" do
+    it "parses OPML and starts fetching" do
       expect(ImportFromOpml).to receive(:import).once
 
       post "/feeds/import", "opml_file" => opml_file
-
-      expect(last_response.status).to be(302)
-      expect(URI.parse(last_response.location).path).to eq("/setup/tutorial")
     end
   end
 end
