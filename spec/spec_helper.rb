@@ -15,6 +15,7 @@ require "date"
 
 require_relative "support/coverage"
 require_relative "support/factory_bot"
+require_relative "support/webmock"
 require_relative "factories"
 
 require "./app"

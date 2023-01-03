@@ -46,4 +46,5 @@ group :development, :test do
   gem "shotgun"
   gem "simplecov"
   gem "timecop"
+  gem "webmock", require: false
 end
