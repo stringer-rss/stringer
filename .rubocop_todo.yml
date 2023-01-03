@@ -59,11 +59,6 @@ RSpec/Be:
   Exclude:
     - 'spec/commands/feeds/import_from_opml_spec.rb'
 
-# Offense count: 3
-RSpec/BeforeAfterAll:
-  Exclude:
-    - 'spec/integration/feed_importing_spec.rb'
-
 # Offense count: 18
 # Configuration parameters: Prefixes, AllowedPatterns.
 # Prefixes: when, with, without
