@@ -11,10 +11,10 @@ class StoryRepository
   def self.add(entry, feed)
     enclosure_url = entry.enclosure_url if entry.respond_to?(:enclosure_url)
     Story.create(
-      feed: feed,
+      feed:,
       title: extract_title(entry),
       permalink: extract_url(entry, feed),
-      enclosure_url: enclosure_url,
+      enclosure_url:,
       body: extract_content(entry),
       is_read: false,
       is_starred: false,
@@ -38,18 +38,18 @@ class StoryRepository
 
   def self.fetch_unread_by_timestamp_and_group(timestamp, group_id)
     fetch_unread_by_timestamp(timestamp)
-      .joins(:feed).where(feeds: { group_id: group_id })
+      .joins(:feed).where(feeds: { group_id: })
   end
 
   def self.fetch_unread_for_feed_by_timestamp(feed_id, timestamp)
     timestamp = Time.at(timestamp.to_i)
     Story
-      .where(feed_id: feed_id)
+      .where(feed_id:)
       .where("created_at < ? AND is_read = ?", timestamp, false)
   end
 
   def self.exists?(id, feed_id)
-    Story.exists?(entry_id: id, feed_id: feed_id)
+    Story.exists?(entry_id: id, feed_id:)
   end
 
   def self.unread

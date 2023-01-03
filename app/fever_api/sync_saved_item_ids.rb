@@ -10,7 +10,7 @@ module FeverAPI
 
     def call(params = {})
       if params.keys.include?("saved_item_ids")
-        { saved_item_ids: saved_item_ids }
+        { saved_item_ids: }
       else
         {}
       end

@@ -10,7 +10,7 @@ module FeverAPI
 
     def call(params = {})
       if params.keys.include?("feeds")
-        { feeds: feeds }
+        { feeds: }
       else
         {}
       end

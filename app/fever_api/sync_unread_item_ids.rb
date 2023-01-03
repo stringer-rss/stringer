@@ -10,7 +10,7 @@ module FeverAPI
 
     def call(params = {})
       if params.keys.include?("unread_item_ids")
-        { unread_item_ids: unread_item_ids }
+        { unread_item_ids: }
       else
         {}
       end

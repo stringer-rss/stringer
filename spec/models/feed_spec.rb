@@ -62,7 +62,7 @@ describe "Feed" do
         id: 52,
         name: "chicken feed",
         url: "wat url",
-        last_fetched: last_fetched
+        last_fetched:
       )
 
       expect(feed.as_fever_json).to eq(

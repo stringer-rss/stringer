@@ -69,7 +69,7 @@ class Stringer < Sinatra::Base
     include Sinatra::AuthenticationHelpers
 
     def render_partial(name, locals = {})
-      erb "partials/_#{name}".to_sym, layout: false, locals: locals
+      erb "partials/_#{name}".to_sym, layout: false, locals:
     end
 
     def render_js_template(name)
@@ -77,7 +77,7 @@ class Stringer < Sinatra::Base
     end
 
     def render_js(name, locals = {})
-      erb "js/#{name}.js".to_sym, layout: false, locals: locals
+      erb "js/#{name}.js".to_sym, layout: false, locals:
     end
 
     def t(*args, **kwargs)

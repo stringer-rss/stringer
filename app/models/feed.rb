@@ -22,10 +22,10 @@ class Feed < ApplicationRecord
 
   def as_fever_json
     {
-      id: id,
+      id:,
       favicon_id: 0,
       title: name,
-      url: url,
+      url:,
       site_url: url,
       is_spark: 0,
       last_updated_on_time: last_fetched.to_i
