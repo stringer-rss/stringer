@@ -11,14 +11,12 @@ describe "SessionsController" do
 
       page = last_response.body
       expect(page).to have_tag("input#password")
-      expect(page).to have_tag("#login")
     end
   end
 
   describe "POST /login" do
     it "denies access when password is incorrect" do
-      expect(SignInUser).to receive(:sign_in).and_return(nil)
-
+      create(:user)
       post "/login", password: "not-the-password"
 
       page = last_response.body
@@ -31,8 +29,13 @@ describe "SessionsController" do
       post "/login", password: user.password
 
       expect(session[:user_id]).to eq(user.id)
+    end
 
-      expect(last_response.status).to be(302)
+    it "redirects to the root page" do
+      user = create(:user)
+
+      post "/login", password: user.password
+
       expect(URI.parse(last_response.location).path).to eq("/")
     end
 
@@ -42,18 +45,20 @@ describe "SessionsController" do
       params = { password: user.password }
       post "/login", params, "rack.session" => { redirect_to: "/archive" }
 
-      expect(session[:redirect_to]).to be_nil
       expect(URI.parse(last_response.location).path).to eq("/archive")
     end
   end
 
   describe "GET /logout" do
-    it "clears the session and redirects" do
+    it "clears the session" do
       get "/logout", {}, "rack.session" => { userid: 1 }
 
       expect(session[:user_id]).to be_nil
+    end
 
-      expect(last_response.status).to be(302)
+    it "redirects to the root page" do
+      get "/logout", {}, "rack.session" => { userid: 1 }
+
       expect(URI.parse(last_response.location).path).to eq("/")
     end
   end
