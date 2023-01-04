@@ -34,7 +34,7 @@ describe "Feed importing" do
     end
 
     describe "Importing for the second time" do
-      before(:each) do
+      before do
         @server.response = sample_data("feeds/feed01_valid_feed/feed.xml")
         fetch_feed(feed)
       end
