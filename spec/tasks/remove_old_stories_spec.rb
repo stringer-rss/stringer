@@ -12,7 +12,7 @@ describe RemoveOldStories do
     end
 
     it "passes along the number of days to the story repository query" do
-      allow(described_class).to receive(:pruned_feeds) { [] }
+      allow(described_class).to receive(:pruned_feeds).and_return([])
 
       expect(StoryRepository).to receive(:unstarred_read_stories_older_than)
         .with(7).and_return(stories_mock)
@@ -21,7 +21,7 @@ describe RemoveOldStories do
     end
 
     it "requests deletion of all old stories" do
-      allow(described_class).to receive(:pruned_feeds) { [] }
+      allow(described_class).to receive(:pruned_feeds).and_return([])
       allow(StoryRepository)
         .to receive(:unstarred_read_stories_older_than) { stories_mock }
 

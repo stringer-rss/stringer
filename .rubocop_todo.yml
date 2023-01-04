@@ -211,14 +211,6 @@ RSpec/NestedGroups:
     - 'spec/commands/feeds/add_new_feed_spec.rb'
     - 'spec/integration/feed_importing_spec.rb'
 
-# Offense count: 2
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: and_return, block
-RSpec/ReturnFromStub:
-  Exclude:
-    - 'spec/tasks/remove_old_stories_spec.rb'
-
 # Offense count: 3
 # This cop supports safe autocorrection (--autocorrect).
 RSpec/ScatteredLet:
