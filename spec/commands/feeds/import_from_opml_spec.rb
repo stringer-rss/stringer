@@ -53,8 +53,8 @@ describe ImportFromOpml do
     it "sets group_id for existing feeds" do
       described_class.import(subscriptions)
 
-      expect(feed1.reload.group).to eq group1
-      expect(feed2.reload.group).to eq group2
+      expect(feed1.reload.group).to eq(group1)
+      expect(feed2.reload.group).to eq(group2)
     end
   end
 
@@ -86,8 +86,8 @@ describe ImportFromOpml do
     it "sets group" do
       described_class.import(subscriptions)
 
-      expect(feed1.first.group).to eq group1
-      expect(feed2.first.group).to eq group2
+      expect(feed1.first.group).to eq(group1)
+      expect(feed2.first.group).to eq(group2)
     end
 
     it "does not create empty group" do
@@ -104,7 +104,7 @@ describe ImportFromOpml do
     it "does not create any new group for feeds without group" do
       described_class.import(subscriptions)
 
-      expect(Group.where.not(id: [group1.id, group2.id]).count).to eq 0
+      expect(Group.where.not(id: [group1.id, group2.id]).count).to eq(0)
     end
 
     it "creates feeds without group_id" do

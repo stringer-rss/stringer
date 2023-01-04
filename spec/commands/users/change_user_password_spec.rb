@@ -20,7 +20,7 @@ describe ChangeUserPassword do
       command = described_class.new(repo)
       result = command.change_user_password(new_password)
 
-      expect(BCrypt::Password.new(result.password_digest)).to eq new_password
+      expect(BCrypt::Password.new(result.password_digest)).to eq(new_password)
     end
 
     it "changes the API key of the user" do
@@ -30,7 +30,7 @@ describe ChangeUserPassword do
       command = described_class.new(repo)
       result = command.change_user_password(new_password)
 
-      expect(result.api_key).to eq ApiKey.compute(new_password)
+      expect(result.api_key).to eq(ApiKey.compute(new_password))
     end
   end
 end
