@@ -237,15 +237,6 @@ RSpec/VerifiedDoubles:
     - 'spec/tasks/remove_old_stories_spec.rb'
     - 'spec/utils/feed_discovery_spec.rb'
 
-# Offense count: 2
-# Configuration parameters: Database, Include.
-# SupportedDatabases: mysql, postgresql
-# Include: db/migrate/*.rb
-Rails/BulkChangeTable:
-  Exclude:
-    - 'db/migrate/20130412185253_add_new_fields_to_stories.rb'
-    - 'db/migrate/20130905204142_use_text_datatype_for_title_and_entry_id.rb'
-
 # Offense count: 3
 # This cop supports unsafe autocorrection (--autocorrect-all).
 # Configuration parameters: Whitelist, AllowedMethods, AllowedReceivers.
