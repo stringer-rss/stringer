@@ -13,8 +13,8 @@ describe ImportFromOpml do
       )
     )
   end
-  let(:group1) { Group.find_by_name("Football News") }
-  let(:group2) { Group.find_by_name("RoR")           }
+  let(:group1) { Group.find_by(name: "Football News") }
+  let(:group2) { Group.find_by(name: "RoR")           }
 
   def import
     described_class.import(subscriptions)
@@ -93,7 +93,7 @@ describe ImportFromOpml do
     it "does not create empty group" do
       described_class.import(subscriptions)
 
-      expect(Group.find_by_name("Empty Group")).to be_nil
+      expect(Group.find_by(name: "Empty Group")).to be_nil
     end
   end
 
