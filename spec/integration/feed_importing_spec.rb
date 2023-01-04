@@ -41,7 +41,7 @@ describe "Feed importing" do
       context "no new entries" do
         it "does not create new stories" do
           server.response = sample_data("feeds/feed01_valid_feed/feed.xml")
-          expect { fetch_feed(feed) }.to_not change(feed.stories, :count)
+          expect { fetch_feed(feed) }.not_to change(feed.stories, :count)
         end
       end
 
