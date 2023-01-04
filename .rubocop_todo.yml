@@ -348,19 +348,6 @@ Rails/Validation:
     - 'app/models/story.rb'
 
 # Offense count: 2
-# This cop supports unsafe autocorrection (--autocorrect-all).
-Rails/WhereEquals:
-  Exclude:
-    - 'app/models/feed.rb'
-    - 'app/repositories/story_repository.rb'
-
-# Offense count: 1
-# This cop supports safe autocorrection (--autocorrect).
-Rails/WhereNot:
-  Exclude:
-    - 'spec/commands/feeds/import_from_opml_spec.rb'
-
-# Offense count: 2
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: AllowedVars.
 Style/FetchEnvVar:

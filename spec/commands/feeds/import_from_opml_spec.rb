@@ -104,7 +104,7 @@ describe ImportFromOpml do
     it "does not create any new group for feeds without group" do
       described_class.import(subscriptions)
 
-      expect(Group.where("id NOT IN (?)", [group1.id, group2.id]).count).to eq 0
+      expect(Group.where.not(id: [group1.id, group2.id]).count).to eq 0
     end
 
     it "creates feeds without group_id" do
