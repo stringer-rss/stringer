@@ -24,7 +24,7 @@ HTML
 SampleStory =
   Struct.new(:source, :title, :lead, :is_read, :published) do
     def id
-      -1 * rand(100)
+      rand(100) * -1
     end
 
     def headline

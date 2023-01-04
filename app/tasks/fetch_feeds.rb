@@ -7,6 +7,10 @@ require "active_support/core_ext/kernel/reporting"
 require "delayed_job_active_record"
 
 class FetchFeeds
+  def self.enqueue(feeds)
+    new(feeds).prepare_to_delay.delay.fetch_all
+  end
+
   def initialize(feeds, pool = nil)
     @pool  = pool
     @feeds = feeds
@@ -35,9 +39,5 @@ class FetchFeeds
     @feeds_ids = @feeds.map(&:id)
     @feeds = []
     self
-  end
-
-  def self.enqueue(feeds)
-    new(feeds).prepare_to_delay.delay.fetch_all
   end
 end
