@@ -13,7 +13,7 @@ describe "i18n" do
     let(:locale) { nil }
 
     it "loads default locale" do
-      expect(I18n.locale.to_s).to eq "en"
+      expect(I18n.locale.to_s).to eq("en")
       expect(I18n.locale.to_s).not_to be_nil
     end
   end
@@ -22,8 +22,8 @@ describe "i18n" do
     let(:locale) { "en" }
 
     it "loads default locale" do
-      expect(I18n.locale.to_s).to eq "en"
-      expect(I18n.t("layout.title")).to eq "stringer | your rss buddy"
+      expect(I18n.locale.to_s).to eq("en")
+      expect(I18n.t("layout.title")).to eq("stringer | your rss buddy")
     end
   end
 
@@ -32,7 +32,7 @@ describe "i18n" do
 
     it "does not find localization strings" do
       expect(I18n.t("layout.title", locale: ENV["LOCALE"].to_sym))
-        .not_to eq "stringer | your rss buddy"
+        .not_to eq("stringer | your rss buddy")
     end
   end
 end

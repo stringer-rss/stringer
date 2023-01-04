@@ -55,7 +55,7 @@ describe FeverAPI do
 
   describe "#get" do
     def make_request(extra_headers = {})
-      get "/", headers.merge(extra_headers)
+      get("/", headers.merge(extra_headers))
     end
 
     it "returns standard answer" do
@@ -191,7 +191,7 @@ describe FeverAPI do
 
   describe "#post" do
     def make_request(extra_headers = {})
-      post "/", headers.merge(extra_headers)
+      post("/", headers.merge(extra_headers))
     end
 
     it "commands to mark story as read" do

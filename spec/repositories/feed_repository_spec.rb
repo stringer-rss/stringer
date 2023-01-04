@@ -19,7 +19,7 @@ describe FeedRepository do
 
       result = described_class.fetch(feed.id)
 
-      expect(result).to eq feed
+      expect(result).to eq(feed)
     end
   end
 
@@ -44,8 +44,8 @@ describe FeedRepository do
 
       described_class.update_feed(feed, "Test Feed", "example.com/feed")
 
-      expect(feed.name).to eq "Test Feed"
-      expect(feed.url).to eq "example.com/feed"
+      expect(feed.name).to eq("Test Feed")
+      expect(feed.url).to eq("example.com/feed")
     end
   end
 
@@ -57,7 +57,7 @@ describe FeedRepository do
 
       described_class.update_last_fetched(feed, timestamp)
 
-      expect(feed.last_fetched).to eq timestamp
+      expect(feed.last_fetched).to eq(timestamp)
     end
 
     it "rejects weird timestamps" do
@@ -66,7 +66,7 @@ describe FeedRepository do
 
       described_class.update_last_fetched(feed, weird_timestamp)
 
-      expect(feed.last_fetched).to eq timestamp
+      expect(feed.last_fetched).to eq(timestamp)
     end
 
     it "doesn't update if timestamp is nil" do
@@ -74,7 +74,7 @@ describe FeedRepository do
 
       described_class.update_last_fetched(feed, nil)
 
-      expect(feed.last_fetched).to eq timestamp
+      expect(feed.last_fetched).to eq(timestamp)
     end
 
     it "doesn't update if timestamp is older than the current value" do
@@ -83,7 +83,7 @@ describe FeedRepository do
 
       described_class.update_last_fetched(feed, one_week_ago)
 
-      expect(feed.last_fetched).to eq timestamp
+      expect(feed.last_fetched).to eq(timestamp)
     end
   end
 

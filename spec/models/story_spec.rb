@@ -25,7 +25,7 @@ describe "Story" do
 
     it "strips html out" do
       story.title = "<b>Super cool</b> stuff"
-      expect(story.headline).to eq "Super cool stuff"
+      expect(story.headline).to eq("Super cool stuff")
     end
   end
 
@@ -36,7 +36,7 @@ describe "Story" do
 
     it "strips html out" do
       story.body = "<a href='http://github.com'>Yo</a> dawg"
-      expect(story.lead).to eq "Yo dawg"
+      expect(story.lead).to eq("Yo dawg")
     end
   end
 
