@@ -3,7 +3,7 @@
 require_relative "./application_record"
 
 class Feed < ApplicationRecord
-  has_many :stories, -> { order "published desc" }, dependent: :delete_all
+  has_many :stories, -> { order("published desc") }, dependent: :delete_all
   belongs_to :group
 
   validates_uniqueness_of :url
