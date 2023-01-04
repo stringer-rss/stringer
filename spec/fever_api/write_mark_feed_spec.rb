@@ -5,10 +5,10 @@ require "spec_helper"
 app_require "fever_api/write_mark_feed"
 
 describe FeverAPI::WriteMarkFeed do
+  subject { described_class.new(marker_class:) }
+
   let(:feed_marker) { double("feed marker") }
   let(:marker_class) { double("marker class") }
-
-  subject { described_class.new(marker_class:) }
 
   it "instantiates a feed marker and calls mark_feed_as_read if requested" do
     expect(marker_class)

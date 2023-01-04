@@ -5,9 +5,9 @@ require "spec_helper"
 app_require "fever_api/read_items"
 
 describe FeverAPI::ReadItems do
-  let(:story_repository) { double("repo") }
-
   subject { described_class.new(story_repository:) }
+
+  let(:story_repository) { double("repo") }
 
   it "returns a list of unread items including total count" do
     stories = [
