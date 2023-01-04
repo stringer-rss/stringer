@@ -360,7 +360,6 @@ Style/FetchEnvVar:
 # SupportedStyles: require_parentheses, omit_parentheses
 Style/MethodCallWithArgsParentheses:
   Exclude:
-    - 'Rakefile'
     - 'app.rb'
     - 'app/commands/feeds/export_to_opml.rb'
     - 'app/models/feed.rb'
