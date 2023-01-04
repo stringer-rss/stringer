@@ -14,13 +14,13 @@ describe SignInUser do
 
   describe "#sign_in" do
     it "returns the user if the password is valid" do
-      result = SignInUser.sign_in(valid_password, repo)
+      result = described_class.sign_in(valid_password, repo)
 
       expect(result.id).to eq 1
     end
 
     it "returns nil if password is invalid" do
-      result = SignInUser.sign_in("not-the-pw", repo)
+      result = described_class.sign_in("not-the-pw", repo)
 
       expect(result).to be_nil
     end

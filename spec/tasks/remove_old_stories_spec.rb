@@ -12,26 +12,26 @@ describe RemoveOldStories do
     end
 
     it "passes along the number of days to the story repository query" do
-      allow(RemoveOldStories).to receive(:pruned_feeds) { [] }
+      allow(described_class).to receive(:pruned_feeds) { [] }
 
       expect(StoryRepository).to receive(:unstarred_read_stories_older_than)
         .with(7).and_return(stories_mock)
 
-      RemoveOldStories.remove!(7)
+      described_class.remove!(7)
     end
 
     it "requests deletion of all old stories" do
-      allow(RemoveOldStories).to receive(:pruned_feeds) { [] }
+      allow(described_class).to receive(:pruned_feeds) { [] }
       allow(StoryRepository)
         .to receive(:unstarred_read_stories_older_than) { stories_mock }
 
       expect(stories_mock).to receive(:delete_all)
 
-      RemoveOldStories.remove!(11)
+      described_class.remove!(11)
     end
 
     it "fetches affected feeds by id" do
-      allow(RemoveOldStories).to receive(:old_stories) do
+      allow(described_class).to receive(:old_stories) do
         stories = [double("story", feed_id: 3), double("story", feed_id: 5)]
         allow(stories).to receive(:delete_all)
         stories
@@ -40,20 +40,20 @@ describe RemoveOldStories do
       expect(FeedRepository)
         .to receive(:fetch_by_ids).with([3, 5]).and_return([])
 
-      RemoveOldStories.remove!(13)
+      described_class.remove!(13)
     end
 
     it "updates last_fetched on affected feeds" do
       feeds = [double("feed a"), double("feed b")]
-      allow(RemoveOldStories).to receive(:pruned_feeds) { feeds }
-      allow(RemoveOldStories).to receive(:old_stories) { stories_mock }
+      allow(described_class).to receive(:pruned_feeds) { feeds }
+      allow(described_class).to receive(:old_stories) { stories_mock }
 
       expect(FeedRepository)
         .to receive(:update_last_fetched).with(feeds.first, anything)
       expect(FeedRepository)
         .to receive(:update_last_fetched).with(feeds.last, anything)
 
-      RemoveOldStories.remove!(13)
+      described_class.remove!(13)
     end
   end
 end

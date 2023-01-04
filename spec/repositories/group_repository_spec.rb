@@ -14,7 +14,7 @@ describe GroupRepository do
       group4 = create(:group, name: "Babba")
       expected_groups = [group4, group3, group1, group2]
 
-      expect(GroupRepository.list).to eq(expected_groups)
+      expect(described_class.list).to eq(expected_groups)
     end
   end
 end

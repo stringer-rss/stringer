@@ -15,7 +15,7 @@ describe FindNewStories do
         story2 = double(published: nil, id: "story2")
         feed   = double(entries: [story1, story2])
 
-        result = FindNewStories.new(feed, 1, Time.new(2013, 1, 2)).new_stories
+        result = described_class.new(feed, 1, Time.new(2013, 1, 2)).new_stories
         expect(result).to be_empty
       end
     end
@@ -31,7 +31,7 @@ describe FindNewStories do
         allow(StoryRepository)
           .to receive(:exists?).with("story2", 1).and_return(false)
 
-        result = FindNewStories.new(feed, 1, Time.new(2013, 1, 2)).new_stories
+        result = described_class.new(feed, 1, Time.new(2013, 1, 2)).new_stories
         expect(result).to eq [story2]
       end
     end
@@ -41,7 +41,7 @@ describe FindNewStories do
       old_story = double(published: nil, id: "old-story")
       feed = double(last_modified: nil, entries: [new_story, old_story])
 
-      result = FindNewStories.new(
+      result = described_class.new(
         feed,
         1,
         Time.new(2013, 1, 3),
@@ -66,7 +66,7 @@ describe FindNewStories do
         entries: new_stories + stories_older_than_3_days
       )
 
-      result = FindNewStories.new(feed, 1, nil, nil).new_stories
+      result = described_class.new(feed, 1, nil, nil).new_stories
       expect(result).not_to include(stories_older_than_3_days)
     end
   end

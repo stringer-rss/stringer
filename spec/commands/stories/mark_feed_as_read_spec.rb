@@ -10,7 +10,7 @@ describe MarkFeedAsRead do
     let(:repo) { double(fetch_unread_for_feed_by_timestamp: stories) }
 
     it "marks feed 1 as read" do
-      command = MarkFeedAsRead.new(1, Time.now.to_i, repo)
+      command = described_class.new(1, Time.now.to_i, repo)
       expect(stories).to receive(:update_all).with(is_read: true)
       command.mark_feed_as_read
     end

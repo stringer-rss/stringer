@@ -10,7 +10,7 @@ describe AddNewFeed do
       let(:discoverer) { double(discover: false) }
 
       it "returns false if cant discover any feeds" do
-        result = AddNewFeed.add("http://not-a-feed.com", discoverer)
+        result = described_class.add("http://not-a-feed.com", discoverer)
 
         expect(result).to be(false)
       end
@@ -26,7 +26,7 @@ describe AddNewFeed do
       it "parses and creates the feed if discovered" do
         expect(repo).to receive(:create).and_return(feed)
 
-        result = AddNewFeed.add("http://feed.com", discoverer, repo)
+        result = described_class.add("http://feed.com", discoverer, repo)
 
         expect(result).to be feed
       end
@@ -42,7 +42,7 @@ describe AddNewFeed do
         it "deletes the script tag from the title" do
           allow(repo).to receive(:create)
 
-          AddNewFeed.add("http://feed.com", discoverer, repo)
+          described_class.add("http://feed.com", discoverer, repo)
 
           expect(repo).to have_received(:create).with(include(name: "foobar"))
         end
@@ -54,7 +54,7 @@ describe AddNewFeed do
       result = instance_double(Feedjira::Parser::RSS, title: nil, feed_url:)
       discoverer = instance_double(FeedDiscovery, discover: result)
 
-      expect { AddNewFeed.add(feed_url, discoverer) }
+      expect { described_class.add(feed_url, discoverer) }
         .to change(Feed, :count).by(1)
 
       expect(Feed.last.name).to eq(feed_url)

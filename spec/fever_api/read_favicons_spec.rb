@@ -5,7 +5,7 @@ require "spec_helper"
 app_require "fever_api/read_favicons"
 
 describe FeverAPI::ReadFavicons do
-  subject { FeverAPI::ReadFavicons.new }
+  subject { described_class.new }
 
   it "returns a fixed icon list if requested" do
     expect(subject.call("favicons" => nil)).to eq(

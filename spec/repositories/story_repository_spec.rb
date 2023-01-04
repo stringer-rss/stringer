@@ -17,29 +17,29 @@ describe StoryRepository do
         title: "",
         content: ""
       ).as_null_object
-      expect(StoryRepository)
+      expect(described_class)
         .to receive(:normalize_url).with(entry.url, feed.url)
 
-      StoryRepository.add(entry, feed)
+      described_class.add(entry, feed)
     end
 
     it "deletes line and paragraph separator characters from titles" do
       entry = double(title: "n\u2028\u2029", content: "").as_null_object
-      allow(StoryRepository).to receive(:normalize_url)
+      allow(described_class).to receive(:normalize_url)
 
       expect(Story).to receive(:create).with(hash_including(title: "n"))
 
-      StoryRepository.add(entry, feed)
+      described_class.add(entry, feed)
     end
 
     it "deletes script tags from titles" do
       entry = double(title: "n<script>alert('xss');</script>", content: "")
               .as_null_object
-      allow(StoryRepository).to receive(:normalize_url)
+      allow(described_class).to receive(:normalize_url)
 
       expect(Story).to receive(:create).with(hash_including(title: "n"))
 
-      StoryRepository.add(entry, feed)
+      described_class.add(entry, feed)
     end
 
     it "sets the enclosure url when present" do
@@ -50,11 +50,11 @@ describe StoryRepository do
         summary: "",
         content: ""
       ).as_null_object
-      allow(StoryRepository).to receive(:normalize_url)
+      allow(described_class).to receive(:normalize_url)
 
       expect(Story).to receive(:create).with(hash_including(enclosure_url: "http://example.com/audio.mp3"))
 
-      StoryRepository.add(entry, feed)
+      described_class.add(entry, feed)
     end
 
     it "does not set the enclosure url when not present" do
@@ -64,11 +64,11 @@ describe StoryRepository do
         summary: "",
         content: ""
       ).as_null_object
-      allow(StoryRepository).to receive(:normalize_url)
+      allow(described_class).to receive(:normalize_url)
 
       expect(Story).to receive(:create).with(hash_including(enclosure_url: nil))
 
-      StoryRepository.add(entry, feed)
+      described_class.add(entry, feed)
     end
   end
 
@@ -76,7 +76,7 @@ describe StoryRepository do
     it "finds the story by id" do
       story = create(:story)
 
-      expect(StoryRepository.fetch(story.id)).to eq(story)
+      expect(described_class.fetch(story.id)).to eq(story)
     end
   end
 
@@ -86,7 +86,7 @@ describe StoryRepository do
       story2 = create(:story)
       expected_stories = [story1, story2]
 
-      actual_stories = StoryRepository.fetch_by_ids(expected_stories.map(&:id))
+      actual_stories = described_class.fetch_by_ids(expected_stories.map(&:id))
 
       expect(actual_stories).to match_array(expected_stories)
     end
@@ -96,7 +96,7 @@ describe StoryRepository do
     it "returns unread stories from before the timestamp" do
       story = create(:story, created_at: 1.week.ago, is_read: false)
 
-      actual_stories = StoryRepository.fetch_unread_by_timestamp(4.days.ago)
+      actual_stories = described_class.fetch_unread_by_timestamp(4.days.ago)
 
       expect(actual_stories).to eq([story])
     end
@@ -104,7 +104,7 @@ describe StoryRepository do
     it "does not return unread stories from after the timestamp" do
       create(:story, created_at: 3.days.ago, is_read: false)
 
-      actual_stories = StoryRepository.fetch_unread_by_timestamp(4.days.ago)
+      actual_stories = described_class.fetch_unread_by_timestamp(4.days.ago)
 
       expect(actual_stories).to be_empty
     end
@@ -112,7 +112,7 @@ describe StoryRepository do
     it "does not return read stories from before the timestamp" do
       create(:story, created_at: 1.week.ago, is_read: true)
 
-      actual_stories = StoryRepository.fetch_unread_by_timestamp(4.days.ago)
+      actual_stories = described_class.fetch_unread_by_timestamp(4.days.ago)
 
       expect(actual_stories).to be_empty
     end
@@ -124,7 +124,7 @@ describe StoryRepository do
       story = create(:story, :unread, feed:, created_at: 5.minutes.ago)
       time = Time.now
 
-      stories = StoryRepository.fetch_unread_by_timestamp_and_group(time, 52)
+      stories = described_class.fetch_unread_by_timestamp_and_group(time, 52)
 
       expect(stories).to eq([story])
     end
@@ -134,7 +134,7 @@ describe StoryRepository do
       create(:story, feed:, created_at: 5.minutes.ago)
       time = Time.now
 
-      stories = StoryRepository.fetch_unread_by_timestamp_and_group(time, 52)
+      stories = described_class.fetch_unread_by_timestamp_and_group(time, 52)
 
       expect(stories).to be_empty
     end
@@ -144,7 +144,7 @@ describe StoryRepository do
       create(:story, :unread, feed:, created_at: 5.minutes.ago)
       time = 6.minutes.ago
 
-      stories = StoryRepository.fetch_unread_by_timestamp_and_group(time, 52)
+      stories = described_class.fetch_unread_by_timestamp_and_group(time, 52)
 
       expect(stories).to be_empty
     end
@@ -154,7 +154,7 @@ describe StoryRepository do
       create(:story, :unread, feed:, created_at: 5.minutes.ago)
       time = Time.now
 
-      stories = StoryRepository.fetch_unread_by_timestamp_and_group(time, 55)
+      stories = described_class.fetch_unread_by_timestamp_and_group(time, 55)
 
       expect(stories).to be_empty
     end
@@ -164,7 +164,7 @@ describe StoryRepository do
       create(:story, :unread, feed:, created_at: 5.minutes.ago)
       time = Time.now
 
-      stories = StoryRepository.fetch_unread_by_timestamp_and_group(time, 52)
+      stories = described_class.fetch_unread_by_timestamp_and_group(time, 52)
 
       expect(stories).to be_empty
     end
@@ -174,7 +174,7 @@ describe StoryRepository do
       story = create(:story, :unread, feed:, created_at: 5.minutes.ago)
       time = Time.now
 
-      stories = StoryRepository.fetch_unread_by_timestamp_and_group(time, nil)
+      stories = described_class.fetch_unread_by_timestamp_and_group(time, nil)
 
       expect(stories).to eq([story])
     end
@@ -187,7 +187,7 @@ describe StoryRepository do
       time = 4.minutes.ago
 
       stories =
-        StoryRepository.fetch_unread_for_feed_by_timestamp(feed.id, time)
+        described_class.fetch_unread_for_feed_by_timestamp(feed.id, time)
 
       expect(stories).to eq([story])
     end
@@ -198,7 +198,7 @@ describe StoryRepository do
       timestamp = Integer(4.minutes.ago).to_s
 
       stories =
-        StoryRepository.fetch_unread_for_feed_by_timestamp(feed.id, timestamp)
+        described_class.fetch_unread_for_feed_by_timestamp(feed.id, timestamp)
 
       expect(stories).to eq([story])
     end
@@ -209,7 +209,7 @@ describe StoryRepository do
       time = 4.minutes.ago
 
       stories =
-        StoryRepository.fetch_unread_for_feed_by_timestamp(feed.id, time)
+        described_class.fetch_unread_for_feed_by_timestamp(feed.id, time)
 
       expect(stories).to be_empty
     end
@@ -220,7 +220,7 @@ describe StoryRepository do
       time = 6.minutes.ago
 
       stories =
-        StoryRepository.fetch_unread_for_feed_by_timestamp(feed.id, time)
+        described_class.fetch_unread_for_feed_by_timestamp(feed.id, time)
 
       expect(stories).to be_empty
     end
@@ -231,7 +231,7 @@ describe StoryRepository do
       time = 4.minutes.ago
 
       stories =
-        StoryRepository.fetch_unread_for_feed_by_timestamp(feed.id, time)
+        described_class.fetch_unread_for_feed_by_timestamp(feed.id, time)
 
       expect(stories).to be_empty
     end
@@ -242,14 +242,14 @@ describe StoryRepository do
       story1 = create(:story, :unread, published: 5.minutes.ago)
       story2 = create(:story, :unread, published: 4.minutes.ago)
 
-      expect(StoryRepository.unread).to eq([story2, story1])
+      expect(described_class.unread).to eq([story2, story1])
     end
 
     it "does not return read stories" do
       create(:story, published: 5.minutes.ago)
       create(:story, published: 4.minutes.ago)
 
-      expect(StoryRepository.unread).to be_empty
+      expect(described_class.unread).to be_empty
     end
   end
 
@@ -258,21 +258,21 @@ describe StoryRepository do
       story1 = create(:story, :unread)
       story2 = create(:story, :unread)
 
-      expect(StoryRepository.unread_since_id(story1.id)).to eq([story2])
+      expect(described_class.unread_since_id(story1.id)).to eq([story2])
     end
 
     it "does not return read stories with id greater than given id" do
       story1 = create(:story, :unread)
       create(:story)
 
-      expect(StoryRepository.unread_since_id(story1.id)).to be_empty
+      expect(described_class.unread_since_id(story1.id)).to be_empty
     end
 
     it "does not return unread stories with id less than given id" do
       create(:story, :unread)
       story2 = create(:story, :unread)
 
-      expect(StoryRepository.unread_since_id(story2.id)).to be_empty
+      expect(described_class.unread_since_id(story2.id)).to be_empty
     end
   end
 
@@ -281,7 +281,7 @@ describe StoryRepository do
       feed = create(:feed)
       story = create(:story, feed:)
 
-      expect(StoryRepository.feed(feed.id)).to eq([story])
+      expect(described_class.feed(feed.id)).to eq([story])
     end
 
     it "sorts stories by published" do
@@ -289,14 +289,14 @@ describe StoryRepository do
       story1 = create(:story, feed:, published: 1.day.ago)
       story2 = create(:story, feed:, published: 1.hour.ago)
 
-      expect(StoryRepository.feed(feed.id)).to eq([story2, story1])
+      expect(described_class.feed(feed.id)).to eq([story2, story1])
     end
 
     it "does not return stories for other feeds" do
       feed = create(:feed)
       create(:story)
 
-      expect(StoryRepository.feed(feed.id)).to be_empty
+      expect(described_class.feed(feed.id)).to be_empty
     end
   end
 
@@ -304,28 +304,28 @@ describe StoryRepository do
     it "returns read stories" do
       story = create(:story, :read)
 
-      expect(StoryRepository.read).to eq([story])
+      expect(described_class.read).to eq([story])
     end
 
     it "sorts stories by published" do
       story1 = create(:story, :read, published: 1.day.ago)
       story2 = create(:story, :read, published: 1.hour.ago)
 
-      expect(StoryRepository.read).to eq([story2, story1])
+      expect(described_class.read).to eq([story2, story1])
     end
 
     it "does not return unread stories" do
       create(:story, :unread)
 
-      expect(StoryRepository.read).to be_empty
+      expect(described_class.read).to be_empty
     end
 
     it "paginates results" do
       stories =
         21.times.map { |num| create(:story, :read, published: num.days.ago) }
 
-      expect(StoryRepository.read).to eq(stories[0...20])
-      expect(StoryRepository.read(2)).to eq([stories.last])
+      expect(described_class.read).to eq(stories[0...20])
+      expect(described_class.read(2)).to eq([stories.last])
     end
   end
 
@@ -333,28 +333,28 @@ describe StoryRepository do
     it "returns starred stories" do
       story = create(:story, :starred)
 
-      expect(StoryRepository.starred).to eq([story])
+      expect(described_class.starred).to eq([story])
     end
 
     it "sorts stories by published" do
       story1 = create(:story, :starred, published: 1.day.ago)
       story2 = create(:story, :starred, published: 1.hour.ago)
 
-      expect(StoryRepository.starred).to eq([story2, story1])
+      expect(described_class.starred).to eq([story2, story1])
     end
 
     it "does not return unstarred stories" do
       create(:story)
 
-      expect(StoryRepository.starred).to be_empty
+      expect(described_class.starred).to be_empty
     end
 
     it "paginates results" do
       stories =
         21.times.map { |num| create(:story, :starred, published: num.days.ago) }
 
-      expect(StoryRepository.starred).to eq(stories[0...20])
-      expect(StoryRepository.starred(2)).to eq([stories.last])
+      expect(described_class.starred).to eq(stories[0...20])
+      expect(described_class.starred(2)).to eq([stories.last])
     end
   end
 
@@ -362,26 +362,26 @@ describe StoryRepository do
     it "returns unstarred read stories older than given number of days" do
       story = create(:story, :read, published: 6.days.ago)
 
-      expect(StoryRepository.unstarred_read_stories_older_than(5))
+      expect(described_class.unstarred_read_stories_older_than(5))
         .to eq([story])
     end
 
     it "does not return starred stories older than the given number of days" do
       create(:story, :read, :starred, published: 6.days.ago)
 
-      expect(StoryRepository.unstarred_read_stories_older_than(5)).to be_empty
+      expect(described_class.unstarred_read_stories_older_than(5)).to be_empty
     end
 
     it "does not return unread stories older than the given number of days" do
       create(:story, :unread, published: 6.days.ago)
 
-      expect(StoryRepository.unstarred_read_stories_older_than(5)).to be_empty
+      expect(described_class.unstarred_read_stories_older_than(5)).to be_empty
     end
 
     it "does not return stories newer than given number of days" do
       create(:story, :read, published: 4.days.ago)
 
-      expect(StoryRepository.unstarred_read_stories_older_than(5)).to be_empty
+      expect(described_class.unstarred_read_stories_older_than(5)).to be_empty
     end
   end
 
@@ -391,13 +391,13 @@ describe StoryRepository do
       create(:story, :read)
       create(:story, :read)
 
-      expect(StoryRepository.read_count).to eq(3)
+      expect(described_class.read_count).to eq(3)
     end
 
     it "does not count unread stories" do
       create_list(:story, 3, :unread)
 
-      expect(StoryRepository.read_count).to eq(0)
+      expect(described_class.read_count).to eq(0)
     end
   end
 
@@ -406,21 +406,21 @@ describe StoryRepository do
       feed = double(url: "http://github.com")
       entry = double(url: "https://github.com/stringer-rss/stringer")
 
-      expect(StoryRepository.extract_url(entry, feed)).to eq "https://github.com/stringer-rss/stringer"
+      expect(described_class.extract_url(entry, feed)).to eq "https://github.com/stringer-rss/stringer"
     end
 
     it "returns the enclosure_url when the url is nil" do
       feed = double(url: "http://github.com")
       entry = double(url: nil, enclosure_url: "https://github.com/stringer-rss/stringer")
 
-      expect(StoryRepository.extract_url(entry, feed)).to eq "https://github.com/stringer-rss/stringer"
+      expect(described_class.extract_url(entry, feed)).to eq "https://github.com/stringer-rss/stringer"
     end
 
     it "does not crash if url is nil but enclosure_url does not exist" do
       feed = double(url: "http://github.com")
       entry = double(url: nil)
 
-      expect(StoryRepository.extract_url(entry, feed)).to be_nil
+      expect(described_class.extract_url(entry, feed)).to be_nil
     end
   end
 
@@ -428,13 +428,13 @@ describe StoryRepository do
     it "returns the title if there is a title" do
       entry = double(title: "title", summary: "summary")
 
-      expect(StoryRepository.extract_title(entry)).to eq "title"
+      expect(described_class.extract_title(entry)).to eq "title"
     end
 
     it "returns the summary if there isn't a title" do
       entry = double(title: "", summary: "summary")
 
-      expect(StoryRepository.extract_title(entry)).to eq "summary"
+      expect(described_class.extract_title(entry)).to eq "summary"
     end
   end
 
@@ -455,18 +455,18 @@ describe StoryRepository do
     end
 
     it "sanitizes content" do
-      expect(StoryRepository.extract_content(entry)).to eq "Some test content"
+      expect(described_class.extract_content(entry)).to eq "Some test content"
     end
 
     it "falls back to summary if there is no content" do
-      expect(StoryRepository.extract_content(summary_only))
+      expect(described_class.extract_content(summary_only))
         .to eq "Dumb publisher"
     end
 
     it "returns empty string if there is no content or summary" do
       entry = double(url: "http://mdswanson.com", content: nil, summary: nil)
 
-      expect(StoryRepository.extract_content(entry)).to eq ""
+      expect(described_class.extract_content(entry)).to eq ""
     end
 
     it "expands urls" do
@@ -476,7 +476,7 @@ describe StoryRepository do
         summary: "<a href=\"page\">Page</a>"
       )
 
-      expect(StoryRepository.extract_content(entry))
+      expect(described_class.extract_content(entry))
         .to eq "<a href=\"http://mdswanson.com/page\">Page</a>"
     end
 
@@ -484,7 +484,7 @@ describe StoryRepository do
       entry =
         double(url: nil, content: nil, summary: "<a href=\"page\">Page</a>")
 
-      expect(StoryRepository.extract_content(entry))
+      expect(described_class.extract_content(entry))
         .to eq "<a href=\"page\">Page</a>"
     end
   end

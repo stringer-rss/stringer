@@ -11,7 +11,7 @@ describe FeverAPI::ReadFeeds do
   end
   let(:feed_repository) { double("repo") }
 
-  subject { FeverAPI::ReadFeeds.new(feed_repository:) }
+  subject { described_class.new(feed_repository:) }
 
   it "returns a list of feeds" do
     expect(feed_repository).to receive(:list).and_return(feeds)

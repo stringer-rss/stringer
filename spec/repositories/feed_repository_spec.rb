@@ -11,13 +11,13 @@ describe FeedRepository do
 
     it "finds by id" do
       expect(Feed).to receive(:find).with(feed.id).and_return(feed)
-      FeedRepository.fetch(feed.id)
+      described_class.fetch(feed.id)
     end
 
     it "returns found feed" do
       allow(Feed).to receive(:find).with(feed.id).and_return(feed)
 
-      result = FeedRepository.fetch(feed.id)
+      result = described_class.fetch(feed.id)
 
       expect(result).to eq feed
     end
@@ -27,13 +27,14 @@ describe FeedRepository do
     it "finds all feeds by id" do
       feeds = create_pair(:feed)
 
-      expect(FeedRepository.fetch_by_ids(feeds.map(&:id))).to match_array(feeds)
+      expect(described_class.fetch_by_ids(feeds.map(&:id)))
+        .to match_array(feeds)
     end
 
     it "does not find other feeds" do
       feed1, = create_pair(:feed)
 
-      expect(FeedRepository.fetch_by_ids(feed1.id)).to eq([feed1])
+      expect(described_class.fetch_by_ids(feed1.id)).to eq([feed1])
     end
   end
 
@@ -41,7 +42,7 @@ describe FeedRepository do
     it "saves the name and url" do
       feed = Feed.new
 
-      FeedRepository.update_feed(feed, "Test Feed", "example.com/feed")
+      described_class.update_feed(feed, "Test Feed", "example.com/feed")
 
       expect(feed.name).to eq "Test Feed"
       expect(feed.url).to eq "example.com/feed"
@@ -54,7 +55,7 @@ describe FeedRepository do
     it "saves the last_fetched timestamp" do
       feed = Feed.new
 
-      FeedRepository.update_last_fetched(feed, timestamp)
+      described_class.update_last_fetched(feed, timestamp)
 
       expect(feed.last_fetched).to eq timestamp
     end
@@ -64,7 +65,7 @@ describe FeedRepository do
     it "rejects weird timestamps" do
       feed = Feed.new(last_fetched: timestamp)
 
-      FeedRepository.update_last_fetched(feed, weird_timestamp)
+      described_class.update_last_fetched(feed, weird_timestamp)
 
       expect(feed.last_fetched).to eq timestamp
     end
@@ -72,7 +73,7 @@ describe FeedRepository do
     it "doesn't update if timestamp is nil" do
       feed = Feed.new(last_fetched: timestamp)
 
-      FeedRepository.update_last_fetched(feed, nil)
+      described_class.update_last_fetched(feed, nil)
 
       expect(feed.last_fetched).to eq timestamp
     end
@@ -81,7 +82,7 @@ describe FeedRepository do
       feed = Feed.new(last_fetched: timestamp)
       one_week_ago = timestamp - 1.week
 
-      FeedRepository.update_last_fetched(feed, one_week_ago)
+      described_class.update_last_fetched(feed, one_week_ago)
 
       expect(feed.last_fetched).to eq timestamp
     end
@@ -91,7 +92,7 @@ describe FeedRepository do
     it "deletes the feed by id" do
       feed = create(:feed)
 
-      FeedRepository.delete(feed.id)
+      described_class.delete(feed.id)
 
       expect(Feed.unscoped.find_by(id: feed.id)).to be_nil
     end
@@ -99,7 +100,7 @@ describe FeedRepository do
     it "does not delete other feeds" do
       feed1, feed2 = create_pair(:feed)
 
-      FeedRepository.delete(feed1.id)
+      described_class.delete(feed1.id)
 
       expect(Feed.unscoped.find_by(id: feed2.id)).to eq(feed2)
     end
@@ -112,7 +113,7 @@ describe FeedRepository do
       feed3 = create(:feed, name: "Zooby")
       feed4 = create(:feed, name: "zabby")
 
-      expect(FeedRepository.list).to eq([feed2, feed1, feed4, feed3])
+      expect(described_class.list).to eq([feed2, feed1, feed4, feed3])
     end
   end
 
@@ -121,13 +122,13 @@ describe FeedRepository do
       feed1 = create(:feed, group_id: 5)
       feed2 = create(:feed, group_id: 6)
 
-      expect(FeedRepository.in_group).to match_array([feed1, feed2])
+      expect(described_class.in_group).to match_array([feed1, feed2])
     end
 
     it "does not return feeds that are not in a group" do
       create_pair(:feed)
 
-      expect(FeedRepository.in_group).to be_empty
+      expect(described_class.in_group).to be_empty
     end
   end
 end

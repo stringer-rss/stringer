@@ -19,7 +19,7 @@ describe FetchFeeds do
 
       expect(pool).to receive(:shutdown)
 
-      FetchFeeds.new(feeds, pool).fetch_all
+      described_class.new(feeds, pool).fetch_all
     end
 
     it "finds feeds when run after a delay" do
@@ -32,7 +32,7 @@ describe FetchFeeds do
 
       expect(pool).to receive(:shutdown)
 
-      FetchFeeds.new(feeds, pool).prepare_to_delay.fetch_all
+      described_class.new(feeds, pool).prepare_to_delay.fetch_all
     end
   end
 
@@ -40,7 +40,7 @@ describe FetchFeeds do
     it "serializes the instance for backgrounding" do
       feeds = create_pair(:feed)
       feeds_ids = feeds.map(&:id)
-      fetch_feeds = FetchFeeds.new(feeds)
+      fetch_feeds = described_class.new(feeds)
 
       fetch_feeds.prepare_to_delay
 
@@ -54,7 +54,8 @@ describe FetchFeeds do
       feeds = create_pair(:feed)
       feeds_ids = feeds.map(&:id)
 
-      expect { FetchFeeds.enqueue(feeds) }.to change(Delayed::Job, :count).by(1)
+      expect { described_class.enqueue(feeds) }
+        .to change(Delayed::Job, :count).by(1)
 
       job_object = Delayed::Job.last.payload_object.object
       expect(job_object.instance_variable_get(:@feeds_ids)).to eq(feeds_ids)

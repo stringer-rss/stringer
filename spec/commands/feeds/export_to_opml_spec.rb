@@ -11,7 +11,7 @@ describe ExportToOpml do
     let(:feeds) { [feed_one, feed_two] }
 
     it "returns OPML XML" do
-      result = ExportToOpml.new(feeds).to_xml
+      result = described_class.new(feeds).to_xml
 
       outlines = Nokogiri.XML(result).xpath("//body//outline")
       expect(outlines.size).to eq(2)
@@ -22,14 +22,14 @@ describe ExportToOpml do
     end
 
     it "handles empty feeds" do
-      result = ExportToOpml.new([]).to_xml
+      result = described_class.new([]).to_xml
 
       outlines = Nokogiri.XML(result).xpath("//body//outline")
       expect(outlines).to be_empty
     end
 
     it "has a proper title" do
-      result = ExportToOpml.new(feeds).to_xml
+      result = described_class.new(feeds).to_xml
 
       title = Nokogiri.XML(result).xpath("//head//title").first
       expect(title.content).to eq "Feeds from Stringer"

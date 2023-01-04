@@ -20,7 +20,7 @@ describe FeedDiscovery do
       expect(parser).to receive(:parse).and_raise(StandardError)
       expect(finder).to receive(:find).and_return([])
 
-      result = FeedDiscovery.new.discover(url, finder, parser, client)
+      result = described_class.new.discover(url, finder, parser, client)
 
       expect(result).to be(false)
     end
@@ -29,7 +29,7 @@ describe FeedDiscovery do
       expect(client).to receive(:get).with(url)
       expect(parser).to receive(:parse).and_return(feed)
 
-      result = FeedDiscovery.new.discover(url, finder, parser, client)
+      result = described_class.new.discover(url, finder, parser, client)
 
       expect(result).to eq feed
     end
@@ -43,7 +43,7 @@ describe FeedDiscovery do
       expect(client).to receive(:get).with(invalid_discovered_url)
       expect(parser).to receive(:parse).and_raise(StandardError)
 
-      result = FeedDiscovery.new.discover(url, finder, parser, client)
+      result = described_class.new.discover(url, finder, parser, client)
 
       expect(result).to be(false)
     end
@@ -57,7 +57,7 @@ describe FeedDiscovery do
       expect(client).to receive(:get).with(valid_discovered_url)
       expect(parser).to receive(:parse).and_return(feed)
 
-      result = FeedDiscovery.new.discover(url, finder, parser, client)
+      result = described_class.new.discover(url, finder, parser, client)
 
       expect(result).to eq feed
     end

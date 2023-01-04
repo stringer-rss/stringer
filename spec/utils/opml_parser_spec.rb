@@ -5,7 +5,7 @@ require "spec_helper"
 app_require "utils/opml_parser"
 
 describe OpmlParser do
-  let(:parser) { OpmlParser.new }
+  let(:parser) { described_class.new }
 
   describe "#parse_feeds" do
     it "returns a hash of feed details from an OPML file" do

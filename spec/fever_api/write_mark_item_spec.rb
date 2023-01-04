@@ -9,7 +9,7 @@ describe FeverAPI::WriteMarkItem do
   let(:marker_class) { double("marker class") }
 
   describe "as read" do
-    subject { FeverAPI::WriteMarkItem.new(read_marker_class: marker_class) }
+    subject { described_class.new(read_marker_class: marker_class) }
 
     it "calls mark_item_as_read if requested" do
       expect(marker_class).to receive(:new).with(5).and_return(item_marker)
@@ -19,9 +19,7 @@ describe FeverAPI::WriteMarkItem do
   end
 
   describe "as unread" do
-    subject do
-      FeverAPI::WriteMarkItem.new(unread_marker_class: marker_class)
-    end
+    subject { described_class.new(unread_marker_class: marker_class) }
 
     it "calls mark_item_as_unread if requested" do
       expect(marker_class).to receive(:new).with(5).and_return(item_marker)
@@ -31,9 +29,7 @@ describe FeverAPI::WriteMarkItem do
   end
 
   describe "as starred" do
-    subject do
-      FeverAPI::WriteMarkItem.new(starred_marker_class: marker_class)
-    end
+    subject { described_class.new(starred_marker_class: marker_class) }
 
     it "calls mark_item_as_starred if requested" do
       expect(marker_class).to receive(:new).with(5).and_return(item_marker)
@@ -43,9 +39,7 @@ describe FeverAPI::WriteMarkItem do
   end
 
   describe "as unstarred" do
-    subject do
-      FeverAPI::WriteMarkItem.new(unstarred_marker_class: marker_class)
-    end
+    subject { described_class.new(unstarred_marker_class: marker_class) }
 
     it "calls marks_item_as_unstarred if requested" do
       expect(marker_class).to receive(:new).with(5).and_return(item_marker)
