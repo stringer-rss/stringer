@@ -3,13 +3,13 @@
 require_relative "../../repositories/story_repository"
 
 class MarkAllAsRead
+  def self.call(*args)
+    new(*args).call
+  end
+
   def initialize(story_ids, repository = StoryRepository)
     @story_ids = story_ids
     @repo = repository
-  end
-
-  def self.call(*args)
-    new(*args).call
   end
 
   def call
