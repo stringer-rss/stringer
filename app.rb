@@ -17,7 +17,6 @@ require "sprockets-helpers"
 require "securerandom"
 
 require_relative "app/helpers/authentication_helpers"
-require_relative "app/helpers/controller_helpers"
 require_relative "app/repositories/user_repository"
 require_relative "config/asset_pipeline"
 
@@ -43,8 +42,6 @@ class Stringer < Sinatra::Base
   if ENV["ENFORCE_SSL"] == "true"
     use Rack::SSL, exclude: ->(env) { env["PATH_INFO"] =~ %r{^/(js|css|img)} }
   end
-
-  extend Sinatra::ControllerHelpers
 
   register Sinatra::ActiveRecordExtension
   register Sinatra::Flash
@@ -101,20 +98,9 @@ class Stringer < Sinatra::Base
       redirect to("/setup/password")
     end
   end
-
-  rails_route(:get, "/debug", to: "debug#index")
-  rails_route(:get, "/heroku", to: "debug#heroku")
-  rails_route(:get, "/feeds", to: "feeds#index")
-  rails_route(:get, "/feeds/:id/edit", to: "feeds#edit")
-  rails_route(:put, "/feeds/:id", to: "feeds#update")
-  rails_route(:delete, "/feeds/:id", to: "feeds#destroy")
-  rails_route(:get, "/feeds/new", to: "feeds#new")
-  rails_route(:post, "/feeds", to: "feeds#create")
-  rails_route(:get, "/feeds/export", to: "exports#index")
-  rails_route(:get, "/feeds/import", to: "imports#new")
-  rails_route(:post, "/feeds/import", to: "imports#create")
 end
 
 require_relative "app/controllers/sinatra/stories_controller"
 require_relative "app/controllers/sinatra/first_run_controller"
 require_relative "app/controllers/sinatra/sessions_controller"
+require_relative "config/routes"
