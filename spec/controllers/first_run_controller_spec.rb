@@ -7,48 +7,6 @@ app_require "controllers/sinatra/first_run_controller"
 
 describe "FirstRunController" do
   context "when a user has not been setup" do
-    def setup
-      expect(UserRepository)
-        .to receive(:setup_complete?).twice.and_return(false)
-    end
-
-    describe "GET /setup/password" do
-      it "displays a form to enter your password" do
-        setup
-
-        get "/setup/password"
-
-        page = last_response.body
-        expect(page).to have_tag("form#password_setup")
-      end
-    end
-
-    describe "POST /setup/password" do
-      it "rejects empty passwords" do
-        setup
-
-        post "/setup/password"
-
-        page = last_response.body
-        expect(page).to have_tag("div.error")
-      end
-
-      it "rejects when password isn't confirmed" do
-        setup
-
-        post "/setup/password", password: "foo", password_confirmation: "bar"
-
-        page = last_response.body
-        expect(page).to have_tag("div.error")
-      end
-
-      it "accepts confirmed passwords and redirects to next step" do
-        post "/setup/password", password: "foo", password_confirmation: "foo"
-
-        expect(URI.parse(last_response.location).path).to eq("/feeds/import")
-      end
-    end
-
     describe "GET /setup/tutorial" do
       let(:user) { instance_double(User) }
       let(:feeds) { [instance_double(Feed), instance_double(Feed)] }
