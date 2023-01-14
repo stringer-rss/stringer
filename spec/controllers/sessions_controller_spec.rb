@@ -2,10 +2,8 @@
 
 require "spec_helper"
 
-app_require "controllers/sinatra/sessions_controller"
-
-describe "SessionsController" do
-  describe "GET /login" do
+describe SessionsController do
+  describe "#new" do
     it "has a password input and login button" do
       get "/login"
 
@@ -14,7 +12,7 @@ describe "SessionsController" do
     end
   end
 
-  describe "POST /login" do
+  describe "#create" do
     it "denies access when password is incorrect" do
       create(:user)
       post "/login", password: "not-the-password"
@@ -49,7 +47,7 @@ describe "SessionsController" do
     end
   end
 
-  describe "GET /logout" do
+  describe "#destroy" do
     it "clears the session" do
       get "/logout", {}, "rack.session" => { userid: 1 }
 

@@ -19,6 +19,7 @@ require "securerandom"
 require_relative "app/commands/feeds/import_from_opml"
 require_relative "app/commands/users/complete_setup"
 require_relative "app/commands/users/create_user"
+require_relative "app/commands/users/sign_in_user"
 require_relative "app/helpers/authentication_helpers"
 require_relative "app/repositories/story_repository"
 require_relative "app/repositories/user_repository"
@@ -31,6 +32,7 @@ require_relative "app/controllers/feeds_controller"
 require_relative "app/controllers/exports_controller"
 require_relative "app/controllers/imports_controller"
 require_relative "app/controllers/passwords_controller"
+require_relative "app/controllers/sessions_controller"
 require_relative "app/controllers/tutorials_controller"
 
 module Rails
@@ -108,5 +110,4 @@ class Stringer < Sinatra::Base
 end
 
 require_relative "app/controllers/sinatra/stories_controller"
-require_relative "app/controllers/sinatra/sessions_controller"
 require_relative "config/routes"
