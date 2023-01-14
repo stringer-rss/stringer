@@ -1,0 +1,54 @@
+<script type="text/template" id="story-template">
+  <div class="row-fluid story-preview">
+    <div class="span3">
+      <div class="story-starred">
+        <i class="icon-star{{ if(!is_starred) { }}-empty{{ } }}"></i>
+      </div>
+      <p class="blog-title">
+        {{= source }}
+      </p>
+    </div>
+    <div class="span9">
+      <p class="story-details">
+        <span class="story-title">
+          {{= headline }}
+        </span>
+        <span class="story-lead">
+          &mdash; {{= lead }}
+        </span>
+      </p>
+    </div>
+  </div>
+
+  <div class="story-body-container" class="row-fluid">
+    <div class="story-body">
+      <h1>
+        <a href="{{= permalink }}">{{= title }}</a>
+        {{ if (enclosure_url) { }}
+          <a class="story-enclosure" target="_blank" href="{{= enclosure_url }}">
+            <i class="icon-download"></i>
+          </a>
+        {{ } }}
+      </h1>
+      {{= body }}
+    </div>
+    <div class="row-fluid story-actions-container">
+      <div class="pull-left">
+        <span class="story-published">
+          {{= pretty_date }}
+        </span>
+      </div>
+      <div class="pull-right story-actions">
+        <div class="story-keep-unread">
+          <i class="icon-check{{ if(!keep_unread) { }}-empty{{ } }}"></i> <%= t('stories.keep_unread') %>
+        </div>
+        <div class="story-starred">
+          <i class="icon-star{{ if(!is_starred) { }}-empty{{ } }}"></i>
+        </div>
+        <a class="story-permalink" target="_blank" href="{{= permalink }}">
+          <i class="icon-external-link"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</script>

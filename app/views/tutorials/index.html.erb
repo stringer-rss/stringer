@@ -19,10 +19,10 @@
 </div>
 
 <div id="action-bar">
-  <%= render_partial :tutorial_action_bar, {stories: @sample_stories} %>
+  <%= render 'tutorials/action_bar', {stories: @sample_stories} %>
 </div>
 
-<%= render_js :stories, { stories: @sample_stories } %>
+<%= render 'stories/js', { stories: @sample_stories } %>
 
 <div id="stories">
   <ul id="story-list">

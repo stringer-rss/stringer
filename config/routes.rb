@@ -25,4 +25,5 @@ class Stringer < Sinatra::Base
   match("/feeds/import", to: "imports#create", via: :post)
   match("/setup/password", to: "passwords#new", via: :get)
   match("/setup/password", to: "passwords#create", via: :post)
+  match("/setup/tutorial", to: "tutorials#index", via: :get)
 end

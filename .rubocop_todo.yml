@@ -253,11 +253,11 @@ Rails/HttpPositionalArguments:
     - 'spec/app_spec.rb'
     - 'spec/controllers/debug_controller_spec.rb'
     - 'spec/controllers/feeds_controller_spec.rb'
-    - 'spec/controllers/first_run_controller_spec.rb'
     - 'spec/controllers/imports_controller_spec.rb'
     - 'spec/controllers/passwords_controller_spec.rb'
     - 'spec/controllers/sessions_controller_spec.rb'
     - 'spec/controllers/stories_controller_spec.rb'
+    - 'spec/controllers/tutorials_controller_spec.rb'
     - 'spec/fever_api_spec.rb'
 
 # Offense count: 1
