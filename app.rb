@@ -25,6 +25,7 @@ require_relative "app/controllers/debug_controller"
 require_relative "app/controllers/feeds_controller"
 require_relative "app/controllers/exports_controller"
 require_relative "app/controllers/imports_controller"
+require_relative "app/controllers/passwords_controller"
 
 module Rails
   def self.application
