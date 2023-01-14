@@ -1,29 +1,25 @@
 # frozen_string_literal: true
 
-require_relative "../../commands/users/sign_in_user"
+class SessionsController < ApplicationController
+  def new; end
 
-class Stringer < Sinatra::Base
-  get "/login" do
-    erb :"sessions/new"
-  end
-
-  post "/login" do
+  def create
     user = SignInUser.sign_in(params[:password])
     if user
       session[:user_id] = user.id
 
       redirect_uri = session.delete(:redirect_to) || "/"
-      redirect to(redirect_uri)
+      redirect_to(redirect_uri)
     else
       flash.now[:error] = t("sessions.new.flash.wrong_password")
-      erb :"sessions/new"
+      render(:new)
     end
   end
 
-  get "/logout" do
+  def destroy
     flash[:success] = t("sessions.destroy.flash.logged_out_successfully")
     session[:user_id] = nil
 
-    redirect to("/")
+    redirect_to("/")
   end
 end
