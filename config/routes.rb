@@ -29,4 +29,6 @@ class Stringer < Sinatra::Base
   match("/setup/password", to: "passwords#new", via: :get)
   match("/setup/password", to: "passwords#create", via: :post)
   match("/setup/tutorial", to: "tutorials#index", via: :get)
+  match("/stories/:id", to: "stories#update", via: :put)
+  match("/stories/mark_all_as_read", to: "stories#mark_all_as_read", via: :post)
 end
