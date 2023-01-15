@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require_relative "../../repositories/story_repository"
-require_relative "../../commands/stories/mark_all_as_read"
 
 class Stringer < Sinatra::Base
   get "/news" do
@@ -29,18 +28,5 @@ class Stringer < Sinatra::Base
     @starred_stories = StoryRepository.starred(params[:page])
 
     erb :starred
-  end
-
-  put "/stories/:id" do
-    json_params = JSON.parse(request.body.read, symbolize_names: true)
-
-    story = StoryRepository.fetch(params[:id])
-    story.update!(json_params.slice(:is_read, :is_starred, :keep_unread))
-  end
-
-  post "/stories/mark_all_as_read" do
-    MarkAllAsRead.call(params[:story_ids])
-
-    redirect to("/news")
   end
 end
