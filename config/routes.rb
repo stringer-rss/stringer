@@ -14,6 +14,7 @@ class Stringer < Sinatra::Base
 
   match("/archive", to: "stories#archived", via: :get)
   match("/debug", to: "debug#index", via: :get)
+  match("/feed/:feed_id", to: "feeds#show", via: :get)
   match("/feeds", to: "feeds#create", via: :post)
   match("/feeds", to: "feeds#index", via: :get)
   match("/feeds/:id", to: "feeds#destroy", via: :delete)

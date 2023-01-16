@@ -125,12 +125,4 @@ describe StoriesController do
       expect(stories.map(&:reload).map(&:is_read)).to all(be(true))
     end
   end
-
-  describe "GET /feed/:feed_id" do
-    it "displays a list of stories" do
-      get "/feed/#{story_one.feed.id}"
-
-      expect(last_response.body).to have_tag("#stories")
-    end
-  end
 end

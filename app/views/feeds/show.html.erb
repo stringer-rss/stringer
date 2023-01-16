@@ -5,14 +5,14 @@
 <% end %>
 
 <div id="action-bar">
-  <%= render_partial :single_feed_action_bar, { stories: @unread_stories } %>
+  <%= render "feeds/single_feed_action_bar", { stories: @unread_stories } %>
 </div>
 
 <div id="feed-title">
   <%= @feed.name %>
 </div>
 
-<%= render_js :stories, { stories: @stories } %>
+<%= render "stories/js", { stories: @stories } %>
 
 <div id="stories">
   <ul id="story-list">
