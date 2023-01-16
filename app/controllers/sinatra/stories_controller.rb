@@ -8,13 +8,4 @@ class Stringer < Sinatra::Base
 
     erb :index
   end
-
-  get "/feed/:feed_id" do
-    @feed = FeedRepository.fetch(params[:feed_id])
-
-    @stories = StoryRepository.feed(params[:feed_id])
-    @unread_stories = @stories.reject(&:is_read)
-
-    erb :feed
-  end
 end

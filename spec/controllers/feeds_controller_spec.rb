@@ -4,8 +4,8 @@ require "spec_helper"
 
 app_require "controllers/feeds_controller"
 
-describe "FeedsController" do
-  describe "GET /feeds" do
+describe FeedsController do
+  describe "#index" do
     it "renders a list of feeds" do
       create_pair(:feed)
 
@@ -23,7 +23,16 @@ describe "FeedsController" do
     end
   end
 
-  describe "GET /feeds/:feed_id/edit" do
+  describe "#show" do
+    it "displays a list of stories" do
+      story = create(:story)
+      get "/feed/#{story.feed_id}"
+
+      expect(last_response.body).to have_tag("#stories")
+    end
+  end
+
+  describe "#edit" do
     it "displays the feed edit form" do
       feed = create(:feed, name: "Rainbows/unicorns", url: "example.com/feed")
 
@@ -44,17 +53,17 @@ describe "FeedsController" do
     )
   end
 
-  def params(feed, **overrides)
-    {
-      feed_id: feed.id,
-      feed_name: feed.name,
-      feed_url: feed.url,
-      group_id: feed.group_id,
-      **overrides
-    }
-  end
+  describe "#update" do
+    def params(feed, **overrides)
+      {
+        feed_id: feed.id,
+        feed_name: feed.name,
+        feed_url: feed.url,
+        group_id: feed.group_id,
+        **overrides
+      }
+    end
 
-  describe "PUT /feeds/:feed_id" do
     it "updates a feed given the id" do
       feed = build(:feed, url: "example.com/atom", id: "12", group_id: nil)
       mock_feed(feed, "Test", "example.com/feed")
@@ -75,7 +84,7 @@ describe "FeedsController" do
     end
   end
 
-  describe "DELETE /feeds/:feed_id" do
+  describe "#destroy" do
     it "deletes a feed given the id" do
       expect(FeedRepository).to receive(:delete).with("123")
 
@@ -83,7 +92,7 @@ describe "FeedsController" do
     end
   end
 
-  describe "GET /feeds/new" do
+  describe "#new" do
     it "displays a new feed form" do
       get "/feeds/new"
 
@@ -92,7 +101,7 @@ describe "FeedsController" do
     end
   end
 
-  describe "POST /feeds" do
+  describe "#create" do
     context "when the feed url is valid" do
       let(:feed_url) { "http://example.com/" }
 

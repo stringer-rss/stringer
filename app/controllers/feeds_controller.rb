@@ -9,6 +9,13 @@ class FeedsController < ApplicationController
     @feeds = FeedRepository.list
   end
 
+  def show
+    @feed = FeedRepository.fetch(params[:feed_id])
+
+    @stories = StoryRepository.feed(params[:feed_id])
+    @unread_stories = @stories.reject(&:is_read)
+  end
+
   def new
     @feed_url = params[:feed_url]
   end
