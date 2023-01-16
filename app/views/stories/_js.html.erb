@@ -4,7 +4,7 @@
   $(document).ready(function() {
     var Stories = new StoryList;
     var StoryApp = new AppView(Stories);
-    StoryApp.loadData(<%= stories.to_json %>);
+    StoryApp.loadData(<%= sanitize(stories.to_json) %>);
 
     Mousetrap.bind("j", function() {
       StoryApp.moveCursorDown();

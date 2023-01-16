@@ -15,4 +15,12 @@ class StoriesController < ApplicationController
 
     redirect_to("/news")
   end
+
+  def archived
+    @read_stories = StoryRepository.read(params[:page])
+  end
+
+  def starred
+    @starred_stories = StoryRepository.starred(params[:page])
+  end
 end

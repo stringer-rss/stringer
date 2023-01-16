@@ -5,7 +5,7 @@ require "will_paginate/array"
 
 app_require "controllers/sinatra/stories_controller"
 
-describe "StoriesController" do
+describe StoriesController do
   let(:story_one) { create(:story) }
   let(:story_two) { create(:story) }
   let(:stories) { [story_one, story_two] }
@@ -56,7 +56,7 @@ describe "StoriesController" do
     end
   end
 
-  describe "GET /archive" do
+  describe "#archived" do
     it "displays the list of read stories with pagination" do
       create(:story, :read)
 
@@ -67,7 +67,7 @@ describe "StoriesController" do
     end
   end
 
-  describe "GET /starred" do
+  describe "#starred" do
     it "displays the list of starred stories" do
       create(:story, :starred)
 
@@ -78,7 +78,7 @@ describe "StoriesController" do
     end
   end
 
-  describe "PUT /stories/:id" do
+  describe "#update" do
     it "marks a story as read when it is_read not malformed" do
       put "/stories/#{story_one.id}", { is_read: true }.to_json
 
@@ -116,7 +116,7 @@ describe "StoriesController" do
     end
   end
 
-  describe "POST /stories/mark_all_as_read" do
+  describe "#mark_all_as_read" do
     it "marks all unread stories as read and reload the page" do
       stories = create_pair(:story)
 

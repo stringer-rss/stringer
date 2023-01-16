@@ -1,9 +1,9 @@
 <div id="action-bar">
-  <%= render_partial :feed_action_bar %>
+  <%= render "feeds/action_bar" %>
 </div>
 
 <% unless @starred_stories.empty? %>
-  <%= render_js :stories, { stories: @starred_stories } %>
+  <%= render "stories/js", { stories: @starred_stories } %>
 
   <div id="stories">
     <ul id="story-list">
