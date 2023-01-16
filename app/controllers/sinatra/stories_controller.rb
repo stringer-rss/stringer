@@ -17,16 +17,4 @@ class Stringer < Sinatra::Base
 
     erb :feed
   end
-
-  get "/archive" do
-    @read_stories = StoryRepository.read(params[:page])
-
-    erb :archive
-  end
-
-  get "/starred" do
-    @starred_stories = StoryRepository.starred(params[:page])
-
-    erb :starred
-  end
 end
