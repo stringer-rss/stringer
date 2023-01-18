@@ -73,25 +73,7 @@ class Stringer < Sinatra::Base
     ActiveRecord::Base.include_root_in_json = false
   end
 
-  helpers do
-    include Sinatra::AuthenticationHelpers
-
-    def render_partial(name, locals = {})
-      erb("partials/_#{name}".to_sym, layout: false, locals:)
-    end
-
-    def render_js_template(name)
-      erb("js/templates/_#{name}.js".to_sym, layout: false)
-    end
-
-    def render_js(name, locals = {})
-      erb("js/#{name}.js".to_sym, layout: false, locals:)
-    end
-
-    def t(*args, **kwargs)
-      I18n.t(*args, **kwargs)
-    end
-  end
+  helpers { include Sinatra::AuthenticationHelpers }
 
   before do
     I18n.locale = ENV["LOCALE"].blank? ? :en : ENV["LOCALE"].to_sym

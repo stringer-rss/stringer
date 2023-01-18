@@ -15,7 +15,7 @@
     <!-- Javascript templates -->
     <% js_templates.each do |template| %>
       <%= template %>
-      <%= render_js_template template.to_sym %>
+      <%= erb("js/templates/_#{template}.js".to_sym, layout: false) %>
     <% end %>
   </head>
   <body>
