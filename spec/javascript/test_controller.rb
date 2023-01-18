@@ -1,62 +1,47 @@
 # frozen_string_literal: true
 
 class Stringer < Sinatra::Base
-  def self.test_path(*chunks)
-    File.expand_path(File.join("..", *chunks), __FILE__)
+  def test_path(*chunks)
+    File.expand_path(File.join(__dir__, *chunks))
   end
 
   get "/test" do
-    erb File.read(self.class.test_path("support", "views", "index.erb")),
+    erb File.read(test_path("support", "views", "index.erb")),
         layout: false,
-        locals: {
-          js_files:,
-          js_templates:
-        }
+        locals: { js_files: }
   end
 
   get "/spec/*" do
-    send_file self.class.test_path("spec", *params[:splat])
+    send_file test_path("spec", *params[:splat])
   end
 
   get "/vendor/*" do
-    send_file self.class.test_path("support", "vendor", *params[:splat])
+    send_file test_path("support", "vendor", *params[:splat])
   end
 
   private
 
   def vendor_js_files
     [
-      "mocha.js",
-      "sinon.js",
-      "chai.js",
-      "chai-changes.js",
-      "chai-backbone.js",
-      "sinon-chai.js"
-    ].map do |name|
-      File.join("vendor", "js", name)
-    end
+      "vendor/js/mocha.js",
+      "vendor/js/sinon.js",
+      "vendor/js/chai.js",
+      "vendor/js/chai-changes.js",
+      "vendor/js/chai-backbone.js",
+      "vendor/js/sinon-chai.js"
+    ]
   end
 
   def vendor_css_files
-    ["mocha.css"].map { |name| File.join("vendor", "css", name) }
+    ["vendor/css/mocha.css"]
   end
 
   def js_helper_files
-    ["spec_helper.js"].map { |name| File.join("spec", name) }
-  end
-
-  def js_lib_files
-    base = self.class.test_path("..", "..", "app", "public")
-    Dir[File.join(base, "js", "**", "*.js")].map do |lib_file|
-      lib_file.sub!(base, "")
-    end
+    ["spec/spec_helper.js"]
   end
 
   def js_test_files
-    base = self.class.test_path
-    Dir[File.join(base, "**", "*_spec.js")].map do |spec_file|
-      spec_file.sub!(base, "")
-    end
+    ["/spec/models/story_spec.js", "/spec/views/story_view_spec.js"]
   end
 
   def js_files
@@ -65,9 +50,5 @@ class Stringer < Sinatra::Base
 
   def css_files
     vendor_css_files
-  end
-
-  def js_templates
-    [:story]
   end
 end

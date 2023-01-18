@@ -13,10 +13,7 @@
     <% end %>
 
     <!-- Javascript templates -->
-    <% js_templates.each do |template| %>
-      <%= template %>
-      <%= erb("js/templates/_#{template}.js".to_sym, layout: false) %>
-    <% end %>
+    <%= erb("js/templates/_story.js".to_sym, layout: false) %>
   </head>
   <body>
     <div id="mocha"></div>
