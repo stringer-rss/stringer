@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 require "spec_helper"
-require "will_paginate/array"
-
-app_require "controllers/sinatra/stories_controller"
 
 describe StoriesController do
   let(:story_one) { create(:story) }
