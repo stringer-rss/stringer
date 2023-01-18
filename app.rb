@@ -111,5 +111,4 @@ class Stringer < Sinatra::Base
   end
 end
 
-require_relative "app/controllers/sinatra/stories_controller"
 require_relative "config/routes"

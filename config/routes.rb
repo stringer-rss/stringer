@@ -28,6 +28,7 @@ class Stringer < Sinatra::Base
   match("/login", to: "sessions#create", via: :post)
   match("/login", to: "sessions#new", via: :get)
   match("/logout", to: "sessions#destroy", via: :get)
+  match("/news", to: "stories#index", via: :get)
   match("/setup/password", to: "passwords#create", via: :post)
   match("/setup/password", to: "passwords#new", via: :get)
   match("/setup/tutorial", to: "tutorials#index", via: :get)

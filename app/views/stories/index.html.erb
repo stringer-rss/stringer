@@ -5,13 +5,13 @@
 <% end %>
 
 <div id="action-bar">
-  <%= render_partial :action_bar, { stories: @unread_stories } %>
+  <%= render "stories/action_bar", { stories: @unread_stories } %>
 </div>
 
 <% if @unread_stories.empty? %>
-  <%= render_partial :zen %>
+  <%= render "stories/zen" %>
 <% else %>
-  <%= render_js :stories, { stories: @unread_stories } %>
+  <%= render "stories/js", { stories: @unread_stories } %>
   
   <div id="stories">
     <ul id="story-list">
