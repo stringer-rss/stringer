@@ -5,7 +5,7 @@ require "support/active_record"
 
 RSpec.describe PasswordsController, type: :controller do
   def setup
-    expect(UserRepository).to receive(:setup_complete?).twice.and_return(false)
+    expect(UserRepository).to receive(:setup_complete?).and_return(false)
   end
 
   describe "#new" do
