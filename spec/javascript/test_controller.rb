@@ -1,25 +1,24 @@
 # frozen_string_literal: true
 
-class Stringer < Sinatra::Base
-  def test_path(*chunks)
-    File.expand_path(File.join(__dir__, *chunks))
+class TestController < ApplicationController
+  def index
+    prepend_view_path(test_path("support", "views"))
+    render(layout: false, locals: { js_files: })
   end
 
-  get "/test" do
-    erb File.read(test_path("support", "views", "index.erb")),
-        layout: false,
-        locals: { js_files: }
+  def spec
+    send_file(test_path("spec", *params[:splat]))
   end
 
-  get "/spec/*" do
-    send_file test_path("spec", *params[:splat])
-  end
-
-  get "/vendor/*" do
-    send_file test_path("support", "vendor", *params[:splat])
+  def vendor
+    send_file(test_path("support", "vendor", *params[:splat]))
   end
 
   private
+
+  def test_path(*chunks)
+    File.expand_path(File.join(__dir__, *chunks))
+  end
 
   def vendor_js_files
     [
@@ -51,4 +50,11 @@ class Stringer < Sinatra::Base
   def css_files
     vendor_css_files
   end
+  helper_method :css_files
+end
+
+class Stringer < Sinatra::Base
+  match("/test", to: "test#index", via: :get)
+  match("/spec/*", to: "test#spec", via: :get)
+  match("/vendor/*", to: "test#vendor", via: :get)
 end
