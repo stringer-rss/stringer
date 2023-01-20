@@ -157,7 +157,6 @@ RSpec/MultipleExpectations:
     - 'spec/commands/feeds/import_from_opml_spec.rb'
     - 'spec/commands/stories/mark_group_as_read_spec.rb'
     - 'spec/commands/users/change_user_password_spec.rb'
-    - 'spec/commands/users/complete_setup_spec.rb'
     - 'spec/commands/users/create_user_spec.rb'
     - 'spec/fever_api/authentication_spec.rb'
     - 'spec/fever_api/read_feeds_spec.rb'
@@ -301,7 +300,6 @@ Rails/SaveBang:
     - 'app/commands/feeds/add_new_feed.rb'
     - 'app/commands/feeds/import_from_opml.rb'
     - 'app/commands/users/change_user_password.rb'
-    - 'app/commands/users/complete_setup.rb'
     - 'app/commands/users/create_user.rb'
     - 'app/repositories/feed_repository.rb'
     - 'app/repositories/story_repository.rb'
@@ -409,7 +407,6 @@ Style/SingleLineBlockParams:
 Style/StaticClass:
   Exclude:
     - 'app/commands/feeds/add_new_feed.rb'
-    - 'app/commands/users/complete_setup.rb'
     - 'app/commands/users/sign_in_user.rb'
     - 'app/repositories/feed_repository.rb'
     - 'app/repositories/group_repository.rb'

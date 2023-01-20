@@ -16,7 +16,6 @@ class CreateUser
     @repo.create(
       password:,
       password_confirmation: password,
-      setup_complete: false,
       api_key: ApiKey.compute(password)
     )
   end
