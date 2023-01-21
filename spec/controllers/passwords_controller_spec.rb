@@ -32,14 +32,16 @@ RSpec.describe PasswordsController, type: :controller do
     it "rejects when password isn't confirmed" do
       setup
 
-      post "/setup/password", password: "foo", password_confirmation: "bar"
+      post "/setup/password",
+           params: { password: "foo", password_confirmation: "bar" }
 
       page = last_response.body
       expect(page).to have_tag("div.error")
     end
 
     it "accepts confirmed passwords and redirects to next step" do
-      post "/setup/password", password: "foo", password_confirmation: "foo"
+      post "/setup/password",
+           params: { password: "foo", password_confirmation: "foo" }
 
       expect(URI.parse(last_response.location).path).to eq("/feeds/import")
     end

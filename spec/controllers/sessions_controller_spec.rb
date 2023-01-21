@@ -15,7 +15,7 @@ describe SessionsController, type: :controller do
   describe "#create" do
     it "denies access when password is incorrect" do
       create(:user)
-      post "/login", password: "not-the-password"
+      post "/login", params: { password: "not-the-password" }
 
       page = last_response.body
       expect(page).to have_tag(".error")
@@ -24,7 +24,7 @@ describe SessionsController, type: :controller do
     it "allows access when password is correct" do
       user = create(:user)
 
-      post "/login", password: user.password
+      post "/login", params: { password: user.password }
 
       expect(session[:user_id]).to eq(user.id)
     end
@@ -32,7 +32,7 @@ describe SessionsController, type: :controller do
     it "redirects to the root page" do
       user = create(:user)
 
-      post "/login", password: user.password
+      post "/login", params: { password: user.password }
 
       expect(URI.parse(last_response.location).path).to eq("/")
     end
@@ -42,7 +42,7 @@ describe SessionsController, type: :controller do
 
       params = { password: user.password }
       session[:redirect_to] = "/archive"
-      post "/login", params
+      post("/login", params:)
 
       expect(URI.parse(last_response.location).path).to eq("/archive")
     end

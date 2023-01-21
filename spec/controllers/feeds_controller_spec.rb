@@ -69,7 +69,7 @@ describe FeedsController, type: :controller do
       mock_feed(feed, "Test", "example.com/feed")
 
       feed_url = "example.com/feed"
-      put "/feeds/123", **params(feed, feed_name: "Test", feed_url:)
+      put "/feeds/123", params: params(feed, feed_name: "Test", feed_url:)
 
       expect(last_response).to be_redirect
     end
@@ -78,7 +78,7 @@ describe FeedsController, type: :controller do
       feed = build(:feed, url: "example.com/atom")
       mock_feed(feed, feed.name, feed.url, "321")
 
-      put "/feeds/123", **params(feed, feed_id: "123", group_id: "321")
+      put "/feeds/123", params: params(feed, feed_id: "123", group_id: "321")
 
       expect(last_response).to be_redirect
     end
@@ -108,14 +108,15 @@ describe FeedsController, type: :controller do
       it "adds the feed and queues it to be fetched" do
         stub_request(:get, feed_url).to_return(status: 200, body: "<rss></rss>")
 
-        expect { post("/feeds", feed_url:) }.to change(Feed, :count).by(1)
+        expect { post("/feeds", params: { feed_url: }) }
+          .to change(Feed, :count).by(1)
       end
 
       it "queues the feed to be fetched" do
         stub_request(:get, feed_url).to_return(status: 200, body: "<rss></rss>")
         expect(FetchFeeds).to receive(:enqueue).with([instance_of(Feed)])
 
-        post("/feeds", feed_url:)
+        post("/feeds", params: { feed_url: })
       end
     end
 
@@ -124,7 +125,7 @@ describe FeedsController, type: :controller do
 
       it "does not add the feed" do
         stub_request(:get, feed_url).to_return(status: 404)
-        post("/feeds", feed_url:)
+        post("/feeds", params: { feed_url: })
 
         page = last_response.body
         expect(page).to have_tag(".error")
@@ -138,7 +139,7 @@ describe FeedsController, type: :controller do
         create(:feed, url: feed_url)
         stub_request(:get, feed_url).to_return(status: 200, body: "<rss></rss>")
 
-        post("/feeds", feed_url:)
+        post("/feeds", params: { feed_url: })
 
         page = last_response.body
         expect(page).to have_tag(".error")

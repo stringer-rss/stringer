@@ -25,7 +25,7 @@ describe ImportsController, type: :controller do
     it "parses OPML and starts fetching" do
       expect(ImportFromOpml).to receive(:import).once
 
-      post "/feeds/import", "opml_file" => opml_file
+      post "/feeds/import", params: { opml_file: }
     end
   end
 end
