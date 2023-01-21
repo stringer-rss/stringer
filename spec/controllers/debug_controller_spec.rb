@@ -29,11 +29,12 @@ describe DebugController, type: :controller do
 
     it "displays the user agent" do
       setup
+      request.headers["HTTP_USER_AGENT"] = "testy"
 
-      get "/debug", env: { "HTTP_USER_AGENT" => "test" }
+      get "/debug"
 
       page = last_response.body
-      expect(page).to have_tag("dd", text: /test/)
+      expect(page).to have_tag("dd", text: /testy/)
     end
 
     it "displays the delayed job count" do
