@@ -4,7 +4,7 @@ require "spec_helper"
 
 app_require "controllers/feeds_controller"
 
-describe FeedsController do
+describe FeedsController, type: :controller do
   describe "#index" do
     it "renders a list of feeds" do
       create_pair(:feed)

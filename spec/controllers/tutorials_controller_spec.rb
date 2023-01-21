@@ -3,7 +3,7 @@
 require "spec_helper"
 require "support/active_record"
 
-RSpec.describe TutorialsController do
+RSpec.describe TutorialsController, type: :controller do
   describe "#index" do
     context "when a user has not been setup" do
       let(:user) { instance_double(User) }

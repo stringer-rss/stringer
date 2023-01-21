@@ -14,6 +14,7 @@ require "ostruct"
 require "date"
 
 require_relative "support/coverage"
+require_relative "support/controller_helpers"
 require_relative "support/factory_bot"
 require_relative "support/webmock"
 require_relative "factories"
@@ -36,18 +37,10 @@ module Rack
 end
 
 RSpec.configure do |config|
-  config.include(Rack::Test::Methods)
+  config.include(ControllerHelpers, type: :controller)
   config.include(RSpecHtmlMatchers)
 end
 
 def app_require(file)
   require File.expand_path(File.join("app", file))
-end
-
-def app
-  Stringer
-end
-
-def session
-  last_request.env["rack.session"]
 end

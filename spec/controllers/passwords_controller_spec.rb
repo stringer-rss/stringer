@@ -3,7 +3,7 @@
 require "spec_helper"
 require "support/active_record"
 
-RSpec.describe PasswordsController do
+RSpec.describe PasswordsController, type: :controller do
   def setup
     expect(UserRepository).to receive(:setup_complete?).twice.and_return(false)
   end

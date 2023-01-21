@@ -4,7 +4,7 @@ require "spec_helper"
 
 app_require "controllers/imports_controller"
 
-describe ImportsController do
+describe ImportsController, type: :controller do
   describe "GET /feeds/import" do
     it "displays the import options" do
       get "/feeds/import"
