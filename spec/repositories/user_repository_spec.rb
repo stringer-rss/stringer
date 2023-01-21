@@ -23,14 +23,8 @@ describe UserRepository do
       expect(described_class.setup_complete?).to be(false)
     end
 
-    it "returns false when user has not completed setup" do
+    it "returns true when there is at least one user" do
       create(:user)
-
-      expect(described_class.setup_complete?).to be(false)
-    end
-
-    it "returns true when user has completed setup" do
-      create(:user, :setup_complete)
 
       expect(described_class.setup_complete?).to be(true)
     end

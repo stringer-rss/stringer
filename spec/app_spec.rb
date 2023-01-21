@@ -12,7 +12,7 @@ describe "App" do
 
   context "when user is not authenticated and page requires authentication" do
     it "sets the session redirect_to" do
-      create(:user, :setup_complete)
+      create(:user)
 
       get("/news")
 
@@ -20,7 +20,7 @@ describe "App" do
     end
 
     it "redirects to /login" do
-      create(:user, :setup_complete)
+      create(:user)
 
       get("/news")
 
@@ -30,7 +30,7 @@ describe "App" do
   end
 
   it "does not redirect when page needs no authentication" do
-    create(:user, :setup_complete)
+    create(:user)
 
     get("/login")
 
@@ -38,10 +38,19 @@ describe "App" do
   end
 
   it "does not redirect when user is authenticated" do
-    user = create(:user, :setup_complete)
+    user = create(:user)
 
     get("/news", {}, "rack.session" => { user_id: user.id })
 
     expect(last_response).not_to be_redirect
+  end
+
+  it "redirects '/' to '/news'" do
+    user = create(:user)
+
+    get("/", {}, "rack.session" => { user_id: user.id })
+
+    expect(last_response).to be_redirect
+    expect(last_response.headers["Location"]).to end_with("/news")
   end
 end

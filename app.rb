@@ -18,7 +18,6 @@ require "securerandom"
 
 require_relative "app/commands/feeds/import_from_opml"
 require_relative "app/commands/stories/mark_all_as_read"
-require_relative "app/commands/users/complete_setup"
 require_relative "app/commands/users/create_user"
 require_relative "app/commands/users/sign_in_user"
 require_relative "app/helpers/authentication_helpers"

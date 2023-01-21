@@ -10,7 +10,7 @@ class UserRepository
   end
 
   def self.setup_complete?
-    User.any? && User.first.setup_complete?
+    User.any?
   end
 
   def self.save(user)

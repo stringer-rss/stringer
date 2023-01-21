@@ -18,23 +18,5 @@ RSpec.describe TutorialsController do
         expect(page).to have_tag("#mark-all-instruction")
       end
     end
-
-    context "when a user has been setup" do
-      it "redirects tutorial path to /news" do
-        user = create(:user, :setup_complete)
-        session = { "rack.session" => { user_id: user.id } }
-
-        get "/setup/tutorial", {}, session
-        expect(URI.parse(last_response.location).path).to eq("/news")
-      end
-
-      it "redirects root path to /news" do
-        user = create(:user, :setup_complete)
-        session = { "rack.session" => { user_id: user.id } }
-
-        get "/", {}, session
-        expect(URI.parse(last_response.location).path).to eq("/news")
-      end
-    end
   end
 end
