@@ -8,6 +8,7 @@ app_require "controllers/debug_controller"
 describe DebugController, type: :controller do
   describe "GET /debug" do
     def setup
+      login_as(create(:user))
       expect(Delayed::Job).to receive(:count).and_return(42)
 
       migration_status_instance = instance_double(MigrationStatus)

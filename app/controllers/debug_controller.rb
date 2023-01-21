@@ -3,6 +3,8 @@
 require_relative "../models/migration_status"
 
 class DebugController < ApplicationController
+  skip_before_action :authenticate_user, only: [:heroku]
+
   def index
     render(
       locals: {

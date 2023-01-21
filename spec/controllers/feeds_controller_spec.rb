@@ -7,6 +7,7 @@ app_require "controllers/feeds_controller"
 describe FeedsController, type: :controller do
   describe "#index" do
     it "renders a list of feeds" do
+      login_as(create(:user))
       create_pair(:feed)
 
       get "/feeds"
@@ -16,6 +17,8 @@ describe FeedsController, type: :controller do
     end
 
     it "displays message to add feeds if there are none" do
+      login_as(create(:user))
+
       get "/feeds"
 
       page = last_response.body
@@ -25,7 +28,9 @@ describe FeedsController, type: :controller do
 
   describe "#show" do
     it "displays a list of stories" do
+      login_as(create(:user))
       story = create(:story)
+
       get "/feed/#{story.feed_id}"
 
       expect(last_response.body).to have_tag("#stories")
@@ -34,6 +39,7 @@ describe FeedsController, type: :controller do
 
   describe "#edit" do
     it "displays the feed edit form" do
+      login_as(create(:user))
       feed = create(:feed, name: "Rainbows/unicorns", url: "example.com/feed")
 
       get "/feeds/#{feed.id}/edit"
@@ -41,16 +47,6 @@ describe FeedsController, type: :controller do
       rendered = Capybara.string(last_response.body)
       expect(rendered).to have_field("feed_name", with: "Rainbows/unicorns")
     end
-  end
-
-  def mock_feed(feed, name, url, group_id = nil)
-    expect(FeedRepository).to receive(:fetch).with("123").and_return(feed)
-    expect(FeedRepository).to receive(:update_feed).with(
-      feed,
-      name,
-      url,
-      group_id
-    )
   end
 
   describe "#update" do
@@ -65,27 +61,28 @@ describe FeedsController, type: :controller do
     end
 
     it "updates a feed given the id" do
-      feed = build(:feed, url: "example.com/atom", id: "12", group_id: nil)
-      mock_feed(feed, "Test", "example.com/feed")
+      login_as(create(:user))
+      feed = create(:feed, url: "example.com/atom", id: "12", group_id: nil)
 
       feed_url = "example.com/feed"
-      put "/feeds/123", params: params(feed, feed_name: "Test", feed_url:)
+      put "/feeds/#{feed.id}", params: params(feed, feed_url:)
 
-      expect(last_response).to be_redirect
+      expect(feed.reload.url).to eq(feed_url)
     end
 
     it "updates a feed group given the id" do
-      feed = build(:feed, url: "example.com/atom")
-      mock_feed(feed, feed.name, feed.url, "321")
+      login_as(create(:user))
+      feed = create(:feed, url: "example.com/atom")
 
-      put "/feeds/123", params: params(feed, feed_id: "123", group_id: "321")
+      put "/feeds/#{feed.id}", params: params(feed, group_id: 321)
 
-      expect(last_response).to be_redirect
+      expect(feed.reload.group_id).to eq(321)
     end
   end
 
   describe "#destroy" do
     it "deletes a feed given the id" do
+      login_as(create(:user))
       expect(FeedRepository).to receive(:delete).with("123")
 
       delete "/feeds/123"
@@ -94,6 +91,8 @@ describe FeedsController, type: :controller do
 
   describe "#new" do
     it "displays a new feed form" do
+      login_as(create(:user))
+
       get "/feeds/new"
 
       page = last_response.body
@@ -106,6 +105,7 @@ describe FeedsController, type: :controller do
       let(:feed_url) { "http://example.com/" }
 
       it "adds the feed and queues it to be fetched" do
+        login_as(create(:user))
         stub_request(:get, feed_url).to_return(status: 200, body: "<rss></rss>")
 
         expect { post("/feeds", params: { feed_url: }) }
@@ -113,6 +113,7 @@ describe FeedsController, type: :controller do
       end
 
       it "queues the feed to be fetched" do
+        login_as(create(:user))
         stub_request(:get, feed_url).to_return(status: 200, body: "<rss></rss>")
         expect(FetchFeeds).to receive(:enqueue).with([instance_of(Feed)])
 
@@ -124,6 +125,7 @@ describe FeedsController, type: :controller do
       let(:feed_url) { "http://not-a-valid-feed.com/" }
 
       it "does not add the feed" do
+        login_as(create(:user))
         stub_request(:get, feed_url).to_return(status: 404)
         post("/feeds", params: { feed_url: })
 
@@ -136,13 +138,13 @@ describe FeedsController, type: :controller do
       let(:feed_url) { "http://example.com/" }
 
       it "does not add the feed" do
+        login_as(create(:user))
         create(:feed, url: feed_url)
         stub_request(:get, feed_url).to_return(status: 200, body: "<rss></rss>")
 
         post("/feeds", params: { feed_url: })
 
-        page = last_response.body
-        expect(page).to have_tag(".error")
+        expect(last_response.body).to have_tag(".error")
       end
     end
   end

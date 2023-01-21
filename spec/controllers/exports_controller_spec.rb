@@ -19,18 +19,24 @@ describe ExportsController, type: :controller do
     end
 
     it "returns an OPML file" do
+      login_as(create(:user))
+
       get "/feeds/export"
 
       expect(last_response.body).to eq(expected_xml)
     end
 
     it "responds with xml content type" do
+      login_as(create(:user))
+
       get "/feeds/export"
 
       expect(last_response.header["Content-Type"]).to include("application/xml")
     end
 
     it "responds with disposition attachment" do
+      login_as(create(:user))
+
       get "/feeds/export"
 
       expected =

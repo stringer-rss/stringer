@@ -7,6 +7,8 @@ app_require "controllers/imports_controller"
 describe ImportsController, type: :controller do
   describe "GET /feeds/import" do
     it "displays the import options" do
+      login_as(create(:user))
+
       get "/feeds/import"
 
       page = last_response.body
@@ -24,6 +26,7 @@ describe ImportsController, type: :controller do
 
     it "parses OPML and starts fetching" do
       expect(ImportFromOpml).to receive(:import).once
+      login_as(create(:user))
 
       post "/feeds/import", params: { opml_file: }
     end

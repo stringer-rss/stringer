@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class PasswordsController < ApplicationController
+  skip_before_action :authenticate_user, only: [:new, :create]
   before_action :redirect_if_setup_complete
 
   def new; end

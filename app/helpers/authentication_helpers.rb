@@ -17,9 +17,5 @@ module Sinatra
 
       true
     end
-
-    def current_user
-      UserRepository.fetch(session[:user_id])
-    end
   end
 end
