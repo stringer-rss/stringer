@@ -77,37 +77,39 @@ describe StoriesController, type: :controller do
 
   describe "#update" do
     it "marks a story as read when it is_read not malformed" do
-      put "/stories/#{story_one.id}", { is_read: true }.to_json
+      put "/stories/#{story_one.id}", params: { is_read: true }.to_json
 
       expect(story_one.reload.is_read).to be(true)
     end
 
     it "marks a story as read when is_read is malformed" do
-      put "/stories/#{story_one.id}", { is_read: "malformed" }.to_json
+      put "/stories/#{story_one.id}", params: { is_read: "malformed" }.to_json
 
       expect(story_one.reload.is_read).to be(true)
     end
 
     it "marks a story as keep unread when it keep_unread not malformed" do
-      put "/stories/#{story_one.id}", { keep_unread: false }.to_json
+      put "/stories/#{story_one.id}", params: { keep_unread: false }.to_json
 
       expect(story_one.reload.keep_unread).to be(false)
     end
 
     it "marks a story as keep unread when keep_unread is malformed" do
-      put "/stories/#{story_one.id}", { keep_unread: "malformed" }.to_json
+      put "/stories/#{story_one.id}",
+          params: { keep_unread: "malformed" }.to_json
 
       expect(story_one.reload.keep_unread).to be(true)
     end
 
     it "marks a story as starred when is_starred is not malformed" do
-      put "/stories/#{story_one.id}", { is_starred: true }.to_json
+      put "/stories/#{story_one.id}", params: { is_starred: true }.to_json
 
       expect(story_one.reload.is_starred).to be(true)
     end
 
     it "marks a story as starred when is_starred is malformed" do
-      put "/stories/#{story_one.id}", { is_starred: "malformed" }.to_json
+      put "/stories/#{story_one.id}",
+          params: { is_starred: "malformed" }.to_json
 
       expect(story_one.reload.is_starred).to be(true)
     end
@@ -117,7 +119,7 @@ describe StoriesController, type: :controller do
     it "marks all unread stories as read and reload the page" do
       stories = create_pair(:story)
 
-      post "/stories/mark_all_as_read", story_ids: stories.map(&:id)
+      post "/stories/mark_all_as_read", params: { story_ids: stories.map(&:id) }
 
       expect(stories.map(&:reload).map(&:is_read)).to all(be(true))
     end

@@ -30,7 +30,7 @@ describe DebugController, type: :controller do
     it "displays the user agent" do
       setup
 
-      get "/debug", {}, "HTTP_USER_AGENT" => "test"
+      get "/debug", env: { "HTTP_USER_AGENT" => "test" }
 
       page = last_response.body
       expect(page).to have_tag("dd", text: /test/)
