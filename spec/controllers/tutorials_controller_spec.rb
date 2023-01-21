@@ -10,9 +10,9 @@ RSpec.describe TutorialsController, type: :controller do
       let(:feeds) { [instance_double(Feed), instance_double(Feed)] }
 
       it "displays the tutorial and completes setup" do
-        user = create(:user)
+        login_as(create(:user))
 
-        get "/setup/tutorial", {}, { "rack.session" => { user_id: user.id } }
+        get "/setup/tutorial"
 
         page = last_response.body
         expect(page).to have_tag("#mark-all-instruction")
