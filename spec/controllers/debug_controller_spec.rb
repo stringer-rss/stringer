@@ -5,7 +5,7 @@ require "support/active_record"
 
 app_require "controllers/debug_controller"
 
-describe DebugController do
+describe DebugController, type: :controller do
   describe "GET /debug" do
     def setup
       expect(Delayed::Job).to receive(:count).and_return(42)

@@ -30,6 +30,9 @@ Style/StringLiterals: { EnforcedStyle: double_quotes }
 Style/SymbolArray: { EnforcedStyle: brackets }
 Style/WordArray: { EnforcedStyle: brackets }
 
+# enable after Rails
+RSpec/Rails/InferredSpecType: { Enabled: false }
+
 # want to enable these, but they don't work right when using `.rubocop_todo.yml`
 Style/DocumentationMethod: { Enabled: false }
 Style/Documentation: { Enabled: false }

@@ -3,6 +3,8 @@
 require "spec_helper"
 
 describe "AssetPipeline" do
+  include ControllerHelpers
+
   it "handles asset requests" do
     get("/assets/stylesheets/application.css")
 

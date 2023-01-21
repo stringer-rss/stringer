@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-describe SessionsController do
+describe SessionsController, type: :controller do
   describe "#new" do
     it "has a password input and login button" do
       get "/login"
