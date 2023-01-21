@@ -40,17 +40,17 @@ describe "App" do
   end
 
   it "does not redirect when user is authenticated" do
-    user = create(:user)
+    login_as(create(:user))
 
-    get("/news", {}, "rack.session" => { user_id: user.id })
+    get("/news")
 
     expect(last_response).not_to be_redirect
   end
 
   it "redirects '/' to '/news'" do
-    user = create(:user)
+    login_as(create(:user))
 
-    get("/", {}, "rack.session" => { user_id: user.id })
+    get("/")
 
     expect(last_response).to be_redirect
     expect(last_response.headers["Location"]).to end_with("/news")

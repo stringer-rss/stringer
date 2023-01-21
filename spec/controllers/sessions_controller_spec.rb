@@ -41,7 +41,8 @@ describe SessionsController, type: :controller do
       user = create(:user)
 
       params = { password: user.password }
-      post "/login", params, "rack.session" => { redirect_to: "/archive" }
+      session[:redirect_to] = "/archive"
+      post "/login", params
 
       expect(URI.parse(last_response.location).path).to eq("/archive")
     end
@@ -49,13 +50,15 @@ describe SessionsController, type: :controller do
 
   describe "#destroy" do
     it "clears the session" do
-      get "/logout", {}, "rack.session" => { userid: 1 }
+      session[:user_id] = 1
+      get "/logout"
 
       expect(session[:user_id]).to be_nil
     end
 
     it "redirects to the root page" do
-      get "/logout", {}, "rack.session" => { userid: 1 }
+      session[:user_id] = 1
+      get "/logout"
 
       expect(URI.parse(last_response.location).path).to eq("/")
     end
