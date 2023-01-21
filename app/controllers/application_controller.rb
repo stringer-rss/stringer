@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  include Sinatra::AuthenticationHelpers
-  helper_method :current_user
-
   before_action :append_view_path
+  before_action :authenticate_user
   after_action :rotate_flash
 
   # needed for Sinatra
@@ -20,4 +18,15 @@ class ApplicationController < ActionController::Base
   def rotate_flash
     session[:flash] = flash.next # for Sinatra
   end
+
+  def authenticate_user
+    return if current_user
+
+    redirect_to("/login")
+  end
+
+  def current_user
+    UserRepository.fetch(session[:user_id])
+  end
+  helper_method :current_user
 end

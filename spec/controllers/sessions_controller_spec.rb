@@ -50,14 +50,16 @@ describe SessionsController, type: :controller do
 
   describe "#destroy" do
     it "clears the session" do
-      session[:user_id] = 1
+      login_as(create(:user))
+
       get "/logout"
 
       expect(session[:user_id]).to be_nil
     end
 
     it "redirects to the root page" do
-      session[:user_id] = 1
+      login_as(create(:user))
+
       get "/logout"
 
       expect(URI.parse(last_response.location).path).to eq("/")
