@@ -20,7 +20,6 @@ require_relative "app/commands/feeds/import_from_opml"
 require_relative "app/commands/stories/mark_all_as_read"
 require_relative "app/commands/users/create_user"
 require_relative "app/commands/users/sign_in_user"
-require_relative "app/helpers/authentication_helpers"
 require_relative "app/repositories/story_repository"
 require_relative "app/repositories/user_repository"
 require_relative "app/tasks/fetch_feeds"
@@ -72,15 +71,8 @@ class Stringer < Sinatra::Base
     ActiveRecord::Base.include_root_in_json = false
   end
 
-  helpers { include Sinatra::AuthenticationHelpers }
-
   before do
     I18n.locale = ENV["LOCALE"].blank? ? :en : ENV["LOCALE"].to_sym
-
-    if !authenticated? && needs_authentication?(request.path)
-      session[:redirect_to] = request.fullpath
-      redirect "/login"
-    end
   end
 
   get "/" do

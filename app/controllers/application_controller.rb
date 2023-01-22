@@ -22,6 +22,7 @@ class ApplicationController < ActionController::Base
   def authenticate_user
     return if current_user
 
+    session[:redirect_to] = request.fullpath
     redirect_to("/login")
   end
 
