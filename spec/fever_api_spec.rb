@@ -2,13 +2,7 @@
 
 require "spec_helper"
 
-describe FeverAPI do
-  include Rack::Test::Methods
-
-  def app
-    Stringer
-  end
-
+describe FeverAPI, type: :controller do
   let(:api_key) { "apisecretkey" }
   let(:story_one) { build(:story) }
   let(:story_two) { build(:story) }
@@ -34,13 +28,13 @@ describe FeverAPI do
 
   describe "authentication" do
     it "authenticates request with correct api_key" do
-      get "/fever", headers
+      get "/fever", params: headers
       expect(last_response).to be_ok
       expect(last_response_as_object).to include(standard_answer)
     end
 
     it "does not authenticate request with incorrect api_key" do
-      get "/fever", api_key: "foo"
+      get "/fever", params: { api_key: "foo" }
       expect(last_response).to be_ok
       expect(last_response_as_object).to include(cannot_auth)
     end
@@ -54,7 +48,7 @@ describe FeverAPI do
 
   describe "#get" do
     def make_request(extra_headers = {})
-      get("/fever", headers.merge(extra_headers))
+      get("/fever", params: headers.merge(extra_headers))
     end
 
     it "returns standard answer" do
@@ -190,7 +184,7 @@ describe FeverAPI do
 
   describe "#post" do
     def make_request(extra_headers = {})
-      post("/fever", headers.merge(extra_headers))
+      post("/fever", params: headers.merge(extra_headers))
     end
 
     it "commands to mark story as read" do
