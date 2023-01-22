@@ -5,6 +5,8 @@ require "spec_helper"
 describe SessionsController, type: :controller do
   describe "#new" do
     it "has a password input and login button" do
+      create(:user)
+
       get "/login"
 
       page = last_response.body

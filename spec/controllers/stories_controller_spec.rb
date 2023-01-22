@@ -12,10 +12,18 @@ describe StoriesController, type: :controller do
       expect(StoryRepository).to receive(:unread).and_return(stories)
     end
 
-    it "redirects to the login page if not logged in" do
+    it "redirects to the setup page when no user exists" do
       get "/news"
 
-      expect(last_response.headers["Location"]).to end_with("/login")
+      expect(URI.parse(last_response.location).path).to eq("/setup/password")
+    end
+
+    it "redirects to the login page if not logged in" do
+      create(:user)
+
+      get "/news"
+
+      expect(URI.parse(last_response.location).path).to eq("/login")
     end
 
     it "display list of unread stories" do

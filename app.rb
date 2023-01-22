@@ -74,14 +74,6 @@ class Stringer < Sinatra::Base
   before do
     I18n.locale = ENV["LOCALE"].blank? ? :en : ENV["LOCALE"].to_sym
   end
-
-  get "/" do
-    if UserRepository.setup_complete?
-      redirect to("/news")
-    else
-      redirect to("/setup/password")
-    end
-  end
 end
 
 require_relative "config/routes"
