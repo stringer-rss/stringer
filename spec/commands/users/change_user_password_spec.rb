@@ -28,9 +28,8 @@ describe ChangeUserPassword do
       expect(repo).to receive(:save)
 
       command = described_class.new(repo)
-      result = command.change_user_password(new_password)
-
-      expect(result.api_key).to eq(ApiKey.compute(new_password))
+      expect  { command.change_user_password(new_password) }
+        .to change(user, :api_key)
     end
   end
 end
