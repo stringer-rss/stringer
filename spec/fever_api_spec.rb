@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
 require "spec_helper"
-require "./fever_api"
 
 describe FeverAPI do
   include Rack::Test::Methods
 
   def app
-    FeverAPI::Endpoint
+    Stringer
   end
 
   let(:api_key) { "apisecretkey" }
@@ -35,19 +34,19 @@ describe FeverAPI do
 
   describe "authentication" do
     it "authenticates request with correct api_key" do
-      get "/", headers
+      get "/fever", headers
       expect(last_response).to be_ok
       expect(last_response_as_object).to include(standard_answer)
     end
 
     it "does not authenticate request with incorrect api_key" do
-      get "/", api_key: "foo"
+      get "/fever", api_key: "foo"
       expect(last_response).to be_ok
       expect(last_response_as_object).to include(cannot_auth)
     end
 
     it "does not authenticate request when api_key is not provided" do
-      get "/"
+      get "/fever"
       expect(last_response).to be_ok
       expect(last_response_as_object).to include(cannot_auth)
     end
@@ -55,7 +54,7 @@ describe FeverAPI do
 
   describe "#get" do
     def make_request(extra_headers = {})
-      get("/", headers.merge(extra_headers))
+      get("/fever", headers.merge(extra_headers))
     end
 
     it "returns standard answer" do
@@ -191,7 +190,7 @@ describe FeverAPI do
 
   describe "#post" do
     def make_request(extra_headers = {})
-      post("/", headers.merge(extra_headers))
+      post("/fever", headers.merge(extra_headers))
     end
 
     it "commands to mark story as read" do
