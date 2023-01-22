@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require_relative "../../repositories/user_repository"
-require_relative "../../utils/api_key"
 
 class ChangeUserPassword
   def initialize(repository = UserRepository)
@@ -11,7 +10,7 @@ class ChangeUserPassword
   def change_user_password(new_password)
     user = @repo.first
     user.password = user.password_confirmation = new_password
-    user.api_key = ApiKey.compute(new_password)
+    user.regenerate_api_key
 
     @repo.save(user)
     user
