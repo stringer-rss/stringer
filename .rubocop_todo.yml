@@ -116,7 +116,6 @@ RSpec/FilePath:
 RSpec/MessageChain:
   Exclude:
     - 'spec/fever_api/read_feeds_groups_spec.rb'
-    - 'spec/fever_api_spec.rb'
 
 # Offense count: 33
 # Configuration parameters: EnforcedStyle.
@@ -237,14 +236,6 @@ RSpec/VerifiedDoubles:
 Rails/HasManyOrHasOneDependent:
   Exclude:
     - 'app/models/group.rb'
-
-# Offense count: 4
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: Include.
-# Include: spec/**/*, test/**/*
-Rails/HttpPositionalArguments:
-  Exclude:
-    - 'spec/fever_api_spec.rb'
 
 # Offense count: 1
 # Configuration parameters: IgnoreScopes, Include.

@@ -13,57 +13,52 @@ describe FeverAPI, type: :controller do
     { api_version: 3, auth: 1, last_refreshed_on_time: 123456789 }
   end
   let(:cannot_auth) { { api_version: 3, auth: 0 } }
-  let(:headers) { { api_key: } }
 
-  before do
-    user = double(api_key:)
-    allow(User).to receive(:first) { user }
-
-    allow(Time).to receive(:now) { Time.at(123456789) }
-  end
+  before { allow(Time).to receive(:now) { Time.at(123456789) } }
 
   def last_response_as_object
     JSON.parse(last_response.body, symbolize_names: true)
   end
 
+  def params(user: create(:user), **overrides)
+    { api_key: user.api_key, **overrides }
+  end
+
   describe "authentication" do
     it "authenticates request with correct api_key" do
-      get "/fever", params: headers
+      get("/fever", params:)
       expect(last_response).to be_ok
       expect(last_response_as_object).to include(standard_answer)
     end
 
     it "does not authenticate request with incorrect api_key" do
-      get "/fever", params: { api_key: "foo" }
+      get "/fever", params: params(api_key: "foo")
       expect(last_response).to be_ok
       expect(last_response_as_object).to include(cannot_auth)
     end
 
     it "does not authenticate request when api_key is not provided" do
-      get "/fever"
+      create(:user)
+
+      get "/fever", params: params(api_key: nil)
       expect(last_response).to be_ok
       expect(last_response_as_object).to include(cannot_auth)
     end
   end
 
   describe "#get" do
-    def make_request(extra_headers = {})
-      get("/fever", params: headers.merge(extra_headers))
-    end
-
     it "returns standard answer" do
-      make_request
+      get("/fever", params:)
 
       expect(last_response).to be_ok
       expect(last_response_as_object).to include(standard_answer)
     end
 
     it "returns groups and feeds by groups when 'groups' header is provided" do
-      allow(GroupRepository).to receive(:list).and_return([group])
-      allow(FeedRepository)
-        .to receive_message_chain(:in_group, :order).and_return([feed])
+      group = create(:group)
+      feed = create(:feed, group:)
 
-      make_request(groups: nil)
+      get("/fever", params: params(groups: nil))
 
       expect(last_response).to be_ok
       expect(last_response_as_object).to include(standard_answer)
@@ -74,11 +69,10 @@ describe FeverAPI, type: :controller do
     end
 
     it "returns feeds and feeds by groups when 'feeds' header is provided" do
-      allow(FeedRepository).to receive(:list).and_return([feed])
-      allow(FeedRepository)
-        .to receive_message_chain(:in_group, :order).and_return([feed])
+      group = create(:group)
+      feed = create(:feed, group:)
 
-      make_request(feeds: nil)
+      get("/fever", params: params(feeds: nil))
 
       expect(last_response).to be_ok
       expect(last_response_as_object).to include(standard_answer)
@@ -89,7 +83,7 @@ describe FeverAPI, type: :controller do
     end
 
     it "returns favicons hash when 'favicons' header provided" do
-      make_request(favicons: nil)
+      get("/fever", params: params(favicons: nil))
 
       expect(last_response).to be_ok
       expect(last_response_as_object).to include(standard_answer)
@@ -109,7 +103,7 @@ describe FeverAPI, type: :controller do
       expect(StoryRepository)
         .to receive(:unread).and_return([story_one, story_two])
 
-      make_request(items: nil, since_id: 5)
+      get("/fever", params: params(items: nil, since_id: 5))
 
       expect(last_response).to be_ok
       expect(last_response_as_object).to include(standard_answer)
@@ -123,7 +117,7 @@ describe FeverAPI, type: :controller do
       expect(StoryRepository)
         .to receive(:unread).twice.and_return([story_one, story_two])
 
-      make_request(items: nil)
+      get("/fever", params: params(items: nil))
 
       expect(last_response).to be_ok
       expect(last_response_as_object).to include(standard_answer)
@@ -137,7 +131,7 @@ describe FeverAPI, type: :controller do
       expect(StoryRepository)
         .to receive(:fetch_by_ids).twice.with(["5"]).and_return([story_one])
 
-      make_request(items: nil, with_ids: 5)
+      get("/fever", params: params(items: nil, with_ids: 5))
 
       expect(last_response).to be_ok
       expect(last_response_as_object).to include(standard_answer)
@@ -148,7 +142,7 @@ describe FeverAPI, type: :controller do
     end
 
     it "returns links as empty array when 'links' header is provided" do
-      make_request(links: nil)
+      get("/fever", params: params(links: nil))
 
       expect(last_response).to be_ok
       expect(last_response_as_object).to include(standard_answer)
@@ -159,7 +153,7 @@ describe FeverAPI, type: :controller do
       expect(StoryRepository)
         .to receive(:unread).and_return([story_one, story_two])
 
-      make_request(unread_item_ids: nil)
+      get("/fever", params: params(unread_item_ids: nil))
 
       expect(last_response).to be_ok
       expect(last_response_as_object).to include(standard_answer)
@@ -172,7 +166,7 @@ describe FeverAPI, type: :controller do
       expect(Story).to receive(:where).with(is_starred: true)
                                       .and_return([story_one, story_two])
 
-      make_request(saved_item_ids: nil)
+      get("/fever", params: params(saved_item_ids: nil))
 
       expect(last_response).to be_ok
       expect(last_response_as_object).to include(standard_answer)
@@ -183,15 +177,11 @@ describe FeverAPI, type: :controller do
   end
 
   describe "#post" do
-    def make_request(extra_headers = {})
-      post("/fever", params: headers.merge(extra_headers))
-    end
-
     it "commands to mark story as read" do
       expect(MarkAsRead)
         .to receive(:new).with("10").and_return(double(mark_as_read: true))
 
-      make_request(mark: "item", as: "read", id: 10)
+      post("/fever", params: params(mark: "item", as: "read", id: 10))
 
       expect(last_response).to be_ok
       expect(last_response_as_object).to include(standard_answer)
@@ -201,7 +191,7 @@ describe FeverAPI, type: :controller do
       expect(MarkAsUnread)
         .to receive(:new).with("10").and_return(double(mark_as_unread: true))
 
-      make_request(mark: "item", as: "unread", id: 10)
+      post("/fever", params: params(mark: "item", as: "unread", id: 10))
 
       expect(last_response).to be_ok
       expect(last_response_as_object).to include(standard_answer)
@@ -211,7 +201,7 @@ describe FeverAPI, type: :controller do
       expect(MarkAsStarred)
         .to receive(:new).with("10").and_return(double(mark_as_starred: true))
 
-      make_request(mark: "item", as: "saved", id: 10)
+      post("/fever", params: params(mark: "item", as: "saved", id: 10))
 
       expect(last_response).to be_ok
       expect(last_response_as_object).to include(standard_answer)
@@ -221,7 +211,7 @@ describe FeverAPI, type: :controller do
       expect(MarkAsUnstarred).to receive(:new)
         .with("10").and_return(double(mark_as_unstarred: true))
 
-      make_request(mark: "item", as: "unsaved", id: 10)
+      post("/fever", params: params(mark: "item", as: "unsaved", id: 10))
 
       expect(last_response).to be_ok
       expect(last_response_as_object).to include(standard_answer)
@@ -232,7 +222,8 @@ describe FeverAPI, type: :controller do
         .to receive(:new).with("10", "1375080946")
         .and_return(double(mark_group_as_read: true))
 
-      make_request(mark: "group", as: "read", id: 10, before: 1375080946)
+      params = params(mark: "group", as: "read", id: 10, before: 1375080946)
+      post("/fever", params:)
 
       expect(last_response).to be_ok
       expect(last_response_as_object).to include(standard_answer)
@@ -243,7 +234,8 @@ describe FeverAPI, type: :controller do
         .to receive(:new).with("20", "1375080945")
         .and_return(double(mark_feed_as_read: true))
 
-      make_request(mark: "feed", as: "read", id: 20, before: 1375080945)
+      params = params(mark: "feed", as: "read", id: 20, before: 1375080945)
+      post("/fever", params:)
 
       expect(last_response).to be_ok
       expect(last_response_as_object).to include(standard_answer)
