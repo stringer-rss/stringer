@@ -19,5 +19,9 @@ FactoryBot.define do
     trait :unread do
       is_read { false }
     end
+
+    trait :with_group do
+      association :feed, :with_group
+    end
   end
 end

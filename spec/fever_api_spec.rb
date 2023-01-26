@@ -55,62 +55,41 @@ describe FeverAPI, type: :controller do
     end
 
     it "returns groups and feeds by groups when 'groups' header is provided" do
-      group = create(:group)
-      feed = create(:feed, group:)
+      feed = create(:feed, :with_group)
 
       get("/fever", params: params(groups: nil))
 
-      expect(last_response).to be_ok
+      groups = [{ group_id: feed.group_id, feed_ids: feed.id.to_s }]
       expect(last_response_as_object).to include(standard_answer)
-      expect(last_response_as_object).to include(
-        groups: [group.as_fever_json],
-        feeds_groups: [{ group_id: group.id, feed_ids: feed.id.to_s }]
-      )
+        .and include(groups: [feed.group.as_fever_json], feeds_groups: groups)
     end
 
     it "returns feeds and feeds by groups when 'feeds' header is provided" do
-      group = create(:group)
-      feed = create(:feed, group:)
+      feed = create(:feed, :with_group)
 
       get("/fever", params: params(feeds: nil))
 
-      expect(last_response).to be_ok
+      groups = [{ group_id: feed.group_id, feed_ids: feed.id.to_s }]
       expect(last_response_as_object).to include(standard_answer)
-      expect(last_response_as_object).to include(
-        feeds: [feed.as_fever_json],
-        feeds_groups: [{ group_id: group.id, feed_ids: feed.id.to_s }]
-      )
+        .and include(feeds: [feed.as_fever_json], feeds_groups: groups)
     end
 
     it "returns favicons hash when 'favicons' header provided" do
       get("/fever", params: params(favicons: nil))
 
-      expect(last_response).to be_ok
+      favicon = { id: 0, data: a_string_including("image/gif;base64") }
       expect(last_response_as_object).to include(standard_answer)
-      expect(last_response_as_object).to include(
-        favicons: [
-          {
-            id: 0,
-            data: a_string_including("image/gif;base64")
-          }
-        ]
-      )
+        .and include(favicons: [favicon])
     end
 
     it "returns stories when 'items' and 'since_id'" do
-      expect(StoryRepository)
-        .to receive(:unread_since_id).with("5").and_return([story_one])
-      expect(StoryRepository)
-        .to receive(:unread).and_return([story_one, story_two])
+      create(:story, :unread, id: 5)
+      story_two = create(:story, :unread, id: 6)
 
       get("/fever", params: params(items: nil, since_id: 5))
 
-      expect(last_response).to be_ok
       expect(last_response_as_object).to include(standard_answer)
-      expect(last_response_as_object).to include(
-        items: [story_one.as_fever_json],
-        total_items: 2
-      )
+        .and include(items: [story_two.as_fever_json], total_items: 2)
     end
 
     it "returns stories when 'items' header is provided without 'since_id'" do
@@ -119,12 +98,8 @@ describe FeverAPI, type: :controller do
 
       get("/fever", params: params(items: nil))
 
-      expect(last_response).to be_ok
       expect(last_response_as_object).to include(standard_answer)
-      expect(last_response_as_object).to include(
-        items: [story_one.as_fever_json, story_two.as_fever_json],
-        total_items: 2
-      )
+        .and include(items: stories.map(&:as_fever_json), total_items: 2)
     end
 
     it "returns stories ids when 'items' and 'with_ids'" do
@@ -133,12 +108,8 @@ describe FeverAPI, type: :controller do
 
       get("/fever", params: params(items: nil, with_ids: 5))
 
-      expect(last_response).to be_ok
       expect(last_response_as_object).to include(standard_answer)
-      expect(last_response_as_object).to include(
-        items: [story_one.as_fever_json],
-        total_items: 1
-      )
+        .and include(items: [story_one.as_fever_json], total_items: 1)
     end
 
     it "returns links as empty array when 'links' header is provided" do
@@ -155,11 +126,8 @@ describe FeverAPI, type: :controller do
 
       get("/fever", params: params(unread_item_ids: nil))
 
-      expect(last_response).to be_ok
       expect(last_response_as_object).to include(standard_answer)
-      expect(last_response_as_object).to include(
-        unread_item_ids: [story_one.id, story_two.id].join(",")
-      )
+        .and include(unread_item_ids: [story_one.id, story_two.id].join(","))
     end
 
     it "returns starred items when 'saved_item_ids' header is provided" do
@@ -168,11 +136,8 @@ describe FeverAPI, type: :controller do
 
       get("/fever", params: params(saved_item_ids: nil))
 
-      expect(last_response).to be_ok
       expect(last_response_as_object).to include(standard_answer)
-      expect(last_response_as_object).to include(
-        saved_item_ids: [story_one.id, story_two.id].join(",")
-      )
+        .and include(saved_item_ids: [story_one.id, story_two.id].join(","))
     end
   end
 
@@ -218,27 +183,23 @@ describe FeverAPI, type: :controller do
     end
 
     it "commands to mark group as read" do
-      expect(MarkGroupAsRead)
-        .to receive(:new).with("10", "1375080946")
-        .and_return(double(mark_group_as_read: true))
+      story = create(:story, :unread, :with_group, created_at: 1.week.ago)
+      before = Time.zone.now.to_i
+      id = story.feed.group_id
 
-      params = params(mark: "group", as: "read", id: 10, before: 1375080946)
-      post("/fever", params:)
+      post("/fever", params: params(mark: "group", as: "read", id:, before:))
 
-      expect(last_response).to be_ok
       expect(last_response_as_object).to include(standard_answer)
     end
 
     it "commands to mark entire feed as read" do
-      expect(MarkFeedAsRead)
-        .to receive(:new).with("20", "1375080945")
-        .and_return(double(mark_feed_as_read: true))
+      story = create(:story, :unread, created_at: 1.week.ago)
+      before = Time.zone.now.to_i
+      id = story.feed_id
 
-      params = params(mark: "feed", as: "read", id: 20, before: 1375080945)
-      post("/fever", params:)
+      post("/fever", params: params(mark: "feed", as: "read", id:, before:))
 
-      expect(last_response).to be_ok
-      expect(last_response_as_object).to include(standard_answer)
+      expect(story.reload.is_read).to be(true)
     end
   end
 end
