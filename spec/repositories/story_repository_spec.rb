@@ -122,7 +122,7 @@ describe StoryRepository do
     it "returns unread stories before timestamp for group_id" do
       feed = create(:feed, group_id: 52)
       story = create(:story, :unread, feed:, created_at: 5.minutes.ago)
-      time = Time.now
+      time = Time.zone.now
 
       stories = described_class.fetch_unread_by_timestamp_and_group(time, 52)
 
@@ -132,7 +132,7 @@ describe StoryRepository do
     it "does not return read stories before timestamp for group_id" do
       feed = create(:feed, group_id: 52)
       create(:story, feed:, created_at: 5.minutes.ago)
-      time = Time.now
+      time = Time.zone.now
 
       stories = described_class.fetch_unread_by_timestamp_and_group(time, 52)
 
@@ -152,7 +152,7 @@ describe StoryRepository do
     it "does not return stories before timestamp for other group_id" do
       feed = create(:feed, group_id: 52)
       create(:story, :unread, feed:, created_at: 5.minutes.ago)
-      time = Time.now
+      time = Time.zone.now
 
       stories = described_class.fetch_unread_by_timestamp_and_group(time, 55)
 
@@ -162,7 +162,7 @@ describe StoryRepository do
     it "does not return stories with no group_id before timestamp" do
       feed = create(:feed)
       create(:story, :unread, feed:, created_at: 5.minutes.ago)
-      time = Time.now
+      time = Time.zone.now
 
       stories = described_class.fetch_unread_by_timestamp_and_group(time, 52)
 
@@ -172,7 +172,7 @@ describe StoryRepository do
     it "returns unread stories before timestamp for nil group_id" do
       feed = create(:feed)
       story = create(:story, :unread, feed:, created_at: 5.minutes.ago)
-      time = Time.now
+      time = Time.zone.now
 
       stories = described_class.fetch_unread_by_timestamp_and_group(time, nil)
 

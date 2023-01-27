@@ -329,13 +329,6 @@ Rails/TimeZone:
     - 'app/repositories/story_repository.rb'
     - 'app/tasks/remove_old_stories.rb'
     - 'app/utils/sample_story.rb'
-    - 'spec/commands/find_new_stories_spec.rb'
-    - 'spec/fever_api_spec.rb'
-    - 'spec/integration/feed_importing_spec.rb'
-    - 'spec/models/story_spec.rb'
-    - 'spec/repositories/feed_repository_spec.rb'
-    - 'spec/repositories/story_repository_spec.rb'
-    - 'spec/tasks/fetch_feed_spec.rb'
 
 # Offense count: 2
 # This cop supports safe autocorrection (--autocorrect).

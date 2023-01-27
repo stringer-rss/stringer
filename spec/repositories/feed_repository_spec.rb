@@ -50,7 +50,7 @@ describe FeedRepository do
   end
 
   describe ".update_last_fetched" do
-    let(:timestamp) { Time.now }
+    let(:timestamp) { Time.zone.now }
 
     it "saves the last_fetched timestamp" do
       feed = Feed.new
