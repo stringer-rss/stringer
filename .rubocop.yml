@@ -16,6 +16,7 @@ Layout/RedundantLineBreak: { InspectBlocks: true }
 Metrics/BlockLength: { Exclude: ['spec/**/*_spec.rb'] }
 RSpec/MessageExpectation: { EnforcedStyle: expect }
 RSpec/MessageSpies: { EnforcedStyle: receive }
+RSpec/MultipleMemoizedHelpers: { AllowSubject: false, Max: 0 }
 Style/MethodCallWithArgsParentheses:
   AllowedMethods:
     - and
