@@ -2,7 +2,7 @@
 
 ## Production ready setup using docker-compose
 
-Download [docker-compose.yml](../docker-compose.yml) and in the corresponding foler, run `docker-compose up -d`, give it a second and visit `localhost`
+Download [docker-compose.yml](../docker-compose.yml) and in the corresponding folder, run `docker-compose up -d`, give it a second and visit `localhost`
 
 ## Production ready manual setup
 
