@@ -4,14 +4,14 @@ require "spec_helper"
 
 describe FeverAPI, type: :controller do
   def standard_answer
-    { api_version: 3, auth: 1, last_refreshed_on_time: 123456789 }
+    { api_version: 3, auth: 1, last_refreshed_on_time: 123_456_789 }
   end
 
   def cannot_auth
     { api_version: 3, auth: 0 }
   end
 
-  before { allow(Time).to receive(:now) { Time.zone.at(123456789) } }
+  before { allow(Time).to receive(:now) { Time.zone.at(123_456_789) } }
 
   def last_response_as_object
     JSON.parse(last_response.body, symbolize_names: true)
