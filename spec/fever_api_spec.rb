@@ -136,40 +136,36 @@ describe FeverAPI, type: :controller do
 
   describe "#post" do
     it "commands to mark story as read" do
-      expect(MarkAsRead)
-        .to receive(:new).with("10").and_return(double(mark_as_read: true))
+      story = create(:story, :unread)
 
-      post("/fever", params: params(mark: "item", as: "read", id: 10))
+      post("/fever", params: params(mark: "item", as: "read", id: story.id))
 
       expect(last_response).to be_ok
       expect(last_response_as_object).to include(standard_answer)
     end
 
     it "commands to mark story as unread" do
-      expect(MarkAsUnread)
-        .to receive(:new).with("10").and_return(double(mark_as_unread: true))
+      story = create(:story, :read)
 
-      post("/fever", params: params(mark: "item", as: "unread", id: 10))
+      post("/fever", params: params(mark: "item", as: "unread", id: story.id))
 
       expect(last_response).to be_ok
       expect(last_response_as_object).to include(standard_answer)
     end
 
     it "commands to save story" do
-      expect(MarkAsStarred)
-        .to receive(:new).with("10").and_return(double(mark_as_starred: true))
+      story = create(:story)
 
-      post("/fever", params: params(mark: "item", as: "saved", id: 10))
+      post("/fever", params: params(mark: "item", as: "saved", id: story.id))
 
       expect(last_response).to be_ok
       expect(last_response_as_object).to include(standard_answer)
     end
 
     it "commands to unsave story" do
-      expect(MarkAsUnstarred).to receive(:new)
-        .with("10").and_return(double(mark_as_unstarred: true))
+      story = create(:story, :starred)
 
-      post("/fever", params: params(mark: "item", as: "unsaved", id: 10))
+      post("/fever", params: params(mark: "item", as: "unsaved", id: story.id))
 
       expect(last_response).to be_ok
       expect(last_response_as_object).to include(standard_answer)
