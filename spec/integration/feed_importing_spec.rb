@@ -13,7 +13,7 @@ describe "Feed importing" do
   let(:feed) do
     Feed.create(
       name: "Example feed",
-      last_fetched: Time.new(2014, 1, 1),
+      last_fetched: Time.zone.local(2014, 1, 1),
       url: server.url
     )
   end

@@ -9,7 +9,7 @@ describe FetchFeed do
       double(
         id: 1,
         url: "http://daringfireball.com/feed",
-        last_fetched: Time.new(2013, 1, 1),
+        last_fetched: Time.zone.local(2013, 1, 1),
         stories: []
       )
     end
@@ -49,7 +49,7 @@ describe FetchFeed do
 
     context "when no new posts have been added" do
       it "does not add any new posts" do
-        fake_feed = double(last_modified: Time.new(2012, 12, 31))
+        fake_feed = double(last_modified: Time.zone.local(2012, 12, 31))
         client = class_spy(HTTParty)
         parser = class_double(Feedjira, parse: fake_feed)
 
@@ -63,7 +63,7 @@ describe FetchFeed do
     end
 
     context "when new posts have been added" do
-      let(:now) { Time.now }
+      let(:now) { Time.zone.now }
       let(:new_story) { double }
       let(:old_story) { double }
 
@@ -107,7 +107,8 @@ describe FetchFeed do
 
     context "feed status" do
       it "sets the status to green if things are all good" do
-        fake_feed = double(last_modified: Time.new(2012, 12, 31), entries: [])
+        fake_feed =
+          double(last_modified: Time.zone.local(2012, 12, 31), entries: [])
         client = class_spy(HTTParty)
         parser = class_double(Feedjira, parse: fake_feed)
 

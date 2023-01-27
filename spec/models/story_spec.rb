@@ -52,7 +52,7 @@ describe "Story" do
 
   describe "#pretty_date" do
     it "returns a formatted published date" do
-      published_at = Time.now
+      published_at = Time.zone.now
       story = Story.new(published: published_at)
 
       expect(story.pretty_date).to eq(I18n.l(published_at))
