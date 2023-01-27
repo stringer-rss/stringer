@@ -248,7 +248,6 @@ RSpec/VerifiedDoubles:
     - 'spec/fever_api/write_mark_feed_spec.rb'
     - 'spec/fever_api/write_mark_group_spec.rb'
     - 'spec/fever_api/write_mark_item_spec.rb'
-    - 'spec/fever_api_spec.rb'
     - 'spec/jobs/fetch_feed_job_spec.rb'
     - 'spec/repositories/story_repository_spec.rb'
     - 'spec/tasks/fetch_feed_spec.rb'
