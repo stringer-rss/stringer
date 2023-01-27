@@ -3,16 +3,13 @@
 require "spec_helper"
 
 describe FeverAPI, type: :controller do
-  let(:api_key) { "apisecretkey" }
-  let(:story_one) { build(:story) }
-  let(:story_two) { build(:story) }
-  let(:group) { build(:group) }
-  let(:feed) { build(:feed, group:) }
-  let(:stories) { [story_one, story_two] }
-  let(:standard_answer) do
+  def standard_answer
     { api_version: 3, auth: 1, last_refreshed_on_time: 123456789 }
   end
-  let(:cannot_auth) { { api_version: 3, auth: 0 } }
+
+  def cannot_auth
+    { api_version: 3, auth: 0 }
+  end
 
   before { allow(Time).to receive(:now) { Time.at(123456789) } }
 
@@ -93,8 +90,7 @@ describe FeverAPI, type: :controller do
     end
 
     it "returns stories when 'items' header is provided without 'since_id'" do
-      expect(StoryRepository)
-        .to receive(:unread).twice.and_return([story_one, story_two])
+      stories = create_pair(:story, :unread)
 
       get("/fever", params: params(items: nil))
 
@@ -103,13 +99,12 @@ describe FeverAPI, type: :controller do
     end
 
     it "returns stories ids when 'items' and 'with_ids'" do
-      expect(StoryRepository)
-        .to receive(:fetch_by_ids).twice.with(["5"]).and_return([story_one])
+      story = create(:story)
 
-      get("/fever", params: params(items: nil, with_ids: 5))
+      get("/fever", params: params(items: nil, with_ids: story.id))
 
       expect(last_response_as_object).to include(standard_answer)
-        .and include(items: [story_one.as_fever_json], total_items: 1)
+        .and include(items: [story.as_fever_json], total_items: 1)
     end
 
     it "returns links as empty array when 'links' header is provided" do
@@ -121,23 +116,21 @@ describe FeverAPI, type: :controller do
     end
 
     it "returns unread items ids when 'unread_item_ids' header is provided" do
-      expect(StoryRepository)
-        .to receive(:unread).and_return([story_one, story_two])
+      stories = create_pair(:story, :unread)
 
       get("/fever", params: params(unread_item_ids: nil))
 
       expect(last_response_as_object).to include(standard_answer)
-        .and include(unread_item_ids: [story_one.id, story_two.id].join(","))
+        .and include(unread_item_ids: stories.map(&:id).join(","))
     end
 
     it "returns starred items when 'saved_item_ids' header is provided" do
-      expect(Story).to receive(:where).with(is_starred: true)
-                                      .and_return([story_one, story_two])
+      stories = create_pair(:story, :starred)
 
       get("/fever", params: params(saved_item_ids: nil))
 
       expect(last_response_as_object).to include(standard_answer)
-        .and include(saved_item_ids: [story_one.id, story_two.id].join(","))
+        .and include(saved_item_ids: stories.map(&:id).join(","))
     end
   end
 
