@@ -192,7 +192,6 @@ RSpec/MultipleMemoizedHelpers:
     - 'spec/fever_api/write_mark_feed_spec.rb'
     - 'spec/fever_api/write_mark_group_spec.rb'
     - 'spec/fever_api/write_mark_item_spec.rb'
-    - 'spec/fever_api_spec.rb'
     - 'spec/helpers/url_helpers_spec.rb'
     - 'spec/integration/feed_importing_spec.rb'
     - 'spec/models/story_spec.rb'
