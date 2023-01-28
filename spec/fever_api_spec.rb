@@ -4,7 +4,7 @@ require "spec_helper"
 
 describe FeverAPI, type: :controller do
   def standard_answer
-    { api_version: 3, auth: 1, last_refreshed_on_time: 123_456_789 }
+    { api_version: 3, auth: 1, last_refreshed_on_time: 0 }
   end
 
   def cannot_auth
