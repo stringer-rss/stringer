@@ -11,8 +11,6 @@ describe FeverAPI, type: :controller do
     { api_version: 3, auth: 0 }
   end
 
-  before { allow(Time).to receive(:now) { Time.zone.at(123_456_789) } }
-
   def last_response_as_object
     JSON.parse(last_response.body, symbolize_names: true)
   end

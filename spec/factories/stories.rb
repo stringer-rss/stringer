@@ -5,8 +5,7 @@ FactoryBot.define do
     feed
 
     sequence(:entry_id, 100) { |n| "entry-#{n}" }
-
-    published { Time.zone.now }
+    sequence(:published, 100) { |n| n.days.ago }
 
     trait :read do
       is_read { true }
