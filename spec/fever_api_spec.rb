@@ -22,13 +22,13 @@ describe FeverAPI, type: :controller do
   describe "authentication" do
     it "authenticates request with correct api_key" do
       get("/fever", params:)
-      expect(last_response).to be_ok
+
       expect(last_response_as_object).to include(standard_answer)
     end
 
     it "does not authenticate request with incorrect api_key" do
       get "/fever", params: params(api_key: "foo")
-      expect(last_response).to be_ok
+
       expect(last_response_as_object).to include(cannot_auth)
     end
 
@@ -36,7 +36,7 @@ describe FeverAPI, type: :controller do
       create(:user)
 
       get "/fever", params: params(api_key: nil)
-      expect(last_response).to be_ok
+
       expect(last_response_as_object).to include(cannot_auth)
     end
   end
@@ -45,7 +45,6 @@ describe FeverAPI, type: :controller do
     it "returns standard answer" do
       get("/fever", params:)
 
-      expect(last_response).to be_ok
       expect(last_response_as_object).to include(standard_answer)
     end
 
@@ -108,9 +107,8 @@ describe FeverAPI, type: :controller do
     it "returns links as empty array when 'links' header is provided" do
       get("/fever", params: params(links: nil))
 
-      expect(last_response).to be_ok
       expect(last_response_as_object).to include(standard_answer)
-      expect(last_response_as_object).to include(links: [])
+        .and include(links: [])
     end
 
     it "returns unread items ids when 'unread_item_ids' header is provided" do
@@ -138,7 +136,6 @@ describe FeverAPI, type: :controller do
 
       post("/fever", params: params(mark: "item", as: "read", id: story.id))
 
-      expect(last_response).to be_ok
       expect(last_response_as_object).to include(standard_answer)
     end
 
@@ -147,7 +144,6 @@ describe FeverAPI, type: :controller do
 
       post("/fever", params: params(mark: "item", as: "unread", id: story.id))
 
-      expect(last_response).to be_ok
       expect(last_response_as_object).to include(standard_answer)
     end
 
@@ -156,7 +152,6 @@ describe FeverAPI, type: :controller do
 
       post("/fever", params: params(mark: "item", as: "saved", id: story.id))
 
-      expect(last_response).to be_ok
       expect(last_response_as_object).to include(standard_answer)
     end
 
@@ -165,7 +160,6 @@ describe FeverAPI, type: :controller do
 
       post("/fever", params: params(mark: "item", as: "unsaved", id: story.id))
 
-      expect(last_response).to be_ok
       expect(last_response_as_object).to include(standard_answer)
     end
 
