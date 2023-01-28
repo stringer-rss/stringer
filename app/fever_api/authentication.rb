@@ -7,7 +7,9 @@ module FeverAPI
     end
 
     def call(_params)
-      { auth: 1, last_refreshed_on_time: @clock.now.to_i }
+      last_refreshed_on_time = (Feed.maximum(:last_fetched) || 0).to_i
+
+      { auth: 1, last_refreshed_on_time: }
     end
   end
 end
