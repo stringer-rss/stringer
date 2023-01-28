@@ -346,16 +346,6 @@ Style/FetchEnvVar:
   Exclude:
     - 'Rakefile'
 
-# Offense count: 8
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: MinDigits, Strict, AllowedNumbers, AllowedPatterns.
-Style/NumericLiterals:
-  Exclude:
-    - 'spec/fever_api/authentication_spec.rb'
-    - 'spec/fever_api/write_mark_feed_spec.rb'
-    - 'spec/fever_api/write_mark_group_spec.rb'
-    - 'spec/fever_api_spec.rb'
-
 # Offense count: 2
 Style/OpenStructUse:
   Exclude:
