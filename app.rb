@@ -62,7 +62,7 @@ class Stringer < Sinatra::Base
   configure do
     set :database_file, "config/database.yml"
     set :views, "app/views"
-    set :public_dir, "app/public"
+    set :public_dir, "public"
     set :root, File.dirname(__FILE__)
 
     enable :sessions
