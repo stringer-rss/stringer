@@ -56,8 +56,7 @@ ru:
     cookies_required: Ну, это неудобно. Cookies необходимы, чтобы приложение работало корректно.
     js_required: Ну, это неудобно. Javascript необходим, чтобы приложение работало корректно.
   import:
-    description: '%{link} фиды из Google Reader и импортировать их.'
-    export: Экспортировать
+    description: Импортируйте свои каналы из другого сервиса.
     fields:
       import: Импортировать
       not_now: Не сейчас

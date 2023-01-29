@@ -56,7 +56,7 @@ he:
     cookies_required: 
     js_required: 
   import:
-    description: '%{link} את הפיד שלך מ- Google Reader ויבא אותו.'
+    description: ייבא את העדכונים שלך משירות אחר.
     export: יצוא
     fields:
       import: יבוא

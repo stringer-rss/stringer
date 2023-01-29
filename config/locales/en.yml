@@ -57,8 +57,7 @@ en:
     cookies_required: Well, this is awkward. Cookies are required for the app to work properly.
     js_required: Well, this is awkward. Javascript is required for the app to work properly.
   import:
-    description: '%{link} your feeds from Google Reader and import them.'
-    export: Export
+    description: Import your feeds from another service.
     fields:
       import: Import
       not_now: Not now

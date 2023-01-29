@@ -56,8 +56,7 @@ sv:
     cookies_required: Jaha, det här var tråkigt. Cookies behövs för att appen ska fungera.
     js_required: Jaha, det här var tråkigt. Javascript behövs för att appen ska fungera.
   import:
-    description: '%{link} dina feeds från Google Reader och importera dem.'
-    export: Exportera
+    description: Importera dina flöden från en annan tjänst.
     fields:
       import: Importera
       not_now: Inte nu

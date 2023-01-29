@@ -56,8 +56,7 @@ it:
     cookies_required: Beh, questo sì che è strano. L'app necessita di cookie per funzionare correttamente.
     js_required: Beh, questo sì che è strano. L'app necessita di Javascript attivato per funzionare correttamente.
   import:
-    description: '%{link} i tuoi feed da Google Reader e importali qui.'
-    export: Esporta
+    description: Importa i tuoi feed da un altro servizio.
     fields:
       import: Importa
       not_now: Non adesso

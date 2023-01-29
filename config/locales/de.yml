@@ -56,8 +56,7 @@ de:
     cookies_required: Das ist jetzt peinlich. Die App benötigt Cookies um richtig zu funktionieren.
     js_required: Das ist jetzt peinlich. Die App benötigt JavaScript um richtig zu funktionieren.
   import:
-    description: '%{link} deine Feeds aus Google Reader und importiere sie hier.'
-    export: Exportiere
+    description: Importieren Sie Ihre Feeds von einem anderen Dienst.
     fields:
       import: Importieren
       not_now: Nicht jetzt

@@ -56,8 +56,7 @@ ja:
     cookies_required: 正常に動作するためにクッキーを有効にして下さい
     js_required: 正常に動作するためにJavascriptを有効にして下さい
   import:
-    description: '%{link} あなたのGoogle Readerからのフィードです、それを取り込めます'
-    export: 書き出し
+    description: 別のサービスからフィードをインポートします。
     fields:
       import: 取り込み
       not_now: いまはやらない

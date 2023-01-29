@@ -56,8 +56,7 @@ tr:
     cookies_required: Aaa, garip!. Uygulamanin duzgun calismasi icin Cookies gerekli.
     js_required: Aaa, garip. Uygulamanin duzgun calismasi icin Javascript gerekli.
   import:
-    description: 
-    export: Disa Aktar
+    description: Beslemelerinizi başka bir hizmetten içe aktarın.
     fields:
       import: Ekle
       not_now: Simdi Degil

@@ -57,8 +57,7 @@ zh-TW:
     cookies_required: 抱歉，你的瀏覽器似乎停用了 Cookie，請啟用瀏覽器的 Cookie 功能才能正常使用。
     js_required: 抱歉，你的瀏覽器似乎停用了 JavaScript，請啟用瀏覽器的 JavaScript 功能才能正常使用。
   import:
-    description: '%{link}你在 Google Reader 上的訂閱列表然後再將它們匯入'
-    export: 匯出
+    description: 從其他服務導入您的提要。
     fields:
       import: 匯入
       not_now: 稍後再說
