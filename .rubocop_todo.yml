@@ -398,5 +398,6 @@ Style/StaticClass:
 # Offense count: 3
 Style/TopLevelMethodDefinition:
   Exclude:
+    - 'bin/setup'
     - 'spec/integration/feed_importing_spec.rb'
     - 'spec/support/active_record.rb'

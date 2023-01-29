@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
+require_relative "../commands/fever_api/response"
+
 class FeverController < ApplicationController
   skip_before_action :complete_setup, only: [:index, :update]
   skip_before_action :authenticate_user, only: [:index, :update]
+  protect_from_forgery with: :null_session, only: [:update]
   before_action :authenticate_fever
 
   def index

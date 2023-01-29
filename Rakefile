@@ -1,32 +1,12 @@
 # frozen_string_literal: true
 
-require "bundler"
-Bundler.setup
+require_relative "config/application"
 
-require "rubygems"
-require "net/http"
-require "active_record"
+Rails.application.load_tasks
+
 require "active_support/core_ext/kernel/reporting"
 require "delayed_job"
 require "delayed_job_active_record"
-
-require "sinatra/activerecord/rake"
-ActiveRecord::Tasks::DatabaseTasks.db_dir = "db"
-
-require "./app"
-
-desc "Load app files"
-task :environment do
-  require_relative "./app/jobs/fetch_feed_job"
-  require_relative "./app/tasks/fetch_feeds"
-  require_relative "./app/tasks/change_password"
-  require_relative "./app/tasks/remove_old_stories"
-end
-
-desc "Open an irb session preloaded with the app"
-task :console do
-  sh "irb -r ./app.rb"
-end
 
 desc "Fetch all feeds."
 task fetch_feeds: :environment do

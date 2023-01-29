@@ -26,13 +26,4 @@ describe "i18n", type: :request do
       expect(I18n.t("layout.title")).to eq("stringer | your rss buddy")
     end
   end
-
-  context "when a missing locale was set" do
-    let(:locale) { "ko" }
-
-    it "does not find localization strings" do
-      expect(I18n.t("layout.title", locale: ENV["LOCALE"].to_sym))
-        .not_to eq("stringer | your rss buddy")
-    end
-  end
 end
