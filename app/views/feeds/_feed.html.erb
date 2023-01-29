@@ -1,6 +1,6 @@
 <li class="feed" id="feed-<%= feed.id%>" data-id="<%= feed.id %>">
-  <div class="row-fluid feed-line">
-    <div class="span7 feed-title-container">
+  <div class="feed-line">
+    <div class="feed-title-container">
       <p class="feed-title <%= feed.unread_stories.any? ? "feed-unread" : "" %>">
         <i class="icon-circle status <%= feed.status_bubble %>" data-toggle="tooltip" title="<%= t("partials.feed.status_bubble.#{feed.status_bubble}") if feed.status_bubble %>" data-placement="left"></i>
         <a href="/feed/<%= feed.id %>">
@@ -11,17 +11,17 @@
         </a>
       </p>
     </div>
-    <div class="span3 feed-last-updated">
-      <span class="last-updated"><%= t('partials.feed.last_updated') %></span>
-      <span class="last-updated-time">
-        <% if feed.last_fetched %>
-          <%= I18n.l(feed.last_fetched) %>
-        <% else %>
-          <%= t("partials.feed.last_fetched.never") %>
-        <% end %>
-      </span>
-    </div>
-    <div class="span2">
+    <div class="feed-actions">
+      <div class="feed-last-updated">
+        <span class="last-updated"><%= t('partials.feed.last_updated') %></span>
+        <span class="last-updated-time">
+          <% if feed.last_fetched %>
+            <%= I18n.l(feed.last_fetched) %>
+          <% else %>
+            <%= t("partials.feed.last_fetched.never") %>
+          <% end %>
+        </span>
+      </div>
       <span class="read-feed">
         <a class="icon-external-link" href="<%= feed.url %>"></a>
       </span>
