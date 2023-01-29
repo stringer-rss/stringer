@@ -35,6 +35,8 @@ SampleStory =
       "#"
     end
 
+    def enclosure_url; end
+
     def lead
       "Tofu shoreditch intelligentsia umami, fashion axe photo booth try-hard"
     end
@@ -68,6 +70,7 @@ SampleStory =
         title:,
         pretty_date: published.strftime("%A, %B %d"),
         body:,
+        enclosure_url:,
         permalink:,
         is_read:,
         is_starred:,
