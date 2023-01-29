@@ -185,14 +185,14 @@ Add VirtualHost to your Apache installation, here's a sample configuration:
 ```bash
 <VirtualHost *:80>
     ServerName example.com
-    DocumentRoot /home/stringer/stringer/app/public
+    DocumentRoot /home/stringer/stringer/public
 
     PassengerEnabled On
     PassengerAppRoot /home/stringer/stringer
     PassengerRuby /home/stringer/.rbenv/shims/ruby
     # PassengerLogFile /dev/null # don't flow logs to apache error.log
 
-    <Directory /home/stringer/stringer/app/public>
+    <Directory /home/stringer/stringer/public>
         Options FollowSymLinks
         Require all granted
         AllowOverride All
