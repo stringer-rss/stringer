@@ -56,8 +56,7 @@ es:
     cookies_required: Bueno esto es incomodo. Cookies son requeridas para que la aplicación funcione correctamente.
     js_required: Bueno esto es incomodo. JavaScript es requerido para que la aplicación funcione correctamente.
   import:
-    description: '%{link} tus feeds desde Google Reader e importalas.'
-    export: Exportar
+    description: Importa tus feeds desde otro servicio.
     fields:
       import: Importar
       not_now: No ahora

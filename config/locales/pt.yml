@@ -56,8 +56,7 @@ pt:
     cookies_required: 
     js_required: 
   import:
-    description: '%{link} as suas feeds do Google Reader e importe-as.'
-    export: Exportar
+    description: Importe seus feeds de outro serviço.
     fields:
       import: Importar
       not_now: Agora não

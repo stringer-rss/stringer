@@ -56,8 +56,7 @@ fr:
     cookies_required: 'C''est embêtant : les cookies sont obligatoires pour le bon fonctionnement de l''application.'
     js_required: 'C''est embêtant : Javascript est obligatoire pour le bon fonctionnement de l''application.'
   import:
-    description: '%{link} vos flux provenant de Google Reader et importez-les.'
-    export: Exportez
+    description: Importez vos flux depuis un autre service.
     fields:
       import: Importez
       not_now: Pas maintenant

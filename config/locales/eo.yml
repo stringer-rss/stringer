@@ -56,8 +56,7 @@ eo:
     cookies_required: Nu, mallerteco. Kuketoj estas postulita por funkcii dece.
     js_required: Nu, mallerteco. JavaScript estas postulita por funkcii dece.
   import:
-    description: '%{link} viajn fluojn de Google Reader kaj importi ilin.'
-    export: Eksporti
+    description: Importu viajn fluojn de alia servo.
     fields:
       import: Importi
       not_now: Ne nun

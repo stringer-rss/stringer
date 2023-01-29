@@ -56,8 +56,7 @@ pt-BR:
     cookies_required: Bem, isso é estranho. É necessário habilitar Cookies para que o aplicativo funcione corretamente.
     js_required: Bem, isso é estranho. É necessário habilitar Javascript para que o aplicativo funcione corretamente.
   import:
-    description: '%{link} seus feeds do Google Reader e importe-os.'
-    export: Exportar
+    description: Importe seus feeds de outro serviço.
     fields:
       import: Importar
       not_now: Agora não

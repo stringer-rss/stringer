@@ -56,8 +56,7 @@ nl:
     cookies_required: 'Wel, dit is vervelend: deze applicatie heeft cookies nodig om goed te werken.'
     js_required: 'Wel, dit is vervelend: deze applicatie heeft Javascript nodig om goed te werken.'
   import:
-    description: '%{link} je feeds uit Google Reader en importeer ze.'
-    export: Exporteer
+    description: Importeer uw feeds van een andere service.
     fields:
       import: Importeren
       not_now: Niet nu
