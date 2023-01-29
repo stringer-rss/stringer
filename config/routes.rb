@@ -13,8 +13,8 @@ class Stringer < Sinatra::Base
   end
 
   match("/", to: "stories#index", via: :get)
-  match("/fever", to: "fever#index", via: :get)
-  match("/fever", to: "fever#update", via: :post)
+  match("/fever/?", to: "fever#index", via: :get)
+  match("/fever/?", to: "fever#update", via: :post)
   match("/archive", to: "stories#archived", via: :get)
   match("/debug", to: "debug#index", via: :get)
   match("/feed/:feed_id", to: "feeds#show", via: :get)
