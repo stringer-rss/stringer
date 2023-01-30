@@ -2,8 +2,6 @@
 
 require "spec_helper"
 
-app_require "fever_api/authentication"
-
 describe FeverAPI::Authentication do
   it "returns the latest feed's last_fetched time" do
     feed = create(:feed, last_fetched: 1.month.ago)

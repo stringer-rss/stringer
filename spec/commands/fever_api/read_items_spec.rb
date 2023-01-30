@@ -2,8 +2,6 @@
 
 require "spec_helper"
 
-app_require "fever_api/read_items"
-
 describe FeverAPI::ReadItems do
   subject { described_class.new(story_repository:) }
 

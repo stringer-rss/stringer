@@ -2,8 +2,6 @@
 
 require "spec_helper"
 
-app_require "fever_api/read_feeds"
-
 describe FeverAPI::ReadFeeds do
   subject { described_class.new(feed_repository:) }
 

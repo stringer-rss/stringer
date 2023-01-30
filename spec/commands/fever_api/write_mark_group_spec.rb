@@ -2,8 +2,6 @@
 
 require "spec_helper"
 
-app_require "fever_api/write_mark_group"
-
 describe FeverAPI::WriteMarkGroup do
   subject { described_class.new(marker_class:) }
 

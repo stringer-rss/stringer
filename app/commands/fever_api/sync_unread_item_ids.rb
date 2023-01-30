@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative "../repositories/story_repository"
-
 module FeverAPI
   class SyncUnreadItemIds
     def initialize(options = {})

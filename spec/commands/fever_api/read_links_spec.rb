@@ -2,8 +2,6 @@
 
 require "spec_helper"
 
-app_require "fever_api/read_links"
-
 describe FeverAPI::ReadLinks do
   subject { described_class.new }
 
