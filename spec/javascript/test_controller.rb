@@ -52,9 +52,3 @@ class TestController < ApplicationController
   end
   helper_method :css_files
 end
-
-class Stringer < Sinatra::Base
-  match("/test", to: "test#index", via: :get)
-  match("/spec/*", to: "test#spec", via: :get)
-  match("/vendor/*", to: "test#vendor", via: :get)
-end

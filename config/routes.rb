@@ -38,4 +38,12 @@ class Stringer < Sinatra::Base
   match("/starred", to: "stories#starred", via: :get)
   match("/stories/:id", to: "stories#update", via: :put)
   match("/stories/mark_all_as_read", to: "stories#mark_all_as_read", via: :post)
+
+  if ENV["RACK_ENV"] == "development"
+    require_relative "../spec/javascript/test_controller"
+
+    match("/test", to: "test#index", via: :get)
+    match("/spec/*", to: "test#spec", via: :get)
+    match("/vendor/*", to: "test#vendor", via: :get)
+  end
 end

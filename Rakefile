@@ -75,12 +75,6 @@ task :cleanup_old_stories, :number_of_days do |_t, args|
   RemoveOldStories.remove!(args[:number_of_days].to_i)
 end
 
-desc "Start server and serve JavaScript test suite at /test"
-task :test_js do
-  require_relative "./spec/javascript/test_controller"
-  Stringer.run!
-end
-
 begin
   require "rspec/core/rake_task"
 
