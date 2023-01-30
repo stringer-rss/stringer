@@ -2,19 +2,17 @@
 
 require "spec_helper"
 
-app_require "fever_api/sync_saved_item_ids"
-
-describe FeverAPI::SyncSavedItemIds do
+describe FeverAPI::SyncUnreadItemIds do
   subject { described_class.new(story_repository:) }
 
   let(:story_ids) { [5, 7, 11] }
   let(:stories) { story_ids.map { |id| double("story", id:) } }
   let(:story_repository) { double("repo") }
 
-  it "returns a list of starred items if requested" do
-    expect(story_repository).to receive(:all_starred).and_return(stories)
-    expect(subject.call("saved_item_ids" => nil))
-      .to eq(saved_item_ids: story_ids.join(","))
+  it "returns a list of unread items if requested" do
+    expect(story_repository).to receive(:unread).and_return(stories)
+    expect(subject.call("unread_item_ids" => nil))
+      .to eq(unread_item_ids: story_ids.join(","))
   end
 
   it "returns an empty hash otherwise" do

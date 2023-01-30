@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative "../commands/stories/mark_group_as_read"
-
 module FeverAPI
   class WriteMarkGroup
     def initialize(options = {})

@@ -2,8 +2,6 @@
 
 require "spec_helper"
 
-app_require "fever_api/read_groups"
-
 describe FeverAPI::ReadGroups do
   subject { described_class.new(group_repository:) }
 
