@@ -2,8 +2,6 @@
 
 require "spec_helper"
 
-app_require "utils/feed_discovery"
-
 describe FeedDiscovery do
   let(:finder) { double }
   let(:client) { class_double(HTTParty) }

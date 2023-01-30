@@ -2,9 +2,6 @@
 
 require "spec_helper"
 
-app_require "repositories/story_repository"
-app_require "commands/feeds/find_new_stories"
-
 describe FindNewStories do
   describe "#new_stories" do
     context "the feed contains no new stories" do

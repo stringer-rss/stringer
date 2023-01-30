@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "spec_helper"
-require "support/active_record"
 
 describe FetchFeeds do
   describe "#fetch_all" do

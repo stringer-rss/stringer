@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 require "spec_helper"
-require "support/active_record"
-
-app_require "models/migration_status"
 
 describe "MigrationStatus" do
   describe "pending_migrations" do

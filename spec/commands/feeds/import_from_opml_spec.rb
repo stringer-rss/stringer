@@ -2,8 +2,6 @@
 
 require "spec_helper"
 
-app_require "commands/feeds/import_from_opml"
-
 describe ImportFromOpml do
   let(:subscriptions) do
     File.open(

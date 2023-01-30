@@ -2,8 +2,6 @@
 
 require "spec_helper"
 
-app_require "tasks/change_password"
-
 describe ChangePassword do
   let(:command) { instance_double(ChangeUserPassword) }
 

@@ -2,8 +2,6 @@
 
 require "spec_helper"
 
-app_require "commands/stories/mark_all_as_read"
-
 describe MarkAllAsRead do
   describe "#call" do
     let(:stories) { double }

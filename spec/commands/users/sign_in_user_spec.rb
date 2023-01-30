@@ -2,8 +2,6 @@
 
 require "spec_helper"
 
-app_require "commands/users/sign_in_user"
-
 describe SignInUser do
   let(:valid_password) { "valid-pw" }
   let(:repo) { double(first: user) }

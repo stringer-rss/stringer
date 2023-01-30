@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "spec_helper"
-app_require "tasks/fetch_feed"
 
 describe FetchFeed do
   describe "#fetch" do

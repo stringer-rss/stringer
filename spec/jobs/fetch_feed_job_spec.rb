@@ -2,8 +2,6 @@
 
 require "spec_helper"
 
-app_require "jobs/fetch_feed_job"
-
 RSpec.describe FetchFeedJob do
   it "fetches feeds" do
     job = described_class.new(123)

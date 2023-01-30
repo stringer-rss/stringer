@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 require "spec_helper"
-require "support/active_record"
-
-app_require "commands/users/change_user_password"
 
 describe ChangeUserPassword do
   let(:repo) { double }

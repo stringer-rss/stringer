@@ -2,8 +2,6 @@
 
 require "spec_helper"
 
-app_require "commands/users/create_user"
-
 describe CreateUser do
   describe "#call" do
     it "removes existing users and create a user with the password supplied" do

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "spec_helper"
-app_require "tasks/remove_old_stories"
 
 describe RemoveOldStories do
   describe ".remove!" do
