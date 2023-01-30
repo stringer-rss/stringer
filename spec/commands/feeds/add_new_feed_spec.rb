@@ -2,8 +2,6 @@
 
 require "spec_helper"
 
-app_require "/commands/feeds/add_new_feed"
-
 describe AddNewFeed do
   describe "#add" do
     context "feed cannot be discovered" do

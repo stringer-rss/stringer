@@ -2,11 +2,8 @@
 
 require "spec_helper"
 require "time"
-require "support/active_record"
 require "support/feed_server"
 require "timecop"
-
-app_require "tasks/fetch_feed"
 
 describe "Feed importing" do
   let(:server) { FeedServer.new }

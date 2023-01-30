@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 require "spec_helper"
-require "support/active_record"
-
-app_require "controllers/debug_controller"
 
 describe DebugController, type: :controller do
   describe "GET /debug" do

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "spec_helper"
-require "support/active_record"
 
 RSpec.describe Group do
   describe "#as_fever_json" do

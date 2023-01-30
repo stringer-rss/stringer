@@ -2,8 +2,6 @@
 
 require "spec_helper"
 
-app_require "commands/feeds/export_to_opml"
-
 describe ExportToOpml do
   describe "#to_xml" do
     let(:feed_one) { build(:feed)      }

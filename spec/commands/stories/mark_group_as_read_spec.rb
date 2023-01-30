@@ -2,8 +2,6 @@
 
 require "spec_helper"
 
-app_require "commands/stories/mark_group_as_read"
-
 describe MarkGroupAsRead do
   describe "#mark_group_as_read" do
     let(:stories) { double }

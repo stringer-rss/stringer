@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 require "spec_helper"
-require "support/active_record"
-
-app_require "models/feed"
 
 describe "Feed" do
   describe "#status_bubble" do

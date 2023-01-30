@@ -2,8 +2,6 @@
 
 require "spec_helper"
 
-app_require "utils/content_sanitizer"
-
 describe ContentSanitizer do
   describe ".sanitize" do
     context "regressions" do

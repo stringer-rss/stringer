@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 require "spec_helper"
-require "support/active_record"
-
-app_require "repositories/feed_repository"
 
 describe FeedRepository do
   describe ".fetch" do

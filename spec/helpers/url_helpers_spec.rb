@@ -2,8 +2,6 @@
 
 require "spec_helper"
 
-app_require "helpers/url_helpers"
-
 RSpec.describe UrlHelpers do
   let(:helper) do
     helper_class = Class.new { include UrlHelpers }

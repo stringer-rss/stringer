@@ -13,6 +13,7 @@ require "faker"
 require "ostruct"
 require "date"
 
+require_relative "support/active_record"
 require_relative "support/coverage"
 require_relative "support/controller_helpers"
 require_relative "support/factory_bot"
@@ -39,8 +40,4 @@ end
 RSpec.configure do |config|
   config.include(ControllerHelpers, type: :controller)
   config.include(RSpecHtmlMatchers)
-end
-
-def app_require(file)
-  require File.expand_path(File.join("app", file))
 end

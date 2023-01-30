@@ -2,8 +2,6 @@
 
 require "spec_helper"
 
-app_require "commands/stories/mark_as_read"
-
 describe MarkAsRead do
   describe "#mark_as_read" do
     let(:story) { create(:story, is_read: false) }

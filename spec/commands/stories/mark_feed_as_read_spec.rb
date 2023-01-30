@@ -2,8 +2,6 @@
 
 require "spec_helper"
 
-app_require "commands/stories/mark_feed_as_read"
-
 describe MarkFeedAsRead do
   describe "#mark_feed_as_read" do
     let(:stories) { double }
