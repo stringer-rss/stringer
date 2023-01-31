@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-describe FeedsController, type: :controller do
+describe FeedsController, type: :request do
   describe "#index" do
     it "renders a list of feeds" do
       login_as(create(:user))

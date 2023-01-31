@@ -3,7 +3,7 @@
 require "spec_helper"
 
 describe "i18n" do
-  include ControllerHelpers
+  include RequestHelpers
 
   before do
     allow(UserRepository).to receive(:setup_complete?).and_return(false)

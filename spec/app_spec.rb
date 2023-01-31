@@ -3,7 +3,7 @@
 require "spec_helper"
 
 describe "App" do
-  include ControllerHelpers
+  include RequestHelpers
 
   describe "Rails" do
     it "returns a fake application" do

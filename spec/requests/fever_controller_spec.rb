@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-describe FeverController, type: :controller do
+describe FeverController, type: :request do
   def standard_answer
     { api_version: 3, auth: 1, last_refreshed_on_time: 0 }
   end
