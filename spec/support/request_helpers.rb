@@ -17,6 +17,8 @@ module RequestHelpers
     @request ||= Request.new
   end
 
+  alias response last_response
+
   alias old_get get
   def get(path, params: {})
     old_get(path, params, request.headers.merge("rack.session" => session))

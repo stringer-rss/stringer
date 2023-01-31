@@ -9,7 +9,7 @@ describe SessionsController, type: :request do
 
       get "/login"
 
-      page = last_response.body
+      page = response.body
       expect(page).to have_tag("input#password")
     end
   end
@@ -19,7 +19,7 @@ describe SessionsController, type: :request do
       create(:user)
       post "/login", params: { password: "not-the-password" }
 
-      page = last_response.body
+      page = response.body
       expect(page).to have_tag(".error")
     end
 
@@ -36,7 +36,7 @@ describe SessionsController, type: :request do
 
       post "/login", params: { password: user.password }
 
-      expect(URI.parse(last_response.location).path).to eq("/")
+      expect(URI.parse(response.location).path).to eq("/")
     end
 
     it "redirects to the previous path when present" do
@@ -46,7 +46,7 @@ describe SessionsController, type: :request do
       session[:redirect_to] = "/archive"
       post("/login", params:)
 
-      expect(URI.parse(last_response.location).path).to eq("/archive")
+      expect(URI.parse(response.location).path).to eq("/archive")
     end
   end
 
@@ -64,7 +64,7 @@ describe SessionsController, type: :request do
 
       get "/logout"
 
-      expect(URI.parse(last_response.location).path).to eq("/")
+      expect(URI.parse(response.location).path).to eq("/")
     end
   end
 end

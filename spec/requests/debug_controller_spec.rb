@@ -21,7 +21,7 @@ describe DebugController, type: :request do
 
       get "/debug"
 
-      page = last_response.body
+      page = response.body
       expect(page).to have_tag("dd", text: /#{RUBY_VERSION}/)
     end
 
@@ -31,7 +31,7 @@ describe DebugController, type: :request do
 
       get "/debug"
 
-      page = last_response.body
+      page = response.body
       expect(page).to have_tag("dd", text: /testy/)
     end
 
@@ -40,7 +40,7 @@ describe DebugController, type: :request do
 
       get "/debug"
 
-      page = last_response.body
+      page = response.body
       expect(page).to have_tag("dd", text: /42/)
     end
 
@@ -49,7 +49,7 @@ describe DebugController, type: :request do
 
       get "/debug"
 
-      rendered = Capybara.string(last_response.body)
+      rendered = Capybara.string(response.body)
       expect(rendered).to have_selector("li", text: /Migration B - 2/)
         .and have_selector("li", text: /Migration C - 3/)
     end
@@ -59,7 +59,7 @@ describe DebugController, type: :request do
     it "displays Heroku instructions" do
       get("/heroku")
 
-      expect(last_response.body).to include("add an hourly task")
+      expect(response.body).to include("add an hourly task")
     end
   end
 end
