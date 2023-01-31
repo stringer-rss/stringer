@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module ControllerHelpers
+module RequestHelpers
   include Rack::Test::Methods
 
   class Request

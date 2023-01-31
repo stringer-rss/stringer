@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-describe DebugController, type: :controller do
+describe DebugController, type: :request do
   describe "GET /debug" do
     def setup
       login_as(create(:user))

@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-describe StoriesController, type: :controller do
+describe StoriesController, type: :request do
   let(:story_one) { create(:story) }
   let(:story_two) { create(:story) }
   let(:stories) { [story_one, story_two] }

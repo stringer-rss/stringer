@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-describe SessionsController, type: :controller do
+describe SessionsController, type: :request do
   describe "#new" do
     it "has a password input and login button" do
       create(:user)

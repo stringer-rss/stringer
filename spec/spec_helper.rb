@@ -15,7 +15,7 @@ require "date"
 
 require_relative "support/active_record"
 require_relative "support/coverage"
-require_relative "support/controller_helpers"
+require_relative "support/request_helpers"
 require_relative "support/factory_bot"
 require_relative "support/webmock"
 require_relative "factories"
@@ -38,6 +38,6 @@ module Rack
 end
 
 RSpec.configure do |config|
-  config.include(ControllerHelpers, type: :controller)
+  config.include(RequestHelpers, type: :request)
   config.include(RSpecHtmlMatchers)
 end

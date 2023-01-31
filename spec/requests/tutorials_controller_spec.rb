@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-RSpec.describe TutorialsController, type: :controller do
+RSpec.describe TutorialsController, type: :request do
   describe "#index" do
     context "when a user has not been setup" do
       let(:user) { instance_double(User) }

@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-describe ExportsController, type: :controller do
+describe ExportsController, type: :request do
   describe "GET /feeds/export" do
     def expected_xml
       <<~XML
