@@ -2,9 +2,7 @@
 
 require "spec_helper"
 
-describe "i18n" do
-  include RequestHelpers
-
+describe "i18n", type: :request do
   before do
     allow(UserRepository).to receive(:setup_complete?).and_return(false)
     ENV["LOCALE"] = locale
@@ -30,7 +28,7 @@ describe "i18n" do
   end
 
   context "when a missing locale was set" do
-    let(:locale) { "xx" }
+    let(:locale) { "ko" }
 
     it "does not find localization strings" do
       expect(I18n.t("layout.title", locale: ENV["LOCALE"].to_sym))

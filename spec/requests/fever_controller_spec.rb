@@ -182,5 +182,29 @@ describe FeverController, type: :request do
 
       expect(story.reload.is_read).to be(true)
     end
+
+    describe "#index" do
+      it "works with a trailing /" do
+        story = create(:story, :unread, created_at: 1.week.ago)
+        before = Time.zone.now.to_i
+        id = story.feed_id
+
+        get("/fever/", params: params(mark: "feed", as: "read", id:, before:))
+
+        expect(story.reload.is_read).to be(true)
+      end
+    end
+
+    describe "#update" do
+      it "works with a trailing /" do
+        story = create(:story, :unread, created_at: 1.week.ago)
+        before = Time.zone.now.to_i
+        id = story.feed_id
+
+        post("/fever/", params: params(mark: "feed", as: "read", id:, before:))
+
+        expect(story.reload.is_read).to be(true)
+      end
+    end
   end
 end

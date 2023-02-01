@@ -42,9 +42,8 @@ describe SessionsController, type: :request do
     it "redirects to the previous path when present" do
       user = create(:user)
 
-      params = { password: user.password }
-      session[:redirect_to] = "/archive"
-      post("/login", params:)
+      get("/archive")
+      post("/login", params: { password: user.password })
 
       expect(URI.parse(response.location).path).to eq("/archive")
     end
