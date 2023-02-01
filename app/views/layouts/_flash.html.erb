@@ -1,10 +1,10 @@
-<% if flash.has_key? :success %>
+<% if flash.key? :success %>
   <div class="alert alert-success success">
     <%= flash[:success] %>
   </div>
 <% end %>
 
-<% if flash.has_key? :error %>
+<% if flash.key? :error %>
   <div class="alert alert-error error">
     <%= flash[:error] %>
   </div>
