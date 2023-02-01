@@ -15,7 +15,7 @@ describe StoriesController, type: :request do
     it "redirects to the setup page when no user exists" do
       get "/news"
 
-      expect(URI.parse(last_response.location).path).to eq("/setup/password")
+      expect(URI.parse(response.location).path).to eq("/setup/password")
     end
 
     it "redirects to the login page if not logged in" do
@@ -23,7 +23,7 @@ describe StoriesController, type: :request do
 
       get "/news"
 
-      expect(URI.parse(last_response.location).path).to eq("/login")
+      expect(URI.parse(response.location).path).to eq("/login")
     end
 
     it "display list of unread stories" do
@@ -32,7 +32,7 @@ describe StoriesController, type: :request do
 
       get "/news"
 
-      expect(last_response.body).to have_tag("#stories")
+      expect(response.body).to have_tag("#stories")
     end
 
     it "displays the blog title and article title" do
@@ -41,7 +41,7 @@ describe StoriesController, type: :request do
 
       get "/news"
 
-      expect(last_response.body).to include(story_one.headline)
+      expect(response.body).to include(story_one.headline)
     end
 
     it "displays all user actions" do
@@ -50,7 +50,7 @@ describe StoriesController, type: :request do
 
       get "/news"
 
-      expect(last_response.body).to have_tag("#mark-all")
+      expect(response.body).to have_tag("#mark-all")
     end
 
     it "has correct footer links" do
@@ -59,7 +59,7 @@ describe StoriesController, type: :request do
 
       get "/news"
 
-      rendered = Capybara.string(last_response.body)
+      rendered = Capybara.string(response.body)
       expect(rendered).to have_link("Export").and have_link("Logout")
     end
 
@@ -68,7 +68,7 @@ describe StoriesController, type: :request do
 
       get "/news"
 
-      expect(last_response.body).to have_tag("#zen")
+      expect(response.body).to have_tag("#zen")
     end
   end
 
@@ -79,7 +79,7 @@ describe StoriesController, type: :request do
 
       get "/archive"
 
-      page = last_response.body
+      page = response.body
       expect(page).to have_tag("#stories")
     end
   end
@@ -91,7 +91,7 @@ describe StoriesController, type: :request do
 
       get "/starred"
 
-      page = last_response.body
+      page = response.body
       expect(page).to have_tag("#stories")
     end
   end

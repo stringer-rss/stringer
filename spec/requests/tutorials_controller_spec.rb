@@ -13,7 +13,7 @@ RSpec.describe TutorialsController, type: :request do
 
         get "/setup/tutorial"
 
-        page = last_response.body
+        page = response.body
         expect(page).to have_tag("#mark-all-instruction")
       end
     end

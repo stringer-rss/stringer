@@ -9,7 +9,7 @@ describe ImportsController, type: :request do
 
       get "/feeds/import"
 
-      page = last_response.body
+      page = response.body
       expect(page).to have_tag("input#opml_file")
     end
   end

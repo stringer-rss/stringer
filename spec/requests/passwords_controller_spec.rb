@@ -13,7 +13,7 @@ RSpec.describe PasswordsController, type: :request do
 
       get "/setup/password"
 
-      page = last_response.body
+      page = response.body
       expect(page).to have_tag("form#password_setup")
     end
   end
@@ -24,7 +24,7 @@ RSpec.describe PasswordsController, type: :request do
 
       post "/setup/password"
 
-      page = last_response.body
+      page = response.body
       expect(page).to have_tag("div.error")
     end
 
@@ -34,7 +34,7 @@ RSpec.describe PasswordsController, type: :request do
       post "/setup/password",
            params: { password: "foo", password_confirmation: "bar" }
 
-      page = last_response.body
+      page = response.body
       expect(page).to have_tag("div.error")
     end
 
@@ -42,7 +42,7 @@ RSpec.describe PasswordsController, type: :request do
       post "/setup/password",
            params: { password: "foo", password_confirmation: "foo" }
 
-      expect(URI.parse(last_response.location).path).to eq("/feeds/import")
+      expect(URI.parse(response.location).path).to eq("/feeds/import")
     end
   end
 end

@@ -10,7 +10,7 @@ describe FeedsController, type: :request do
 
       get "/feeds"
 
-      rendered = Capybara.string(last_response.body)
+      rendered = Capybara.string(response.body)
       expect(rendered).to have_selector("li.feed", count: 2)
     end
 
@@ -19,7 +19,7 @@ describe FeedsController, type: :request do
 
       get "/feeds"
 
-      page = last_response.body
+      page = response.body
       expect(page).to have_tag("#add-some-feeds")
     end
   end
@@ -31,7 +31,7 @@ describe FeedsController, type: :request do
 
       get "/feed/#{story.feed_id}"
 
-      expect(last_response.body).to have_tag("#stories")
+      expect(response.body).to have_tag("#stories")
     end
   end
 
@@ -42,7 +42,7 @@ describe FeedsController, type: :request do
 
       get "/feeds/#{feed.id}/edit"
 
-      rendered = Capybara.string(last_response.body)
+      rendered = Capybara.string(response.body)
       expect(rendered).to have_field("feed_name", with: "Rainbows/unicorns")
     end
   end
@@ -93,7 +93,7 @@ describe FeedsController, type: :request do
 
       get "/feeds/new"
 
-      page = last_response.body
+      page = response.body
       expect(page).to have_tag("form#add-feed-setup")
     end
   end
@@ -127,7 +127,7 @@ describe FeedsController, type: :request do
         stub_request(:get, feed_url).to_return(status: 404)
         post("/feeds", params: { feed_url: })
 
-        page = last_response.body
+        page = response.body
         expect(page).to have_tag(".error")
       end
     end
@@ -142,7 +142,7 @@ describe FeedsController, type: :request do
 
         post("/feeds", params: { feed_url: })
 
-        expect(last_response.body).to have_tag(".error")
+        expect(response.body).to have_tag(".error")
       end
     end
   end

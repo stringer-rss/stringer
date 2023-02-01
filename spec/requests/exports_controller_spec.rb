@@ -21,7 +21,7 @@ describe ExportsController, type: :request do
 
       get "/feeds/export"
 
-      expect(last_response.body).to eq(expected_xml)
+      expect(response.body).to eq(expected_xml)
     end
 
     it "responds with xml content type" do
@@ -29,7 +29,7 @@ describe ExportsController, type: :request do
 
       get "/feeds/export"
 
-      expect(last_response.header["Content-Type"]).to include("application/xml")
+      expect(response.header["Content-Type"]).to include("application/xml")
     end
 
     it "responds with disposition attachment" do
@@ -39,7 +39,7 @@ describe ExportsController, type: :request do
 
       expected =
         "attachment; filename=\"stringer.opml\"; filename*=UTF-8''stringer.opml"
-      expect(last_response.header["Content-Disposition"]).to eq(expected)
+      expect(response.header["Content-Disposition"]).to eq(expected)
     end
   end
 end
