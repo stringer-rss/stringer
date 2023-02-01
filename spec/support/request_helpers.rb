@@ -20,8 +20,9 @@ module RequestHelpers
   alias response last_response
 
   alias old_get get
-  def get(path, params: {})
-    old_get(path, params, request.headers.merge("rack.session" => session))
+  def get(path, params: {}, headers: {})
+    request_headers = request.headers.merge(headers)
+    old_get(path, params, request_headers.merge("rack.session" => session))
     @session = last_request.env["rack.session"]
   end
 

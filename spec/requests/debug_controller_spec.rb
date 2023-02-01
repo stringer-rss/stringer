@@ -27,9 +27,8 @@ describe DebugController, type: :request do
 
     it "displays the user agent" do
       setup
-      request.headers["HTTP_USER_AGENT"] = "testy"
 
-      get "/debug"
+      get("/debug", headers: { "HTTP_USER_AGENT" => "testy" })
 
       page = response.body
       expect(page).to have_tag("dd", text: /testy/)
