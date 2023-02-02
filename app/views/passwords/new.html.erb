@@ -4,7 +4,7 @@
   <hr />
   <p><%= t('first_run.password.description') %></p>
   <hr />
-  <form id="password_setup" method="POST" action="/setup/password">
+  <%= form_with(url: "/setup/password", id: "password_setup") do %>
     <input class="hidden" value="username" />
     <div class="control-group">
       <input name="password" id="password" type="password" autofocus />
@@ -18,5 +18,5 @@
     </div>
 
     <input type="submit" id="submit" class="btn btn-primary pull-right" value="<%= t('first_run.password.fields.next') %>"/>
-  </form>
+  <% end %>
 </div>

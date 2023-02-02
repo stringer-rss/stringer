@@ -7,7 +7,7 @@
   <hr />
   <p><%= t('feeds.add.description') %></p>
   <hr />
-  <form id="add-feed-setup" method="POST" action="/feeds">
+  <%= form_with(url: "/feeds", id: "add-feed-setup") do %>
     <div class="control-group">
       <input name="feed_url" id="feed-url" type="text" value="<%= @feed_url %>" autofocus/>
       <i class="icon-rss field-icon"></i>
@@ -15,5 +15,5 @@
     </div>
 
     <input type="submit" id="submit" class="btn btn-primary pull-right" value="<%= t('feeds.add.fields.submit') %>"/>
-  </form>
+  <% end %>
 </div>
