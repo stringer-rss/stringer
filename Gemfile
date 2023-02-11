@@ -37,13 +37,11 @@ end
 group :development, :test do
   gem "capybara"
   gem "coveralls_reborn", require: false
-  gem "factory_bot_rails"
-  gem "faker"
+  gem "factory_bot"
   gem "pry-byebug"
   gem "rspec"
   gem "rspec-html-matchers"
   gem "rspec-rails"
-  gem "shotgun"
   gem "simplecov"
   gem "timecop"
   gem "webmock", require: false

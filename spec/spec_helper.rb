@@ -9,7 +9,6 @@ require "rspec"
 require "rspec-html-matchers"
 require "rack/test"
 require "pry"
-require "faker"
 require "ostruct"
 require "date"
 
