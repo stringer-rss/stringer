@@ -40,6 +40,8 @@ tr:
     index:
       add: ekle
       add_some_feeds: Hey, you should %{add} some feeds.
+    destroy:
+      success: Besleme silindi.
   first_run:
     password:
       anti_social: anti-social

@@ -39,7 +39,9 @@ ru:
         updated_successfully: 
     index:
       add: добавить
-      add_some_feeds: Эй, ​​Вы должны %{add} некоторые фид каналы.
+      add_some_feeds: Эй, Вы должны %{add} некоторые фид каналы.
+    destroy:
+      success: Фид удален.
   first_run:
     password:
       anti_social: антиобщественное

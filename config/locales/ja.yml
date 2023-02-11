@@ -40,6 +40,8 @@ ja:
     index:
       add: 追加
       add_some_feeds: 何かフィードを%{add}する必要があります
+    destroy:
+      success: フィードを削除しました。
   first_run:
     password:
       anti_social: アンチソーシャル

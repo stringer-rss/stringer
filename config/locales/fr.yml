@@ -40,6 +40,8 @@ fr:
     index:
       add: ajouter
       add_some_feeds: Vous devriez %{add} quelques flux.
+    destroy:
+      success: Flux supprimé.
   first_run:
     password:
       anti_social: anti-social

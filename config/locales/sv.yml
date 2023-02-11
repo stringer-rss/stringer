@@ -40,6 +40,8 @@ sv:
     index:
       add: lägga till
       add_some_feeds: Hej, du borde %{add} några feeds.
+    destroy:
+      success: Flödet raderat.
   first_run:
     password:
       anti_social: anti-social

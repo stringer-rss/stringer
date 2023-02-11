@@ -41,6 +41,8 @@ en:
     index:
       add: add
       add_some_feeds: Hey, you should %{add} some feeds.
+    destroy:
+      success: Feed deleted.
   first_run:
     password:
       anti_social: anti-social

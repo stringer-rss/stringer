@@ -40,6 +40,8 @@ pt:
     index:
       add: adicionar
       add_some_feeds: Ei, você deveria %{add} algumas feeds.
+    destroy:
+      success:
   first_run:
     password:
       anti_social: anti-social

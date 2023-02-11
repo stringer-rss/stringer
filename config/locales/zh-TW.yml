@@ -41,6 +41,8 @@ zh-TW:
     index:
       add: 新增
       add_some_feeds: 嘿！你應該要%{add}一些訂閱
+    destroy:
+      success: 提要已刪除。
   first_run:
     password:
       anti_social: 反社交化的
