@@ -13,7 +13,7 @@ AllCops:
 
 Layout/LineLength: { Max: 80 }
 Layout/RedundantLineBreak: { InspectBlocks: true }
-Metrics/BlockLength: { Exclude: ['spec/**/*_spec.rb'] }
+Metrics/BlockLength: { Exclude: [config/**/*.rb, spec/**/*.rb, db/seeds/**/*.rb] }
 RSpec/MessageExpectation: { EnforcedStyle: expect }
 RSpec/MessageSpies: { EnforcedStyle: receive }
 RSpec/MultipleMemoizedHelpers: { AllowSubject: false, Max: 0 }
@@ -32,6 +32,7 @@ Style/SymbolArray: { EnforcedStyle: brackets }
 Style/WordArray: { EnforcedStyle: brackets }
 
 # enable after Rails
+Rails/MatchRoute: { Enabled: false }
 RSpec/Rails/InferredSpecType: { Enabled: false }
 
 # want to enable these, but they don't work right when using `.rubocop_todo.yml`
