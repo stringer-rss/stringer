@@ -15,6 +15,7 @@ jobs:
           BUNDLE_PATH: vendor/bundle
           PGHOST: 127.0.0.1
           PGUSER: postgres
+          RACK_ENV: test
           RAILS_ENV: test
       - image: cimg/postgres:10.18
         environment:

@@ -1,6 +1,7 @@
 FROM ruby:3.2.1
 
 ENV RACK_ENV=production
+ENV RAILS_ENV=production
 ENV PORT=8080
 
 EXPOSE 8080
