@@ -58,6 +58,7 @@ class FeedsController < ApplicationController
   def destroy
     FeedRepository.delete(params[:id])
 
-    head(:ok)
+    flash[:success] = t(".success")
+    redirect_to("/feeds")
   end
 end

@@ -40,6 +40,8 @@ he:
     index:
       add: להוסיף
       add_some_feeds: הי, כדאי %{add} קצת פידים.
+    destroy:
+      success: הפיד נמחק.
   first_run:
     password:
       anti_social: אינו חברתי

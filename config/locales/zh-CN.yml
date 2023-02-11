@@ -40,6 +40,8 @@ zh-CN:
     index:
       add: 添加
       add_some_feeds: 你应该%{add}一些订阅哟~
+    destroy:
+      success: 提要已删除。
   first_run:
     password:
       anti_social: 反社交化的

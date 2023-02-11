@@ -28,9 +28,9 @@
       <span class="edit-feed">
         <a class="icon-edit" href="<%= "/feeds/#{feed.id}/edit" %>"></a>
       </span>
-      <span class="remove-feed">
+      <%= button_to("/feeds/#{feed.id}", method: :delete, class: "remove-feed btn-link") do %>
         <a class="icon-remove"></a>
-      </span>
+      <% end %>
     </div>
   </div>
 </li>

@@ -40,6 +40,8 @@ eo:
     index:
       add: aldoni
       add_some_feeds: He, vi devas %{add} kelkajn fluojn.
+    destroy:
+      success: Fluo forigita.
   first_run:
     password:
       anti_social: kontraŭsocia

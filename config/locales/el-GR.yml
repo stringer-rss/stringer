@@ -40,6 +40,8 @@ el-GR:
     index:
       add: εισάγεις
       add_some_feeds: Επ! Γιατί δεν %{add} μερικά ιστολόγια στη συλλογή σου?
+    destroy:
+      success: Η ροή διαγράφηκε.
   first_run:
     password:
       anti_social: αντι-κοινωνικό

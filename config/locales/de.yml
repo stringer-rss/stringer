@@ -40,6 +40,8 @@ de:
     index:
       add: hinzufügen
       add_some_feeds: Hey, du solltest ein paar Feeds %{add}.
+    destroy:
+      success: Feed gelöscht.
   first_run:
     password:
       anti_social: anti-sozial

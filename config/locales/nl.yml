@@ -40,6 +40,8 @@ nl:
     index:
       add: toevoegen
       add_some_feeds: Hé, je zou eens wat feeds kunnen %{add}.
+    destroy:
+      success: Voer verwijderd.
   first_run:
     password:
       anti_social: anti-sociaal
