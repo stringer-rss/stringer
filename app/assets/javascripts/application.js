@@ -11,6 +11,16 @@ _.templateSettings = {
   evaluate: /\{\{(.+?)\}\}/g
 };
 
+function CSRFToken() {
+  const tokenTag = document.getElementsByName('csrf-token')[0];
+
+  return (tokenTag && tokenTag.content) || '';
+}
+
+function requestHeaders() {
+  return { 'X-CSRF-Token': CSRFToken() };
+}
+
 var Story = Backbone.Model.extend({
   defaults: function() {
     return {
@@ -33,7 +43,7 @@ var Story = Backbone.Model.extend({
 
   open: function() {
     if (!this.get("keep_unread")) this.set("is_read", true);
-    if (this.shouldSave()) this.save();
+    if (this.shouldSave()) this.save(null, { headers: requestHeaders() });
 
     if(this.collection){
       this.collection.closeOthers(this);
@@ -54,7 +64,7 @@ var Story = Backbone.Model.extend({
       this.set("is_read", false);
     }
 
-    if (this.shouldSave()) this.save();
+    if (this.shouldSave()) this.save(null, { headers: requestHeaders() });
   },
 
   toggleStarred: function() {
@@ -64,7 +74,7 @@ var Story = Backbone.Model.extend({
       this.set("is_starred", true);
     }
 
-    if (this.shouldSave()) this.save();
+    if (this.shouldSave()) this.save(null, { headers: requestHeaders() });
   },
 
   close: function() {
@@ -156,7 +166,7 @@ var StoryView = Backbone.View.extend({
       if (backgroundTab) backgroundTab.blur();
       window.focus();
       if (!this.model.get("keep_unread")) this.model.set("is_read", true);
-      if (this.model.shouldSave()) this.model.save();
+      if (this.model.shouldSave()) this.model.save(null, { headers: requestHeaders() });
     } else {
       this.model.toggle();
       window.scrollTo(0, this.$el.offset().top);

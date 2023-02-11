@@ -98,7 +98,7 @@ Stringer uses environment variables to configure the application. Edit these val
 Tell stringer to run the database in production mode, using the `postgres` database you created earlier.
 
     cd $HOME/stringer
-    rake db:migrate RACK_ENV=production
+    rake db:migrate RAILS_ENV=production
 
 Run the application:
 

@@ -1,20 +1,9 @@
 # frozen_string_literal: true
 
-class Stringer < Sinatra::Base
-  def self.match(path, to:, via:)
-    controller_name, action_name = to.split("#")
-    controller_klass = "#{controller_name.camelize}Controller".constantize
-    route(via.to_s.upcase, path) do
-      # Make sure that our parsed URL params are where Rack (and
-      # ActionDispatch) expect them
-      app = controller_klass.action(action_name)
-      app.call(request.env.merge("rack.request.query_hash" => params))
-    end
-  end
-
+Rails.application.routes.draw do
   match("/", to: "stories#index", via: :get)
-  match("/fever/?", to: "fever#index", via: :get)
-  match("/fever/?", to: "fever#update", via: :post)
+  match("/fever", to: "fever#index", via: :get)
+  match("/fever", to: "fever#update", via: :post)
   match("/archive", to: "stories#archived", via: :get)
   match("/debug", to: "debug#index", via: :get)
   match("/feed/:feed_id", to: "feeds#show", via: :get)

@@ -22,7 +22,7 @@ Deploying into OpenShift
 
  ```
 	pushd ${OPENSHIFT_REPO_DIR} > /dev/null
-	bundle exec rake db:migrate RACK_ENV="production"
+	bundle exec rake db:migrate RAILS_ENV="production"
 	popd > /dev/null
  ```
 
@@ -99,7 +99,7 @@ After importing feeds, a cron job is needed on OpenShift to fetch feeds.
  ```
 	./usr/bin/rhcsh
 	pushd ${OPENSHIFT_REPO_DIR} > /dev/null
-	bundle exec rake fetch_feeds RACK_ENV="production"
+	bundle exec rake fetch_feeds RAILS_ENV="production"
 	popd > /dev/null
  ```
 
@@ -125,5 +125,5 @@ In the event that you need to change your password, run the following commands
 ```
 rhc ssh feeds
 cd app-root/repo	
-bundle exec rake change_password RACK_ENV="production"
+bundle exec rake change_password RAILS_ENV="production"
 ```

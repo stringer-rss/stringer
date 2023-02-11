@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
-require "rubygems"
-require "bundler"
+# This file is used by Rack-based servers to start the application.
 
 require "active_support/core_ext/kernel/reporting"
-Bundler.require
+require_relative "config/environment"
 
-require "./app"
-run Stringer
+run Rails.application
+Rails.application.load_server
