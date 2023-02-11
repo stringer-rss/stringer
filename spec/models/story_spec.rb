@@ -3,15 +3,12 @@
 require "spec_helper"
 
 describe "Story" do
-  let(:story) do
-    Story.new(
-      title: Faker::Lorem.sentence(word_count: 50),
-      body: Faker::Lorem.sentence(word_count: 50)
-    )
-  end
+  let(:story) { build_stubbed(:story) }
 
   describe "#headline" do
     it "truncates to 50 chars" do
+      story = Story.new(title: "a" * 100)
+
       expect(story.headline.size).to eq(50)
     end
 
@@ -28,6 +25,8 @@ describe "Story" do
 
   describe "#lead" do
     it "truncates to 100 chars" do
+      story = Story.new(body: "a" * 1000)
+
       expect(story.lead.size).to eq(100)
     end
 
