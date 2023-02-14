@@ -4,7 +4,7 @@ require_relative "../commands/feeds/export_to_opml"
 
 class ExportsController < ApplicationController
   def index
-    xml = ExportToOpml.new(Feed.all).to_xml
+    xml = ExportToOpml.call(Feed.all)
 
     send_data(
       xml,
