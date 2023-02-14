@@ -26,7 +26,7 @@ class FeedsController < ApplicationController
 
   def create
     @feed_url = params[:feed_url]
-    feed = AddNewFeed.add(@feed_url)
+    feed = AddNewFeed.call(@feed_url)
 
     unless feed && feed.valid?
       flash.now[:error] = feed ? t(".already_subscribed") : t(".feed_not_found")

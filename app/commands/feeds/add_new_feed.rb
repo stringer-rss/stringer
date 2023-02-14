@@ -4,10 +4,10 @@ require_relative "../../models/feed"
 require_relative "../../utils/content_sanitizer"
 require_relative "../../utils/feed_discovery"
 
-class AddNewFeed
+module AddNewFeed
   ONE_DAY = 24 * 60 * 60
 
-  def self.add(url, discoverer = FeedDiscovery.new, repo = Feed)
+  def self.call(url, discoverer = FeedDiscovery.new, repo = Feed)
     result = discoverer.discover(url)
     return false unless result
 
