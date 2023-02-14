@@ -3,41 +3,35 @@
 require "spec_helper"
 
 describe FeverAPI::ReadFeedsGroups do
-  subject { described_class.new(feed_repository:) }
-
-  let(:feed_ids) { [5, 7, 11] }
-  let(:feeds) { feed_ids.map { |id| double("feed", id:, group_id: 1) } }
-  let(:feed_repository) { double("repo") }
-
   it "returns a list of groups requested through feeds" do
-    allow(feed_repository)
-      .to receive_message_chain(:in_group, :order).and_return(feeds)
+    group = create(:group)
+    feeds = create_list(:feed, 3, group:)
 
-    expect(subject.call("feeds" => nil)).to eq(
+    expect(described_class.call("feeds" => nil)).to eq(
       feeds_groups: [
         {
-          group_id: 1,
-          feed_ids: feed_ids.join(",")
+          group_id: group.id,
+          feed_ids: feeds.map(&:id).join(",")
         }
       ]
     )
   end
 
   it "returns a list of groups requested through groups" do
-    allow(feed_repository)
-      .to receive_message_chain(:in_group, :order).and_return(feeds)
+    group = create(:group)
+    feeds = create_list(:feed, 3, group:)
 
-    expect(subject.call("groups" => nil)).to eq(
+    expect(described_class.call("groups" => nil)).to eq(
       feeds_groups: [
         {
-          group_id: 1,
-          feed_ids: feed_ids.join(",")
+          group_id: group.id,
+          feed_ids: feeds.map(&:id).join(",")
         }
       ]
     )
   end
 
   it "returns an empty hash otherwise" do
-    expect(subject.call).to eq({})
+    expect(described_class.call({})).to eq({})
   end
 end
