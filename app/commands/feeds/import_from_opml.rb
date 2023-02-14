@@ -4,11 +4,11 @@ require_relative "../../models/feed"
 require_relative "../../models/group"
 require_relative "../../utils/opml_parser"
 
-class ImportFromOpml
+module ImportFromOpml
   ONE_DAY = 24 * 60 * 60
 
   class << self
-    def import(opml_contents)
+    def call(opml_contents)
       feeds_with_groups = OpmlParser.new.parse_feeds(opml_contents)
 
       # It considers a situation when feeds are already imported without
