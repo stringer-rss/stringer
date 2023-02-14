@@ -56,13 +56,12 @@ class FetchFeed
   end
 
   def new_entries_from(raw_feed)
-    finder = FindNewStories.new(
+    FindNewStories.call(
       raw_feed,
       @feed.id,
       @feed.last_fetched,
       latest_entry_id
     )
-    finder.new_stories
   end
 
   def latest_entry_id
