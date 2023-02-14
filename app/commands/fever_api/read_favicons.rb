@@ -4,27 +4,25 @@ module FeverAPI
   class ReadFavicons
     ICON = "R0lGODlhAQABAIAAAObm5gAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
 
-    def self.call(params)
-      new.call(params)
-    end
-
-    def call(params = {})
-      if params.keys.include?("favicons")
-        { favicons: }
-      else
-        {}
+    class << self
+      def call(params)
+        if params.keys.include?("favicons")
+          { favicons: }
+        else
+          {}
+        end
       end
-    end
 
-    private
+      private
 
-    def favicons
-      [
-        {
-          id: 0,
-          data: "image/gif;base64,#{ICON}"
-        }
-      ]
+      def favicons
+        [
+          {
+            id: 0,
+            data: "image/gif;base64,#{ICON}"
+          }
+        ]
+      end
     end
   end
 end
