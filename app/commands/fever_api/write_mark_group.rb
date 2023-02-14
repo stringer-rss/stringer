@@ -2,6 +2,10 @@
 
 module FeverAPI
   class WriteMarkGroup
+    def self.call(params)
+      new.call(params)
+    end
+
     def initialize(options = {})
       @marker_class = options.fetch(:marker_class) { MarkGroupAsRead }
     end

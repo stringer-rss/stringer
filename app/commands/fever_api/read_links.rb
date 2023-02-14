@@ -2,6 +2,10 @@
 
 module FeverAPI
   class ReadLinks
+    def self.call(params)
+      new.call(params)
+    end
+
     def call(params = {})
       if params.keys.include?("links")
         { links: }

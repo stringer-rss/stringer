@@ -4,6 +4,10 @@ module FeverAPI
   class ReadFavicons
     ICON = "R0lGODlhAQABAIAAAObm5gAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
 
+    def self.call(params)
+      new.call(params)
+    end
+
     def call(params = {})
       if params.keys.include?("favicons")
         { favicons: }
