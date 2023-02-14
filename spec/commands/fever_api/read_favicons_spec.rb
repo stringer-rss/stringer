@@ -3,7 +3,7 @@
 require "spec_helper"
 
 describe FeverAPI::ReadFavicons do
-  subject { described_class.new }
+  subject { described_class }
 
   it "returns a fixed icon list if requested" do
     expect(subject.call("favicons" => nil)).to eq(
@@ -17,6 +17,6 @@ describe FeverAPI::ReadFavicons do
   end
 
   it "returns an empty hash otherwise" do
-    expect(subject.call).to eq({})
+    expect(subject.call({})).to eq({})
   end
 end
