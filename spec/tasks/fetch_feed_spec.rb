@@ -52,8 +52,7 @@ describe FetchFeed do
         client = class_spy(HTTParty)
         parser = class_double(Feedjira, parse: fake_feed)
 
-        allow_any_instance_of(FindNewStories)
-          .to receive(:new_stories).and_return([])
+        allow(FindNewStories).to receive(:call).and_return([])
 
         expect(StoryRepository).not_to receive(:add)
 
@@ -73,8 +72,7 @@ describe FetchFeed do
       let(:fake_parser) { class_double(Feedjira, parse: fake_feed) }
 
       before do
-        allow_any_instance_of(FindNewStories)
-          .to receive(:new_stories).and_return([new_story])
+        allow(FindNewStories).to receive(:call).and_return([new_story])
       end
 
       it "only adds posts that are new" do
