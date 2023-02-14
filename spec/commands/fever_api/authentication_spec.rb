@@ -7,18 +7,17 @@ describe FeverAPI::Authentication do
     feed = create(:feed, last_fetched: 1.month.ago)
     create(:feed, last_fetched: 1.year.ago)
 
-    result = described_class.new.call({})
+    result = described_class.call({})
     expect(result[:last_refreshed_on_time]).to eq(Integer(feed.last_fetched))
   end
 
   it "returns 0 for last_refreshed_on_time when there are no feeds" do
-    result = described_class.new.call({})
+    result = described_class.call({})
     expect(result[:last_refreshed_on_time]).to eq(0)
   end
 
   it "returns a hash with keys :auth and :last_refreshed_on_time" do
-    fake_clock = double("clock")
-    result = described_class.new(clock: fake_clock).call(double)
+    result = described_class.call(double)
     expect(result).to eq(auth: 1, last_refreshed_on_time: 0)
   end
 end
