@@ -28,9 +28,7 @@ module FeverAPI
 
     def to_json(*_args)
       base_response = { api_version: API_VERSION }
-      ACTIONS
-        .reduce(base_response) { |a, e| a.merge!(e.new.call(@params)) }
-        .to_json
+      ACTIONS.reduce(base_response) { |a, e| a.merge!(e.call(@params)) }.to_json
     end
   end
 end

@@ -2,6 +2,10 @@
 
 module FeverAPI
   class SyncSavedItemIds
+    def self.call(params)
+      new.call(params)
+    end
+
     def initialize(options = {})
       @story_repository = options.fetch(:story_repository) { StoryRepository }
     end

@@ -2,6 +2,10 @@
 
 module FeverAPI
   class WriteMarkItem
+    def self.call(params)
+      new.call(params)
+    end
+
     def initialize(options = {})
       @read_marker_class = options.fetch(:read_marker_class) { MarkAsRead }
       @unread_marker_class =

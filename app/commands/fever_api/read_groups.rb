@@ -2,6 +2,10 @@
 
 module FeverAPI
   class ReadGroups
+    def self.call(params)
+      new.call(params)
+    end
+
     def initialize(options = {})
       @group_repository = options.fetch(:group_repository) { GroupRepository }
     end

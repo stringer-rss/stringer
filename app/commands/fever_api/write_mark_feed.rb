@@ -2,6 +2,10 @@
 
 module FeverAPI
   class WriteMarkFeed
+    def self.call(params)
+      new.call(params)
+    end
+
     def initialize(options = {})
       @marker_class = options.fetch(:marker_class) { MarkFeedAsRead }
     end

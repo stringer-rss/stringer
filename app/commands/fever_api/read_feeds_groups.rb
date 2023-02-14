@@ -2,6 +2,10 @@
 
 module FeverAPI
   class ReadFeedsGroups
+    def self.call(params)
+      new.call(params)
+    end
+
     def initialize(options = {})
       @feed_repository = options.fetch(:feed_repository) { FeedRepository }
     end
