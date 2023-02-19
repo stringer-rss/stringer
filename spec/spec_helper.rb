@@ -17,6 +17,7 @@ require "date"
 require_relative "support/active_record"
 require_relative "support/request_helpers"
 require_relative "support/factory_bot"
+require_relative "support/matchers"
 require_relative "support/webmock"
 require_relative "factories"
 

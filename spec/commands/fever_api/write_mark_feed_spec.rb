@@ -3,19 +3,20 @@
 require "spec_helper"
 
 describe FeverAPI::WriteMarkFeed do
-  subject { described_class.new(marker_class:) }
-
   let(:feed_marker) { double("feed marker") }
   let(:marker_class) { double("marker class") }
 
-  it "instantiates a feed marker and calls mark_feed_as_read if requested" do
-    expect(marker_class)
-      .to receive(:new).with(5, 1_234_567_890).and_return(feed_marker)
-    expect(feed_marker).to receive(:mark_feed_as_read)
-    expect(subject.call(mark: "feed", id: 5, before: 1_234_567_890)).to eq({})
+  it "marks the feed as read before the given timestamp" do
+    feed = create(:feed)
+    story_1 = create(:story, :unread, feed:, created_at: 1.week.ago)
+    story_2 = create(:story, :unread, feed:)
+
+    expect { described_class.call(mark: "feed", id: feed.id, before: 1.day.ago.to_i) }
+      .to change { story_1.reload.is_read? }.from(false).to(true)
+      .and not_change { story_2.reload.is_read? }.from(false)
   end
 
   it "returns an empty hash otherwise" do
-    expect(subject.call).to eq({})
+    expect(described_class.call({})).to eq({})
   end
 end
