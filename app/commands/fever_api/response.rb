@@ -3,7 +3,7 @@
 module FeverAPI
   API_VERSION = 3
 
-  class Response
+  module Response
     ACTIONS = [
       Authentication,
 
@@ -22,13 +22,9 @@ module FeverAPI
       WriteMarkGroup
     ].freeze
 
-    def initialize(params)
-      @params = params
-    end
-
-    def to_json(*_args)
+    def self.call(params)
       base_response = { api_version: API_VERSION }
-      ACTIONS.reduce(base_response) { |a, e| a.merge!(e.call(@params)) }.to_json
+      ACTIONS.reduce(base_response) { |a, e| a.merge!(e.call(params)) }.to_json
     end
   end
 end
