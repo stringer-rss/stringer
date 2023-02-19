@@ -9,11 +9,11 @@ class FeverController < ApplicationController
   before_action :authenticate_fever
 
   def index
-    render(json: FeverAPI::Response.new(params))
+    render(json: FeverAPI::Response.call(params))
   end
 
   def update
-    render(json: FeverAPI::Response.new(params))
+    render(json: FeverAPI::Response.call(params))
   end
 
   private
