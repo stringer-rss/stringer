@@ -1,31 +1,25 @@
 # frozen_string_literal: true
 
 module FeverAPI
-  class SyncSavedItemIds
-    def self.call(params)
-      new.call(params)
-    end
-
-    def initialize(options = {})
-      @story_repository = options.fetch(:story_repository) { StoryRepository }
-    end
-
-    def call(params = {})
-      if params.keys.include?("saved_item_ids")
-        { saved_item_ids: }
-      else
-        {}
+  module SyncSavedItemIds
+    class << self
+      def call(params)
+        if params.keys.include?("saved_item_ids")
+          { saved_item_ids: }
+        else
+          {}
+        end
       end
-    end
 
-    private
+      private
 
-    def saved_item_ids
-      all_starred_stories.map(&:id).join(",")
-    end
+      def saved_item_ids
+        all_starred_stories.map(&:id).join(",")
+      end
 
-    def all_starred_stories
-      @story_repository.all_starred
+      def all_starred_stories
+        StoryRepository.all_starred
+      end
     end
   end
 end
