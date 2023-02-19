@@ -3,19 +3,13 @@
 require "spec_helper"
 
 describe FeverAPI::SyncUnreadItemIds do
-  subject { described_class.new(story_repository:) }
-
-  let(:story_ids) { [5, 7, 11] }
-  let(:stories) { story_ids.map { |id| double("story", id:) } }
-  let(:story_repository) { double("repo") }
-
   it "returns a list of unread items if requested" do
-    expect(story_repository).to receive(:unread).and_return(stories)
-    expect(subject.call("unread_item_ids" => nil))
-      .to eq(unread_item_ids: story_ids.join(","))
+    stories = create_list(:story, 3, :unread)
+    expect(described_class.call("unread_item_ids" => nil))
+      .to eq(unread_item_ids: stories.map(&:id).join(","))
   end
 
   it "returns an empty hash otherwise" do
-    expect(subject.call).to eq({})
+    expect(described_class.call({})).to eq({})
   end
 end
