@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe SignInUser do
+RSpec.describe SignInUser do
   let(:valid_password) { "valid-pw" }
   let(:repo) { double(first: user) }
 

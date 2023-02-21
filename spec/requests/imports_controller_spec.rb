@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe ImportsController, type: :request do
+RSpec.describe ImportsController, type: :request do
   describe "GET /feeds/import" do
     it "displays the import options" do
       login_as(create(:user))

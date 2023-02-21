@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe FeverAPI::ReadLinks do
+RSpec.describe FeverAPI::ReadLinks do
   it "returns a fixed link list if requested" do
     expect(described_class.call("links" => nil)).to eq(links: [])
   end

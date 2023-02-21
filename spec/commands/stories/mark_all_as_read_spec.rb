@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe MarkAllAsRead do
+RSpec.describe MarkAllAsRead do
   describe "#call" do
     let(:stories) { double }
     let(:repo) { double(fetch_by_ids: stories) }

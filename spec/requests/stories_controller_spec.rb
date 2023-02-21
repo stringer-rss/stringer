@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe StoriesController, type: :request do
+RSpec.describe StoriesController, type: :request do
   let(:story_one) { create(:story) }
   let(:story_two) { create(:story) }
   let(:stories) { [story_one, story_two] }

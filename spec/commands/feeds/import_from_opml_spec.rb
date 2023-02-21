@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe ImportFromOpml do
+RSpec.describe ImportFromOpml do
   let(:subscriptions) do
     File.open(
       File.expand_path(

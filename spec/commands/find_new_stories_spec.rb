@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe FindNewStories do
+RSpec.describe FindNewStories do
   context "the feed contains no new stories" do
     before { allow(StoryRepository).to receive(:exists?).and_return(true) }
 

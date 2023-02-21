@@ -1,6 +1,6 @@
 "use strict";
 
-describe("Storyiew", function(){
+RSpec.describe("Storyiew", function(){
   it("should exist", function(){
     StoryView.should.exist;
   });

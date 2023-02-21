@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe FeverAPI::WriteMarkGroup do
+RSpec.describe FeverAPI::WriteMarkGroup do
   subject { described_class.new(marker_class:) }
 
   let(:group_marker) { double("group marker") }

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe GroupRepository do
+RSpec.describe GroupRepository do
   describe ".list" do
     it "lists groups ordered by lower name" do
       group1 = create(:group, name: "Zabba")

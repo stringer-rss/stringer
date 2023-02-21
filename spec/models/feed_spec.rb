@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe "Feed" do
+RSpec.describe "Feed" do
   describe "#status_bubble" do
     it "returns 'yellow' when status == 'red' and there are stories" do
       feed = Feed.new(status: :red, stories: [Story.new])

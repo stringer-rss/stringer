@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe ExportsController, type: :request do
+RSpec.describe ExportsController, type: :request do
   describe "GET /feeds/export" do
     def expected_xml
       <<~XML

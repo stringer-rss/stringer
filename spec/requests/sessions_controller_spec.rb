@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe SessionsController, type: :request do
+RSpec.describe SessionsController, type: :request do
   describe "#new" do
     it "has a password input and login button" do
       create(:user)

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe OpmlParser do
+RSpec.describe OpmlParser do
   let(:parser) { described_class.new }
 
   describe "#parse_feeds" do

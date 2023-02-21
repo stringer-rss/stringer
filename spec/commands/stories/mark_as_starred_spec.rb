@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe MarkAsStarred do
+RSpec.describe MarkAsStarred do
   describe "#mark_as_starred" do
     let(:story) { create(:story, is_starred: false) }
 

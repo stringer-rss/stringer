@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe FeverAPI::ReadFeeds do
+RSpec.describe FeverAPI::ReadFeeds do
   it "returns a list of feeds" do
     feeds = create_list(:feed, 3)
     expect(described_class.call("feeds" => nil)).to eq(

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe AddNewFeed do
+RSpec.describe AddNewFeed do
   context "feed cannot be discovered" do
     let(:discoverer) { double(discover: false) }
 

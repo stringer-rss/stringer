@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe ExportToOpml do
+RSpec.describe ExportToOpml do
   let(:feed_one) { build(:feed)      }
   let(:feed_two) { build(:feed)      }
   let(:feeds) { [feed_one, feed_two] }

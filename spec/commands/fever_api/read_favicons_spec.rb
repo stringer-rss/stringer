@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe FeverAPI::ReadFavicons do
+RSpec.describe FeverAPI::ReadFavicons do
   subject { described_class }
 
   it "returns a fixed icon list if requested" do

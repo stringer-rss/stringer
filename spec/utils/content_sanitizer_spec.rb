@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe ContentSanitizer do
+RSpec.describe ContentSanitizer do
   describe ".sanitize" do
     context "regressions" do
       it "handles <wbr> tag properly" do

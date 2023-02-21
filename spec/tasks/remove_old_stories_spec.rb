@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe RemoveOldStories do
+RSpec.describe RemoveOldStories do
   describe ".remove!" do
     let(:stories_mock) do
       stories = double("stories")

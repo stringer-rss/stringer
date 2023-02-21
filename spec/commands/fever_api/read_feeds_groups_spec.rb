@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe FeverAPI::ReadFeedsGroups do
+RSpec.describe FeverAPI::ReadFeedsGroups do
   it "returns a list of groups requested through feeds" do
     group = create(:group)
     feeds = create_list(:feed, 3, group:)

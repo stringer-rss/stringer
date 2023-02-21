@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe "MigrationStatus" do
+RSpec.describe "MigrationStatus" do
   describe "pending_migrations" do
     it "returns array of strings representing pending migrations" do
       migrator = ActiveRecord::Base.connection.migration_context.open
