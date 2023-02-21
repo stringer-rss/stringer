@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe FeedDiscovery do
+RSpec.describe FeedDiscovery do
   let(:finder) { double }
   let(:client) { class_double(HTTParty) }
   let(:parser) { class_double(Feedjira) }

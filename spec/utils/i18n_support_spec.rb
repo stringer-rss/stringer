@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe "i18n", type: :request do
+RSpec.describe "i18n", type: :request do
   before do
     allow(UserRepository).to receive(:setup_complete?).and_return(false)
     ENV["LOCALE"] = locale

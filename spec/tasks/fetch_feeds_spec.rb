@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe FetchFeeds do
+RSpec.describe FetchFeeds do
   describe "#fetch_all" do
     let(:feeds) { build_pair(:feed) }
     let(:fetcher_one) { instance_double(FetchFeed) }

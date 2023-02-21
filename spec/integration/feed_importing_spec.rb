@@ -2,7 +2,7 @@
 
 require "support/feed_server"
 
-describe "Feed importing" do
+RSpec.describe "Feed importing" do
   let(:server) { FeedServer.new }
   let(:feed) do
     Feed.create(

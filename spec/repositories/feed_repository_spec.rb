@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe FeedRepository do
+RSpec.describe FeedRepository do
   describe ".fetch" do
     let(:feed) { Feed.new(id: 1) }
 

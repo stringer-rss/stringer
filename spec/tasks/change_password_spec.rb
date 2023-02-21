@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe ChangePassword do
+RSpec.describe ChangePassword do
   let(:command) { instance_double(ChangeUserPassword) }
 
   describe "#change_password" do

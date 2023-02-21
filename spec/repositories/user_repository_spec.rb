@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe UserRepository do
+RSpec.describe UserRepository do
   describe ".fetch" do
     it "returns nil when given id is nil" do
       expect(described_class.fetch(nil)).to be_nil

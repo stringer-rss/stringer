@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe MarkGroupAsRead do
+RSpec.describe MarkGroupAsRead do
   describe "#mark_group_as_read" do
     let(:stories) { double }
     let(:repo) { double }

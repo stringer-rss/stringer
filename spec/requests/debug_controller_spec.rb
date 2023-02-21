@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe DebugController, type: :request do
+RSpec.describe DebugController, type: :request do
   describe "GET /debug" do
     def setup
       login_as(create(:user))

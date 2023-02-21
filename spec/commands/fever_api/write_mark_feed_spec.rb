@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe FeverAPI::WriteMarkFeed do
+RSpec.describe FeverAPI::WriteMarkFeed do
   subject { described_class.new(marker_class:) }
 
   let(:feed_marker) { double("feed marker") }

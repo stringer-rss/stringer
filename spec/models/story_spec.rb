@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe "Story" do
+RSpec.describe "Story" do
   let(:story) { build_stubbed(:story) }
 
   describe "#headline" do

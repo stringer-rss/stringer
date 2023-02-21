@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe FeverAPI::Authentication do
+RSpec.describe FeverAPI::Authentication do
   it "returns the latest feed's last_fetched time" do
     feed = create(:feed, last_fetched: 1.month.ago)
     create(:feed, last_fetched: 1.year.ago)

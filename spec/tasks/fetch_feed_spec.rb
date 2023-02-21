@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe FetchFeed do
+RSpec.describe FetchFeed do
   describe "#fetch" do
     let(:daring_fireball) do
       double(

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe MarkFeedAsRead do
+RSpec.describe MarkFeedAsRead do
   describe "#mark_feed_as_read" do
     let(:stories) { double }
     let(:repo) { double(fetch_unread_for_feed_by_timestamp: stories) }
