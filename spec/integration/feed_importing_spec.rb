@@ -3,7 +3,6 @@
 require "spec_helper"
 require "time"
 require "support/feed_server"
-require "timecop"
 
 describe "Feed importing" do
   let(:server) { FeedServer.new }
@@ -19,7 +18,7 @@ describe "Feed importing" do
     before do
       # articles older than 3 days are ignored, so freeze time within
       # applicable range of the stories in the sample feed
-      Timecop.freeze(Time.parse("2014-08-15T17:30:00Z"))
+      travel_to(Time.parse("2014-08-15T17:30:00Z"))
     end
 
     describe "Importing for the first time" do
@@ -53,7 +52,7 @@ describe "Feed importing" do
   end
 
   describe "Feed with incorrect pubdates" do
-    before { Timecop.freeze(Time.parse("2014-08-12T17:30:00Z")) }
+    before { travel_to(Time.parse("2014-08-12T17:30:00Z")) }
 
     context "has been fetched before" do
       it "imports all new stories" do
