@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 describe "Story" do
   let(:story) { build_stubbed(:story) }
 

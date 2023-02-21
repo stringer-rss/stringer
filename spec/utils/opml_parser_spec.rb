@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 describe OpmlParser do
   let(:parser) { described_class.new }
 

@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 describe GroupRepository do
   describe ".list" do
     it "lists groups ordered by lower name" do

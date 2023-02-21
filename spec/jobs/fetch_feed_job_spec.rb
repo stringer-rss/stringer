@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 RSpec.describe FetchFeedJob do
   it "fetches feeds" do
     job = described_class.new(123)

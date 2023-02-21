@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 describe AddNewFeed do
   context "feed cannot be discovered" do
     let(:discoverer) { double(discover: false) }

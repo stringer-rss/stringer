@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 RSpec.describe Group do
   describe "#as_fever_json" do
     it "returns a hash of the group in fever format" do

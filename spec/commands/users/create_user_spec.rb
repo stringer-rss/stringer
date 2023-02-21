@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 describe CreateUser do
   describe "#call" do
     it "removes existing users and create a user with the password supplied" do

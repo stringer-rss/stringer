@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 RSpec.describe "account setup", type: :system do
   it "allows a user to sign up" do
     visit "/"

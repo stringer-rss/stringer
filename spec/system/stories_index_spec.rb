@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 RSpec.describe "stories/index", type: :system do
   it "displays the stories" do
     create(:story, :unread, title: "My Story")

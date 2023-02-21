@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 describe ChangeUserPassword do
   let(:repo) { double }
   let(:user) { User.create(password: old_password) }

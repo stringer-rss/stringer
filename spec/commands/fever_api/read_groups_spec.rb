@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 describe FeverAPI::ReadGroups do
   it "returns a group list if requested" do
     groups = create_pair(:group)

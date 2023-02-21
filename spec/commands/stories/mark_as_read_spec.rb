@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 describe MarkAsRead do
   describe "#mark_as_read" do
     let(:story) { create(:story, is_read: false) }

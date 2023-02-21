@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 describe ExportToOpml do
   let(:feed_one) { build(:feed)      }
   let(:feed_two) { build(:feed)      }

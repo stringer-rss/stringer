@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 describe "i18n", type: :request do
   before do
     allow(UserRepository).to receive(:setup_complete?).and_return(false)

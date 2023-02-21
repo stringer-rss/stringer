@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 RSpec.describe PasswordsController, type: :request do
   def setup
     expect(UserRepository).to receive(:setup_complete?).and_return(false)

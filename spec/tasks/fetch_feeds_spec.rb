@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 describe FetchFeeds do
   describe "#fetch_all" do
     let(:feeds) { build_pair(:feed) }

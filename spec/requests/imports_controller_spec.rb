@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 describe ImportsController, type: :request do
   describe "GET /feeds/import" do
     it "displays the import options" do

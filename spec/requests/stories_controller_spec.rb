@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 describe StoriesController, type: :request do
   let(:story_one) { create(:story) }
   let(:story_two) { create(:story) }

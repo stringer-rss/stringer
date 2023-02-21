@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 describe SignInUser do
   let(:valid_password) { "valid-pw" }
   let(:repo) { double(first: user) }

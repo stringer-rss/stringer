@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 describe RemoveOldStories do
   describe ".remove!" do
     let(:stories_mock) do

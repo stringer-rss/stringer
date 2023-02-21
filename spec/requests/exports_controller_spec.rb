@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 describe ExportsController, type: :request do
   describe "GET /feeds/export" do
     def expected_xml

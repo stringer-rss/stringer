@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 describe FeverAPI::SyncUnreadItemIds do
   it "returns a list of unread items if requested" do
     stories = create_list(:story, 3, :unread)
