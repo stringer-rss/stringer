@@ -28,16 +28,11 @@ RSpec.describe RemoveOldStories do
     end
 
     it "fetches affected feeds by id" do
-      allow(described_class).to receive(:old_stories) do
-        stories = [double("story", feed_id: 3), double("story", feed_id: 5)]
-        allow(stories).to receive(:delete_all)
-        stories
-      end
-
-      expect(FeedRepository)
-        .to receive(:fetch_by_ids).with([3, 5]).and_return([])
+      stories = create_list(:story, 3, :read, created_at: 1.month.ago)
 
       described_class.remove!(13)
+
+      expect(Story.where(id: stories.map(&:id))).to be_empty
     end
 
     it "updates last_fetched on affected feeds" do

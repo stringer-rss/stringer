@@ -16,7 +16,7 @@ RSpec.configure do |config|
     # Prevents you from mocking or stubbing a method that does not exist on
     # a real object. This is generally recommended, and will default to
     # `true` in RSpec 4.
-    # mocks.verify_partial_doubles = true
+    mocks.verify_partial_doubles = true
   end
 
   # This option will default to `:apply_to_host_groups` in RSpec 4 (and will
