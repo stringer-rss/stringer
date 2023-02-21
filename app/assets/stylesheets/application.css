@@ -82,6 +82,11 @@ code {
   width: 18px;
 }
 
+#action-bar button.btn {
+  height: 34px;
+  width: 34px;
+}
+
 .btn {
   position: relative;
   top: 0px;

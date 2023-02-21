@@ -93,7 +93,7 @@ jobs:
       - run:
           name: Run rspec in parallel
           command: |
-            bundle exec rspec
+            bundle exec rspec --exclude-pattern "spec/system/*_spec.rb"
             # bundle exec rspec --profile 10 \
             #                   --format RspecJunitFormatter \
             #                   --out test_results/rspec.xml \
@@ -102,3 +102,8 @@ jobs:
 
       - store_test_results: # https://circleci.com/docs/2.0/collect-test-data/
           path: test_results
+
+      - run:
+          name: Run system tests
+          command: |
+            COVERAGE=false bundle exec rspec spec/system/
