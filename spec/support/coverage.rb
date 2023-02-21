@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+return if ENV["COVERAGE"] == "false"
+
 require "simplecov"
 
 if ENV["CI"]

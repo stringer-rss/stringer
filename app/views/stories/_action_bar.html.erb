@@ -1,9 +1,9 @@
 <div class="row-fluid">
   <div class="pull-left">
-    <a class="btn" id="mark-all" title="<%= t('partials.action_bar.mark_all') %>">
+    <button class="btn" id="mark-all" title="<%= t('partials.action_bar.mark_all') %>" aria-label="<%= t('partials.action_bar.mark_all') %>">
       <i class="icon-ok"></i>
       <%= render "stories/mark_all_as_read_form", { stories: stories } %>
-    </a>
+    </button>
     <a class="btn" href="/" id="refresh" title="<%= t('partials.action_bar.refresh') %>">
       <i class="icon-repeat"></i>
     </a>
