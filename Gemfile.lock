@@ -287,7 +287,6 @@ GEM
       tins (~> 1.0)
     thor (1.2.1)
     thread (0.2.2)
-    timecop (0.9.6)
     timeout (0.3.1)
     tins (1.32.1)
       sync
@@ -352,7 +351,6 @@ DEPENDENCIES
   sprockets
   sprockets-rails
   thread
-  timecop
   uglifier
   web-console
   webdrivers

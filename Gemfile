@@ -43,7 +43,6 @@ group :development, :test do
   gem "rspec-html-matchers"
   gem "rspec-rails"
   gem "simplecov"
-  gem "timecop"
   gem "webmock", require: false
 end
 
