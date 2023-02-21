@@ -75,7 +75,7 @@ class StoryRepository
   end
 
   def self.all_starred
-    Story.where(is_starred: true)
+    Story.where(is_starred: true).order(published: :desc)
   end
 
   def self.unstarred_read_stories_older_than(num_days)

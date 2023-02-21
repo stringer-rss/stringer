@@ -21,6 +21,8 @@ require_relative "support/webmock"
 require_relative "factories"
 
 RSpec.configure do |config|
+  config.order = "random"
+
   config.include(RequestHelpers, type: :request)
   config.include(SystemHelpers, type: :system)
   config.include(RSpecHtmlMatchers)
