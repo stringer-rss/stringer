@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 describe FeverAPI::ReadFeeds do
   it "returns a list of feeds" do
     feeds = create_list(:feed, 3)

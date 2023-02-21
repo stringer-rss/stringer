@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 describe ImportFromOpml do
   let(:subscriptions) do
     File.open(

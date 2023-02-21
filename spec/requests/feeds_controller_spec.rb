@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 describe FeedsController, type: :request do
   describe "#index" do
     it "renders a list of feeds" do

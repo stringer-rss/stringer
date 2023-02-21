@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 RSpec.describe TutorialsController, type: :request do
   describe "#index" do
     context "when a user has not been setup" do

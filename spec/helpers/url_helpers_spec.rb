@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 RSpec.describe UrlHelpers do
   let(:helper) do
     helper_class = Class.new { include UrlHelpers }

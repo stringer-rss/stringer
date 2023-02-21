@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 describe FeverAPI::SyncSavedItemIds do
   it "returns a list of starred items if requested" do
     stories = create_list(:story, 3, :starred)

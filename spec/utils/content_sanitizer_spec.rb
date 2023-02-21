@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 describe ContentSanitizer do
   describe ".sanitize" do
     context "regressions" do

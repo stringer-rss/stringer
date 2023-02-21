@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 describe StoryRepository do
   describe ".add" do
     let(:feed) { double(url: "http://blog.golang.org/feed.atom") }

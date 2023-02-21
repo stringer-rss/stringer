@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 describe FeedRepository do
   describe ".fetch" do
     let(:feed) { Feed.new(id: 1) }

@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 describe UserRepository do
   describe ".fetch" do
     it "returns nil when given id is nil" do

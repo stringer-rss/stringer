@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 describe FeverAPI::ReadItems do
   it "returns a list of unread items including total count" do
     stories = create_list(:story, 3, :unread)

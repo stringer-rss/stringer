@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 describe FeverAPI::WriteMarkItem do
   let(:item_marker) { double("item marker") }
   let(:marker_class) { double("marker class") }

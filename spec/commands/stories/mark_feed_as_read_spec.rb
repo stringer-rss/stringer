@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 describe MarkFeedAsRead do
   describe "#mark_feed_as_read" do
     let(:stories) { double }

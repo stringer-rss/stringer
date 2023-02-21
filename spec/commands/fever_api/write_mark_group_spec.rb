@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 describe FeverAPI::WriteMarkGroup do
   subject { described_class.new(marker_class:) }
 

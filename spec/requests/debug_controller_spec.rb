@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 describe DebugController, type: :request do
   describe "GET /debug" do
     def setup

@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 describe FeedDiscovery do
   let(:finder) { double }
   let(:client) { class_double(HTTParty) }

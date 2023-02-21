@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 describe MarkGroupAsRead do
   describe "#mark_group_as_read" do
     let(:stories) { double }

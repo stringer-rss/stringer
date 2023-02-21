@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 describe "MigrationStatus" do
   describe "pending_migrations" do
     it "returns array of strings representing pending migrations" do
