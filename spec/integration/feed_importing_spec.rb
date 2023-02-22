@@ -5,7 +5,8 @@ require "support/feed_server"
 RSpec.describe "Feed importing" do
   let(:server) { FeedServer.new }
   let(:feed) do
-    Feed.create(
+    create(
+      :feed,
       name: "Example feed",
       last_fetched: Time.zone.local(2014, 1, 1),
       url: server.url

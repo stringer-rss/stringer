@@ -19,10 +19,11 @@ RSpec.describe ImportFromOpml do
 
   context "adding group_id for existing feeds" do
     let!(:feed1) do
-      Feed.create(name: "TMW Football Transfer News", url: "http://www.transfermarketweb.com/rss")
+      create(:feed, name: "TMW Football Transfer News", url: "http://www.transfermarketweb.com/rss")
     end
     let!(:feed2) do
-      Feed.create(
+      create(
+        :feed,
         name: "GIANT ROBOTS SMASHING INTO OTHER GIANT ROBOTS - Home",
         url: "http://feeds.feedburner.com/GiantRobotsSmashingIntoOtherGiantRobots"
       )
