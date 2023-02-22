@@ -22,7 +22,7 @@ RSpec.describe SessionsController, type: :request do
     end
 
     it "allows access when password is correct" do
-      user = create(:user)
+      user = default_user
 
       post "/login", params: { password: user.password }
 
@@ -30,7 +30,7 @@ RSpec.describe SessionsController, type: :request do
     end
 
     it "redirects to the root page" do
-      user = create(:user)
+      user = default_user
 
       post "/login", params: { password: user.password }
 
@@ -38,7 +38,7 @@ RSpec.describe SessionsController, type: :request do
     end
 
     it "redirects to the previous path when present" do
-      user = create(:user)
+      user = default_user
 
       get("/archive")
       post("/login", params: { password: user.password })
@@ -49,7 +49,7 @@ RSpec.describe SessionsController, type: :request do
 
   describe "#destroy" do
     it "clears the session" do
-      login_as(create(:user))
+      login_as(default_user)
 
       get "/logout"
 
@@ -57,7 +57,7 @@ RSpec.describe SessionsController, type: :request do
     end
 
     it "redirects to the root page" do
-      login_as(create(:user))
+      login_as(default_user)
 
       get "/logout"
 

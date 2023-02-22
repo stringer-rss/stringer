@@ -15,7 +15,7 @@ RSpec.describe ExportsController, type: :request do
     end
 
     it "returns an OPML file" do
-      login_as(create(:user))
+      login_as(default_user)
 
       get "/feeds/export"
 
@@ -23,7 +23,7 @@ RSpec.describe ExportsController, type: :request do
     end
 
     it "responds with xml content type" do
-      login_as(create(:user))
+      login_as(default_user)
 
       get "/feeds/export"
 
@@ -31,7 +31,7 @@ RSpec.describe ExportsController, type: :request do
     end
 
     it "responds with disposition attachment" do
-      login_as(create(:user))
+      login_as(default_user)
 
       get "/feeds/export"
 
