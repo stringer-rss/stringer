@@ -6,7 +6,7 @@ require_relative "../../utils/opml_parser"
 
 module ImportFromOpml
   class << self
-    def call(opml_contents)
+    def call(opml_contents, user:)
       feeds_with_groups = OpmlParser.new.parse_feeds(opml_contents)
 
       # It considers a situation when feeds are already imported without
@@ -19,14 +19,20 @@ module ImportFromOpml
           group = Group.where(name: group_name).first_or_create
         end
 
-        parsed_feeds.each { |parsed_feed| create_feed(parsed_feed, group) }
+        parsed_feeds.each do |parsed_feed|
+          create_feed(parsed_feed, group, user)
+        end
       end
     end
 
     private
 
-    def create_feed(parsed_feed, group)
-      feed = Feed.where(parsed_feed.slice(:name, :url)).first_or_initialize
+    def create_feed(parsed_feed, group, user)
+      feed = Feed.where(
+        **parsed_feed.slice(:name, :url),
+        user_id: [nil, user.id]
+      ).first_or_initialize
+      feed.user = user
       feed.last_fetched = 1.day.ago if feed.new_record?
       feed.group_id = group.id if group
       feed.save
