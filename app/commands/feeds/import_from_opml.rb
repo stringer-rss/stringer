@@ -15,9 +15,7 @@ module ImportFromOpml
       # 'Ungrouped' group, we don't create such group and create such feeds
       # with group_id = nil.
       feeds_with_groups.each do |group_name, parsed_feeds|
-        unless group_name == "Ungrouped"
-          group = Group.where(name: group_name).first_or_create
-        end
+        group = find_or_create_group(group_name, user)
 
         parsed_feeds.each do |parsed_feed|
           create_feed(parsed_feed, group, user)
@@ -26,6 +24,16 @@ module ImportFromOpml
     end
 
     private
+
+    def find_or_create_group(group_name, user)
+      return if group_name == "Ungrouped"
+
+      group = Group.where(name: group_name, user_id: [nil, user.id])
+                   .first_or_initialize
+
+      group.update!(user:)
+      group
+    end
 
     def create_feed(parsed_feed, group, user)
       feed = Feed.where(

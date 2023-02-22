@@ -12,11 +12,6 @@ RSpec.describe ImportFromOpml do
   let(:group1) { Group.find_by(name: "Football News") }
   let(:group2) { Group.find_by(name: "RoR")           }
 
-  after do
-    Feed.delete_all
-    Group.delete_all
-  end
-
   context "adding group_id for existing feeds" do
     let!(:feed1) do
       create(:feed, name: "TMW Football Transfer News", url: "http://www.transfermarketweb.com/rss")
