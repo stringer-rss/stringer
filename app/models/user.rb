@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_secure_token :api_key
 
   has_many :feeds, dependent: :delete_all
+  has_many :groups, dependent: :delete_all
 end
