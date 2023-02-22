@@ -3,7 +3,7 @@
 RSpec.describe ImportsController, type: :request do
   describe "GET /feeds/import" do
     it "displays the import options" do
-      login_as(create(:user))
+      login_as(default_user)
 
       get "/feeds/import"
 
@@ -22,7 +22,7 @@ RSpec.describe ImportsController, type: :request do
 
     it "parses OPML and starts fetching" do
       expect(ImportFromOpml).to receive(:call).once
-      login_as(create(:user))
+      login_as(default_user)
 
       post "/feeds/import", params: { opml_file: }
     end

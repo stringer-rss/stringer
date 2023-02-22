@@ -7,7 +7,7 @@ RSpec.describe TutorialsController, type: :request do
       let(:feeds) { [instance_double(Feed), instance_double(Feed)] }
 
       it "displays the tutorial and completes setup" do
-        login_as(create(:user))
+        login_as(default_user)
 
         get "/setup/tutorial"
 

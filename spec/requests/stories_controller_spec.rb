@@ -25,7 +25,7 @@ RSpec.describe StoriesController, type: :request do
     end
 
     it "display list of unread stories" do
-      login_as(create(:user))
+      login_as(default_user)
       setup
 
       get "/news"
@@ -34,7 +34,7 @@ RSpec.describe StoriesController, type: :request do
     end
 
     it "displays the blog title and article title" do
-      login_as(create(:user))
+      login_as(default_user)
       setup
 
       get "/news"
@@ -43,7 +43,7 @@ RSpec.describe StoriesController, type: :request do
     end
 
     it "displays all user actions" do
-      login_as(create(:user))
+      login_as(default_user)
       setup
 
       get "/news"
@@ -52,7 +52,7 @@ RSpec.describe StoriesController, type: :request do
     end
 
     it "has correct footer links" do
-      login_as(create(:user))
+      login_as(default_user)
       setup
 
       get "/news"
@@ -62,7 +62,7 @@ RSpec.describe StoriesController, type: :request do
     end
 
     it "displays a zen-like message when there are no unread stories" do
-      login_as(create(:user))
+      login_as(default_user)
 
       get "/news"
 
@@ -72,7 +72,7 @@ RSpec.describe StoriesController, type: :request do
 
   describe "#archived" do
     it "displays the list of read stories with pagination" do
-      login_as(create(:user))
+      login_as(default_user)
       create(:story, :read)
 
       get "/archive"
@@ -84,7 +84,7 @@ RSpec.describe StoriesController, type: :request do
 
   describe "#starred" do
     it "displays the list of starred stories" do
-      login_as(create(:user))
+      login_as(default_user)
       create(:story, :starred)
 
       get "/starred"
@@ -96,7 +96,7 @@ RSpec.describe StoriesController, type: :request do
 
   describe "#update" do
     it "marks a story as read when it is_read not malformed" do
-      login_as(create(:user))
+      login_as(default_user)
 
       put "/stories/#{story_one.id}", params: { is_read: true }.to_json
 
@@ -104,7 +104,7 @@ RSpec.describe StoriesController, type: :request do
     end
 
     it "marks a story as read when is_read is malformed" do
-      login_as(create(:user))
+      login_as(default_user)
 
       put "/stories/#{story_one.id}", params: { is_read: "malformed" }.to_json
 
@@ -112,7 +112,7 @@ RSpec.describe StoriesController, type: :request do
     end
 
     it "marks a story as keep unread when it keep_unread not malformed" do
-      login_as(create(:user))
+      login_as(default_user)
 
       put "/stories/#{story_one.id}", params: { keep_unread: false }.to_json
 
@@ -120,7 +120,7 @@ RSpec.describe StoriesController, type: :request do
     end
 
     it "marks a story as keep unread when keep_unread is malformed" do
-      login_as(create(:user))
+      login_as(default_user)
 
       put "/stories/#{story_one.id}",
           params: { keep_unread: "malformed" }.to_json
@@ -129,7 +129,7 @@ RSpec.describe StoriesController, type: :request do
     end
 
     it "marks a story as starred when is_starred is not malformed" do
-      login_as(create(:user))
+      login_as(default_user)
 
       put "/stories/#{story_one.id}", params: { is_starred: true }.to_json
 
@@ -137,7 +137,7 @@ RSpec.describe StoriesController, type: :request do
     end
 
     it "marks a story as starred when is_starred is malformed" do
-      login_as(create(:user))
+      login_as(default_user)
 
       put "/stories/#{story_one.id}",
           params: { is_starred: "malformed" }.to_json
@@ -148,7 +148,7 @@ RSpec.describe StoriesController, type: :request do
 
   describe "#mark_all_as_read" do
     it "marks all unread stories as read and reload the page" do
-      login_as(create(:user))
+      login_as(default_user)
       stories = create_pair(:story)
 
       post "/stories/mark_all_as_read", params: { story_ids: stories.map(&:id) }

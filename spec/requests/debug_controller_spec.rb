@@ -3,7 +3,7 @@
 RSpec.describe DebugController, type: :request do
   describe "GET /debug" do
     def setup
-      login_as(create(:user))
+      login_as(default_user)
       expect(Delayed::Job).to receive(:count).and_return(42)
 
       migration_status_instance = instance_double(MigrationStatus)
