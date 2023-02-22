@@ -5,8 +5,6 @@ require_relative "../../models/group"
 require_relative "../../utils/opml_parser"
 
 module ImportFromOpml
-  ONE_DAY = 24 * 60 * 60
-
   class << self
     def call(opml_contents)
       feeds_with_groups = OpmlParser.new.parse_feeds(opml_contents)
@@ -29,7 +27,7 @@ module ImportFromOpml
 
     def create_feed(parsed_feed, group)
       feed = Feed.where(parsed_feed.slice(:name, :url)).first_or_initialize
-      feed.last_fetched = Time.now - ONE_DAY if feed.new_record?
+      feed.last_fetched = 1.day.ago if feed.new_record?
       feed.group_id = group.id if group
       feed.save
     end
