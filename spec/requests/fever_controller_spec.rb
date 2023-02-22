@@ -13,7 +13,7 @@ RSpec.describe FeverController, type: :request do
     JSON.parse(response.body, symbolize_names: true)
   end
 
-  def params(user: create(:user), **overrides)
+  def params(user: default_user, **overrides)
     { api_key: user.api_key, **overrides }
   end
 

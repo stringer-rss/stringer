@@ -7,7 +7,7 @@ RSpec.describe UserRepository do
     end
 
     it "returns the user for the given id" do
-      user = create(:user)
+      user = default_user
 
       expect(described_class.fetch(user.id)).to eq(user)
     end
@@ -42,7 +42,7 @@ RSpec.describe UserRepository do
 
   describe ".first" do
     it "returns the first user" do
-      user = create(:user)
+      user = default_user
       create(:user)
 
       expect(described_class.first).to eq(user)
