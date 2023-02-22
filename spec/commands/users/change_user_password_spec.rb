@@ -2,7 +2,7 @@
 
 RSpec.describe ChangeUserPassword do
   let(:repo) { double }
-  let(:user) { User.create(password: old_password) }
+  let(:user) { create(:user, password: old_password) }
 
   let(:old_password) { "old-pw" }
   let(:new_password) { "new-pw" }

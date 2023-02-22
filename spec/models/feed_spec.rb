@@ -29,22 +29,22 @@ RSpec.describe "Feed" do
 
   describe "#unread_stories" do
     it "returns stories where is_read is false" do
-      feed = Feed.create!
-      story = feed.stories.create!(is_read: false)
+      feed = create(:feed)
+      story = create(:story, :unread, feed:)
 
       expect(feed.unread_stories).to eq([story])
     end
 
     it "does not return stories where is_read is true" do
-      feed = Feed.create!
-      feed.stories.create!(is_read: true)
+      feed = create(:feed)
+      create(:story, :read, feed:)
 
       expect(feed.unread_stories).to be_empty
     end
 
     it "does not return stories where is_read is nil" do
-      feed = Feed.create!
-      feed.stories.create!
+      feed = create(:feed)
+      create(:story, feed:)
 
       expect(feed.unread_stories).to be_empty
     end
