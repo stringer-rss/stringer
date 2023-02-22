@@ -7,6 +7,7 @@ class DebugController < ApplicationController
   skip_before_action :authenticate_user, only: [:heroku]
 
   def index
+    authorization.skip
     render(
       locals: {
         queued_jobs_count: Delayed::Job.count,
@@ -15,5 +16,7 @@ class DebugController < ApplicationController
     )
   end
 
-  def heroku; end
+  def heroku
+    authorization.skip
+  end
 end

@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 RSpec.describe StoriesController, type: :request do
-  let(:story_one) { create(:story) }
-  let(:story_two) { create(:story) }
-  let(:stories) { [story_one, story_two] }
+  let(:story_one) { create(:story, :unread) }
+  let(:story_two) { create(:story, :unread) }
 
   describe "GET /news" do
     def setup
-      expect(StoryRepository).to receive(:unread).and_return(stories)
+      story_one
+      story_two
     end
 
     it "redirects to the setup page when no user exists" do

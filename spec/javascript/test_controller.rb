@@ -2,15 +2,18 @@
 
 class TestController < ApplicationController
   def index
+    authorization.skip
     prepend_view_path(test_path("support", "views"))
     render(layout: false, locals: { js_files: })
   end
 
   def spec
+    authorization.skip
     send_file(test_path("spec", *params[:splat]))
   end
 
   def vendor
+    authorization.skip
     send_file(test_path("support", "vendor", *params[:splat]))
   end
 

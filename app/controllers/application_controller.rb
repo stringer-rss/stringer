@@ -3,8 +3,13 @@
 class ApplicationController < ActionController::Base
   before_action :complete_setup
   before_action :authenticate_user
+  after_action -> { authorization.verify }
 
   private
+
+  def authorization
+    @authorization ||= Authorization.new(current_user)
+  end
 
   def complete_setup
     redirect_to("/setup/password") unless UserRepository.setup_complete?

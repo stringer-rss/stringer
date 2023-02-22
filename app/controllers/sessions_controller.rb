@@ -3,9 +3,12 @@
 class SessionsController < ApplicationController
   skip_before_action :authenticate_user, only: [:new, :create]
 
-  def new; end
+  def new
+    authorization.skip
+  end
 
   def create
+    authorization.skip
     user = SignInUser.sign_in(params[:password])
     if user
       session[:user_id] = user.id
@@ -19,6 +22,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    authorization.skip
     flash[:success] = t("sessions.destroy.flash.logged_out_successfully")
     session[:user_id] = nil
 

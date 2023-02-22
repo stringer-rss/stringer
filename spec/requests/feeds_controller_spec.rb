@@ -31,6 +31,14 @@ RSpec.describe FeedsController, type: :request do
 
       expect(response.body).to have_tag("#stories")
     end
+
+    it "raises an error if the feed belongs to another user" do
+      login_as(create(:user))
+      feed = create(:feed)
+
+      expect { get("/feed/#{feed.id}") }
+        .to raise_error(Authorization::NotAuthorizedError)
+    end
   end
 
   describe "#edit" do
@@ -79,9 +87,11 @@ RSpec.describe FeedsController, type: :request do
   describe "#destroy" do
     it "deletes a feed given the id" do
       login_as(default_user)
-      expect(FeedRepository).to receive(:delete).with("123")
+      feed = create(:feed)
 
-      delete "/feeds/123"
+      delete "/feeds/#{feed.id}"
+
+      expect(Feed.find_by(id: feed.id)).to be_nil
     end
   end
 
