@@ -28,19 +28,12 @@ module ImportFromOpml
     def find_or_create_group(group_name, user)
       return if group_name == "Ungrouped"
 
-      group = Group.where(name: group_name, user_id: [nil, user.id])
-                   .first_or_initialize
-
-      group.update!(user:)
-      group
+      user.groups.create_or_find_by(name: group_name)
     end
 
     def create_feed(parsed_feed, group, user)
-      feed = Feed.where(
-        **parsed_feed.slice(:name, :url),
-        user_id: [nil, user.id]
-      ).first_or_initialize
-      feed.user = user
+      feed = user.feeds.where(**parsed_feed.slice(:name, :url))
+                 .first_or_initialize
       feed.last_fetched = 1.day.ago if feed.new_record?
       feed.group_id = group.id if group
       feed.save

@@ -13,7 +13,7 @@ class Authorization
   alias authorized? authorized
 
   def check(record)
-    raise(NotAuthorizedError) unless [nil, user.id].include?(record.user_id)
+    raise(NotAuthorizedError) unless record.user_id == user.id
 
     self.authorized = true
     record
@@ -21,7 +21,7 @@ class Authorization
 
   def scope(records)
     self.authorized = true
-    records.left_joins(:user).where(users: { id: [nil, user.id] })
+    records.joins(:user).where(users: { id: user.id })
   end
 
   def skip
