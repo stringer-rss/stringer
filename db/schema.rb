@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_21_233057) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_23_045525) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -37,7 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_21_233057) do
     t.datetime "updated_at"
     t.integer "status"
     t.integer "group_id"
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.index ["url"], name: "index_feeds_on_url", unique: true
     t.index ["user_id"], name: "index_feeds_on_user_id"
   end
@@ -46,7 +46,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_21_233057) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
@@ -54,7 +54,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_21_233057) do
     t.text "title"
     t.text "permalink"
     t.text "body"
-    t.integer "feed_id"
+    t.integer "feed_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "published"

@@ -27,24 +27,6 @@ RSpec.describe Authorization do
         expect(authorization.check(feed)).to eq(feed)
       end
     end
-
-    describe "when the record has no user" do
-      it "marks the request as authorized" do
-        feed = create(:feed, user: nil)
-        authorization = described_class.new(default_user)
-
-        authorization.check(feed)
-
-        expect(authorization).to be_authorized
-      end
-
-      it "returns the record" do
-        feed = create(:feed, user: nil)
-        authorization = described_class.new(default_user)
-
-        expect(authorization.check(feed)).to eq(feed)
-      end
-    end
   end
 
   describe "#scope" do
@@ -52,12 +34,6 @@ RSpec.describe Authorization do
       feed = create(:feed)
 
       expect(described_class.new(feed.user).scope(Feed)).to eq([feed])
-    end
-
-    it "returns the records that have no user" do
-      feed = create(:feed, user: nil)
-
-      expect(described_class.new(default_user).scope(Feed)).to eq([feed])
     end
 
     it "does not return records that belong to another user" do
