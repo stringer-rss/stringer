@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe StoriesController, type: :request do
+RSpec.describe StoriesController do
   let(:story_one) { create(:story, :unread) }
   let(:story_two) { create(:story, :unread) }
 

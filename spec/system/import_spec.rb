@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe "importing feeds", type: :system do
+RSpec.describe "importing feeds" do
   it "allows importing feeds" do
     login_as(default_user)
     visit(feeds_import_path)

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe TutorialsController, type: :request do
+RSpec.describe TutorialsController do
   describe "#index" do
     context "when a user has not been setup" do
       let(:user) { instance_double(User) }
