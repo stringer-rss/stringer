@@ -14,6 +14,14 @@ RSpec.describe PasswordsController, type: :request do
       page = response.body
       expect(page).to have_tag("form#password_setup")
     end
+
+    it "redirects to the news path if setup is complete" do
+      create(:user)
+
+      get "/setup/password"
+
+      expect(response).to redirect_to("/news")
+    end
   end
 
   describe "#create" do
