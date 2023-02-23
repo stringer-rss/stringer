@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe FeedsController, type: :request do
+RSpec.describe FeedsController do
   describe "#index" do
     it "renders a list of feeds" do
       login_as(default_user)

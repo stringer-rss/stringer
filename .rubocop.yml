@@ -1,4 +1,6 @@
 inherit_from: .rubocop_todo.yml
+inherit_mode: { merge: [Exclude] }
+
 require:
   - rubocop-rails
   - rubocop-rake
@@ -15,6 +17,7 @@ Layout/LineLength: { Max: 80 }
 Layout/RedundantLineBreak: { InspectBlocks: true }
 Metrics/BlockLength: { Exclude: [config/**/*.rb, spec/**/*.rb, db/seeds/**/*.rb] }
 Rails/SkipsModelValidations: { AllowedMethods: [update_all] }
+RSpec/DescribeClass: { Exclude: [spec/system/**/*] }
 RSpec/MessageExpectation: { EnforcedStyle: expect }
 RSpec/MessageSpies: { EnforcedStyle: receive }
 RSpec/MultipleMemoizedHelpers: { AllowSubject: false, Max: 0 }

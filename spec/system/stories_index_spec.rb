@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe "stories/index", type: :system do
+RSpec.describe "stories/index" do
   it "displays the stories" do
     create(:story, :unread, title: "My Story")
     login_as(default_user)

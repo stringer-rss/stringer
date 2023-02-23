@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe FeverController, type: :request do
+RSpec.describe FeverController do
   def standard_answer
     { api_version: 3, auth: 1, last_refreshed_on_time: 0 }
   end

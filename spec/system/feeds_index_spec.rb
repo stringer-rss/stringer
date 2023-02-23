@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe "feeds/index", type: :system do
+RSpec.describe "feeds/index" do
   it "displays a list of feeds" do
     login_as(default_user)
     create_pair(:feed)

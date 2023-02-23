@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe "exporting feeds", type: :system do
+RSpec.describe "exporting feeds" do
   it "allows exporting feeds" do
     login_as(default_user)
     feed = create(:feed, :with_group)
