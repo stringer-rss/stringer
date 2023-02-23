@@ -10,7 +10,10 @@ class CreateUser
   end
 
   def call(password)
-    @repo.delete_all
-    @repo.create(password:, password_confirmation: password)
+    @repo.create(
+      username: "default-user",
+      password:,
+      password_confirmation: password
+    )
   end
 end
