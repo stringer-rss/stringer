@@ -7,8 +7,7 @@ RSpec.describe ImportsController do
 
       get "/feeds/import"
 
-      page = response.body
-      expect(page).to have_tag("input#opml_file")
+      expect(rendered).to have_field("opml_file")
     end
   end
 

@@ -11,8 +11,7 @@ RSpec.describe TutorialsController do
 
         get "/setup/tutorial"
 
-        page = response.body
-        expect(page).to have_tag("#mark-all-instruction")
+        expect(rendered).to have_selector("#mark-all-instruction")
       end
     end
   end

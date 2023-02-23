@@ -19,8 +19,7 @@ RSpec.describe DebugController do
 
       get "/debug"
 
-      page = response.body
-      expect(page).to have_tag("dd", text: /#{RUBY_VERSION}/)
+      expect(rendered).to have_selector("dd", text: /#{RUBY_VERSION}/)
     end
 
     it "displays the user agent" do
@@ -28,8 +27,7 @@ RSpec.describe DebugController do
 
       get("/debug", headers: { "HTTP_USER_AGENT" => "testy" })
 
-      page = response.body
-      expect(page).to have_tag("dd", text: /testy/)
+      expect(rendered).to have_selector("dd", text: /testy/)
     end
 
     it "displays the delayed job count" do
@@ -37,8 +35,7 @@ RSpec.describe DebugController do
 
       get "/debug"
 
-      page = response.body
-      expect(page).to have_tag("dd", text: /42/)
+      expect(rendered).to have_selector("dd", text: /42/)
     end
 
     it "displays pending migrations" do
@@ -46,7 +43,6 @@ RSpec.describe DebugController do
 
       get "/debug"
 
-      rendered = Capybara.string(response.body)
       expect(rendered).to have_selector("li", text: /Migration B - 2/)
         .and have_selector("li", text: /Migration C - 3/)
     end
@@ -56,7 +52,7 @@ RSpec.describe DebugController do
     it "displays Heroku instructions" do
       get("/heroku")
 
-      expect(response.body).to include("add an hourly task")
+      expect(rendered).to have_text("add an hourly task")
     end
   end
 end
