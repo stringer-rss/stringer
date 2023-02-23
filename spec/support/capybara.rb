@@ -4,6 +4,8 @@ require "capybara/rails"
 
 Capybara.enable_aria_label = true
 
+Selenium::WebDriver.logger.output = Rails.root.join("log/selenium.log")
+
 RSpec.configure do |config|
   config.before(:each, type: :system) do
     driven_by(:selenium, using: :firefox) do |driver|
