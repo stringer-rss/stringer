@@ -2,29 +2,31 @@
 
 class StoriesController < ApplicationController
   def index
-    @unread_stories = StoryRepository.unread
+    @unread_stories = authorization.scope(StoryRepository.unread)
   end
 
   def update
     json_params = JSON.parse(request.body.read, symbolize_names: true)
 
-    story = StoryRepository.fetch(params[:id])
+    story = authorization.check(StoryRepository.fetch(params[:id]))
     story.update!(json_params.slice(:is_read, :is_starred, :keep_unread))
 
     head(:no_content)
   end
 
   def mark_all_as_read
-    MarkAllAsRead.call(params[:story_ids])
+    stories = authorization.scope(Story.where(id: params[:story_ids]))
+    MarkAllAsRead.call(stories.ids)
 
     redirect_to("/news")
   end
 
   def archived
-    @read_stories = StoryRepository.read(params[:page])
+    @read_stories = authorization.scope(StoryRepository.read(params[:page]))
   end
 
   def starred
-    @starred_stories = StoryRepository.starred(params[:page])
+    @starred_stories =
+      authorization.scope(StoryRepository.starred(params[:page]))
   end
 end

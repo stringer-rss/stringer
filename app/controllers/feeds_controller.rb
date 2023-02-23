@@ -6,43 +6,46 @@ require_relative "../commands/feeds/export_to_opml"
 
 class FeedsController < ApplicationController
   def index
-    @feeds = FeedRepository.list
+    @feeds = authorization.scope(FeedRepository.list)
   end
 
   def show
     @feed = FeedRepository.fetch(params[:feed_id])
+    authorization.check(@feed)
 
     @stories = StoryRepository.feed(params[:feed_id])
     @unread_stories = @stories.reject(&:is_read)
   end
 
   def new
+    authorization.skip
     @feed_url = params[:feed_url]
   end
 
   def edit
     @feed = FeedRepository.fetch(params[:id])
+    authorization.check(@feed)
   end
 
   def create
+    authorization.skip
     @feed_url = params[:feed_url]
     feed = AddNewFeed.call(@feed_url, user: current_user)
 
-    unless feed && feed.valid?
+    if feed && feed.valid?
+      FetchFeeds.enqueue([feed])
+
+      redirect_to("/", flash: { success: t(".success") })
+    else
       flash.now[:error] = feed ? t(".already_subscribed") : t(".feed_not_found")
 
       render(:new)
-      return
     end
-
-    FetchFeeds.enqueue([feed])
-
-    flash[:success] = t(".success")
-    redirect_to("/")
   end
 
   def update
     feed = FeedRepository.fetch(params[:id])
+    authorization.check(feed)
 
     FeedRepository.update_feed(
       feed,
@@ -56,6 +59,7 @@ class FeedsController < ApplicationController
   end
 
   def destroy
+    authorization.check(Feed.find(params[:id]))
     FeedRepository.delete(params[:id])
 
     flash[:success] = t(".success")

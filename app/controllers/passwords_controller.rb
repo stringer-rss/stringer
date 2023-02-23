@@ -5,21 +5,29 @@ class PasswordsController < ApplicationController
   skip_before_action :authenticate_user, only: [:new, :create]
   before_action :redirect_if_setup_complete
 
-  def new; end
+  def new
+    authorization.skip
+  end
 
   def create
-    if no_password(params) || password_mismatch?(params)
-      flash.now[:error] = t("first_run.password.flash.passwords_dont_match")
-      render(:new)
-    else
+    authorization.skip
+
+    if valid_password?(params)
       user = CreateUser.call(params[:password])
       session[:user_id] = user.id
 
       redirect_to("/feeds/import")
+    else
+      flash.now[:error] = t("first_run.password.flash.passwords_dont_match")
+      render(:new)
     end
   end
 
   private
+
+  def valid_password?(params)
+    !(no_password(params) || password_mismatch?(params))
+  end
 
   def no_password(params)
     params[:password].nil? || params[:password] == ""

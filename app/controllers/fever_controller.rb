@@ -9,10 +9,12 @@ class FeverController < ApplicationController
   before_action :authenticate_fever
 
   def index
+    authorization.skip
     render(json: FeverAPI::Response.call(params))
   end
 
   def update
+    authorization.skip
     render(json: FeverAPI::Response.call(params))
   end
 

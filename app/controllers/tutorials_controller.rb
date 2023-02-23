@@ -2,7 +2,7 @@
 
 class TutorialsController < ApplicationController
   def index
-    FetchFeeds.enqueue(Feed.all)
+    FetchFeeds.enqueue(authorization.scope(Feed.all))
 
     @sample_stories = StoryRepository.samples
   end
