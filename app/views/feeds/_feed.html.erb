@@ -26,9 +26,9 @@
         <a class="icon-external-link" href="<%= feed.url %>"></a>
       </span>
       <span class="edit-feed">
-        <a class="icon-edit" href="<%= "/feeds/#{feed.id}/edit" %>"></a>
+        <a class="icon-edit" aria-label="Edit" href="<%= "/feeds/#{feed.id}/edit" %>"></a>
       </span>
-      <%= button_to("/feeds/#{feed.id}", method: :delete, class: "remove-feed btn-link") do %>
+      <%= button_to("/feeds/#{feed.id}", method: :delete, class: "remove-feed btn-link", aria: { label: "Delete" }) do %>
         <a class="icon-remove"></a>
       <% end %>
     </div>
