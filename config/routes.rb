@@ -28,11 +28,12 @@ Rails.application.routes.draw do
   match("/stories/:id", to: "stories#update", via: :put)
   match("/stories/mark_all_as_read", to: "stories#mark_all_as_read", via: :post)
 
-  if ENV["RACK_ENV"] == "development"
+  unless Rails.env.production?
     require_relative "../spec/javascript/test_controller"
 
     match("/test", to: "test#index", via: :get)
-    match("/spec/*", to: "test#spec", via: :get)
-    match("/vendor/*", to: "test#vendor", via: :get)
+    match("/spec/*splat", to: "test#spec", via: :get)
+    match("/vendor/js/*splat", to: "test#vendor", via: :get)
+    match("/vendor/css/*splat", to: "test#vendor", via: :get)
   end
 end

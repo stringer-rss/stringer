@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class TestController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def index
     authorization.skip
     prepend_view_path(test_path("support", "views"))
@@ -9,12 +11,14 @@ class TestController < ApplicationController
 
   def spec
     authorization.skip
-    send_file(test_path("spec", *params[:splat]))
+    send_file(test_path("spec", "#{params[:splat]}.js"))
   end
 
   def vendor
     authorization.skip
-    send_file(test_path("support", "vendor", *params[:splat]))
+
+    filename = "#{params[:splat]}.#{params[:format]}"
+    send_file(test_path("support", "vendor", params[:format], filename))
   end
 
   private
