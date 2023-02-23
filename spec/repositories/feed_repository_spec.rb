@@ -35,7 +35,7 @@ RSpec.describe FeedRepository do
 
   describe ".update_feed" do
     it "saves the name and url" do
-      feed = Feed.new
+      feed = build(:feed)
 
       described_class.update_feed(feed, "Test Feed", "example.com/feed")
 
@@ -48,7 +48,7 @@ RSpec.describe FeedRepository do
     let(:timestamp) { Time.zone.now.round }
 
     it "saves the last_fetched timestamp" do
-      feed = Feed.new
+      feed = build(:feed)
 
       described_class.update_last_fetched(feed, timestamp)
 
