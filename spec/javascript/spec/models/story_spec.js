@@ -1,6 +1,6 @@
 "use strict";
 
-RSpec.describe("Story", function(){
+describe("Story", function(){
   it("should exist", function(){
     Story.should.exist;
   });
