@@ -7,8 +7,7 @@ RSpec.describe SessionsController do
 
       get "/login"
 
-      page = response.body
-      expect(page).to have_tag("input#password")
+      expect(rendered).to have_field("password")
     end
   end
 
@@ -17,8 +16,7 @@ RSpec.describe SessionsController do
       create(:user)
       post "/login", params: { password: "not-the-password" }
 
-      page = response.body
-      expect(page).to have_tag(".error")
+      expect(rendered).to have_selector(".error")
     end
 
     it "allows access when password is correct" do

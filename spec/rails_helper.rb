@@ -23,7 +23,6 @@ end
 RSpec.configure do |config|
   config.include(RequestHelpers, type: :request)
   config.include(SystemHelpers, type: :system)
-  config.include(RSpecHtmlMatchers)
   config.include(ActiveSupport::Testing::TimeHelpers)
 
   config.use_transactional_fixtures = true

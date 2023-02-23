@@ -11,8 +11,7 @@ RSpec.describe PasswordsController do
 
       get "/setup/password"
 
-      page = response.body
-      expect(page).to have_tag("form#password_setup")
+      expect(rendered).to have_selector("form#password_setup")
     end
 
     it "redirects to the news path if setup is complete" do
@@ -30,8 +29,7 @@ RSpec.describe PasswordsController do
 
       post "/setup/password"
 
-      page = response.body
-      expect(page).to have_tag("div.error")
+      expect(rendered).to have_selector("div.error")
     end
 
     it "rejects when password isn't confirmed" do
@@ -40,8 +38,7 @@ RSpec.describe PasswordsController do
       post "/setup/password",
            params: { password: "foo", password_confirmation: "bar" }
 
-      page = response.body
-      expect(page).to have_tag("div.error")
+      expect(rendered).to have_selector("div.error")
     end
 
     it "accepts confirmed passwords and redirects to next step" do

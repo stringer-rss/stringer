@@ -40,7 +40,6 @@ group :development, :test do
   gem "factory_bot"
   gem "pry-byebug"
   gem "rspec"
-  gem "rspec-html-matchers"
   gem "rspec-rails"
   gem "simplecov"
   gem "webmock", require: false

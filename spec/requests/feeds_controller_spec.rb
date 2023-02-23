@@ -8,7 +8,6 @@ RSpec.describe FeedsController do
 
       get "/feeds"
 
-      rendered = Capybara.string(response.body)
       expect(rendered).to have_selector("li.feed", count: 2)
     end
 
@@ -17,8 +16,7 @@ RSpec.describe FeedsController do
 
       get "/feeds"
 
-      page = response.body
-      expect(page).to have_tag("#add-some-feeds")
+      expect(rendered).to have_selector("#add-some-feeds")
     end
   end
 
@@ -29,7 +27,7 @@ RSpec.describe FeedsController do
 
       get "/feed/#{story.feed_id}"
 
-      expect(response.body).to have_tag("#stories")
+      expect(rendered).to have_selector("#stories")
     end
 
     it "raises an error if the feed belongs to another user" do
@@ -48,7 +46,6 @@ RSpec.describe FeedsController do
 
       get "/feeds/#{feed.id}/edit"
 
-      rendered = Capybara.string(response.body)
       expect(rendered).to have_field("feed_name", with: "Rainbows/unicorns")
     end
   end
@@ -101,8 +98,7 @@ RSpec.describe FeedsController do
 
       get "/feeds/new"
 
-      page = response.body
-      expect(page).to have_tag("form#add-feed-setup")
+      expect(rendered).to have_selector("form#add-feed-setup")
     end
   end
 
@@ -136,7 +132,7 @@ RSpec.describe FeedsController do
         expect($stderr).to receive(:puts).with(/Error occurred/)
         post("/feeds", params: { feed_url: })
 
-        expect(response.body).to have_tag(".error")
+        expect(rendered).to have_selector(".error")
       end
     end
 
@@ -150,7 +146,7 @@ RSpec.describe FeedsController do
 
         post("/feeds", params: { feed_url: })
 
-        expect(response.body).to have_tag(".error")
+        expect(rendered).to have_selector(".error")
       end
     end
   end

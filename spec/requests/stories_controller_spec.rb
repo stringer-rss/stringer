@@ -30,7 +30,7 @@ RSpec.describe StoriesController do
 
       get "/news"
 
-      expect(response.body).to have_tag("#stories")
+      expect(rendered).to have_selector("#stories")
     end
 
     it "displays the blog title and article title" do
@@ -39,7 +39,7 @@ RSpec.describe StoriesController do
 
       get "/news"
 
-      expect(response.body).to include(story_one.headline)
+      expect(rendered).to have_text(story_one.headline)
     end
 
     it "displays all user actions" do
@@ -48,7 +48,7 @@ RSpec.describe StoriesController do
 
       get "/news"
 
-      expect(response.body).to have_tag("#mark-all")
+      expect(rendered).to have_selector("#mark-all")
     end
 
     it "has correct footer links" do
@@ -57,7 +57,6 @@ RSpec.describe StoriesController do
 
       get "/news"
 
-      rendered = Capybara.string(response.body)
       expect(rendered).to have_link("Export").and have_link("Logout")
     end
 
@@ -66,7 +65,7 @@ RSpec.describe StoriesController do
 
       get "/news"
 
-      expect(response.body).to have_tag("#zen")
+      expect(rendered).to have_selector("#zen")
     end
   end
 
@@ -77,8 +76,7 @@ RSpec.describe StoriesController do
 
       get "/archive"
 
-      page = response.body
-      expect(page).to have_tag("#stories")
+      expect(rendered).to have_selector("#stories")
     end
   end
 
@@ -89,8 +87,7 @@ RSpec.describe StoriesController do
 
       get "/starred"
 
-      page = response.body
-      expect(page).to have_tag("#stories")
+      expect(rendered).to have_selector("#stories")
     end
   end
 
