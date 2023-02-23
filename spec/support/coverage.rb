@@ -17,4 +17,4 @@ SimpleCov.start(:rails) do
   add_group("Utils", "app/utils")
   enable_coverage :branch
 end
-SimpleCov.minimum_coverage(line: 100, branch: 98)
+SimpleCov.minimum_coverage(line: 100, branch: 100)
