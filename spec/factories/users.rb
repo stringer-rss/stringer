@@ -1,3 +1,8 @@
 # frozen_string_literal: true
 
-FactoryBot.define { factory(:user) { password { "super-secret" } } }
+FactoryBot.define do
+  factory(:user) do
+    sequence(:username, 100) { |n| "user-#{n}" }
+    password { "super-secret" }
+  end
+end
