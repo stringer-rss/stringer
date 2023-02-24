@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_23_231930) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_24_042638) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -38,7 +38,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_23_231930) do
     t.integer "status"
     t.integer "group_id"
     t.bigint "user_id", null: false
-    t.index ["url"], name: "index_feeds_on_url", unique: true
+    t.index ["url", "user_id"], name: "index_feeds_on_url_and_user_id", unique: true
     t.index ["user_id"], name: "index_feeds_on_user_id"
   end
 
@@ -47,6 +47,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_23_231930) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
+    t.index ["name", "user_id"], name: "index_groups_on_name_and_user_id", unique: true
     t.index ["user_id"], name: "index_groups_on_user_id"
   end
 

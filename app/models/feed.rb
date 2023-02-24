@@ -7,7 +7,8 @@ class Feed < ApplicationRecord
   belongs_to :group
   belongs_to :user
 
-  validates_uniqueness_of :url
+  validates :url, presence: true, uniqueness: { scope: :user_id }
+  validates :user_id, presence: true
 
   enum status: { green: 0, yellow: 1, red: 2 }
 
