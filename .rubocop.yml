@@ -54,6 +54,7 @@ Bundler/GemVersion: { Enabled: false }
 Layout/SingleLineBlockChain: { Enabled: false }
 Lint/ConstantResolution: { Enabled: false }
 Rails/BulkChangeTable: { Enabled: false }
+Rails/RedundantPresenceValidationOnBelongsTo: { Enabled: false }
 RSpec/AlignLeftLetBrace: { Enabled: false }
 RSpec/AlignRightLetBrace: { Enabled: false }
 RSpec/StubbedMock: { Enabled: false }
