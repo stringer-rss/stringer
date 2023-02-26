@@ -174,22 +174,20 @@ RSpec.describe FeverController do
     it "commands to mark entire feed as read" do
       story = create(:story, :unread, created_at: 1.week.ago)
       before = Time.zone.now.to_i
-      id = story.feed_id
+      params = params(mark: "feed", as: "read", id: story.feed_id, before:)
 
-      post("/fever", params: params(mark: "feed", as: "read", id:, before:))
-
-      expect(story.reload.is_read).to be(true)
+      expect { post("/fever", params:) }
+        .to change_record(story, :is_read).from(false).to(true)
     end
 
     describe "#index" do
       it "works with a trailing /" do
         story = create(:story, :unread, created_at: 1.week.ago)
         before = Time.zone.now.to_i
-        id = story.feed_id
+        params = params(mark: "feed", as: "read", id: story.feed_id, before:)
 
-        get("/fever/", params: params(mark: "feed", as: "read", id:, before:))
-
-        expect(story.reload.is_read).to be(true)
+        expect { get("/fever/", params:) }
+          .to change_record(story, :is_read).from(false).to(true)
       end
     end
 
@@ -197,11 +195,10 @@ RSpec.describe FeverController do
       it "works with a trailing /" do
         story = create(:story, :unread, created_at: 1.week.ago)
         before = Time.zone.now.to_i
-        id = story.feed_id
+        params = params(mark: "feed", as: "read", id: story.feed_id, before:)
 
-        post("/fever/", params: params(mark: "feed", as: "read", id:, before:))
-
-        expect(story.reload.is_read).to be(true)
+        expect { post("/fever/", params:) }
+          .to change_record(story, :is_read).from(false).to(true)
       end
     end
   end
