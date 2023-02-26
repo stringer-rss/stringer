@@ -9,8 +9,8 @@ RSpec.describe ImportFromOpml do
       )
     )
   end
-  let(:group1) { Group.find_by(name: "Football News") }
-  let(:group2) { Group.find_by(name: "RoR")           }
+  let(:group1) { Group.find_by!(name: "Football News") }
+  let(:group2) { Group.find_by!(name: "RoR")           }
 
   context "adding group_id for existing feeds" do
     let!(:feed1) do
@@ -38,11 +38,10 @@ RSpec.describe ImportFromOpml do
       expect(group2).to be
     end
 
-    it "sets group_id for existing feeds" do
-      described_class.call(subscriptions, user: default_user)
-
-      expect(feed1.reload.group).to eq(group1)
-      expect(feed2.reload.group).to eq(group2)
+    it "sets group for existing feeds" do
+      expect { described_class.call(subscriptions, user: default_user) }
+        .to change_record(feed1, :group_name).from(nil).to("Football News")
+        .and change_record(feed2, :group_name).from(nil).to("RoR")
     end
   end
 

@@ -7,6 +7,8 @@ class Feed < ApplicationRecord
   belongs_to :group
   belongs_to :user
 
+  delegate :name, to: :group, prefix: true, allow_nil: true
+
   validates :url, presence: true, uniqueness: { scope: :user_id }
   validates :user_id, presence: true
 

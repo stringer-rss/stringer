@@ -66,18 +66,17 @@ RSpec.describe FeedsController do
       feed = create(:feed, url: "example.com/atom", id: "12", group_id: nil)
 
       feed_url = "example.com/feed"
-      put "/feeds/#{feed.id}", params: params(feed, feed_url:)
 
-      expect(feed.reload.url).to eq(feed_url)
+      expect { put("/feeds/#{feed.id}", params: params(feed, feed_url:)) }
+        .to change_record(feed, :url).to(feed_url)
     end
 
     it "updates a feed group given the id" do
       login_as(default_user)
       feed = create(:feed, url: "example.com/atom")
 
-      put "/feeds/#{feed.id}", params: params(feed, group_id: 321)
-
-      expect(feed.reload.group_id).to eq(321)
+      expect { put("/feeds/#{feed.id}", params: params(feed, group_id: 321)) }
+        .to change_record(feed, :group_id).to(321)
     end
   end
 
@@ -86,9 +85,7 @@ RSpec.describe FeedsController do
       login_as(default_user)
       feed = create(:feed)
 
-      delete "/feeds/#{feed.id}"
-
-      expect(Feed.find_by(id: feed.id)).to be_nil
+      expect { delete("/feeds/#{feed.id}") }.to delete_record(feed)
     end
   end
 

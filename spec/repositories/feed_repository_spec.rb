@@ -86,17 +86,13 @@ RSpec.describe FeedRepository do
     it "deletes the feed by id" do
       feed = create(:feed)
 
-      described_class.delete(feed.id)
-
-      expect(Feed.unscoped.find_by(id: feed.id)).to be_nil
+      expect { described_class.delete(feed.id) }.to delete_record(feed)
     end
 
     it "does not delete other feeds" do
       feed1, feed2 = create_pair(:feed)
 
-      described_class.delete(feed1.id)
-
-      expect(Feed.unscoped.find_by(id: feed2.id)).to eq(feed2)
+      expect { described_class.delete(feed1.id) }.not_to delete_record(feed2)
     end
   end
 

@@ -18,7 +18,9 @@ Layout/RedundantLineBreak: { InspectBlocks: true }
 Metrics/BlockLength: { Exclude: [config/**/*.rb, spec/**/*.rb, db/seeds/**/*.rb] }
 Rails/SkipsModelValidations: { AllowedMethods: [update_all] }
 RSpec/DescribeClass: { Exclude: [spec/system/**/*] }
-RSpec/MessageExpectation: { EnforcedStyle: expect }
+RSpec/MessageExpectation:
+  EnforcedStyle: expect
+  Exclude: [spec/support/matchers/**/*.rb]
 RSpec/MessageSpies: { EnforcedStyle: receive }
 RSpec/MultipleMemoizedHelpers: { AllowSubject: false, Max: 0 }
 Style/MethodCallWithArgsParentheses:
