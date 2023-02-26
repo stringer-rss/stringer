@@ -1,0 +1,9 @@
+<h1><%= t('.title') %></h1>
+
+<%= form_with(model: user, url: profile_path, method: :patch) do |form| %>
+  <fieldset>
+    <%= form.label :username %>
+    <%= form.text_field :username %>
+  </fieldset>
+  <%= form.submit("Save") %>
+<% end %>

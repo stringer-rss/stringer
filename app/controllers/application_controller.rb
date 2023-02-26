@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    UserRepository.fetch(session[:user_id])
+    @current_user ||= UserRepository.fetch(session[:user_id])
   end
   helper_method :current_user
 end
