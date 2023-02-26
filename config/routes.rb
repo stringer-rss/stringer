@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resource :profile, only: [:edit, :update]
   match("/", to: "stories#index", via: :get)
   match("/fever", to: "fever#index", via: :get)
   match("/fever", to: "fever#update", via: :post)

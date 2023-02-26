@@ -71,6 +71,7 @@ en:
     hey: Hey!
     import: Import
     logout: Logout
+    profile: Profile
     support: Support
     title: stringer | your rss buddy
   partials:
@@ -116,6 +117,12 @@ en:
       go_make: go make something
       gtfo: Now stop reading blogs and
       rss_zero: You've reached RSS Zero™
+  profiles:
+    edit:
+      title: Edit profile
+    update:
+      success: Profile updated
+      failure: 'Unable to update profile: %{errors}'
   sessions:
     destroy:
       flash:

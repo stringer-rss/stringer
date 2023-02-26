@@ -352,6 +352,12 @@ p.story-details {
   color: #7F8281;
 }
 
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 li.feed .feed-line {
   cursor: default;
   display: flex;

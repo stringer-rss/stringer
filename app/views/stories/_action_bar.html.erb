@@ -1,5 +1,5 @@
-<div class="row-fluid">
-  <div class="pull-left">
+<nav>
+  <div>
     <button class="btn" id="mark-all" title="<%= t('partials.action_bar.mark_all') %>" aria-label="<%= t('partials.action_bar.mark_all') %>">
       <i class="icon-ok"></i>
       <%= render "stories/mark_all_as_read_form", { stories: stories } %>
@@ -9,7 +9,11 @@
     </a>
   </div>
 
-  <div class="pull-right">
+  <div>
+    Logged in as <%= link_to(current_user.username, edit_profile_path) %>
+  </div>
+
+  <div>
     <a class="btn btn-primary" id="starred" href="/starred" title="<%= t('partials.action_bar.starred_stories') %>">
       <i class="icon-star"></i>
     </a>
@@ -23,7 +27,7 @@
       <i class="icon-plus"></i>
     </a>
   </div>
-</div>
+</nav>
 
 <script type="text/javascript">
   $(document).ready(function() {

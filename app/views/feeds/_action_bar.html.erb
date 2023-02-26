@@ -1,11 +1,15 @@
-<div class="row-fluid">
-  <div class="pull-left">
+<nav>
+  <div>
     <a class="btn" id="home" href="/news" title="<%= t('partials.feed_action_bar.home') %>">
       <i class="icon-reply"></i>
     </a>
   </div>
 
-  <div class="pull-right">
+  <div>
+    Logged in as <%= link_to(current_user.username, edit_profile_path) %>
+  </div>
+
+  <div>
     <a class="btn btn-primary" id="starred" href="/starred" title="<%= t('partials.feed_action_bar.starred_stories') %>">
       <i class="icon-star"></i>
     </a>
@@ -19,4 +23,4 @@
       <i class="icon-plus"></i>
     </a>
   </div>
-</div>
+</nav>
