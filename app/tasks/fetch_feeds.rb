@@ -20,7 +20,7 @@ class FetchFeeds
   def fetch_all
     @pool ||= Thread.pool(10)
 
-    if @feeds.blank? && !@feeds_ids.blank?
+    if @feeds.blank? && @feeds_ids.present?
       @feeds = FeedRepository.fetch_by_ids(@feeds_ids)
     end
 
