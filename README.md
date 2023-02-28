@@ -67,8 +67,6 @@ Email: stringer (case-sensitive)
 Password: {your-stringer-password}
 ```
 
-If you have previously setup Stringer, you will need to migrate your database and run `rake change_password` for the API key to be setup properly.
-
 ### Translations
 
 Stringer has been translated to [several other languages](config/locales). Your language can be set with the `LOCALE` environment variable.

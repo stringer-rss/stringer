@@ -30,7 +30,3 @@ git push heroku main
 heroku run rake db:migrate
 heroku restart
 ```
-
-## Password Reset
-
-In the event that you need to change your password, run `heroku run rake change_password` from the app folder.
