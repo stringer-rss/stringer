@@ -48,4 +48,65 @@ RSpec.describe PasswordsController do
       expect(URI.parse(response.location).path).to eq("/feeds/import")
     end
   end
+
+  describe "#update" do
+    def params(old_password, new_password)
+      {
+        user: {
+          password_challenge: old_password,
+          password: new_password,
+          password_confirmation: new_password
+        }
+      }
+    end
+
+    context "when the password info is correct" do
+      it "updates the password" do
+        user = create(:user, password: "old_password")
+        login_as(user)
+
+        put("/password", params: params("old_password", "new_password"))
+
+        expect(user.reload.authenticate("new_password")).to eq(user)
+      end
+
+      it "redirects to the news page" do
+        user = create(:user, password: "old_password")
+        login_as(user)
+
+        put("/password", params: params("old_password", "new_password"))
+
+        expect(response).to redirect_to("/news")
+      end
+    end
+
+    context "when the password info is incorrect" do
+      it "displays an error message" do
+        user = create(:user, password: "old_password")
+        login_as(user)
+
+        put("/password", params: params("wrong_password", "new_password"))
+
+        expect(rendered).to have_text("Unable to update password")
+      end
+
+      it "renders the edit profile page" do
+        user = create(:user, password: "old_password")
+        login_as(user)
+
+        put("/password", params: params("wrong_password", "new_password"))
+
+        expect(rendered).to have_text("Edit profile")
+      end
+
+      it "doesn't update the password" do
+        user = create(:user, password: "old_password")
+        login_as(user)
+
+        put("/password", params: params("wrong_password", "new_password"))
+
+        expect(user.reload.authenticate("new_password")).to be_falsey
+      end
+    end
+  end
 end

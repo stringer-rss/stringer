@@ -10,4 +10,20 @@ RSpec.describe "profile page" do
 
     expect(page).to have_text("Logged in as new_username")
   end
+
+  it "allows the user to edit their password" do
+    login_as(default_user)
+    visit(edit_profile_path)
+
+    fill_in_password_fields(default_user.password, "new_password")
+    click_on("Update password")
+
+    expect(page).to have_text("Password updated")
+  end
+
+  def fill_in_password_fields(existing_password, new_password)
+    fill_in("Existing password", with: existing_password)
+    fill_in("New password", with: new_password)
+    fill_in("Password confirmation", with: new_password)
+  end
 end
