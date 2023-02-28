@@ -117,6 +117,10 @@ en:
       go_make: go make something
       gtfo: Now stop reading blogs and
       rss_zero: You've reached RSS Zero™
+  passwords:
+    update:
+      success: Password updated
+      failure: 'Unable to update password: %{errors}'
   profiles:
     edit:
       title: Edit profile

@@ -1,9 +1,22 @@
 <h1><%= t('.title') %></h1>
 
-<%= form_with(model: user, url: profile_path, method: :patch) do |form| %>
+<%= form_with(model: user, url: profile_path) do |form| %>
   <fieldset>
     <%= form.label :username %>
     <%= form.text_field :username %>
   </fieldset>
   <%= form.submit("Save") %>
+<% end %>
+
+<h2><%= t('.change_password') %></h2>
+<%= form_with(model: user, url: password_path) do |form| %>
+  <fieldset>
+    <%= form.label :password_challenge, "Existing password" %>
+    <%= form.password_field :password_challenge %>
+    <%= form.label :password, "New password" %>
+    <%= form.password_field :password %>
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation %>
+  </fieldset>
+  <%= form.submit("Update password") %>
 <% end %>

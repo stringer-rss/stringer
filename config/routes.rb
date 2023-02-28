@@ -2,6 +2,8 @@
 
 Rails.application.routes.draw do
   resource :profile, only: [:edit, :update]
+  resource :password, only: [:update]
+
   match("/", to: "stories#index", via: :get)
   match("/fever", to: "fever#index", via: :get)
   match("/fever", to: "fever#update", via: :post)
