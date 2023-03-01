@@ -20,3 +20,12 @@
   </fieldset>
   <%= form.submit("Update password") %>
 <% end %>
+
+<h2><%= t('.api_access') %></h2>
+<%= form_with(model: user, url: api_key_path) do |form| %>
+  <fieldset>
+    <%= form.label :api_key %>
+    <%= form.text_field :api_key, readonly: true %>
+  </fieldset>
+  <%= form.submit("Regenerate API key") %>
+<% end %>
