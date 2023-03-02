@@ -37,6 +37,9 @@ docker run --detach \
     -e PORT=8080 \
     -e DATABASE_URL=postgres://postgres:myPassword@stringer-postgres/stringer \
     -e SECRET_KEY_BASE=$(openssl rand -hex 64) \
+    -e ENCRYPTION_PRIMARY_KEY=$(openssl rand -hex 64) \
+    -e ENCRYPTION_DETERMINISTIC_KEY=$(openssl rand -hex 64) \
+    -e ENCRYPTION_KEY_DERIVATION_SALT=$(openssl rand -hex 64) \
     -e FETCH_FEEDS_CRON="*/5 * * * *" \ # optional
     -e CLEANUP_CRON="0 0 * * *" \ # optional
     -p 127.0.0.1:8080:8080 \

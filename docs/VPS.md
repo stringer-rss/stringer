@@ -93,6 +93,9 @@ Stringer uses environment variables to configure the application. Edit these val
     echo 'export RACK_ENV="production"' >> $HOME/.bash_profile
     echo 'export RAILS_ENV="production"' >> $HOME/.bash_profile
     echo "export SECRET_KEY_BASE=`openssl rand -hex 64`" >> $HOME/.bash_profile
+    echo "export ENCRYPTION_PRIMARY_KEY=`openssl rand -hex 64`" >> $HOME/.bash_profile
+    echo "export ENCRYPTION_DETERMINISTIC_KEY=`openssl rand -hex 64`" >> $HOME/.bash_profile
+    echo "export ENCRYPTION_KEY_DERIVATION_SALT=`openssl rand -hex 64`" >> $HOME/.bash_profile
     source ~/.bash_profile
 
 Tell stringer to run the database in production mode, using the `postgres` database you created earlier.

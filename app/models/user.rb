@@ -6,6 +6,8 @@ class User < ApplicationRecord
   has_secure_password
   has_secure_token :api_key
 
+  encrypts :api_key, deterministic: true
+
   has_many :feeds, dependent: :delete_all
   has_many :groups, dependent: :delete_all
 

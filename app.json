@@ -16,6 +16,18 @@
       "description": "Secret key used by rails for encryption",
       "generator": "secret"
     },
+    "ENCRYPTION_PRIMARY_KEY": {
+      "description": "Secret key used by rails for encryption",
+      "generator": "secret"
+    },
+    "ENCRYPTION_DETERMINISTIC_KEY": {
+      "description": "Secret key used by rails for encryption",
+      "generator": "secret"
+    },
+    "ENCRYPTION_KEY_DERIVATION_SALT": {
+      "description": "Secret key used by rails for encryption",
+      "generator": "secret"
+    },
     "LOCALE": {
       "description": "Specify the translation locale you wish to use",
       "value": "en"
