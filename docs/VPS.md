@@ -92,7 +92,7 @@ Stringer uses environment variables to configure the application. Edit these val
     echo 'export DATABASE_URL="postgres://stringer:EDIT_ME@localhost/stringer_live"' >> $HOME/.bash_profile
     echo 'export RACK_ENV="production"' >> $HOME/.bash_profile
     echo 'export RAILS_ENV="production"' >> $HOME/.bash_profile
-    echo "export SECRET_TOKEN=`openssl rand -hex 20`" >> $HOME/.bash_profile
+    echo "export SECRET_KEY_BASE=`openssl rand -hex 64`" >> $HOME/.bash_profile
     source ~/.bash_profile
 
 Tell stringer to run the database in production mode, using the `postgres` database you created earlier.

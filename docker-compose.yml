@@ -19,6 +19,6 @@ services:
     ports:
       - 80:8080
     environment:
-      - SECRET_TOKEN=YOUR_SECRET_TOKEN
+      - SECRET_KEY_BASE=YOUR_SECRET_KEY_BASE
       - PORT=8080
       - DATABASE_URL=postgres://db_user:super_secret_password@postgres:5432/stringer

@@ -32,10 +32,10 @@ Deploying into OpenShift
     chmod +x .openshift/action_hooks/deploy
  ```
 
-5. Set the SECRET_TOKEN as a rhc environment variable by generating it with the command below.
+5. Set the SECRET_KEY_BASE as a rhc environment variable by generating it with the command below.
 
  ```sh
-    rhc env set SECRET_TOKEN="`openssl rand -hex 20`"
+    rhc env set SECRET_KEY_BASE="`openssl rand -hex 64`"
  ```
 
 6. Configuration of the database server is next. Open the file config/database.yml and add in the configuration for Production as shown below. OpenShift is able to use environment variables to push the information into the application.

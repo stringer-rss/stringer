@@ -105,6 +105,10 @@ GEM
       delayed_job (>= 3.0, < 5)
     diff-lcs (1.5.0)
     docile (1.4.0)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     erubi (1.12.0)
     execjs (2.8.1)
     factory_bot (6.2.1)
@@ -325,6 +329,7 @@ DEPENDENCIES
   debug
   delayed_job
   delayed_job_active_record
+  dotenv-rails
   factory_bot
   feedbag
   feedjira

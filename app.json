@@ -12,8 +12,8 @@
     "postdeploy": "bundle exec rake db:migrate"
   },
   "env": {
-    "SECRET_TOKEN": {
-      "description": "Secret key used as the session secret",
+    "SECRET_KEY_BASE": {
+      "description": "Secret key used by rails for encryption",
       "generator": "secret"
     },
     "LOCALE": {
