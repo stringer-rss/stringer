@@ -5,7 +5,7 @@ heroku create
 git push heroku main
 
 heroku config:set APP_URL=`heroku apps:info --shell | grep web_url | cut -d= -f2`
-heroku config:set SECRET_TOKEN=`openssl rand -hex 20`
+heroku config:set SECRET_KEY_BASE=`openssl rand -hex 64`
 
 heroku run rake db:migrate
 heroku restart

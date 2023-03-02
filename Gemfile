@@ -5,6 +5,8 @@ ruby File.read(ruby_version_file).chomp if File.readable?(ruby_version_file)
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+gem "dotenv-rails"
+
 gem "rails", "~> 7.0.1"
 
 gem "bcrypt"
