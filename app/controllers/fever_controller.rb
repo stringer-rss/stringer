@@ -19,7 +19,7 @@ class FeverController < ApplicationController
   private
 
   def fever_params
-    params.permit(FeverAPI::PARAMS).to_hash.symbolize_keys
+    params.permit(FeverAPI::PARAMS).to_hash.symbolize_keys.merge(authorization:)
   end
 
   def authenticate_user
