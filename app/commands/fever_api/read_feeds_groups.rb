@@ -3,9 +3,9 @@
 module FeverAPI
   class ReadFeedsGroups
     class << self
-      def call(params)
+      def call(authorization:, **params)
         if params.key?(:feeds) || params.key?(:groups)
-          { feeds_groups: }
+          { feeds_groups: feeds_groups(authorization) }
         else
           {}
         end
@@ -13,9 +13,9 @@ module FeverAPI
 
       private
 
-      def feeds_groups
-        grouped_feeds =
-          FeedRepository.in_group.order("LOWER(name)").group_by(&:group_id)
+      def feeds_groups(authorization)
+        scoped_feeds = authorization.scope(FeedRepository.in_group)
+        grouped_feeds = scoped_feeds.order("LOWER(name)").group_by(&:group_id)
         grouped_feeds.map do |group_id, feeds|
           {
             group_id:,
