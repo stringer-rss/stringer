@@ -2,10 +2,15 @@
 git clone git@github.com:stringer-rss/stringer.git
 cd stringer
 heroku create
+
+heroku config:set SECRET_KEY_BASE=`openssl rand -hex 64`
+heroku config:set ENCRYPTION_PRIMARY_KEY=`openssl rand -hex 64`
+heroku config:set ENCRYPTION_DETERMINISTIC_KEY=`openssl rand -hex 64`
+heroku config:set ENCRYPTION_KEY_DERIVATION_SALT=`openssl rand -hex 64`
+
 git push heroku main
 
 heroku config:set APP_URL=`heroku apps:info --shell | grep web_url | cut -d= -f2`
-heroku config:set SECRET_KEY_BASE=`openssl rand -hex 64`
 
 heroku run rake db:migrate
 heroku restart
