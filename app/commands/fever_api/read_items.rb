@@ -3,7 +3,7 @@
 module FeverAPI
   module ReadItems
     class << self
-      def call(params)
+      def call(authorization:, **params)
         if params.key?(:items)
           item_ids =
             begin
@@ -13,8 +13,8 @@ module FeverAPI
             end
 
           {
-            items: items(item_ids, params[:since_id]),
-            total_items: total_items(item_ids)
+            items: items(item_ids, params[:since_id], authorization),
+            total_items: total_items(item_ids, authorization)
           }
         else
           {}
@@ -23,25 +23,35 @@ module FeverAPI
 
       private
 
-      def items(item_ids, since_id)
-        items = item_ids ? stories_by_ids(item_ids) : unread_stories(since_id)
+      def items(item_ids, since_id, authorization)
+        items =
+          if item_ids
+            stories_by_ids(item_ids, authorization)
+          else
+            unread_stories(since_id, authorization)
+          end
         items.map(&:as_fever_json)
       end
 
-      def total_items(item_ids)
-        items = item_ids ? stories_by_ids(item_ids) : unread_stories
+      def total_items(item_ids, authorization)
+        items =
+          if item_ids
+            stories_by_ids(item_ids, authorization)
+          else
+            unread_stories(nil, authorization)
+          end
         items.count
       end
 
-      def stories_by_ids(ids)
-        StoryRepository.fetch_by_ids(ids)
+      def stories_by_ids(ids, authorization)
+        authorization.scope(StoryRepository.fetch_by_ids(ids))
       end
 
-      def unread_stories(since_id = nil)
+      def unread_stories(since_id, authorization)
         if since_id
-          StoryRepository.unread_since_id(since_id)
+          authorization.scope(StoryRepository.unread_since_id(since_id))
         else
-          StoryRepository.unread
+          authorization.scope(StoryRepository.unread)
         end
       end
     end

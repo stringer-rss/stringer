@@ -57,7 +57,7 @@ class StoryRepository
   end
 
   def self.unread_since_id(since_id)
-    unread.where("id > ?", since_id)
+    unread.where(Story.arel_table[:id].gt(since_id))
   end
 
   def self.feed(feed_id)
