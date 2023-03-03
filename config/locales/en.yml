@@ -124,6 +124,10 @@ en:
   profiles:
     edit:
       title: Edit profile
+      warning_html:
+        <strong>Warning!!!</strong> Editing your username or password will
+        change your API key as well. You will need to update your credentials
+        in any Fever clients you have connected to Stringer.
     update:
       success: Profile updated
       failure: 'Unable to update profile: %{errors}'

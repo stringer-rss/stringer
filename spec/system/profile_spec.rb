@@ -5,10 +5,17 @@ RSpec.describe "profile page" do
     login_as(default_user)
     visit(edit_profile_path)
 
-    fill_in("Username", with: "new_username")
-    click_on("Save")
+    fill_in_username_fields(default_user.password)
+    click_on("Update username")
 
     expect(page).to have_text("Logged in as new_username")
+  end
+
+  def fill_in_username_fields(existing_password)
+    within_fieldset("Change Username") do
+      fill_in("Username", with: "new_username")
+      fill_in("Existing password", with: existing_password)
+    end
   end
 
   it "allows the user to edit their password" do
@@ -22,8 +29,10 @@ RSpec.describe "profile page" do
   end
 
   def fill_in_password_fields(existing_password, new_password)
-    fill_in("Existing password", with: existing_password)
-    fill_in("New password", with: new_password)
-    fill_in("Password confirmation", with: new_password)
+    within_fieldset("Change Password") do
+      fill_in("Existing password", with: existing_password)
+      fill_in("New password", with: new_password)
+      fill_in("Password confirmation", with: new_password)
+    end
   end
 end

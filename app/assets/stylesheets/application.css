@@ -23,6 +23,10 @@ code {
   white-space: normal;
 }
 
+.warning {
+  background-color: #F2DEDE;
+}
+
 .container {
   width: 100%;
   max-width: 720px;

@@ -4,7 +4,6 @@ require_relative "./application_record"
 
 class User < ApplicationRecord
   has_secure_password
-  has_secure_token :api_key
 
   encrypts :api_key, deterministic: true
 
@@ -13,6 +12,8 @@ class User < ApplicationRecord
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }
   validate :password_challenge_matches
+
+  before_save :update_api_key
 
   attr_accessor :password_challenge
 
@@ -25,5 +26,20 @@ class User < ApplicationRecord
     return if digested_password.is_password?(password_challenge)
 
     errors.add(:original_password, "does not match")
+  end
+
+  def update_api_key
+    return unless password_digest_changed? || username_changed?
+
+    if password_challenge.blank? && password.blank?
+      message = "Cannot change username without providing a password"
+
+      raise(ActiveRecord::ActiveRecordError, message)
+    end
+
+    password = password_challenge.presence || self.password.presence
+
+    # API key based on Fever spec: https://feedafever.com/api
+    self.api_key = Digest::MD5.hexdigest("#{username}:#{password}")
   end
 end
