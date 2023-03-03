@@ -4,7 +4,7 @@ module FeverAPI
   module SyncSavedItemIds
     class << self
       def call(params)
-        if params.keys.include?("saved_item_ids")
+        if params.key?(:saved_item_ids)
           { saved_item_ids: }
         else
           {}

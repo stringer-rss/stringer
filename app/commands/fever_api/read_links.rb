@@ -3,7 +3,7 @@
 module FeverAPI
   module ReadLinks
     def self.call(params)
-      if params.keys.include?("links")
+      if params.key?(:links)
         { links: [] }
       else
         {}

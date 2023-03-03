@@ -4,7 +4,7 @@ RSpec.describe FeverAPI::ReadGroups do
   it "returns a group list if requested" do
     groups = create_pair(:group)
 
-    expect(described_class.call("groups" => nil)).to eq(
+    expect(described_class.call(groups: nil)).to eq(
       groups: groups.map(&:as_fever_json)
     )
   end
