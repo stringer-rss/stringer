@@ -3,9 +3,9 @@
 module FeverAPI
   module ReadFeeds
     class << self
-      def call(params)
+      def call(authorization:, **params)
         if params.key?(:feeds)
-          { feeds: }
+          { feeds: feeds(authorization) }
         else
           {}
         end
@@ -13,8 +13,8 @@ module FeverAPI
 
       private
 
-      def feeds
-        FeedRepository.list.map(&:as_fever_json)
+      def feeds(authorization)
+        authorization.scope(FeedRepository.list).map(&:as_fever_json)
       end
     end
   end

@@ -39,8 +39,9 @@ module FeverAPI
     ].freeze
 
     def self.call(params)
-      base_response = { api_version: API_VERSION }
-      ACTIONS.reduce(base_response) { |a, e| a.merge!(e.call(params)) }.to_json
+      result = { api_version: API_VERSION }
+      ACTIONS.each { |action| result.merge!(action.call(**params)) }
+      result.to_json
     end
   end
 end
