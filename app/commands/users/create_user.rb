@@ -11,7 +11,7 @@ class CreateUser
 
   def call(password)
     @repo.create(
-      username: "default-user",
+      username: "stringer",
       password:,
       password_confirmation: password
     )
