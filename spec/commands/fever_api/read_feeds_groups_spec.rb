@@ -5,7 +5,7 @@ RSpec.describe FeverAPI::ReadFeedsGroups do
     group = create(:group)
     feeds = create_list(:feed, 3, group:)
 
-    expect(described_class.call("feeds" => nil)).to eq(
+    expect(described_class.call(feeds: nil)).to eq(
       feeds_groups: [
         {
           group_id: group.id,
@@ -19,7 +19,7 @@ RSpec.describe FeverAPI::ReadFeedsGroups do
     group = create(:group)
     feeds = create_list(:feed, 3, group:)
 
-    expect(described_class.call("groups" => nil)).to eq(
+    expect(described_class.call(groups: nil)).to eq(
       feeds_groups: [
         {
           group_id: group.id,

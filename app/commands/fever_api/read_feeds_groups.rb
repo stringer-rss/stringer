@@ -4,7 +4,7 @@ module FeverAPI
   class ReadFeedsGroups
     class << self
       def call(params)
-        if params.keys.include?("feeds") || params.keys.include?("groups")
+        if params.key?(:feeds) || params.key?(:groups)
           { feeds_groups: }
         else
           {}

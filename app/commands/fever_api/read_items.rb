@@ -4,7 +4,7 @@ module FeverAPI
   module ReadItems
     class << self
       def call(params)
-        if params.keys.include?("items")
+        if params.key?(:items)
           item_ids =
             begin
               params[:with_ids].split(",")

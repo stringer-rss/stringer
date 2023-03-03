@@ -3,7 +3,7 @@
 RSpec.describe FeverAPI::ReadFeeds do
   it "returns a list of feeds" do
     feeds = create_list(:feed, 3)
-    expect(described_class.call("feeds" => nil)).to eq(
+    expect(described_class.call(feeds: nil)).to eq(
       feeds: feeds.map(&:as_fever_json)
     )
   end

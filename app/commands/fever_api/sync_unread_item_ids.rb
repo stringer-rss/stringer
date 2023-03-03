@@ -4,7 +4,7 @@ module FeverAPI
   module SyncUnreadItemIds
     class << self
       def call(params)
-        if params.keys.include?("unread_item_ids")
+        if params.key?(:unread_item_ids)
           { unread_item_ids: }
         else
           {}

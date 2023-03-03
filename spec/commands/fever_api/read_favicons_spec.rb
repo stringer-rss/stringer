@@ -4,7 +4,7 @@ RSpec.describe FeverAPI::ReadFavicons do
   subject { described_class }
 
   it "returns a fixed icon list if requested" do
-    expect(subject.call("favicons" => nil)).to eq(
+    expect(subject.call({ favicons: nil })).to eq(
       favicons: [
         {
           id: 0,

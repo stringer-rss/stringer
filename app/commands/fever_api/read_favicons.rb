@@ -6,7 +6,7 @@ module FeverAPI
 
     class << self
       def call(params)
-        if params.keys.include?("favicons")
+        if params.key?(:favicons)
           { favicons: }
         else
           {}

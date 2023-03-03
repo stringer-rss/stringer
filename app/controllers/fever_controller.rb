@@ -8,15 +8,19 @@ class FeverController < ApplicationController
 
   def index
     authorization.skip
-    render(json: FeverAPI::Response.call(params))
+    render(json: FeverAPI::Response.call(fever_params))
   end
 
   def update
     authorization.skip
-    render(json: FeverAPI::Response.call(params))
+    render(json: FeverAPI::Response.call(fever_params))
   end
 
   private
+
+  def fever_params
+    params.permit(FeverAPI::PARAMS).to_hash.symbolize_keys
+  end
 
   def authenticate_user
     return if current_user
