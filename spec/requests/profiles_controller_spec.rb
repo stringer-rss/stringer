@@ -16,8 +16,8 @@ RSpec.describe ProfilesController do
     context "when the user is valid" do
       it "updates the user's username" do
         login_as(default_user)
-
-        params = { user: { username: "new_username" } }
+        password_challenge = default_user.password
+        params = { user: { username: "new_username", password_challenge: } }
 
         expect { patch(profile_path, params:) }
           .to change_record(default_user, :username).to("new_username")
@@ -25,8 +25,10 @@ RSpec.describe ProfilesController do
 
       it "redirects to the news path" do
         login_as(default_user)
+        password_challenge = default_user.password
+        params = { user: { username: "new_username", password_challenge: } }
 
-        patch(profile_path, params: { user: { username: "new_username" } })
+        patch(profile_path, params:)
 
         expect(response).to redirect_to(news_path)
       end
