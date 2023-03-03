@@ -26,14 +26,4 @@ RSpec.describe "profile page" do
     fill_in("New password", with: new_password)
     fill_in("Password confirmation", with: new_password)
   end
-
-  it "allows the user to regenerate their API key" do
-    login_as(default_user)
-    visit(edit_profile_path)
-
-    click_on("Regenerate API key")
-
-    expect(page).to have_text("API key regenerated")
-      .and have_field("API key", with: default_user.reload.api_key)
-  end
 end

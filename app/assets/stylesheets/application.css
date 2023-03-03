@@ -23,13 +23,6 @@ code {
   white-space: normal;
 }
 
-input[readonly] {
-  background-color: #f5f5f5;
-  color: inherit;
-  width: 100%;
-  text-align: center;
-}
-
 .container {
   width: 100%;
   max-width: 720px;
