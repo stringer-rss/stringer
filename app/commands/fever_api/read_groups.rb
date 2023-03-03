@@ -3,9 +3,9 @@
 module FeverAPI
   module ReadGroups
     class << self
-      def call(params)
+      def call(authorization:, **params)
         if params.key?(:groups)
-          { groups: }
+          { groups: groups(authorization) }
         else
           {}
         end
@@ -13,8 +13,8 @@ module FeverAPI
 
       private
 
-      def groups
-        GroupRepository.list.map(&:as_fever_json)
+      def groups(authorization)
+        authorization.scope(GroupRepository.list).map(&:as_fever_json)
       end
     end
   end
