@@ -27,7 +27,7 @@ module FeverAPI
     def mark_item_as(id, mark_as)
       case mark_as
       when "read"
-        @read_marker_class.new(id).mark_as_read
+        @read_marker_class.call(id)
       when "unread"
         @unread_marker_class.new(id).mark_as_unread
       when "saved"

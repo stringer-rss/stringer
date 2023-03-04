@@ -1,13 +1,10 @@
 # frozen_string_literal: true
 
 RSpec.describe MarkAsRead do
-  describe "#mark_as_read" do
-    let(:story) { create(:story, is_read: false) }
+  let(:story) { create(:story, is_read: false) }
 
-    it "marks a story as read" do
-      expect { described_class.new(story.id).mark_as_read }
-        .to change { Story.find(story.id).is_read }
-        .to(true)
-    end
+  it "marks a story as read" do
+    expect { described_class.call(story.id) }
+      .to change_record(story, :is_read).from(false).to(true)
   end
 end
