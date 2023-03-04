@@ -7,12 +7,10 @@ RSpec.describe FetchFeeds do
     let(:fetcher_two) { instance_double(FetchFeed) }
     let(:pool) { double }
 
-    it "calls FetchFeed#fetch for every feed" do
+    it "calls FetchFeed for every feed" do
       allow(pool).to receive(:process).and_yield
-      allow(FetchFeed).to receive(:new).and_return(fetcher_one, fetcher_two)
-
-      expect(fetcher_one).to receive(:fetch).once
-      expect(fetcher_two).to receive(:fetch).once
+      expect(FetchFeed).to receive(:call).with(feeds.first)
+      expect(FetchFeed).to receive(:call).with(feeds.last)
 
       expect(pool).to receive(:shutdown)
 
@@ -21,11 +19,10 @@ RSpec.describe FetchFeeds do
 
     it "finds feeds when run after a delay" do
       allow(pool).to receive(:process).and_yield
-      allow(FetchFeed).to receive(:new).and_return(fetcher_one, fetcher_two)
+      expect(FetchFeed).to receive(:call).with(feeds.first)
+      expect(FetchFeed).to receive(:call).with(feeds.last)
       expect(FeedRepository)
         .to receive(:fetch_by_ids).with(feeds.map(&:id)).and_return(feeds)
-      expect(fetcher_one).to receive(:fetch).once
-      expect(fetcher_two).to receive(:fetch).once
 
       expect(pool).to receive(:shutdown)
 
