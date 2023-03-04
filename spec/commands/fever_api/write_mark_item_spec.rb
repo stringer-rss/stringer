@@ -23,12 +23,11 @@ RSpec.describe FeverAPI::WriteMarkItem do
   end
 
   describe "as starred" do
-    subject { described_class.new(starred_marker_class: marker_class) }
-
     it "calls mark_item_as_starred if requested" do
-      expect(marker_class).to receive(:new).with(5).and_return(item_marker)
-      expect(item_marker).to receive(:mark_as_starred)
-      expect(subject.call(mark: "item", as: "saved", id: 5)).to eq({})
+      story = create(:story)
+
+      expect { subject.call(mark: "item", as: "saved", id: story.id) }
+        .to change_record(story, :is_starred).from(false).to(true)
     end
   end
 
