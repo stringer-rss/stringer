@@ -2,9 +2,9 @@
 
 module FeverAPI::SyncSavedItemIds
   class << self
-    def call(params)
+    def call(authorization:, **params)
       if params.key?(:saved_item_ids)
-        { saved_item_ids: }
+        { saved_item_ids: saved_item_ids(authorization) }
       else
         {}
       end
@@ -12,12 +12,12 @@ module FeverAPI::SyncSavedItemIds
 
     private
 
-    def saved_item_ids
-      all_starred_stories.map(&:id).join(",")
+    def saved_item_ids(authorization)
+      all_starred_stories(authorization).map(&:id).join(",")
     end
 
-    def all_starred_stories
-      StoryRepository.all_starred
+    def all_starred_stories(authorization)
+      authorization.scope(StoryRepository.all_starred)
     end
   end
 end
