@@ -2,12 +2,11 @@
 
 RSpec.describe MarkAsStarred do
   describe "#mark_as_starred" do
-    let(:story) { create(:story, is_starred: false) }
-
     it "marks a story as starred" do
-      expect { described_class.new(story.id).mark_as_starred }
-        .to change { Story.find(story.id).is_starred }
-        .to(true)
+      story = create(:story)
+
+      expect { described_class.call(story.id) }
+        .to change_record(story, :is_starred).from(false).to(true)
     end
   end
 end
