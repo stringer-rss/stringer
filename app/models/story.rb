@@ -9,7 +9,7 @@ class Story < ApplicationRecord
 
   validates_uniqueness_of :entry_id, scope: :feed_id
 
-  delegate :user_id, to: :feed
+  delegate :group_id, :user_id, to: :feed
 
   UNTITLED = "[untitled]"
 
