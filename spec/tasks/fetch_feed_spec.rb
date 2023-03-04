@@ -25,17 +25,14 @@ RSpec.describe FetchFeed do
 
         expect(StoryRepository).not_to receive(:add)
 
-        described_class.new(daring_fireball, logger: nil).fetch
+        described_class.new(daring_fireball).fetch
       end
 
       it "logs a message" do
         expect(Feedjira).to receive(:parse).and_return(304)
-        output = StringIO.new
-        logger = Logger.new(output)
 
-        described_class.new(daring_fireball, logger:).fetch
-
-        expect(output.string).to include("has not been modified")
+        expect { described_class.new(daring_fireball).fetch }
+          .to invoke(:info).on(Rails.logger).with(/has not been modified/)
       end
     end
 
@@ -104,17 +101,14 @@ RSpec.describe FetchFeed do
         expect(FeedRepository).to receive(:set_status)
           .with(:red, daring_fireball)
 
-        described_class.new(daring_fireball, logger: nil).fetch
+        described_class.new(daring_fireball).fetch
       end
 
       it "outputs a message when things go wrong" do
         expect(Feedjira).to receive(:parse).and_return(404)
-        output = StringIO.new
-        logger = Logger.new(output)
 
-        described_class.new(daring_fireball, logger:).fetch
-
-        expect(output.string).to include("Something went wrong")
+        expect { described_class.new(daring_fireball).fetch }
+          .to invoke(:error).on(Rails.logger).with(/Something went wrong/)
       end
     end
   end

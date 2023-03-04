@@ -8,9 +8,8 @@ require_relative "../repositories/feed_repository"
 require_relative "../commands/feeds/find_new_stories"
 
 class FetchFeed
-  def initialize(feed, logger: Logger.new($stdout))
+  def initialize(feed)
     @feed = feed
-    @logger = logger
   end
 
   def fetch
@@ -26,7 +25,7 @@ class FetchFeed
   rescue StandardError => e
     FeedRepository.set_status(:red, @feed)
 
-    @logger&.error("Something went wrong when parsing #{@feed.url}: #{e}")
+    Rails.logger.error("Something went wrong when parsing #{@feed.url}: #{e}")
   end
 
   private
@@ -37,7 +36,7 @@ class FetchFeed
   end
 
   def feed_not_modified
-    @logger&.info("#{@feed.url} has not been modified since last fetch")
+    Rails.logger.info("#{@feed.url} has not been modified since last fetch")
   end
 
   def feed_modified(raw_feed)
