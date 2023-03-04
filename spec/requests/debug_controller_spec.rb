@@ -6,12 +6,9 @@ RSpec.describe DebugController do
       login_as(default_user)
       expect(Delayed::Job).to receive(:count).and_return(42)
 
-      migration_status_instance = instance_double(MigrationStatus)
-      expect(migration_status_instance)
-        .to receive(:pending_migrations)
-        .and_return(["Migration B - 2", "Migration C - 3"])
       expect(MigrationStatus)
-        .to receive(:new).and_return(migration_status_instance)
+        .to receive(:call)
+        .and_return(["Migration B - 2", "Migration C - 3"])
     end
 
     it "displays the current Ruby version" do

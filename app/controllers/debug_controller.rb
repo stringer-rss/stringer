@@ -11,7 +11,7 @@ class DebugController < ApplicationController
     render(
       locals: {
         queued_jobs_count: Delayed::Job.count,
-        pending_migrations: MigrationStatus.new.pending_migrations
+        pending_migrations: MigrationStatus.call
       }
     )
   end
