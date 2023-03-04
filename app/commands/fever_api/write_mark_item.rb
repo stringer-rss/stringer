@@ -29,7 +29,7 @@ module FeverAPI
       when "read"
         @read_marker_class.call(id)
       when "unread"
-        @unread_marker_class.new(id).mark_as_unread
+        @unread_marker_class.call(id)
       when "saved"
         @starred_marker_class.new(id).mark_as_starred
       when "unsaved"
