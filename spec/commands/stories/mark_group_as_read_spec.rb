@@ -2,46 +2,36 @@
 
 RSpec.describe MarkGroupAsRead do
   describe "#mark_group_as_read" do
-    let(:stories) { double }
-    let(:repo) { double }
-    let(:timestamp) { Time.now.to_i }
-
-    def run_command(group_id)
-      MarkGroupAsRead.new(group_id, timestamp, repo)
-    end
-
     it "marks group as read" do
-      command = run_command(2)
-      expect(stories).to receive(:update_all).with(is_read: true)
-      expect(repo).to receive(:fetch_unread_by_timestamp_and_group)
-        .with(timestamp, 2).and_return(stories)
+      story = create(:story, :with_group, :unread, created_at: 1.week.ago)
+      timestamp = 1.day.ago
 
-      command.mark_group_as_read
+      expect { described_class.call(story.group_id, timestamp) }
+        .to change_record(story, :is_read).from(false).to(true)
     end
 
     it "does not mark any group as read when group is not provided" do
-      command = run_command(nil)
-      expect(repo).not_to receive(:fetch_unread_by_timestamp_and_group)
-      expect(repo).not_to receive(:fetch_unread_by_timestamp)
-      command.mark_group_as_read
+      story = create(:story, :with_group, :unread, created_at: 1.week.ago)
+      timestamp = 1.day.ago
+
+      expect { described_class.call(nil, timestamp) }
+        .not_to change_record(story, :is_read).from(false)
     end
 
-    context "SPARKS_GROUP_ID and KINDLING_GROUP_ID" do
-      it "marks as read all feeds when group is 0" do
-        expect(stories).to receive(:update_all).with(is_read: true)
-        expect(repo).to receive(:fetch_unread_by_timestamp).and_return(stories)
+    it "marks as read all feeds when group is 0 (KINDLING_GROUP_ID)" do
+      story = create(:story, :with_group, :unread, created_at: 1.week.ago)
+      timestamp = 1.day.ago
 
-        command = run_command(0)
-        command.mark_group_as_read
-      end
+      expect { described_class.call(0, timestamp) }
+        .to change_record(story, :is_read).from(false).to(true)
+    end
 
-      it "marks as read all feeds when group is -1" do
-        expect(stories).to receive(:update_all).with(is_read: true)
-        expect(repo).to receive(:fetch_unread_by_timestamp).and_return(stories)
+    it "marks as read all feeds when group is -1 (SPARKS_GROUP_ID)" do
+      story = create(:story, :with_group, :unread, created_at: 1.week.ago)
+      timestamp = 1.day.ago
 
-        command = run_command(-1)
-        command.mark_group_as_read
-      end
+      expect { described_class.call(-1, timestamp) }
+        .to change_record(story, :is_read).from(false).to(true)
     end
   end
 end
