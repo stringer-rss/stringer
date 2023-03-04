@@ -15,25 +15,25 @@ RSpec.describe FetchFeed do
       allow(StoryRepository).to receive(:add)
       allow(FeedRepository).to receive(:update_last_fetched)
       allow(FeedRepository).to receive(:set_status)
+
+      stub_request(:get, "http://daringfireball.com/feed")
     end
 
     context "when feed has not been modified" do
       it "does not try to fetch posts" do
-        client = class_spy(HTTParty)
         expect(Feedjira).to receive(:parse).and_return(304)
 
         expect(StoryRepository).not_to receive(:add)
 
-        described_class.new(daring_fireball, client:, logger: nil).fetch
+        described_class.new(daring_fireball, logger: nil).fetch
       end
 
       it "logs a message" do
-        client = class_spy(HTTParty)
         expect(Feedjira).to receive(:parse).and_return(304)
         output = StringIO.new
         logger = Logger.new(output)
 
-        described_class.new(daring_fireball, client:, logger:).fetch
+        described_class.new(daring_fireball, logger:).fetch
 
         expect(output.string).to include("has not been modified")
       end
@@ -42,14 +42,13 @@ RSpec.describe FetchFeed do
     context "when no new posts have been added" do
       it "does not add any new posts" do
         fake_feed = double(last_modified: Time.zone.local(2012, 12, 31))
-        client = class_spy(HTTParty)
         expect(Feedjira).to receive(:parse).and_return(fake_feed)
 
         allow(FindNewStories).to receive(:call).and_return([])
 
         expect(StoryRepository).not_to receive(:add)
 
-        described_class.new(daring_fireball, client:).fetch
+        described_class.new(daring_fireball).fetch
       end
     end
 
@@ -61,7 +60,6 @@ RSpec.describe FetchFeed do
       let(:fake_feed) do
         double(last_modified: now, entries: [new_story, old_story])
       end
-      let(:fake_client) { class_spy(HTTParty) }
 
       before do
         allow(FindNewStories).to receive(:call).and_return([new_story])
@@ -76,7 +74,7 @@ RSpec.describe FetchFeed do
         expect(StoryRepository)
           .not_to receive(:add).with(old_story, daring_fireball)
 
-        described_class.new(daring_fireball, client: fake_client).fetch
+        described_class.new(daring_fireball).fetch
       end
 
       it "updates the last fetched time for the feed" do
@@ -84,7 +82,7 @@ RSpec.describe FetchFeed do
         expect(FeedRepository).to receive(:update_last_fetched)
           .with(daring_fireball, now)
 
-        described_class.new(daring_fireball, client: fake_client).fetch
+        described_class.new(daring_fireball).fetch
       end
     end
 
@@ -92,32 +90,29 @@ RSpec.describe FetchFeed do
       it "sets the status to green if things are all good" do
         fake_feed =
           double(last_modified: Time.zone.local(2012, 12, 31), entries: [])
-        client = class_spy(HTTParty)
         expect(Feedjira).to receive(:parse).and_return(fake_feed)
 
         expect(FeedRepository).to receive(:set_status)
           .with(:green, daring_fireball)
 
-        described_class.new(daring_fireball, client:).fetch
+        described_class.new(daring_fireball).fetch
       end
 
       it "sets the status to red if things go wrong" do
-        client = class_spy(HTTParty)
         expect(Feedjira).to receive(:parse).and_return(404)
 
         expect(FeedRepository).to receive(:set_status)
           .with(:red, daring_fireball)
 
-        described_class.new(daring_fireball, client:, logger: nil).fetch
+        described_class.new(daring_fireball, logger: nil).fetch
       end
 
       it "outputs a message when things go wrong" do
-        client = class_spy(HTTParty)
         expect(Feedjira).to receive(:parse).and_return(404)
         output = StringIO.new
         logger = Logger.new(output)
 
-        described_class.new(daring_fireball, client:, logger:).fetch
+        described_class.new(daring_fireball, logger:).fetch
 
         expect(output.string).to include("Something went wrong")
       end
