@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 
   def create
     authorization.skip
-    user = SignInUser.sign_in(params[:password])
+    user = SignInUser.call(params[:password])
     if user
       session[:user_id] = user.id
 
