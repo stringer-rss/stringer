@@ -5,12 +5,11 @@ RSpec.describe FeverAPI::WriteMarkItem do
   let(:marker_class) { double("marker class") }
 
   describe "as read" do
-    subject { described_class.new(read_marker_class: marker_class) }
-
     it "calls mark_item_as_read if requested" do
-      expect(marker_class).to receive(:new).with(5).and_return(item_marker)
-      expect(item_marker).to receive(:mark_as_read)
-      expect(subject.call(mark: "item", as: "read", id: 5)).to eq({})
+      story = create(:story, :unread)
+
+      expect { subject.call(mark: "item", as: "read", id: story.id) }
+        .to change_record(story, :is_read).from(false).to(true)
     end
   end
 
