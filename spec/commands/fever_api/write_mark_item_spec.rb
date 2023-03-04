@@ -1,11 +1,8 @@
 # frozen_string_literal: true
 
 RSpec.describe FeverAPI::WriteMarkItem do
-  let(:item_marker) { double("item marker") }
-  let(:marker_class) { double("marker class") }
-
-  describe "as read" do
-    it "calls mark_item_as_read if requested" do
+  context "when as: 'read'" do
+    it "marks the story as read" do
       story = create(:story, :unread)
 
       expect { subject.call(mark: "item", as: "read", id: story.id) }
@@ -13,8 +10,8 @@ RSpec.describe FeverAPI::WriteMarkItem do
     end
   end
 
-  describe "as unread" do
-    it "calls mark_item_as_unread if requested" do
+  context "when as: 'unread'" do
+    it "marks the story as unread" do
       story = create(:story, :read)
 
       expect { subject.call(mark: "item", as: "unread", id: story.id) }
@@ -22,8 +19,8 @@ RSpec.describe FeverAPI::WriteMarkItem do
     end
   end
 
-  describe "as starred" do
-    it "calls mark_item_as_starred if requested" do
+  context "when as: 'saved'" do
+    it "marks the story as starred" do
       story = create(:story)
 
       expect { subject.call(mark: "item", as: "saved", id: story.id) }
@@ -31,17 +28,16 @@ RSpec.describe FeverAPI::WriteMarkItem do
     end
   end
 
-  describe "as unstarred" do
-    subject { described_class.new(unstarred_marker_class: marker_class) }
+  context "when as: 'unsaved'" do
+    it "marks the story as unstarred" do
+      story = create(:story, :starred)
 
-    it "calls marks_item_as_unstarred if requested" do
-      expect(marker_class).to receive(:new).with(5).and_return(item_marker)
-      expect(item_marker).to receive(:mark_as_unstarred)
-      expect(subject.call(mark: "item", as: "unsaved", id: 5)).to eq({})
+      expect { subject.call(mark: "item", as: "unsaved", id: story.id) }
+        .to change_record(story, :is_starred).from(true).to(false)
     end
   end
 
-  it "returns an empty hash otherwise" do
+  it "returns an empty hash when :as is not present" do
     expect(subject.call({ mark: "item" })).to eq({})
   end
 end
