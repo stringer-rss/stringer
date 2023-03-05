@@ -30,6 +30,7 @@ pidfile ENV.fetch("PIDFILE", "tmp/pids/server.pid")
 @delayed_job_pid = nil
 
 before_fork do
+  GoodJob.shutdown
   unless ENV["WORKER_EMBEDDED"] == "false"
     @delayed_job_pid ||= spawn("bundle exec rake work_jobs")
   end
@@ -37,10 +38,18 @@ before_fork do
   sleep 1
 end
 
+on_worker_boot { GoodJob.restart }
+
 on_worker_shutdown do
+  GoodJob.shutdown
   if !ENV["RAILS_ENV"] || ENV["RAILS_ENV"] == "development"
     Process.kill("QUIT", @delayed_job_pid)
   end
+end
+
+MAIN_PID = Process.pid
+at_exit do
+  GoodJob.shutdown if Process.pid == MAIN_PID
 end
 
 # Specifies the number of `workers` to boot in clustered mode.
