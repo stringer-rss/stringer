@@ -1,24 +1,17 @@
 # frozen_string_literal: true
 
 RSpec.describe SignInUser do
-  let(:valid_password) { "valid-pw" }
-  let(:repo) { double(first: user) }
+  it "returns the user if the password is valid" do
+    result = described_class.call(default_user.password)
 
-  let(:user) do
-    double(password_digest: BCrypt::Password.create(valid_password), id: 1)
+    expect(result).to eq(default_user)
   end
 
-  describe "#sign_in" do
-    it "returns the user if the password is valid" do
-      result = described_class.sign_in(valid_password, repo)
+  it "returns nil if password is invalid" do
+    create(:user)
 
-      expect(result.id).to eq(1)
-    end
+    result = described_class.call("not-the-pw")
 
-    it "returns nil if password is invalid" do
-      result = described_class.sign_in("not-the-pw", repo)
-
-      expect(result).to be_nil
-    end
+    expect(result).to be_nil
   end
 end

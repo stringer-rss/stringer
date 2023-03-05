@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
-require_relative "../../models/user"
-
-class SignInUser
-  def self.sign_in(submitted_password, repository = User)
-    user = repository.first
+module SignInUser
+  def self.call(submitted_password)
+    user = User.first
     user_password = BCrypt::Password.new(user.password_digest)
 
     user if user_password == submitted_password
