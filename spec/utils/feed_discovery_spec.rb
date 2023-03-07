@@ -10,52 +10,50 @@ RSpec.describe FeedDiscovery do
   let(:invalid_discovered_url) { "http://not-a-valid-feed.com" }
   let(:valid_discovered_url) { "http://a-valid-feed.com" }
 
-  describe "#discover" do
-    it "returns false if url is not a feed and feed url cannot be discovered" do
-      expect(client).to receive(:get).with(url)
-      expect(parser).to receive(:parse).and_raise(StandardError)
-      expect(finder).to receive(:find).and_return([])
+  it "returns false if url is not a feed and feed url cannot be discovered" do
+    expect(client).to receive(:get).with(url)
+    expect(parser).to receive(:parse).and_raise(StandardError)
+    expect(finder).to receive(:find).and_return([])
 
-      result = described_class.new.discover(url, finder, parser, client)
+    result = described_class.call(url, finder, parser, client)
 
-      expect(result).to be(false)
-    end
+    expect(result).to be(false)
+  end
 
-    it "returns a feed if the url provided is parsable" do
-      expect(client).to receive(:get).with(url)
-      expect(parser).to receive(:parse).and_return(feed)
+  it "returns a feed if the url provided is parsable" do
+    expect(client).to receive(:get).with(url)
+    expect(parser).to receive(:parse).and_return(feed)
 
-      result = described_class.new.discover(url, finder, parser, client)
+    result = described_class.call(url, finder, parser, client)
 
-      expect(result).to eq(feed)
-    end
+    expect(result).to eq(feed)
+  end
 
-    it "returns false if the discovered feed is not parsable" do
-      expect(client).to receive(:get).with(url)
-      expect(parser).to receive(:parse).and_raise(StandardError)
+  it "returns false if the discovered feed is not parsable" do
+    expect(client).to receive(:get).with(url)
+    expect(parser).to receive(:parse).and_raise(StandardError)
 
-      expect(finder).to receive(:find).and_return([invalid_discovered_url])
+    expect(finder).to receive(:find).and_return([invalid_discovered_url])
 
-      expect(client).to receive(:get).with(invalid_discovered_url)
-      expect(parser).to receive(:parse).and_raise(StandardError)
+    expect(client).to receive(:get).with(invalid_discovered_url)
+    expect(parser).to receive(:parse).and_raise(StandardError)
 
-      result = described_class.new.discover(url, finder, parser, client)
+    result = described_class.call(url, finder, parser, client)
 
-      expect(result).to be(false)
-    end
+    expect(result).to be(false)
+  end
 
-    it "returns the feed if the discovered feed is parsable" do
-      expect(client).to receive(:get).with(url)
-      expect(parser).to receive(:parse).and_raise(StandardError)
+  it "returns the feed if the discovered feed is parsable" do
+    expect(client).to receive(:get).with(url)
+    expect(parser).to receive(:parse).and_raise(StandardError)
 
-      expect(finder).to receive(:find).and_return([valid_discovered_url])
+    expect(finder).to receive(:find).and_return([valid_discovered_url])
 
-      expect(client).to receive(:get).with(valid_discovered_url)
-      expect(parser).to receive(:parse).and_return(feed)
+    expect(client).to receive(:get).with(valid_discovered_url)
+    expect(parser).to receive(:parse).and_return(feed)
 
-      result = described_class.new.discover(url, finder, parser, client)
+    result = described_class.call(url, finder, parser, client)
 
-      expect(result).to eq(feed)
-    end
+    expect(result).to eq(feed)
   end
 end

@@ -5,8 +5,8 @@ require_relative "../../utils/content_sanitizer"
 require_relative "../../utils/feed_discovery"
 
 module AddNewFeed
-  def self.call(url, discoverer = FeedDiscovery.new, repo = Feed, user:)
-    result = discoverer.discover(url)
+  def self.call(url, discoverer = FeedDiscovery, repo = Feed, user:)
+    result = discoverer.call(url)
     return false unless result
 
     name = ContentSanitizer.sanitize(result.title.presence || result.feed_url)

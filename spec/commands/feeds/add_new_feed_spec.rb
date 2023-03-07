@@ -2,7 +2,7 @@
 
 RSpec.describe AddNewFeed do
   context "feed cannot be discovered" do
-    let(:discoverer) { double(discover: false) }
+    let(:discoverer) { double(call: false) }
 
     it "returns false if cant discover any feeds" do
       result = described_class.call(
@@ -18,7 +18,7 @@ RSpec.describe AddNewFeed do
   context "feed can be discovered" do
     let(:feed_url) { "http://feed.com/atom.xml" }
     let(:feed_result) { double(title: feed.name, feed_url: feed.url) }
-    let(:discoverer) { double(discover: feed_result) }
+    let(:discoverer) { double(call: feed_result) }
     let(:feed) { build(:feed) }
     let(:repo) { double }
 
@@ -61,7 +61,7 @@ RSpec.describe AddNewFeed do
   it "uses feed_url as name when title is not present" do
     feed_url = "https://protomen.com/news/feed"
     result = instance_double(Feedjira::Parser::RSS, title: nil, feed_url:)
-    discoverer = instance_double(FeedDiscovery, discover: result)
+    discoverer = class_double(FeedDiscovery, call: result)
 
     expect { described_class.call(feed_url, discoverer, user: default_user) }
       .to change(Feed, :count).by(1)
