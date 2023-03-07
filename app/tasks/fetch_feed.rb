@@ -8,14 +8,8 @@ require_relative "../repositories/feed_repository"
 require_relative "../commands/feeds/find_new_stories"
 
 class FetchFeed
-  def initialize(
-    feed,
-    parser: Feedjira,
-    client: HTTParty,
-    logger: Logger.new($stdout)
-  )
+  def initialize(feed, client: HTTParty, logger: Logger.new($stdout))
     @feed = feed
-    @parser = parser
     @client = client
     @logger = logger
   end
@@ -40,7 +34,7 @@ class FetchFeed
 
   def fetch_raw_feed
     response = @client.get(@feed.url).to_s
-    @parser.parse(response)
+    Feedjira.parse(response)
   end
 
   def feed_not_modified
