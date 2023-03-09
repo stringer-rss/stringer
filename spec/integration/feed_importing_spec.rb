@@ -79,8 +79,5 @@ def sample_data(path)
 end
 
 def fetch_feed(feed)
-  logger = Logger.new($stdout)
-  logger.level = Logger::DEBUG
-
-  FetchFeed.new(feed, logger:).fetch
+  FetchFeed.new(feed).fetch
 end
