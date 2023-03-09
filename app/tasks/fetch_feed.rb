@@ -7,56 +7,54 @@ require_relative "../repositories/story_repository"
 require_relative "../repositories/feed_repository"
 require_relative "../commands/feeds/find_new_stories"
 
-class FetchFeed
-  def initialize(feed)
-    @feed = feed
-  end
+module FetchFeed
+  class << self
+    def call(feed)
+      raw_feed = fetch_raw_feed(feed)
 
-  def fetch
-    raw_feed = fetch_raw_feed
+      if raw_feed == 304
+        feed_not_modified(feed)
+      else
+        feed_modified(feed, raw_feed)
+      end
 
-    if raw_feed == 304
-      feed_not_modified
-    else
-      feed_modified(raw_feed)
+      FeedRepository.set_status(:green, feed)
+    rescue StandardError => e
+      FeedRepository.set_status(:red, feed)
+
+      Rails.logger.error("Something went wrong when parsing #{feed.url}: #{e}")
     end
 
-    FeedRepository.set_status(:green, @feed)
-  rescue StandardError => e
-    FeedRepository.set_status(:red, @feed)
+    private
 
-    Rails.logger.error("Something went wrong when parsing #{@feed.url}: #{e}")
-  end
-
-  private
-
-  def fetch_raw_feed
-    response = HTTParty.get(@feed.url).to_s
-    Feedjira.parse(response)
-  end
-
-  def feed_not_modified
-    Rails.logger.info("#{@feed.url} has not been modified since last fetch")
-  end
-
-  def feed_modified(raw_feed)
-    new_entries_from(raw_feed).each do |entry|
-      StoryRepository.add(entry, @feed)
+    def fetch_raw_feed(feed)
+      response = HTTParty.get(feed.url).to_s
+      Feedjira.parse(response)
     end
 
-    FeedRepository.update_last_fetched(@feed, raw_feed.last_modified)
-  end
+    def feed_not_modified(feed)
+      Rails.logger.info("#{feed.url} has not been modified since last fetch")
+    end
 
-  def new_entries_from(raw_feed)
-    FindNewStories.call(
-      raw_feed,
-      @feed.id,
-      @feed.last_fetched,
-      latest_entry_id
-    )
-  end
+    def feed_modified(feed, raw_feed)
+      new_entries_from(feed, raw_feed).each do |entry|
+        StoryRepository.add(entry, feed)
+      end
 
-  def latest_entry_id
-    return @feed.stories.first.entry_id unless @feed.stories.empty?
+      FeedRepository.update_last_fetched(feed, raw_feed.last_modified)
+    end
+
+    def new_entries_from(feed, raw_feed)
+      FindNewStories.call(
+        raw_feed,
+        feed.id,
+        feed.last_fetched,
+        latest_entry_id(feed)
+      )
+    end
+
+    def latest_entry_id(feed)
+      return feed.stories.first.entry_id unless feed.stories.empty?
+    end
   end
 end
