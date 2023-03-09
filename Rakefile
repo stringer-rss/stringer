@@ -21,7 +21,7 @@ task lazy_fetch: :environment do
   end
 
   FeedRepository.list.each do |feed|
-    Delayed::Job.enqueue(FetchFeedJob.new(feed.id))
+    CallableJob.perform_later(FetchFeed, feed)
   end
 end
 
