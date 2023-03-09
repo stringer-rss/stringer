@@ -7,7 +7,7 @@ require_relative "../../utils/opml_parser"
 module ImportFromOpml
   class << self
     def call(opml_contents, user:)
-      feeds_with_groups = OpmlParser.new.parse_feeds(opml_contents)
+      feeds_with_groups = OpmlParser.call(opml_contents)
 
       # It considers a situation when feeds are already imported without
       # groups, so it's possible to re-import the same subscriptions.xml just
