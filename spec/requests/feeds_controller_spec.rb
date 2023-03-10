@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 RSpec.describe FeedsController do
+  include ActiveJob::TestHelper
+
   describe "#index" do
     it "renders a list of feeds" do
       login_as(default_user)
@@ -114,9 +116,9 @@ RSpec.describe FeedsController do
       it "queues the feed to be fetched" do
         login_as(default_user)
         stub_request(:get, feed_url).to_return(status: 200, body: "<rss></rss>")
-        expect(FetchFeeds).to receive(:enqueue).with([instance_of(Feed)])
 
-        post("/feeds", params: { feed_url: })
+        expect { post("/feeds", params: { feed_url: }) }
+          .to enqueue_job(CallableJob).with(FetchFeed, instance_of(Feed))
       end
     end
 

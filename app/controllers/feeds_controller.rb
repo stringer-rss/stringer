@@ -33,7 +33,7 @@ class FeedsController < ApplicationController
     feed = AddNewFeed.call(@feed_url, user: current_user)
 
     if feed && feed.valid?
-      FetchFeeds.enqueue([feed])
+      CallableJob.perform_later(FetchFeed, feed)
 
       redirect_to("/", flash: { success: t(".success") })
     else
