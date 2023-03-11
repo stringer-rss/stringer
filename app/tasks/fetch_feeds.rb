@@ -21,7 +21,7 @@ class FetchFeeds
 
     @feeds.each do |feed|
       pool.process do
-        FetchFeed.call(feed)
+        Feed::FetchOne.call(feed)
 
         ActiveRecord::Base.connection.close
       end
