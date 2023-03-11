@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require "feedjira"
-require "httparty"
-
 module FetchFeed
   class << self
     def call(feed)

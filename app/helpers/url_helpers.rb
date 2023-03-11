@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require "nokogiri"
-require "uri"
-
 module UrlHelpers
   ABS_RE = URI::DEFAULT_PARSER.regexp[:ABS_URI]
 
