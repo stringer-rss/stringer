@@ -36,8 +36,7 @@ RSpec.describe FindNewStories do
     old_story = double(published: nil, id: "old-story")
     feed = double(last_modified: nil, entries: [new_story, old_story])
 
-    time = Time.zone.local(2013, 1, 3)
-    result = described_class.call(feed, 1, time, "old-story")
+    result = described_class.call(feed, 1, "old-story")
     expect(result).to eq([new_story])
   end
 
@@ -57,7 +56,7 @@ RSpec.describe FindNewStories do
       entries: new_stories + stories_older_than_3_days
     )
 
-    result = described_class.call(feed, 1, nil, nil)
+    result = described_class.call(feed, 1)
     expect(result).not_to include(stories_older_than_3_days)
   end
 end
