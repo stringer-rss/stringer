@@ -9,7 +9,7 @@ module AddNewFeed
     result = discoverer.call(url)
     return false unless result
 
-    name = ContentSanitizer.sanitize(result.title.presence || result.feed_url)
+    name = ContentSanitizer.call(result.title.presence || result.feed_url)
 
     repo.create(name:, user:, url: result.feed_url, last_fetched: 1.day.ago)
   end

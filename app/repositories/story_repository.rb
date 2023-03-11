@@ -97,7 +97,7 @@ class StoryRepository
     sanitized_content = ""
 
     content = entry.content || entry.summary
-    sanitized_content = ContentSanitizer.sanitize(content) if content
+    sanitized_content = ContentSanitizer.call(content) if content
 
     if entry.url.present?
       expand_absolute_urls(sanitized_content, entry.url)
@@ -107,8 +107,8 @@ class StoryRepository
   end
 
   def self.extract_title(entry)
-    return ContentSanitizer.sanitize(entry.title) if entry.title.present?
-    return ContentSanitizer.sanitize(entry.summary) if entry.summary.present?
+    return ContentSanitizer.call(entry.title) if entry.title.present?
+    return ContentSanitizer.call(entry.summary) if entry.summary.present?
 
     "There isn't a title for this story"
   end
