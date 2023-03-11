@@ -14,19 +14,12 @@ RSpec.describe AddNewFeed do
     let(:feed_url) { "http://feed.com/atom.xml" }
     let(:feed_result) { double(title: feed.name, feed_url: feed.url) }
     let(:feed) { build(:feed) }
-    let(:repo) { double }
 
     it "parses and creates the feed if discovered" do
-      expect(repo).to receive(:create).and_return(feed)
       expect(FeedDiscovery).to receive(:call).and_return(feed_result)
 
-      result = described_class.call(
-        "http://feed.com",
-        repo,
-        user: default_user
-      )
-
-      expect(result).to be(feed)
+      expect { described_class.call("http://feed.com", user: default_user) }
+        .to change(Feed, :count).by(1)
     end
 
     context "title includes a script tag" do
@@ -38,12 +31,11 @@ RSpec.describe AddNewFeed do
       end
 
       it "deletes the script tag from the title" do
-        allow(repo).to receive(:create)
         expect(FeedDiscovery).to receive(:call).and_return(feed_result)
 
-        described_class.call("http://feed.com", repo, user: default_user)
+        feed = described_class.call("http://feed.com", user: default_user)
 
-        expect(repo).to have_received(:create).with(include(name: "foobar"))
+        expect(feed.name).to eq("foobar")
       end
     end
   end
