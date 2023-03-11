@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module AddNewFeed
-  def self.call(url, discoverer = FeedDiscovery, repo = Feed, user:)
-    result = discoverer.call(url)
+  def self.call(url, repo = Feed, user:)
+    result = FeedDiscovery.call(url)
     return false unless result
 
     name = ContentSanitizer.call(result.title.presence || result.feed_url)
