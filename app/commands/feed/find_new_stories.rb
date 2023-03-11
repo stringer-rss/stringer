@@ -3,7 +3,7 @@
 module FindNewStories
   STORY_AGE_THRESHOLD_DAYS = 3
 
-  def self.call(raw_feed, feed_id, _last_fetched, latest_entry_id = nil)
+  def self.call(raw_feed, feed_id, latest_entry_id = nil)
     stories = []
 
     raw_feed.entries.each do |story|

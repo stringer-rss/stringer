@@ -26,12 +26,7 @@ module FetchFeed
     end
 
     def new_entries_from(feed, raw_feed)
-      FindNewStories.call(
-        raw_feed,
-        feed.id,
-        feed.last_fetched,
-        latest_entry_id(feed)
-      )
+      FindNewStories.call(raw_feed, feed.id, latest_entry_id(feed))
     end
 
     def latest_entry_id(feed)
