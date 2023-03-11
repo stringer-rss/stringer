@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module AddNewFeed
+module Feed::Create
   def self.call(url, user:)
     result = FeedDiscovery.call(url)
     return false unless result

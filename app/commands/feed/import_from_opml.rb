@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module ImportFromOpml
+module Feed::ImportFromOpml
   class << self
     def call(opml_contents, user:)
       feeds_with_groups = OpmlParser.call(opml_contents)

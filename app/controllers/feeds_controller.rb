@@ -26,7 +26,7 @@ class FeedsController < ApplicationController
   def create
     authorization.skip
     @feed_url = params[:feed_url]
-    feed = AddNewFeed.call(@feed_url, user: current_user)
+    feed = Feed::Create.call(@feed_url, user: current_user)
 
     if feed && feed.valid?
       CallableJob.perform_later(FetchFeed, feed)
