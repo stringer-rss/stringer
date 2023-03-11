@@ -2,9 +2,9 @@
 
 module FeedDiscovery
   class << self
-    def call(url, finder = Feedbag, parser = Feedjira, client = HTTParty)
+    def call(url, parser = Feedjira, client = HTTParty)
       get_feed_for_url(url, parser, client) do
-        urls = finder.find(url)
+        urls = Feedbag.find(url)
         return false if urls.empty?
 
         get_feed_for_url(urls.first, parser, client) { return false }
