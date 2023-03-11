@@ -112,7 +112,7 @@ RSpec.describe FeedRepository do
       feed1 = create(:feed, group_id: 5)
       feed2 = create(:feed, group_id: 6)
 
-      expect(described_class.in_group).to match_array([feed1, feed2])
+      expect(described_class.in_group).to contain_exactly(feed1, feed2)
     end
 
     it "does not return feeds that are not in a group" do

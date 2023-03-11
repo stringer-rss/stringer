@@ -1,21 +1,19 @@
 # frozen_string_literal: true
 
-module FeverAPI
-  module ReadFeeds
-    class << self
-      def call(authorization:, **params)
-        if params.key?(:feeds)
-          { feeds: feeds(authorization) }
-        else
-          {}
-        end
+module FeverAPI::ReadFeeds
+  class << self
+    def call(authorization:, **params)
+      if params.key?(:feeds)
+        { feeds: feeds(authorization) }
+      else
+        {}
       end
+    end
 
-      private
+    private
 
-      def feeds(authorization)
-        authorization.scope(FeedRepository.list).map(&:as_fever_json)
-      end
+    def feeds(authorization)
+      authorization.scope(FeedRepository.list).map(&:as_fever_json)
     end
   end
 end

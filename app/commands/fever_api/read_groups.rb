@@ -1,21 +1,19 @@
 # frozen_string_literal: true
 
-module FeverAPI
-  module ReadGroups
-    class << self
-      def call(authorization:, **params)
-        if params.key?(:groups)
-          { groups: groups(authorization) }
-        else
-          {}
-        end
+module FeverAPI::ReadGroups
+  class << self
+    def call(authorization:, **params)
+      if params.key?(:groups)
+        { groups: groups(authorization) }
+      else
+        {}
       end
+    end
 
-      private
+    private
 
-      def groups(authorization)
-        authorization.scope(GroupRepository.list).map(&:as_fever_json)
-      end
+    def groups(authorization)
+      authorization.scope(GroupRepository.list).map(&:as_fever_json)
     end
   end
 end
