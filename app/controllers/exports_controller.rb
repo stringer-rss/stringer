@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative "../commands/feeds/export_to_opml"
-
 class ExportsController < ApplicationController
   def index
     xml = ExportToOpml.call(authorization.scope(Feed.all))

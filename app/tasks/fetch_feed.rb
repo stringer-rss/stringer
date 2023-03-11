@@ -3,10 +3,6 @@
 require "feedjira"
 require "httparty"
 
-require_relative "../repositories/story_repository"
-require_relative "../repositories/feed_repository"
-require_relative "../commands/feeds/find_new_stories"
-
 module FetchFeed
   class << self
     def call(feed)

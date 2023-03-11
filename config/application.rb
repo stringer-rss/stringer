@@ -33,9 +33,9 @@ class Stringer::Application < Rails::Application
   # in config/environments, which are processed later.
   #
   # config.time_zone = "Central Time (US & Canada)"
-  config.eager_load_paths << Rails.root.join("app/commands/feeds")
-  config.eager_load_paths << Rails.root.join("app/commands/stories")
-  config.eager_load_paths << Rails.root.join("app/commands/users")
+  config.eager_load_paths << Rails.root.join("app/commands/feed")
+  config.eager_load_paths << Rails.root.join("app/commands/story")
+  config.eager_load_paths << Rails.root.join("app/commands/user")
 
   # Don't generate system test files.
   config.generators.system_tests = nil
