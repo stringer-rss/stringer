@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe FeedDiscovery do
-  let(:finder) { double }
   let(:client) { class_double(HTTParty) }
-  let(:parser) { class_double(Feedjira) }
   let(:feed) { double(feed_url: url) }
   let(:url) { "http://example.com" }
 
@@ -12,47 +10,47 @@ RSpec.describe FeedDiscovery do
 
   it "returns false if url is not a feed and feed url cannot be discovered" do
     expect(client).to receive(:get).with(url)
-    expect(parser).to receive(:parse).and_raise(StandardError)
+    expect(Feedjira).to receive(:parse).and_raise(StandardError)
     expect(Feedbag).to receive(:find).and_return([])
 
-    result = described_class.call(url, parser, client)
+    result = described_class.call(url, client)
 
     expect(result).to be(false)
   end
 
   it "returns a feed if the url provided is parsable" do
     expect(client).to receive(:get).with(url)
-    expect(parser).to receive(:parse).and_return(feed)
+    expect(Feedjira).to receive(:parse).and_return(feed)
 
-    result = described_class.call(url, parser, client)
+    result = described_class.call(url, client)
 
     expect(result).to eq(feed)
   end
 
   it "returns false if the discovered feed is not parsable" do
     expect(client).to receive(:get).with(url)
-    expect(parser).to receive(:parse).and_raise(StandardError)
+    expect(Feedjira).to receive(:parse).and_raise(StandardError)
 
     expect(Feedbag).to receive(:find).and_return([invalid_discovered_url])
 
     expect(client).to receive(:get).with(invalid_discovered_url)
-    expect(parser).to receive(:parse).and_raise(StandardError)
+    expect(Feedjira).to receive(:parse).and_raise(StandardError)
 
-    result = described_class.call(url, parser, client)
+    result = described_class.call(url, client)
 
     expect(result).to be(false)
   end
 
   it "returns the feed if the discovered feed is parsable" do
     expect(client).to receive(:get).with(url)
-    expect(parser).to receive(:parse).and_raise(StandardError)
+    expect(Feedjira).to receive(:parse).and_raise(StandardError)
 
     expect(Feedbag).to receive(:find).and_return([valid_discovered_url])
 
     expect(client).to receive(:get).with(valid_discovered_url)
-    expect(parser).to receive(:parse).and_return(feed)
+    expect(Feedjira).to receive(:parse).and_return(feed)
 
-    result = described_class.call(url, parser, client)
+    result = described_class.call(url, client)
 
     expect(result).to eq(feed)
   end
