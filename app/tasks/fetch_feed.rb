@@ -12,11 +12,11 @@ module FetchFeed
     def call(feed)
       raw_feed = fetch_raw_feed(feed)
 
-      if raw_feed == 304
-        feed_not_modified(feed)
-      else
-        feed_modified(feed, raw_feed)
+      new_entries_from(feed, raw_feed).each do |entry|
+        StoryRepository.add(entry, feed)
       end
+
+      FeedRepository.update_last_fetched(feed, raw_feed.last_modified)
 
       FeedRepository.set_status(:green, feed)
     rescue StandardError => e
@@ -30,18 +30,6 @@ module FetchFeed
     def fetch_raw_feed(feed)
       response = HTTParty.get(feed.url).to_s
       Feedjira.parse(response)
-    end
-
-    def feed_not_modified(feed)
-      Rails.logger.info("#{feed.url} has not been modified since last fetch")
-    end
-
-    def feed_modified(feed, raw_feed)
-      new_entries_from(feed, raw_feed).each do |entry|
-        StoryRepository.add(entry, feed)
-      end
-
-      FeedRepository.update_last_fetched(feed, raw_feed.last_modified)
     end
 
     def new_entries_from(feed, raw_feed)
