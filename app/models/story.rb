@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require_relative "./application_record"
-require_relative "./feed"
-
 class Story < ApplicationRecord
   belongs_to :feed
   has_one :user, through: :feed

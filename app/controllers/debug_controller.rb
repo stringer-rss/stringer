@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative "../models/migration_status"
-
 class DebugController < ApplicationController
   skip_before_action :complete_setup, only: [:heroku]
   skip_before_action :authenticate_user, only: [:heroku]

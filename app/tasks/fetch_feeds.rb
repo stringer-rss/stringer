@@ -2,10 +2,6 @@
 
 require "thread/pool"
 
-require_relative "fetch_feed"
-require "active_support/core_ext/kernel/reporting"
-require "delayed_job_active_record"
-
 class FetchFeeds
   def self.enqueue(feeds)
     new(feeds).prepare_to_delay.delay.fetch_all

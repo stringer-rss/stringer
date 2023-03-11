@@ -1,10 +1,5 @@
 # frozen_string_literal: true
 
-require_relative "../helpers/url_helpers"
-require_relative "../models/story"
-require_relative "../utils/content_sanitizer"
-require_relative "../utils/sample_story"
-
 class StoryRepository
   extend UrlHelpers
 

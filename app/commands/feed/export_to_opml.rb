@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "nokogiri"
-
 module ExportToOpml
   def self.call(feeds)
     builder =

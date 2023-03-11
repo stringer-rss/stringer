@@ -1,9 +1,5 @@
 # frozen_string_literal: true
 
-require_relative "../../models/feed"
-require_relative "../../utils/content_sanitizer"
-require_relative "../../utils/feed_discovery"
-
 module AddNewFeed
   def self.call(url, discoverer = FeedDiscovery, repo = Feed, user:)
     result = discoverer.call(url)
