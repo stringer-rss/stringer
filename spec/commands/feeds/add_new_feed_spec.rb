@@ -2,14 +2,9 @@
 
 RSpec.describe AddNewFeed do
   context "feed cannot be discovered" do
-    let(:discoverer) { double(call: false) }
-
     it "returns false if cant discover any feeds" do
-      result = described_class.call(
-        "http://not-a-feed.com",
-        discoverer,
-        user: default_user
-      )
+      expect(FeedDiscovery).to receive(:call).and_return(false)
+      result = described_class.call("http://not-a-feed.com", user: default_user)
 
       expect(result).to be(false)
     end
@@ -18,16 +13,15 @@ RSpec.describe AddNewFeed do
   context "feed can be discovered" do
     let(:feed_url) { "http://feed.com/atom.xml" }
     let(:feed_result) { double(title: feed.name, feed_url: feed.url) }
-    let(:discoverer) { double(call: feed_result) }
     let(:feed) { build(:feed) }
     let(:repo) { double }
 
     it "parses and creates the feed if discovered" do
       expect(repo).to receive(:create).and_return(feed)
+      expect(FeedDiscovery).to receive(:call).and_return(feed_result)
 
       result = described_class.call(
         "http://feed.com",
-        discoverer,
         repo,
         user: default_user
       )
@@ -45,13 +39,9 @@ RSpec.describe AddNewFeed do
 
       it "deletes the script tag from the title" do
         allow(repo).to receive(:create)
+        expect(FeedDiscovery).to receive(:call).and_return(feed_result)
 
-        described_class.call(
-          "http://feed.com",
-          discoverer,
-          repo,
-          user: default_user
-        )
+        described_class.call("http://feed.com", repo, user: default_user)
 
         expect(repo).to have_received(:create).with(include(name: "foobar"))
       end
@@ -61,9 +51,9 @@ RSpec.describe AddNewFeed do
   it "uses feed_url as name when title is not present" do
     feed_url = "https://protomen.com/news/feed"
     result = instance_double(Feedjira::Parser::RSS, title: nil, feed_url:)
-    discoverer = class_double(FeedDiscovery, call: result)
+    expect(FeedDiscovery).to receive(:call).and_return(result)
 
-    expect { described_class.call(feed_url, discoverer, user: default_user) }
+    expect { described_class.call(feed_url, user: default_user) }
       .to change(Feed, :count).by(1)
 
     expect(Feed.last.name).to eq(feed_url)
