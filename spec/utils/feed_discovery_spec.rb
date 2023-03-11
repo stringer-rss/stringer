@@ -13,9 +13,9 @@ RSpec.describe FeedDiscovery do
   it "returns false if url is not a feed and feed url cannot be discovered" do
     expect(client).to receive(:get).with(url)
     expect(parser).to receive(:parse).and_raise(StandardError)
-    expect(finder).to receive(:find).and_return([])
+    expect(Feedbag).to receive(:find).and_return([])
 
-    result = described_class.call(url, finder, parser, client)
+    result = described_class.call(url, parser, client)
 
     expect(result).to be(false)
   end
@@ -24,7 +24,7 @@ RSpec.describe FeedDiscovery do
     expect(client).to receive(:get).with(url)
     expect(parser).to receive(:parse).and_return(feed)
 
-    result = described_class.call(url, finder, parser, client)
+    result = described_class.call(url, parser, client)
 
     expect(result).to eq(feed)
   end
@@ -33,12 +33,12 @@ RSpec.describe FeedDiscovery do
     expect(client).to receive(:get).with(url)
     expect(parser).to receive(:parse).and_raise(StandardError)
 
-    expect(finder).to receive(:find).and_return([invalid_discovered_url])
+    expect(Feedbag).to receive(:find).and_return([invalid_discovered_url])
 
     expect(client).to receive(:get).with(invalid_discovered_url)
     expect(parser).to receive(:parse).and_raise(StandardError)
 
-    result = described_class.call(url, finder, parser, client)
+    result = described_class.call(url, parser, client)
 
     expect(result).to be(false)
   end
@@ -47,12 +47,12 @@ RSpec.describe FeedDiscovery do
     expect(client).to receive(:get).with(url)
     expect(parser).to receive(:parse).and_raise(StandardError)
 
-    expect(finder).to receive(:find).and_return([valid_discovered_url])
+    expect(Feedbag).to receive(:find).and_return([valid_discovered_url])
 
     expect(client).to receive(:get).with(valid_discovered_url)
     expect(parser).to receive(:parse).and_return(feed)
 
-    result = described_class.call(url, finder, parser, client)
+    result = described_class.call(url, parser, client)
 
     expect(result).to eq(feed)
   end
