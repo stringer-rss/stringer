@@ -25,6 +25,7 @@ RSpec/MessageExpectation:
   Exclude: [spec/support/matchers/**/*.rb]
 RSpec/MessageSpies: { EnforcedStyle: receive }
 RSpec/MultipleMemoizedHelpers: { AllowSubject: false, Max: 0 }
+Style/ClassAndModuleChildren: { EnforcedStyle: compact }
 Style/MethodCallWithArgsParentheses:
   AllowedMethods:
     - and

@@ -1,25 +1,23 @@
 # frozen_string_literal: true
 
-module FeverAPI
-  module SyncSavedItemIds
-    class << self
-      def call(params)
-        if params.key?(:saved_item_ids)
-          { saved_item_ids: }
-        else
-          {}
-        end
+module FeverAPI::SyncSavedItemIds
+  class << self
+    def call(params)
+      if params.key?(:saved_item_ids)
+        { saved_item_ids: }
+      else
+        {}
       end
+    end
 
-      private
+    private
 
-      def saved_item_ids
-        all_starred_stories.map(&:id).join(",")
-      end
+    def saved_item_ids
+      all_starred_stories.map(&:id).join(",")
+    end
 
-      def all_starred_stories
-        StoryRepository.all_starred
-      end
+    def all_starred_stories
+      StoryRepository.all_starred
     end
   end
 end
