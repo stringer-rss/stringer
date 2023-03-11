@@ -2,7 +2,8 @@
 
 class TutorialsController < ApplicationController
   def index
-    FetchFeeds.enqueue(authorization.scope(Feed.all))
+    authorization.skip
+    CallableJob.perform_later(Feed::FetchAllForUser, current_user)
 
     @sample_stories = StoryRepository.samples
   end
