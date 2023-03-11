@@ -8,16 +8,18 @@ RSpec.describe FetchFeeds do
     let(:pool) { double }
 
     it "calls FetchFeed for every feed" do
+      expect(Thread).to receive(:pool).and_return(pool)
       allow(pool).to receive(:process).and_yield
       expect(FetchFeed).to receive(:call).with(feeds.first)
       expect(FetchFeed).to receive(:call).with(feeds.last)
 
       expect(pool).to receive(:shutdown)
 
-      described_class.new(feeds, pool).fetch_all
+      described_class.new(feeds).fetch_all
     end
 
     it "finds feeds when run after a delay" do
+      expect(Thread).to receive(:pool).and_return(pool)
       allow(pool).to receive(:process).and_yield
       expect(FetchFeed).to receive(:call).with(feeds.first)
       expect(FetchFeed).to receive(:call).with(feeds.last)
@@ -26,7 +28,7 @@ RSpec.describe FetchFeeds do
 
       expect(pool).to receive(:shutdown)
 
-      described_class.new(feeds, pool).prepare_to_delay.fetch_all
+      described_class.new(feeds).prepare_to_delay.fetch_all
     end
   end
 

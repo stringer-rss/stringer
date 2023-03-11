@@ -11,28 +11,27 @@ class FetchFeeds
     new(feeds).prepare_to_delay.delay.fetch_all
   end
 
-  def initialize(feeds, pool = nil)
-    @pool  = pool
+  def initialize(feeds)
     @feeds = feeds
     @feeds_ids = []
   end
 
   def fetch_all
-    @pool ||= Thread.pool(10)
+    pool = Thread.pool(10)
 
     if @feeds.blank? && @feeds_ids.present?
       @feeds = FeedRepository.fetch_by_ids(@feeds_ids)
     end
 
     @feeds.each do |feed|
-      @pool.process do
+      pool.process do
         FetchFeed.call(feed)
 
         ActiveRecord::Base.connection.close
       end
     end
 
-    @pool.shutdown
+    pool.shutdown
   end
 
   def prepare_to_delay
