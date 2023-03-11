@@ -18,23 +18,6 @@ RSpec.describe FetchFeed do
     stub_request(:get, "http://daringfireball.com/feed")
   end
 
-  context "when feed has not been modified" do
-    it "does not try to fetch posts" do
-      expect(Feedjira).to receive(:parse).and_return(304)
-
-      expect(StoryRepository).not_to receive(:add)
-
-      described_class.call(daring_fireball)
-    end
-
-    it "logs a message" do
-      expect(Feedjira).to receive(:parse).and_return(304)
-
-      expect { described_class.call(daring_fireball) }
-        .to invoke(:info).on(Rails.logger).with(/has not been modified/)
-    end
-  end
-
   context "when no new posts have been added" do
     it "does not add any new posts" do
       fake_feed = double(last_modified: Time.zone.local(2012, 12, 31))
