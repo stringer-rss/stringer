@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module ExportToOpml
+module Feed::ExportToOpml
   class << self
     def call(feeds)
       builder =

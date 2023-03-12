@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe AddNewFeed do
+RSpec.describe Feed::Create do
   context "feed cannot be discovered" do
     it "returns false if cant discover any feeds" do
       expect(FeedDiscovery).to receive(:call).and_return(false)

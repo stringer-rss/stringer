@@ -33,7 +33,6 @@ class Stringer::Application < Rails::Application
   # in config/environments, which are processed later.
   #
   # config.time_zone = "Central Time (US & Canada)"
-  config.eager_load_paths << Rails.root.join("app/commands/feed")
   config.eager_load_paths << Rails.root.join("app/commands/story")
   config.eager_load_paths << Rails.root.join("app/commands/user")
 

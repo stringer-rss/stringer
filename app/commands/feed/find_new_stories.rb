@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module FindNewStories
+module Feed::FindNewStories
   STORY_AGE_THRESHOLD_DAYS = 3
 
   def self.call(raw_feed, feed_id, latest_entry_id = nil)

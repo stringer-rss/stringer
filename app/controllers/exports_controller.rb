@@ -2,7 +2,7 @@
 
 class ExportsController < ApplicationController
   def index
-    xml = ExportToOpml.call(authorization.scope(Feed.all))
+    xml = Feed::ExportToOpml.call(authorization.scope(Feed.all))
 
     send_data(
       xml,

@@ -23,7 +23,7 @@ RSpec.describe FetchFeed do
       fake_feed = double(last_modified: Time.zone.local(2012, 12, 31))
       expect(Feedjira).to receive(:parse).and_return(fake_feed)
 
-      allow(FindNewStories).to receive(:call).and_return([])
+      allow(Feed::FindNewStories).to receive(:call).and_return([])
 
       expect(StoryRepository).not_to receive(:add)
 
@@ -41,7 +41,7 @@ RSpec.describe FetchFeed do
     end
 
     before do
-      allow(FindNewStories).to receive(:call).and_return([new_story])
+      allow(Feed::FindNewStories).to receive(:call).and_return([new_story])
     end
 
     it "only adds posts that are new" do

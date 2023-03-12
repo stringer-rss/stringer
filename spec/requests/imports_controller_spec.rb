@@ -20,7 +20,7 @@ RSpec.describe ImportsController do
     end
 
     it "parses OPML and starts fetching" do
-      expect(ImportFromOpml).to receive(:call).once
+      expect(Feed::ImportFromOpml).to receive(:call).once
       login_as(default_user)
 
       post "/feeds/import", params: { opml_file: }
