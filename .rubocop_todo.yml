@@ -26,7 +26,6 @@ Lint/NumberConversion:
 # Configuration parameters: CountComments, Max, CountAsOne, AllowedMethods, AllowedPatterns.
 Metrics/MethodLength:
   Exclude:
-    - 'app/commands/fever_api/read_items.rb'
     - 'app/helpers/url_helpers.rb'
     - 'app/models/story.rb'
     - 'app/repositories/story_repository.rb'

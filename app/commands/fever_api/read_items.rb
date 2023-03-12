@@ -3,21 +3,14 @@
 module FeverAPI::ReadItems
   class << self
     def call(authorization:, **params)
-      if params.key?(:items)
-        item_ids =
-          begin
-            params[:with_ids].split(",")
-          rescue StandardError
-            nil
-          end
+      return {} unless params.key?(:items)
 
-        {
-          items: items(item_ids, params[:since_id], authorization),
-          total_items: total_items(item_ids, authorization)
-        }
-      else
-        {}
-      end
+      item_ids = params[:with_ids].split(",") if params.key?(:with_ids)
+
+      {
+        items: items(item_ids, params[:since_id], authorization),
+        total_items: total_items(item_ids, authorization)
+      }
     end
 
     private
