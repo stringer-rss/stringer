@@ -13,4 +13,4 @@ test:
 production:
   url: <%= ENV["DATABASE_URL"] %>
   encoding: unicode
-  pool: 5
+  pool: <%= Integer(ENV.fetch("DB_POOL", 15)) %>
