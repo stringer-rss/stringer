@@ -4,7 +4,6 @@ RSpec.describe DebugController do
   describe "GET /debug" do
     def setup
       login_as(default_user)
-      expect(Delayed::Job).to receive(:count).and_return(42)
 
       expect(MigrationStatus)
         .to receive(:call)
@@ -27,12 +26,13 @@ RSpec.describe DebugController do
       expect(rendered).to have_selector("dd", text: /testy/)
     end
 
-    it "displays the delayed job count" do
+    it "displays the jobs count" do
       setup
+      12.times { GoodJob::Job.create! }
 
       get "/debug"
 
-      expect(rendered).to have_selector("dd", text: /42/)
+      expect(rendered).to have_selector("dd", text: /12/)
     end
 
     it "displays pending migrations" do
