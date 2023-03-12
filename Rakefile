@@ -10,7 +10,7 @@ require "delayed_job_active_record"
 
 desc "Fetch all feeds."
 task fetch_feeds: :environment do
-  FetchFeeds.new(Feed.all).fetch_all
+  Feed::FetchAll.call
 end
 
 desc "Lazily fetch all feeds."
