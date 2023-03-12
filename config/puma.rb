@@ -27,25 +27,15 @@ environment ENV.fetch("RAILS_ENV", "development")
 # Specifies the `pidfile` that Puma will use.
 pidfile ENV.fetch("PIDFILE", "tmp/pids/server.pid")
 
-@delayed_job_pid = nil
-
 before_fork do
   GoodJob.shutdown
-  unless ENV["WORKER_EMBEDDED"] == "false"
-    @delayed_job_pid ||= spawn("bundle exec rake work_jobs")
-  end
 
   sleep 1
 end
 
 on_worker_boot { GoodJob.restart }
 
-on_worker_shutdown do
-  GoodJob.shutdown
-  if !ENV["RAILS_ENV"] || ENV["RAILS_ENV"] == "development"
-    Process.kill("QUIT", @delayed_job_pid)
-  end
-end
+on_worker_shutdown { GoodJob.shutdown }
 
 MAIN_PID = Process.pid
 at_exit do

@@ -8,7 +8,7 @@ class DebugController < ApplicationController
     authorization.skip
     render(
       locals: {
-        queued_jobs_count: Delayed::Job.count,
+        queued_jobs_count: GoodJob::Job.queued.count,
         pending_migrations: MigrationStatus.call
       }
     )

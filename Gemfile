@@ -11,8 +11,6 @@ gem "rails", "~> 7.0.1"
 
 gem "bcrypt"
 gem "bootsnap", require: false
-gem "delayed_job"
-gem "delayed_job_active_record"
 gem "feedbag"
 gem "feedjira"
 gem "good_job"
