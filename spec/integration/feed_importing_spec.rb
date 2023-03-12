@@ -23,20 +23,22 @@ RSpec.describe "Feed importing" do
     describe "Importing for the first time" do
       it "imports all entries" do
         server.response = sample_data("feeds/feed01_valid_feed/feed.xml")
-        expect { FetchFeed.call(feed) }.to change(feed.stories, :count).to(5)
+        expect { Feed::FetchOne.call(feed) }
+          .to change(feed.stories, :count).to(5)
       end
     end
 
     describe "Importing for the second time" do
       before do
         server.response = sample_data("feeds/feed01_valid_feed/feed.xml")
-        FetchFeed.call(feed)
+        Feed::FetchOne.call(feed)
       end
 
       context "no new entries" do
         it "does not create new stories" do
           server.response = sample_data("feeds/feed01_valid_feed/feed.xml")
-          expect { FetchFeed.call(feed) }.not_to change(feed.stories, :count)
+          expect { Feed::FetchOne.call(feed) }
+            .not_to change(feed.stories, :count)
         end
       end
 
@@ -44,7 +46,8 @@ RSpec.describe "Feed importing" do
         it "creates new stories" do
           server.response =
             sample_data("feeds/feed01_valid_feed/feed_updated.xml")
-          expect { FetchFeed.call(feed) }.to change(feed.stories, :count).by(1)
+          expect { Feed::FetchOne.call(feed) }
+            .to change(feed.stories, :count).by(1)
         end
       end
     end
@@ -68,7 +71,8 @@ RSpec.describe "Feed importing" do
         server.response =
           sample_data("feeds/feed02_invalid_published_dates/feed.xml")
 
-        expect { FetchFeed.call(feed) }.to change { feed.stories.count }.by(1)
+        expect { Feed::FetchOne.call(feed) }
+          .to change(feed.stories, :count).by(1)
       end
     end
   end

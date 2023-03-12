@@ -29,7 +29,7 @@ class FeedsController < ApplicationController
     feed = Feed::Create.call(@feed_url, user: current_user)
 
     if feed && feed.valid?
-      CallableJob.perform_later(FetchFeed, feed)
+      CallableJob.perform_later(Feed::FetchOne, feed)
 
       redirect_to("/", flash: { success: t(".success") })
     else

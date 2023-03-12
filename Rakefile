@@ -21,13 +21,13 @@ task lazy_fetch: :environment do
   end
 
   FeedRepository.list.each do |feed|
-    CallableJob.perform_later(FetchFeed, feed)
+    CallableJob.perform_later(Feed::FetchOne, feed)
   end
 end
 
 desc "Fetch single feed"
 task :fetch_feed, [:id] => :environment do |_t, args|
-  FetchFeed.new(Feed.find(args[:id])).fetch
+  Feed::FetchOne.call(Feed.find(args[:id]))
 end
 
 desc "Clear the delayed_job queue."

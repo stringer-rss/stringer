@@ -118,7 +118,7 @@ RSpec.describe FeedsController do
         stub_request(:get, feed_url).to_return(status: 200, body: "<rss></rss>")
 
         expect { post("/feeds", params: { feed_url: }) }
-          .to enqueue_job(CallableJob).with(FetchFeed, instance_of(Feed))
+          .to enqueue_job(CallableJob).with(Feed::FetchOne, instance_of(Feed))
       end
     end
 
