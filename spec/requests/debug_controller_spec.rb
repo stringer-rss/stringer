@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 RSpec.describe DebugController do
-  describe "GET /debug" do
+  describe "#debug" do
     def setup
-      login_as(default_user)
+      login_as(create(:user, admin: true))
 
       expect(MigrationStatus)
         .to receive(:call)
@@ -13,7 +13,7 @@ RSpec.describe DebugController do
     it "displays the current Ruby version" do
       setup
 
-      get "/debug"
+      get "/admin/debug"
 
       expect(rendered).to have_selector("dd", text: /#{RUBY_VERSION}/)
     end
@@ -21,7 +21,7 @@ RSpec.describe DebugController do
     it "displays the user agent" do
       setup
 
-      get("/debug", headers: { "HTTP_USER_AGENT" => "testy" })
+      get("/admin/debug", headers: { "HTTP_USER_AGENT" => "testy" })
 
       expect(rendered).to have_selector("dd", text: /testy/)
     end
@@ -30,7 +30,7 @@ RSpec.describe DebugController do
       setup
       12.times { GoodJob::Job.create! }
 
-      get "/debug"
+      get "/admin/debug"
 
       expect(rendered).to have_selector("dd", text: /12/)
     end
@@ -38,7 +38,7 @@ RSpec.describe DebugController do
     it "displays pending migrations" do
       setup
 
-      get "/debug"
+      get "/admin/debug"
 
       expect(rendered).to have_selector("li", text: /Migration B - 2/)
         .and have_selector("li", text: /Migration C - 3/)
