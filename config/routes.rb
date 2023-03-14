@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
+require_relative "../lib/admin_constraint"
+
 Rails.application.routes.draw do
+  scope :admin, constraints: AdminConstraint.new do
+    mount GoodJob::Engine => "good_job"
+
+    match("/debug", to: "debug#index", via: :get)
+  end
+
   resource :profile, only: [:edit, :update]
   resource :password, only: [:update]
 
@@ -8,7 +16,6 @@ Rails.application.routes.draw do
   match("/fever", to: "fever#index", via: :get)
   match("/fever", to: "fever#update", via: :post)
   match("/archive", to: "stories#archived", via: :get)
-  match("/debug", to: "debug#index", via: :get)
   match("/feed/:feed_id", to: "feeds#show", via: :get)
   match("/feeds", to: "feeds#create", via: :post)
   match("/feeds", to: "feeds#index", via: :get)

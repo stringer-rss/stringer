@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_12_193113) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_13_034938) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -118,6 +118,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_12_193113) do
     t.datetime "updated_at"
     t.string "api_key", null: false
     t.string "username", null: false
+    t.boolean "admin", null: false
     t.index ["api_key"], name: "index_users_on_api_key", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
