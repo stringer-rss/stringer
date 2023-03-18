@@ -543,7 +543,7 @@ li.feed .remove-feed a:hover {
   transition: 0.25s;
 }
 
-.setup #password, .setup #password-confirmation, .setup #feed-url, .setup #feed-name, .setup input.select-dummy {
+.setup .form-control {
   padding-left: 100px;
   padding-right: 36px;
 }
