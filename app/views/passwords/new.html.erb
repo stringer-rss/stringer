@@ -7,12 +7,12 @@
   <%= form_with(url: "/setup/password", id: "password_setup") do %>
     <input class="hidden" value="username" />
     <div class="control-group">
-      <input name="password" id="password" type="password" autofocus />
+      <input name="password" id="password" class="form-control" type="password" autofocus />
       <i class="icon-lock field-icon"></i>
       <label id="password-label" class="field-label" for="password"><%= t('first_run.password.fields.password') %></label>
     </div>
     <div class="control-group">
-      <input name="password_confirmation" id="password-confirmation" type="password" />
+      <input name="password_confirmation" id="password-confirmation" class="form-control" type="password" />
       <i class="icon-lock field-icon"></i>
       <label id="confirm-label" class="field-label" for="password-confirmation"><%= t('first_run.password.fields.password_confirmation') %></label>
     </div>
