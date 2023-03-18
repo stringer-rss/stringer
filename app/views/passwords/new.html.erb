@@ -5,7 +5,11 @@
   <p><%= t('first_run.password.description') %></p>
   <hr />
   <%= form_with(model: User.new, url: "/setup/password", id: "password_setup") do |form| %>
-    <input class="hidden" value="username" />
+    <div class="control-group">
+      <%= form.text_field :username, class: "form-control", required: true %>
+      <%= form.label :username, t('first_run.password.fields.username'), class: "field-label" %>
+    </div>
+
     <div class="control-group">
       <%= form.password_field :password, class: "form-control", required: true %>
       <i class="icon-lock field-icon"></i>

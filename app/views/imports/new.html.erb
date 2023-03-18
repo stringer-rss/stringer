@@ -1,3 +1,9 @@
+<nav>
+  <div>
+    Logged in as <%= link_to(current_user.username, edit_profile_path) %>
+  </div>
+</nav>
+
 <div class="setup" id="feed-setup">
   <h1><%= t('import.title') %></h1>
   <h2><%= t('import.subtitle') %></h2>

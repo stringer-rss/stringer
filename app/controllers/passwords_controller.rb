@@ -43,8 +43,8 @@ class PasswordsController < ApplicationController
 
   def user_params
     params.require(:user)
-          .permit(:password, :password_confirmation)
-          .merge(username: "stringer", admin: User.none?)
+          .permit(:username, :password, :password_confirmation)
+          .merge(admin: User.none?)
           .to_h.symbolize_keys
   end
 

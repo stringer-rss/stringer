@@ -43,8 +43,10 @@ RSpec.describe PasswordsController do
     end
 
     it "accepts confirmed passwords and redirects to next step" do
-      post "/setup/password",
-           params: { user: { password: "foo", password_confirmation: "foo" } }
+      user_params =
+        { username: "foo", password: "foo", password_confirmation: "foo" }
+
+      post "/setup/password", params: { user: user_params }
 
       expect(response).to redirect_to("/feeds/import")
     end
