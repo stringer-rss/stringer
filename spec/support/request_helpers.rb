@@ -2,7 +2,7 @@
 
 module RequestHelpers
   def login_as(user)
-    post("/login", params: { password: user.password })
+    post("/login", params: { username: user.username, password: user.password })
   end
 
   def rendered

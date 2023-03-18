@@ -137,6 +137,11 @@ en:
         logged_out_successfully: You have been signed out!
     new:
       fields:
+        unknown_username_html:
+          <strong>Note:</strong> if you didn't set a username when you set up
+          your stringer instance, then your username will be "stringer". You
+          can change this on your profile page after logging in.
+        username: Username
         password: Password
         submit: Login
       flash:
