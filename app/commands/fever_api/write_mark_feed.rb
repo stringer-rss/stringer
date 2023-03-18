@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
 module FeverAPI::WriteMarkFeed
-  def self.call(params)
-    MarkFeedAsRead.call(params[:id], params[:before]) if params[:mark] == "feed"
+  def self.call(authorization:, **params)
+    if params[:mark] == "feed"
+      authorization.check(Feed.find(params[:id]))
+      MarkFeedAsRead.call(params[:id], params[:before])
+    end
 
     {}
   end
