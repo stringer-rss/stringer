@@ -17,12 +17,12 @@
       <i class="icon-rss field-icon"></i>
       <label id="feed-url-label" class="field-label" for="feed-url"><%= t('feeds.edit.fields.feed_url') %></label>
     </div>
-    <% if Group.any? %>
+    <% if current_user.groups.any? %>
       <div class="control-group">
         <input type="text" class="select-dummy" tabindex="-1">
         <select name="group_id" id="group-id">
           <option value=""></option>
-          <% Group.all.each do |group| %>
+          <% current_user.groups.each do |group| %>
             <option value="<%= group.id %>" <%= "selected" if @feed.group_id == group.id %>><%= group.name %></option>
           <% end %>
         </select>
