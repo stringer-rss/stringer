@@ -6,44 +6,44 @@ Rails.application.routes.draw do
   scope :admin, constraints: AdminConstraint.new do
     mount GoodJob::Engine => "good_job"
 
-    match("/debug", to: "debug#index", via: :get)
+    get "/debug", to: "debug#index"
   end
 
   resource :profile, only: [:edit, :update]
   resource :password, only: [:update]
 
-  match("/", to: "stories#index", via: :get)
-  match("/fever", to: "fever#index", via: :get)
-  match("/fever", to: "fever#update", via: :post)
-  match("/archive", to: "stories#archived", via: :get)
-  match("/feed/:feed_id", to: "feeds#show", via: :get)
-  match("/feeds", to: "feeds#create", via: :post)
-  match("/feeds", to: "feeds#index", via: :get)
-  match("/feeds/:id", to: "feeds#destroy", via: :delete)
-  match("/feeds/:id", to: "feeds#update", via: :put)
-  match("/feeds/:id/edit", to: "feeds#edit", via: :get)
-  match("/feeds/export", to: "exports#index", via: :get)
-  match("/feeds/import", to: "imports#create", via: :post)
-  match("/feeds/import", to: "imports#new", via: :get)
-  match("/feeds/new", to: "feeds#new", via: :get)
-  match("/heroku", to: "debug#heroku", via: :get)
-  match("/login", to: "sessions#create", via: :post)
-  match("/login", to: "sessions#new", via: :get)
-  match("/logout", to: "sessions#destroy", via: :get)
-  match("/news", to: "stories#index", via: :get)
-  match("/setup/password", to: "passwords#create", via: :post)
-  match("/setup/password", to: "passwords#new", via: :get)
-  match("/setup/tutorial", to: "tutorials#index", via: :get)
-  match("/starred", to: "stories#starred", via: :get)
-  match("/stories/:id", to: "stories#update", via: :put)
-  match("/stories/mark_all_as_read", to: "stories#mark_all_as_read", via: :post)
+  get "/", to: "stories#index"
+  get "/fever", to: "fever#index"
+  post "/fever", to: "fever#update"
+  get "/archive", to: "stories#archived"
+  get "/feed/:feed_id", to: "feeds#show"
+  post "/feeds", to: "feeds#create"
+  get "/feeds", to: "feeds#index"
+  delete "/feeds/:id", to: "feeds#destroy"
+  put "/feeds/:id", to: "feeds#update"
+  get "/feeds/:id/edit", to: "feeds#edit"
+  get "/feeds/export", to: "exports#index"
+  post "/feeds/import", to: "imports#create"
+  get "/feeds/import", to: "imports#new"
+  get "/feeds/new", to: "feeds#new"
+  get "/heroku", to: "debug#heroku"
+  post "/login", to: "sessions#create"
+  get "/login", to: "sessions#new"
+  get "/logout", to: "sessions#destroy"
+  get "/news", to: "stories#index"
+  post "/setup/password", to: "passwords#create"
+  get "/setup/password", to: "passwords#new"
+  get "/setup/tutorial", to: "tutorials#index"
+  get "/starred", to: "stories#starred"
+  put "/stories/:id", to: "stories#update"
+  post "/stories/mark_all_as_read", to: "stories#mark_all_as_read"
 
   unless Rails.env.production?
     require_relative "../spec/javascript/test_controller"
 
-    match("/test", to: "test#index", via: :get)
-    match("/spec/*splat", to: "test#spec", via: :get)
-    match("/vendor/js/*splat", to: "test#vendor", via: :get)
-    match("/vendor/css/*splat", to: "test#vendor", via: :get)
+    get "/test", to: "test#index"
+    get "/spec/*splat", to: "test#spec"
+    get "/vendor/js/*splat", to: "test#vendor"
+    get "/vendor/css/*splat", to: "test#vendor"
   end
 end
