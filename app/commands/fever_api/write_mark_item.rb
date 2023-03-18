@@ -2,8 +2,11 @@
 
 module FeverAPI::WriteMarkItem
   class << self
-    def call(params)
-      mark_item_as(params[:id], params[:as]) if params[:mark] == "item"
+    def call(authorization:, **params)
+      if params[:mark] == "item"
+        authorization.check(Story.find(params[:id])) if params.key?(:id)
+        mark_item_as(params[:id], params[:as])
+      end
 
       {}
     end
