@@ -15,7 +15,9 @@ AllCops:
 
 Layout/LineLength: { Max: 80 }
 Layout/RedundantLineBreak: { InspectBlocks: true }
-Metrics/AbcSize: { Exclude: [db/migrate/20230305010750_create_good_jobs.rb] }
+Metrics/AbcSize:
+  Exclude: [db/migrate/20230305010750_create_good_jobs.rb]
+  CountRepeatedAttributes: false
 Metrics/BlockLength: { Exclude: [config/**/*.rb, spec/**/*.rb, db/seeds/**/*.rb] }
 Metrics/MethodLength: { Exclude: [db/migrate/*.rb] }
 Rails/SkipsModelValidations: { AllowedMethods: [update_all] }
