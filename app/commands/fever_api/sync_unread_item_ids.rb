@@ -2,9 +2,9 @@
 
 module FeverAPI::SyncUnreadItemIds
   class << self
-    def call(params)
+    def call(authorization:, **params)
       if params.key?(:unread_item_ids)
-        { unread_item_ids: }
+        { unread_item_ids: unread_item_ids(authorization) }
       else
         {}
       end
@@ -12,8 +12,8 @@ module FeverAPI::SyncUnreadItemIds
 
     private
 
-    def unread_item_ids
-      unread_stories.map(&:id).join(",")
+    def unread_item_ids(authorization)
+      authorization.scope(unread_stories).map(&:id).join(",")
     end
 
     def unread_stories
