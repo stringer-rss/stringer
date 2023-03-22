@@ -27,25 +27,26 @@ RSpec.describe PasswordsController do
     it "rejects empty passwords" do
       setup
 
-      post "/setup/password"
+      post "/setup/password",
+           params: { user: { password: "", password_confirmation: "" } }
 
-      expect(rendered).to have_selector("div.error")
+      expect(rendered).to have_text("Password can't be blank")
     end
 
     it "rejects when password isn't confirmed" do
       setup
 
       post "/setup/password",
-           params: { password: "foo", password_confirmation: "bar" }
+           params: { user: { password: "foo", password_confirmation: "bar" } }
 
-      expect(rendered).to have_selector("div.error")
+      expect(rendered).to have_text("confirmation doesn't match")
     end
 
     it "accepts confirmed passwords and redirects to next step" do
       post "/setup/password",
-           params: { password: "foo", password_confirmation: "foo" }
+           params: { user: { password: "foo", password_confirmation: "foo" } }
 
-      expect(URI.parse(response.location).path).to eq("/feeds/import")
+      expect(response).to redirect_to("/feeds/import")
     end
   end
 

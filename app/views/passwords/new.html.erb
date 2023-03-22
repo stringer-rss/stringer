@@ -4,7 +4,7 @@
   <hr />
   <p><%= t('first_run.password.description') %></p>
   <hr />
-  <%= form_with(url: "/setup/password", id: "password_setup") do |form| %>
+  <%= form_with(model: User.new, url: "/setup/password", id: "password_setup") do |form| %>
     <input class="hidden" value="username" />
     <div class="control-group">
       <%= form.password_field :password, class: "form-control", required: true %>

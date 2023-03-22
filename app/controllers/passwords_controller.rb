@@ -12,13 +12,13 @@ class PasswordsController < ApplicationController
   def create
     authorization.skip
 
-    if valid_password?(params)
-      user = CreateUser.call(params[:password])
+    user = User.new(user_params)
+    if user.save
       session[:user_id] = user.id
 
       redirect_to("/feeds/import")
     else
-      flash.now[:error] = t("first_run.password.flash.passwords_dont_match")
+      flash.now[:error] = user.error_messages
       render(:new)
     end
   end
@@ -41,16 +41,11 @@ class PasswordsController < ApplicationController
           .permit(:password_challenge, :password, :password_confirmation)
   end
 
-  def valid_password?(params)
-    !(no_password(params) || password_mismatch?(params))
-  end
-
-  def no_password(params)
-    params[:password].nil? || params[:password] == ""
-  end
-
-  def password_mismatch?(params)
-    params[:password] != params[:password_confirmation]
+  def user_params
+    params.require(:user)
+          .permit(:password, :password_confirmation)
+          .merge(username: "stringer", admin: User.none?)
+          .to_h.symbolize_keys
   end
 
   def redirect_if_setup_complete
