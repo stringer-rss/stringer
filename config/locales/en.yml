@@ -147,6 +147,7 @@ en:
       flash:
         wrong_password: That's the wrong password. Try again.
       rss: RSS
+      sign_up_html: Or <a href=%{href}>sign up</a>.
       subtitle: Welcome back, friend.
       title: Stringer speaks
   starred:
