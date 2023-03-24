@@ -3,7 +3,6 @@
 class PasswordsController < ApplicationController
   skip_before_action :complete_setup, only: [:new, :create]
   skip_before_action :authenticate_user, only: [:new, :create]
-  before_action :redirect_if_setup_complete, only: [:new, :create]
 
   def new
     authorization.skip
@@ -46,9 +45,5 @@ class PasswordsController < ApplicationController
           .permit(:username, :password, :password_confirmation)
           .merge(admin: User.none?)
           .to_h.symbolize_keys
-  end
-
-  def redirect_if_setup_complete
-    redirect_to("/news") if UserRepository.setup_complete?
   end
 end
