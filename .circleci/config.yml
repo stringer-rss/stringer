@@ -8,7 +8,7 @@ jobs:
   build:
     parallelism: 1
     docker:
-      - image: cimg/ruby:3.2.1-browsers
+      - image: cimg/ruby:3.2.2-browsers
         environment:
           BUNDLE_JOBS: 3
           BUNDLE_RETRY: 3
