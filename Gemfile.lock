@@ -292,6 +292,7 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
+    stripe (8.4.0)
     sync (0.5.0)
     term-ansicolor (1.7.1)
       tins (~> 1.0)
@@ -360,6 +361,7 @@ DEPENDENCIES
   simplecov
   sprockets
   sprockets-rails
+  stripe
   thread
   uglifier
   web-console
