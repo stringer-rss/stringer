@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_13_034938) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_30_215830) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -112,6 +112,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_13_034938) do
     t.index ["entry_id", "feed_id"], name: "index_stories_on_entry_id_and_feed_id", unique: true
   end
 
+  create_table "subscriptions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.text "stripe_customer_id", null: false
+    t.text "stripe_subscription_id", null: false
+    t.text "status", null: false
+    t.datetime "current_period_start", null: false
+    t.datetime "current_period_end", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["stripe_customer_id"], name: "index_subscriptions_on_stripe_customer_id", unique: true
+    t.index ["stripe_subscription_id"], name: "index_subscriptions_on_stripe_subscription_id", unique: true
+    t.index ["user_id"], name: "index_subscriptions_on_user_id", unique: true
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "password_digest"
     t.datetime "created_at"
@@ -125,4 +139,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_13_034938) do
 
   add_foreign_key "feeds", "users"
   add_foreign_key "groups", "users"
+  add_foreign_key "subscriptions", "users"
 end
