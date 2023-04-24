@@ -60,6 +60,7 @@ Rails/BulkChangeTable: { Enabled: false }
 Rails/RedundantPresenceValidationOnBelongsTo: { Enabled: false }
 RSpec/AlignLeftLetBrace: { Enabled: false }
 RSpec/AlignRightLetBrace: { Enabled: false }
+RSpec/IndexedLet: { Enabled: false }
 RSpec/StubbedMock: { Enabled: false }
 Rails/SchemaComment: { Enabled: false }
 Style/ConstantVisibility: { Enabled: false }
