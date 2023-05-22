@@ -20,7 +20,7 @@ FactoryBot.define do
     end
 
     trait :with_group do
-      association :feed, :with_group
+      feed factory: [:feed, :with_group]
     end
   end
 end
