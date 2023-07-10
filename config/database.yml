@@ -2,12 +2,14 @@ development:
   adapter: postgresql
   database: stringer_dev
   encoding: unicode
+  host: localhost
   pool: 5
 
 test:
   adapter: postgresql
   database: stringer_test
   encoding: unicode
+  host: localhost
   pool: 5
 
 production:
