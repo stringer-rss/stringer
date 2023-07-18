@@ -3,7 +3,7 @@
 [![CircleCI](https://circleci.com/gh/stringer-rss/stringer/tree/main.svg?style=svg)](https://circleci.com/gh/stringer-rss/stringer/tree/main)
 [![Code Climate](https://api.codeclimate.com/v1/badges/899c5407c870e541af4e/maintainability)](https://codeclimate.com/github/stringer-rss/stringer/maintainability)
 [![Coverage Status](https://coveralls.io/repos/github/stringer-rss/stringer/badge.svg?branch=main)](https://coveralls.io/github/stringer-rss/stringer?branch=main)
-![GitHub Sponsors](https://img.shields.io/github/sponsors/mockdeep?logo=github)
+[![GitHub Sponsors](https://img.shields.io/github/sponsors/mockdeep?logo=github)](https://github.com/sponsors/mockdeep)
 
 ### A self-hosted, anti-social RSS reader.
 
