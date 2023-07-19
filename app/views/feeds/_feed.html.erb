@@ -1,11 +1,11 @@
 <li class="feed" id="feed-<%= feed.id%>" data-id="<%= feed.id %>">
   <div class="feed-line">
     <div class="feed-title-container">
-      <p class="feed-title <%= feed.unread_stories.any? ? "feed-unread" : "" %>">
+      <p class="feed-title <%= feed.unread_stories_count > 0 ? "feed-unread" : "" %>">
         <i class="icon-circle status <%= feed.status_bubble %>" data-toggle="tooltip" title="<%= t("partials.feed.status_bubble.#{feed.status_bubble}") if feed.status_bubble %>" data-placement="left"></i>
         <a href="/feed/<%= feed.id %>">
-          <% if feed.unread_stories.any? %>
-            (<%= feed.unread_stories.count %>)
+          <% if feed.unread_stories_count > 0 %>
+            (<%= feed.unread_stories_count %>)
           <% end %>
           <%= feed.name %>
         </a>

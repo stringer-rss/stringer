@@ -3,6 +3,20 @@
 RSpec.describe "Story" do
   let(:story) { build_stubbed(:story) }
 
+  describe ".unread" do
+    it "returns stories where is_read is false" do
+      story = create(:story, :unread)
+
+      expect(Story.unread).to eq([story])
+    end
+
+    it "does not return stories where is_read is true" do
+      create(:story, :read)
+
+      expect(Story.unread).to be_empty
+    end
+  end
+
   describe "#headline" do
     it "truncates to 50 chars" do
       story = Story.new(title: "a" * 100)

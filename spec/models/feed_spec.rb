@@ -1,29 +1,21 @@
 # frozen_string_literal: true
 
 RSpec.describe "Feed" do
-  describe "#status_bubble" do
-    it "returns 'yellow' when status == 'red' and there are stories" do
-      feed = Feed.new(status: :red, stories: [Story.new])
+  describe ".with_unread_stories_counts" do
+    it "returns feeds with unread stories counts" do
+      create(:story, :unread)
 
-      expect(feed.status_bubble).to eq("yellow")
+      feed = Feed.with_unread_stories_counts.first
+
+      expect(feed.unread_stories_count).to eq(1)
     end
 
-    it "returns 'red' if status is 'red' and there are no stories" do
-      feed = Feed.new(status: :red)
+    it "includes feeds with no unread stories" do
+      create(:story)
 
-      expect(feed.status_bubble).to eq("red")
-    end
+      feed = Feed.with_unread_stories_counts.first
 
-    it "returns nil when no status is set" do
-      feed = Feed.new
-
-      expect(feed.status_bubble).to be_nil
-    end
-
-    it "returns :green when status is :green" do
-      feed = Feed.new(status: :green)
-
-      expect(feed.status_bubble).to eq("green")
+      expect(feed.unread_stories_count).to eq(0)
     end
   end
 
@@ -47,6 +39,32 @@ RSpec.describe "Feed" do
       create(:story, feed:)
 
       expect(feed.unread_stories).to be_empty
+    end
+  end
+
+  describe "#status_bubble" do
+    it "returns 'yellow' when status == 'red' and there are stories" do
+      feed = Feed.new(status: :red, stories: [Story.new])
+
+      expect(feed.status_bubble).to eq("yellow")
+    end
+
+    it "returns 'red' if status is 'red' and there are no stories" do
+      feed = Feed.new(status: :red)
+
+      expect(feed.status_bubble).to eq("red")
+    end
+
+    it "returns nil when no status is set" do
+      feed = Feed.new
+
+      expect(feed.status_bubble).to be_nil
+    end
+
+    it "returns :green when status is :green" do
+      feed = Feed.new(status: :green)
+
+      expect(feed.status_bubble).to eq("green")
     end
   end
 
