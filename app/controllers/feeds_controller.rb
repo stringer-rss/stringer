@@ -2,7 +2,7 @@
 
 class FeedsController < ApplicationController
   def index
-    @feeds = authorization.scope(FeedRepository.list)
+    @feeds = authorization.scope(FeedRepository.list.with_unread_stories_counts)
   end
 
   def show

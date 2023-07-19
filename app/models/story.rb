@@ -8,6 +8,8 @@ class Story < ApplicationRecord
 
   delegate :group_id, :user_id, to: :feed
 
+  scope :unread, -> { where(is_read: false) }
+
   UNTITLED = "[untitled]"
 
   def headline

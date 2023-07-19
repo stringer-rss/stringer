@@ -2,6 +2,7 @@
 
 class Feed < ApplicationRecord
   has_many :stories, -> { order("published desc") }, dependent: :delete_all
+  has_many :unread_stories, -> { unread }, class_name: "Story"
   belongs_to :group
   belongs_to :user
 
@@ -12,14 +13,17 @@ class Feed < ApplicationRecord
 
   enum status: { green: 0, yellow: 1, red: 2 }
 
+  scope :with_unread_stories_counts,
+        lambda {
+          left_joins(:unread_stories)
+            .select("feeds.*, count(stories.id) as unread_stories_count")
+            .group("feeds.id")
+        }
+
   def status_bubble
     return "yellow" if status == "red" && stories.any?
 
     status
-  end
-
-  def unread_stories
-    stories.where(is_read: false)
   end
 
   def as_fever_json
