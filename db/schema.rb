@@ -131,8 +131,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_30_215830) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string "api_key", null: false
-    t.string "username", null: false
     t.boolean "admin", null: false
+    t.string "username", null: false
     t.index ["api_key"], name: "index_users_on_api_key", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
