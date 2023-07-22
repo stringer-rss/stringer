@@ -3,9 +3,10 @@ version: 2.1
 orbs:
   browser-tools: circleci/browser-tools@1.2.3
   node: circleci/node@5.0.0
+  docker: circleci/docker@2.2.0
 
 jobs:
-  build:
+  run-tests:
     parallelism: 1
     docker:
       - image: cimg/ruby:3.2.2-browsers
@@ -107,3 +108,19 @@ jobs:
           name: Run system tests
           command: |
             COVERAGE=false bundle exec rspec spec/system/
+
+
+workflows:
+  test-build-and-publish-image:
+    jobs:
+      - run-tests
+      - wait-for-approval:
+          type: approval
+      - docker/publish:
+          cache_from: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME:latest
+          image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
+          tag: latest
+          update-description: false
+          requires:
+            - wait-for-approval
+            - run-tests
