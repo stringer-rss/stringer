@@ -109,18 +109,17 @@ jobs:
           command: |
             COVERAGE=false bundle exec rspec spec/system/
 
-
 workflows:
   test-build-and-publish-image:
     jobs:
       - run-tests
-      - wait-for-approval:
-          type: approval
       - docker/publish:
-          cache_from: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME:latest
-          image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
-          tag: latest
+          cache_from: stringerrss/stringer:latest
+          image: stringerrss/stringer
+          tag: latest,$CIRCLE_SHA1
           update-description: false
           requires:
-            - wait-for-approval
             - run-tests
+          filters:
+            branches:
+              only: main
