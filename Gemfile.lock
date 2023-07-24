@@ -333,6 +333,8 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     will_paginate (4.0.0)
+    with_model (2.1.6)
+      activerecord (>= 5.2)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.6.8)
@@ -376,9 +378,10 @@ DEPENDENCIES
   webdrivers
   webmock
   will_paginate
+  with_model
 
 RUBY VERSION
    ruby 3.2.2
 
 BUNDLED WITH
-   2.3.25
+   2.4.13

@@ -7,6 +7,15 @@ RSpec.describe PasswordsController do
 
       expect(rendered).to have_selector("form#password_setup")
     end
+
+    it "redirects to the login page when signups are not enabled" do
+      create(:user)
+      Setting::UserSignup.update!(enabled: false)
+
+      get "/setup/password"
+
+      expect(response).to redirect_to(login_path)
+    end
   end
 
   describe "#create" do
@@ -31,6 +40,15 @@ RSpec.describe PasswordsController do
       post "/setup/password", params: { user: user_params }
 
       expect(response).to redirect_to("/feeds/import")
+    end
+
+    it "redirects to the login page when signups are not enabled" do
+      create(:user)
+      Setting::UserSignup.update!(enabled: false)
+
+      post "/setup/password"
+
+      expect(response).to redirect_to(login_path)
     end
   end
 

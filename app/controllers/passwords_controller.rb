@@ -3,6 +3,7 @@
 class PasswordsController < ApplicationController
   skip_before_action :complete_setup, only: [:new, :create]
   skip_before_action :authenticate_user, only: [:new, :create]
+  before_action :check_signups_enabled, only: [:new, :create]
 
   def new
     authorization.skip
@@ -34,6 +35,10 @@ class PasswordsController < ApplicationController
   end
 
   private
+
+  def check_signups_enabled
+    redirect_to(login_path) unless Setting::UserSignup.enabled?
+  end
 
   def password_params
     params.require(:user)
