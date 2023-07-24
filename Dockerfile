@@ -3,12 +3,13 @@ FROM ruby:3.2.2
 ENV RACK_ENV=production
 ENV RAILS_ENV=production
 ENV PORT=8080
+ENV BUNDLER_VERSION=2.3.25
 
 EXPOSE 8080
 
 WORKDIR /app
 ADD Gemfile Gemfile.lock /app/
-RUN bundle install
+RUN gem install bundler:$BUNDLER_VERSION && bundle install
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
