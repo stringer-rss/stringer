@@ -10,6 +10,14 @@ RSpec.describe DebugController do
         .and_return(["Migration B - 2", "Migration C - 3"])
     end
 
+    it "displays an admin settings link" do
+      setup
+
+      get("/admin/debug")
+
+      expect(rendered).to have_link("Admin Settings", href: settings_path)
+    end
+
     it "displays the current Ruby version" do
       setup
 

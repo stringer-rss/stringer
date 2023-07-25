@@ -486,8 +486,12 @@ li.feed .remove-feed a:hover {
   padding-top: 10px;
 }
 
+.setup__label {
+  font-weight: bold;
+}
+
 .setup {
-  width: 350px;
+  width: 500px;
   margin: 0 auto;
   padding-top: 100px;
 }

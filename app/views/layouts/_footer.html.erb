@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row-fluid">
-    <div class="span6">
+    <div class="span8">
       <ul class="footer-links">
         <% if current_user %>
           <li><a href="/logout"><%= t('layout.logout') %></a></li>
@@ -13,12 +13,16 @@
           <li class="muted">·</li>
           <li><%= link_to(t('layout.profile'), edit_profile_path) %></li>
           <li class="muted">·</li>
+          <% if current_user.admin? %>
+            <li><%= link_to(t('layout.admin_settings'), settings_path) %></li>
+            <li class="muted">·</li>
+          <% end %>
         <% end %>
 
         <li><a href="https://github.com/stringer-rss/stringer"><%= t('layout.support') %></a></li>
       </ul>
     </div>
-    <div class="span6">
+    <div class="span4">
       <p class="pull-right">
         <b><%= t('layout.hey') %></b> <%= t('layout.back_to_work') %>
       </p>

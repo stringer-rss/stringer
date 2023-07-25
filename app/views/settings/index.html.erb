@@ -1,0 +1,24 @@
+<div id="action-bar">
+  <%= render "feeds/action_bar" %>
+</div>
+
+<div class="setup">
+  <h1><%= t('.heading') %></h1>
+  <hr />
+  <p><%= t('.description') %></p>
+  <hr />
+  <div class="control-group">
+    <% setting = Setting::UserSignup.first %>
+    <%= form_with(model: setting, scope: :setting, url: setting_path(setting)) do |form| %>
+      <% if Setting::UserSignup.enabled? %>
+        <%= form.hidden_field :enabled, value: false %>
+        <span class='setup__label'><%= t('.signup.enabled') %></span>
+        <%= form.submit(t('.signup.disable'), class: 'btn btn-primary pull-right') %>
+      <% else %>
+        <%= form.hidden_field :enabled, value: true %>
+        <span class='setup__label'><%= t('.signup.disabled') %></span>
+        <%= form.submit(t('.signup.enable'), class: 'btn btn-primary pull-right') %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

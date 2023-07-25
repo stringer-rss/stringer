@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   scope :admin, constraints: AdminConstraint.new do
     mount GoodJob::Engine => "good_job"
 
+    resources :settings, only: [:index, :update]
     get "/debug", to: "debug#index"
   end
 

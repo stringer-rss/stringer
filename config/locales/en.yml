@@ -66,6 +66,7 @@ en:
     subtitle: Let's setup your feeds.
     title: Welcome aboard.
   layout:
+    admin_settings: Admin Settings
     back_to_work: Get back to work, slacker!
     export: Export
     hey: Hey!
@@ -150,6 +151,15 @@ en:
       sign_up_html: Or <a href=%{href}>sign up</a>.
       subtitle: Welcome back, friend.
       title: Stringer speaks
+  settings:
+    index:
+      heading: Application Settings
+      description: Edit application wide settings
+      signup:
+        enabled: User signups are enabled
+        disabled: User signups are disabled
+        enable: Enable
+        disable: Disable
   starred:
     next: Next
     of: of
