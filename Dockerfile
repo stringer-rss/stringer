@@ -7,6 +7,8 @@ ENV BUNDLER_VERSION=2.3.25
 
 EXPOSE 8080
 
+SHELL ["/bin/bash", "-c"]
+
 WORKDIR /app
 ADD Gemfile Gemfile.lock /app/
 RUN gem install bundler:$BUNDLER_VERSION && bundle install
@@ -31,8 +33,6 @@ ENV SUPERCRONIC_URL=https://github.com/aptible/supercronic/releases/download/v0.
     SUPERCRONIC_arm64_SHA1SUM=f0e8049f3aa8e24ec43e76955a81b76e90c02270 \
     SUPERCRONIC_SHA1SUM="SUPERCRONIC_${ARCH}_SHA1SUM"
 
-# required to make the ${!...} expansion work
-SHELL ["/bin/bash", "-c"]
 RUN curl -fsSLO "$SUPERCRONIC_URL" \
  && echo "${!SUPERCRONIC_SHA1SUM}  ${SUPERCRONIC}" | sha1sum -c - \
  && chmod +x "$SUPERCRONIC" \
