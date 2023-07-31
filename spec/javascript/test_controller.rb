@@ -23,8 +23,8 @@ class TestController < ApplicationController
 
   private
 
-  def test_path(*chunks)
-    File.expand_path(File.join(__dir__, *chunks))
+  def test_path(*)
+    File.expand_path(File.join(__dir__, *))
   end
 
   def vendor_js_files
