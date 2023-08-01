@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CallableJob < ApplicationJob
-  def perform(callable, *args, **kwargs)
-    callable.call(*args, **kwargs)
+  def perform(callable, *, **)
+    callable.call(*, **)
   end
 end
