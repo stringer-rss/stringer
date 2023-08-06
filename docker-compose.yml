@@ -1,27 +1,40 @@
-version: '2'
+version: '3.8'
+
 services:
   postgres:
-    image: postgres:9.5-alpine
+    image: postgres:12-alpine
+    hostname: stringer-postgres
     restart: always
+    networks:
+      - stringer
     volumes:
-      - ~/stringer:/var/lib/postgresql/data
+      - ./postgres:/var/lib/postgresql/data
     environment:
-      - POSTGRES_PASSWORD=super_secret_password
+      - POSTGRES_PASSWORD=<PLEASE_ENTER_YOUR_PASSWORD>
       - POSTGRES_USER=db_user
       - POSTGRES_DB=stringer
 
   web:
-    image: mockdeep/stringer
+    image: mockdeep/stringer:latest
     build: .
     depends_on:
       - postgres
     restart: always
     ports:
-      - 80:8080
+      - '127.0.0.1:8080:8080'
+    networks:
+      - stringer-network
     environment:
-      - SECRET_KEY_BASE=<your configuration>
-      - ENCRYPTION_PRIMARY_KEY<your configuration>
-      - ENCRYPTION_DETERMINISTIC_KEY=<your configuration>
-      - ENCRYPTION_KEY_DERIVATION_SALT=<your configuration>
+      - SECRET_KEY_BASE=$(openssl rand -hex 64)
+      - ENCRYPTION_PRIMARY_KEY=$(openssl rand -hex 64)
+      - ENCRYPTION_DETERMINISTIC_KEY=$(openssl rand -hex 64)
+      - ENCRYPTION_KEY_DERIVATION_SALT=$(openssl rand -hex 64)
+      - FETCH_FEEDS_CRON="*/5 * * * *" # optional
+      - CLEANUP_CRON="0 0 * * *" # optional
       - PORT=8080
-      - DATABASE_URL=postgres://db_user:super_secret_password@postgres:5432/stringer
+      - DATABASE_URL=postgres://db_user:<PLEASE_ENTER_YOUR_PASSWORD>@stringer-postgres:5432/stringer
+
+networks:
+  stringer:
+    external: false
+    name: stringer
