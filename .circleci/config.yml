@@ -29,7 +29,6 @@ jobs:
     steps:
       - checkout
       - browser-tools/install-browser-tools
-      - docker/install-docker-tools
 
       # - node/install:
       #     node-version: 16.13.1
