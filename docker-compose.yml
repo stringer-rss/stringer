@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   postgres:
-    image: postgres:12-alpine
+    image: postgres:15-alpine
     hostname: stringer-postgres
     restart: always
     networks:
