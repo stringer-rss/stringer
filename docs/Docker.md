@@ -20,7 +20,7 @@ The following steps can be used to setup Stringer on Docker, using a Postgres da
 docker run --detach \
     --name stringer-postgres \
     --restart always \
-    --volume ./postgres:/var/lib/postgresql/data \
+    --volume ~/stringer:/var/lib/postgresql/data \
     --net stringer \
     -e POSTGRES_PASSWORD=<PLEASE_ENTER_YOUR_PASSWORD> \
     -e POSTGRES_USER=db_user \
@@ -43,7 +43,7 @@ docker run --detach \
     -e ENCRYPTION_KEY_DERIVATION_SALT=$(openssl rand -hex 64) \
     -e FETCH_FEEDS_CRON="*/5 * * * *" \ # optional
     -e CLEANUP_CRON="0 0 * * *" \ # optional
-    -p 127.0.0.1:8080:8080 \
+    -p 8080:8080 \
     mockdeep/stringer:latest
 ```
 
