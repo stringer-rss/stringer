@@ -29,8 +29,8 @@ services:
       - ENCRYPTION_PRIMARY_KEY=$(openssl rand -hex 64)
       - ENCRYPTION_DETERMINISTIC_KEY=$(openssl rand -hex 64)
       - ENCRYPTION_KEY_DERIVATION_SALT=$(openssl rand -hex 64)
-      - FETCH_FEEDS_CRON="*/5 * * * *" # optional
-      - CLEANUP_CRON="0 0 * * *" # optional
+      # - FETCH_FEEDS_CRON="*/5 * * * *" # optional
+      # - CLEANUP_CRON="0 0 * * *" # optional
       - PORT=8080
       - DATABASE_URL=postgres://db_user:<PLEASE_ENTER_YOUR_PASSWORD>@stringer-postgres:5432/stringer
 
