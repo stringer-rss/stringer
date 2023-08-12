@@ -25,10 +25,10 @@ services:
     networks:
       - stringer-network
     environment:
-      - SECRET_KEY_BASE=$(openssl rand -hex 64)
-      - ENCRYPTION_PRIMARY_KEY=$(openssl rand -hex 64)
-      - ENCRYPTION_DETERMINISTIC_KEY=$(openssl rand -hex 64)
-      - ENCRYPTION_KEY_DERIVATION_SALT=$(openssl rand -hex 64)
+      - SECRET_KEY_BASE=<your configuration>
+      - ENCRYPTION_PRIMARY_KEY<your configuration>
+      - ENCRYPTION_DETERMINISTIC_KEY=<your configuration>
+      - ENCRYPTION_KEY_DERIVATION_SALT=<your configuration>
       # - FETCH_FEEDS_CRON="*/5 * * * *" # optional
       # - CLEANUP_CRON="0 0 * * *" # optional
       - PORT=8080
