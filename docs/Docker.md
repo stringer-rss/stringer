@@ -10,9 +10,9 @@ The following steps can be used to setup Stringer on Docker, using a Postgres da
 
 1. Setup a Docker network so the two containers we're going to create can communicate:
 
-   ```Sh
-   docker network create --driver bridge stringer
-   ```
+```Sh
+docker network create --driver bridge stringer
+```
 
 2. Setup a Postgres Docker container:
 
