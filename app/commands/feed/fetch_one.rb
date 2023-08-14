@@ -30,7 +30,7 @@ module Feed::FetchOne
     end
 
     def latest_entry_id(feed)
-      return feed.stories.first.entry_id unless feed.stories.empty?
+      feed.stories.first.entry_id unless feed.stories.empty?
     end
   end
 end
