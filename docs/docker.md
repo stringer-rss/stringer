@@ -10,9 +10,9 @@ The following steps can be used to setup Stringer on Docker, using a Postgres da
 
 1. Setup a Docker network so the two containers we're going to create can communicate:
 
-   ```Sh
-   docker network create --driver bridge stringer
-   ```
+```Sh
+docker network create --driver bridge stringer-network
+```
 
 2. Setup a Postgres Docker container:
 
@@ -21,7 +21,7 @@ docker run --detach \
     --name stringer-postgres \
     --restart always \
     --volume /srv/stringer/data:/var/lib/postgresql/data \
-    --net stringer \
+    --net stringer-network \
     -e POSTGRES_PASSWORD=myPassword \
     -e POSTGRES_DB=stringer \
     postgres:9.5-alpine
@@ -32,7 +32,7 @@ docker run --detach \
 ```sh
 docker run --detach \
     --name stringer \
-    --net stringer \
+    --net stringer-network \
     --restart always \
     -e PORT=8080 \
     -e DATABASE_URL=postgres://postgres:myPassword@stringer-postgres/stringer \
