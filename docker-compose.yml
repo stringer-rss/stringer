@@ -20,7 +20,7 @@ services:
       - 80:8080
     environment:
       - SECRET_KEY_BASE=<your configuration>
-      - ENCRYPTION_PRIMARY_KEY<your configuration>
+      - ENCRYPTION_PRIMARY_KEY=<your configuration>
       - ENCRYPTION_DETERMINISTIC_KEY=<your configuration>
       - ENCRYPTION_KEY_DERIVATION_SALT=<your configuration>
       - PORT=8080
