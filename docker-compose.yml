@@ -11,7 +11,7 @@ services:
       - POSTGRES_DB=stringer
 
   web:
-    image: mockdeep/stringer:latest
+    image: stringerrss/stringer:latest
     build: .
     depends_on:
       - postgres
