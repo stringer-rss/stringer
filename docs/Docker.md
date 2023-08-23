@@ -2,7 +2,7 @@
 
 ## Production ready setup using docker-compose
 
-Download [docker-compose.yml](../docker-compose.yml) and in the corresponding folder, run `docker-compose up -d`, give it a second and visit `localhost`
+Download [docker-compose.yml](../docker-compose.yml) and in the corresponding folder, run `docker-compose up -d`, give it a second and visit `localhost:8080`
 
 ## Production ready manual setup
 
@@ -10,9 +10,9 @@ The following steps can be used to setup Stringer on Docker, using a Postgres da
 
 1. Setup a Docker network so the two containers we're going to create can communicate:
 
-   ```Sh
-   docker network create --driver bridge stringer
-   ```
+```Sh
+docker network create --driver bridge stringer
+```
 
 2. Setup a Postgres Docker container:
 
@@ -20,11 +20,12 @@ The following steps can be used to setup Stringer on Docker, using a Postgres da
 docker run --detach \
     --name stringer-postgres \
     --restart always \
-    --volume /srv/stringer/data:/var/lib/postgresql/data \
+    --volume ~/stringer:/var/lib/postgresql/data \
     --net stringer \
-    -e POSTGRES_PASSWORD=myPassword \
+    -e POSTGRES_PASSWORD=<PLEASE_ENTER_YOUR_PASSWORD> \
+    -e POSTGRES_USER=db_user \
     -e POSTGRES_DB=stringer \
-    postgres:9.5-alpine
+    postgres:12-alpine
 ```
 
 3. Run the Stringer Docker image:
@@ -35,15 +36,15 @@ docker run --detach \
     --net stringer \
     --restart always \
     -e PORT=8080 \
-    -e DATABASE_URL=postgres://postgres:myPassword@stringer-postgres/stringer \
+    -e DATABASE_URL=postgres://db_user:<PLEASE_ENTER_YOUR_PASSWORD>@stringer-postgres/stringer \
     -e SECRET_KEY_BASE=$(openssl rand -hex 64) \
     -e ENCRYPTION_PRIMARY_KEY=$(openssl rand -hex 64) \
     -e ENCRYPTION_DETERMINISTIC_KEY=$(openssl rand -hex 64) \
     -e ENCRYPTION_KEY_DERIVATION_SALT=$(openssl rand -hex 64) \
     -e FETCH_FEEDS_CRON="*/5 * * * *" \ # optional
     -e CLEANUP_CRON="0 0 * * *" \ # optional
-    -p 127.0.0.1:8080:8080 \
-    stringer-rss/stringer
+    -p 8080:8080 \
+    mockdeep/stringer:latest
 ```
 
 That's it! You now have a fully working Stringer instance up and running!
