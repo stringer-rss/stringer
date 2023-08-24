@@ -24,7 +24,7 @@ Stringer is a Ruby app based on Rails, PostgreSQL, Backbone.js and GoodJob.
 Stringer will run just fine on the Eco/Basic Heroku plans.
 
 Instructions are provided for deploying to [Heroku manually](/docs/Heroku.md), to any Ruby 
-compatible [Linux-based VPS](/docs/VPS.md), to [Docker](docs/docker.md) and to [OpenShift](/docs/OpenShift.md).
+compatible [Linux-based VPS](/docs/VPS.md), to [Docker](docs/Docker.md) and to [OpenShift](/docs/OpenShift.md).
 
 ## Niceties
 
