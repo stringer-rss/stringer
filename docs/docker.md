@@ -43,7 +43,7 @@ docker run --detach \
     -e FETCH_FEEDS_CRON="*/5 * * * *" \ # optional
     -e CLEANUP_CRON="0 0 * * *" \ # optional
     -p 127.0.0.1:8080:8080 \
-    stringer-rss/stringer
+    stringerrss/stringer:latest
 ```
 
 That's it! You now have a fully working Stringer instance up and running!
