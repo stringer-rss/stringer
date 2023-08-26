@@ -25,13 +25,13 @@ RUN DEBIAN_FRONTEND=noninteractive dpkg-reconfigure locales \
 
 ENV LC_ALL C.UTF-8
 
-ARG ARCH=amd64
-ENV SUPERCRONIC_URL=https://github.com/aptible/supercronic/releases/download/v0.1.3/supercronic-linux-$ARCH \
-    SUPERCRONIC=supercronic-linux-$ARCH \
+ARG TARGETARCH
+ENV SUPERCRONIC_URL=https://github.com/aptible/supercronic/releases/download/v0.1.3/supercronic-linux-$TARGETARCH \
+    SUPERCRONIC=supercronic-linux-$TARGETARCH \
     SUPERCRONIC_amd64_SHA1SUM=96960ba3207756bb01e6892c978264e5362e117e \
     SUPERCRONIC_arm_SHA1SUM=8c1e7af256ee35a9fcaf19c6a22aa59a8ccc03ef \
     SUPERCRONIC_arm64_SHA1SUM=f0e8049f3aa8e24ec43e76955a81b76e90c02270 \
-    SUPERCRONIC_SHA1SUM="SUPERCRONIC_${ARCH}_SHA1SUM"
+    SUPERCRONIC_SHA1SUM="SUPERCRONIC_${TARGETARCH}_SHA1SUM"
 
 RUN curl -fsSLO "$SUPERCRONIC_URL" \
  && echo "${!SUPERCRONIC_SHA1SUM}  ${SUPERCRONIC}" | sha1sum -c - \
