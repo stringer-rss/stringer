@@ -2,7 +2,9 @@
 
 ## Production ready setup using docker-compose
 
-Download [docker-compose.yml](../docker-compose.yml) and in the corresponding folder, run `docker-compose up -d`, give it a second and visit `localhost`
+Set up environment variables as defined in `Makefile` with `make postgres_env` and `make stringer_env`.
+
+Download [docker-compose.yml](../docker-compose.yml) to the same folder and run `docker compose up -d`, give it a second and visit `localhost`
 
 ## Production ready manual setup
 
