@@ -27,7 +27,9 @@ jobs:
 
     steps:
       - checkout
-      - browser-tools/install-browser-tools
+      - browser-tools/install-browser-tools:
+          install-chrome: false
+          install-chromedriver: false
 
       # - node/install:
       #     node-version: 16.13.1
