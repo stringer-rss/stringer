@@ -18,8 +18,8 @@
 
     <%= content_for(:head) %>
 
-    <link href="<%= stylesheet_path 'application' %>" rel="stylesheet" />
-    <script src="<%= javascript_path 'application' %>"></script>
+    <%= stylesheet_link_tag 'application' %>
+    <%= javascript_include_tag 'application' %>
   </head>
   <body>
     <div id="wrap">
