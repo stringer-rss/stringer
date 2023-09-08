@@ -33,3 +33,17 @@ task :cleanup_old_stories, [:number_of_days] => :environment do |_t, args|
   args.with_defaults(number_of_days: 30)
   RemoveOldStories.call(args[:number_of_days].to_i)
 end
+
+desc "Generate Postgres env file"
+namespace :env do
+  task :generate_postgres do
+    File.write("./.postgres.env", `erb .docker/.postgres.env.erb`)
+  end
+end
+
+desc "Generate stringer env file"
+namespace :env do
+  task :generate_stringer: :generate_postgres do
+    File.write("./.stringer.env", `erb .docker/.stringer.env.erb`)
+  end
+end
