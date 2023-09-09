@@ -15,7 +15,7 @@ RUN gem install bundler:$BUNDLER_VERSION && bundle install
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-      supervisor locales nodejs \
+      supervisor locales nodejs vim nano \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
