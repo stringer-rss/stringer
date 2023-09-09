@@ -43,7 +43,7 @@ end
 
 desc "Generate stringer env file"
 namespace :env do
-  task :generate_stringer: :generate_postgres do
+  task generate_stringer: :generate_postgres do
     File.write("./.stringer.env", `erb .docker/.stringer.env.erb`)
   end
 end
