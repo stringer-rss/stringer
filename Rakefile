@@ -36,12 +36,12 @@ end
 
 namespace :env do
   desc "Generate Postgres env file"
-  task generate_postgres: :environment do
-    File.write("./.postgres.env", `erb .docker/.postgres.env.erb`)
+  task :generate_postgres do
+    File.write("./.postgres.env", `erb ./docker/.postgres.env.erb`)
   end
 
   desc "Generate stringer env file"
-  task generate_stringer: [:generate_postgres, :environment] do
-    File.write("./.stringer.env", `erb .docker/.stringer.env.erb`)
+  task generate_stringer: :generate_postgres do
+    File.write("./.stringer.env", `erb ./docker/.stringer.env.erb`)
   end
 end
