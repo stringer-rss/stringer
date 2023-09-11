@@ -5,7 +5,7 @@ module CastBoolean
   FALSE_VALUES = Set.new(["false", false, "0"]).freeze
 
   def self.call(boolean)
-    unless (TRUE_VALUES + FALSE_VALUES).include?(boolean)
+    if (TRUE_VALUES + FALSE_VALUES).exclude?(boolean)
       raise(ArgumentError, "cannot cast to boolean: #{boolean.inspect}")
     end
 
