@@ -47,4 +47,6 @@ RUN useradd -m stringer
 RUN chown -R stringer:stringer /app
 USER stringer
 
+ENV RAILS_SERVE_STATIC_FILES=true
+
 CMD /app/start.sh
