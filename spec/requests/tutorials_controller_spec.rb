@@ -11,7 +11,7 @@ RSpec.describe TutorialsController do
 
         get "/setup/tutorial"
 
-        expect(rendered).to have_selector("#mark-all-instruction")
+        expect(rendered).to have_css("#mark-all-instruction")
       end
     end
   end

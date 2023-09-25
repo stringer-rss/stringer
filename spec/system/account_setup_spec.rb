@@ -5,7 +5,7 @@ RSpec.describe "account setup" do
     fill_in("Username", with: username)
     fill_in("Password", with: "my-password")
     fill_in("Confirm", with: "my-password")
-    click_button("Next")
+    click_on("Next")
   end
 
   it "allows a user to sign up" do

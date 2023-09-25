@@ -30,7 +30,7 @@ RSpec.describe StoriesController do
 
       get "/news"
 
-      expect(rendered).to have_selector("#stories")
+      expect(rendered).to have_css("#stories")
     end
 
     it "displays the blog title and article title" do
@@ -48,7 +48,7 @@ RSpec.describe StoriesController do
 
       get "/news"
 
-      expect(rendered).to have_selector("#mark-all")
+      expect(rendered).to have_css("#mark-all")
     end
 
     it "has correct footer links" do
@@ -65,7 +65,7 @@ RSpec.describe StoriesController do
 
       get "/news"
 
-      expect(rendered).to have_selector("#zen")
+      expect(rendered).to have_css("#zen")
     end
   end
 
@@ -76,7 +76,7 @@ RSpec.describe StoriesController do
 
       get "/archive"
 
-      expect(rendered).to have_selector("#stories")
+      expect(rendered).to have_css("#stories")
     end
   end
 
@@ -87,7 +87,7 @@ RSpec.describe StoriesController do
 
       get "/starred"
 
-      expect(rendered).to have_selector("#stories")
+      expect(rendered).to have_css("#stories")
     end
   end
 

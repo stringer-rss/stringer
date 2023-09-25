@@ -15,6 +15,7 @@ AllCops:
     - 'db/schema.rb'
     - 'vendor/**/*'
 
+Capybara/ClickLinkOrButtonStyle: { EnforcedStyle: link_or_button }
 Layout/LineLength: { Max: 80 }
 Layout/RedundantLineBreak: { InspectBlocks: true }
 Metrics/AbcSize:
