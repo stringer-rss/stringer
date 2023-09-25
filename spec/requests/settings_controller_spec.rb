@@ -7,7 +7,7 @@ RSpec.describe SettingsController do
 
       get(settings_path)
 
-      expect(rendered).to have_selector("h1", text: "Settings")
+      expect(rendered).to have_css("h1", text: "Settings")
         .and have_text("User signups are disabled")
     end
   end

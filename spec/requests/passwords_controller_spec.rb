@@ -5,7 +5,7 @@ RSpec.describe PasswordsController do
     it "displays a form to enter your password" do
       get "/setup/password"
 
-      expect(rendered).to have_selector("form#password_setup")
+      expect(rendered).to have_css("form#password_setup")
     end
 
     it "redirects to the login page when signups are not enabled" do

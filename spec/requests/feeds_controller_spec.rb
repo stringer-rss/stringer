@@ -10,7 +10,7 @@ RSpec.describe FeedsController do
 
       get "/feeds"
 
-      expect(rendered).to have_selector("li.feed", count: 2)
+      expect(rendered).to have_css("li.feed", count: 2)
     end
 
     it "displays message to add feeds if there are none" do
@@ -18,7 +18,7 @@ RSpec.describe FeedsController do
 
       get "/feeds"
 
-      expect(rendered).to have_selector("#add-some-feeds")
+      expect(rendered).to have_css("#add-some-feeds")
     end
   end
 
@@ -29,7 +29,7 @@ RSpec.describe FeedsController do
 
       get "/feed/#{story.feed_id}"
 
-      expect(rendered).to have_selector("#stories")
+      expect(rendered).to have_css("#stories")
     end
 
     it "raises an error if the feed belongs to another user" do
@@ -97,7 +97,7 @@ RSpec.describe FeedsController do
 
       get "/feeds/new"
 
-      expect(rendered).to have_selector("form#add-feed-setup")
+      expect(rendered).to have_css("form#add-feed-setup")
     end
   end
 
@@ -131,7 +131,7 @@ RSpec.describe FeedsController do
         expect($stderr).to receive(:puts).with(/Error occurred/)
         post("/feeds", params: { feed_url: })
 
-        expect(rendered).to have_selector(".error")
+        expect(rendered).to have_css(".error")
       end
     end
 
@@ -145,7 +145,7 @@ RSpec.describe FeedsController do
 
         post("/feeds", params: { feed_url: })
 
-        expect(rendered).to have_selector(".error")
+        expect(rendered).to have_css(".error")
       end
     end
   end

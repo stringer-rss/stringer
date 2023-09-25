@@ -18,7 +18,7 @@ RSpec.describe SessionsController do
 
       post("/login", params:)
 
-      expect(rendered).to have_selector(".error")
+      expect(rendered).to have_css(".error")
     end
 
     it "allows access when password is correct" do

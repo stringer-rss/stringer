@@ -23,7 +23,7 @@ RSpec.describe DebugController do
 
       get "/admin/debug"
 
-      expect(rendered).to have_selector("dd", text: /#{RUBY_VERSION}/)
+      expect(rendered).to have_css("dd", text: /#{RUBY_VERSION}/)
     end
 
     it "displays the user agent" do
@@ -31,7 +31,7 @@ RSpec.describe DebugController do
 
       get("/admin/debug", headers: { "HTTP_USER_AGENT" => "testy" })
 
-      expect(rendered).to have_selector("dd", text: /testy/)
+      expect(rendered).to have_css("dd", text: /testy/)
     end
 
     it "displays the jobs count" do
@@ -40,7 +40,7 @@ RSpec.describe DebugController do
 
       get "/admin/debug"
 
-      expect(rendered).to have_selector("dd", text: /12/)
+      expect(rendered).to have_css("dd", text: /12/)
     end
 
     it "displays pending migrations" do
@@ -48,8 +48,8 @@ RSpec.describe DebugController do
 
       get "/admin/debug"
 
-      expect(rendered).to have_selector("li", text: /Migration B - 2/)
-        .and have_selector("li", text: /Migration C - 3/)
+      expect(rendered).to have_css("li", text: /Migration B - 2/)
+        .and have_css("li", text: /Migration C - 3/)
     end
   end
 

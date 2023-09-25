@@ -7,7 +7,7 @@ RSpec.describe "feeds/index" do
 
     visit "/feeds"
 
-    expect(page).to have_selector("li.feed", count: 2)
+    expect(page).to have_css("li.feed", count: 2)
   end
 
   it "displays message to add feeds if there are none" do
