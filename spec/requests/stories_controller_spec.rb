@@ -95,48 +95,54 @@ RSpec.describe StoriesController do
     it "marks a story as read when it is_read not malformed" do
       login_as(default_user)
       params = { is_read: true }.to_json
+      env = { "RAW_POST_DATA" => params }
 
-      expect { put("/stories/#{story_one.id}", params:) }
+      expect { put("/stories/#{story_one.id}", env:) }
         .to change_record(story_one, :is_read).from(false).to(true)
     end
 
     it "marks a story as read when is_read is malformed" do
       login_as(default_user)
       params = { is_read: "malformed" }.to_json
+      env = { "RAW_POST_DATA" => params }
 
-      expect { put("/stories/#{story_one.id}", params:) }
+      expect { put("/stories/#{story_one.id}", env:) }
         .to change_record(story_one, :is_read).from(false).to(true)
     end
 
     it "marks a story as keep unread when it keep_unread not malformed" do
       login_as(default_user)
       params = { keep_unread: true }.to_json
+      env = { "RAW_POST_DATA" => params }
 
-      expect { put("/stories/#{story_one.id}", params:) }
+      expect { put("/stories/#{story_one.id}", env:) }
         .to change_record(story_one, :keep_unread).from(false).to(true)
     end
 
     it "marks a story as keep unread when keep_unread is malformed" do
       login_as(default_user)
       params = { keep_unread: "malformed" }.to_json
+      env = { "RAW_POST_DATA" => params }
 
-      expect { put("/stories/#{story_one.id}", params:) }
+      expect { put("/stories/#{story_one.id}", env:) }
         .to change_record(story_one, :keep_unread).from(false).to(true)
     end
 
     it "marks a story as starred when is_starred is not malformed" do
       login_as(default_user)
       params = { is_starred: true }.to_json
+      env = { "RAW_POST_DATA" => params }
 
-      expect { put("/stories/#{story_one.id}", params:) }
+      expect { put("/stories/#{story_one.id}", env:) }
         .to change_record(story_one, :is_starred).from(false).to(true)
     end
 
     it "marks a story as starred when is_starred is malformed" do
       login_as(default_user)
       params = { is_starred: "malformed" }.to_json
+      env = { "RAW_POST_DATA" => params }
 
-      expect { put("/stories/#{story_one.id}", params:) }
+      expect { put("/stories/#{story_one.id}", env:) }
         .to change_record(story_one, :is_starred).from(false).to(true)
     end
   end

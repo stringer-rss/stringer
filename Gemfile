@@ -7,7 +7,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem "dotenv-rails"
 
-gem "rails", "~> 7.0.1"
+gem "rails", "~> 7.1.0"
 
 gem "bcrypt"
 gem "bootsnap", require: false
