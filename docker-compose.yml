@@ -1,27 +1,41 @@
 version: '3'
 
 services:
+  stringer-setup:
+    image: stringerrss/stringer:latest
+    restart: no
+    env_file: .env
+    volumes:
+      - ./.env:/.env
+    entrypoint: ["rails"]
+    cmd: ["init_or_update_env"]
 
   stringer-postgres:
     image: postgres:9.5-alpine
     restart: always
+    depends_on:
+      stringer-setup:
+        condition: service_completed_successfully
     networks:
       - stringer-network
     volumes:
       - ~/stringer:/var/lib/postgresql/data
-    env_file: .postgres.env
+    env_file: .env
 
   stringer:
     image: stringerrss/stringer:latest
     build: .
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
+      stringer-setup:
+        condition: service_completed_successfully
     restart: always
     ports:
       - 80:8080
     networks:
       - stringer-network
-    env_file: .stringer.env
+    env_file: .env
 
 networks:
   stringer-network:
