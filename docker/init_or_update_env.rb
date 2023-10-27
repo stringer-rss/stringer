@@ -1,5 +1,3 @@
-require_relative "../config/environment"
-
 required_env = {
   "SECRET_KEY_BASE" => `openssl rand -hex 64`.strip,
   "ENCRYPTION_PRIMARY_KEY" => `openssl rand -hex 64`.strip,
