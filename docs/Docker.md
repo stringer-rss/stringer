@@ -2,7 +2,7 @@
 
 ## Production ready setup using docker-compose
 
-Set up environment variables as defined in `Rakefile` with `rake env:generate_postgres env:generate_stringer`.
+Create a local environment file named `.env`, e.g. via `touch .env`.
 
 Download [docker-compose.yml](../docker-compose.yml) to the same folder and run `docker compose up -d`, give it a second and visit `localhost`
 
