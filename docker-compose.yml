@@ -7,8 +7,8 @@ services:
     env_file: .env
     volumes:
       - ./.env:/app/.env
-    entrypoint: ["rails"]
-    cmd: ["init_or_update_env"]
+    entrypoint: ["ruby"]
+    command: ["/app/docker/init_or_update_env.rb"]
 
   stringer-postgres:
     image: postgres:9.5-alpine
