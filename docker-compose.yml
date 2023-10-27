@@ -26,7 +26,7 @@ services:
     image: stringerrss/stringer:latest
     build: .
     depends_on:
-      postgres:
+      stringer-postgres:
         condition: service_healthy
       stringer-setup:
         condition: service_completed_successfully
