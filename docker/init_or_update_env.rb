@@ -1,20 +1,23 @@
-require 'set'
+require_relative "../config/environment"
 
-# verify existing env vars
-existing_env_vars = Set.new(File.read("/.env").split)
+required_env = {
+  "SECRET_KEY_BASE" => `openssl rand -hex 64`.strip,
+  "ENCRYPTION_PRIMARY_KEY" => `openssl rand -hex 64`.strip,
+  "ENCRYPTION_DETERMINISTIC_KEY" => `openssl rand -hex 64`.strip,
+  "ENCRYPTION_KEY_DERIVATION_SALT" => `openssl rand -hex 64`.strip,
+  # ternary operators ensure that we can set the database url if it does not exist
+  "POSTGRES_USER" => ENV["POSTGRES_USER"] ? ENV["POSTGRES_USER"] : "stringer",
+  "POSTGRES_PASSWORD" => ENV["POSTGRES_PASSWORD"] ? ENV["POSTGRES_PASSWORD"] : `openssl rand -hex 32`.strip,
+  "POSTGRES_HOSTNAME" => ENV["POSTGRES_HOSTNAME"] ? ENV["POSTGRES_HOSTNAME"] : "stringer-postgres",
+  "POSTGRES_DB" => ENV["POSTGRES_DB"] ? ENV["POSTGRES_DB"] : "stringer",
+  "FETCH_FEEDS_CRON" => "*/5 * * * *",
+  "CLEANUP_CRON" => "0 0 * * *",
+}
 
-# hardcoded list of env vars we require
-required_env_vars = Set.new(["SECRET_KEY_BASE",
-"ENCRYPTION_PRIMARY_KEY",
-"ENCRYPTION_DETERMINISTIC_KEY",
-"ENCRYPTION_KEY_DERIVATION_SALT"])
+required_env["DATABASE_URL"] = "postgres://#{required_env['POSTGRES_USER']}:#{required_env['POSTGRES_PASSWORD']}@#{required_env['POSTGRES_HOSTNAME']}/#{required_env['POSTGRES_DB']}"
 
-# set operation to get only env vars we need that don't exist yet
-new_env_var_keys = required_env_vars - existing_env_vars
+required_env.each do |key, value|
+  next if ENV[key].present?
 
-for new_env_var_key in new_env_var_keys do
-    # TODO: generate the default
+  File.open("/.env", "a") { |file| file << "#{key}=#{value}\n"
 end
-
-# write only new env vars to file in append mode
-File.write("/.env", new_env_vars.join("\n"), mode: "a")
