@@ -6,7 +6,7 @@ services:
     restart: no
     env_file: .env
     volumes:
-      - ./.env:/.env
+      - ./.env:/app/.env
     entrypoint: ["rails"]
     cmd: ["init_or_update_env"]
 

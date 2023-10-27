@@ -17,5 +17,5 @@ required_env["DATABASE_URL"] = "postgres://#{required_env['POSTGRES_USER']}:#{re
 required_env.each do |key, value|
   next if ENV.has_key?(key)
 
-  File.open("/.env", "a") { |file| file << "#{key}=#{value}\n" }
+  File.open("/app/.env", "a") { |file| file << "#{key}=#{value}\n" }
 end
