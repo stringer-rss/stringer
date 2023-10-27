@@ -27,7 +27,7 @@ services:
     build: .
     depends_on:
       stringer-postgres:
-        condition: service_healthy
+        condition: service_started
       stringer-setup:
         condition: service_completed_successfully
     restart: always
