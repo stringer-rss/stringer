@@ -2,7 +2,7 @@ version: '3'
 
 services:
   stringer-setup:
-    image: stringerrss/stringer:latest
+    build: .
     restart: no
     env_file: .env
     volumes:
