@@ -4,7 +4,13 @@
 
 Create a local environment file named `.env`, e.g. via `touch .env`.
 
-Download [docker-compose.yml](../docker-compose.yml) to the same folder and run `docker compose up -d`, give it a second and visit `localhost`
+Download [docker-compose.yml](../docker-compose.yml) and run:
+
+```sh
+touch .env && docker compose up -d
+```
+
+Give it a second and visit `localhost`!
 
 ## Production ready manual setup
 
