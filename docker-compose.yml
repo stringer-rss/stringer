@@ -3,6 +3,7 @@ version: '3'
 services:
   stringer-setup:
     image: stringerrss/stringer:latest
+    container_name: stringer-setup
     restart: no
     env_file: .env
     volumes:
@@ -12,6 +13,7 @@ services:
 
   stringer-postgres:
     image: postgres:9.5-alpine
+    container_name: stringer-postgres
     restart: always
     depends_on:
       stringer-setup:
@@ -24,6 +26,7 @@ services:
 
   stringer:
     image: stringerrss/stringer:latest
+    container_name: stringer
     build: .
     depends_on:
       stringer-postgres:
