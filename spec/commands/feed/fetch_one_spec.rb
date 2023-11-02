@@ -10,16 +10,11 @@ RSpec.describe Feed::FetchOne do
     )
   end
 
-  before do
-    allow(StoryRepository).to receive(:add)
-    allow(FeedRepository).to receive(:update_last_fetched)
-    allow(FeedRepository).to receive(:set_status)
-
-    stub_request(:get, "http://daringfireball.com/feed")
-  end
+  before { stub_request(:get, "http://daringfireball.com/feed") }
 
   context "when no new posts have been added" do
     it "does not add any new posts" do
+      expect(FeedRepository).to receive(:set_status)
       fake_feed = double(last_modified: Time.zone.local(2012, 12, 31))
       expect(Feedjira).to receive(:parse).and_return(fake_feed)
 
@@ -45,6 +40,8 @@ RSpec.describe Feed::FetchOne do
     end
 
     it "only adds posts that are new" do
+      expect(FeedRepository).to receive(:set_status)
+      expect(FeedRepository).to receive(:update_last_fetched)
       expect(Feedjira).to receive(:parse).and_return(fake_feed)
       expect(StoryRepository).to receive(:add).with(
         new_story,
@@ -57,6 +54,8 @@ RSpec.describe Feed::FetchOne do
     end
 
     it "updates the last fetched time for the feed" do
+      expect(FeedRepository).to receive(:set_status)
+      expect(StoryRepository).to receive(:add)
       expect(Feedjira).to receive(:parse).and_return(fake_feed)
       expect(FeedRepository).to receive(:update_last_fetched)
         .with(daring_fireball, now)
@@ -86,6 +85,7 @@ RSpec.describe Feed::FetchOne do
     end
 
     it "outputs a message when things go wrong" do
+      expect(FeedRepository).to receive(:set_status)
       expect(Feedjira).to receive(:parse).and_return(404)
 
       expect { described_class.call(daring_fireball) }
