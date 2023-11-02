@@ -1,19 +1,21 @@
 # frozen_string_literal: true
 
-def generate_secret(length)
-  `openssl rand -hex #{length}`.strip
+module Secrets
+  def self.generate_secret(length)
+    `openssl rand -hex #{length}`.strip
+  end
 end
 
 pg_user = ENV.fetch("POSTGRES_USER", "stringer")
-pg_password = ENV.fetch("POSTGRES_PASSWORD", generate_secret(32))
+pg_password = ENV.fetch("POSTGRES_PASSWORD", Secrets.generate_secret(32))
 pg_host = ENV.fetch("POSTGRES_HOSTNAME", "stringer-postgres")
 pg_db = ENV.fetch("POSTGRES_DB", "stringer")
 
 required_env = {
-  "SECRET_KEY_BASE" => generate_secret(64),
-  "ENCRYPTION_PRIMARY_KEY" => generate_secret(64),
-  "ENCRYPTION_DETERMINISTIC_KEY" => generate_secret(64),
-  "ENCRYPTION_KEY_DERIVATION_SALT" => generate_secret(64),
+  "SECRET_KEY_BASE" => Secrets.generate_secret(64),
+  "ENCRYPTION_PRIMARY_KEY" => Secrets.generate_secret(64),
+  "ENCRYPTION_DETERMINISTIC_KEY" => Secrets.generate_secret(64),
+  "ENCRYPTION_KEY_DERIVATION_SALT" => Secrets.generate_secret(64),
   "POSTGRES_USER" => pg_user,
   "POSTGRES_PASSWORD" => pg_password,
   "POSTGRES_HOSTNAME" => pg_host,
