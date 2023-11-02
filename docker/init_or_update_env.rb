@@ -19,7 +19,7 @@ required_env = {
   "POSTGRES_HOSTNAME" => pg_host,
   "POSTGRES_DB" => pg_db,
   "FETCH_FEEDS_CRON" => "*/5 * * * *",
-  "CLEANUP_CRON" => "0 0 * * *"
+  "CLEANUP_CRON" => "0 0 * * *",
   "DATABASE_URL" => "postgres://#{pg_user}:#{pg_password}@#{pg_host}/#{pg_db}"
 }
 
