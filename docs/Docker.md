@@ -2,7 +2,15 @@
 
 ## Production ready setup using docker-compose
 
-Download [docker-compose.yml](../docker-compose.yml) and in the corresponding folder, run `docker-compose up -d`, give it a second and visit `localhost`
+Create a local environment file named `.env`, e.g. via `touch .env`.
+
+Download [docker-compose.yml](../docker-compose.yml) and run:
+
+```sh
+touch .env && docker compose up -d
+```
+
+Give it a second and visit `localhost`!
 
 ## Production ready manual setup
 
