@@ -1,12 +1,9 @@
 # frozen_string_literal: true
 
 RSpec.describe Feed::ExportToOpml do
-  let(:feed_one) { build(:feed)      }
-  let(:feed_two) { build(:feed)      }
-  let(:feeds) { [feed_one, feed_two] }
-
   it "returns OPML XML" do
-    result = described_class.call(feeds)
+    feed_one, feed_two = build_pair(:feed)
+    result = described_class.call([feed_one, feed_two])
 
     outlines = Nokogiri.XML(result).xpath("//body//outline")
     expect(outlines.size).to eq(2)
@@ -24,7 +21,8 @@ RSpec.describe Feed::ExportToOpml do
   end
 
   it "has a proper title" do
-    result = described_class.call(feeds)
+    feed_one, feed_two = build_pair(:feed)
+    result = described_class.call([feed_one, feed_two])
 
     title = Nokogiri.XML(result).xpath("//head//title").first
     expect(title.content).to eq("Feeds from Stringer")

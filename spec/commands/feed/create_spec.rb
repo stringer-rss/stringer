@@ -11,11 +11,9 @@ RSpec.describe Feed::Create do
   end
 
   context "feed can be discovered" do
-    let(:feed_url) { "http://feed.com/atom.xml" }
-    let(:feed_result) { double(title: feed.name, feed_url: feed.url) }
-    let(:feed) { build(:feed) }
-
     it "parses and creates the feed if discovered" do
+      feed = build(:feed)
+      feed_result = double(title: feed.name, feed_url: feed.url)
       expect(FeedDiscovery).to receive(:call).and_return(feed_result)
 
       expect { described_class.call("http://feed.com", user: default_user) }
@@ -23,15 +21,11 @@ RSpec.describe Feed::Create do
     end
 
     context "title includes a script tag" do
-      let(:feed_result) do
-        double(
-          title: "foo<script>alert('xss');</script>bar",
-          feed_url: feed.url
-        )
-      end
-
       it "deletes the script tag from the title" do
-        expect(FeedDiscovery).to receive(:call).and_return(feed_result)
+        feed =
+          double(title: "foo<script>alert('xss');</script>bar", feed_url: nil)
+
+        expect(FeedDiscovery).to receive(:call).and_return(feed)
 
         feed = described_class.call("http://feed.com", user: default_user)
 
