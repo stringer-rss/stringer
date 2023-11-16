@@ -14,18 +14,16 @@ RSpec.describe Feed::FetchOne do
     double(entry)
   end
 
-  def create_raw_feed(last_modified: Time.zone.now, entries: [])
-    double(last_modified:, entries:)
+  def stub_raw_feed(last_modified: Time.zone.now, entries: [])
+    raw_feed = double(last_modified:, entries:)
+    allow(described_class).to receive(:fetch_raw_feed).and_return(raw_feed)
   end
 
   context "when no new posts have been added" do
     it "does not add any new posts" do
-      feed = build(:feed, last_fetched: Time.zone.local(2013, 1, 1))
-      raw_feed = double(last_modified: Time.zone.local(2012, 12, 31))
+      feed = create(:feed)
+      stub_raw_feed
 
-      allow(Feed::FindNewStories).to receive(:call).and_return([])
-
-      allow(described_class).to receive(:fetch_raw_feed).and_return(raw_feed)
       expect(FeedRepository).to receive(:set_status).with(:green, feed)
 
       expect { described_class.call(feed) }.not_to change(feed.stories, :count)
@@ -36,30 +34,26 @@ RSpec.describe Feed::FetchOne do
     it "only adds posts that are new" do
       feed = create(:feed)
       opts = { published: Time.zone.local(2013, 1, 1) }
-      raw_feed = create_raw_feed(entries: [create_entry, create_entry(opts:)])
+      stub_raw_feed(entries: [create_entry, create_entry(opts:)])
 
-      allow(described_class).to receive(:fetch_raw_feed).and_return(raw_feed)
-
-      expect { described_class.call(feed) }.to change(feed.stories, :count).by(1)
+      expect { described_class.call(feed) }
+        .to change(feed.stories, :count).by(1)
     end
 
     it "updates the last fetched time for the feed" do
       feed = create(:feed, last_fetched: Time.zone.local(2013, 1, 1))
-      raw_feed = create_raw_feed(last_modified: Time.zone.now)
-
-      allow(described_class).to receive(:fetch_raw_feed).and_return(raw_feed)
+      now = Time.zone.now
+      stub_raw_feed(last_modified: now)
 
       expect { described_class.call(feed) }
-        .to change { feed.last_fetched }.to(raw_feed.last_modified)
+        .to change { feed.last_fetched }.to(now)
     end
   end
 
   context "feed status" do
     it "sets the status to green if things are all good" do
       feed = create(:feed)
-      raw_feed = create_raw_feed(last_modified: Time.zone.now)
-
-      allow(described_class).to receive(:fetch_raw_feed).and_return(raw_feed)
+      stub_raw_feed(last_modified: Time.zone.now)
 
       expect { described_class.call(feed) }
         .to change { feed.status }.to("green")
