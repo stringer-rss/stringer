@@ -1,94 +1,81 @@
 # frozen_string_literal: true
 
 RSpec.describe Feed::FetchOne do
-  let(:daring_fireball) do
-    double(
-      id: 1,
-      url: "http://daringfireball.com/feed",
-      last_fetched: Time.zone.local(2013, 1, 1),
-      stories: []
-    )
+  include ActiveSupport::Testing::TimeHelpers
+
+  def create_entry(**options)
+    entry = {
+      published: Time.zone.now,
+      title: "Run LLMs on my own Mac fast and efficient",
+      url: "https://www.secondstate.io/articles/fast-llm-inference",
+      content: "",
+      id: "test",
+      **options
+    }
+    double(entry)
   end
 
-  before { stub_request(:get, "http://daringfireball.com/feed") }
+  def stub_raw_feed(last_modified: Time.zone.now, entries: [])
+    raw_feed = double(last_modified:, entries:)
+    allow(described_class).to receive(:fetch_raw_feed).and_return(raw_feed)
+  end
 
   context "when no new posts have been added" do
     it "does not add any new posts" do
-      expect(FeedRepository).to receive(:set_status)
-      fake_feed = double(last_modified: Time.zone.local(2012, 12, 31))
-      expect(Feedjira).to receive(:parse).and_return(fake_feed)
+      feed = create(:feed)
+      stub_raw_feed
 
-      allow(Feed::FindNewStories).to receive(:call).and_return([])
+      expect { described_class.call(feed) }.not_to change(feed.stories, :count)
+    end
 
-      expect(StoryRepository).not_to receive(:add)
+    it "does not add posts that are old" do
+      feed = create(:feed)
+      entry = create_entry(published: Time.zone.local(2013, 1, 1))
+      stub_raw_feed(entries: [entry])
 
-      described_class.call(daring_fireball)
+      expect { described_class.call(feed) }.not_to change(feed.stories, :count)
     end
   end
 
   context "when new posts have been added" do
-    let(:now) { Time.zone.now }
-    let(:new_story) { double }
-    let(:old_story) { double }
-
-    let(:fake_feed) do
-      double(last_modified: now, entries: [new_story, old_story])
-    end
-
-    before do
-      allow(Feed::FindNewStories).to receive(:call).and_return([new_story])
-    end
-
     it "only adds posts that are new" do
-      expect(FeedRepository).to receive(:set_status)
-      expect(FeedRepository).to receive(:update_last_fetched)
-      expect(Feedjira).to receive(:parse).and_return(fake_feed)
-      expect(StoryRepository).to receive(:add).with(
-        new_story,
-        daring_fireball
-      )
-      expect(StoryRepository)
-        .not_to receive(:add).with(old_story, daring_fireball)
+      feed = create(:feed)
+      stub_raw_feed(entries: [create_entry])
 
-      described_class.call(daring_fireball)
+      expect { described_class.call(feed) }
+        .to change(feed.stories, :count).by(1)
     end
 
     it "updates the last fetched time for the feed" do
-      expect(FeedRepository).to receive(:set_status)
-      expect(StoryRepository).to receive(:add)
-      expect(Feedjira).to receive(:parse).and_return(fake_feed)
-      expect(FeedRepository).to receive(:update_last_fetched)
-        .with(daring_fireball, now)
+      feed = create(:feed, last_fetched: Time.zone.local(2013, 1, 1))
+      freeze_time
+      stub_raw_feed(last_modified: Time.zone.now, entries: [create_entry])
 
-      described_class.call(daring_fireball)
+      expect { described_class.call(feed) }
+        .to change(feed, :last_fetched).to(Time.zone.now)
     end
   end
 
   context "feed status" do
     it "sets the status to green if things are all good" do
-      fake_feed =
-        double(last_modified: Time.zone.local(2012, 12, 31), entries: [])
-      expect(Feedjira).to receive(:parse).and_return(fake_feed)
+      feed = create(:feed)
+      stub_raw_feed(last_modified: Time.zone.now)
 
-      expect(FeedRepository).to receive(:set_status)
-        .with(:green, daring_fireball)
-
-      described_class.call(daring_fireball)
+      expect { described_class.call(feed) }.to change(feed, :status).to("green")
     end
 
     it "sets the status to red if things go wrong" do
-      expect(Feedjira).to receive(:parse).and_return(404)
+      feed = create(:feed)
+      allow(described_class).to receive(:fetch_raw_feed).and_return(404)
 
-      expect(FeedRepository).to receive(:set_status).with(:red, daring_fireball)
-
-      described_class.call(daring_fireball)
+      expect { described_class.call(feed) }.to change(feed, :status).to("red")
     end
 
     it "outputs a message when things go wrong" do
-      expect(FeedRepository).to receive(:set_status)
-      expect(Feedjira).to receive(:parse).and_return(404)
+      feed = create(:feed)
+      allow(described_class).to receive(:fetch_raw_feed).and_return(404)
 
-      expect { described_class.call(daring_fireball) }
+      expect { described_class.call(feed) }
         .to invoke(:error).on(Rails.logger).with(/Something went wrong/)
     end
   end
