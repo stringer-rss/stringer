@@ -1,16 +1,17 @@
 # frozen_string_literal: true
 
 RSpec.describe Feed::FetchOne do
-  def create_entry(opts: {})
+  include ActiveSupport::Testing::TimeHelpers
+
+  def create_entry(**options)
     entry = {
-      comments: "https://news.ycombinator.com/item?id=38246668",
       published: Time.zone.now,
-      summary: "<a href=\"https://news.ycombinator.com/item?id=38246682\">Comments</a>",
       title: "Run LLMs on my own Mac fast and efficient",
       url: "https://www.secondstate.io/articles/fast-llm-inference",
       content: "",
-      id: "test"
-    }.merge(opts)
+      id: "test",
+      **options
+    }
     double(entry)
   end
 
@@ -24,7 +25,13 @@ RSpec.describe Feed::FetchOne do
       feed = create(:feed)
       stub_raw_feed
 
-      expect(FeedRepository).to receive(:set_status).with(:green, feed)
+      expect { described_class.call(feed) }.not_to change(feed.stories, :count)
+    end
+
+    it "does not add posts that are old" do
+      feed = create(:feed)
+      entry = create_entry(published: Time.zone.local(2013, 1, 1))
+      stub_raw_feed(entries: [entry])
 
       expect { described_class.call(feed) }.not_to change(feed.stories, :count)
     end
@@ -33,8 +40,7 @@ RSpec.describe Feed::FetchOne do
   context "when new posts have been added" do
     it "only adds posts that are new" do
       feed = create(:feed)
-      opts = { published: Time.zone.local(2013, 1, 1) }
-      stub_raw_feed(entries: [create_entry, create_entry(opts:)])
+      stub_raw_feed(entries: [create_entry])
 
       expect { described_class.call(feed) }
         .to change(feed.stories, :count).by(1)
@@ -42,11 +48,11 @@ RSpec.describe Feed::FetchOne do
 
     it "updates the last fetched time for the feed" do
       feed = create(:feed, last_fetched: Time.zone.local(2013, 1, 1))
-      now = Time.zone.now
-      stub_raw_feed(last_modified: now)
+      freeze_time
+      stub_raw_feed(last_modified: Time.zone.now, entries: [create_entry])
 
       expect { described_class.call(feed) }
-        .to change { feed.last_fetched }.to(now)
+        .to change(feed, :last_fetched).to(Time.zone.now)
     end
   end
 
@@ -55,15 +61,14 @@ RSpec.describe Feed::FetchOne do
       feed = create(:feed)
       stub_raw_feed(last_modified: Time.zone.now)
 
-      expect { described_class.call(feed) }
-        .to change { feed.status }.to("green")
+      expect { described_class.call(feed) }.to change(feed, :status).to("green")
     end
 
     it "sets the status to red if things go wrong" do
       feed = create(:feed)
       allow(described_class).to receive(:fetch_raw_feed).and_return(404)
 
-      expect { described_class.call(feed) }.to change { feed.status }.to("red")
+      expect { described_class.call(feed) }.to change(feed, :status).to("red")
     end
 
     it "outputs a message when things go wrong" do
