@@ -100,7 +100,7 @@ Then run the following commands.
 
 ```sh
 bundle install
-rake db:migrate
+rails db:setup
 foreman start
 ```
 
