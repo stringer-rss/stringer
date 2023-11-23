@@ -15,15 +15,15 @@ RSpec.describe Feed::FetchOne do
     double(entry)
   end
 
-  def stub_httparty(feed, entries: [])
-    xml = XmlGenerator.call(feed, entries).to_xml
+  def stub_raw_feed(feed, entries: [])
+    xml = GenerateXml.call(feed, entries)
     stub_request(:get, feed.url).to_return(status: 200, body: xml)
   end
 
   context "when no new posts have been added" do
     it "does not add any new posts" do
       feed = create(:feed)
-      stub_httparty(feed)
+      stub_raw_feed(feed)
 
       expect { described_class.call(feed) }.not_to change(feed.stories, :count)
     end
@@ -31,7 +31,7 @@ RSpec.describe Feed::FetchOne do
     it "does not add posts that are old" do
       feed = create(:feed)
       entry = create_entry(published: Time.zone.local(2013, 1, 1))
-      stub_httparty(feed, entries: [entry])
+      stub_raw_feed(feed, entries: [entry])
 
       expect { described_class.call(feed) }.not_to change(feed.stories, :count)
     end
@@ -40,7 +40,7 @@ RSpec.describe Feed::FetchOne do
   context "when new posts have been added" do
     it "only adds posts that are new" do
       feed = create(:feed)
-      stub_httparty(feed, entries: [create_entry])
+      stub_raw_feed(feed, entries: [create_entry])
 
       expect { described_class.call(feed) }
         .to change(feed.stories, :count).by(1)
@@ -49,7 +49,7 @@ RSpec.describe Feed::FetchOne do
     it "updates the last fetched time for the feed" do
       feed = create(:feed, last_fetched: Time.zone.local(2013, 1, 1))
       freeze_time
-      stub_httparty(feed, entries: [create_entry])
+      stub_raw_feed(feed, entries: [create_entry])
 
       expect { described_class.call(feed) }
         .to change(feed, :last_fetched).to(Time.zone.now)
@@ -59,7 +59,7 @@ RSpec.describe Feed::FetchOne do
   context "feed status" do
     it "sets the status to green if things are all good" do
       feed = create(:feed)
-      stub_httparty(feed)
+      stub_raw_feed(feed)
 
       expect { described_class.call(feed) }.to change(feed, :status).to("green")
     end

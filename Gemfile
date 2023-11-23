@@ -48,6 +48,7 @@ group :development, :test do
 end
 
 group :test do
+  gem "axe-core-rspec"
   gem "selenium-webdriver"
   gem "webdrivers"
   gem "with_model"

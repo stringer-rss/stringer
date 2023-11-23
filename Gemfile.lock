@@ -78,8 +78,19 @@ GEM
     addressable (2.8.5)
       public_suffix (>= 2.0.2, < 6.0)
     ast (2.4.2)
+    axe-core-api (4.8.0)
+      dumb_delegator
+      virtus
+    axe-core-rspec (4.8.0)
+      axe-core-api
+      dumb_delegator
+      virtus
+    axiom-types (0.1.1)
+      descendants_tracker (~> 0.0.4)
+      ice_nine (~> 0.11.0)
+      thread_safe (~> 0.3, >= 0.3.1)
     base64 (0.2.0)
-    bcrypt (3.1.19)
+    bcrypt (3.1.20)
     bigdecimal (3.1.4)
     bindex (0.8.1)
     bootsnap (1.17.0)
@@ -96,6 +107,8 @@ GEM
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
     coderay (1.1.3)
+    coercible (1.0.0)
+      descendants_tracker (~> 0.0.1)
     concurrent-ruby (1.2.2)
     connection_pool (2.4.1)
     coveralls_reborn (0.28.0)
@@ -110,6 +123,8 @@ GEM
     debug (1.8.0)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
+    descendants_tracker (0.0.4)
+      thread_safe (~> 0.3, >= 0.3.1)
     diff-lcs (1.5.0)
     docile (1.4.0)
     dotenv (2.8.1)
@@ -118,11 +133,12 @@ GEM
       railties (>= 3.2)
     drb (2.2.0)
       ruby2_keywords
+    dumb_delegator (1.0.0)
     erubi (1.12.0)
     et-orbi (1.2.7)
       tzinfo
     execjs (2.9.1)
-    factory_bot (6.3.0)
+    factory_bot (6.4.0)
       activesupport (>= 5.0.0)
     feedbag (1.0.0)
       nokogiri (~> 1.8, >= 1.8.2)
@@ -135,7 +151,7 @@ GEM
       raabro (~> 1.4)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    good_job (3.21.0)
+    good_job (3.21.1)
       activejob (>= 6.0.0)
       activerecord (>= 6.0.0)
       concurrent-ruby (>= 1.0.2)
@@ -148,13 +164,14 @@ GEM
       multi_xml (>= 0.5.2)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
+    ice_nine (0.11.2)
     io-console (0.6.0)
     irb (1.9.0)
       rdoc
       reline (>= 0.3.8)
     json (2.6.3)
     language_server-protocol (3.17.0.3)
-    loofah (2.21.4)
+    loofah (2.22.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     mail (2.8.1)
@@ -171,7 +188,7 @@ GEM
     msgpack (1.7.2)
     multi_xml (0.6.0)
     mutex_m (0.2.0)
-    net-imap (0.4.4)
+    net-imap (0.4.5)
       date
       net-protocol
     net-pop (0.1.2)
@@ -180,8 +197,8 @@ GEM
       timeout
     net-smtp (0.4.0)
       net-protocol
-    nio4r (2.5.9)
-    nokogiri (1.15.4)
+    nio4r (2.6.0)
+    nokogiri (1.15.5)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     parallel (1.23.0)
@@ -197,7 +214,7 @@ GEM
       pry (>= 0.13, < 0.15)
     psych (5.1.1.1)
       stringio
-    public_suffix (5.0.3)
+    public_suffix (5.0.4)
     puma (6.4.0)
       nio4r (~> 2.0)
     raabro (1.4.0)
@@ -290,10 +307,11 @@ GEM
       rubocop (~> 1.41)
     rubocop-factory_bot (2.24.0)
       rubocop (~> 1.33)
-    rubocop-rails (2.22.1)
+    rubocop-rails (2.22.2)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.33.0, < 2.0)
+      rubocop-ast (>= 1.30.0, < 2.0)
     rubocop-rake (0.6.0)
       rubocop (~> 1.0)
     rubocop-rspec (2.25.0)
@@ -333,6 +351,7 @@ GEM
       tins (~> 1.0)
     thor (1.3.0)
     thread (0.2.2)
+    thread_safe (0.3.6)
     timeout (0.4.1)
     tins (1.32.1)
       sync
@@ -341,6 +360,10 @@ GEM
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (2.5.0)
+    virtus (2.0.0)
+      axiom-types (~> 0.1)
+      coercible (~> 1.0)
+      descendants_tracker (~> 0.0, >= 0.0.3)
     web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -370,6 +393,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  axe-core-rspec
   bcrypt
   bootsnap
   capybara

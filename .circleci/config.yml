@@ -109,3 +109,21 @@ jobs:
           name: Run system tests
           command: |
             COVERAGE=false bundle exec rspec spec/system/
+
+workflows:
+  build:
+    jobs:
+      - build
+
+  # https://circleci.com/docs/2.0/workflows/#nightly-example
+  # https://circleci.com/docs/2.0/configuration-reference/#filters-1
+  repeat:
+    jobs:
+      - build
+    triggers:
+      - schedule:
+          cron: "0,20,40 * * * *"
+          filters:
+            branches:
+              only:
+                - /.*ci-repeat.*/

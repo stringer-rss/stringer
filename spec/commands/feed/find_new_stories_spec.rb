@@ -14,7 +14,7 @@ RSpec.describe Feed::FindNewStories do
   end
 
   def create_raw_feed(feed, entries: [])
-    xml = XmlGenerator.call(feed, entries).to_xml
+    xml = GenerateXml.call(feed, entries)
     Feedjira.parse(xml)
   end
 
@@ -36,7 +36,7 @@ RSpec.describe Feed::FindNewStories do
       entry = create_entry(published: Time.zone.now, url: "www.story2.com")
       raw_feed = create_raw_feed(feed, entries: [entry])
 
-      expect(described_class.call(raw_feed, feed.id)).to eql(raw_feed.entries)
+      expect(described_class.call(raw_feed, feed.id)).to eq(raw_feed.entries)
     end
   end
 
@@ -50,11 +50,11 @@ RSpec.describe Feed::FindNewStories do
   end
 
   it "ignores stories older than 3 days" do
-    feed = create(:feed)
-    new_entry = create_entry(published: 2.days.ago)
-    old_entry = create_entry(published: 4.days.ago)
-    raw_feed = create_raw_feed(feed, entries: [old_entry, new_entry])
+    new_entry = create_entry(title: "new", published: 2.days.ago)
+    old_entry = create_entry(title: "old", published: 4.days.ago)
+    raw_feed = create_raw_feed(create(:feed), entries: [old_entry, new_entry])
 
-    expect(described_class.call(raw_feed, feed.id)).not_to include(old_entry)
+    expect(described_class.call(raw_feed, 1))
+      .to eq(raw_feed.entries.filter { |entry| entry.title == "new" })
   end
 end
