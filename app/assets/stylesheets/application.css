@@ -8,7 +8,7 @@ html, body {
 }
 
 body {
-  background-color: #FAF2E5;
+  background-color: #FCF6EE;
   overflow-x: hidden;
 }
 
@@ -80,6 +80,10 @@ code {
   margin-bottom: 0px;
 }
 
+.alert-success-custom {
+  color: #3C763D;
+}
+
 #action-bar .btn {
   padding: 8px;
   height: 18px;
@@ -104,11 +108,11 @@ code {
 }
 
 .btn.btn-primary {
-  background-color: #F67100;
+  background-color: #B85500;
 }
 
 .btn.btn-primary:hover, .btn.btn-primary:focus, .btn.btn-primary:active {
-  background-color: #F59745;
+  background-color: #B85500;
 }
 
 .btn:hover, .btn:focus, .btn:active {
@@ -158,14 +162,14 @@ li.story, li.feed {
 }
 
 li.story .story-body a, .setup a, .footer-links a {
-  color: #F67100;
+  color: #B85500;
   text-decoration: none;
-  border-bottom: 1px dotted #F67100;
+  border-bottom: 1px dotted #B85500;
 }
 
 li.story .story-body a:hover, .setup a:hover {
-  color: #F59745;
-  border-bottom: 1px dotted #F59745;
+  color: #B85500;
+  border-bottom: 1px dotted #B85500;
 }
 
 a.btn, a.btn:hover {
@@ -209,7 +213,7 @@ li.story.open .story-preview {
 }
 
 .story-lead {
-  color: #c5c5c5;
+  color: #757575;
 }
 
 .story-published {
@@ -474,12 +478,12 @@ li.feed .remove-feed a:hover {
 }
 
 #zen #gtfo {
-  color: #F59745;
+  color: #B85500;
   font-weight: bold;
 }
 
 .orange {
-  color: #F67100;
+  color: #B85500;
 }
 
 #add-feed-container {
@@ -516,7 +520,7 @@ li.feed .remove-feed a:hover {
 
 .setup .field-icon {
   display: block;
-  color: #BFC9CA;
+  color: #626262;
   font-size: 24px;
   position: absolute;
   right: 13px;
@@ -537,7 +541,7 @@ li.feed .remove-feed a:hover {
 
 .setup .field-label {
   display: block;
-  color: #BFC9CA;
+  color: #626262;
   position: absolute;
   left: 13px;
   top: 10px;
@@ -655,9 +659,9 @@ li.blank {
 }
 
 #zen a {
-  color: #F59745;
+  color: #B85500;
   font-size: 14px;
-  border-bottom: 1px dotted #F59745;
+  border-bottom: 1px dotted #B85500;
   text-decoration: none;
 }
 
@@ -670,8 +674,8 @@ li.blank {
 }
 
 #pagination a {
-  color: #F67100;
-  border-bottom: 1px dotted #F59745;
+  color: #B85500;
+  border-bottom: 1px dotted #B85500;
   text-decoration: none;
   margin: 0 7px;
 }
