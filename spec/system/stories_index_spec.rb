@@ -16,7 +16,7 @@ RSpec.describe "stories/index" do
 
     visit news_path
 
-    expect(page).not_to have_content("My Story")
+    expect(page).to have_no_content("My Story")
   end
 
   it "marks all stories as read" do
@@ -73,7 +73,7 @@ RSpec.describe "stories/index" do
     star_story("My Story")
 
     visit(starred_path)
-    expect(page).not_to have_content("My Story")
+    expect(page).to have_no_content("My Story")
   end
 
   def mark_story_unread(story_title)
