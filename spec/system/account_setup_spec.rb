@@ -30,6 +30,6 @@ RSpec.describe "account setup" do
 
     visit "/"
 
-    expect(page).not_to have_link("sign up")
+    expect(page).to have_no_link("sign up")
   end
 end
