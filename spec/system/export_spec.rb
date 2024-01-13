@@ -7,7 +7,7 @@ RSpec.describe "exporting feeds" do
 
     click_on "Export"
 
-    xml = Capybara.string(Downloads.content_for("stringer.opml"))
+    xml = Capybara.string(Downloads.content_for(page, "stringer.opml"))
     expect(xml).to have_css("outline[title='#{feed.name}']")
   end
 end
