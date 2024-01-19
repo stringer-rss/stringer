@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
 RSpec.describe FeverAPI::ReadFavicons do
-  subject { described_class }
-
   it "returns a fixed icon list if requested" do
-    expect(subject.call({ favicons: nil })).to eq(
+    expect(described_class.call({ favicons: nil })).to eq(
       favicons: [
         {
           id: 0,
@@ -15,6 +13,6 @@ RSpec.describe FeverAPI::ReadFavicons do
   end
 
   it "returns an empty hash otherwise" do
-    expect(subject.call({})).to eq({})
+    expect(described_class.call({})).to eq({})
   end
 end
