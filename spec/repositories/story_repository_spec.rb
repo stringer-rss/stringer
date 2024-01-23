@@ -2,16 +2,17 @@
 
 RSpec.describe StoryRepository do
   describe ".add" do
-    let(:feed) { double(url: "http://blog.golang.org/feed.atom") }
-
-    before { allow(Story).to receive(:create) }
+    def create_feed(url: "http://blog.golang.org/feed.atom")
+      double(url:)
+    end
 
     it "normalizes story urls" do
-      entry = double(
-        url: "//blog.golang.org/context",
-        title: "",
-        content: ""
-      ).as_null_object
+      feed = create_feed
+      entry = double(url: "//blog.golang.org/context", title: "", content: "")
+              .as_null_object
+
+      allow(Story).to receive(:create)
+
       expect(described_class)
         .to receive(:normalize_url).with(entry.url, feed.url)
 
@@ -19,6 +20,7 @@ RSpec.describe StoryRepository do
     end
 
     it "deletes line and paragraph separator characters from titles" do
+      feed = create_feed
       entry = double(title: "n\u2028\u2029", content: "").as_null_object
       allow(described_class).to receive(:normalize_url)
 
@@ -28,6 +30,7 @@ RSpec.describe StoryRepository do
     end
 
     it "deletes script tags from titles" do
+      feed = create_feed
       entry = double(title: "n<script>alert('xss');</script>", content: "")
               .as_null_object
       allow(described_class).to receive(:normalize_url)
@@ -38,6 +41,7 @@ RSpec.describe StoryRepository do
     end
 
     it "sets the enclosure url when present" do
+      feed = create_feed
       entry = instance_double(
         Feedjira::Parser::ITunesRSSItem,
         enclosure_url: "http://example.com/audio.mp3",
@@ -53,6 +57,7 @@ RSpec.describe StoryRepository do
     end
 
     it "does not set the enclosure url when not present" do
+      feed = create_feed
       entry = instance_double(
         Feedjira::Parser::RSSEntry,
         title: "",

@@ -2,15 +2,8 @@
 
 RSpec.describe FeedRepository do
   describe ".fetch" do
-    let(:feed) { Feed.new(id: 1) }
-
-    it "finds by id" do
-      expect(Feed).to receive(:find).with(feed.id).and_return(feed)
-      described_class.fetch(feed.id)
-    end
-
-    it "returns found feed" do
-      allow(Feed).to receive(:find).with(feed.id).and_return(feed)
+    it "finds and returns found feed" do
+      feed = create(:feed)
 
       result = described_class.fetch(feed.id)
 
@@ -45,9 +38,8 @@ RSpec.describe FeedRepository do
   end
 
   describe ".update_last_fetched" do
-    let(:timestamp) { Time.zone.now.round }
-
     it "saves the last_fetched timestamp" do
+      timestamp = Time.zone.now.round
       feed = build(:feed)
 
       described_class.update_last_fetched(feed, timestamp)
@@ -56,6 +48,7 @@ RSpec.describe FeedRepository do
     end
 
     it "rejects weird timestamps" do
+      timestamp = Time.zone.now.round
       weird_timestamp = Time.parse("Mon, 01 Jan 0001 00:00:00 +0100")
       feed = Feed.new(last_fetched: timestamp)
 
@@ -65,6 +58,7 @@ RSpec.describe FeedRepository do
     end
 
     it "doesn't update if timestamp is nil" do
+      timestamp = Time.zone.now.round
       feed = Feed.new(last_fetched: timestamp)
 
       described_class.update_last_fetched(feed, nil)
@@ -73,6 +67,7 @@ RSpec.describe FeedRepository do
     end
 
     it "doesn't update if timestamp is older than the current value" do
+      timestamp = Time.zone.now.round
       feed = Feed.new(last_fetched: timestamp)
       one_week_ago = timestamp - 1.week
 
