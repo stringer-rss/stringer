@@ -1,12 +1,15 @@
 name: Build Docker image and push to Dockerhub
 
 on:
-  push
+  push:
+  pull_request:
+  workflow_dispatch:
+
 env:
   IMAGE_NAME: stringerrss/stringer
 
 jobs:
-  buildx:
+  build_docker:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
