@@ -15,7 +15,7 @@
   <hr />
 
   <%= form_with(url: "/feeds/import", id: "import", multipart: true) do %>
-    <input id="opml_file" name="opml_file" type="file" title="<%= t('import.fields.import') %>" class="btn-primary" />
+    <input id="opml_file" name="opml_file" type="file" title="<%= t('import.fields.import') %>" aria-label="<%= t('import.fields.import') %>" class="btn-primary" />
     <a href="/setup/tutorial" id="skip" class="btn pull-right"><%= t('import.fields.not_now') %></a>
   <% end %>
 </div>

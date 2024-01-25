@@ -6,7 +6,6 @@ module AccessibilityOverrides
   A11Y_SKIP = [
     "aria-required-children",
     "color-contrast",
-    "label-title-only",
     "landmark-one-main",
     "page-has-heading-one",
     "region"
