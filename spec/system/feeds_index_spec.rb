@@ -22,7 +22,7 @@ RSpec.describe "feeds/index" do
     login_as(default_user)
     create(:feed)
 
-    visit "/feeds"
+    visit("/feeds")
     click_on "Delete"
 
     expect(page).to have_content("Feed deleted")
