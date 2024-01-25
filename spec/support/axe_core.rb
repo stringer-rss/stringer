@@ -9,7 +9,6 @@ module AccessibilityOverrides
     "html-has-lang",
     "label-title-only",
     "landmark-one-main",
-    "link-name",
     "page-has-heading-one",
     "region"
   ].freeze

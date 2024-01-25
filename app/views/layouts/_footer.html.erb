@@ -9,7 +9,12 @@
           <li class="muted">·</li>
           <li><a href="/feeds/export"><%= t('layout.export') %></a></li>
           <li class="muted">·</li>
-          <li><a href="#shortcuts" data-toggle="modal"><i class="icon-keyboard"></i></a></li>
+          <li>
+            <a href="#shortcuts" data-toggle="modal" aria-label="shortcuts">
+              <i aria-hidden="true" class="icon-keyboard">
+              </i>
+            </a>
+          </li>
           <li class="muted">·</li>
           <li><%= link_to(t('layout.profile'), edit_profile_path) %></li>
           <li class="muted">·</li>
