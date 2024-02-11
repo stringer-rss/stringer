@@ -21,7 +21,7 @@ services:
     networks:
       - stringer-network
     volumes:
-      - ~/stringer:/var/lib/postgresql/data
+      - /srv/stringer/data:/var/lib/postgresql/data
     env_file: .env
 
   stringer:

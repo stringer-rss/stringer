@@ -28,7 +28,7 @@ docker network create --driver bridge stringer-network
 docker run --detach \
     --name stringer-postgres \
     --restart always \
-    --volume ~/stringer:/var/lib/postgresql/data \
+    --volume /srv/stringer/data:/var/lib/postgresql/data \
     --net stringer-network \
     -e POSTGRES_PASSWORD=myPassword \
     -e POSTGRES_DB=stringer \
