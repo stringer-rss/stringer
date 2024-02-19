@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 RSpec.describe FeverAPI::WriteMarkFeed do
-  let(:feed_marker) { double("feed marker") }
-  let(:marker_class) { double("marker class") }
-
   def params(feed, before:)
     authorization = Authorization.new(feed.user)
 
