@@ -12,7 +12,7 @@ services:
     command: ["/app/docker/init_or_update_env.rb"]
 
   stringer-postgres:
-    image: postgres:9.5-alpine
+    image: postgres:16-alpine
     container_name: stringer-postgres
     restart: always
     depends_on:
@@ -21,7 +21,7 @@ services:
     networks:
       - stringer-network
     volumes:
-      - ~/stringer:/var/lib/postgresql/data
+      - /srv/stringer/data:/var/lib/postgresql/data
     env_file: .env
 
   stringer:

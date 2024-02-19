@@ -32,7 +32,7 @@ docker run --detach \
     --net stringer-network \
     -e POSTGRES_PASSWORD=myPassword \
     -e POSTGRES_DB=stringer \
-    postgres:9.5-alpine
+    postgres:16-alpine
 ```
 
 3. Run the Stringer Docker image:
