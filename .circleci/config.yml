@@ -47,11 +47,10 @@ jobs:
 
       - run: # Install Ruby dependencies
           name: Bundle Install
-          command: bundle check || bundle install
-
-      # - run:
-      #     name: Bundler Audit
-      #     command: bundle exec bundle audit
+          command: |
+            bundle config set --local frozen 'true'
+            bundle install
+            bundle clean
 
       - save_cache:
           key: bundle-v1-{{ checksum "Gemfile.lock" }}
