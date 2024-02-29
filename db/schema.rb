@@ -10,17 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_01_025234) do
+ActiveRecord::Schema[7.1].define(version: 2023_08_01_025234) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
-  create_table "feeds", force: :cascade do |t|
-    t.string "name"
+  create_table "feeds", id: :serial, force: :cascade do |t|
+    t.string "name", limit: 255
     t.text "url"
-    t.datetime "last_fetched"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "last_fetched", precision: nil
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.integer "status"
     t.integer "group_id"
     t.bigint "user_id", null: false
@@ -105,10 +105,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_01_025234) do
     t.index ["scheduled_at"], name: "index_good_jobs_on_scheduled_at", where: "(finished_at IS NULL)"
   end
 
-  create_table "groups", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "groups", id: :serial, force: :cascade do |t|
+    t.string "name", limit: 255, null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.bigint "user_id", null: false
     t.index ["name", "user_id"], name: "index_groups_on_name_and_user_id", unique: true
     t.index ["user_id"], name: "index_groups_on_user_id"
@@ -122,14 +122,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_01_025234) do
     t.index ["type"], name: "index_settings_on_type", unique: true
   end
 
-  create_table "stories", force: :cascade do |t|
+  create_table "stories", id: :serial, force: :cascade do |t|
     t.text "title"
     t.text "permalink"
     t.text "body"
     t.integer "feed_id", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.datetime "published"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.datetime "published", precision: nil
     t.boolean "is_read"
     t.boolean "keep_unread", default: false
     t.boolean "is_starred", default: false
@@ -152,13 +152,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_01_025234) do
     t.index ["user_id"], name: "index_subscriptions_on_user_id", unique: true
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "password_digest"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string "api_key", null: false
-    t.boolean "admin", null: false
+  create_table "users", id: :serial, force: :cascade do |t|
+    t.string "password_digest", limit: 255
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.string "api_key", limit: 255, null: false
     t.string "username", null: false
+    t.boolean "admin", null: false
     t.index ["api_key"], name: "index_users_on_api_key", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
