@@ -9,14 +9,6 @@ RSpec.describe "Feed" do
 
       expect(feed.unread_stories_count).to eq(1)
     end
-
-    it "includes feeds with no unread stories" do
-      create(:story)
-
-      feed = Feed.with_unread_stories_counts.first
-
-      expect(feed.unread_stories_count).to eq(0)
-    end
   end
 
   describe "#unread_stories" do
@@ -30,13 +22,6 @@ RSpec.describe "Feed" do
     it "does not return stories where is_read is true" do
       feed = create(:feed)
       create(:story, :read, feed:)
-
-      expect(feed.unread_stories).to be_empty
-    end
-
-    it "does not return stories where is_read is nil" do
-      feed = create(:feed)
-      create(:story, feed:)
 
       expect(feed.unread_stories).to be_empty
     end

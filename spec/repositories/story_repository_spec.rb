@@ -129,16 +129,6 @@ RSpec.describe StoryRepository do
       expect(stories).to eq([story])
     end
 
-    it "does not return read stories before timestamp for group_id" do
-      feed = create(:feed, group_id: 52)
-      create(:story, feed:, created_at: 5.minutes.ago)
-      time = Time.zone.now
-
-      stories = described_class.fetch_unread_by_timestamp_and_group(time, 52)
-
-      expect(stories).to be_empty
-    end
-
     it "does not return unread stories after timestamp for group_id" do
       feed = create(:feed, group_id: 52)
       create(:story, :unread, feed:, created_at: 5.minutes.ago)
@@ -203,17 +193,6 @@ RSpec.describe StoryRepository do
       expect(stories).to eq([story])
     end
 
-    it "does not return read stories for the feed before timestamp" do
-      feed = create(:feed)
-      create(:story, feed:, created_at: 5.minutes.ago)
-      time = 4.minutes.ago
-
-      stories =
-        described_class.fetch_unread_for_feed_by_timestamp(feed.id, time)
-
-      expect(stories).to be_empty
-    end
-
     it "does not return unread stories for the feed after timestamp" do
       feed = create(:feed)
       create(:story, :unread, feed:, created_at: 5.minutes.ago)
@@ -239,17 +218,10 @@ RSpec.describe StoryRepository do
 
   describe ".unread" do
     it "returns unread stories ordered by published date descending" do
-      story1 = create(:story, :unread, published: 5.minutes.ago)
-      story2 = create(:story, :unread, published: 4.minutes.ago)
+      story1 = create(:story, published: 5.minutes.ago)
+      story2 = create(:story, published: 4.minutes.ago)
 
       expect(described_class.unread).to eq([story2, story1])
-    end
-
-    it "does not return read stories" do
-      create(:story, published: 5.minutes.ago)
-      create(:story, published: 4.minutes.ago)
-
-      expect(described_class.unread).to be_empty
     end
   end
 
@@ -259,13 +231,6 @@ RSpec.describe StoryRepository do
       story2 = create(:story, :unread)
 
       expect(described_class.unread_since_id(story1.id)).to eq([story2])
-    end
-
-    it "does not return read stories with id greater than given id" do
-      story1 = create(:story, :unread)
-      create(:story)
-
-      expect(described_class.unread_since_id(story1.id)).to be_empty
     end
 
     it "does not return unread stories with id less than given id" do

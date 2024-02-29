@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_26_201050) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_13_195404) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -130,7 +130,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_26_201050) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "published"
-    t.boolean "is_read"
+    t.boolean "is_read", default: false
     t.boolean "keep_unread", default: false
     t.boolean "is_starred", default: false
     t.text "entry_id"
