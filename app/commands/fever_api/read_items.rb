@@ -22,7 +22,7 @@ module FeverAPI::ReadItems
         else
           unread_stories(since_id, authorization)
         end
-      items.map(&:as_fever_json)
+      items.order(:published, :id).map(&:as_fever_json)
     end
 
     def total_items(item_ids, authorization)

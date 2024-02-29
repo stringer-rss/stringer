@@ -25,7 +25,7 @@ RSpec.describe FeverAPI::ReadItems do
     authorization = Authorization.new(default_user)
 
     expect(described_class.call(authorization:, items: nil, with_ids:)).to eq(
-      items: other_stories.map(&:as_fever_json),
+      items: other_stories.reverse.map(&:as_fever_json),
       total_items: 2
     )
   end
