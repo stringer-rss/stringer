@@ -10,17 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_08_01_025234) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_26_201050) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
   create_table "feeds", id: :serial, force: :cascade do |t|
-    t.string "name", limit: 255
+    t.string "name"
     t.text "url"
-    t.datetime "last_fetched", precision: nil
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
+    t.datetime "last_fetched"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "status"
     t.integer "group_id"
     t.bigint "user_id", null: false
@@ -106,9 +106,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_08_01_025234) do
   end
 
   create_table "groups", id: :serial, force: :cascade do |t|
-    t.string "name", limit: 255, null: false
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.index ["name", "user_id"], name: "index_groups_on_name_and_user_id", unique: true
     t.index ["user_id"], name: "index_groups_on_user_id"
@@ -127,9 +127,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_08_01_025234) do
     t.text "permalink"
     t.text "body"
     t.integer "feed_id", null: false
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.datetime "published", precision: nil
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "published"
     t.boolean "is_read"
     t.boolean "keep_unread", default: false
     t.boolean "is_starred", default: false
@@ -153,10 +153,10 @@ ActiveRecord::Schema[7.1].define(version: 2023_08_01_025234) do
   end
 
   create_table "users", id: :serial, force: :cascade do |t|
-    t.string "password_digest", limit: 255
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.string "api_key", limit: 255, null: false
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "api_key", null: false
     t.string "username", null: false
     t.boolean "admin", null: false
     t.index ["api_key"], name: "index_users_on_api_key", unique: true
