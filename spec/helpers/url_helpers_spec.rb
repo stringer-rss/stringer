@@ -10,7 +10,8 @@ RSpec.describe UrlHelpers do
     it "preserves existing absolute urls" do
       content = '<a href="http://foo">bar</a>'
 
-      expect(create_url_helper.expand_absolute_urls(content, nil)).to eq(content)
+      expect(create_url_helper.expand_absolute_urls(content, nil))
+        .to eq(content)
     end
 
     it "replaces relative urls in a, img and video tags" do
@@ -78,7 +79,8 @@ RSpec.describe UrlHelpers do
       ["http", "https"].each do |scheme|
         feed_url = "#{scheme}://blog.golang.org/feed.atom"
 
-        url = create_url_helper.normalize_url("//blog.golang.org/context", feed_url)
+        url = create_url_helper
+              .normalize_url("//blog.golang.org/context", feed_url)
 
         expect(url).to eq("#{scheme}://blog.golang.org/context")
       end
