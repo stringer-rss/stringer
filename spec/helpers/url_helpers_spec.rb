@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe UrlHelpers do
-  def create_url_helper
+  def helper
     helper_class = Class.new { include UrlHelpers }
     helper_class.new
   end
@@ -10,8 +10,7 @@ RSpec.describe UrlHelpers do
     it "preserves existing absolute urls" do
       content = '<a href="http://foo">bar</a>'
 
-      expect(create_url_helper.expand_absolute_urls(content, nil))
-        .to eq(content)
+      expect(helper.expand_absolute_urls(content, nil)).to eq(content)
     end
 
     it "replaces relative urls in a, img and video tags" do
@@ -23,7 +22,7 @@ RSpec.describe UrlHelpers do
         </div>
       HTML
 
-      result = create_url_helper.expand_absolute_urls(content, "http://oodl.io/d/")
+      result = helper.expand_absolute_urls(content, "http://oodl.io/d/")
       expect(result.delete("\n")).to eq(<<~HTML.delete("\n"))
         <div>
         <img src="https://foo">
@@ -35,19 +34,19 @@ RSpec.describe UrlHelpers do
     end
 
     it "handles empty body" do
-      expect(create_url_helper.expand_absolute_urls("", nil)).to eq("")
+      expect(helper.expand_absolute_urls("", nil)).to eq("")
     end
 
     it "doesn't modify tags that do not have url attributes" do
       content = <<~HTML
         <div>
         <img foo="bar">
-        <a name="something"/></a>
+        <a name="something"></a>
         <video foo="bar"></video>
         </div>
       HTML
 
-      result = create_url_helper.expand_absolute_urls(content, "http://oodl.io/d/")
+      result = helper.expand_absolute_urls(content, "http://oodl.io/d/")
       expect(result.delete("\n")).to eq(<<~HTML.delete("\n"))
         <div>
         <img foo="bar">
@@ -69,7 +68,7 @@ RSpec.describe UrlHelpers do
 
       content = "<a href=\"#{weird_url}\"></a>"
 
-      result = create_url_helper.expand_absolute_urls(content, "http://oodl.io/d/")
+      result = helper.expand_absolute_urls(content, "http://oodl.io/d/")
       expect(result).to include(weird_url)
     end
   end
@@ -79,8 +78,7 @@ RSpec.describe UrlHelpers do
       ["http", "https"].each do |scheme|
         feed_url = "#{scheme}://blog.golang.org/feed.atom"
 
-        url = create_url_helper
-              .normalize_url("//blog.golang.org/context", feed_url)
+        url = helper.normalize_url("//blog.golang.org/context", feed_url)
 
         expect(url).to eq("#{scheme}://blog.golang.org/context")
       end
@@ -88,21 +86,21 @@ RSpec.describe UrlHelpers do
 
     it "leaves urls with a scheme intact" do
       input = "http://blog.golang.org/context"
-      normalized_url = create_url_helper.normalize_url(
+      normalized_url = helper.normalize_url(
         input, "http://blog.golang.org/feed.atom"
       )
       expect(normalized_url).to eq(input)
     end
 
     it "falls back to http if the base_url is also sheme less" do
-      url = create_url_helper.normalize_url(
+      url = helper.normalize_url(
         "//blog.golang.org/context", "//blog.golang.org/feed.atom"
       )
       expect(url).to eq("http://blog.golang.org/context")
     end
 
     it "resolves relative urls" do
-      url = create_url_helper.normalize_url(
+      url = helper.normalize_url(
         "/progrium/dokku/releases/tag/v0.4.4",
         "https://github.com/progrium/dokku/releases.atom"
       )
