@@ -131,7 +131,7 @@ RSpec.describe StoryRepository do
 
     it "does not return read stories before timestamp for group_id" do
       feed = create(:feed, group_id: 52)
-      create(:story, feed:, created_at: 5.minutes.ago)
+      create(:story, :read, feed:, created_at: 5.minutes.ago)
       time = Time.zone.now
 
       stories = described_class.fetch_unread_by_timestamp_and_group(time, 52)
@@ -205,7 +205,7 @@ RSpec.describe StoryRepository do
 
     it "does not return read stories for the feed before timestamp" do
       feed = create(:feed)
-      create(:story, feed:, created_at: 5.minutes.ago)
+      create(:story, :read, feed:, created_at: 5.minutes.ago)
       time = 4.minutes.ago
 
       stories =
@@ -246,8 +246,8 @@ RSpec.describe StoryRepository do
     end
 
     it "does not return read stories" do
-      create(:story, published: 5.minutes.ago)
-      create(:story, published: 4.minutes.ago)
+      create(:story, :read, published: 5.minutes.ago)
+      create(:story, :read, published: 4.minutes.ago)
 
       expect(described_class.unread).to be_empty
     end
@@ -263,7 +263,7 @@ RSpec.describe StoryRepository do
 
     it "does not return read stories with id greater than given id" do
       story1 = create(:story, :unread)
-      create(:story)
+      create(:story, :read)
 
       expect(described_class.unread_since_id(story1.id)).to be_empty
     end
