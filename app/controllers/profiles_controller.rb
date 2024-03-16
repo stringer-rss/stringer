@@ -22,6 +22,6 @@ class ProfilesController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :password_challenge)
+    params.require(:user).permit(:username, :password_challenge, :stories_order)
   end
 end

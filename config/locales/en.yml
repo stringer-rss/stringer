@@ -187,3 +187,10 @@ en:
     title: 'Stringer is '
     your_feeds: your feeds
     your_stories: your stories
+  activerecord:
+    attributes:
+      user:
+        stories_order: "Stories feed order"
+      user/stories_order:
+        asc: "Oldest first"
+        desc: "Newest first"

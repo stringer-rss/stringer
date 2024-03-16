@@ -13,6 +13,8 @@ class User < ApplicationRecord
 
   before_save :update_api_key
 
+  enum :stories_order, { desc: "desc", asc: "asc" }, prefix: true
+
   attr_accessor :password_challenge
 
   # `password_challenge` logic should be able to be removed in Rails 7.1

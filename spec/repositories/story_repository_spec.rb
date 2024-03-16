@@ -251,6 +251,13 @@ RSpec.describe StoryRepository do
 
       expect(described_class.unread).to be_empty
     end
+
+    it "allows to override the order" do
+      story1 = create(:story, :unread, published: 5.minutes.ago)
+      story2 = create(:story, :unread, published: 4.minutes.ago)
+
+      expect(described_class.unread(order: :asc)).to eq([story1, story2])
+    end
   end
 
   describe ".unread_since_id" do
