@@ -40,7 +40,7 @@ module FeverAPI::ReadItems
     end
 
     def unread_stories(since_id, authorization)
-      if since_id
+      if since_id.present?
         authorization.scope(StoryRepository.unread_since_id(since_id))
       else
         authorization.scope(StoryRepository.unread)
