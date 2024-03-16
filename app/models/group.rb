@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Group < ApplicationRecord
+  UNGROUPED = Group.new(id: 0, name: "Ungrouped")
+
   belongs_to :user
   has_many :feeds
 

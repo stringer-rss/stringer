@@ -6,7 +6,7 @@ RSpec.describe FeverAPI::ReadGroups do
     authorization = Authorization.new(default_user)
 
     expect(described_class.call(authorization:, groups: nil))
-      .to eq(groups: groups.map(&:as_fever_json))
+      .to eq(groups: [Group::UNGROUPED, *groups].map(&:as_fever_json))
   end
 
   it "returns an empty hash otherwise" do
