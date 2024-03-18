@@ -5,10 +5,18 @@ RSpec.describe FeverAPI::ReadItems do
     stories = create_list(:story, 3, :unread)
     authorization = Authorization.new(default_user)
 
-    expect(described_class.call(authorization:, items: nil)).to eq(
-      items: stories.map(&:as_fever_json),
-      total_items: 3
-    )
+    items = stories.map(&:as_fever_json)
+    expect(described_class.call(authorization:, items: nil))
+      .to eq(items:, total_items: 3)
+  end
+
+  it "returns a list of unread items with empty since_id" do
+    stories = create_list(:story, 3, :unread)
+    authorization = Authorization.new(default_user)
+
+    items = stories.map(&:as_fever_json)
+    expect(described_class.call(authorization:, items: nil, since_id: ""))
+      .to eq(items:, total_items: 3)
   end
 
   it "returns a list of unread items since id including total count" do

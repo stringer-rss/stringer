@@ -13,9 +13,11 @@ class FeverAPI::ReadFeedsGroups
     private
 
     def feeds_groups(authorization)
-      scoped_feeds = authorization.scope(FeedRepository.in_group)
+      scoped_feeds = authorization.scope(FeedRepository.list)
       grouped_feeds = scoped_feeds.order("LOWER(name)").group_by(&:group_id)
       grouped_feeds.map do |group_id, feeds|
+        group_id ||= Group::UNGROUPED.id
+
         {
           group_id:,
           feed_ids: feeds.map(&:id).join(",")

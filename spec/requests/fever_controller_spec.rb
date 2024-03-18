@@ -46,14 +46,45 @@ RSpec.describe FeverController do
       expect(response_as_object).to include(standard_answer)
     end
 
-    it "returns groups and feeds by groups when 'groups' header is provided" do
-      feed = create(:feed, :with_group)
+    context "when 'groups' header is provided" do
+      it "returns only ungrouped feedsin the ungrouped group" do
+        feed = create(:feed)
 
-      get("/fever", params: params(groups: nil))
+        get("/fever", params: params(groups: nil))
 
-      groups = [{ group_id: feed.group_id, feed_ids: feed.id.to_s }]
-      expect(response_as_object).to include(standard_answer)
-        .and include(groups: [feed.group.as_fever_json], feeds_groups: groups)
+        expect_groups_response([Group::UNGROUPED], [feed])
+      end
+
+      it "returns only grouped feeds in their respective groups" do
+        grouped_feed = create(:feed, :with_group)
+
+        get("/fever", params: params(groups: nil))
+
+        groups = [Group::UNGROUPED, grouped_feed.group]
+        expect_groups_response(groups, [grouped_feed])
+      end
+
+      it "returns grouped and ungrouped feeds by groups" do
+        feed = create(:feed)
+        grouped_feed = create(:feed, :with_group)
+
+        get("/fever", params: params(groups: nil))
+
+        groups = [Group::UNGROUPED, grouped_feed.group]
+        expect_groups_response(groups, [feed, grouped_feed])
+      end
+
+      def expect_groups_response(groups, feeds_groups)
+        feeds_groups =
+          feeds_groups.map do |feed|
+            { group_id: feed.group_id || 0, feed_ids: feed.id.to_s }
+          end
+        expect(response_as_object).to include(standard_answer)
+          .and include(
+            groups: match_array(groups.map(&:as_fever_json)),
+            feeds_groups: match_array(feeds_groups)
+          )
+      end
     end
 
     it "returns feeds and feeds by groups when 'feeds' header is provided" do

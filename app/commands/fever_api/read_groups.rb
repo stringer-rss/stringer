@@ -13,7 +13,8 @@ module FeverAPI::ReadGroups
     private
 
     def groups(authorization)
-      authorization.scope(GroupRepository.list).map(&:as_fever_json)
+      [Group::UNGROUPED, *authorization.scope(GroupRepository.list)]
+        .map(&:as_fever_json)
     end
   end
 end
