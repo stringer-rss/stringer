@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
 RSpec.describe "profile page" do
-  it "allows the user to edit their username" do
+  before do
     login_as(default_user)
     visit(edit_profile_path)
+  end
 
+  it "allows the user to edit their username" do
     fill_in_username_fields(default_user.password)
     click_on("Update username")
 
@@ -19,9 +21,6 @@ RSpec.describe "profile page" do
   end
 
   it "allows the user to edit their password" do
-    login_as(default_user)
-    visit(edit_profile_path)
-
     fill_in_password_fields(default_user.password, "new_password")
     click_on("Update password")
 
@@ -34,5 +33,12 @@ RSpec.describe "profile page" do
       fill_in("New password", with: new_password)
       fill_in("Password confirmation", with: new_password)
     end
+  end
+
+  it "allows the user to edit their feed order" do
+    select("Oldest first", from: "Stories feed order")
+    click_on("Update")
+
+    expect(default_user.reload).to be_stories_order_asc
   end
 end

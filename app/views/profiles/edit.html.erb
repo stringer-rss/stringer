@@ -1,12 +1,20 @@
 <h1><%= t('.title') %></h1>
 
-<header class="warning">
-  <p><%= t('.warning_html') %></p>
-</header>
+<%= form_with(model: user, url: profile_path) do |form| %>
+  <fieldset>
+    <legend><%= t(".stories_feed_settings") %></legend>
+    <%= form.label :stories_order %>
+    <%= form.select :stories_order, User.stories_orders.transform_keys {|k| User.human_attribute_name("stories_order.#{k}") } %>
+  </fieldset>
+  <%= form.submit("Update") %>
+<% end %>
 
 <%= form_with(model: user, url: profile_path) do |form| %>
   <fieldset>
     <legend><%= t('.change_username') %></legend>
+    <div class="warning">
+      <p><%= t('.warning_html') %></p>
+    </div>
     <%= form.label :username %>
     <%= form.text_field :username, required: true %>
     <%= form.label :password_challenge, "Existing password" %>

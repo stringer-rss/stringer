@@ -47,8 +47,8 @@ class StoryRepository
     Story.exists?(entry_id: id, feed_id:)
   end
 
-  def self.unread
-    Story.where(is_read: false).order("published desc").includes(:feed)
+  def self.unread(order: "desc")
+    Story.where(is_read: false).order("published #{order}").includes(:feed)
   end
 
   def self.unread_since_id(since_id)
