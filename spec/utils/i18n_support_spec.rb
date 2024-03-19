@@ -1,27 +1,21 @@
 # frozen_string_literal: true
 
 RSpec.describe "i18n", type: :request do
-  before do
+  it "loads default locale when no locale was set" do
     allow(UserRepository).to receive(:setup_complete?).and_return(false)
-    ENV["LOCALE"] = locale
+    ENV["LOCALE"] = nil
     get "/"
+
+    expect(I18n.locale.to_s).to eq("en")
+    expect(I18n.locale.to_s).not_to be_nil
   end
 
-  context "when no locale was set" do
-    let(:locale) { nil }
+  it "loads default locale was locale was set" do
+    allow(UserRepository).to receive(:setup_complete?).and_return(false)
+    ENV["LOCALE"] = "en"
+    get "/"
 
-    it "loads default locale" do
-      expect(I18n.locale.to_s).to eq("en")
-      expect(I18n.locale.to_s).not_to be_nil
-    end
-  end
-
-  context "when locale was set" do
-    let(:locale) { "en" }
-
-    it "loads default locale" do
-      expect(I18n.locale.to_s).to eq("en")
-      expect(I18n.t("layout.title")).to eq("stringer | your rss buddy")
-    end
+    expect(I18n.locale.to_s).to eq("en")
+    expect(I18n.t("layout.title")).to eq("stringer | your rss buddy")
   end
 end

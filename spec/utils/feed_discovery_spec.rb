@@ -1,11 +1,9 @@
 # frozen_string_literal: true
 
 RSpec.describe FeedDiscovery do
-  let(:feed) { double(feed_url: url) }
-  let(:url) { "http://example.com" }
-
-  let(:invalid_discovered_url) { "http://not-a-valid-feed.com" }
-  let(:valid_discovered_url) { "http://a-valid-feed.com" }
+  url = "http://example.com"
+  invalid_discovered_url = "http://not-a-valid-feed.com"
+  valid_discovered_url = "http://a-valid-feed.com"
 
   it "returns false if url is not a feed and feed url cannot be discovered" do
     expect(HTTParty).to receive(:get).with(url)
@@ -18,6 +16,7 @@ RSpec.describe FeedDiscovery do
   end
 
   it "returns a feed if the url provided is parsable" do
+    feed = double(feed_url: url)
     expect(HTTParty).to receive(:get).with(url)
     expect(Feedjira).to receive(:parse).and_return(feed)
 
@@ -41,6 +40,7 @@ RSpec.describe FeedDiscovery do
   end
 
   it "returns the feed if the discovered feed is parsable" do
+    feed = double(feed_url: url)
     expect(HTTParty).to receive(:get).with(url)
     expect(Feedjira).to receive(:parse).and_raise(StandardError)
 
