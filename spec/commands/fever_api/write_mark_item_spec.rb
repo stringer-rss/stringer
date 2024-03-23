@@ -3,7 +3,7 @@
 RSpec.describe FeverAPI::WriteMarkItem do
   context "when as: 'read'" do
     it "marks the story as read" do
-      story = create(:story, :unread)
+      story = create(:story)
       authorization = Authorization.new(story.user)
       params = { authorization:, mark: "item", as: "read", id: story.id }
 

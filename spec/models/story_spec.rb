@@ -5,7 +5,7 @@ RSpec.describe "Story" do
 
   describe ".unread" do
     it "returns stories where is_read is false" do
-      story = create(:story, :unread)
+      story = create(:story)
 
       expect(Story.unread).to eq([story])
     end

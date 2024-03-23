@@ -6,7 +6,7 @@ RSpec.describe FeverAPI::WriteMarkGroup do
   end
 
   it "marks the group stories as read before the given timestamp" do
-    story = create(:story, :unread, :with_group, created_at: 1.week.ago)
+    story = create(:story, :with_group, created_at: 1.week.ago)
     before = 1.day.ago
     id = story.group_id
 
