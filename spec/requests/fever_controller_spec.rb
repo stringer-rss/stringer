@@ -106,8 +106,8 @@ RSpec.describe FeverController do
     end
 
     it "returns stories when 'items' and 'since_id'" do
-      create(:story, :unread, id: 5)
-      story_two = create(:story, :unread, id: 6)
+      create(:story, id: 5)
+      story_two = create(:story, id: 6)
 
       get("/fever", params: params(items: nil, since_id: 5))
 
@@ -116,7 +116,7 @@ RSpec.describe FeverController do
     end
 
     it "returns stories when 'items' header is provided without 'since_id'" do
-      stories = create_pair(:story, :unread)
+      stories = create_pair(:story)
 
       get("/fever", params: params(items: nil))
 
@@ -141,7 +141,7 @@ RSpec.describe FeverController do
     end
 
     it "returns unread items ids when 'unread_item_ids' header is provided" do
-      stories = create_pair(:story, :unread)
+      stories = create_pair(:story)
 
       get("/fever", params: params(unread_item_ids: nil))
 
@@ -161,7 +161,7 @@ RSpec.describe FeverController do
 
   describe "#post" do
     it "commands to mark story as read" do
-      story = create(:story, :unread)
+      story = create(:story)
 
       post("/fever", params: params(mark: "item", as: "read", id: story.id))
 
@@ -193,7 +193,7 @@ RSpec.describe FeverController do
     end
 
     it "commands to mark group as read" do
-      story = create(:story, :unread, :with_group, created_at: 1.week.ago)
+      story = create(:story, :with_group, created_at: 1.week.ago)
       before = Time.zone.now.to_i
       id = story.feed.group_id
 
@@ -203,7 +203,7 @@ RSpec.describe FeverController do
     end
 
     it "commands to mark entire feed as read" do
-      story = create(:story, :unread, created_at: 1.week.ago)
+      story = create(:story, created_at: 1.week.ago)
       before = Time.zone.now.to_i
       params = params(mark: "feed", as: "read", id: story.feed_id, before:)
 
@@ -213,7 +213,7 @@ RSpec.describe FeverController do
 
     describe "#index" do
       it "works with a trailing /" do
-        story = create(:story, :unread, created_at: 1.week.ago)
+        story = create(:story, created_at: 1.week.ago)
         before = Time.zone.now.to_i
         params = params(mark: "feed", as: "read", id: story.feed_id, before:)
 
@@ -224,7 +224,7 @@ RSpec.describe FeverController do
 
     describe "#update" do
       it "works with a trailing /" do
-        story = create(:story, :unread, created_at: 1.week.ago)
+        story = create(:story, created_at: 1.week.ago)
         before = Time.zone.now.to_i
         params = params(mark: "feed", as: "read", id: story.feed_id, before:)
 

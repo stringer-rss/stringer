@@ -3,7 +3,7 @@
 RSpec.describe "Feed" do
   describe ".with_unread_stories_counts" do
     it "returns feeds with unread stories counts" do
-      create(:story, :unread)
+      create(:story)
 
       feed = Feed.with_unread_stories_counts.first
 
@@ -22,7 +22,7 @@ RSpec.describe "Feed" do
   describe "#unread_stories" do
     it "returns stories where is_read is false" do
       feed = create(:feed)
-      story = create(:story, :unread, feed:)
+      story = create(:story, feed:)
 
       expect(feed.unread_stories).to eq([story])
     end

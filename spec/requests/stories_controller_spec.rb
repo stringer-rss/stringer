@@ -1,15 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe StoriesController do
-  let(:story_one) { create(:story, :unread) }
-  let(:story_two) { create(:story, :unread) }
-
   describe "GET /news" do
-    def setup
-      story_one
-      story_two
-    end
-
     it "redirects to the setup page when no user exists" do
       get "/news"
 
@@ -26,7 +18,7 @@ RSpec.describe StoriesController do
 
     it "display list of unread stories" do
       login_as(default_user)
-      setup
+      create(:story)
 
       get "/news"
 
@@ -35,16 +27,16 @@ RSpec.describe StoriesController do
 
     it "displays the blog title and article title" do
       login_as(default_user)
-      setup
+      story = create(:story)
 
       get "/news"
 
-      expect(rendered).to have_text(story_one.headline)
+      expect(rendered).to have_text(story.headline)
     end
 
     it "displays all user actions" do
       login_as(default_user)
-      setup
+      create(:story)
 
       get "/news"
 
@@ -53,7 +45,7 @@ RSpec.describe StoriesController do
 
     it "has correct footer links" do
       login_as(default_user)
-      setup
+      create(:story)
 
       get "/news"
 
@@ -92,65 +84,67 @@ RSpec.describe StoriesController do
   end
 
   describe "#update" do
+    headers = { "CONTENT_TYPE" => "application/json" }
+
     it "marks a story as read when it is_read not malformed" do
       login_as(default_user)
+      story = create(:story)
       params = { is_read: true }.to_json
-      headers = { "CONTENT_TYPE" => "application/json" }
 
-      expect { put("/stories/#{story_one.id}", params:, headers:) }
-        .to change_record(story_one, :is_read).from(false).to(true)
+      expect { put("/stories/#{story.id}", params:, headers:) }
+        .to change_record(story, :is_read).from(false).to(true)
     end
 
     it "marks a story as read when is_read is malformed" do
       login_as(default_user)
+      story = create(:story)
       params = { is_read: "malformed" }.to_json
-      headers = { "CONTENT_TYPE" => "application/json" }
 
-      expect { put("/stories/#{story_one.id}", params:, headers:) }
-        .to change_record(story_one, :is_read).from(false).to(true)
+      expect { put("/stories/#{story.id}", params:, headers:) }
+        .to change_record(story, :is_read).from(false).to(true)
     end
 
     it "marks a story as keep unread when it keep_unread not malformed" do
       login_as(default_user)
+      story = create(:story)
       params = { keep_unread: true }.to_json
-      headers = { "CONTENT_TYPE" => "application/json" }
 
-      expect { put("/stories/#{story_one.id}", params:, headers:) }
-        .to change_record(story_one, :keep_unread).from(false).to(true)
+      expect { put("/stories/#{story.id}", params:, headers:) }
+        .to change_record(story, :keep_unread).from(false).to(true)
     end
 
     it "marks a story as keep unread when keep_unread is malformed" do
       login_as(default_user)
+      story = create(:story)
       params = { keep_unread: "malformed" }.to_json
-      headers = { "CONTENT_TYPE" => "application/json" }
 
-      expect { put("/stories/#{story_one.id}", params:, headers:) }
-        .to change_record(story_one, :keep_unread).from(false).to(true)
+      expect { put("/stories/#{story.id}", params:, headers:) }
+        .to change_record(story, :keep_unread).from(false).to(true)
     end
 
     it "marks a story as starred when is_starred is not malformed" do
       login_as(default_user)
+      story = create(:story)
       params = { is_starred: true }.to_json
-      headers = { "CONTENT_TYPE" => "application/json" }
 
-      expect { put("/stories/#{story_one.id}", params:, headers:) }
-        .to change_record(story_one, :is_starred).from(false).to(true)
+      expect { put("/stories/#{story.id}", params:, headers:) }
+        .to change_record(story, :is_starred).from(false).to(true)
     end
 
     it "marks a story as starred when is_starred is malformed" do
       login_as(default_user)
+      story = create(:story)
       params = { is_starred: "malformed" }.to_json
-      headers = { "CONTENT_TYPE" => "application/json" }
 
-      expect { put("/stories/#{story_one.id}", params:, headers:) }
-        .to change_record(story_one, :is_starred).from(false).to(true)
+      expect { put("/stories/#{story.id}", params:, headers:) }
+        .to change_record(story, :is_starred).from(false).to(true)
     end
   end
 
   describe "#mark_all_as_read" do
     it "marks all unread stories as read and reload the page" do
       login_as(default_user)
-      stories = create_pair(:story, :unread)
+      stories = create_pair(:story)
       params = { story_ids: stories.map(&:id) }
 
       expect { post("/stories/mark_all_as_read", params:) }

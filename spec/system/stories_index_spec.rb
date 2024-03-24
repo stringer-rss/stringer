@@ -2,7 +2,7 @@
 
 RSpec.describe "stories/index" do
   it "displays the stories" do
-    create(:story, :unread, title: "My Story")
+    create(:story, title: "My Story")
     login_as(default_user)
 
     visit news_path
@@ -20,7 +20,7 @@ RSpec.describe "stories/index" do
   end
 
   it "marks all stories as read" do
-    create(:story, :unread, title: "My Story")
+    create(:story, title: "My Story")
     login_as(default_user)
     visit news_path
 
@@ -32,7 +32,7 @@ RSpec.describe "stories/index" do
   it "refreshes the page" do
     login_as(default_user)
     visit news_path
-    create(:story, :unread, title: "My Story")
+    create(:story, title: "My Story")
 
     click_on "Refresh"
 
@@ -40,7 +40,7 @@ RSpec.describe "stories/index" do
   end
 
   it "displays the story body when the row is clicked" do
-    create(:story, :unread, title: "My Story", body: "My Body")
+    create(:story, title: "My Story", body: "My Body")
     login_as(default_user)
     visit news_path
 
@@ -57,7 +57,7 @@ RSpec.describe "stories/index" do
   end
 
   it "allows marking a story as starred" do
-    create(:story, :unread, title: "My Story")
+    create(:story, title: "My Story")
     login_as(default_user)
 
     star_story("My Story")
@@ -67,7 +67,7 @@ RSpec.describe "stories/index" do
   end
 
   it "allows marking a story as unstarred" do
-    create(:story, :unread, :starred, title: "My Story")
+    create(:story, :starred, title: "My Story")
     login_as(default_user)
 
     star_story("My Story")
@@ -84,7 +84,7 @@ RSpec.describe "stories/index" do
   end
 
   it "allows marking a story as unread" do
-    create(:story, :unread, :starred, title: "My Story")
+    create(:story, :starred, title: "My Story")
     login_as(default_user)
     mark_story_unread("My Story")
 
@@ -94,7 +94,7 @@ RSpec.describe "stories/index" do
   end
 
   it "allows viewing a story with hot keys" do
-    create(:story, :unread, title: "My Story", body: "My Body")
+    create(:story, title: "My Story", body: "My Body")
     login_as(default_user)
     visit news_path
 

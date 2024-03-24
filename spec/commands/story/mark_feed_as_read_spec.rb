@@ -2,7 +2,7 @@
 
 RSpec.describe MarkFeedAsRead do
   it "marks feed stories as read before timestamp" do
-    story = create(:story, :unread, created_at: 1.week.ago)
+    story = create(:story, created_at: 1.week.ago)
     before = 1.day.ago
 
     expect { described_class.call(story.feed_id, before) }
