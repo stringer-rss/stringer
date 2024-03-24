@@ -3,40 +3,41 @@
 require "support/feed_server"
 
 RSpec.describe "Feed importing" do
-  let(:server) { FeedServer.new }
-  let(:feed) do
+  def create_server(url: "feed01_valid_feed/feed.xml")
+    server = FeedServer.new
+    server.response = sample_data(url)
+    server
+  end
+
+  def create_feed(**options)
     create(
       :feed,
       name: "Example feed",
       last_fetched: Time.zone.local(2014, 1, 1),
-      url: server.url
+      **options
     )
   end
 
   describe "Valid feed" do
-    before do
-      # articles older than 3 days are ignored, so freeze time within
-      # applicable range of the stories in the sample feed
-      travel_to(Time.parse("2014-08-15T17:30:00Z"))
-    end
+    # articles older than 3 days are ignored, so freeze time within
+    # applicable range of the stories in the sample feed
+    # travel_to(Time.parse("2014-08-15T17:30:00Z"))
 
     describe "Importing for the first time" do
       it "imports all entries" do
-        server.response = sample_data("feeds/feed01_valid_feed/feed.xml")
+        travel_to(Time.parse("2014-08-15T17:30:00Z"))
+        feed = create_feed(url: create_server.url)
         expect { Feed::FetchOne.call(feed) }
           .to change(feed.stories, :count).to(5)
       end
     end
 
     describe "Importing for the second time" do
-      before do
-        server.response = sample_data("feeds/feed01_valid_feed/feed.xml")
-        Feed::FetchOne.call(feed)
-      end
-
       context "no new entries" do
         it "does not create new stories" do
-          server.response = sample_data("feeds/feed01_valid_feed/feed.xml")
+          travel_to(Time.parse("2014-08-15T17:30:00Z"))
+          feed = create_feed(url: create_server.url)
+          Feed::FetchOne.call(feed)
           expect { Feed::FetchOne.call(feed) }
             .not_to change(feed.stories, :count)
         end
@@ -44,8 +45,11 @@ RSpec.describe "Feed importing" do
 
       context "new entries" do
         it "creates new stories" do
-          server.response =
-            sample_data("feeds/feed01_valid_feed/feed_updated.xml")
+          travel_to(Time.parse("2014-08-15T17:30:00Z"))
+          server = create_server
+          feed = create_feed(url: server.url)
+          Feed::FetchOne.call(feed)
+          server.response = sample_data("feed01_valid_feed/feed_updated.xml")
           expect { Feed::FetchOne.call(feed) }
             .to change(feed.stories, :count).by(1)
         end
@@ -54,9 +58,10 @@ RSpec.describe "Feed importing" do
   end
 
   describe "Feed with incorrect pubdates" do
-    before { travel_to(Time.parse("2014-08-12T17:30:00Z")) }
-
     context "has been fetched before" do
+      url = "feed02_invalid_published_dates/feed.xml"
+      last_fetched = Time.parse("2014-08-12T00:01:00Z")
+
       it "imports all new stories" do
         # This spec describes a scenario where the feed is reporting incorrect
         # published dates for stories. The feed in question is
@@ -67,9 +72,9 @@ RSpec.describe "Feed importing" do
         # last time this feed was fetched is after 00:00 the day the article
         # was published.
 
-        feed.last_fetched = Time.parse("2014-08-12T00:01:00Z")
-        server.response =
-          sample_data("feeds/feed02_invalid_published_dates/feed.xml")
+        travel_to(Time.parse("2014-08-12T17:30:00Z"))
+        server = create_server(url:)
+        feed = create_feed(url: server.url, last_fetched:)
 
         expect { Feed::FetchOne.call(feed) }
           .to change(feed.stories, :count).by(1)
@@ -79,5 +84,5 @@ RSpec.describe "Feed importing" do
 end
 
 def sample_data(path)
-  File.new(File.join("spec", "sample_data", path)).read
+  File.new(File.join("spec", "sample_data", "feeds", path)).read
 end

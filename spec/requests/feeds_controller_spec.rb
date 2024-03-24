@@ -103,7 +103,7 @@ RSpec.describe FeedsController do
 
   describe "#create" do
     context "when the feed url is valid" do
-      let(:feed_url) { "http://example.com/" }
+      feed_url = "http://example.com/"
 
       it "adds the feed and queues it to be fetched" do
         login_as(default_user)
@@ -123,7 +123,7 @@ RSpec.describe FeedsController do
     end
 
     context "when the feed url is invalid" do
-      let(:feed_url) { "http://not-a-valid-feed.com/" }
+      feed_url = "http://not-a-valid-feed.com/"
 
       it "does not add the feed" do
         login_as(default_user)
@@ -136,7 +136,7 @@ RSpec.describe FeedsController do
     end
 
     context "when the feed url is one we already subscribe to" do
-      let(:feed_url) { "http://example.com/" }
+      feed_url = "http://example.com/"
 
       it "does not add the feed" do
         login_as(default_user)

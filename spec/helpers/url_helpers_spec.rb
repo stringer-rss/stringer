@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe UrlHelpers do
-  let(:helper) do
+  def helper
     helper_class = Class.new { include UrlHelpers }
     helper_class.new
   end
@@ -41,7 +41,7 @@ RSpec.describe UrlHelpers do
       content = <<~HTML
         <div>
         <img foo="bar">
-        <a name="something"/></a>
+        <a name="something"></a>
         <video foo="bar"></video>
         </div>
       HTML

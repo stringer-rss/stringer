@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 RSpec.describe "Story" do
-  let(:story) { build_stubbed(:story) }
-
   describe ".unread" do
     it "returns stories where is_read is false" do
       story = create(:story, :unread)
@@ -25,11 +23,13 @@ RSpec.describe "Story" do
     end
 
     it "uses a fallback string if story has no title" do
+      story = build_stubbed(:story)
       story.title = nil
       expect(story.headline).to eq(Story::UNTITLED)
     end
 
     it "strips html out" do
+      story = build_stubbed(:story)
       story.title = "<b>Super cool</b> stuff"
       expect(story.headline).to eq("Super cool stuff")
     end
@@ -43,17 +43,18 @@ RSpec.describe "Story" do
     end
 
     it "strips html out" do
+      story = build_stubbed(:story)
       story.body = "<a href='http://github.com'>Yo</a> dawg"
       expect(story.lead).to eq("Yo dawg")
     end
   end
 
   describe "#source" do
-    let(:feed) { Feed.new(name: "Superfeed") }
-
-    before { story.feed = feed }
-
     it "returns the feeds name" do
+      story = build_stubbed(:story)
+      feed = Feed.new(name: "Superfeed")
+      story.feed = feed
+
       expect(story.source).to eq(feed.name)
     end
   end

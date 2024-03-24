@@ -12,12 +12,10 @@ RSpec.describe ImportsController do
   end
 
   describe "POST /feeds/import" do
-    let(:opml_file) do
-      Rack::Test::UploadedFile.new(
-        "spec/sample_data/subscriptions.xml",
-        "application/xml"
-      )
-    end
+    opml_file = Rack::Test::UploadedFile.new(
+      "spec/sample_data/subscriptions.xml",
+      "application/xml"
+    )
 
     it "parses OPML and starts fetching" do
       expect(Feed::ImportFromOpml).to receive(:call).once
