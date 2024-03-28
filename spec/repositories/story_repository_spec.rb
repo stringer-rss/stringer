@@ -446,26 +446,18 @@ RSpec.describe StoryRepository do
   end
 
   describe ".extract_content" do
-    let(:entry) do
-      double(
+    it "sanitizes content" do
+      entry = double(
         url: "http://mdswanson.com",
         content: "Some test content<script></script>"
       )
-    end
-
-    let(:summary_only) do
-      double(
-        url: "http://mdswanson.com",
-        content: nil,
-        summary: "Dumb publisher"
-      )
-    end
-
-    it "sanitizes content" do
       expect(described_class.extract_content(entry)).to eq("Some test content")
     end
 
     it "falls back to summary if there is no content" do
+      url = "http://mdswanson.com"
+      summary_only = double(url:, content: nil, summary: "Dumb publisher")
+
       expect(described_class.extract_content(summary_only))
         .to eq("Dumb publisher")
     end
