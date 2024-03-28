@@ -170,17 +170,6 @@ RSpec/MultipleExpectations:
     - 'spec/utils/i18n_support_spec.rb'
     - 'spec/utils/opml_parser_spec.rb'
 
-# Offense count: 24
-# Configuration parameters: AllowSubject, Max.
-RSpec/MultipleMemoizedHelpers:
-  Exclude:
-    - 'spec/helpers/url_helpers_spec.rb'
-    - 'spec/integration/feed_importing_spec.rb'
-    - 'spec/models/story_spec.rb'
-    - 'spec/repositories/story_repository_spec.rb'
-    - 'spec/requests/feeds_controller_spec.rb'
-    - 'spec/requests/imports_controller_spec.rb'
-
 # Offense count: 5
 # Configuration parameters: EnforcedStyle, IgnoreSharedExamples.
 # SupportedStyles: always, named_only
