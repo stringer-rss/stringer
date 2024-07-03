@@ -226,7 +226,7 @@ GEM
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.8.0)
-    rack (3.1.4)
+    rack (3.1.6)
     rack-session (2.0.0)
       rack (>= 3.0.0)
     rack-ssl (1.4.1)
