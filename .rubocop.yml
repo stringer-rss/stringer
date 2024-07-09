@@ -17,12 +17,11 @@ AllCops:
     - 'vendor/**/*'
 
 Capybara/ClickLinkOrButtonStyle: { EnforcedStyle: link_or_button }
-Layout/LineLength: { Max: 80 }
+Layout/LineLength: { Max: 80, Exclude: [db/migrate/*.rb] }
 Layout/RedundantLineBreak: { InspectBlocks: true }
-Metrics/AbcSize:
-  Exclude: [db/migrate/20230305010750_create_good_jobs.rb]
-  CountRepeatedAttributes: false
-Metrics/BlockLength: { Exclude: [config/**/*.rb, spec/**/*.rb, db/seeds/**/*.rb] }
+Metrics/AbcSize: { Exclude: [db/migrate/*.rb], CountRepeatedAttributes: false }
+Metrics/BlockLength:
+  Exclude: [config/**/*.rb, db/migrate/*.rb, spec/**/*.rb, db/seeds/**/*.rb]
 Metrics/MethodLength: { Exclude: [db/migrate/*.rb] }
 Rails/SkipsModelValidations: { AllowedMethods: [update_all] }
 RSpec/DescribeClass: { Exclude: [spec/system/**/*] }
