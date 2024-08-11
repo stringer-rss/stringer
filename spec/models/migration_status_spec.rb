@@ -2,7 +2,7 @@
 
 RSpec.describe "MigrationStatus" do
   it "returns array of strings representing pending migrations" do
-    migrator = ActiveRecord::Base.connection.migration_context.open
+    migrator = ActiveRecord::Base.connection.pool.migration_context.open
 
     allow(migrator).to receive(:pending_migrations).and_return(
       [

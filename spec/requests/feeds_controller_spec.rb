@@ -101,9 +101,20 @@ RSpec.describe FeedsController do
     end
   end
 
+  def with_test_adapter
+    adapter = ActiveJob::Base.queue_adapter
+    ActiveJob::Base.queue_adapter = :test
+
+    yield
+
+    ActiveJob::Base.queue_adapter = adapter
+  end
+
   describe "#create" do
     context "when the feed url is valid" do
       feed_url = "http://example.com/"
+
+      around { |example| with_test_adapter(&example) }
 
       it "adds the feed and queues it to be fetched" do
         login_as(default_user)
