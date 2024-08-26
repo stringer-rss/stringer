@@ -11,7 +11,7 @@ class Feed < ApplicationRecord
   validates :url, presence: true, uniqueness: { scope: :user_id }
   validates :user_id, presence: true
 
-  enum status: { green: 0, yellow: 1, red: 2 }
+  enum :status, { green: 0, yellow: 1, red: 2 }
 
   scope :with_unread_stories_counts,
         lambda {
