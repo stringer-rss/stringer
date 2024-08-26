@@ -11,7 +11,7 @@ if Rails.env.production?
 end
 require "rspec/rails"
 
-Dir[Rails.root.join("spec/support/*.rb")].each { |path| require path }
+Rails.root.glob("spec/support/*.rb").each { |path| require path }
 
 # Checks for pending migrations and applies them before tests are run.
 begin
