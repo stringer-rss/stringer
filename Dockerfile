@@ -1,4 +1,4 @@
-FROM ruby:3.3.4
+FROM ruby:3.3.5
 
 ENV RACK_ENV=production
 ENV RAILS_ENV=production
@@ -23,7 +23,7 @@ RUN DEBIAN_FRONTEND=noninteractive dpkg-reconfigure locales \
     && locale-gen C.UTF-8 \
     && /usr/sbin/update-locale LANG=C.UTF-8
 
-ENV LC_ALL C.UTF-8
+ENV LC_ALL=C.UTF-8
 
 ARG TARGETARCH
 ENV SUPERCRONIC_URL=https://github.com/aptible/supercronic/releases/download/v0.1.3/supercronic-linux-$TARGETARCH \
