@@ -439,7 +439,7 @@ DEPENDENCIES
   with_model
 
 RUBY VERSION
-   ruby 3.3.5
+   ruby 3.3.6
 
 BUNDLED WITH
    2.4.13
