@@ -13,7 +13,7 @@ gem "bcrypt"
 gem "bootsnap", require: false
 gem "feedbag"
 gem "feedjira"
-gem "good_job", "~> 4.4.0"
+gem "good_job", "~> 4.5.0"
 gem "httparty"
 gem "nokogiri", "~> 1.16.0"
 gem "pg"
