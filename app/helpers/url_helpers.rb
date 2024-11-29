@@ -7,9 +7,9 @@ module UrlHelpers
     [["a", "href"], ["img", "src"], ["video", "src"]].each do |tag, attr|
       doc.css("#{tag}[#{attr}]").each do |node|
         url = node.get_attribute(attr)
-        next if url =~ URI::DEFAULT_PARSER.regexp[:ABS_URI]
+        next if url =~ URI::RFC2396_PARSER.regexp[:ABS_URI]
 
-        node.set_attribute(attr, URI.join(base_url, url).to_s)
+        node.set_attribute(attr, URI.join(URI.parse(base_url), url).to_s)
       rescue URI::InvalidURIError
         # Just ignore. If we cannot parse the url, we don't want the entire
         # import to blow up.
