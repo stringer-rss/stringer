@@ -54,4 +54,6 @@ class Stringer::Application < Rails::Application
     ENV.fetch("ENCRYPTION_DETERMINISTIC_KEY")
   config.active_record.encryption.key_derivation_salt =
     ENV.fetch("ENCRYPTION_KEY_DERIVATION_SALT")
+
+  config.assets.compile = false
 end
