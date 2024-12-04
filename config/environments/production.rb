@@ -82,4 +82,6 @@ Rails.application.configure do
   #   { exclude: ->(request) { request.path == "/up" } }
 
   config.good_job.execution_mode = :async
+
+  config.assets.compile = false
 end
