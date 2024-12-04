@@ -21,7 +21,7 @@ Rails.application.configure do
 
   # Cache assets for far-future expiry since they are all digest stamped.
   config.public_file_server.headers = {
-    "cache-control" => "public, max-age=#{Integer(1.year, 10)}"
+    "cache-control" => "public, max-age=#{Integer(1.year)}"
   }
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
