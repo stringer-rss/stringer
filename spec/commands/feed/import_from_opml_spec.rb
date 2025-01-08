@@ -13,6 +13,8 @@ RSpec.describe Feed::ImportFromOpml do
 
   autoblog = { name: "Autoblog", url: "http://feeds.autoblog.com/weblogsinc/autoblog/" }
   city_guide = { name: "City Guide News", url: "http://www.probki.net/news/RSS_news_feed.asp" }
+  macrumors = { name: "MacRumors: Mac News and Rumors - Front Page", url: "http://feeds.macrumors.com/MacRumors-Front" }
+  dead_feed = { name: "http://deadfeed.example.com/feed.rss", url: "http://deadfeed.example.com/feed.rss" }
 
   def read_subscriptions
     File.open(
@@ -26,6 +28,11 @@ RSpec.describe Feed::ImportFromOpml do
 
   def find_feed(feed_details)
     Feed.where(feed_details)
+  end
+
+  before do
+    stub_request(:get, "http://feeds.macrumors.com/MacRumors-Front").to_return(status: 200, body: File.read("spec/sample_data/feeds/feed01_valid_feed/feed.xml"))
+    stub_request(:get, "http://deadfeed.example.com/feed.rss").to_return(status: 404)
   end
 
   context "adding group_id for existing feeds" do
@@ -69,6 +76,8 @@ RSpec.describe Feed::ImportFromOpml do
 
       expect(find_feed(tmw_football)).to exist
       expect(find_feed(giant_robots)).to exist
+      expect(find_feed(macrumors)).to exist
+      expect(find_feed(dead_feed)).to exist
     end
 
     it "sets group" do
