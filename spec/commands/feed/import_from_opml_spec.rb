@@ -31,8 +31,14 @@ RSpec.describe Feed::ImportFromOpml do
   end
 
   before do
-    stub_request(:get, "http://feeds.macrumors.com/MacRumors-Front").to_return(status: 200, body: File.read("spec/sample_data/feeds/feed01_valid_feed/feed.xml"))
-    stub_request(:get, "http://deadfeed.example.com/feed.rss").to_return(status: 404)
+    stub_request(:get, "http://feeds.macrumors.com/MacRumors-Front").to_return(
+      status: 200,
+      body: File.read("spec/sample_data/feeds/feed01_valid_feed/feed.xml")
+    )
+    stub_request(
+      :get,
+      "http://deadfeed.example.com/feed.rss"
+    ).to_return(status: 404)
   end
 
   context "adding group_id for existing feeds" do
