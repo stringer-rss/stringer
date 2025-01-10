@@ -41,6 +41,26 @@ RSpec.describe Feed::ImportFromOpml do
     ).to_return(status: 404)
   end
 
+  context "adds title for existing feed" do
+    it "changes existing feed if name is nil" do
+      create_feed({ name: nil, url: macrumors[:url] })
+
+      described_class.call(read_subscriptions, user: default_user)
+
+      expect(find_feed(macrumors)).to exist
+    end
+
+    it "keeps existing feed name if name is something else" do
+      feed1 = create_feed({ name: "MacRumors", url: macrumors[:url] })
+
+      described_class.call(read_subscriptions, user: default_user)
+
+      expect(find_feed(macrumors)).not_to exist
+      feed1.reload
+      expect(feed1.name).to eq("MacRumors")
+    end
+  end
+
   context "adding group_id for existing feeds" do
     it "retains exising feeds" do
       feed1 = create_feed(tmw_football)
