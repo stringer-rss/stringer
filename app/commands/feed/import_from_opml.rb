@@ -41,9 +41,7 @@ module Feed::ImportFromOpml
 
       result = FeedDiscovery.call(parsed_feed[:url])
       title = result.title if result
-      parsed_feed[:name] =
-        ContentSanitizer.call(title.presence || parsed_feed[:url])
-      feed.name = parsed_feed[:name]
+      feed.name = ContentSanitizer.call(title.presence || parsed_feed[:url])
     end
   end
 end
