@@ -40,7 +40,7 @@ module OpmlParser
 
     def feed_to_hash(feed)
       {
-        name: extract_name(feed.attributes).value,
+        name: extract_name(feed.attributes)&.value,
         url: feed.attributes["xmlUrl"].value
       }
     end

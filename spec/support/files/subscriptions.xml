@@ -25,5 +25,7 @@
         </outline>
         <outline title="Empty Group" text="Empty Group">
         </outline>
+        <outline type="rss" xmlUrl="http://feeds.macrumors.com/MacRumors-Front"/>
+        <outline type="rss" xmlUrl="http://deadfeed.example.com/feed.rss"/>
     </body>
 </opml>
