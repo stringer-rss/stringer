@@ -37,7 +37,7 @@ module Feed::ImportFromOpml
     end
 
     def find_feed_name(feed, parsed_feed)
-      return unless parsed_feed[:name].nil? && feed.name.nil?
+      return if feed.name?
 
       result = FeedDiscovery.call(parsed_feed[:url])
       title = result.title if result
