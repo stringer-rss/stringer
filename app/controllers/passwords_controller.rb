@@ -41,14 +41,18 @@ class PasswordsController < ApplicationController
   end
 
   def password_params
-    params.require(:user)
-          .permit(:password_challenge, :password, :password_confirmation)
+    params
+      .expect(user: [
+                :password_challenge,
+                :password,
+                :password_confirmation
+              ])
   end
 
   def user_params
-    params.require(:user)
-          .permit(:username, :password, :password_confirmation)
-          .merge(admin: User.none?)
-          .to_h.symbolize_keys
+    params
+      .expect(user: [:username, :password, :password_confirmation])
+      .merge(admin: User.none?)
+      .to_h.symbolize_keys
   end
 end
