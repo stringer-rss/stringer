@@ -17,6 +17,6 @@ class SettingsController < ApplicationController
   private
 
   def setting_params
-    params.require(:setting).permit(:enabled)
+    params.expect(setting: [:enabled])
   end
 end
