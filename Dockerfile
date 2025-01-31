@@ -1,4 +1,4 @@
-FROM ruby:3.4.1
+FROM ruby:3.4.1@sha256:45ca46a37e16d4f0b383ff6f400edc7e096361ac05c91ead86481ecc332e665e
 
 ENV RACK_ENV=production
 ENV RAILS_ENV=production
@@ -9,13 +9,10 @@ EXPOSE 8080
 
 SHELL ["/bin/bash", "-c"]
 
-WORKDIR /app
-ADD Gemfile Gemfile.lock /app/
-RUN gem install bundler:$BUNDLER_VERSION && bundle install
-
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-      supervisor locales nodejs vim nano \
+      procps bzip2 libffi-dev libgmp-dev libssl-dev libyaml-dev zlib1g-dev libpq-dev \
+      build-essential python3-pkg-resources supervisor locales nodejs vim nano \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -38,6 +35,10 @@ RUN curl -fsSLO "$SUPERCRONIC_URL" \
  && chmod +x "$SUPERCRONIC" \
  && mv "$SUPERCRONIC" "/usr/local/bin/${SUPERCRONIC}" \
  && ln -s "/usr/local/bin/${SUPERCRONIC}" /usr/local/bin/supercronic
+
+WORKDIR /app
+ADD Gemfile Gemfile.lock /app/
+RUN gem install bundler:$BUNDLER_VERSION && bundle install
 
 ADD docker/supervisord.conf /etc/supervisord.conf
 ADD docker/start.sh /app/

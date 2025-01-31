@@ -11,6 +11,9 @@ env:
 jobs:
   build_docker:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -50,10 +53,8 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
           push: ${{ github.ref_name == 'main' }}
           tags: |
             ${{ steps.get-tag-latest.outputs.tags }}
             ${{ steps.get-tag-sha.outputs.tags }}
-          cache-from: type=gha
-          cache-to: type=gha

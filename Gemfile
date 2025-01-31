@@ -43,7 +43,6 @@ group :development, :test do
   gem "coveralls_reborn", require: false
   gem "debug"
   gem "factory_bot"
-  gem "pry-byebug"
   gem "rspec"
   gem "rspec-rails"
   gem "simplecov"
