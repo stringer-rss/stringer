@@ -36,7 +36,7 @@ RSpec.describe DebugController do
 
     it "displays the jobs count" do
       setup
-      12.times { GoodJob::Job.create! }
+      12.times { GoodJob::Job.create!(scheduled_at: Time.zone.now) }
 
       get "/admin/debug"
 
