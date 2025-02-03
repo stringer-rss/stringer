@@ -9,12 +9,12 @@ RSpec.describe "Feed importing" do
     server
   end
 
-  def create_feed(**options)
+  def create_feed(**)
     create(
       :feed,
       name: "Example feed",
       last_fetched: Time.zone.local(2014, 1, 1),
-      **options
+      **
     )
   end
 
