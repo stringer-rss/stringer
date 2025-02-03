@@ -10,7 +10,7 @@ env:
 
 jobs:
   build_docker:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -50,7 +50,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64
+          platforms: linux/amd64,linux/arm64
           push: ${{ github.ref_name == 'main' }}
           tags: |
             ${{ steps.get-tag-latest.outputs.tags }}
