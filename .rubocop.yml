@@ -4,10 +4,12 @@ inherit_mode: { merge: [Exclude] }
 require:
   - rubocop-capybara
   - rubocop-factory_bot
+  - rubocop-rspec_rails
+
+plugins:
   - rubocop-rails
   - rubocop-rake
   - rubocop-rspec
-  - rubocop-rspec_rails
 
 AllCops:
   DisplayCopNames: true
