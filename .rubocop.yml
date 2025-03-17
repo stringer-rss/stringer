@@ -1,15 +1,13 @@
 inherit_from: .rubocop_todo.yml
 inherit_mode: { merge: [Exclude] }
 
-require:
+plugins:
   - rubocop-capybara
   - rubocop-factory_bot
-  - rubocop-rspec_rails
-
-plugins:
   - rubocop-rails
   - rubocop-rake
   - rubocop-rspec
+  - rubocop-rspec_rails
 
 AllCops:
   DisplayCopNames: true
@@ -59,6 +57,7 @@ Style/Documentation: { Enabled: false }
 
 Bundler/GemComment: { Enabled: false }
 Bundler/GemVersion: { Enabled: false }
+Capybara/AmbiguousClick: { Enabled: false }
 Layout/SingleLineBlockChain: { Enabled: false }
 Lint/ConstantResolution: { Enabled: false }
 Rails/BulkChangeTable: { Enabled: false }
