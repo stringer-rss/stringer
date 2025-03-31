@@ -3,84 +3,86 @@ zh-TW:
     next: 下一頁
     of: 之
     previous: 上一頁
-    sorry: 你現在還沒有任何已讀的文章!
+    sorry: 您目前還沒有任何已讀的文章！
   date:
     abbr_month_names:
     - 
-    - 一月
-    - 二月
-    - 三月
-    - 四月
-    - 五月
-    - 六月
-    - 七月
-    - 八月
-    - 九月
-    - 十月
-    - 十一月
-    - 十二月
+    - 1 月
+    - 2 月
+    - 3 月
+    - 4 月
+    - 5 月
+    - 6 月
+    - 7 月
+    - 8 月
+    - 9 月
+    - 10 月
+    - 11 月
+    - 12 月
   feeds:
     add:
-      description: 請填入你想要訂閱的 RSS 訊息來源
+      description: 請輸入您要訂閱的 RSS 來源網址。
       fields:
-        feed_url: RSS 訊息來源
+        feed_url: RSS 網址
         submit: 新增
-      title: 想要新增新內容？
+      title: 想要新增新內容嗎？
     create:
-      success: 你的訂閱已經新增完畢，請稍等一段時間再回來查看
-      already_subscribed: 你已經訂閱過這個訊息來源了
-      feed_not_found: 我們找不到這個訊息來源，麻煩檢查並稍後後再試一次
+      success: 您的訂閱已經新增完畢，請稍候一段時間再回來確認。
+      already_subscribed: 您已經訂閱過這個 RSS 了...
+      feed_not_found: 我們找不到這個 RSS，請檢查後再試一次。
     edit:
       fields:
-        feed_name: 訊息來源名稱
-        feed_url: 訊息來源網址
+        feed_name: RSS 名稱
+        feed_url: RSS 網址
         group: 群組
-        submit: 送出
+        submit: 儲存
       flash:
-        updated_successfully: 訊息來源成功更新！
+        updated_successfully: 已為您更新 RSS 訂閱！
     index:
       add: 新增
-      add_some_feeds: 嘿！你應該要%{add}一些訂閱
+      add_some_feeds: 嘿！您應該要%{add}一些 RSS 訂閱。
     destroy:
-      success: 提要已刪除。
+      success: RSS 已刪除。
   first_run:
     password:
       anti_social: 反社交化的
-      description: 設定一組你的密碼，然後你就可以開始享受獨自閱讀的樂趣了
+      description: 讓我們設定一組您的密碼，然後您就可以開始享受獨自閱讀的樂趣了。
       fields:
         next: 下一步
         password: 密碼
         password_confirmation: 確認密碼
       flash:
-        passwords_dont_match: 兩次輸入的密碼不同，麻煩你檢查並重新輸入。
-      subtitle: 這裡只會有一個使用者，那就是你
+        passwords_dont_match: 您兩次輸入的密碼不同，麻煩確認並重新輸入。
+      subtitle: 這裡只有一位使用者，那就是您。
       title: Stringer 是
   flash:
-    cookies_required: 抱歉，你的瀏覽器似乎停用了 Cookie，請啟用瀏覽器的 Cookie 功能才能正常使用。
-    js_required: 抱歉，你的瀏覽器似乎停用了 JavaScript，請啟用瀏覽器的 JavaScript 功能才能正常使用。
+    cookies_required: 抱歉，您的瀏覽器似乎停用了 Cookie，請啟用瀏覽器的 Cookie 功能才能正常使用。
+    js_required: 抱歉，您的瀏覽器似乎停用了 JavaScript，請啟用瀏覽器的 JavaScript 功能才能正常使用。
   import:
-    description: 從其他服務導入您的提要。
+    description: 從其他服務匯入您的 RSS 訂閱。
     fields:
       import: 匯入
       not_now: 稍後再說
-    subtitle: 開始設定你的訂閱吧
-    title: 歡迎使用
+    subtitle: 讓我們開始設定您的 RSS 訂閱吧。
+    title: 歡迎使用。
   layout:
-    back_to_work: 回去工作吧，懶鬼！
+    admin_settings: 管理員設定
+    back_to_work: 該回去工作了，偷懶鬼！
     export: 匯出
     hey: 嘿！
     import: 匯入
     logout: 登出
+    profile: 個人資料
     support: 支援
-    title: stringer | 你的 RSS 好夥伴
+    title: stringer | 您的 RSS 好夥伴
   partials:
     action_bar:
       add_feed: 新增訂閱
-      archived_stories: 已讀文章
-      mark_all: 全部標為已讀
+      archived_stories: 已封存的文章
+      mark_all: 全部標示為已讀
       refresh: 重新整理
-      starred_stories: 加星號標記的文章
-      view_feeds: 查看訂閱列表
+      starred_stories: 星號標記的文章
+      view_feeds: 檢視訂閱列表
     feed:
       last_fetched:
         never: 尚未成功讀取過
@@ -88,71 +90,106 @@ zh-TW:
       status_bubble:
         green: 成功！
         red: 解析時出現錯誤（而且從來沒成功過！此訂閱可能已經失效！）
-        yellow: 解析時出現錯誤 （可能只是暫時的）
+        yellow: 解析時出現錯誤（可能只是暫時的）
     feed_action_bar:
       add_feed: 新增訂閱
-      archived_stories: 已讀文章
-      feeds: 查看訂閱列表
-      home: 返回未讀文章列表
-      starred_stories: 加上星號標記的文章
+      archived_stories: 已封存的文章
+      feeds: 檢視訂閱列表
+      home: 返回文章列表
+      starred_stories: 星號標記的文章
     shortcuts:
       keys:
         a: 新增訂閱
-        bv: 打開到原網址
-        f: 到訊息來源頁面
+        bv: 打開文章網址
+        f: 打開 RSS 頁面
         jk: 下一篇/上一篇文章
         left: 上一頁
-        m: 將一個條目標為已讀/未讀
-        np: 向上/向下移動
+        m: 標示文章為已讀/未讀
+        np: 向下/向上移動
         oenter: 點選打開/關閉
         or: 或
         r: 重新整理
         right: 下一頁
-        s: 將條目標為加上星號標記/取消星號標記
-        shifta: 全部標為已讀
-      title: 快捷鍵
+        s: 為文章加上/移除星號
+        shifta: 全部標示為已讀
+      title: 鍵盤快速鍵
     zen:
       archive: 查看所有文章
-      go_make: 去做些其它事了
-      gtfo: 該停止閱讀
-      rss_zero: 你已經達成了清空 RSS 的任務&trade;
+      go_make: 去做些什麼吧
+      gtfo: 現在停止閱讀然後
+      rss_zero: 您已達成清空 RSS 的任務 (RSS Zero™)
+  passwords:
+    update:
+      success: 密碼已更新
+      failure: '無法更新密碼：%{errors}'
+  profiles:
+    edit:
+      title: 編輯個人資料
+      warning_html:
+        <strong>警告！</strong>編輯您的使用者名稱或密碼將同時
+        變更您的 API 金鑰。您需要更新任何已連接至 Stringer 的
+        Fever 客戶端中的認證資訊。
+    update:
+      success: 個人資料已更新
+      failure: '無法更新個人資料：%{errors}'
   sessions:
     destroy:
       flash:
-        logged_out_successfully: 你已經成功登出
+        logged_out_successfully: 您已成功登出！
     new:
       fields:
+        unknown_username_html:
+          <strong>注意：</strong>如果您在設定 Stringer 時沒有設定使用者名稱，
+          則您的使用者名稱將會是「stringer」。登入後您可以在個人資料頁面中修改。
+        username: 使用者名稱
         password: 密碼
         submit: 登入
       flash:
-        wrong_password: 你輸入的密碼錯誤，麻煩重新輸入
+        wrong_password: 您輸入的密碼錯誤，請重新輸入。
       rss: RSS
+      sign_up_html: 或<a href=%{href}>註冊</a>。
       subtitle: 歡迎回來，我的朋友。
       title: Stringer 說
+  settings:
+    index:
+      heading: 應用程式設定
+      description: 編輯應用程式通用設定
+      signup:
+        enabled: 使用者註冊已啟用
+        disabled: 使用者註冊已停用
+        enable: 啟用
+        disable: 停用
   starred:
     next: 下一頁
     of: 之
     previous: 上一頁
-    sorry: 抱歉，你還沒有為任何條目加上星號標記
+    sorry: 抱歉，您還沒有為任何文章加上星號！
   stories:
-    keep_unread: 保持未讀狀態
+    keep_unread: 保持未讀
   time:
     formats:
-      default: '%b%d日 %H:%M'
+      default: '%b %d 日 %H:%M'
   tutorial:
-    add_feed: 新增新訂閱
-    as_read: 已讀
+    add_feed: 新增訂閱
+    as_read: 為已讀
     click_to_read: （點選閱讀）
-    description: 我們正在努力的載入您訂閱的內容，請稍等。
-    heroku_hourly_task: 您需要一個每小時執行的工作以檢查新的文章
-    heroku_one_more_thing: 還有一件事 ...
-    heroku_scheduler: 到 Heroku Scheduler 新增這個工作
-    mark_all: 全部標為
-    ready: OK，我想你已經準備好了~
+    description: 我們正在為您取得訂閱的內容，請稍候。
+    heroku_hourly_task: 您需要新增一個每小時執行的工作來檢查新文章。
+    heroku_one_more_thing: 還有一件事...
+    heroku_scheduler: 前往 Heroku Scheduler 並新增這個工作
+    mark_all: 全部標示
+    ready: 好了，準備就緒！
     refresh: 重新整理
     simple: 簡單的
-    start: 開始閱讀吧！
+    start: 開始閱讀
     subtitle: 這是一份簡單的使用手冊。
     title: 'Stringer 是 '
-    your_feeds: 你的訂閱列表
-    your_stories: 你訂閱的內容
+    your_feeds: 您的 RSS
+    your_stories: 您的文章
+  activerecord:
+    attributes:
+      user:
+        stories_order: "文章排序方式"
+      user/stories_order:
+        asc: "最舊優先"
+        desc: "最新優先"
