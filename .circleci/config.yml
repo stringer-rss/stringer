@@ -23,8 +23,6 @@ jobs:
           POSTGRES_DB: app_test
           POSTGRES_PASSWORD:
 
-    working_directory: ~/app
-
     steps:
       - checkout
       - browser-tools/install-browser-tools:
