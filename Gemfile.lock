@@ -460,7 +460,7 @@ DEPENDENCIES
   with_model
 
 RUBY VERSION
-   ruby 3.4.3
+   ruby 3.4.4
 
 BUNDLED WITH
    2.6.2
