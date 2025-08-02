@@ -21,6 +21,7 @@ services:
     networks:
       - stringer-network
     volumes:
+      - ./.env:/app/.env
       - /srv/stringer/data:/var/lib/postgresql/data
     env_file: .env
 
@@ -38,6 +39,8 @@ services:
       - 80:8080
     networks:
       - stringer-network
+    volumes:
+      - ./.env:/app/.env
     env_file: .env
 
 networks:
