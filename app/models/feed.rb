@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Feed < ApplicationRecord
-  has_many :stories, -> { order("published desc") }, dependent: :delete_all
+  has_many :stories, -> { order(published: :desc) }, dependent: :delete_all
   has_many :unread_stories, -> { unread }, class_name: "Story"
   belongs_to :group
   belongs_to :user

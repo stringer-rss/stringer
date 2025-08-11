@@ -56,17 +56,17 @@ class StoryRepository
   end
 
   def self.feed(feed_id)
-    Story.where(feed_id:).order("published desc").includes(:feed)
+    Story.where(feed_id:).order(published: :desc).includes(:feed)
   end
 
   def self.read(page = 1)
     Story.where(is_read: true).includes(:feed)
-         .order("published desc").page(page).per_page(20)
+         .order(published: :desc).page(page).per_page(20)
   end
 
   def self.starred(page = 1)
     Story.where(is_starred: true).includes(:feed)
-         .order("published desc").page(page).per_page(20)
+         .order(published: :desc).page(page).per_page(20)
   end
 
   def self.all_starred
