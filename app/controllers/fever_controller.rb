@@ -27,6 +27,10 @@ class FeverController < ApplicationController
   end
 
   def current_user
-    @current_user ||= User.find_by(api_key: params[:api_key])
+    if instance_variable_defined?(:@current_user)
+      @current_user
+    else
+      @current_user = User.find_by(api_key: params[:api_key])
+    end
   end
 end
