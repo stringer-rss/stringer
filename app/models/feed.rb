@@ -30,7 +30,7 @@ class Feed < ApplicationRecord
     {
       id:,
       favicon_id: 0,
-      title: name,
+      title: name || "",
       url:,
       site_url: url,
       is_spark: 0,
