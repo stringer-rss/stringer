@@ -82,7 +82,7 @@ RSpec.describe "Feed" do
       )
     end
 
-    it "should replace a null title with an empty string" do
+    it "replaces a null title with an empty string" do
       last_fetched = 1.day.ago
       feed = Feed.new(
         id: 52,
