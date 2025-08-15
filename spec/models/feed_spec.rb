@@ -84,12 +84,7 @@ RSpec.describe "Feed" do
 
     it "replaces a null title with an empty string" do
       last_fetched = 1.day.ago
-      feed = Feed.new(
-        id: 52,
-        name: nil,
-        url: "wat url",
-        last_fetched:
-      )
+      feed = Feed.new(id: 52, name: nil, url: "wat url", last_fetched:)
 
       expect(feed.as_fever_json).to eq(
         id: 52,
