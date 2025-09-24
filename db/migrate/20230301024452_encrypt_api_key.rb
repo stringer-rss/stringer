@@ -16,7 +16,7 @@ class EncryptAPIKey < ActiveRecord::Migration[7.0]
 
   def encrypt_api_keys
     connection.select_all("SELECT id, api_key FROM users").each do |user|
-      encrypted_api_key = ActiveRecord::Encryption.encrypt(user["api_key"])
+      encrypted_api_key = ActiveRecord::Encryption.encryptor.encrypt(user["api_key"])
       connection.update("UPDATE users SET api_key = #{connection.quote(encrypted_api_key)} WHERE id = #{user['id']}")
     end
   end
