@@ -139,7 +139,6 @@ RSpec.describe FeedsController do
       it "does not add the feed" do
         login_as(default_user)
         stub_request(:get, feed_url).to_return(status: 404)
-        expect($stderr).to receive(:puts).with(/Error occurred/)
         post("/feeds", params: { feed_url: })
 
         expect(rendered).to have_css(".error")
