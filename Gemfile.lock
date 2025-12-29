@@ -210,7 +210,7 @@ GEM
     net-smtp (0.5.1)
       net-protocol
     nio4r (2.7.5)
-    nokogiri (1.18.10)
+    nokogiri (1.19.0)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     ostruct (0.6.3)
@@ -442,7 +442,7 @@ DEPENDENCIES
   feedjira
   good_job (~> 4.13.0)
   httparty
-  nokogiri (~> 1.18.0)
+  nokogiri (~> 1.19.0)
   pg
   pry-byebug
   puma (~> 7.0)
