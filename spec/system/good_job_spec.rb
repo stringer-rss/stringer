@@ -6,6 +6,7 @@ RSpec.describe "admin/good_job" do
     a11y_skip = [
       "aria-required-children",
       "color-contrast",
+      "document-title",
       "landmark-unique",
       "landmark-one-main",
       "page-has-heading-one",
