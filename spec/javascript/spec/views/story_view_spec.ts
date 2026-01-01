@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 describe("StoryView", function () {
   it("should exist", function () {
     expect(StoryView).toBeDefined();
