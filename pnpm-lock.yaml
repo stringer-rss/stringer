@@ -14,6 +14,21 @@ importers:
       '@fontsource/reenie-beanie':
         specifier: ^5.2.8
         version: 5.2.8
+      '@hotwired/stimulus':
+        specifier: ^3.2.2
+        version: 3.2.2
+      '@hotwired/turbo':
+        specifier: ^8.0.20
+        version: 8.0.23
+      '@hotwired/turbo-rails':
+        specifier: ^8.0.20
+        version: 8.0.23
+      '@rails/actioncable':
+        specifier: ^8.1.100
+        version: 8.1.200
+      '@rails/activestorage':
+        specifier: ^8.1.100
+        version: 8.1.200
       backbone:
         specifier: 1.0.0
         version: 1.0.0
@@ -48,6 +63,9 @@ importers:
       '@types/backbone':
         specifier: latest
         version: 1.4.23
+      '@types/hotwired__turbo':
+        specifier: ^8.0.5
+        version: 8.0.6
       '@types/jquery':
         specifier: latest
         version: 3.5.33
@@ -57,6 +75,9 @@ importers:
       '@types/node':
         specifier: ^25.2.3
         version: 25.2.3
+      '@types/rails__actioncable':
+        specifier: ^8.0.3
+        version: 8.0.3
       '@types/underscore':
         specifier: latest
         version: 1.13.0
@@ -443,6 +464,16 @@ packages:
   '@fontsource/reenie-beanie@5.2.8':
     resolution: {integrity: sha512-fDPSpU64a8rVtu5NKRogzKx/fukotfpcet8gFDzHYctRX3xIZ8MCbCGGS4XxJuwhSuhRJX59Ur0eU0QpBQpTZg==}
 
+  '@hotwired/stimulus@3.2.2':
+    resolution: {integrity: sha512-eGeIqNOQpXoPAIP7tC1+1Yc1yl1xnwYqg+3mzqxyrbE5pg5YFBZcA6YoTiByJB6DKAEsiWtl6tjTJS4IYtbB7A==}
+
+  '@hotwired/turbo-rails@8.0.23':
+    resolution: {integrity: sha512-iBILwda3qmQC7FYM70+4s6kEQ7Fx9dJ6+yGxjPyrz9a5JDx1+y7OAA5TA7GGVOZJoicMLrKGdFDNorl40X35lw==}
+
+  '@hotwired/turbo@8.0.23':
+    resolution: {integrity: sha512-GZ7cijxEZ6Ig71u7rD6LHaRv/wcE/hNsc+nEfiWOkLNqUgLOwo5MNGWOy5ZV9ZUDSiQx1no7YxjTNnT4O6//cQ==}
+    engines: {node: '>= 18'}
+
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
     engines: {node: '>=18.18.0'}
@@ -492,6 +523,12 @@ packages:
   '@nodelib/fs.walk@1.2.8':
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
+
+  '@rails/actioncable@8.1.200':
+    resolution: {integrity: sha512-on0DSb7AFUkq1ocxivDNQhhGW/RQpY91zvRVyyaEWP4gOOZWy33P/UyxjQk74IENWNrTqs8+zOGHwTjiiFruRw==}
+
+  '@rails/activestorage@8.1.200':
+    resolution: {integrity: sha512-bPZqv447REBd1NQfba//FjgUqbUd93zKh7+BWhh3vRZ7Nm+RUgm6c5GbWctmik/rMHjsruTHhusYGyoKyf60pg==}
 
   '@rollup/rollup-android-arm-eabi@4.57.1':
     resolution: {integrity: sha512-A6ehUVSiSaaliTxai040ZpZ2zTevHYbvu/lDoeAteHI8QnaosIzm4qwtezfRg1jOYaUmnzLX1AOD6Z+UJjtifg==}
@@ -649,6 +686,9 @@ packages:
   '@types/estree@1.0.8':
     resolution: {integrity: sha512-dWHzHa2WqEXI/O1E9OjrocMTKJl2mSrEolh1Iomrv6U+JuNwaHXsXx9bLu5gG7BUWFIN0skIQJQ/L1rIex4X6w==}
 
+  '@types/hotwired__turbo@8.0.6':
+    resolution: {integrity: sha512-jqWRyXz+wAa7E3iB3WKcpXjVUgfLt2zGO68x3ANPtM4JSVDOT/q9GhPQzXf3EtPOkdiHfUp7JAC0EU5bSwluFA==}
+
   '@types/jquery@3.5.33':
     resolution: {integrity: sha512-SeyVJXlCZpEki5F0ghuYe+L+PprQta6nRZqhONt9F13dWBtR/ftoaIbdRQ7cis7womE+X2LKhsDdDtkkDhJS6g==}
 
@@ -663,6 +703,9 @@ packages:
 
   '@types/node@25.2.3':
     resolution: {integrity: sha512-m0jEgYlYz+mDJZ2+F4v8D1AyQb+QzsNqRuI7xg1VQX/KlKS0qT9r1Mo16yo5F/MtifXFgaofIFsdFMox2SxIbQ==}
+
+  '@types/rails__actioncable@8.0.3':
+    resolution: {integrity: sha512-y46MOTYorVQVwlHUyaZYbrh3nIkXsRYNuPna32lb3RngLVBlndNbIPvAUywFfhivftNhYg+vW5sZKWYCVIX2lA==}
 
   '@types/sizzle@2.3.10':
     resolution: {integrity: sha512-TC0dmN0K8YcWEAEfiPi5gJP14eJe30TTGjkvek3iM/1NdHHsdCA/Td6GvNndMOo/iSnIsZ4HuuhrYPDAmbxzww==}
@@ -2138,6 +2181,9 @@ packages:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
     engines: {node: '>=0.10.0'}
 
+  spark-md5@3.0.2:
+    resolution: {integrity: sha512-wcFzz9cDfbuqe0FZzfi2or1sgyIrsDwmPwfZC4hiNidPdPINjeUwNfv5kldczoEAcjl9Y1L3SM7Uz2PUEQzxQw==}
+
   stable-hash-x@0.2.0:
     resolution: {integrity: sha512-o3yWv49B/o4QZk5ZcsALc6t0+eCelPc44zZsLtCQnZPDwFpDYSWcDnrv2TtMmMbQ7uKo3J0HTURCqckw23czNQ==}
     engines: {node: '>=12.0.0'}
@@ -2763,6 +2809,15 @@ snapshots:
 
   '@fontsource/reenie-beanie@5.2.8': {}
 
+  '@hotwired/stimulus@3.2.2': {}
+
+  '@hotwired/turbo-rails@8.0.23':
+    dependencies:
+      '@hotwired/turbo': 8.0.23
+      '@rails/actioncable': 8.1.200
+
+  '@hotwired/turbo@8.0.23': {}
+
   '@humanfs/core@0.19.1': {}
 
   '@humanfs/node@0.16.7':
@@ -2809,6 +2864,12 @@ snapshots:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.20.1
+
+  '@rails/actioncable@8.1.200': {}
+
+  '@rails/activestorage@8.1.200':
+    dependencies:
+      spark-md5: 3.0.2
 
   '@rollup/rollup-android-arm-eabi@4.57.1':
     optional: true
@@ -2920,6 +2981,8 @@ snapshots:
 
   '@types/estree@1.0.8': {}
 
+  '@types/hotwired__turbo@8.0.6': {}
+
   '@types/jquery@3.5.33':
     dependencies:
       '@types/sizzle': 2.3.10
@@ -2933,6 +2996,8 @@ snapshots:
   '@types/node@25.2.3':
     dependencies:
       undici-types: 7.16.0
+
+  '@types/rails__actioncable@8.0.3': {}
 
   '@types/sizzle@2.3.10': {}
 
@@ -4600,6 +4665,8 @@ snapshots:
       is-fullwidth-code-point: 3.0.0
 
   source-map-js@1.2.1: {}
+
+  spark-md5@3.0.2: {}
 
   stable-hash-x@0.2.0: {}
 

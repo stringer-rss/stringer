@@ -22,8 +22,11 @@ gem "propshaft"
 gem "puma", "~> 7.0"
 gem "rack-ssl"
 gem "sass"
+gem "stimulus-rails"
 gem "stripe"
+gem "strong_migrations"
 gem "thread"
+gem "turbo-rails"
 gem "will_paginate"
 
 group :development do
@@ -39,10 +42,12 @@ group :development do
 end
 
 group :development, :test do
+  gem "bundler-audit", require: false
   gem "capybara"
   gem "coveralls_reborn", require: false
   gem "debug"
   gem "factory_bot"
+  gem "factory_bot_rails", require: false
   gem "pry-byebug"
   gem "rspec"
   gem "rspec-rails"

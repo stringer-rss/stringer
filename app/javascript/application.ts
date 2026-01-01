@@ -1,10 +1,16 @@
 // @ts-nocheck
+import "@hotwired/turbo-rails";
+import "@rails/activestorage";
 import "jquery";
 import "bootstrap";
 import "mousetrap";
 import "jquery-visible";
 import _ from "underscore";
 import Backbone from "backbone";
+
+import "./controllers/index";
+
+Turbo.session.drive = false;
 
 /* global jQuery, Mousetrap */
 var $ = jQuery;

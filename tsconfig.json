@@ -24,6 +24,7 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedIndexedAccess": true,
+    "noPropertyAccessFromIndexSignature": true,
     "skipLibCheck": true
   },
   "exclude": ["app/assets/builds", "coverage", "node_modules", "public", "vendor"]
