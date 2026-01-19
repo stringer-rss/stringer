@@ -95,10 +95,11 @@ GEM
     bcrypt (3.1.21)
     bigdecimal (4.0.1)
     bindex (0.8.1)
-    bootsnap (1.20.1)
+    bootsnap (1.21.1)
       msgpack (~> 1.2)
     builder (3.3.0)
-    byebug (12.0.0)
+    byebug (13.0.0)
+      reline (>= 0.6.0)
     capybara (3.40.0)
       addressable
       matrix
@@ -165,7 +166,7 @@ GEM
       railties (>= 6.1.0)
       thor (>= 1.0.0)
     hashdiff (1.2.1)
-    httparty (0.24.0)
+    httparty (0.24.2)
       csv
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
@@ -216,20 +217,21 @@ GEM
       racc (~> 1.4)
     ostruct (0.6.3)
     parallel (1.27.0)
-    parser (3.3.10.0)
+    parser (3.3.10.1)
       ast (~> 2.4.1)
       racc
     pg (1.6.3)
     pp (0.6.3)
       prettyprint
     prettyprint (0.2.0)
-    prism (1.7.0)
-    pry (0.15.2)
+    prism (1.8.0)
+    pry (0.16.0)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    pry-byebug (3.11.0)
-      byebug (~> 12.0)
-      pry (>= 0.13, < 0.16)
+      reline (>= 0.6.0)
+    pry-byebug (3.12.0)
+      byebug (~> 13.0)
+      pry (>= 0.13, < 0.17)
     psych (5.3.1)
       date
       stringio
@@ -283,7 +285,7 @@ GEM
     rb-fsevent (0.11.2)
     rb-inotify (0.11.1)
       ffi (~> 1.0)
-    rdoc (7.0.3)
+    rdoc (7.1.0)
       erb
       psych (>= 4.0.0)
       tsort
@@ -378,7 +380,7 @@ GEM
       activesupport (>= 6.1)
       sprockets (>= 3.0.0)
     stringio (3.2.0)
-    stripe (18.1.0)
+    stripe (18.2.0)
     sync (0.5.0)
     term-ansicolor (1.11.3)
       tins (~> 1)
@@ -386,7 +388,7 @@ GEM
     thread (0.2.2)
     thread_safe (0.3.6)
     timeout (0.6.0)
-    tins (1.51.0)
+    tins (1.51.1)
       bigdecimal
       mize (~> 0.6)
       readline
