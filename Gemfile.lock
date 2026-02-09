@@ -78,12 +78,12 @@ GEM
     addressable (2.8.8)
       public_suffix (>= 2.0.2, < 8.0)
     ast (2.4.3)
-    axe-core-api (4.11.0)
+    axe-core-api (4.11.1)
       dumb_delegator
       ostruct
       virtus
-    axe-core-rspec (4.11.0)
-      axe-core-api (= 4.11.0)
+    axe-core-rspec (4.11.1)
+      axe-core-api (= 4.11.1)
       dumb_delegator
       ostruct
       virtus
@@ -95,7 +95,7 @@ GEM
     bcrypt (3.1.21)
     bigdecimal (4.0.1)
     bindex (0.8.1)
-    bootsnap (1.21.1)
+    bootsnap (1.22.0)
       msgpack (~> 1.2)
     builder (3.3.0)
     byebug (13.0.0)
@@ -178,7 +178,7 @@ GEM
       pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
-    json (2.18.0)
+    json (2.18.1)
     language_server-protocol (3.17.0.5)
     lint_roller (1.1.0)
     logger (1.7.0)
@@ -316,7 +316,7 @@ GEM
       rspec-mocks (~> 3.13)
       rspec-support (~> 3.13)
     rspec-support (3.13.7)
-    rubocop (1.84.0)
+    rubocop (1.84.1)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
@@ -380,7 +380,7 @@ GEM
       activesupport (>= 6.1)
       sprockets (>= 3.0.0)
     stringio (3.2.0)
-    stripe (18.3.0)
+    stripe (18.3.1)
     sync (0.5.0)
     term-ansicolor (1.11.3)
       tins (~> 1)
