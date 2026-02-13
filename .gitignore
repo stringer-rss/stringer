@@ -29,3 +29,5 @@ spec/examples.txt
 # Ignore local .env files
 *.local
 .env
+
+/node_modules
