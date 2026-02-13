@@ -7,7 +7,7 @@
 //= require backbone-min.js
 
 _.templateSettings = {
-  interpolate: /\{\{\=(.+?)\}\}/g,
+  interpolate: /\{\{=(.+?)\}\}/g,
   evaluate: /\{\{(.+?)\}\}/g
 };
 
