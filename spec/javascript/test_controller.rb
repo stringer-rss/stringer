@@ -3,6 +3,16 @@
 class TestController < ApplicationController
   skip_before_action :verify_authenticity_token
 
+  VENDOR_FILE_MAP = {
+    "mocha.js" => "mocha/mocha.js",
+    "sinon.js" => "sinon/pkg/sinon.js",
+    "chai.js" => "chai/chai.js",
+    "chai-changes.js" => "chai-changes/chai-changes.js",
+    "chai-backbone.js" => "chai-backbone/chai-backbone.js",
+    "sinon-chai.js" => "sinon-chai/lib/sinon-chai.js",
+    "mocha.css" => "mocha/mocha.css"
+  }.freeze
+
   def index
     authorization.skip
     prepend_view_path(test_path("support", "views"))
@@ -16,15 +26,18 @@ class TestController < ApplicationController
 
   def vendor
     authorization.skip
-
     filename = "#{params[:splat]}.#{params[:format]}"
-    send_file(test_path("support", "vendor", params[:format], filename))
+    send_file(node_modules_path(VENDOR_FILE_MAP.fetch(filename)))
   end
 
   private
 
   def test_path(*)
     File.expand_path(File.join(__dir__, *))
+  end
+
+  def node_modules_path(relative)
+    Rails.root.join("node_modules", relative).to_s
   end
 
   def vendor_js_files
