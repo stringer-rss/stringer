@@ -1,9 +1,16 @@
-//= require jquery.min.js
-//= require bootstrap.min.js
-//= require mousetrap.js
-//= require jquery.visible.min.js
-//= require underscore.js
-//= require backbone.js
+import "jquery";
+import "bootstrap";
+import "mousetrap";
+import "jquery-visible";
+import _ from "underscore";
+import Backbone from "backbone";
+
+/* global jQuery, Mousetrap */
+var $ = jQuery;
+
+window.$ = $;
+
+Backbone.$ = $;
 
 _.templateSettings = {
   interpolate: /\{\{=(.+?)\}\}/g,
@@ -337,3 +344,8 @@ $(document).ready(function() {
     $("#shortcuts").modal('toggle');
   });
 });
+
+window.StoryList = StoryList;
+window.AppView = AppView;
+
+export { Story, StoryView, StoryList, AppView };

@@ -4,15 +4,11 @@ import globals from "globals";
 export default [
   js.configs.recommended,
   {
+    files: ["app/javascript/**"],
     languageOptions: {
-      sourceType: "script",
+      sourceType: "module",
       globals: {
         ...globals.browser,
-        Backbone: "readonly",
-        _: "readonly",
-        $: "readonly",
-        jQuery: "readonly",
-        Mousetrap: "readonly",
       },
     },
     rules: {
@@ -25,6 +21,8 @@ export default [
     languageOptions: {
       sourceType: "module",
       globals: {
+        ...globals.browser,
+        jQuery: "readonly",
         Story: "readonly",
         StoryView: "readonly",
         StoryList: "readonly",
@@ -32,6 +30,6 @@ export default [
     },
   },
   {
-    ignores: ["vendor/", "coverage/", "spec/javascript/support/", "public/"],
+    ignores: ["vendor/", "coverage/", "spec/javascript/support/", "public/", "app/assets/builds/"],
   },
 ];
