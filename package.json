@@ -17,7 +17,7 @@
     "underscore": "1.4.4"
   },
   "devDependencies": {
-    "@eslint/js": "^9.21.0",
+    "@eslint/js": "^10.0.1",
     "@vitest/coverage-v8": "4.0.18",
     "eslint": "^9.21.0",
     "globals": "^16.0.0",
