@@ -38,13 +38,4 @@ Rails.application.routes.draw do
   get "/starred", to: "stories#starred"
   put "/stories/:id", to: "stories#update"
   post "/stories/mark_all_as_read", to: "stories#mark_all_as_read"
-
-  unless Rails.env.production?
-    require_relative "../spec/javascript/test_controller"
-
-    get "/test", to: "test#index"
-    get "/spec/*splat", to: "test#spec"
-    get "/vendor/js/*splat", to: "test#vendor"
-    get "/vendor/css/*splat", to: "test#vendor"
-  end
 end

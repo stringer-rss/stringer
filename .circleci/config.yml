@@ -78,6 +78,10 @@ jobs:
           command: pnpm stylelint
 
       - run:
+          name: Vitest
+          command: pnpm vitest run --coverage
+
+      - run:
           name: Verify Stylelint Autogen
           command: bundle exec exe/stylelint_autogen
 
