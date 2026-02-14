@@ -23,16 +23,8 @@ export default [
   {
     files: ["spec/javascript/spec/**"],
     languageOptions: {
+      sourceType: "module",
       globals: {
-        describe: "readonly",
-        it: "readonly",
-        before: "readonly",
-        beforeEach: "readonly",
-        afterEach: "readonly",
-        sinon: "readonly",
-        chai: "readonly",
-        mocha: "readonly",
-        initMochaPhantomJS: "readonly",
         Story: "readonly",
         StoryView: "readonly",
         StoryList: "readonly",
