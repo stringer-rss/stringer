@@ -1,11 +1,11 @@
 <nav>
   <div>
     <a class="btn" id="mark-all" title="<%= t('partials.action_bar.mark_all') %>">
-      <i class="icon-ok"></i>
+      <i class="fa fa-check"></i>
       <%= render 'stories/mark_all_as_read_form', {stories: stories} %>
     </a>
     <a class="btn" href="/" id="refresh" title="<%= t('partials.action_bar.refresh') %>">
-      <i class="icon-repeat"></i>
+      <i class="fa fa-refresh"></i>
     </a>
   </div>
 
@@ -15,10 +15,10 @@
 
   <div>
     <a class="btn btn-primary" id="feeds" href="/feeds" title="<%= t('partials.action_bar.view_feeds') %>">
-      <i class="icon-list"></i>
+      <i class="fa fa-list"></i>
     </a>
     <a class="btn btn-primary" id="add-feed" href="/feeds/new" title="<%= t('partials.action_bar.add_feed') %>">
-      <i class="icon-plus"></i>
+      <i class="fa fa-plus"></i>
     </a>
   </div>
 </nav>

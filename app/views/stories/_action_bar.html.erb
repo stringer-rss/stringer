@@ -1,11 +1,11 @@
 <nav>
   <div>
     <button class="btn" id="mark-all" title="<%= t('partials.action_bar.mark_all') %>" aria-label="<%= t('partials.action_bar.mark_all') %>">
-      <i class="icon-ok"></i>
+      <i class="fa fa-check"></i>
       <%= render "stories/mark_all_as_read_form", { stories: stories } %>
     </button>
     <a class="btn" href="/" id="refresh" title="<%= t('partials.action_bar.refresh') %>">
-      <i class="icon-repeat"></i>
+      <i class="fa fa-refresh"></i>
     </a>
   </div>
 
@@ -15,16 +15,16 @@
 
   <div>
     <a class="btn btn-primary" id="starred" href="/starred" title="<%= t('partials.action_bar.starred_stories') %>">
-      <i class="icon-star"></i>
+      <i class="fa fa-star"></i>
     </a>
     <a class="btn btn-primary" id="archive" href="/archive" title="<%= t('partials.action_bar.archived_stories') %>">
-      <i class="icon-time"></i>
+      <i class="fa fa-clock-o"></i>
     </a>
     <a class="btn btn-primary" id="feeds" href="/feeds" title="<%= t('partials.action_bar.view_feeds') %>">
-      <i class="icon-list"></i>
+      <i class="fa fa-list"></i>
     </a>
     <a class="btn btn-primary" id="add-feed" href="/feeds/new" title="<%= t('partials.action_bar.add_feed') %>">
-      <i class="icon-plus"></i>
+      <i class="fa fa-plus"></i>
     </a>
   </div>
 </nav>

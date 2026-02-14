@@ -149,13 +149,13 @@ var StoryView = Backbone.View.extend({
   },
 
   itemKeepUnread: function() {
-    var icon = this.model.get("keep_unread") ? "icon-check" : "icon-check-empty";
+    var icon = this.model.get("keep_unread") ? "fa fa-check" : "fa fa-square-o";
     this.$(".story-keep-unread > i").attr("class", icon);
     this.$el.toggleClass("keepUnread", this.model.get("keep_unread"));
   },
 
   itemStarred: function() {
-    var icon = this.model.get("is_starred") ? "icon-star" : "icon-star-empty";
+    var icon = this.model.get("is_starred") ? "fa fa-star" : "fa fa-star-o";
     this.$(".story-starred > i").attr("class", icon);
   },
 

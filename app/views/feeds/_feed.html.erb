@@ -2,7 +2,7 @@
   <div class="feed-line">
     <div class="feed-title-container">
       <p class="feed-title <%= feed.unread_stories_count > 0 ? "feed-unread" : "" %>">
-        <i class="icon-circle status <%= feed.status_bubble %>" data-toggle="tooltip" title="<%= t("partials.feed.status_bubble.#{feed.status_bubble}") if feed.status_bubble %>" data-placement="left"></i>
+        <i class="fa fa-circle status <%= feed.status_bubble %>" data-toggle="tooltip" title="<%= t("partials.feed.status_bubble.#{feed.status_bubble}") if feed.status_bubble %>" data-placement="left"></i>
         <a href="/feed/<%= feed.id %>">
           <% if feed.unread_stories_count > 0 %>
             (<%= feed.unread_stories_count %>)
@@ -23,13 +23,13 @@
         </span>
       </div>
       <span class="read-feed">
-        <a class="icon-external-link" aria-label="visit feed site" href="<%= feed.url %>"></a>
+        <a class="fa fa-external-link" aria-label="visit feed site" href="<%= feed.url %>"></a>
       </span>
       <span class="edit-feed">
-        <a class="icon-edit" aria-label="Edit" href="<%= "/feeds/#{feed.id}/edit" %>"></a>
+        <a class="fa fa-edit" aria-label="Edit" href="<%= "/feeds/#{feed.id}/edit" %>"></a>
       </span>
       <%= button_to("/feeds/#{feed.id}", method: :delete, class: "remove-feed btn-link", aria: { label: "Delete" }) do %>
-        <a class="icon-remove"></a>
+        <a class="fa fa-times"></a>
       <% end %>
     </div>
   </div>

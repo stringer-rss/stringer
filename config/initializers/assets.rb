@@ -15,5 +15,7 @@ Rails.application.config.assets.paths += [
   Rails.root.join("node_modules/underscore"),
   Rails.root.join("node_modules/jquery-visible"),
   Rails.root.join("node_modules/@fontsource/lato/files"),
-  Rails.root.join("node_modules/@fontsource/reenie-beanie/files")
+  Rails.root.join("node_modules/@fontsource/reenie-beanie/files"),
+  Rails.root.join("node_modules/font-awesome/css"),
+  Rails.root.join("node_modules/font-awesome/fonts")
 ]
