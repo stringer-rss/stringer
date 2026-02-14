@@ -14,6 +14,9 @@ importers:
       jquery:
         specifier: 1.9.1
         version: 1.9.1
+      jquery-visible:
+        specifier: 1.2.0
+        version: 1.2.0
       mousetrap:
         specifier: 1.4.6
         version: 1.4.6
@@ -588,6 +591,9 @@ packages:
 
   isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
+
+  jquery-visible@1.2.0:
+    resolution: {integrity: sha512-lj6Xqy7GYEwTD1audFYdv7SrBM6z7icPXNvRpS4e15RXtDksjgU7YF7EKrsqF5rCUZA99OqF+d5H8BGdcwMr+w==}
 
   jquery@1.9.1:
     resolution: {integrity: sha512-gK7jP5cOEUzjyL0dy7MEMfeSFlmt1yNSdZK98CL8W6o0DiNVW5O9hLcD2bdl48mL8q7bEJgd7d9AhhDaN+iDSQ==}
@@ -1490,6 +1496,8 @@ snapshots:
   is-plain-object@5.0.0: {}
 
   isexe@2.0.0: {}
+
+  jquery-visible@1.2.0: {}
 
   jquery@1.9.1: {}
 

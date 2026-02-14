@@ -7,6 +7,7 @@
   "dependencies": {
     "backbone": "1.0.0",
     "jquery": "1.9.1",
+    "jquery-visible": "1.2.0",
     "mousetrap": "1.4.6",
     "underscore": "1.4.4"
   },
