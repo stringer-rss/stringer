@@ -12,6 +12,43 @@ html, body {
 body {
   background-color: #FAF2E5;
   overflow-x: hidden;
+  font: 14px/1.231 "Lato", sans-serif;
+}
+
+a {
+  color: #1abc9c;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #2ecc71;
+  text-decoration: none;
+}
+
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"] {
+  border: 2px solid #dce4ec;
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+  padding: 8px 0 9px 10px;
+  border-radius: 6px;
+  box-shadow: none;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus {
+  border-color: #484948;
+  box-shadow: none;
 }
 
 hr {
@@ -95,6 +132,8 @@ code {
 }
 
 .btn {
+  border: none;
+  font-size: 16.5px;
   position: relative;
   top: 0px;
   background-color: #484948;
