@@ -71,7 +71,15 @@ jobs:
 
       - run:
           name: ESLint
-          command: pnpm lint
+          command: pnpm eslint
+
+      - run:
+          name: Stylelint
+          command: pnpm stylelint
+
+      - run:
+          name: Verify Stylelint Autogen
+          command: bundle exec exe/stylelint_autogen
 
       - run:
           name: Rubocop

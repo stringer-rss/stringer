@@ -1,12 +1,17 @@
 {
   "private": true,
   "scripts": {
-    "lint": "eslint app/assets/javascripts/ spec/javascript/spec/"
+    "eslint": "eslint app/assets/javascripts/ spec/javascript/spec/",
+    "stylelint": "stylelint 'app/assets/stylesheets/**/*.css'"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
     "eslint": "^9.21.0",
-    "globals": "^16.0.0"
+    "globals": "^16.0.0",
+    "stylelint": "^17.3.0",
+    "stylelint-config-recess-order": "^7.6.1",
+    "stylelint-config-standard": "^40.0.0",
+    "stylelint-selector-bem-pattern": "^4.0.1"
   },
   "packageManager": "pnpm@10.4.1"
 }
