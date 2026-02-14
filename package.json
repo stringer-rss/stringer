@@ -4,6 +4,12 @@
     "eslint": "eslint app/assets/javascripts/ spec/javascript/spec/",
     "stylelint": "stylelint 'app/assets/stylesheets/**/*.css'"
   },
+  "dependencies": {
+    "backbone": "1.0.0",
+    "jquery": "1.9.1",
+    "mousetrap": "1.4.6",
+    "underscore": "1.4.4"
+  },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
     "chai": "1.6.0",
