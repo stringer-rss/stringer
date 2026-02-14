@@ -7,6 +7,19 @@ settings:
 importers:
 
   .:
+    dependencies:
+      backbone:
+        specifier: 1.0.0
+        version: 1.0.0
+      jquery:
+        specifier: 1.9.1
+        version: 1.9.1
+      mousetrap:
+        specifier: 1.4.6
+        version: 1.4.6
+      underscore:
+        specifier: 1.4.4
+        version: 1.4.4
     devDependencies:
       '@eslint/js':
         specifier: ^9.21.0
@@ -223,8 +236,8 @@ packages:
     resolution: {integrity: sha512-Z7tMw1ytTXt5jqMcOP+OQteU1VuNK9Y02uuJtKQ1Sv69jXQKKg5cibLwGJow8yzZP+eAc18EmLGPal0bp36rvQ==}
     engines: {node: '>=8'}
 
-  backbone@1.6.1:
-    resolution: {integrity: sha512-YQzWxOrIgL6BoFnZjThVN99smKYhyEXXFyJJ2lsF1wJLyo4t+QjmkLrH8/fN22FZ4ykF70Xq7PgTugJVR4zS9Q==}
+  backbone@1.0.0:
+    resolution: {integrity: sha512-8rhC3q3npBssGGBArAY5RF4lvIpciCvDY0lHmFrLqOi0/fj5rm25H0DJrJFXPwRnuIzIhQ6eS0j7URAxV3u9hA==}
 
   balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
@@ -576,6 +589,10 @@ packages:
   isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
 
+  jquery@1.9.1:
+    resolution: {integrity: sha512-gK7jP5cOEUzjyL0dy7MEMfeSFlmt1yNSdZK98CL8W6o0DiNVW5O9hLcD2bdl48mL8q7bEJgd7d9AhhDaN+iDSQ==}
+    deprecated: This version is deprecated. Please upgrade to the latest version or find support at https://www.herodevs.com/support/jquery-nes.
+
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
 
@@ -695,6 +712,9 @@ packages:
     resolution: {integrity: sha512-pIU2PJjrPYvYRqVpjXzj76qltO9uBYI7woYAMoxbSefsa+vqAfptjoeevd6bUgwD0mPIO+hv9f7ltvsNreL2PA==}
     engines: {node: '>= 0.10.x', npm: '>= 1.4.x'}
     hasBin: true
+
+  mousetrap@1.4.6:
+    resolution: {integrity: sha512-7i4YgGN/m6GMJbn2g4pyrKFUNEjWIICmuiywWDzdph8qASzEGk+VB3vQYrnxdBkuMTP4ZE+K92TKeQHL92wZOQ==}
 
   ms@2.0.0:
     resolution: {integrity: sha512-Tpp60P6IUJDTuOq/5Z8cdskzJujfwqfOTkrwIwj7IRISpnkJnT6SyJ4PCPnGMoFjC9ddhal5KVIYtAt97ix05A==}
@@ -937,8 +957,8 @@ packages:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}
     engines: {node: '>= 0.8.0'}
 
-  underscore@1.13.7:
-    resolution: {integrity: sha512-GMXzWtsc57XAtguZgaQViUOzs0KTkk8ojr3/xAxXLITqf/3EMwxC0inyETfDFjH/Krbhuep0HNbbjI9i/q3F3g==}
+  underscore@1.4.4:
+    resolution: {integrity: sha512-ZqGrAgaqqZM7LGRzNjLnw5elevWb5M8LEoDMadxIW3OWbcv72wMMgKdwOKpd5Fqxe8choLD8HN3iSj3TUh/giQ==}
 
   unicorn-magic@0.4.0:
     resolution: {integrity: sha512-wH590V9VNgYH9g3lH9wWjTrUoKsjLF6sGLjhR4sH1LWpLmCOH0Zf7PukhDA8BiS7KHe4oPNkcTHqYkj7SOGUOw==}
@@ -1137,9 +1157,9 @@ snapshots:
 
   astral-regex@2.0.0: {}
 
-  backbone@1.6.1:
+  backbone@1.0.0:
     dependencies:
-      underscore: 1.13.7
+      underscore: 1.4.4
 
   balanced-match@1.0.2: {}
 
@@ -1174,7 +1194,7 @@ snapshots:
 
   chai-backbone@0.9.4:
     dependencies:
-      backbone: 1.6.1
+      backbone: 1.0.0
       chai-changes: 1.3.6
       sinon: 1.7.1
 
@@ -1471,6 +1491,8 @@ snapshots:
 
   isexe@2.0.0: {}
 
+  jquery@1.9.1: {}
+
   js-tokens@4.0.0: {}
 
   js-yaml@4.1.1:
@@ -1583,6 +1605,8 @@ snapshots:
       lodash.create: 3.1.1
       mkdirp: 0.5.1
       supports-color: 3.1.2
+
+  mousetrap@1.4.6: {}
 
   ms@2.0.0: {}
 
@@ -1838,7 +1862,7 @@ snapshots:
     dependencies:
       prelude-ls: 1.2.1
 
-  underscore@1.13.7: {}
+  underscore@1.4.4: {}
 
   unicorn-magic@0.4.0: {}
 

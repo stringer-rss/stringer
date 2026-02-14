@@ -1,10 +1,10 @@
-//= require jquery-min.js
+//= require jquery.min.js
 //= require bootstrap-min.js
 //= require bootstrap.file-input.js
-//= require mousetrap-min.js
+//= require mousetrap.js
 //= require jquery-visible-min.js
-//= require underscore-min.js
-//= require backbone-min.js
+//= require underscore.js
+//= require backbone.js
 
 _.templateSettings = {
   interpolate: /\{\{=(.+?)\}\}/g,

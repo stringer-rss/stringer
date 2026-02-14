@@ -6,4 +6,9 @@
 Rails.application.config.assets.version = "1.0"
 
 # Add additional assets to the asset load path.
-# Rails.application.config.assets.paths << Emoji.images_path
+Rails.application.config.assets.paths += [
+  Rails.root.join("node_modules/backbone"),
+  Rails.root.join("node_modules/jquery"),
+  Rails.root.join("node_modules/mousetrap"),
+  Rails.root.join("node_modules/underscore")
+]
