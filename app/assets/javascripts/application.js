@@ -1,5 +1,5 @@
 //= require jquery.min.js
-//= require bootstrap-min.js
+//= require bootstrap.min.js
 //= require bootstrap.file-input.js
 //= require mousetrap.js
 //= require jquery.visible.min.js
