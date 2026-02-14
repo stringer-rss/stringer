@@ -2,7 +2,7 @@
   <div class="row story-preview">
     <div class="col-md-3">
       <div class="story-starred">
-        <i class="icon-star{{ if(!is_starred) { }}-empty{{ } }}"></i>
+        <i class="fa {{ if(is_starred) { }}fa-star{{ } else { }}fa-star-o{{ } }}"></i>
       </div>
       <p class="blog-title">
         {{= source }}
@@ -26,7 +26,7 @@
         <a href="{{= permalink }}">{{= title }}</a>
         {{ if (enclosure_url) { }}
           <a class="story-enclosure" target="_blank" href="{{= enclosure_url }}">
-            <i class="icon-download"></i>
+            <i class="fa fa-download"></i>
           </a>
         {{ } }}
       </h1>
@@ -40,13 +40,13 @@
       </div>
       <div class="pull-right story-actions">
         <div class="story-keep-unread">
-          <i class="icon-check{{ if(!keep_unread) { }}-empty{{ } }}"></i> <%= t('stories.keep_unread') %>
+          <i class="fa {{ if(keep_unread) { }}fa-check{{ } else { }}fa-square-o{{ } }}"></i> <%= t('stories.keep_unread') %>
         </div>
         <div class="story-starred">
-          <i class="icon-star{{ if(!is_starred) { }}-empty{{ } }}"></i>
+          <i class="fa {{ if(is_starred) { }}fa-star{{ } else { }}fa-star-o{{ } }}"></i>
         </div>
         <a class="story-permalink" target="_blank" href="{{= permalink }}">
-          <i class="icon-external-link"></i>
+          <i class="fa fa-external-link"></i>
         </a>
       </div>
     </div>

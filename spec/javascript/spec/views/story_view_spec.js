@@ -87,12 +87,12 @@ describe("Storyiew", function(){
     });
 
     it("should autofill unread button based on item", function(){
-      assertTagExists(this.view.$el, ".story-keep-unread .icon-check-empty");
+      assertTagExists(this.view.$el, ".story-keep-unread .fa-square-o");
 
       this.story.set("keep_unread", true);
       this.view.render();
 
-      assertTagExists(this.view.$el, ".story-keep-unread .icon-check");
+      assertTagExists(this.view.$el, ".story-keep-unread .fa-check");
     });
 
     it("should render two instances of the star button", function(){
@@ -101,12 +101,12 @@ describe("Storyiew", function(){
     });
 
     it("should autofill star button based on item", function(){
-      assertTagExists(this.view.$el, ".story-starred .icon-star-empty", 2);
+      assertTagExists(this.view.$el, ".story-starred .fa-star-o", 2);
 
       this.story.set("is_starred", true);
       this.view.render();
 
-      assertTagExists(this.view.$el, ".story-starred .icon-star", 2);
+      assertTagExists(this.view.$el, ".story-starred .fa-star", 2);
     });
 
     it("should not render enclosure link when not present", function(){

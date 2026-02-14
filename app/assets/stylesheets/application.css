@@ -1,5 +1,6 @@
 /*
   *= require bootstrap.min
+  *= require font-awesome.min
   *= require_tree .
 */
 
@@ -241,11 +242,11 @@ li.story.open .story-preview {
   margin-right: 13px;
 }
 
-li.story .icon-star {
+li.story .fa-star {
   color: #F67100;
 }
 
-li.story .icon-star-empty {
+li.story .fa-star-o {
   color: #e5e5e5;
 }
 
