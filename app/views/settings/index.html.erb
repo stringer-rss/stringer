@@ -7,7 +7,7 @@
   <hr />
   <p><%= t('.description') %></p>
   <hr />
-  <div class="control-group">
+  <div class="form-group">
     <% setting = Setting::UserSignup.first %>
     <%= form_with(model: setting, scope: :setting, url: setting_path(setting)) do |form| %>
       <% if Setting::UserSignup.enabled? %>

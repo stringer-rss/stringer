@@ -7,18 +7,18 @@
   <hr />
   <%= form_with(url: "/feeds/#{@feed.id}", method: :put, id: "add-feed-setup") do %>
     <input type="hidden" name="feed_id" value="<%= @feed.id %>">
-    <div class="control-group">
+    <div class="form-group">
       <input name="feed_name" id="feed-name" class="form-control" type="text" value="<%= @feed.name %>" required />
       <i class="icon-pencil field-icon"></i>
       <label id="feed-name-label" class="field-label" for="feed-name"><%= t('feeds.edit.fields.feed_name') %></label>
     </div>
-    <div class="control-group">
+    <div class="form-group">
       <input name="feed_url" id="feed-url" class="form-control" type="text" value="<%= @feed.url %>" autofocus required />
       <i class="icon-rss field-icon"></i>
       <label id="feed-url-label" class="field-label" for="feed-url"><%= t('feeds.edit.fields.feed_url') %></label>
     </div>
     <% if current_user.groups.any? %>
-      <div class="control-group">
+      <div class="form-group">
         <input type="text" class="form-control" tabindex="-1">
         <select name="group_id" id="group-id">
           <option value=""></option>

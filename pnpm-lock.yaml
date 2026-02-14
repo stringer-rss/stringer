@@ -11,6 +11,9 @@ importers:
       backbone:
         specifier: 1.0.0
         version: 1.0.0
+      bootstrap:
+        specifier: 3.1.1
+        version: 3.1.1
       jquery:
         specifier: 1.9.1
         version: 1.9.1
@@ -248,6 +251,10 @@ packages:
   balanced-match@3.0.1:
     resolution: {integrity: sha512-vjtV3hiLqYDNRoiAv0zC4QaGAMPomEoq83PRmYIofPswwZurCeWR5LByXm7SyoL0Zh5+2z0+HC7jG8gSZJUh0w==}
     engines: {node: '>= 16'}
+
+  bootstrap@3.1.1:
+    resolution: {integrity: sha512-TAzqS8E/ISpVHP29gYhy+1NSV+FJwApDVQhDfgLYsIuUDJiqJzH2DfORN5tiu+Ie2iBLrzEG34t4Rf465cigqg==}
+    deprecated: This version of Bootstrap is no longer supported. Please upgrade to the latest version.
 
   brace-expansion@1.1.12:
     resolution: {integrity: sha512-9T9UjW3r0UW5c1Q7GTwllptXwhvYmEzFhzMfZ9H7FQWt+uZePjZPjBP/W1ZEyZ1twGWom5/56TF4lPcqjnDHcg==}
@@ -1170,6 +1177,8 @@ snapshots:
   balanced-match@1.0.2: {}
 
   balanced-match@3.0.1: {}
+
+  bootstrap@3.1.1: {}
 
   brace-expansion@1.1.12:
     dependencies:

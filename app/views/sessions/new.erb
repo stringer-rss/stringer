@@ -6,12 +6,12 @@
 
   <%= form_with(url: "/login") do |form| %>
     <p><%= t('sessions.new.fields.unknown_username_html') %></p>
-    <div class="control-group">
+    <div class="form-group">
       <%= form.text_field :username, class: "form-control", required: true %>
       <%= form.label :username, t('sessions.new.fields.username'), class: "field-label" %>
     </div>
 
-    <div class="control-group">
+    <div class="form-group">
       <input name="password" class="form-control" id="password" type="password" required />
       <i class="icon-lock field-icon"></i>
       <label id="password-label" class="field-label" for="password"><%= t('sessions.new.fields.password') %></label>

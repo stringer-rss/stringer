@@ -5,18 +5,18 @@
 <% end %>
 
 <% if flash.key? :error %>
-  <div class="alert alert-error error">
+  <div class="alert alert-danger error">
     <%= flash[:error] %>
   </div>
 <% end %>
 
 <noscript>
-  <div class="alert alert-error error">
+  <div class="alert alert-danger error">
     <%= t('flash.js_required') %>
   </div>
 </noscript>
 
-<div id="cookies-required" class="alert alert-error error" style="display: none;">
+<div id="cookies-required" class="alert alert-danger error" style="display: none;">
   <%= t('flash.cookies_required') %>
 </div>
 

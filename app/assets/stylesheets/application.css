@@ -1,4 +1,5 @@
 /*
+  *= require bootstrap.min
   *= require_tree .
 */
 
@@ -56,11 +57,11 @@ code {
 }
 
 @media (max-width: 768px) {
-  #footer .row-fluid > * {
+  #footer .row > * {
     display: none;
   }
 
-  #footer .row-fluid > .span6:first-child {
+  #footer .row > .col-md-8:first-child {
     display: block;
     width: 100%;
     text-align: center;
@@ -82,8 +83,9 @@ code {
 
 #action-bar .btn {
   padding: 8px;
-  height: 18px;
-  width: 18px;
+  height: 34px;
+  width: 34px;
+  line-height: 18px;
 }
 
 #action-bar button.btn {
@@ -419,7 +421,7 @@ li.feed .feed-last-updated {
     display: none;
   }
 
-  li.feed .row-fluid .span2 {
+  li.feed .row .col-md-2 {
     float: right;
     margin-right: 21px;
   }
@@ -510,8 +512,8 @@ li.feed .remove-feed a:hover {
   text-align: center;
 }
 
-.setup .control-group input {
-  width: 210px;
+.setup .form-group input {
+  width: 350px;
 }
 
 .setup .field-icon {
@@ -527,11 +529,11 @@ li.feed .remove-feed a:hover {
   transition: 0.25s;
 }
 
-.setup .control-group input:focus + .field-icon {
+.setup .form-group input:focus + .field-icon {
   color: #484948;
 }
 
-.setup .control-group input:focus ~ .field-label {
+.setup .form-group input:focus ~ .field-label {
   color: #484948;
 }
 
@@ -560,7 +562,7 @@ li.feed .remove-feed a:hover {
   width: 244px;
 }
 
-.setup .control-group {
+.setup .form-group {
   position: relative;
 }
 

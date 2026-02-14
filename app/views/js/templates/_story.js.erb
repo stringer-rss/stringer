@@ -1,6 +1,6 @@
 <script type="text/template" id="story-template">
-  <div class="row-fluid story-preview">
-    <div class="span3">
+  <div class="row story-preview">
+    <div class="col-md-3">
       <div class="story-starred">
         <i class="icon-star{{ if(!is_starred) { }}-empty{{ } }}"></i>
       </div>
@@ -8,7 +8,7 @@
         {{= source }}
       </p>
     </div>
-    <div class="span9">
+    <div class="col-md-9">
       <p class="story-details">
         <span class="story-title">
           {{= headline }}
@@ -20,7 +20,7 @@
     </div>
   </div>
 
-  <div class="story-body-container" class="row-fluid">
+  <div class="story-body-container">
     <div class="story-body">
       <h1>
         <a href="{{= permalink }}">{{= title }}</a>
@@ -32,7 +32,7 @@
       </h1>
       {{= body }}
     </div>
-    <div class="row-fluid story-actions-container">
+    <div class="row story-actions-container">
       <div class="pull-left">
         <span class="story-published">
           {{= pretty_date }}

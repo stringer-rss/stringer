@@ -5,7 +5,6 @@ export default {
     "./.stylelint_todo.yml",
   ],
   ignoreFiles: [
-    "app/assets/stylesheets/bootstrap-min.css",
     "app/assets/stylesheets/flat-ui-no-icons.css",
     "app/assets/stylesheets/font-awesome-min.css",
     "app/assets/stylesheets/lato-fonts.css",
