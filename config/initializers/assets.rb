@@ -10,5 +10,6 @@ Rails.application.config.assets.paths += [
   Rails.root.join("node_modules/backbone"),
   Rails.root.join("node_modules/jquery"),
   Rails.root.join("node_modules/mousetrap"),
-  Rails.root.join("node_modules/underscore")
+  Rails.root.join("node_modules/underscore"),
+  Rails.root.join("node_modules/jquery-visible")
 ]
