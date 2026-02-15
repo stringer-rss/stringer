@@ -2,8 +2,10 @@
   "private": true,
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=iife --outdir=app/assets/builds --public-path=/assets --alias:jquery=./node_modules/jquery/jquery.js --alias:bootstrap=./node_modules/bootstrap/dist/js/bootstrap.js --alias:jquery-visible=./node_modules/jquery-visible/jquery.visible.min.js",
-    "eslint": "eslint app/javascript/ spec/javascript/spec/",
+    "eslint": "eslint ./ --cache --max-warnings=0",
     "stylelint": "stylelint 'app/assets/stylesheets/**/*.css'",
+    "tscheck": "tsc --noEmit",
+    "pretest": "pnpm tscheck && pnpm eslint",
     "test": "vitest run --coverage"
   },
   "dependencies": {
@@ -18,16 +20,33 @@
     "underscore": "1.4.4"
   },
   "devDependencies": {
-    "@eslint/js": "^9.21.0",
+    "@eslint/eslintrc": "^3.3.3",
+    "@eslint/js": "^10.0.1",
+    "@stylistic/eslint-plugin": "^5.7.0",
+    "@types/backbone": "latest",
+    "@types/jquery": "latest",
+    "@types/mousetrap": "latest",
+    "@types/node": "^25.2.3",
+    "@types/underscore": "latest",
+    "@typescript-eslint/eslint-plugin": "^8.50.0",
+    "@typescript-eslint/parser": "^8.50.0",
     "@vitest/coverage-v8": "4.0.18",
     "esbuild": "^0.27.1",
-    "eslint": "^9.21.0",
-    "globals": "^16.0.0",
+    "eslint": "^9.39.2",
+    "eslint-find-rules": "^5.0.0",
+    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-sort-keys-fix": "^1.1.2",
+    "eslint-plugin-vitest": "^0.5.4",
+    "globals": "^17.0.0",
+    "jiti": "^2.6.1",
     "jsdom": "^28.0.0",
     "stylelint": "^17.3.0",
     "stylelint-config-recess-order": "^7.6.1",
     "stylelint-config-standard": "^40.0.0",
     "stylelint-selector-bem-pattern": "^4.0.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.54.0",
     "vitest": "^4.0.18"
   },
   "packageManager": "pnpm@10.4.1"

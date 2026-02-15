@@ -13,24 +13,25 @@
 !/log/.keep
 !/tmp/.keep
 
-# Ignore pidfiles, but keep the directory.
-/tmp/pids/*
-!/tmp/pids/
-!/tmp/pids/.keep
+# Ignore uploaded files in development.
+/storage/*
+!/storage/.keep
 
-/coverage
 /public/assets
+.byebug_history
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-
 spec/examples.txt
+/coverage/*
 
-# Ignore local .env files
-*.local
-.env
-
+/public/packs
+/public/packs-test
+/node_modules
 /app/assets/builds/*
 !/app/assets/builds/.keep
+tsconfig.tsbuildinfo
+.eslintcache
 
-/node_modules
+# Ignore local environment variable files.
+.env.*.local

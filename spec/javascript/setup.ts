@@ -1,3 +1,4 @@
+// @ts-nocheck
 import "jquery";
 import underscore from "underscore";
 import Backbone from "backbone";
@@ -85,7 +86,7 @@ const templateHTML = [
 
 document.body.insertAdjacentHTML("beforeend", templateHTML);
 
-import { Story, StoryView, StoryList, AppView } from "../../app/javascript/application.js";
+import { Story, StoryView, StoryList, AppView } from "../../app/javascript/application";
 
 globalThis.Story = Story;
 globalThis.StoryView = StoryView;

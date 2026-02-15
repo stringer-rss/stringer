@@ -1,3 +1,4 @@
+// @ts-nocheck
 import "jquery";
 import "bootstrap";
 import "mousetrap";
