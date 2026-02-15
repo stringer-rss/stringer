@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { describe, it, expect, vi, beforeAll, beforeEach, afterEach } from "vitest";
 
 describe("StoryView", function () {
