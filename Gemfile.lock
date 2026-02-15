@@ -97,6 +97,8 @@ GEM
     bindex (0.8.1)
     bootsnap (1.22.0)
       msgpack (~> 1.2)
+    brakeman (8.0.2)
+      racc
     builder (3.3.0)
     byebug (13.0.0)
       reline (>= 0.6.0)
@@ -321,6 +323,8 @@ GEM
       rspec-mocks (~> 3.13)
       rspec-support (~> 3.13)
     rspec-support (3.13.7)
+    rspec_junit_formatter (0.6.0)
+      rspec-core (>= 2, < 4, != 2.12.0)
     rubocop (1.84.1)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
@@ -434,6 +438,7 @@ DEPENDENCIES
   axe-core-rspec
   bcrypt
   bootsnap
+  brakeman
   capybara
   coveralls_reborn
   debug
@@ -453,6 +458,7 @@ DEPENDENCIES
   rails (~> 8.1.0)
   rspec
   rspec-rails
+  rspec_junit_formatter
   rubocop
   rubocop-capybara
   rubocop-factory_bot

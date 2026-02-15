@@ -1,0 +1,10 @@
+{
+  "ignored_warnings": [
+    {
+      "fingerprint": "6f5239fb87c64764d0c209014deb5cf504c2c10ee424bd33590f0a4f22e01d8f",
+      "note": "False positive: load_defaults(8.0) enables default_protect_from_forgery, but brakeman doesn't parse config inside `Stringer::Application` (:: syntax). See https://github.com/presidentbeef/brakeman/issues/XXXX"
+    }
+  ],
+  "updated": "2026-02-15",
+  "brakeman_version": "8.0.2"
+}
