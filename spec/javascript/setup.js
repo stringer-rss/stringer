@@ -1,7 +1,3 @@
-import fs from "node:fs";
-import path from "node:path";
-import vm from "node:vm";
-
 import "jquery";
 import underscore from "underscore";
 import Backbone from "backbone";
@@ -89,14 +85,9 @@ const templateHTML = [
 
 document.body.insertAdjacentHTML("beforeend", templateHTML);
 
-// Load application.js class definitions into the global scope
-const appJsPath = path.resolve(__dirname, "../../app/assets/javascripts/application.js");
-const appJs = fs.readFileSync(appJsPath, "utf-8");
+import { Story, StoryView, StoryList, AppView } from "../../app/javascript/application.js";
 
-// Strip the sprockets require directives and the $(document).ready block
-const strippedJs = appJs
-  .replace(/^\/\/= require .+$/gm, "")
-  .replace(/_.templateSettings\s*=\s*\{[^}]+\};/, "")
-  .replace(/\$\(document\)\.ready\(function\(\)\s*\{[\s\S]*\}\);?\s*$/, "");
-
-vm.runInThisContext(strippedJs, { filename: "application.js" });
+globalThis.Story = Story;
+globalThis.StoryView = StoryView;
+globalThis.StoryList = StoryList;
+globalThis.AppView = AppView;
