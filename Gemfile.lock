@@ -226,6 +226,10 @@ GEM
       prettyprint
     prettyprint (0.2.0)
     prism (1.9.0)
+    propshaft (1.3.1)
+      actionpack (>= 7.0.0)
+      activesupport (>= 7.0.0)
+      rack
     pry (0.16.0)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -372,14 +376,6 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.13.2)
     simplecov_json_formatter (0.1.4)
-    sprockets (4.2.2)
-      concurrent-ruby (~> 1.0)
-      logger
-      rack (>= 2.2.4, < 4)
-    sprockets-rails (3.5.2)
-      actionpack (>= 6.1)
-      activesupport (>= 6.1)
-      sprockets (>= 3.0.0)
     stringio (3.2.0)
     stripe (18.3.1)
     sync (0.5.0)
@@ -450,6 +446,7 @@ DEPENDENCIES
   jsbundling-rails
   nokogiri (~> 1.19.0)
   pg
+  propshaft
   pry-byebug
   puma (~> 7.0)
   rack-ssl
@@ -466,8 +463,6 @@ DEPENDENCIES
   sass
   selenium-webdriver
   simplecov
-  sprockets
-  sprockets-rails
   stripe
   thread
   web-console
