@@ -3,6 +3,7 @@
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=iife --outdir=app/assets/builds --public-path=/assets --alias:jquery=./node_modules/jquery/jquery.js --alias:bootstrap=./node_modules/bootstrap/dist/js/bootstrap.js --alias:jquery-visible=./node_modules/jquery-visible/jquery.visible.min.js",
     "eslint": "eslint ./ --cache --max-warnings=0",
+    "eslint_find_unused_rules": "eslint-find-rules --unused --flatConfig --no-core eslint.config.mts",
     "stylelint": "stylelint 'app/assets/stylesheets/**/*.css'",
     "tscheck": "tsc --noEmit",
     "pretest": "pnpm tscheck && pnpm eslint",

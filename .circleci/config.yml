@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  browser-tools: circleci/browser-tools@1.5.2
+  browser-tools: circleci/browser-tools@2.2.0
   node: circleci/node@7.1.0
 
 jobs:
@@ -10,12 +10,10 @@ jobs:
     docker:
       - image: cimg/ruby:4.0.1-browsers
         environment:
-          BUNDLE_JOBS: 3
-          BUNDLE_RETRY: 3
           BUNDLE_PATH: vendor/bundle
+          NODE_VERSION: 22.17.1
           PGHOST: 127.0.0.1
           PGUSER: postgres
-          RACK_ENV: test
           RAILS_ENV: test
       - image: cimg/postgres:10.18
         environment:
@@ -25,22 +23,27 @@ jobs:
 
     steps:
       - checkout
-      - browser-tools/install-browser-tools:
-          install-chrome: false
-          install-chromedriver: false
 
       - node/install:
-          node-version: lts
+          node-version: 25.6.0
+
+      - node/install-packages:
+          pkg-manager: pnpm
+
+      - browser-tools/install_firefox
 
       - run:
-          name: Which bundler?
-          command: bundle -v
+          name: Which versions?
+          command: |
+            bundle -v
+            node --version
+            pnpm --version
 
       # https://circleci.com/docs/2.0/caching/
       - restore_cache:
           keys:
-            - bundle-v1-{{ checksum "Gemfile.lock" }}
-            - bundle-v1-
+            - bundle-v2-{{ checksum "Gemfile.lock" }}
+            - bundle-v2
 
       - run: # Install Ruby dependencies
           name: Bundle Install
@@ -50,16 +53,9 @@ jobs:
             bundle clean
 
       - save_cache:
-          key: bundle-v1-{{ checksum "Gemfile.lock" }}
+          key: bundle-v2-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
-
-      - node/install-packages:
-          pkg-manager: pnpm
-
-      - run:
-          name: Build JS assets
-          command: pnpm build
 
       - run:
           name: Wait for DB
@@ -67,23 +63,35 @@ jobs:
 
       - run:
           name: Database setup
-          command: bundle exec rake db:create db:schema:load --trace
+          command: bin/rails db:setup --trace
 
-      # - run:
-      #     name: Brakeman
-      #     command: bundle exec brakeman
+      - run:
+          name: Typescript
+          command: pnpm tscheck
+
+      - run:
+          name: Find Unused ESLint Rules
+          command: pnpm eslint_find_unused_rules
 
       - run:
           name: ESLint
           command: pnpm eslint
 
       - run:
-          name: Stylelint
-          command: pnpm stylelint
+          name: Verify ESLint Autogen
+          command: bundle exec exe/eslint_autogen
 
       - run:
           name: Vitest
           command: pnpm vitest run --coverage
+
+      - run:
+          name: Brakeman
+          command: bundle exec brakeman
+
+      - run:
+          name: Stylelint
+          command: pnpm stylelint
 
       - run:
           name: Verify Stylelint Autogen
@@ -94,37 +102,37 @@ jobs:
           command: bundle exec rubocop
 
       - run:
-          name: Run rspec in parallel
+          name: ✨ 🌈 ✨ Run Unit Tests ✨ 🌈 ✨
           command: |
-            bundle exec rspec --exclude-pattern "spec/system/*_spec.rb"
-            # bundle exec rspec --profile 10 \
-            #                   --format RspecJunitFormatter \
-            #                   --out test_results/rspec.xml \
-            #                   --format progress \
-            #                   $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
+              grep -v "spec/system" | \
+              circleci tests split --split-by=timings)"
 
-      - store_test_results: # https://circleci.com/docs/2.0/collect-test-data/
-          path: test_results
+            echo "******************** TEST_FILES ************************"
+            echo "bundle exec rspec -s <seed-from-failed-build> $TEST_FILES"
+            echo "********************************************************"
+
+            COVERAGE=true bundle exec rspec \
+              --format progress \
+              --format RspecJunitFormatter \
+              --out /tmp/test-results/rspec.xml \
+              $TEST_FILES
 
       - run:
-          name: Run system tests
+          name: ✨ 🌈 ✨ Run System Tests ✨ 🌈 ✨
           command: |
-            COVERAGE=false bundle exec rspec spec/system/
+            TEST_FILES="$(circleci tests glob "spec/system/**/*_spec.rb" | \
+              circleci tests split --split-by=timings)"
 
-workflows:
-  build:
-    jobs:
-      - build
+            echo "******************** TEST_FILES ************************"
+            echo "bundle exec rspec -s <seed-from-failed-build> $TEST_FILES"
+            echo "********************************************************"
 
-  # https://circleci.com/docs/2.0/workflows/#nightly-example
-  # https://circleci.com/docs/2.0/configuration-reference/#filters-1
-  repeat:
-    jobs:
-      - build
-    triggers:
-      - schedule:
-          cron: "0,20,40 * * * *"
-          filters:
-            branches:
-              only:
-                - /.*ci-repeat.*/
+            COVERAGE=false xvfb-run -a bundle exec rspec \
+              --format progress \
+              --format RspecJunitFormatter \
+              --out /tmp/test-results/rspec.xml \
+              $TEST_FILES
+
+      - store_test_results:
+          path: test_results

@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
+require "securerandom"
+
 module Secrets
   def self.generate_secret(length)
-    `openssl rand -hex #{length}`.strip
+    SecureRandom.hex(length)
   end
 end
 

@@ -27,6 +27,7 @@ gem "thread"
 gem "will_paginate"
 
 group :development do
+  gem "brakeman", require: false
   gem "rubocop", require: false
   gem "rubocop-capybara", require: false
   gem "rubocop-factory_bot", require: false
@@ -51,6 +52,7 @@ end
 
 group :test do
   gem "axe-core-rspec"
+  gem "rspec_junit_formatter"
   gem "selenium-webdriver"
   gem "webdrivers"
   gem "with_model"
