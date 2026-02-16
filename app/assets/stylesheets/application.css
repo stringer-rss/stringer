@@ -290,6 +290,11 @@ li.story .fa-star-o {
   text-align: left;
 }
 
+.story-body img {
+  max-width: 100%;
+  height: auto;
+}
+
 .story-body h1, .story-body h2, .story-body h3 {
   font-family: "Lato", sans-serif;
   font-weight: 700;
