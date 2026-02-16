@@ -1,7 +1,12 @@
 // @ts-nocheck
+import {beforeEach, expect} from "vitest";
 import "jquery";
 import underscore from "underscore";
 import Backbone from "backbone";
+
+beforeEach(() => {
+  expect.hasAssertions();
+});
 
 const jquery = window.jQuery;
 globalThis.$ = jquery;
