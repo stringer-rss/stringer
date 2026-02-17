@@ -11,8 +11,10 @@ gem "rails", "~> 8.1.0"
 
 gem "bcrypt"
 gem "bootsnap", require: false
+gem "cssbundling-rails"
 gem "feedbag"
 gem "feedjira"
+gem "goldiloader"
 gem "good_job", "~> 4.13.0"
 gem "httparty"
 gem "jsbundling-rails"
