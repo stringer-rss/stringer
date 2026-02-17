@@ -51,6 +51,7 @@
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=iife --outdir=app/assets/builds --public-path=/assets --alias:jquery=./node_modules/jquery/jquery.js --alias:bootstrap=./node_modules/bootstrap/dist/js/bootstrap.js --alias:jquery-visible=./node_modules/jquery-visible/jquery.visible.min.js",
+    "build:css": "esbuild app/assets/stylesheets/application.css --bundle --outdir=app/assets/builds --public-path=/assets --external:/img/*",
     "eslint": "eslint ./ --cache --max-warnings=0",
     "eslint_find_unused_rules": "eslint-find-rules --unused --flatConfig --no-core eslint.config.ts",
     "pretest": "pnpm tscheck && pnpm eslint",
