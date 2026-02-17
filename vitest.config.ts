@@ -39,6 +39,7 @@ export default defineConfig({
         url: "http://test.host",
       },
     },
+    globals: true,
     include: ["spec/javascript/**/*_spec.ts"],
     outputFile: {
       junit: "/tmp/test-results/junit.xml",

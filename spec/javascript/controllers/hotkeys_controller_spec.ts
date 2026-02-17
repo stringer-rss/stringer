@@ -1,4 +1,3 @@
-import {describe, expect, it, vi} from "vitest";
 import {bootStimulus, getController} from "spec/javascript/support/stimulus";
 import HotkeysController from "controllers/hotkeys_controller";
 import {assert} from "javascript/helpers";

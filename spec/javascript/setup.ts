@@ -1,5 +1,6 @@
 // @ts-nocheck
-import {beforeEach, expect} from "vitest";
+/// <reference types="vitest/globals" />
+
 import "jquery";
 import underscore from "underscore";
 import Backbone from "backbone";
