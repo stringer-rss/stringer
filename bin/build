@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+esbuild app/javascript/application.ts \
+  --bundle \
+  --sourcemap \
+  --format=iife \
+  --outdir=app/assets/builds \
+  --public-path=/assets \
+  --alias:jquery=./node_modules/jquery/jquery.js \
+  --alias:bootstrap=./node_modules/bootstrap/dist/js/bootstrap.js \
+  --alias:jquery-visible=./node_modules/jquery-visible/jquery.visible.min.js
