@@ -14,9 +14,6 @@ export default {
   ],
   plugins: ["stylelint-selector-bem-pattern"],
   rules: {
-    "no-descending-specificity": null,
-    "plugin/selector-bem-pattern": {
-      preset: "bem",
-    },
+    "import-notation": "string",
   },
 };
