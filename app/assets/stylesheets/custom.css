@@ -1,6 +1,6 @@
 /* custom CSS goes here */
-@import url("bootstrap/dist/css/bootstrap.min.css");
-@import url("font-awesome/css/font-awesome.min.css");
-@import url("@fontsource/lato/latin.css");
-@import url("@fontsource/lato/latin-400-italic.css");
-@import url("@fontsource/reenie-beanie/latin.css");
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import "font-awesome/css/font-awesome.min.css";
+@import "@fontsource/lato/latin.css";
+@import "@fontsource/lato/latin-400-italic.css";
+@import "@fontsource/reenie-beanie/latin.css";
