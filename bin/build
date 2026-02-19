@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-esbuild app/javascript/application.ts \
+esbuild app/javascript/*.ts \
   --bundle \
   --sourcemap \
   --format=iife \
