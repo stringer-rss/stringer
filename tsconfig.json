@@ -8,7 +8,8 @@
     "paths": {
       "channels/*": ["./app/javascript/channels/*"],
       "controllers/*": ["./app/javascript/controllers/*"],
-      "javascript/*": ["./app/javascript/*"]
+      "javascript/*": ["./app/javascript/*"],
+      "support/*": ["./spec/javascript/support/*"]
     },
     "noUncheckedSideEffectImports": true,
     "sourceMap": true,
