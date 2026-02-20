@@ -18,6 +18,10 @@ export default defineConfig({
       {find: "bootstrap", replacement: path.resolve(root, "node_modules/bootstrap/dist/js/bootstrap.js")},
       {find: "mousetrap", replacement: path.resolve(root, "node_modules/mousetrap/mousetrap.js")},
       {find: "jquery-visible", replacement: path.resolve(root, "node_modules/jquery-visible/jquery.visible.min.js")},
+      {
+        find: /^support\//u,
+        replacement: `${path.resolve(root, "spec/javascript/support")}/`,
+      },
     ],
   },
   test: {

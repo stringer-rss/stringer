@@ -1,4 +1,4 @@
-import {bootStimulus, getController} from "spec/javascript/support/stimulus";
+import {bootStimulus, getController} from "support/stimulus";
 import HotkeysController from "controllers/hotkeys_controller";
 import {assert} from "javascript/helpers";
 
