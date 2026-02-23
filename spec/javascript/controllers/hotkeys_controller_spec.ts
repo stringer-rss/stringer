@@ -1,6 +1,6 @@
 import {bootStimulus, getController} from "support/stimulus";
 import HotkeysController from "controllers/hotkeys_controller";
-import {assert} from "javascript/helpers";
+import {assert} from "helpers/assert";
 
 function setupDOM(): void {
   document.body.innerHTML = `

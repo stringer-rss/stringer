@@ -12,6 +12,7 @@ export default defineConfig({
     alias: [
       {find: /^channels\//u, replacement: appPath("channels")},
       {find: /^controllers\//u, replacement: appPath("controllers")},
+      {find: /^helpers\//u, replacement: appPath("helpers")},
       {find: /^javascript\//u, replacement: appPath("")},
       {find: /^spec\//u, replacement: `${path.resolve(root, "spec")}/`},
       {find: "jquery", replacement: path.resolve(root, "node_modules/jquery/jquery.js")},

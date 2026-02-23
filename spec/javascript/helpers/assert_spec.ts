@@ -1,4 +1,4 @@
-import {assert} from "javascript/helpers";
+import {assert} from "helpers/assert";
 
 describe("assert", () => {
   it("throws an error when the passed value is null", () => {
