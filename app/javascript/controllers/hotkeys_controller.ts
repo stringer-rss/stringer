@@ -1,6 +1,6 @@
 import {Controller} from "@hotwired/stimulus";
 
-import {assert} from "javascript/helpers";
+import {assert} from "helpers/assert";
 
 export default class extends Controller {
   static override targets = ["click"];

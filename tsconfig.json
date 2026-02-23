@@ -8,6 +8,7 @@
     "paths": {
       "channels/*": ["./app/javascript/channels/*"],
       "controllers/*": ["./app/javascript/controllers/*"],
+      "helpers/*": ["./app/javascript/helpers/*"],
       "javascript/*": ["./app/javascript/*"],
       "support/*": ["./spec/javascript/support/*"]
     },
