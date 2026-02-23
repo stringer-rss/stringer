@@ -11,3 +11,4 @@ esbuild app/javascript/*.ts \
   --alias:jquery=./node_modules/jquery/jquery.js \
   --alias:bootstrap=./node_modules/bootstrap/dist/js/bootstrap.js \
   --alias:jquery-visible=./node_modules/jquery-visible/jquery.visible.min.js
+  "$@"
