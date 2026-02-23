@@ -22,6 +22,13 @@ class ProfilesController < ApplicationController
   private
 
   def user_params
-    params.expect(user: [:username, :password_challenge, :stories_order])
+    params.expect(
+      user: [
+        :username,
+        :password_challenge,
+        :stories_order,
+        :enclosure_filename_format
+      ]
+    )
   end
 end

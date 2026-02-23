@@ -9,5 +9,8 @@ import {application} from "./application";
 import DialogController from "./dialog_controller";
 application.register("dialog", DialogController);
 
+import EnclosureDownloadController from "./enclosure_download_controller";
+application.register("enclosure-download", EnclosureDownloadController);
+
 import HotkeysController from "./hotkeys_controller";
 application.register("hotkeys", HotkeysController);

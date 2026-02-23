@@ -34,6 +34,17 @@ RSpec.describe ProfilesController do
       end
     end
 
+    context "when updating enclosure_filename_format" do
+      it "updates the setting" do
+        login_as(default_user)
+        params = { user: { enclosure_filename_format: "date_source_title" } }
+
+        expect { patch(profile_path, params:) }
+          .to change { default_user.reload.enclosure_filename_format }
+          .from("original").to("date_source_title")
+      end
+    end
+
     context "when the username is invalid" do
       it "displays an error message" do
         login_as(default_user)

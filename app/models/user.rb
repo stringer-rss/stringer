@@ -15,10 +15,21 @@ class User < ApplicationRecord
 
   enum :stories_order, { desc: "desc", asc: "asc" }, prefix: true
 
+  ENCLOSURE_FILENAME_FORMATS = ["original", "date_source_title"].freeze
+
+  store_accessor :settings, :enclosure_filename_format
+  validates :enclosure_filename_format,
+            inclusion: { in: ENCLOSURE_FILENAME_FORMATS },
+            allow_nil: true
+
   attr_accessor :password_challenge
 
   # `password_challenge` logic should be able to be removed in Rails 7.1
   # https://blog.appsignal.com/2023/02/15/whats-new-in-rails-7-1.html#password-challenge-via-has_secure_password
+  def enclosure_filename_format
+    super.presence || "original"
+  end
+
   def password_challenge_matches
     return unless password_challenge
 

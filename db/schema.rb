@@ -10,96 +10,96 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_09_172408) do
+ActiveRecord::Schema[8.1].define(version: 2026_02_23_045507) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
-  enable_extension "plpgsql"
 
   create_table "feeds", id: :serial, force: :cascade do |t|
-    t.string "name", limit: 255
-    t.text "url"
-    t.datetime "last_fetched"
     t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "status"
     t.integer "group_id"
+    t.datetime "last_fetched"
+    t.string "name", limit: 255
+    t.integer "status"
+    t.datetime "updated_at", null: false
+    t.text "url"
     t.bigint "user_id", null: false
     t.index ["url", "user_id"], name: "index_feeds_on_url_and_user_id", unique: true
     t.index ["user_id"], name: "index_feeds_on_user_id"
   end
 
   create_table "good_job_batches", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "callback_priority"
+    t.text "callback_queue_name"
     t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.text "description"
-    t.jsonb "serialized_properties"
+    t.datetime "discarded_at"
+    t.datetime "enqueued_at"
+    t.datetime "finished_at"
+    t.text "on_discard"
     t.text "on_finish"
     t.text "on_success"
-    t.text "on_discard"
-    t.text "callback_queue_name"
-    t.integer "callback_priority"
-    t.datetime "enqueued_at"
-    t.datetime "discarded_at"
-    t.datetime "finished_at"
+    t.jsonb "serialized_properties"
+    t.datetime "updated_at", null: false
   end
 
   create_table "good_job_executions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.uuid "active_job_id", null: false
-    t.text "job_class"
-    t.text "queue_name"
-    t.jsonb "serialized_params"
-    t.datetime "scheduled_at"
-    t.datetime "finished_at"
-    t.text "error"
-    t.integer "error_event", limit: 2
-    t.text "error_backtrace", array: true
-    t.uuid "process_id"
+    t.datetime "created_at", null: false
     t.interval "duration"
+    t.text "error"
+    t.text "error_backtrace", array: true
+    t.integer "error_event", limit: 2
+    t.datetime "finished_at"
+    t.text "job_class"
+    t.uuid "process_id"
+    t.text "queue_name"
+    t.datetime "scheduled_at"
+    t.jsonb "serialized_params"
+    t.datetime "updated_at", null: false
     t.index ["active_job_id", "created_at"], name: "index_good_job_executions_on_active_job_id_and_created_at"
     t.index ["process_id", "created_at"], name: "index_good_job_executions_on_process_id_and_created_at"
   end
 
   create_table "good_job_processes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.jsonb "state"
     t.integer "lock_type", limit: 2
+    t.jsonb "state"
+    t.datetime "updated_at", null: false
   end
 
   create_table "good_job_settings", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.text "key"
+    t.datetime "updated_at", null: false
     t.jsonb "value"
     t.index ["key"], name: "index_good_job_settings_on_key", unique: true
   end
 
   create_table "good_jobs", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.text "queue_name"
-    t.integer "priority"
-    t.jsonb "serialized_params"
-    t.datetime "scheduled_at"
-    t.datetime "performed_at"
-    t.datetime "finished_at"
-    t.text "error"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.uuid "active_job_id"
-    t.text "concurrency_key"
-    t.text "cron_key"
-    t.uuid "retried_good_job_id"
-    t.datetime "cron_at"
-    t.uuid "batch_id"
     t.uuid "batch_callback_id"
-    t.boolean "is_discrete"
-    t.integer "executions_count"
-    t.text "job_class"
+    t.uuid "batch_id"
+    t.text "concurrency_key"
+    t.datetime "created_at", null: false
+    t.datetime "cron_at"
+    t.text "cron_key"
+    t.text "error"
     t.integer "error_event", limit: 2
+    t.integer "executions_count"
+    t.datetime "finished_at"
+    t.boolean "is_discrete"
+    t.text "job_class"
     t.text "labels", array: true
-    t.uuid "locked_by_id"
     t.datetime "locked_at"
+    t.uuid "locked_by_id"
+    t.datetime "performed_at"
+    t.integer "priority"
+    t.text "queue_name"
+    t.uuid "retried_good_job_id"
+    t.datetime "scheduled_at"
+    t.jsonb "serialized_params"
+    t.datetime "updated_at", null: false
     t.index ["active_job_id", "created_at"], name: "index_good_jobs_on_active_job_id_and_created_at"
     t.index ["batch_callback_id"], name: "index_good_jobs_on_batch_callback_id", where: "(batch_callback_id IS NOT NULL)"
     t.index ["batch_id"], name: "index_good_jobs_on_batch_id", where: "(batch_id IS NOT NULL)"
@@ -117,8 +117,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_09_172408) do
   end
 
   create_table "groups", id: :serial, force: :cascade do |t|
-    t.string "name", limit: 255, null: false
     t.datetime "created_at", null: false
+    t.string "name", limit: 255, null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.index ["name", "user_id"], name: "index_groups_on_name_and_user_id", unique: true
@@ -126,51 +126,52 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_09_172408) do
   end
 
   create_table "settings", force: :cascade do |t|
-    t.string "type", null: false
-    t.jsonb "data", default: {}, null: false
     t.datetime "created_at", null: false
+    t.jsonb "data", default: {}, null: false
+    t.string "type", null: false
     t.datetime "updated_at", null: false
     t.index ["type"], name: "index_settings_on_type", unique: true
   end
 
   create_table "stories", id: :serial, force: :cascade do |t|
-    t.text "title"
-    t.text "permalink"
     t.text "body"
-    t.integer "feed_id", null: false
     t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.datetime "published"
-    t.boolean "is_read", default: false
-    t.boolean "keep_unread", default: false
-    t.boolean "is_starred", default: false
-    t.text "entry_id"
     t.string "enclosure_url"
+    t.text "entry_id"
+    t.integer "feed_id", null: false
+    t.boolean "is_read", default: false
+    t.boolean "is_starred", default: false
+    t.boolean "keep_unread", default: false
+    t.text "permalink"
+    t.datetime "published"
+    t.text "title"
+    t.datetime "updated_at", null: false
     t.index ["entry_id", "feed_id"], name: "index_stories_on_entry_id_and_feed_id", unique: true
   end
 
   create_table "subscriptions", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "current_period_end", null: false
+    t.datetime "current_period_start", null: false
+    t.text "status", null: false
     t.text "stripe_customer_id", null: false
     t.text "stripe_subscription_id", null: false
-    t.text "status", null: false
-    t.datetime "current_period_start", null: false
-    t.datetime "current_period_end", null: false
-    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
     t.index ["stripe_customer_id"], name: "index_subscriptions_on_stripe_customer_id", unique: true
     t.index ["stripe_subscription_id"], name: "index_subscriptions_on_stripe_subscription_id", unique: true
     t.index ["user_id"], name: "index_subscriptions_on_user_id", unique: true
   end
 
   create_table "users", id: :serial, force: :cascade do |t|
-    t.string "password_digest", limit: 255
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "api_key", limit: 255, null: false
-    t.string "username", null: false
     t.boolean "admin", null: false
+    t.string "api_key", limit: 255, null: false
+    t.datetime "created_at", null: false
+    t.string "password_digest", limit: 255
+    t.jsonb "settings", default: {}, null: false
     t.string "stories_order", default: "desc"
+    t.datetime "updated_at", null: false
+    t.string "username", null: false
     t.index ["api_key"], name: "index_users_on_api_key", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end

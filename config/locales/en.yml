@@ -191,6 +191,10 @@ en:
     attributes:
       user:
         stories_order: "Stories feed order"
+        enclosure_filename_format: "Download filename format"
       user/stories_order:
         asc: "Oldest first"
         desc: "Newest first"
+      user/enclosure_filename_format:
+        original: "Original"
+        date_source_title: "Date - Source - Title"

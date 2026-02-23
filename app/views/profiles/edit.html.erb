@@ -5,6 +5,8 @@
     <legend><%= t(".stories_feed_settings") %></legend>
     <%= form.label :stories_order %>
     <%= form.select :stories_order, User.stories_orders.transform_keys {|k| User.human_attribute_name("stories_order.#{k}") } %>
+    <%= form.label :enclosure_filename_format %>
+    <%= form.select :enclosure_filename_format, User::ENCLOSURE_FILENAME_FORMATS.map {|f| [User.human_attribute_name("enclosure_filename_format.#{f}"), f] } %>
   </fieldset>
   <%= form.submit("Update") %>
 <% end %>

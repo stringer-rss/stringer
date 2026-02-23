@@ -25,7 +25,13 @@
       <h1>
         <a href="{{= permalink }}">{{= title }}</a>
         {{ if (enclosure_url) { }}
-          <a class="story-enclosure" target="_blank" href="{{= enclosure_url }}">
+          <a class="story-enclosure"
+             href="{{= enclosure_url }}"
+             data-controller="enclosure-download"
+             data-enclosure-download-title-value="{{= title }}"
+             data-enclosure-download-source-value="{{= source }}"
+             data-enclosure-download-date-value="{{= pretty_date }}"
+             data-enclosure-download-format-value="<%= current_user.enclosure_filename_format %>">
             <i class="fa fa-download"></i>
           </a>
         {{ } }}

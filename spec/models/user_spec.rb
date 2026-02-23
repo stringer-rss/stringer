@@ -1,6 +1,27 @@
 # frozen_string_literal: true
 
 RSpec.describe User do
+  describe "#enclosure_filename_format" do
+    it "defaults to 'original' when not set" do
+      user = create(:user)
+
+      expect(user.enclosure_filename_format).to eq("original")
+    end
+
+    it "returns the stored value when set" do
+      user = create(:user)
+      user.update!(enclosure_filename_format: "date_source_title")
+
+      expect(user.enclosure_filename_format).to eq("date_source_title")
+    end
+
+    it "is invalid with an unrecognized format" do
+      user = build(:user, enclosure_filename_format: "invalid")
+
+      expect(user).not_to be_valid
+    end
+  end
+
   describe "#update_api_key" do
     it "updates the api key when the username changed" do
       user = create(:user, username: "stringer", password: "super-secret")
