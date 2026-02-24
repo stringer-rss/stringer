@@ -13,3 +13,4 @@ esbuild app/assets/stylesheets/application.css \
   --loader:.eot=file \
   --loader:.ttf=file \
   --loader:.svg=file
+  "$@"
