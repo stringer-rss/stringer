@@ -23,7 +23,7 @@
     "@stylistic/eslint-plugin": "^5.7.0",
     "@types/backbone": "latest",
     "@types/hotwired__turbo": "^8.0.5",
-    "@types/jquery": "latest",
+    "@types/jquery": "^4.0.0",
     "@types/mousetrap": "latest",
     "@types/node": "^25.2.3",
     "@types/rails__actioncable": "^8.0.3",
