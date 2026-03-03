@@ -9,4 +9,22 @@ RSpec.describe "application settings" do
 
     expect(page).to have_content("User signups are enabled")
   end
+
+  it "allows disabling account creation" do
+    Setting::UserSignup.first.update!(enabled: true)
+    login_as(create(:user, admin: true))
+    visit(settings_path)
+
+    within("form", text: "User signups are enabled") { click_on("Disable") }
+
+    expect(page).to have_content("User signups are disabled")
+  end
+
+  it "prevents signup when signups are disabled" do
+    create(:user, admin: true)
+
+    visit(setup_password_path)
+
+    expect(page).to have_current_path(login_path)
+  end
 end

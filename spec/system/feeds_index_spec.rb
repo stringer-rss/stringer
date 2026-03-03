@@ -28,6 +28,18 @@ RSpec.describe "feeds/index" do
     expect(page).to have_content("Feed deleted")
   end
 
+  it "removes stories from news when a feed is deleted" do
+    login_as(default_user)
+    feed = create(:feed)
+    create(:story, feed: feed, title: "Gone Story")
+    visit("/feeds")
+
+    click_on "Delete"
+    visit(news_path)
+
+    expect(page).to have_content("You've reached RSS Zero")
+  end
+
   it "allows the user to edit a feed" do
     login_as(default_user)
     feed = create(:feed)

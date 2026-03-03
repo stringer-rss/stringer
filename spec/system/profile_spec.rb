@@ -41,4 +41,18 @@ RSpec.describe "profile page" do
 
     expect(default_user.reload).to be_stories_order_asc
   end
+
+  it "rejects username change with wrong password" do
+    fill_in_username_fields("wrong_password")
+    click_on("Update username")
+
+    expect(page).to have_text("Unable to update profile")
+  end
+
+  it "rejects password change with wrong existing password" do
+    fill_in_password_fields("wrong_password", "new_password")
+    click_on("Update password")
+
+    expect(page).to have_text("Unable to update password")
+  end
 end
