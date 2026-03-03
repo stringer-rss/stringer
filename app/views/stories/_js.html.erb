@@ -37,7 +37,7 @@
     });
 
     Mousetrap.bind(["s"], function() {
-      StoryApp.toggleCurrentStarred();
+      document.querySelector(".story.cursor .story-starred")?.click();
     });
   });
 </script>

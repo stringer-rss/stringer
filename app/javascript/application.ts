@@ -80,16 +80,6 @@ var Story = Backbone.Model.extend({
     if (this.shouldSave()) this.save(null, { headers: requestHeaders() });
   },
 
-  toggleStarred: function() {
-    if (this.get("is_starred")) {
-      this.set("is_starred", false);
-    } else {
-      this.set("is_starred", true);
-    }
-
-    if (this.shouldSave()) this.save(null, { headers: requestHeaders() });
-  },
-
   close: function() {
     this.set("open", false);
   },
@@ -116,8 +106,7 @@ var StoryView = Backbone.View.extend({
 
   events: {
     "click .story-preview" : "storyClicked",
-    "click .story-keep-unread" : "toggleKeepUnread",
-    "click .story-starred" : "toggleStarred"
+    "click .story-keep-unread" : "toggleKeepUnread"
   },
 
   initialize: function() {
@@ -127,7 +116,6 @@ var StoryView = Backbone.View.extend({
     this.listenTo(this.model, 'change:open', this.itemOpened);
     this.listenTo(this.model, 'change:is_read', this.itemRead);
     this.listenTo(this.model, 'change:keep_unread', this.itemKeepUnread);
-    this.listenTo(this.model, 'change:is_starred', this.itemStarred);
   },
 
   render: function() {
@@ -139,6 +127,9 @@ var StoryView = Backbone.View.extend({
     if (jsonModel.keep_unread) {
       this.$el.addClass('keepUnread');
     }
+    this.el.dataset.starToggleIdValue = String(jsonModel.id);
+    this.el.dataset.starToggleStarredValue = String(jsonModel.is_starred);
+    this.el.dataset.controller = "star-toggle";
     return this;
   },
 
@@ -168,11 +159,6 @@ var StoryView = Backbone.View.extend({
     this.$el.toggleClass("keepUnread", this.model.get("keep_unread"));
   },
 
-  itemStarred: function() {
-    var icon = this.model.get("is_starred") ? "fa fa-star" : "fa fa-star-o";
-    this.$(".story-starred > i").attr("class", icon);
-  },
-
   storyClicked: function(e) {
     if (e.metaKey || e.ctrlKey || e.which == 2) {
       var backgroundTab = window.open(this.model.get("permalink"));
@@ -188,11 +174,6 @@ var StoryView = Backbone.View.extend({
 
   toggleKeepUnread: function() {
     this.model.toggleKeepUnread();
-  },
-
-  toggleStarred: function(e) {
-    e.stopPropagation();
-    this.model.toggleStarred();
   }
 });
 
@@ -274,11 +255,6 @@ var StoryList = Backbone.Collection.extend({
   toggleCurrentKeepUnread: function() {
     if (this.cursorPosition < 0) this.cursorPosition = 0;
     this.at(this.cursorPosition).toggleKeepUnread();
-  },
-
-  toggleCurrentStarred: function() {
-    if (this.cursorPosition < 0) this.cursorPosition = 0;
-    this.at(this.cursorPosition).toggleStarred();
   }
 });
 
@@ -339,10 +315,6 @@ var AppView = Backbone.View.extend({
 
   toggleCurrentKeepUnread: function() {
     this.stories.toggleCurrentKeepUnread();
-  },
-
-  toggleCurrentStarred: function() {
-    this.stories.toggleCurrentStarred();
   }
 });
 
