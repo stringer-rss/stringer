@@ -11,3 +11,6 @@ application.register("dialog", DialogController);
 
 import HotkeysController from "./hotkeys_controller";
 application.register("hotkeys", HotkeysController);
+
+import StarToggleController from "./star_toggle_controller";
+application.register("star-toggle", StarToggleController);

@@ -12,5 +12,5 @@ esbuild app/assets/stylesheets/application.css \
   --loader:.woff2=file \
   --loader:.eot=file \
   --loader:.ttf=file \
-  --loader:.svg=file
+  --loader:.svg=file \
   "$@"
