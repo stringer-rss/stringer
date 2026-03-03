@@ -20,3 +20,9 @@ application.register("mark-all-as-read", MarkAllAsReadController);
 
 import StarToggleController from "./star_toggle_controller";
 application.register("star-toggle", StarToggleController);
+
+import StoryController from "./story_controller";
+application.register("story", StoryController);
+
+import StoryListController from "./story_list_controller";
+application.register("story-list", StoryListController);
