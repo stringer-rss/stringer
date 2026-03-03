@@ -6,40 +6,10 @@
 import type {Linter} from "eslint";
 
 const config: Linter.Config[] = [
-  // Offense count: 7
-  {
-    files: [
-      "app/javascript/application.ts",
-    ],
-    rules: {
-      "@stylistic/comma-dangle": "off",
-    },
-  },
-  // Offense count: 5
-  {
-    files: [
-      "app/javascript/application.ts",
-    ],
-    rules: {
-      "@stylistic/key-spacing": "off",
-    },
-  },
-  // Offense count: 2
-  {
-    files: [
-      "app/javascript/application.ts",
-    ],
-    rules: {
-      "@stylistic/keyword-spacing": "off",
-    },
-  },
   // Offense count: 15
   {
     files: [
-      "app/javascript/application.ts",
       "spec/javascript/setup.ts",
-      "spec/javascript/spec/models/story_spec.ts",
-      "spec/javascript/spec/views/story_view_spec.ts",
       "vitest.config.ts",
     ],
     rules: {
@@ -55,296 +25,13 @@ const config: Linter.Config[] = [
       "@stylistic/multiline-comment-style": "off",
     },
   },
-  // Offense count: 8
-  {
-    files: [
-      "app/javascript/application.ts",
-      "spec/javascript/spec/views/story_view_spec.ts",
-    ],
-    rules: {
-      "@stylistic/multiline-ternary": "off",
-    },
-  },
-  // Offense count: 3
-  {
-    files: [
-      "app/javascript/application.ts",
-      "spec/javascript/spec/models/story_spec.ts",
-    ],
-    rules: {
-      "@stylistic/no-extra-parens": "off",
-    },
-  },
   // Offense count: 30
   {
     files: [
-      "app/javascript/application.ts",
       "spec/javascript/setup.ts",
-      "spec/javascript/spec/models/story_spec.ts",
-      "spec/javascript/spec/views/story_view_spec.ts",
     ],
     rules: {
       "@stylistic/object-curly-spacing": "off",
-    },
-  },
-  // Offense count: 3
-  {
-    files: [
-      "app/javascript/application.ts",
-      "stylelint.config.mjs",
-    ],
-    rules: {
-      "@stylistic/quote-props": "off",
-    },
-  },
-  // Offense count: 41
-  {
-    files: [
-      "app/javascript/application.ts",
-      "spec/javascript/setup.ts",
-    ],
-    rules: {
-      "@stylistic/quotes": "off",
-    },
-  },
-  // Offense count: 1
-  {
-    files: [
-      "app/javascript/application.ts",
-    ],
-    rules: {
-      "@stylistic/semi": "off",
-    },
-  },
-  // Offense count: 1
-  {
-    files: [
-      "app/javascript/application.ts",
-    ],
-    rules: {
-      "@stylistic/space-before-blocks": "off",
-    },
-  },
-  // Offense count: 50
-  {
-    files: [
-      "app/javascript/application.ts",
-    ],
-    rules: {
-      "@stylistic/space-before-function-paren": "off",
-    },
-  },
-  // Offense count: 4
-  {
-    files: [
-      "app/javascript/application.ts",
-      "spec/javascript/setup.ts",
-      "spec/javascript/spec/models/story_spec.ts",
-      "spec/javascript/spec/views/story_view_spec.ts",
-    ],
-    rules: {
-      "@typescript-eslint/ban-ts-comment": "off",
-    },
-  },
-  // Offense count: 7
-  {
-    files: [
-      "app/javascript/application.ts",
-      "spec/javascript/setup.ts",
-      "spec/javascript/spec/views/story_view_spec.ts",
-    ],
-    rules: {
-      "@typescript-eslint/explicit-function-return-type": "off",
-    },
-  },
-  // Offense count: 3
-  {
-    files: [
-      "spec/javascript/spec/views/story_view_spec.ts",
-    ],
-    rules: {
-      "@typescript-eslint/init-declarations": "off",
-    },
-  },
-  // Offense count: 2
-  {
-    files: [
-      "app/javascript/application.ts",
-    ],
-    rules: {
-      "@typescript-eslint/no-deprecated": "off",
-    },
-  },
-  // Offense count: 5
-  {
-    files: [
-      "spec/javascript/spec/models/story_spec.ts",
-      "spec/javascript/spec/views/story_view_spec.ts",
-    ],
-    rules: {
-      "@typescript-eslint/no-empty-function": "off",
-    },
-  },
-  // Offense count: 9
-  {
-    files: [
-      "app/javascript/application.ts",
-      "spec/javascript/spec/views/story_view_spec.ts",
-    ],
-    rules: {
-      "@typescript-eslint/no-unsafe-argument": "off",
-    },
-  },
-  // Offense count: 45
-  {
-    files: [
-      "app/javascript/application.ts",
-      "eslint.config.mts",
-      "spec/javascript/setup.ts",
-      "spec/javascript/spec/models/story_spec.ts",
-      "spec/javascript/spec/views/story_view_spec.ts",
-    ],
-    rules: {
-      "@typescript-eslint/no-unsafe-assignment": "off",
-    },
-  },
-  // Offense count: 181
-  {
-    files: [
-      "app/javascript/application.ts",
-      "spec/javascript/setup.ts",
-      "spec/javascript/spec/models/story_spec.ts",
-      "spec/javascript/spec/views/story_view_spec.ts",
-    ],
-    rules: {
-      "@typescript-eslint/no-unsafe-call": "off",
-    },
-  },
-  // Offense count: 266
-  {
-    files: [
-      "app/javascript/application.ts",
-      "spec/javascript/spec/models/story_spec.ts",
-      "spec/javascript/spec/views/story_view_spec.ts",
-    ],
-    rules: {
-      "@typescript-eslint/no-unsafe-member-access": "off",
-    },
-  },
-  // Offense count: 6
-  {
-    files: [
-      "app/javascript/application.ts",
-    ],
-    rules: {
-      "@typescript-eslint/no-unsafe-return": "off",
-    },
-  },
-  // Offense count: 1
-  {
-    files: [
-      "app/javascript/application.ts",
-    ],
-    rules: {
-      "@typescript-eslint/prefer-destructuring": "off",
-    },
-  },
-  // Offense count: 1
-  {
-    files: [
-      "app/javascript/application.ts",
-    ],
-    rules: {
-      "@typescript-eslint/prefer-nullish-coalescing": "off",
-    },
-  },
-  // Offense count: 1
-  {
-    files: [
-      "app/javascript/application.ts",
-    ],
-    rules: {
-      "@typescript-eslint/prefer-optional-chain": "off",
-    },
-  },
-  // Offense count: 24
-  {
-    files: [
-      "app/javascript/application.ts",
-      "spec/javascript/spec/models/story_spec.ts",
-    ],
-    rules: {
-      "@typescript-eslint/strict-boolean-expressions": "off",
-    },
-  },
-  // Offense count: 9
-  {
-    files: [
-      "app/javascript/application.ts",
-      "spec/javascript/spec/models/story_spec.ts",
-      "spec/javascript/spec/views/story_view_spec.ts",
-    ],
-    rules: {
-      "camelcase": "off",
-    },
-  },
-  // Offense count: 1
-  {
-    files: [
-      "spec/javascript/setup.ts",
-    ],
-    rules: {
-      "capitalized-comments": "off",
-    },
-  },
-  // Offense count: 13
-  {
-    files: [
-      "app/javascript/application.ts",
-    ],
-    rules: {
-      "curly": "off",
-    },
-  },
-  // Offense count: 2
-  {
-    files: [
-      "app/javascript/application.ts",
-    ],
-    rules: {
-      "eqeqeq": "off",
-    },
-  },
-  // Offense count: 111
-  {
-    files: [
-      "app/javascript/application.ts",
-      "spec/javascript/setup.ts",
-      "spec/javascript/spec/models/story_spec.ts",
-      "spec/javascript/spec/views/story_view_spec.ts",
-    ],
-    rules: {
-      "func-names": "off",
-    },
-  },
-  // Offense count: 3
-  {
-    files: [
-      "spec/javascript/spec/views/story_view_spec.ts",
-    ],
-    rules: {
-      "func-style": "off",
-    },
-  },
-  // Offense count: 15
-  {
-    files: [
-      "app/javascript/application.ts",
-      "spec/javascript/setup.ts",
-      "spec/javascript/spec/views/story_view_spec.ts",
-    ],
-    rules: {
-      "id-length": "off",
     },
   },
   // Offense count: 1
@@ -356,164 +43,119 @@ const config: Linter.Config[] = [
       "import/no-unresolved": "off",
     },
   },
+  // Offense count: 3
+  {
+    files: [
+      "stylelint.config.mjs",
+    ],
+    rules: {
+      "@stylistic/quote-props": "off",
+    },
+  },
+  // Offense count: 41
+  {
+    files: [
+      "spec/javascript/setup.ts",
+    ],
+    rules: {
+      "@stylistic/quotes": "off",
+    },
+  },
+  // Offense count: 4
+  {
+    files: [
+      "spec/javascript/setup.ts",
+    ],
+    rules: {
+      "@typescript-eslint/ban-ts-comment": "off",
+    },
+  },
+  // Offense count: 7
+  {
+    files: [
+      "spec/javascript/setup.ts",
+    ],
+    rules: {
+      "@typescript-eslint/explicit-function-return-type": "off",
+    },
+  },
+  // Offense count: 45
+  {
+    files: [
+      "eslint.config.mts",
+      "spec/javascript/setup.ts",
+    ],
+    rules: {
+      "@typescript-eslint/no-unsafe-assignment": "off",
+    },
+  },
+  // Offense count: 181
+  {
+    files: [
+      "spec/javascript/setup.ts",
+    ],
+    rules: {
+      "@typescript-eslint/no-unsafe-call": "off",
+    },
+  },
+  // Offense count: 1
+  {
+    files: [
+      "spec/javascript/setup.ts",
+    ],
+    rules: {
+      "capitalized-comments": "off",
+    },
+  },
+  // Offense count: 111
+  {
+    files: [
+      "spec/javascript/setup.ts",
+    ],
+    rules: {
+      "func-names": "off",
+    },
+  },
+  // Offense count: 15
+  {
+    files: [
+      "spec/javascript/setup.ts",
+    ],
+    rules: {
+      "id-length": "off",
+    },
+  },
   // Offense count: 12
   {
     files: [
-      "app/javascript/application.ts",
       "spec/javascript/setup.ts",
-      "spec/javascript/spec/views/story_view_spec.ts",
       "vitest.config.ts",
     ],
     rules: {
       "max-len": "off",
     },
   },
-  // Offense count: 1
-  {
-    files: [
-      "app/javascript/application.ts",
-    ],
-    rules: {
-      "max-lines": "off",
-    },
-  },
-  // Offense count: 3
-  {
-    files: [
-      "spec/javascript/spec/models/story_spec.ts",
-      "spec/javascript/spec/views/story_view_spec.ts",
-    ],
-    rules: {
-      "max-lines-per-function": "off",
-    },
-  },
-  // Offense count: 1
-  {
-    files: [
-      "spec/javascript/spec/views/story_view_spec.ts",
-    ],
-    rules: {
-      "max-statements": "off",
-    },
-  },
   // Offense count: 4
   {
     files: [
-      "app/javascript/application.ts",
       "spec/javascript/setup.ts",
-      "spec/javascript/spec/views/story_view_spec.ts",
     ],
     rules: {
       "new-cap": "off",
     },
   },
-  // Offense count: 2
-  {
-    files: [
-      "spec/javascript/spec/models/story_spec.ts",
-    ],
-    rules: {
-      "no-implicit-coercion": "off",
-    },
-  },
-  // Offense count: 2
-  {
-    files: [
-      "spec/javascript/spec/models/story_spec.ts",
-    ],
-    rules: {
-      "no-multi-assign": "off",
-    },
-  },
-  // Offense count: 1
-  {
-    files: [
-      "spec/javascript/spec/views/story_view_spec.ts",
-    ],
-    rules: {
-      "no-negated-condition": "off",
-    },
-  },
-  // Offense count: 1
-  {
-    files: [
-      "spec/javascript/spec/views/story_view_spec.ts",
-    ],
-    rules: {
-      "no-param-reassign": "off",
-    },
-  },
-  // Offense count: 2
-  {
-    files: [
-      "app/javascript/application.ts",
-    ],
-    rules: {
-      "no-plusplus": "off",
-    },
-  },
   // Offense count: 4
   {
     files: [
-      "app/javascript/application.ts",
-      "spec/javascript/spec/views/story_view_spec.ts",
-    ],
-    rules: {
-      "no-ternary": "off",
-    },
-  },
-  // Offense count: 47
-  {
-    files: [
-      "app/javascript/application.ts",
-    ],
-    rules: {
-      "object-shorthand": "off",
-    },
-  },
-  // Offense count: 1
-  {
-    files: [
-      "spec/javascript/spec/views/story_view_spec.ts",
-    ],
-    rules: {
-      "one-var": "off",
-    },
-  },
-  // Offense count: 59
-  {
-    files: [
-      "app/javascript/application.ts",
-      "spec/javascript/spec/models/story_spec.ts",
-      "spec/javascript/spec/views/story_view_spec.ts",
-    ],
-    rules: {
-      "prefer-arrow-callback": "off",
-    },
-  },
-  // Offense count: 4
-  {
-    files: [
-      "app/javascript/application.ts",
       "spec/javascript/setup.ts",
     ],
     rules: {
       "prefer-named-capture-group": "off",
     },
   },
-  // Offense count: 1
-  {
-    files: [
-      "app/javascript/application.ts",
-    ],
-    rules: {
-      "prefer-template": "off",
-    },
-  },
   // Offense count: 4
   {
     files: [
-      "app/javascript/application.ts",
       "spec/javascript/setup.ts",
     ],
     rules: {
@@ -524,8 +166,6 @@ const config: Linter.Config[] = [
   {
     files: [
       "spec/javascript/setup.ts",
-      "spec/javascript/spec/models/story_spec.ts",
-      "spec/javascript/spec/views/story_view_spec.ts",
     ],
     rules: {
       "sort-imports": "off",
@@ -534,10 +174,7 @@ const config: Linter.Config[] = [
   // Offense count: 26
   {
     files: [
-      "app/javascript/application.ts",
       "spec/javascript/setup.ts",
-      "spec/javascript/spec/models/story_spec.ts",
-      "spec/javascript/spec/views/story_view_spec.ts",
     ],
     rules: {
       "sort-keys": "off",
@@ -546,49 +183,16 @@ const config: Linter.Config[] = [
   // Offense count: 26
   {
     files: [
-      "app/javascript/application.ts",
       "spec/javascript/setup.ts",
-      "spec/javascript/spec/models/story_spec.ts",
-      "spec/javascript/spec/views/story_view_spec.ts",
     ],
     rules: {
       "sort-keys-fix/sort-keys-fix": "off",
     },
   },
-  // Offense count: 8
-  {
-    files: [
-      "app/javascript/application.ts",
-      "spec/javascript/spec/views/story_view_spec.ts",
-    ],
-    rules: {
-      "vars-on-top": "off",
-    },
-  },
-  // Offense count: 3
-  {
-    files: [
-      "spec/javascript/spec/views/story_view_spec.ts",
-    ],
-    rules: {
-      "vitest/no-hooks": "off",
-    },
-  },
-  // Offense count: 4
-  {
-    files: [
-      "spec/javascript/spec/models/story_spec.ts",
-      "spec/javascript/spec/views/story_view_spec.ts",
-    ],
-    rules: {
-      "vitest/prefer-lowercase-title": "off",
-    },
-  },
   // Offense count: 4
   {
     files: [
       "spec/javascript/setup.ts",
-      "spec/javascript/spec/views/story_view_spec.ts",
     ],
     rules: {
       "vitest/require-hook": "off",
