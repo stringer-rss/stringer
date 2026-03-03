@@ -33,7 +33,7 @@
     });
 
     Mousetrap.bind(["m"], function() {
-      StoryApp.toggleCurrentKeepUnread();
+      document.querySelector(".story.cursor .story-keep-unread")?.click();
     });
 
     Mousetrap.bind(["s"], function() {

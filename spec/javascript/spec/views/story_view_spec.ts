@@ -96,6 +96,28 @@ describe("StoryView", function () {
       assertTagExists(view.$el, ".story-keep-unread .fa-check");
     });
 
+    it("should set keep-unread-toggle Stimulus data attributes", function () {
+      story.set({ keep_unread: false, is_read: false });
+      view.render();
+
+      expect(view.el.dataset.keepUnreadToggleIdValue).toBeDefined();
+      expect(view.el.dataset.keepUnreadToggleKeepUnreadValue).toBe("false");
+      expect(view.el.dataset.keepUnreadToggleIsReadValue).toBe("false");
+      expect(view.el.dataset.controller).toContain("keep-unread-toggle");
+    });
+
+    it("should wire keep-unread action to Stimulus controller", function () {
+      view.render();
+      var keepUnreadDiv = view.$el.find(".story-keep-unread");
+      expect(keepUnreadDiv.attr("data-action")).toContain("keep-unread-toggle#toggle");
+    });
+
+    it("should set keep-unread-toggle target on icon", function () {
+      view.render();
+      var icon = view.$el.find(".story-keep-unread i");
+      expect(icon.attr("data-keep-unread-toggle-target")).toBe("icon");
+    });
+
     it("should render two instances of the star button", function () {
       assertTagExists(view.$el, ".story-actions .story-starred");
       assertTagExists(view.$el, ".story-preview .story-starred");

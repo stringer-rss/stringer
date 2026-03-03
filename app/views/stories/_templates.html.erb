@@ -39,8 +39,8 @@
         </span>
       </div>
       <div class="pull-right story-actions">
-        <div class="story-keep-unread">
-          <i class="fa {{ if(keep_unread) { }}fa-check{{ } else { }}fa-square-o{{ } }}"></i> <%= t('stories.keep_unread') %>
+        <div class="story-keep-unread" data-action="click->keep-unread-toggle#toggle:stop">
+          <i class="fa {{ if(keep_unread) { }}fa-check{{ } else { }}fa-square-o{{ } }}" data-keep-unread-toggle-target="icon"></i> <%= t('stories.keep_unread') %>
         </div>
         <div class="story-starred" data-action="click->star-toggle#toggle:stop">
           <i class="fa {{ if(is_starred) { }}fa-star{{ } else { }}fa-star-o{{ } }}" data-star-toggle-target="icon"></i>
