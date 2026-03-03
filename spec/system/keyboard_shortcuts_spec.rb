@@ -70,4 +70,31 @@ RSpec.describe "keyboard shortcuts" do
 
     expect(page).to have_content("My Story")
   end
+
+  it "marks all as read with A" do
+    login_as(default_user)
+    create_story_and_visit(title: "My Story")
+
+    send_keys("A")
+
+    expect(page).to have_content("You've reached RSS Zero")
+  end
+
+  it "navigates to feeds with f" do
+    login_as(default_user)
+    create_story_and_visit(title: "My Story")
+
+    send_keys("f")
+
+    expect(page).to have_current_path(feeds_path)
+  end
+
+  it "navigates to add feed with a" do
+    login_as(default_user)
+    create_story_and_visit(title: "My Story")
+
+    send_keys("a")
+
+    expect(page).to have_current_path(feeds_new_path)
+  end
 end

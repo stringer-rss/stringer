@@ -30,4 +30,28 @@ RSpec.describe "archive" do
 
     expect(page).to have_link("Next")
   end
+
+  it "navigates to the next page", :aggregate_failures do
+    login_as(default_user)
+    create_read_stories(21)
+    visit(archive_path)
+
+    click_on("Next")
+
+    expect(page).to have_content("2 of 2")
+    expect(page).to have_link("Previous")
+  end
+
+  it "navigates pages with arrow keys", :aggregate_failures do
+    login_as(default_user)
+    create_read_stories(21)
+    visit(archive_path)
+
+    send_keys(:arrow_right)
+    expect(page).to have_link("Previous")
+
+    send_keys(:arrow_left)
+    expect(page).to have_link("Next")
+    expect(page).to have_no_link("Previous")
+  end
 end

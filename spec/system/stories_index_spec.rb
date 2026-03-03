@@ -93,6 +93,51 @@ RSpec.describe "stories/index" do
     expect(page).to have_content("My Story")
   end
 
+  def open_story_and_find_unread_icon(story_title)
+    find(".story-preview", text: story_title).click
+    find(".story-actions .story-keep-unread i")
+  end
+
+  it "changes the keep unread icon on toggle", :aggregate_failures do
+    create(:story, title: "My Story")
+    login_as(default_user)
+    visit(news_path)
+
+    icon = open_story_and_find_unread_icon("My Story")
+    expect(icon[:class]).to include("fa-square-o")
+
+    find(".story-actions .story-keep-unread").click
+    expect(icon[:class]).to include("fa-check")
+    expect(icon[:class]).not_to include("fa-square-o")
+
+    find(".story-actions .story-keep-unread").click
+    expect(icon[:class]).to include("fa-square-o")
+  end
+
+  it "displays a download link for stories with enclosures" do
+    create(
+      :story,
+      title: "Podcast Episode",
+      enclosure_url: "http://example.com/episode.mp3"
+    )
+    login_as(default_user)
+    visit(news_path)
+
+    find(".story-preview", text: "Podcast Episode").click
+
+    expect(page).to have_link(href: "http://example.com/episode.mp3")
+  end
+
+  it "does not display a download link for stories without enclosures" do
+    create(:story, title: "Regular Story")
+    login_as(default_user)
+    visit(news_path)
+
+    find(".story-preview", text: "Regular Story").click
+
+    expect(page).to have_no_css("a.story-enclosure")
+  end
+
   it "allows viewing a story with hot keys" do
     create(:story, title: "My Story", body: "My Body")
     login_as(default_user)
