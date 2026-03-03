@@ -1,10 +1,10 @@
-<nav>
+<nav data-controller="hotkeys mark-all-as-read" data-action="keydown@document->hotkeys#handleKeydown">
   <div>
-    <button class="btn" id="mark-all" title="<%= t('partials.action_bar.mark_all') %>" aria-label="<%= t('partials.action_bar.mark_all') %>">
+    <button class="btn" id="mark-all" title="<%= t('partials.action_bar.mark_all') %>" aria-label="<%= t('partials.action_bar.mark_all') %>" data-action="click->mark-all-as-read#submit" data-hotkeys-target="click" data-hotkey="A">
       <i class="fa fa-check"></i>
       <%= render "stories/mark_all_as_read_form", { stories: stories } %>
     </button>
-    <a class="btn" href="/" id="refresh" title="<%= t('partials.action_bar.refresh') %>">
+    <a class="btn" href="/" id="refresh" title="<%= t('partials.action_bar.refresh') %>" data-hotkeys-target="click" data-hotkey="r">
       <i class="fa fa-refresh"></i>
     </a>
   </div>
@@ -20,40 +20,11 @@
     <a class="btn btn-primary" id="archive" href="/archive" title="<%= t('partials.action_bar.archived_stories') %>">
       <i class="fa fa-clock-o"></i>
     </a>
-    <a class="btn btn-primary" id="feeds" href="/feeds" title="<%= t('partials.action_bar.view_feeds') %>">
+    <a class="btn btn-primary" id="feeds" href="/feeds" title="<%= t('partials.action_bar.view_feeds') %>" data-hotkeys-target="click" data-hotkey="f">
       <i class="fa fa-list"></i>
     </a>
-    <a class="btn btn-primary" id="add-feed" href="/feeds/new" title="<%= t('partials.action_bar.add_feed') %>">
+    <a class="btn btn-primary" id="add-feed" href="/feeds/new" title="<%= t('partials.action_bar.add_feed') %>" data-hotkeys-target="click" data-hotkey="a">
       <i class="fa fa-plus"></i>
     </a>
   </div>
 </nav>
-
-<script type="text/javascript">
-  $(document).ready(function() {
-    $("#mark-all").click(function(e) {
-      e.preventDefault();
-
-      $("form#mark-all-as-read").submit();
-    });
-    
-    Mousetrap.bind("r", function() {
-      var refresh = $("a#refresh")[0];
-      if (refresh) refresh.click();
-    });
-
-    Mousetrap.bind("f", function() {
-      var all_feeds = $("a#feeds")[0];
-      if (all_feeds) all_feeds.click();
-    });
-
-    Mousetrap.bind("a", function() {
-      var add_feed = $("a#add-feed")[0];
-      if (add_feed) add_feed.click();
-    });
-
-    Mousetrap.bind("shift+a", function() {
-      $("form#mark-all-as-read").submit();
-    });
-  });
-</script>

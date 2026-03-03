@@ -10,9 +10,9 @@
     </ul>
   </div>
 
-  <div id="pagination">
+  <div id="pagination" data-controller="hotkeys" data-action="keydown@document->hotkeys#handleKeydown">
   <% if @starred_stories.previous_page %>
-    <a id="prev_page" href="?page=<%= @starred_stories.previous_page %>"><%= t('starred.previous') %></a>
+    <a id="prev_page" href="?page=<%= @starred_stories.previous_page %>" data-hotkeys-target="click" data-hotkey="ArrowLeft"><%= t('starred.previous') %></a>
   <% end %>
 
   <% if @starred_stories.total_pages > 1 %>
@@ -20,31 +20,9 @@
   <% end %>
 
   <% if @starred_stories.next_page %>
-    <a id="next_page" href="?page=<%= @starred_stories.next_page %>"><%= t('starred.next') %></a>
+    <a id="next_page" href="?page=<%= @starred_stories.next_page %>" data-hotkeys-target="click" data-hotkey="ArrowRight"><%= t('starred.next') %></a>
   <% end %>
   </div>
-
-  <script>
-    $(document).ready(function() {
-      var stripQuerystring = function(full_url) {
-        return full_url.split("?")[0];
-      };
-
-      Mousetrap.bind("left", function() {
-        var pageNumber = $("#prev_page").attr("href");
-        
-        if (pageNumber)
-          location.href = stripQuerystring(location.href) + pageNumber;
-      });
-
-      Mousetrap.bind("right", function() {
-        var pageNumber = $("#next_page").attr("href");
-        
-        if (pageNumber)
-          location.href = stripQuerystring(location.href) + pageNumber;
-      });
-    });
-  </script>
 
 <% else %>
   <div id="sorry">
