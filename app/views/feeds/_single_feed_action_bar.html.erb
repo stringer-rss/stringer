@@ -1,13 +1,13 @@
-<div class="row">
+<div class="row" data-controller="hotkeys mark-all-as-read" data-action="keydown@document->hotkeys#handleKeydown">
   <div class="pull-left">
     <a class="btn" id="home" href="/news" title="<%= t('partials.feed_action_bar.home') %>">
       <i class="fa fa-reply"></i>
     </a>
-    <a class="btn" id="mark-all" title="<%= t('partials.action_bar.mark_all') %>">
+    <a class="btn" id="mark-all" title="<%= t('partials.action_bar.mark_all') %>" data-action="click->mark-all-as-read#submit" data-hotkeys-target="click" data-hotkey="A">
       <i class="fa fa-check"></i>
       <%= render "stories/mark_all_as_read_form", {stories: stories} %>
     </a>
-    <a class="btn" href="<%= "/feed/#{@feed.id}" %>" id="refresh" title="<%= t('partials.action_bar.refresh') %>">
+    <a class="btn" href="<%= "/feed/#{@feed.id}" %>" id="refresh" title="<%= t('partials.action_bar.refresh') %>" data-hotkeys-target="click" data-hotkey="r">
       <i class="fa fa-refresh"></i>
     </a>
   </div>
@@ -22,32 +22,8 @@
     <a class="btn btn-primary" id="feeds" href="/feeds" title="<%= t('partials.action_bar.view_feeds') %>">
       <i class="fa fa-list"></i>
     </a>
-    <a class="btn btn-primary" id="add-feed" href="/feeds/new" title="<%= t('partials.action_bar.add_feed') %>">
+    <a class="btn btn-primary" id="add-feed" href="/feeds/new" title="<%= t('partials.action_bar.add_feed') %>" data-hotkeys-target="click" data-hotkey="a">
       <i class="fa fa-plus"></i>
     </a>
   </div>
 </div>
-
-<script type="text/javascript">
-  $(document).ready(function() {
-    $("#mark-all").click(function(e) {
-      e.preventDefault();
-
-      $("form#mark-all-as-read").submit();
-    });
-    
-    Mousetrap.bind("r", function() {
-      var refresh = $("a#refresh")[0];
-      if (refresh) refresh.click();
-    });
-
-    Mousetrap.bind("a", function() {
-      var add_feed = $("a#add-feed")[0];
-      if (add_feed) add_feed.click();
-    });
-
-    Mousetrap.bind("shift+a", function() {
-      $("form#mark-all-as-read").submit();
-    });
-  });
-</script>

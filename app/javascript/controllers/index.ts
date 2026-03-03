@@ -15,5 +15,8 @@ application.register("hotkeys", HotkeysController);
 import KeepUnreadToggleController from "./keep_unread_toggle_controller";
 application.register("keep-unread-toggle", KeepUnreadToggleController);
 
+import MarkAllAsReadController from "./mark_all_as_read_controller";
+application.register("mark-all-as-read", MarkAllAsReadController);
+
 import StarToggleController from "./star_toggle_controller";
 application.register("star-toggle", StarToggleController);
