@@ -105,8 +105,7 @@ var StoryView = Backbone.View.extend({
   template: "#story-template",
 
   events: {
-    "click .story-preview" : "storyClicked",
-    "click .story-keep-unread" : "toggleKeepUnread"
+    "click .story-preview" : "storyClicked"
   },
 
   initialize: function() {
@@ -115,7 +114,11 @@ var StoryView = Backbone.View.extend({
     this.listenTo(this.model, 'change:selected', this.itemSelected);
     this.listenTo(this.model, 'change:open', this.itemOpened);
     this.listenTo(this.model, 'change:is_read', this.itemRead);
-    this.listenTo(this.model, 'change:keep_unread', this.itemKeepUnread);
+    this.el.addEventListener('keep-unread-toggle:toggled', (e) => {
+      var detail = e.detail;
+      this.model.set({keep_unread: detail.keepUnread, is_read: detail.isRead}, {silent: true});
+      this.model.trigger('change:is_read');
+    });
   },
 
   render: function() {
@@ -127,9 +130,14 @@ var StoryView = Backbone.View.extend({
     if (jsonModel.keep_unread) {
       this.$el.addClass('keepUnread');
     }
-    this.el.dataset.starToggleIdValue = String(jsonModel.id);
-    this.el.dataset.starToggleStarredValue = String(jsonModel.is_starred);
-    this.el.dataset.controller = "star-toggle";
+    Object.assign(this.el.dataset, {
+      controller: "star-toggle keep-unread-toggle",
+      keepUnreadToggleIdValue: String(jsonModel.id),
+      keepUnreadToggleIsReadValue: String(jsonModel.is_read),
+      keepUnreadToggleKeepUnreadValue: String(jsonModel.keep_unread),
+      starToggleIdValue: String(jsonModel.id),
+      starToggleStarredValue: String(jsonModel.is_starred),
+    });
     return this;
   },
 
@@ -153,12 +161,6 @@ var StoryView = Backbone.View.extend({
     if (!this.$el.visible()) window.scrollTo(0, this.$el.offset().top);
   },
 
-  itemKeepUnread: function() {
-    var icon = this.model.get("keep_unread") ? "fa fa-check" : "fa fa-square-o";
-    this.$(".story-keep-unread > i").attr("class", icon);
-    this.$el.toggleClass("keepUnread", this.model.get("keep_unread"));
-  },
-
   storyClicked: function(e) {
     if (e.metaKey || e.ctrlKey || e.which == 2) {
       var backgroundTab = window.open(this.model.get("permalink"));
@@ -172,9 +174,6 @@ var StoryView = Backbone.View.extend({
     }
   },
 
-  toggleKeepUnread: function() {
-    this.model.toggleKeepUnread();
-  }
 });
 
 var StoryList = Backbone.Collection.extend({
