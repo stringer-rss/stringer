@@ -20,6 +20,14 @@ RSpec.describe "application settings" do
     expect(page).to have_content("User signups are disabled")
   end
 
+  it "blocks non-admin users from settings" do
+    login_as(default_user)
+
+    visit(settings_path)
+
+    expect(page).to have_content("No route matches")
+  end
+
   it "prevents signup when signups are disabled" do
     create(:user, admin: true)
 

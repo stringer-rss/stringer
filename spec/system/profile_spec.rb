@@ -13,9 +13,9 @@ RSpec.describe "profile page" do
     expect(page).to have_text("Logged in as new_username")
   end
 
-  def fill_in_username_fields(existing_password)
+  def fill_in_username_fields(existing_password, username: "new_username")
     within_fieldset("Change Username") do
-      fill_in("Username", with: "new_username")
+      fill_in("Username", with: username)
       fill_in("Existing password", with: existing_password)
     end
   end
@@ -44,6 +44,29 @@ RSpec.describe "profile page" do
 
   it "rejects username change with wrong password" do
     fill_in_username_fields("wrong_password")
+    click_on("Update username")
+
+    expect(page).to have_text("Unable to update profile")
+  end
+
+  def fill_in_mismatched_password_fields(existing_password)
+    within_fieldset("Change Password") do
+      fill_in("Existing password", with: existing_password)
+      fill_in("New password", with: "new_password")
+      fill_in("Password confirmation", with: "different_password")
+    end
+  end
+
+  it "rejects password change with mismatched confirmation" do
+    fill_in_mismatched_password_fields(default_user.password)
+    click_on("Update password")
+
+    expect(page).to have_text("Unable to update password")
+  end
+
+  it "rejects username change when already taken" do
+    create(:user, username: "taken_name")
+    fill_in_username_fields(default_user.password, username: "taken_name")
     click_on("Update username")
 
     expect(page).to have_text("Unable to update profile")

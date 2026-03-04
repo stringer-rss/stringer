@@ -43,6 +43,34 @@ RSpec.describe "feeds/show" do
     expect(page).to have_content("New Story")
   end
 
+  it "marks all stories as read with A hotkey" do
+    login_as(default_user)
+    create_and_visit_feed(story_title: "My Story")
+
+    send_keys("A")
+
+    expect(page).to have_content("You've reached RSS Zero")
+  end
+
+  it "refreshes the feed with r hotkey" do
+    login_as(default_user)
+    feed = create_and_visit_feed
+    create(:story, feed:, title: "New Story")
+
+    send_keys("r")
+
+    expect(page).to have_content("New Story")
+  end
+
+  it "navigates to add feed with a hotkey" do
+    login_as(default_user)
+    create_and_visit_feed
+
+    send_keys("a")
+
+    expect(page).to have_current_path(feeds_new_path)
+  end
+
   it "only marks stories from the current feed as read" do
     login_as(default_user)
     other_feed = create(:feed)

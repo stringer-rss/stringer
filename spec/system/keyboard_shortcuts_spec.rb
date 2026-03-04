@@ -56,6 +56,16 @@ RSpec.describe "keyboard shortcuts" do
     expect(page).to have_no_css("li.story.open")
   end
 
+  it "toggles a story open and closed with enter" do
+    login_as(default_user)
+    create_stories_and_visit
+    send_keys(:enter)
+
+    send_keys(:enter)
+
+    expect(page).to have_no_css("li.story.open")
+  end
+
   def create_story_and_visit(title:)
     create(:story, title:)
     visit(news_path)
@@ -67,6 +77,31 @@ RSpec.describe "keyboard shortcuts" do
     send_keys("j", "s")
 
     visit(starred_path)
+
+    expect(page).to have_content("My Story")
+  end
+
+  def open_story_and_send(key)
+    send_keys("j")
+    find("li.story.cursor .story-keep-unread")
+    send_keys(key)
+  end
+
+  it "toggles keep unread with m" do
+    login_as(default_user)
+    create_story_and_visit(title: "My Story")
+    open_story_and_send("m")
+    visit(news_path)
+
+    expect(page).to have_content("My Story")
+  end
+
+  it "refreshes the page with r" do
+    login_as(default_user)
+    visit(news_path)
+    create(:story, title: "My Story")
+
+    send_keys("r")
 
     expect(page).to have_content("My Story")
   end
@@ -96,5 +131,14 @@ RSpec.describe "keyboard shortcuts" do
     send_keys("a")
 
     expect(page).to have_current_path(feeds_new_path)
+  end
+
+  it "opens the shortcuts modal with ?" do
+    login_as(default_user)
+    create_story_and_visit(title: "My Story")
+
+    send_keys("?")
+
+    expect(page).to have_css("#shortcuts.in", visible: :visible)
   end
 end

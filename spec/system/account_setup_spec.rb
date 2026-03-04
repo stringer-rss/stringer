@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 RSpec.describe "account setup" do
-  def fill_in_fields(username:)
+  def fill_in_fields(username:, confirm: "my-password")
     fill_in("Username", with: username)
     fill_in("Password", with: "my-password")
-    fill_in("Confirm", with: "my-password")
+    fill_in("Confirm", with: confirm)
     click_on("Next")
   end
 
@@ -14,6 +14,14 @@ RSpec.describe "account setup" do
     fill_in_fields(username: "my-username")
 
     expect(page).to have_text("Logged in as my-username")
+  end
+
+  it "shows an error when passwords do not match" do
+    visit "/"
+
+    fill_in_fields(username: "my-username", confirm: "wrong-password")
+
+    expect(page).to have_content("doesn't match")
   end
 
   it "allows a second user to sign up" do
