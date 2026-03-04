@@ -16,4 +16,12 @@ RSpec.describe "admin/good_job" do
 
     expect(page).to have_link("Scheduled").and have_link("Queued")
   end
+
+  it "blocks non-admin users from the dashboard" do
+    login_as(default_user)
+
+    visit(good_job_path)
+
+    expect(page).to have_content("No route matches")
+  end
 end

@@ -78,4 +78,24 @@ RSpec.describe "starred" do
 
     expect(page).to have_link("Next")
   end
+
+  it "navigates to the next page" do
+    login_as(default_user)
+    create_starred_stories(21)
+    visit(starred_path)
+
+    click_on("Next")
+
+    expect(page).to have_content("2 of 2")
+  end
+
+  it "navigates to the next page with arrow keys" do
+    login_as(default_user)
+    create_starred_stories(21)
+    visit(starred_path)
+
+    send_keys(:arrow_right)
+
+    expect(page).to have_content("2 of 2")
+  end
 end

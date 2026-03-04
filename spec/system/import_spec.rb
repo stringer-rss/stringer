@@ -1,6 +1,15 @@
 # frozen_string_literal: true
 
 RSpec.describe "importing feeds" do
+  it "allows skipping the import" do
+    login_as(default_user)
+    visit(feeds_import_path)
+
+    click_on("Not now")
+
+    expect(page).to have_content("We're getting you some stories to read")
+  end
+
   it "allows importing feeds" do
     login_as(default_user)
     visit(feeds_import_path)

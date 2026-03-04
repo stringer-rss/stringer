@@ -114,6 +114,19 @@ RSpec.describe "stories/index" do
     expect(icon[:class]).to include("fa-square-o")
   end
 
+  it "persists keep unread state across page reload" do
+    create(:story, title: "My Story")
+    login_as(default_user)
+    visit(news_path)
+
+    find(".story-preview", text: "My Story").click
+    find(".story-actions .story-keep-unread").click
+    visit(news_path)
+
+    icon = open_story_and_find_unread_icon("My Story")
+    expect(icon[:class]).to include("fa-check")
+  end
+
   it "displays a download link for stories with enclosures" do
     create(
       :story,
@@ -136,6 +149,15 @@ RSpec.describe "stories/index" do
     find(".story-preview", text: "Regular Story").click
 
     expect(page).to have_no_css("a.story-enclosure")
+  end
+
+  it "marks a story as read when opened" do
+    create(:story, title: "My Story")
+    login_as(default_user)
+    visit news_path
+
+    find(".story-preview", text: "My Story").click
+    expect(page).to have_css(".story.read")
   end
 
   it "allows viewing a story with hot keys" do
