@@ -48,8 +48,8 @@ importers:
         specifier: 1.4.6
         version: 1.4.6
       underscore:
-        specifier: 1.4.4
-        version: 1.4.4
+        specifier: 1.13.8
+        version: 1.13.8
     devDependencies:
       '@eslint/eslintrc':
         specifier: ^3.3.3
@@ -68,7 +68,7 @@ importers:
         version: 8.0.6
       '@types/jquery':
         specifier: latest
-        version: 3.5.33
+        version: 4.0.0
       '@types/mousetrap':
         specifier: latest
         version: 1.6.15
@@ -689,8 +689,8 @@ packages:
   '@types/hotwired__turbo@8.0.6':
     resolution: {integrity: sha512-jqWRyXz+wAa7E3iB3WKcpXjVUgfLt2zGO68x3ANPtM4JSVDOT/q9GhPQzXf3EtPOkdiHfUp7JAC0EU5bSwluFA==}
 
-  '@types/jquery@3.5.33':
-    resolution: {integrity: sha512-SeyVJXlCZpEki5F0ghuYe+L+PprQta6nRZqhONt9F13dWBtR/ftoaIbdRQ7cis7womE+X2LKhsDdDtkkDhJS6g==}
+  '@types/jquery@4.0.0':
+    resolution: {integrity: sha512-Z+to+A2VkaHq1DfI2oSwsoCdhCHMpTSgjWzNcbNlRGYzksDBpPUgEcAL+RQjOBJRaLoEAOHXxqDGBVP+BblBwg==}
 
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
@@ -706,9 +706,6 @@ packages:
 
   '@types/rails__actioncable@8.0.3':
     resolution: {integrity: sha512-y46MOTYorVQVwlHUyaZYbrh3nIkXsRYNuPna32lb3RngLVBlndNbIPvAUywFfhivftNhYg+vW5sZKWYCVIX2lA==}
-
-  '@types/sizzle@2.3.10':
-    resolution: {integrity: sha512-TC0dmN0K8YcWEAEfiPi5gJP14eJe30TTGjkvek3iM/1NdHHsdCA/Td6GvNndMOo/iSnIsZ4HuuhrYPDAmbxzww==}
 
   '@types/underscore@1.13.0':
     resolution: {integrity: sha512-L6LBgy1f0EFQZ+7uSA57+n2g/s4Qs5r06Vwrwn0/nuK1de+adz00NWaztRQ30aEqw5qOaWbPI8u2cGQ52lj6VA==}
@@ -2383,8 +2380,8 @@ packages:
     resolution: {integrity: sha512-nWJ91DjeOkej/TA8pXQ3myruKpKEYgqvpw9lz4OPHj/NWFNluYrjbz9j01CJ8yKQd2g4jFoOkINCTW2I5LEEyw==}
     engines: {node: '>= 0.4'}
 
-  underscore@1.4.4:
-    resolution: {integrity: sha512-ZqGrAgaqqZM7LGRzNjLnw5elevWb5M8LEoDMadxIW3OWbcv72wMMgKdwOKpd5Fqxe8choLD8HN3iSj3TUh/giQ==}
+  underscore@1.13.8:
+    resolution: {integrity: sha512-DXtD3ZtEQzc7M8m4cXotyHR+FAS18C64asBYY5vqZexfYryNNnDc02W4hKg3rdQuqOYas1jkseX0+nZXjTXnvQ==}
 
   undici-types@7.16.0:
     resolution: {integrity: sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw==}
@@ -2969,7 +2966,7 @@ snapshots:
 
   '@types/backbone@1.4.23':
     dependencies:
-      '@types/jquery': 3.5.33
+      '@types/jquery': 4.0.0
       '@types/underscore': 1.13.0
 
   '@types/chai@5.2.3':
@@ -2983,9 +2980,7 @@ snapshots:
 
   '@types/hotwired__turbo@8.0.6': {}
 
-  '@types/jquery@3.5.33':
-    dependencies:
-      '@types/sizzle': 2.3.10
+  '@types/jquery@4.0.0': {}
 
   '@types/json-schema@7.0.15': {}
 
@@ -2998,8 +2993,6 @@ snapshots:
       undici-types: 7.16.0
 
   '@types/rails__actioncable@8.0.3': {}
-
-  '@types/sizzle@2.3.10': {}
 
   '@types/underscore@1.13.0': {}
 
@@ -3352,7 +3345,7 @@ snapshots:
 
   backbone@1.0.0:
     dependencies:
-      underscore: 1.4.4
+      underscore: 1.13.8
 
   balanced-match@1.0.2: {}
 
@@ -4926,7 +4919,7 @@ snapshots:
       has-symbols: 1.1.0
       which-boxed-primitive: 1.1.1
 
-  underscore@1.4.4: {}
+  underscore@1.13.8: {}
 
   undici-types@7.16.0: {}
 
