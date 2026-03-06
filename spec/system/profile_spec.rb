@@ -42,6 +42,13 @@ RSpec.describe "profile page" do
     expect(default_user.reload).to be_stories_order_asc
   end
 
+  it "reflects the current stories order in the dropdown" do
+    default_user.update!(stories_order: "asc")
+    visit(edit_profile_path)
+
+    expect(page).to have_select("Stories feed order", selected: "Oldest first")
+  end
+
   it "rejects username change with wrong password" do
     fill_in_username_fields("wrong_password")
     click_on("Update username")

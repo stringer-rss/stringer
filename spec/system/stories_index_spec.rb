@@ -183,6 +183,15 @@ RSpec.describe "stories/index" do
     expect(titles).to eq(["Older Story", "Newer Story"])
   end
 
+  it "shows the unread count in the page title" do
+    create(:story, title: "My Story")
+    login_as(default_user)
+
+    visit news_path
+
+    expect(page).to have_title("(1)")
+  end
+
   it "allows viewing a story with hot keys" do
     create(:story, title: "My Story", body: "My Body")
     login_as(default_user)
