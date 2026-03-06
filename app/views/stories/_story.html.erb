@@ -1,0 +1,66 @@
+<li class="story <%= 'read' if story.is_read %> <%= 'keepUnread' if story.keep_unread %>"
+    data-controller="story star-toggle keep-unread-toggle"
+    data-story-id-value="<%= story.id %>"
+    data-story-permalink-value="<%= story.permalink %>"
+    data-story-keep-unread-value="<%= story.keep_unread %>"
+    data-story-is-read-value="<%= story.is_read %>"
+    data-keep-unread-toggle-id-value="<%= story.id %>"
+    data-keep-unread-toggle-is-read-value="<%= story.is_read %>"
+    data-keep-unread-toggle-keep-unread-value="<%= story.keep_unread %>"
+    data-star-toggle-id-value="<%= story.id %>"
+    data-star-toggle-starred-value="<%= story.is_starred %>"
+    data-story-list-target="story"
+    data-action="keep-unread-toggle:toggled->story#keepUnreadToggleToggled">
+  <div class="row story-preview" data-action="click->story#toggle">
+    <div class="col-md-3">
+      <div class="story-starred" data-action="click->star-toggle#toggle:stop">
+        <i class="fa <%= story.is_starred ? 'fa-star' : 'fa-star-o' %>" data-star-toggle-target="icon"></i>
+      </div>
+      <p class="blog-title">
+        <%= story.source %>
+      </p>
+    </div>
+    <div class="col-md-9">
+      <p class="story-details">
+        <span class="story-title">
+          <%= story.headline %>
+        </span>
+        <span class="story-lead" data-story-target="lead">
+          &mdash; <%= story.lead %>
+        </span>
+      </p>
+    </div>
+  </div>
+
+  <div class="story-body-container">
+    <div class="story-body" data-story-target="body">
+      <h1>
+        <a href="<%= story.permalink %>"><%= story.title %></a>
+        <% if story.enclosure_url.present? %>
+          <a class="story-enclosure" target="_blank" href="<%= story.enclosure_url %>">
+            <i class="fa fa-download"></i>
+          </a>
+        <% end %>
+      </h1>
+      <%= sanitize story.body %>
+    </div>
+    <div class="row story-actions-container">
+      <div class="pull-left">
+        <span class="story-published">
+          <%= story.pretty_date %>
+        </span>
+      </div>
+      <div class="pull-right story-actions">
+        <div class="story-keep-unread" data-action="click->keep-unread-toggle#toggle:stop">
+          <i class="fa <%= story.keep_unread ? 'fa-check' : 'fa-square-o' %>" data-keep-unread-toggle-target="icon"></i> <%= t('stories.keep_unread') %>
+        </div>
+        <div class="story-starred" data-action="click->star-toggle#toggle:stop">
+          <i class="fa <%= story.is_starred ? 'fa-star' : 'fa-star-o' %>" data-star-toggle-target="icon"></i>
+        </div>
+        <a class="story-permalink" target="_blank" href="<%= story.permalink %>">
+          <i class="fa fa-external-link"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</li>

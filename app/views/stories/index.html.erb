@@ -11,10 +11,9 @@
 <% if @unread_stories.empty? %>
   <%= render "stories/zen" %>
 <% else %>
-  <%= render "stories/js", { stories: @unread_stories } %>
-  
-  <div id="stories">
+  <div id="stories" data-controller="story-list" data-action="keydown@document->story-list#handleKeydown story:read->story-list#storyRead">
     <ul id="story-list">
+      <%= render partial: "stories/story", collection: @unread_stories, as: :story %>
     </ul>
   </div>
 <% end %>
