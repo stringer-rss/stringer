@@ -71,6 +71,16 @@ RSpec.describe "feeds/show" do
     expect(page).to have_current_path(feeds_new_path)
   end
 
+  it "displays read stories for the feed" do
+    login_as(default_user)
+    feed = create(:feed)
+    create(:story, :read, feed:, title: "Read Story")
+
+    visit("/feed/#{feed.id}")
+
+    expect(page).to have_content("Read Story")
+  end
+
   it "only marks stories from the current feed as read" do
     login_as(default_user)
     other_feed = create(:feed)

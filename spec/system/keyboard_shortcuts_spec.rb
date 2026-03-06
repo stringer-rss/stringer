@@ -133,6 +133,26 @@ RSpec.describe "keyboard shortcuts" do
     expect(page).to have_current_path(feeds_new_path)
   end
 
+  it "opens story in new tab with b" do
+    login_as(default_user)
+    create_story_and_visit(title: "My Story")
+    send_keys("j")
+
+    send_keys("b")
+
+    expect(page.windows.size).to eq(2)
+  end
+
+  it "opens story in new tab with v" do
+    login_as(default_user)
+    create_story_and_visit(title: "My Story")
+    send_keys("j")
+
+    send_keys("v")
+
+    expect(page.windows.size).to eq(2)
+  end
+
   it "opens the shortcuts modal with ?" do
     login_as(default_user)
     create_story_and_visit(title: "My Story")

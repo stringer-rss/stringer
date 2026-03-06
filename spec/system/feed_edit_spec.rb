@@ -26,7 +26,27 @@ RSpec.describe "feeds/edit" do
     expect(page).to have_content("Updated the feed")
   end
 
-  it "allows assigning a feed to a group", :aggregate_failures do
+  it "allows removing a group from a feed" do
+    login_as(default_user)
+    feed = create(:feed, :with_group)
+    a11y_skip = [
+      "aria-required-children",
+      "color-contrast",
+      "label",
+      "landmark-one-main",
+      "page-has-heading-one",
+      "region",
+      "select-name"
+    ]
+    visit("/feeds/#{feed.id}/edit", a11y_skip:)
+
+    select("", from: "group-id")
+    click_on("Save")
+
+    expect(feed.reload.group).to be_nil
+  end
+
+  it "allows assigning a feed to a group" do
     login_as(default_user)
     group = create(:group)
     feed = create(:feed)
@@ -44,7 +64,6 @@ RSpec.describe "feeds/edit" do
     select(group.name, from: "group-id")
     click_on("Save")
 
-    expect(page).to have_content("Updated the feed")
     expect(feed.reload.group).to eq(group)
   end
 end

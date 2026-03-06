@@ -33,6 +33,16 @@ RSpec.describe "account setup" do
     expect(page).to have_link("sign up")
   end
 
+  it "completes sign up for a second user" do
+    Setting::UserSignup.create!(enabled: true)
+    create(:user)
+    visit(setup_password_path)
+
+    fill_in_fields(username: "second-user")
+
+    expect(page).to have_text("Logged in as second-user")
+  end
+
   it "does not allow a second user to signup when not enabled" do
     create(:user)
 
