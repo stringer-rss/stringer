@@ -86,4 +86,15 @@ RSpec.describe "feeds/index" do
 
     expect(page).to have_link(href: feed.url)
   end
+
+  it "displays feeds in alphabetical order" do
+    login_as(default_user)
+    create(:feed, name: "Zebra Feed")
+    create(:feed, name: "Alpha Feed")
+
+    visit "/feeds"
+
+    names = all(".feed-title a").map(&:text).map(&:strip)
+    expect(names).to eq(["Alpha Feed", "Zebra Feed"])
+  end
 end

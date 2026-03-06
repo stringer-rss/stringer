@@ -160,6 +160,29 @@ RSpec.describe "stories/index" do
     expect(page).to have_css(".story.read")
   end
 
+  it "displays stories in newest-first order by default" do
+    create(:story, title: "Older Story", published: 2.days.ago)
+    create(:story, title: "Newer Story", published: 1.day.ago)
+    login_as(default_user)
+
+    visit news_path
+
+    titles = all(".story-title").map(&:text)
+    expect(titles).to eq(["Newer Story", "Older Story"])
+  end
+
+  it "displays stories in oldest-first order when configured" do
+    default_user.update!(stories_order: "asc")
+    create(:story, title: "Older Story", published: 2.days.ago)
+    create(:story, title: "Newer Story", published: 1.day.ago)
+    login_as(default_user)
+
+    visit news_path
+
+    titles = all(".story-title").map(&:text)
+    expect(titles).to eq(["Older Story", "Newer Story"])
+  end
+
   it "allows viewing a story with hot keys" do
     create(:story, title: "My Story", body: "My Body")
     login_as(default_user)
