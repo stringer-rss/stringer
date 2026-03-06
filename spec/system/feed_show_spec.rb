@@ -81,6 +81,22 @@ RSpec.describe "feeds/show" do
     expect(page).to have_content("Read Story")
   end
 
+  it "navigates home with the home button" do
+    login_as(default_user)
+    create_and_visit_feed
+
+    find_by_id("home").click
+
+    expect(page).to have_current_path(news_path)
+  end
+
+  it "shows the unread count in the page title" do
+    login_as(default_user)
+    create_and_visit_feed(story_title: "My Story")
+
+    expect(page).to have_title("(1)")
+  end
+
   it "only marks stories from the current feed as read" do
     login_as(default_user)
     other_feed = create(:feed)
