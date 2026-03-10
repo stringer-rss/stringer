@@ -26,6 +26,23 @@ RSpec.describe "feeds/edit" do
     expect(page).to have_content("Updated the feed")
   end
 
+  it "pre-selects the feed's current group in the dropdown" do
+    login_as(default_user)
+    feed = create(:feed, :with_group)
+    a11y_skip = [
+      "aria-required-children",
+      "color-contrast",
+      "label",
+      "landmark-one-main",
+      "page-has-heading-one",
+      "region",
+      "select-name"
+    ]
+    visit("/feeds/#{feed.id}/edit", a11y_skip:)
+
+    expect(page).to have_select("group-id", selected: feed.group.name)
+  end
+
   it "allows removing a group from a feed" do
     login_as(default_user)
     feed = create(:feed, :with_group)
