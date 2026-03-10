@@ -6,6 +6,13 @@ RSpec.describe "feeds/edit" do
     visit("/feeds/#{feed.id}/edit")
   end
 
+  it "does not show a group selector when the user has no groups" do
+    login_as(default_user)
+    visit_edit_feed
+
+    expect(page).to have_no_select("group-id")
+  end
+
   it "allows updating a feed name" do
     login_as(default_user)
     visit_edit_feed
