@@ -98,6 +98,7 @@ export default defineConfig([
     files: ["spec/javascript/support/**/*"],
     rules: {
       "vitest/no-hooks": "off",
+      "vitest/require-hook": "off",
     },
   },
   {

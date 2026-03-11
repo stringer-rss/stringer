@@ -195,10 +195,11 @@ const config: Linter.Config[] = [
       "@typescript-eslint/no-unsafe-argument": "off",
     },
   },
-  // Offense count: 45
+  // Offense count: 49
   {
     files: [
       "app/javascript/application.ts",
+      "app/javascript/support/jquery-global.ts",
       "eslint.config.mts",
       "spec/javascript/setup.ts",
       "spec/javascript/spec/models/story_spec.ts",
@@ -336,10 +337,11 @@ const config: Linter.Config[] = [
       "func-style": "off",
     },
   },
-  // Offense count: 15
+  // Offense count: 16
   {
     files: [
       "app/javascript/application.ts",
+      "app/javascript/support/jquery-global.ts",
       "spec/javascript/setup.ts",
       "spec/javascript/spec/views/story_view_spec.ts",
     ],
