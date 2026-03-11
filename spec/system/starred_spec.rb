@@ -115,6 +115,7 @@ RSpec.describe "starred" do
     create_starred_stories(21)
     visit(starred_path)
     send_keys(:arrow_right)
+    expect(page).to have_content("2 of 2")
 
     send_keys(:arrow_left)
 
