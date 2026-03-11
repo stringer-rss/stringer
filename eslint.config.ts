@@ -1,6 +1,6 @@
 import globals from "globals";
 import importPlugin from "eslint-plugin-import";
-import vitest from "eslint-plugin-vitest";
+import vitest from "@vitest/eslint-plugin";
 import js from "@eslint/js";
 import stylistic from "@stylistic/eslint-plugin";
 import tseslint from "typescript-eslint";
@@ -74,9 +74,17 @@ export default defineConfig([
         ["error", "asc", {caseSensitive: false, natural: true}],
       "vitest/consistent-test-it":
         ["error", {fn: "it", withinDescribe: "it"}],
+      "vitest/expect-expect": "off",
+      "vitest/no-alias-methods": "off",
+      "vitest/padding-around-all": "off",
+      "vitest/padding-around-expect-groups": "off",
+      "vitest/prefer-called-times": "off",
+      "vitest/prefer-describe-function-title": "off",
       "vitest/prefer-expect-assertions": "off",
+      "vitest/prefer-importing-vitest-globals": "off",
       "vitest/prefer-to-be-falsy": "off",
       "vitest/prefer-to-be-truthy": "off",
+      "vitest/require-mock-type-parameters": "off",
       "vitest/require-top-level-describe": "off",
     },
     settings: {

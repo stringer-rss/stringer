@@ -1,0 +1,13 @@
+diff --git a/lib/rules/sort-keys-fix.js b/lib/rules/sort-keys-fix.js
+index 7847edfe3ebee820ed6f5b8be75dc1e04d92b854..2df98df99ba02656a0c41c737e2d14c9c38088e3 100644
+--- a/lib/rules/sort-keys-fix.js
++++ b/lib/rules/sort-keys-fix.js
+@@ -175,7 +175,7 @@ module.exports = {
+             },
+             fix(fixer) {
+               const fixes = []
+-              const sourceCode = context.getSourceCode()
++              const sourceCode = context.sourceCode ?? context.getSourceCode()
+               const moveProperty = (fromNode, toNode) => {
+                 const prevText = sourceCode.getText(fromNode)
+                 const thisComments = sourceCode.getCommentsBefore(fromNode)

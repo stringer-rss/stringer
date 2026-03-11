@@ -23,21 +23,21 @@
     "@stylistic/eslint-plugin": "^5.7.0",
     "@types/backbone": "latest",
     "@types/hotwired__turbo": "^8.0.5",
-    "@types/jquery": "latest",
+    "@types/jquery": "3.5.34",
     "@types/mousetrap": "latest",
     "@types/node": "^25.2.3",
     "@types/rails__actioncable": "^8.0.3",
     "@types/underscore": "latest",
-    "@typescript-eslint/eslint-plugin": "^8.50.0",
-    "@typescript-eslint/parser": "^8.50.0",
+    "@typescript-eslint/eslint-plugin": "^8.57.0",
+    "@typescript-eslint/parser": "^8.57.0",
     "@vitest/coverage-v8": "4.0.18",
+    "@vitest/eslint-plugin": "^1.6.10",
     "esbuild": "^0.27.1",
-    "eslint": "^9.39.3",
+    "eslint": "^10.0.2",
     "eslint-find-rules": "^5.0.0",
     "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-sort-keys-fix": "^1.1.2",
-    "eslint-plugin-vitest": "^0.5.4",
     "globals": "^17.0.0",
     "jiti": "^2.6.1",
     "jsdom": "^28.0.0",
@@ -46,7 +46,7 @@
     "stylelint-config-standard": "^40.0.0",
     "stylelint-selector-bem-pattern": "^4.0.1",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.54.0",
+    "typescript-eslint": "^8.57.0",
     "vitest": "^4.0.18"
   },
   "scripts": {
@@ -58,5 +58,10 @@
     "stylelint": "./node_modules/stylelint/bin/stylelint.mjs 'app/assets/stylesheets/**/*'",
     "test": "pnpm vitest run --coverage",
     "tscheck": "tsc --noEmit"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "eslint-plugin-sort-keys-fix@1.1.2": "patches/eslint-plugin-sort-keys-fix@1.1.2.patch"
+    }
   }
 }
