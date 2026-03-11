@@ -53,8 +53,8 @@ importers:
         specifier: 1.4.6
         version: 1.4.6
       underscore:
-        specifier: 1.4.4
-        version: 1.4.4
+        specifier: 1.13.8
+        version: 1.13.8
     devDependencies:
       '@eslint/eslintrc':
         specifier: ^3.3.3
@@ -2392,8 +2392,8 @@ packages:
     resolution: {integrity: sha512-nWJ91DjeOkej/TA8pXQ3myruKpKEYgqvpw9lz4OPHj/NWFNluYrjbz9j01CJ8yKQd2g4jFoOkINCTW2I5LEEyw==}
     engines: {node: '>= 0.4'}
 
-  underscore@1.4.4:
-    resolution: {integrity: sha512-ZqGrAgaqqZM7LGRzNjLnw5elevWb5M8LEoDMadxIW3OWbcv72wMMgKdwOKpd5Fqxe8choLD8HN3iSj3TUh/giQ==}
+  underscore@1.13.8:
+    resolution: {integrity: sha512-DXtD3ZtEQzc7M8m4cXotyHR+FAS18C64asBYY5vqZexfYryNNnDc02W4hKg3rdQuqOYas1jkseX0+nZXjTXnvQ==}
 
   undici-types@7.16.0:
     resolution: {integrity: sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw==}
@@ -3396,7 +3396,7 @@ snapshots:
 
   backbone@1.0.0:
     dependencies:
-      underscore: 1.4.4
+      underscore: 1.13.8
 
   balanced-match@1.0.2: {}
 
@@ -4947,7 +4947,7 @@ snapshots:
       has-symbols: 1.1.0
       which-boxed-primitive: 1.1.1
 
-  underscore@1.4.4: {}
+  underscore@1.13.8: {}
 
   undici-types@7.16.0: {}
 

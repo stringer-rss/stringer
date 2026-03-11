@@ -15,7 +15,7 @@
     "jquery": "2.2.4",
     "jquery-visible": "1.2.0",
     "mousetrap": "1.4.6",
-    "underscore": "1.4.4"
+    "underscore": "1.13.8"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.3",
