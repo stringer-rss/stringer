@@ -38,7 +38,12 @@
     "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-sort-keys-fix": "^1.1.2",
+<<<<<<< HEAD
     "globals": "^17.0.0",
+=======
+    "@vitest/eslint-plugin": "^1.6.10",
+    "globals": "^17.4.0",
+>>>>>>> 1f42488 (Update eslint to version 10.0.2 (#1365))
     "jiti": "^2.6.1",
     "jsdom": "^28.0.0",
     "stylelint": "^17.3.0",
