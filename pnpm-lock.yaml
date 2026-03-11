@@ -39,8 +39,8 @@ importers:
         specifier: 4.7.0
         version: 4.7.0
       jquery:
-        specifier: 1.9.1
-        version: 1.9.1
+        specifier: 2.2.4
+        version: 2.2.4
       jquery-visible:
         specifier: 1.2.0
         version: 1.2.0
@@ -1770,8 +1770,8 @@ packages:
   jquery-visible@1.2.0:
     resolution: {integrity: sha512-lj6Xqy7GYEwTD1audFYdv7SrBM6z7icPXNvRpS4e15RXtDksjgU7YF7EKrsqF5rCUZA99OqF+d5H8BGdcwMr+w==}
 
-  jquery@1.9.1:
-    resolution: {integrity: sha512-gK7jP5cOEUzjyL0dy7MEMfeSFlmt1yNSdZK98CL8W6o0DiNVW5O9hLcD2bdl48mL8q7bEJgd7d9AhhDaN+iDSQ==}
+  jquery@2.2.4:
+    resolution: {integrity: sha512-lBHj60ezci2u1v2FqnZIraShGgEXq35qCzMv4lITyHGppTnA13rwR0MgwyNJh9TnDs3aXUvd1xjAotfraMHX/Q==}
     deprecated: This version is deprecated. Please upgrade to the latest version or find support at https://www.herodevs.com/support/jquery-nes.
 
   js-tokens@10.0.0:
@@ -4226,7 +4226,7 @@ snapshots:
 
   jquery-visible@1.2.0: {}
 
-  jquery@1.9.1: {}
+  jquery@2.2.4: {}
 
   js-tokens@10.0.0: {}
 
