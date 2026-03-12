@@ -30,8 +30,8 @@ importers:
         specifier: ^8.1.100
         version: 8.1.200
       backbone:
-        specifier: 1.0.0
-        version: 1.0.0
+        specifier: 1.6.1
+        version: 1.6.1
       bootstrap:
         specifier: 3.1.1
         version: 3.1.1
@@ -1040,8 +1040,8 @@ packages:
     resolution: {integrity: sha512-wvUjBtSGN7+7SjNpq/9M2Tg350UZD3q62IFZLbRAR1bSMlCo1ZaeW+BJ+D090e4hIIZLBcTDWe4Mh4jvUDajzQ==}
     engines: {node: '>= 0.4'}
 
-  backbone@1.0.0:
-    resolution: {integrity: sha512-8rhC3q3npBssGGBArAY5RF4lvIpciCvDY0lHmFrLqOi0/fj5rm25H0DJrJFXPwRnuIzIhQ6eS0j7URAxV3u9hA==}
+  backbone@1.6.1:
+    resolution: {integrity: sha512-YQzWxOrIgL6BoFnZjThVN99smKYhyEXXFyJJ2lsF1wJLyo4t+QjmkLrH8/fN22FZ4ykF70Xq7PgTugJVR4zS9Q==}
 
   balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
@@ -3372,7 +3372,7 @@ snapshots:
     dependencies:
       possible-typed-array-names: 1.1.0
 
-  backbone@1.0.0:
+  backbone@1.6.1:
     dependencies:
       underscore: 1.13.8
 

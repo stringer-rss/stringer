@@ -9,7 +9,7 @@
     "@hotwired/turbo-rails": "^8.0.20",
     "@rails/actioncable": "^8.1.100",
     "@rails/activestorage": "^8.1.100",
-    "backbone": "1.0.0",
+    "backbone": "1.6.1",
     "bootstrap": "3.1.1",
     "font-awesome": "4.7.0",
     "jquery": "2.2.4",
