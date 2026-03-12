@@ -2,7 +2,8 @@
   <div class="feed-line">
     <div class="feed-title-container">
       <p class="feed-title <%= feed.unread_stories_count > 0 ? "feed-unread" : "" %>">
-        <i class="fa fa-circle status <%= feed.status_bubble %>" data-toggle="tooltip" title="<%= t("partials.feed.status_bubble.#{feed.status_bubble}") if feed.status_bubble %>" data-placement="left"></i>
+        <i class="fa fa-circle status <%= feed.status_bubble %>" aria-hidden="true" data-bs-toggle="tooltip" title="<%= t("partials.feed.status_bubble.#{feed.status_bubble}") if feed.status_bubble %>" data-placement="left"></i>
+        <% if feed.status_bubble %><span class="sr-only"><%= t("partials.feed.status_bubble.#{feed.status_bubble}") %></span><% end %>
         <a href="/feed/<%= feed.id %>">
           <% if feed.unread_stories_count > 0 %>
             (<%= feed.unread_stories_count %>)

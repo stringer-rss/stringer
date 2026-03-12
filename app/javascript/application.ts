@@ -2,7 +2,9 @@
 import "@hotwired/turbo-rails";
 import "@rails/activestorage";
 import "jquery";
-import "bootstrap";
+import * as bootstrap from "bootstrap";
+
+window.bootstrap = bootstrap;
 import "mousetrap";
 import "jquery-visible";
 import _ from "underscore";
@@ -323,7 +325,7 @@ var AppView = Backbone.NativeView.extend({
 
 $(document).ready(function() {
   Mousetrap.bind("?", function() {
-    $("#shortcuts").modal('toggle');
+    bootstrap.Modal.getOrCreateInstance(document.getElementById('shortcuts')).toggle();
   });
 });
 

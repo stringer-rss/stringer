@@ -7,17 +7,17 @@
   <hr />
   <p><%= t('.description') %></p>
   <hr />
-  <div class="form-group">
+  <div>
     <% setting = Setting::UserSignup.first %>
     <%= form_with(model: setting, scope: :setting, url: setting_path(setting)) do |form| %>
       <% if Setting::UserSignup.enabled? %>
         <%= form.hidden_field :enabled, value: false %>
         <span class='setup__label'><%= t('.signup.enabled') %></span>
-        <%= form.submit(t('.signup.disable'), class: 'btn btn-primary float-right') %>
+        <%= form.submit(t('.signup.disable'), class: 'btn btn-primary float-end') %>
       <% else %>
         <%= form.hidden_field :enabled, value: true %>
         <span class='setup__label'><%= t('.signup.disabled') %></span>
-        <%= form.submit(t('.signup.enable'), class: 'btn btn-primary float-right') %>
+        <%= form.submit(t('.signup.enable'), class: 'btn btn-primary float-end') %>
       <% end %>
     <% end %>
   </div>
