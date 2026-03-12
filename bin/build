@@ -9,6 +9,6 @@ esbuild app/javascript/*.ts \
   --outdir=app/assets/builds \
   --public-path=/assets \
   --alias:jquery=./app/javascript/support/jquery-global.ts \
-  --alias:bootstrap=./node_modules/bootstrap/dist/js/bootstrap.js \
+  --alias:bootstrap=./node_modules/bootstrap/dist/js/bootstrap.bundle.js \
   --alias:jquery-visible=./node_modules/jquery-visible/jquery.visible.min.js \
   "$@"
