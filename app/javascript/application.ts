@@ -20,8 +20,8 @@ window.$ = $;
 Backbone.$ = $;
 
 _.templateSettings = {
-  interpolate: /\{\{=(.+?)\}\}/g,
-  evaluate: /\{\{(.+?)\}\}/g
+  evaluate: /\{\{(.+?)\}\}/g,
+  interpolate: /\{\{=(.+?)\}\}/g
 };
 
 function CSRFToken() {
@@ -35,23 +35,15 @@ function requestHeaders() {
 }
 
 var Story = Backbone.Model.extend({
+  close: function() {
+    this.set("open", false);
+  },
+
   defaults: function() {
     return {
       "open" : false,
       "selected" : false
     }
-  },
-
-  toggle: function() {
-    if (this.get("open")) {
-      this.close();
-    } else {
-      this.open();
-    }
-  },
-
-  shouldSave: function() {
-    return this.changedAttributes() && this.get("id") > 0;
   },
 
   open: function() {
@@ -68,6 +60,27 @@ var Story = Backbone.Model.extend({
     this.set("selected", true);
   },
 
+  openInTab: function() {
+    window.open(this.get("permalink"), '_blank');
+  },
+
+  select: function() {
+    if(this.collection) this.collection.unselectAll();
+    this.set("selected", true);
+  },
+
+  shouldSave: function() {
+    return this.changedAttributes() && this.get("id") > 0;
+  },
+
+  toggle: function() {
+    if (this.get("open")) {
+      this.close();
+    } else {
+      this.open();
+    }
+  },
+
   toggleKeepUnread: function() {
     if (this.get("keep_unread")) {
       this.set("keep_unread", false);
@@ -80,30 +93,13 @@ var Story = Backbone.Model.extend({
     if (this.shouldSave()) this.save(null, { headers: requestHeaders() });
   },
 
-  close: function() {
-    this.set("open", false);
-  },
-
-  select: function() {
-    if(this.collection) this.collection.unselectAll();
-    this.set("selected", true);
-  },
-
   unselect: function() {
     this.set("selected", false);
-  },
-
-  openInTab: function() {
-    window.open(this.get("permalink"), '_blank');
   }
 });
 
 var StoryView = Backbone.View.extend({
-  tagName: "li",
   className: "story",
-
-  template: "#story-template",
-
   events: {
     "click .story-preview" : "storyClicked"
   },
@@ -116,9 +112,29 @@ var StoryView = Backbone.View.extend({
     this.listenTo(this.model, 'change:is_read', this.itemRead);
     this.el.addEventListener('keep-unread-toggle:toggled', (e) => {
       var detail = e.detail;
-      this.model.set({keep_unread: detail.keepUnread, is_read: detail.isRead}, {silent: true});
+      this.model.set({is_read: detail.isRead, keep_unread: detail.keepUnread}, {silent: true});
       this.model.trigger('change:is_read');
     });
+  },
+
+  itemOpened: function() {
+    if (this.model.get("open")) {
+      this.$el.addClass("open");
+      $(".story-lead", this.$el).fadeOut(1000);
+      window.scrollTo(0, this.$el.offset().top);
+    } else {
+      this.$el.removeClass("open");
+      $(".story-lead", this.$el).show();
+    }
+  },
+
+  itemRead: function() {
+    this.$el.toggleClass("read", this.model.get("is_read"));
+  },
+
+  itemSelected: function() {
+    this.$el.toggleClass("cursor", this.model.get("selected"));
+    if (!this.$el.visible()) window.scrollTo(0, this.$el.offset().top);
   },
 
   render: function() {
@@ -141,26 +157,6 @@ var StoryView = Backbone.View.extend({
     return this;
   },
 
-  itemRead: function() {
-    this.$el.toggleClass("read", this.model.get("is_read"));
-  },
-
-  itemOpened: function() {
-    if (this.model.get("open")) {
-      this.$el.addClass("open");
-      $(".story-lead", this.$el).fadeOut(1000);
-      window.scrollTo(0, this.$el.offset().top);
-    } else {
-      this.$el.removeClass("open");
-      $(".story-lead", this.$el).show();
-    }
-  },
-
-  itemSelected: function() {
-    this.$el.toggleClass("cursor", this.model.get("selected"));
-    if (!this.$el.visible()) window.scrollTo(0, this.$el.offset().top);
-  },
-
   storyClicked: function(e) {
     if (e.metaKey || e.ctrlKey || e.which == 2) {
       var backgroundTab = window.open(this.model.get("permalink"));
@@ -174,12 +170,20 @@ var StoryView = Backbone.View.extend({
     }
   },
 
+  tagName: "li",
+
+  template: "#story-template",
+
 });
 
 var StoryList = Backbone.Collection.extend({
-  model: Story,
-  url: "/stories",
-
+  closeOthers: function(modelToSkip) {
+    this.each(function(model) {
+      if (model.id != modelToSkip.id) {
+        model.close();
+      }
+    });
+  },
   initialize: function() {
     this.cursorPosition = -1;
   },
@@ -188,34 +192,7 @@ var StoryList = Backbone.Collection.extend({
     return this.length - 1;
   },
 
-  unreadCount: function() {
-    return this.where({is_read: false}).length;
-  },
-
-  closeOthers: function(modelToSkip) {
-    this.each(function(model) {
-      if (model.id != modelToSkip.id) {
-        model.close();
-      }
-    });
-  },
-
-  selected: function() {
-    return this.where({selected: true});
-  },
-
-  unselectAll: function() {
-    _.invoke(this.selected(), "unselect");
-  },
-
-  selectedStoryId: function() {
-    var selectedStory = this.at(this.cursorPosition);
-    return selectedStory ? selectedStory.id : -1;
-  },
-
-  setSelection: function(model) {
-    this.cursorPosition = this.indexOf(model);
-  },
+  model: Story,
 
   moveCursorDown: function() {
     if (this.cursorPosition < this.max_position()) {
@@ -241,23 +218,55 @@ var StoryList = Backbone.Collection.extend({
     this.at(this.cursorPosition).open();
   },
 
+  selected: function() {
+    return this.where({selected: true});
+  },
+
+  selectedStoryId: function() {
+    var selectedStory = this.at(this.cursorPosition);
+    return selectedStory ? selectedStory.id : -1;
+  },
+
+  setSelection: function(model) {
+    this.cursorPosition = this.indexOf(model);
+  },
+
   toggleCurrent: function() {
     if (this.cursorPosition < 0) this.cursorPosition = 0;
     this.at(this.cursorPosition).toggle();
   },
 
-  viewCurrentInTab: function() {
-    if (this.cursorPosition < 0) this.cursorPosition = 0;
-    this.at(this.cursorPosition).openInTab();
-  },
-
   toggleCurrentKeepUnread: function() {
     if (this.cursorPosition < 0) this.cursorPosition = 0;
     this.at(this.cursorPosition).toggleKeepUnread();
+  },
+
+  unreadCount: function() {
+    return this.where({is_read: false}).length;
+  },
+
+  unselectAll: function() {
+    _.invoke(this.selected(), "unselect");
+  },
+
+  url: "/stories",
+
+  viewCurrentInTab: function() {
+    if (this.cursorPosition < 0) this.cursorPosition = 0;
+    this.at(this.cursorPosition).openInTab();
   }
 });
 
 var AppView = Backbone.View.extend({
+  addAll: function() {
+    this.stories.each(this.addOne, this);
+  },
+
+  addOne: function(story) {
+    var view = new StoryView({model: story});
+    this.$("#story-list").append(view.render().el);
+  },
+
   el: "#stories",
 
   initialize: function(collection) {
@@ -273,25 +282,6 @@ var AppView = Backbone.View.extend({
     this.stories.reset(data);
   },
 
-  render: function() {
-    var unreadCount = this.stories.unreadCount();
-
-    if (unreadCount === 0) {
-      document.title = window.i18n.titleName;
-    } else {
-      document.title = "(" + unreadCount + ") " + window.i18n.titleName;
-    }
-  },
-
-  addOne: function(story) {
-    var view = new StoryView({model: story});
-    this.$("#story-list").append(view.render().el);
-  },
-
-  addAll: function() {
-    this.stories.each(this.addOne, this);
-  },
-
   moveCursorDown: function() {
     this.stories.moveCursorDown();
   },
@@ -304,16 +294,26 @@ var AppView = Backbone.View.extend({
     this.stories.openCurrentSelection();
   },
 
+  render: function() {
+    var unreadCount = this.stories.unreadCount();
+
+    if (unreadCount === 0) {
+      document.title = window.i18n.titleName;
+    } else {
+      document.title = "(" + unreadCount + ") " + window.i18n.titleName;
+    }
+  },
+
   toggleCurrent: function() {
     this.stories.toggleCurrent();
   },
 
-  viewCurrentInTab: function() {
-    this.stories.viewCurrentInTab();
-  },
-
   toggleCurrentKeepUnread: function() {
     this.stories.toggleCurrentKeepUnread();
+  },
+
+  viewCurrentInTab: function() {
+    this.stories.viewCurrentInTab();
   }
 });
 

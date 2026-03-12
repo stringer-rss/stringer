@@ -37,8 +37,8 @@ describe("Story", function () {
       var story = new Story();
       var spy = (story.collection = {
         closeOthers: vi.fn(),
-        unselectAll: vi.fn(),
         setSelection: vi.fn(),
+        unselectAll: vi.fn(),
       });
       story.open();
       expect(spy.closeOthers).toHaveBeenCalledWith(story);

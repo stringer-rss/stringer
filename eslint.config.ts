@@ -5,7 +5,7 @@ import js from "@eslint/js";
 import stylistic from "@stylistic/eslint-plugin";
 import tseslint from "typescript-eslint";
 import {defineConfig} from "eslint/config";
-import sortKeysFix from "eslint-plugin-sort-keys-fix";
+import perfectionist from "eslint-plugin-perfectionist";
 import eslintTodo from "./.eslint_todo";
 
 export default defineConfig([
@@ -35,7 +35,7 @@ export default defineConfig([
     },
     plugins: {
       importPlugin,
-      "sort-keys-fix": sortKeysFix,
+      perfectionist,
       vitest,
     },
     rules: {
@@ -67,11 +67,11 @@ export default defineConfig([
       "no-undefined": "off",
       "no-var": "off",
       "one-var": ["error", "never"],
+      "perfectionist/sort-objects":
+        ["error", {ignoreCase: true, order: "asc", type: "natural"}],
       "sort-imports":
         ["error", {ignoreCase: true, ignoreDeclarationSort: true}],
-      "sort-keys": ["error", "asc", {caseSensitive: false, natural: true}],
-      "sort-keys-fix/sort-keys-fix":
-        ["error", "asc", {caseSensitive: false, natural: true}],
+      "sort-keys": "off",
       "vitest/consistent-test-it":
         ["error", {fn: "it", withinDescribe: "it"}],
       "vitest/expect-expect": "off",

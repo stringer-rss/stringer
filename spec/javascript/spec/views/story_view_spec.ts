@@ -10,17 +10,17 @@ describe("StoryView", function () {
 
     beforeAll(function () {
       story = new Story({
-        source: "TechKrunch",
+        body: "All remote workers have been exiled to Ohio.",
         enclosure_url: null,
         headline: "Every startups acquired by Yahoo!",
-        lead: "This is the lead.",
-        title: "Every startups acquired by Yahoo! NOT!!",
-        body: "All remote workers have been exiled to Ohio.",
-        pretty_date: "Mon July 1, 2013",
-        permalink: "http://example.com/krunch",
-        keep_unread: false,
         is_read: false,
         is_starred: false,
+        keep_unread: false,
+        lead: "This is the lead.",
+        permalink: "http://example.com/krunch",
+        pretty_date: "Mon July 1, 2013",
+        source: "TechKrunch",
+        title: "Every startups acquired by Yahoo! NOT!!",
       });
 
       view = new StoryView({ model: story });
@@ -97,7 +97,7 @@ describe("StoryView", function () {
     });
 
     it("should set keep-unread-toggle Stimulus data attributes", function () {
-      story.set({ keep_unread: false, is_read: false });
+      story.set({ is_read: false, keep_unread: false });
       view.render();
 
       expect(view.el.dataset.keepUnreadToggleIdValue).toBeDefined();
