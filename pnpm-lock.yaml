@@ -32,6 +32,9 @@ importers:
       backbone:
         specifier: 1.6.1
         version: 1.6.1
+      backbone.nativeview:
+        specifier: ^0.3.4
+        version: 0.3.4
       bootstrap:
         specifier: 3.1.1
         version: 3.1.1
@@ -1039,6 +1042,9 @@ packages:
   available-typed-arrays@1.0.7:
     resolution: {integrity: sha512-wvUjBtSGN7+7SjNpq/9M2Tg350UZD3q62IFZLbRAR1bSMlCo1ZaeW+BJ+D090e4hIIZLBcTDWe4Mh4jvUDajzQ==}
     engines: {node: '>= 0.4'}
+
+  backbone.nativeview@0.3.4:
+    resolution: {integrity: sha512-Lo2XUl2pnSs/i2rbk3lTip4WOq6VNakOGDrp3ClhHu6SwM7joipAQtQJrmkEScAiF7o3kZzP05MY1hy4eJtsug==}
 
   backbone@1.6.1:
     resolution: {integrity: sha512-YQzWxOrIgL6BoFnZjThVN99smKYhyEXXFyJJ2lsF1wJLyo4t+QjmkLrH8/fN22FZ4ykF70Xq7PgTugJVR4zS9Q==}
@@ -3371,6 +3377,8 @@ snapshots:
   available-typed-arrays@1.0.7:
     dependencies:
       possible-typed-array-names: 1.1.0
+
+  backbone.nativeview@0.3.4: {}
 
   backbone@1.6.1:
     dependencies:

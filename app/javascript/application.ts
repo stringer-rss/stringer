@@ -7,6 +7,7 @@ import "mousetrap";
 import "jquery-visible";
 import _ from "underscore";
 import Backbone from "backbone";
+import "backbone.nativeview";
 
 import "./controllers/index";
 
@@ -98,14 +99,14 @@ var Story = Backbone.Model.extend({
   }
 });
 
-var StoryView = Backbone.View.extend({
+var StoryView = Backbone.NativeView.extend({
   className: "story",
   events: {
     "click .story-preview" : "storyClicked"
   },
 
   initialize: function() {
-    this.template = _.template($(this.template).html());
+    this.template = _.template(document.querySelector(this.template).innerHTML);
     this.listenTo(this.model, 'add', this.render);
     this.listenTo(this.model, 'change:selected', this.itemSelected);
     this.listenTo(this.model, 'change:open', this.itemOpened);
@@ -118,33 +119,37 @@ var StoryView = Backbone.View.extend({
   },
 
   itemOpened: function() {
+    var storyLead = this.el.querySelector(".story-lead");
     if (this.model.get("open")) {
-      this.$el.addClass("open");
-      $(".story-lead", this.$el).fadeOut(1000);
-      window.scrollTo(0, this.$el.offset().top);
+      this.el.classList.add("open");
+      if (storyLead) storyLead.style.display = "none";
+      window.scrollTo(0, this.el.getBoundingClientRect().top + window.scrollY);
     } else {
-      this.$el.removeClass("open");
-      $(".story-lead", this.$el).show();
+      this.el.classList.remove("open");
+      if (storyLead) storyLead.style.display = "";
     }
   },
 
   itemRead: function() {
-    this.$el.toggleClass("read", this.model.get("is_read"));
+    this.el.classList.toggle("read", this.model.get("is_read"));
   },
 
   itemSelected: function() {
-    this.$el.toggleClass("cursor", this.model.get("selected"));
-    if (!this.$el.visible()) window.scrollTo(0, this.$el.offset().top);
+    this.el.classList.toggle("cursor", this.model.get("selected"));
+    var rect = this.el.getBoundingClientRect();
+    if (rect.top < 0 || rect.bottom > window.innerHeight) {
+      window.scrollTo(0, rect.top + window.scrollY);
+    }
   },
 
   render: function() {
     var jsonModel = this.model.toJSON();
-    this.$el.html(this.template(jsonModel));
+    this.el.innerHTML = this.template(jsonModel);
     if (jsonModel.is_read) {
-      this.$el.addClass('read');
+      this.el.classList.add('read');
     }
     if (jsonModel.keep_unread) {
-      this.$el.addClass('keepUnread');
+      this.el.classList.add('keepUnread');
     }
     Object.assign(this.el.dataset, {
       controller: "star-toggle keep-unread-toggle",
@@ -166,7 +171,7 @@ var StoryView = Backbone.View.extend({
       if (this.model.shouldSave()) this.model.save(null, { headers: requestHeaders() });
     } else {
       this.model.toggle();
-      window.scrollTo(0, this.$el.offset().top);
+      window.scrollTo(0, this.el.getBoundingClientRect().top + window.scrollY);
     }
   },
 
@@ -257,21 +262,20 @@ var StoryList = Backbone.Collection.extend({
   }
 });
 
-var AppView = Backbone.View.extend({
+var AppView = Backbone.NativeView.extend({
   addAll: function() {
     this.stories.each(this.addOne, this);
   },
 
   addOne: function(story) {
     var view = new StoryView({model: story});
-    this.$("#story-list").append(view.render().el);
+    this.el.querySelector("#story-list").appendChild(view.render().el);
   },
 
   el: "#stories",
 
   initialize: function(collection) {
     this.stories = collection;
-    this.el = $(this.el);
 
     this.listenTo(this.stories, 'add', this.addOne);
     this.listenTo(this.stories, 'reset', this.addAll);

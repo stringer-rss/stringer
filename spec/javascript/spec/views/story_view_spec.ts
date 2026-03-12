@@ -28,72 +28,72 @@ describe("StoryView", function () {
     });
 
     it("should render li.story items", function () {
-      expect(view.$el.hasClass("story")).toBe(true);
+      expect(view.el.classList.contains("story")).toBe(true);
     });
 
     var assertTagExists = function (el, tagName, count) {
       count = typeof count !== "undefined" ? count : 1;
-      expect(el.find(tagName)).toHaveLength(count);
+      expect(el.querySelectorAll(tagName)).toHaveLength(count);
     };
 
     var assertNoTagExists = function (el, tagName) {
-      expect(el.find(tagName)).toHaveLength(0);
+      expect(el.querySelectorAll(tagName)).toHaveLength(0);
     };
 
     var assertPropertyRendered = function (el, model, propName) {
-      expect(el.html()).toContain(model.get(propName));
+      expect(el.innerHTML).toContain(model.get(propName));
     };
 
     it("should render blog title", function () {
-      assertTagExists(view.$el, ".blog-title");
-      assertPropertyRendered(view.$el, story, "source");
+      assertTagExists(view.el, ".blog-title");
+      assertPropertyRendered(view.el, story, "source");
     });
 
     it("should render story headline", function () {
-      assertTagExists(view.$el, ".story-title");
-      assertPropertyRendered(view.$el, story, "headline");
+      assertTagExists(view.el, ".story-title");
+      assertPropertyRendered(view.el, story, "headline");
     });
 
     it("should render story lead", function () {
-      assertTagExists(view.$el, ".story-lead");
-      assertPropertyRendered(view.$el, story, "lead");
+      assertTagExists(view.el, ".story-lead");
+      assertPropertyRendered(view.el, story, "lead");
     });
 
     it("should render story full title", function () {
-      assertTagExists(view.$el, ".story-body");
-      assertPropertyRendered(view.$el, story, "title");
+      assertTagExists(view.el, ".story-body");
+      assertPropertyRendered(view.el, story, "title");
     });
 
     it("should render story full title as link", function () {
-      assertTagExists(view.$el, ".story-body h1 a");
+      assertTagExists(view.el, ".story-body h1 a");
     });
 
     it("should render story full body", function () {
-      assertTagExists(view.$el, ".story-body");
-      assertPropertyRendered(view.$el, story, "body");
+      assertTagExists(view.el, ".story-body");
+      assertPropertyRendered(view.el, story, "body");
     });
 
     it("should render story date", function () {
-      assertTagExists(view.$el, ".story-published");
-      assertPropertyRendered(view.$el, story, "pretty_date");
+      assertTagExists(view.el, ".story-published");
+      assertPropertyRendered(view.el, story, "pretty_date");
     });
 
     it("should render story permalink", function () {
-      assertTagExists(view.$el, ".story-permalink");
-      assertPropertyRendered(view.$el, story, "permalink");
+      assertTagExists(view.el, ".story-permalink");
+      assertPropertyRendered(view.el, story, "permalink");
     });
 
     it("should render keep as unread button", function () {
-      assertTagExists(view.$el, ".story-keep-unread");
+      assertTagExists(view.el, ".story-keep-unread");
     });
 
     it("should autofill unread button based on item", function () {
-      assertTagExists(view.$el, ".story-keep-unread .fa-square-o");
+      assertTagExists(view.el, ".story-keep-unread .fa-square-o");
 
       story.set("keep_unread", true);
       view.render();
 
-      assertTagExists(view.$el, ".story-keep-unread .fa-check");
+      assertTagExists(view.el, ".story-keep-unread .fa-check");
     });
 
     it("should set keep-unread-toggle Stimulus data attributes", function () {
@@ -108,40 +108,40 @@ describe("StoryView", function () {
 
     it("should wire keep-unread action to Stimulus controller", function () {
       view.render();
-      var keepUnreadDiv = view.$el.find(".story-keep-unread");
-      expect(keepUnreadDiv.attr("data-action")).toContain("keep-unread-toggle#toggle");
+      var keepUnreadDiv = view.el.querySelector(".story-keep-unread");
+      expect(keepUnreadDiv.getAttribute("data-action")).toContain("keep-unread-toggle#toggle");
     });
 
     it("should set keep-unread-toggle target on icon", function () {
       view.render();
-      var icon = view.$el.find(".story-keep-unread i");
-      expect(icon.attr("data-keep-unread-toggle-target")).toBe("icon");
+      var icon = view.el.querySelector(".story-keep-unread i");
+      expect(icon.getAttribute("data-keep-unread-toggle-target")).toBe("icon");
     });
 
     it("should render two instances of the star button", function () {
-      assertTagExists(view.$el, ".story-actions .story-starred");
-      assertTagExists(view.$el, ".story-preview .story-starred");
+      assertTagExists(view.el, ".story-actions .story-starred");
+      assertTagExists(view.el, ".story-preview .story-starred");
     });
 
     it("should autofill star button based on item", function () {
-      assertTagExists(view.$el, ".story-starred .fa-star-o", 2);
+      assertTagExists(view.el, ".story-starred .fa-star-o", 2);
 
       story.set("is_starred", true);
       view.render();
 
-      assertTagExists(view.$el, ".story-starred .fa-star", 2);
+      assertTagExists(view.el, ".story-starred .fa-star", 2);
     });
 
     it("should not render enclosure link when not present", function () {
-      assertNoTagExists(view.$el, ".story-enclosure");
+      assertNoTagExists(view.el, ".story-enclosure");
     });
 
     it("should render enclosure link when present", function () {
       story.set("enclosure_url", "http://example.com/enclosure");
       view.render();
 
-      assertTagExists(view.$el, ".story-enclosure");
-      assertPropertyRendered(view.$el, story, "enclosure_url");
+      assertTagExists(view.el, ".story-enclosure");
+      assertPropertyRendered(view.el, story, "enclosure_url");
     });
 
     describe("Handling click on story", function () {
@@ -156,22 +156,20 @@ describe("StoryView", function () {
       });
 
       it("should open story when clicked on it", function () {
-        view.$(".story-preview").click();
+        view.el.querySelector(".story-preview").click();
         expect(toggleStub).toHaveBeenCalledOnce();
       });
 
       it("should not open story when clicked on it with metaKey pressed", function () {
-        var e = jQuery.Event("click");
-        e.metaKey = true;
-        view.$(".story-preview").trigger(e);
+        var e = new MouseEvent("click", { bubbles: true, metaKey: true });
+        view.el.querySelector(".story-preview").dispatchEvent(e);
 
         expect(toggleStub).not.toHaveBeenCalled();
       });
 
       it("should not open story when clicked on it with ctrlKey pressed", function () {
-        var e = jQuery.Event("click");
-        e.ctrlKey = true;
-        view.$(".story-preview").trigger(e);
+        var e = new MouseEvent("click", { bubbles: true, ctrlKey: true });
+        view.el.querySelector(".story-preview").dispatchEvent(e);
 
         expect(toggleStub).not.toHaveBeenCalled();
       });
