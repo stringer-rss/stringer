@@ -5,23 +5,23 @@
   <p><%= t('first_run.password.description') %></p>
   <hr />
   <%= form_with(model: User.new, url: "/setup/password", id: "password_setup") do |form| %>
-    <div class="form-group">
+    <div>
       <%= form.text_field :username, class: "form-control", required: true %>
       <%= form.label :username, t('first_run.password.fields.username'), class: "field-label" %>
     </div>
 
-    <div class="form-group">
+    <div>
       <%= form.password_field :password, class: "form-control", required: true %>
       <i class="fa fa-lock field-icon"></i>
       <%= form.label :password, t('first_run.password.fields.password'), class: "field-label" %>
     </div>
 
-    <div class="form-group">
+    <div>
       <%= form.password_field :password_confirmation, class: "form-control", required: true %>
       <i class="fa fa-lock field-icon"></i>
       <%= form.label :password_confirmation, t('first_run.password.fields.password_confirmation'), class: "field-label" %>
     </div>
 
-    <input type="submit" id="submit" class="btn btn-primary float-right" value="<%= t('first_run.password.fields.next') %>"/>
+    <input type="submit" id="submit" class="btn btn-primary float-end" value="<%= t('first_run.password.fields.next') %>"/>
   <% end %>
 </div>

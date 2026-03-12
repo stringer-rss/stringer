@@ -18,6 +18,8 @@
 
 <script type="text/javascript">
   $(document).ready(function () {
-    $(".status").tooltip();
+    document.querySelectorAll(".status").forEach(function(el) {
+      new bootstrap.Tooltip(el);
+    });
   });
 </script>

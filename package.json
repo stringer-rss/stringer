@@ -11,7 +11,7 @@
     "@rails/activestorage": "^8.1.100",
     "backbone": "1.6.1",
     "backbone.nativeview": "^0.3.4",
-    "bootstrap": "^4.6.2",
+    "bootstrap": "^5.3.3",
     "font-awesome": "4.7.0",
     "jquery": "2.2.4",
     "jquery-visible": "1.2.0",
