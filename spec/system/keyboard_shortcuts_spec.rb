@@ -159,6 +159,6 @@ RSpec.describe "keyboard shortcuts" do
 
     send_keys("?")
 
-    expect(page).to have_css("#shortcuts.in", visible: :visible)
+    expect(page).to have_css("#shortcuts.show", visible: :visible)
   end
 end

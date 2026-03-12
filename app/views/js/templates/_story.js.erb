@@ -33,12 +33,12 @@
       {{= body }}
     </div>
     <div class="row story-actions-container">
-      <div class="pull-left">
+      <div class="float-left">
         <span class="story-published">
           {{= pretty_date }}
         </span>
       </div>
-      <div class="pull-right story-actions">
+      <div class="float-right story-actions">
         <div class="story-keep-unread">
           <i class="fa {{ if(keep_unread) { }}fa-check{{ } else { }}fa-square-o{{ } }}"></i> <%= I18n.t('stories.keep_unread') %>
         </div>

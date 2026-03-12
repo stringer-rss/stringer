@@ -1,4 +1,4 @@
-<div class="hide">
+<div class="d-none">
   <%= form_with(url: "/stories/mark_all_as_read", id: "mark-all-as-read", data: { "mark-all-as-read-target": "form" }) do %>
     <% stories.each do |story| %>
       <input type="hidden" name="story_ids[]" value="<%= story.id %>" />
