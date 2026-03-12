@@ -18,8 +18,8 @@ globalThis.Backbone = Backbone;
 Backbone.$ = jquery;
 
 _.templateSettings = {
-  interpolate: /\{\{=(.+?)\}\}/g,
   evaluate: /\{\{(.+?)\}\}/g,
+  interpolate: /\{\{=(.+?)\}\}/g,
 };
 
 globalThis.CSRFToken = function () {
