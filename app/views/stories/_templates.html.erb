@@ -33,12 +33,12 @@
       {{= body }}
     </div>
     <div class="row story-actions-container">
-      <div class="pull-left">
+      <div class="float-left">
         <span class="story-published">
           {{= pretty_date }}
         </span>
       </div>
-      <div class="pull-right story-actions">
+      <div class="float-right story-actions">
         <div class="story-keep-unread" data-action="click->keep-unread-toggle#toggle:stop">
           <i class="fa {{ if(keep_unread) { }}fa-check{{ } else { }}fa-square-o{{ } }}" data-keep-unread-toggle-target="icon"></i> <%= t('stories.keep_unread') %>
         </div>

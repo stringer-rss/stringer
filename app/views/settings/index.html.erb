@@ -13,11 +13,11 @@
       <% if Setting::UserSignup.enabled? %>
         <%= form.hidden_field :enabled, value: false %>
         <span class='setup__label'><%= t('.signup.enabled') %></span>
-        <%= form.submit(t('.signup.disable'), class: 'btn btn-primary pull-right') %>
+        <%= form.submit(t('.signup.disable'), class: 'btn btn-primary float-right') %>
       <% else %>
         <%= form.hidden_field :enabled, value: true %>
         <span class='setup__label'><%= t('.signup.disabled') %></span>
-        <%= form.submit(t('.signup.enable'), class: 'btn btn-primary pull-right') %>
+        <%= form.submit(t('.signup.enable'), class: 'btn btn-primary float-right') %>
       <% end %>
     <% end %>
   </div>
