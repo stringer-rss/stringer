@@ -15,7 +15,6 @@ export default defineConfig({
       {find: /^helpers\//u, replacement: appPath("helpers")},
       {find: /^javascript\//u, replacement: appPath("")},
       {find: /^spec\//u, replacement: `${path.resolve(root, "spec")}/`},
-      {find: "jquery", replacement: path.resolve(root, "app/javascript/support/jquery-global.ts")},
       {find: "bootstrap", replacement: path.resolve(root, "node_modules/bootstrap/dist/js/bootstrap.js")},
       {find: "mousetrap", replacement: path.resolve(root, "node_modules/mousetrap/mousetrap.js")},
       {

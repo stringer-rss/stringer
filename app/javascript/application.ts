@@ -1,7 +1,6 @@
 // @ts-nocheck
 import "@hotwired/turbo-rails";
 import "@rails/activestorage";
-import "jquery";
 import * as bootstrap from "bootstrap";
 
 window.bootstrap = bootstrap;
@@ -14,12 +13,25 @@ import "./controllers/index";
 
 Turbo.session.drive = false;
 
-/* global jQuery, Mousetrap */
-var $ = jQuery;
+/* global Mousetrap */
 
-window.$ = $;
-
-Backbone.$ = $;
+Backbone.ajax = async function(options) {
+  try {
+    const response = await fetch(options.url, {
+      body: options.data,
+      headers: {"Content-Type": "application/json", ...options.headers},
+      method: options.type || "GET",
+    });
+    const data = await response.json();
+    if (response.ok && options.success) {
+      options.success(data, response.statusText, response);
+    } else if (!response.ok && options.error) {
+      options.error(response, response.statusText, null);
+    }
+  } catch (err: unknown) {
+    if (options.error) options.error(null, "error", err);
+  }
+};
 
 _.templateSettings = {
   evaluate: /\{\{(.+?)\}\}/g,

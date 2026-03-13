@@ -41,9 +41,6 @@ importers:
       font-awesome:
         specifier: 4.7.0
         version: 4.7.0
-      jquery:
-        specifier: 2.2.4
-        version: 2.2.4
       mousetrap:
         specifier: 1.4.6
         version: 1.4.6
@@ -66,9 +63,6 @@ importers:
       '@types/hotwired__turbo':
         specifier: ^8.0.5
         version: 8.0.6
-      '@types/jquery':
-        specifier: 3.5.34
-        version: 3.5.34
       '@types/mousetrap':
         specifier: latest
         version: 1.6.15
@@ -1779,10 +1773,6 @@ packages:
   jiti@2.6.1:
     resolution: {integrity: sha512-ekilCSN1jwRvIbgeg/57YFh8qQDNbwDb9xT/qu2DAHbFFZUicIl4ygVaAvzveMhMVr3LnpSKTNnwt8PoOfmKhQ==}
     hasBin: true
-
-  jquery@2.2.4:
-    resolution: {integrity: sha512-lBHj60ezci2u1v2FqnZIraShGgEXq35qCzMv4lITyHGppTnA13rwR0MgwyNJh9TnDs3aXUvd1xjAotfraMHX/Q==}
-    deprecated: This version is deprecated. Please upgrade to the latest version or find support at https://www.herodevs.com/support/jquery-nes.
 
   js-tokens@10.0.0:
     resolution: {integrity: sha512-lM/UBzQmfJRo9ABXbPWemivdCW8V2G8FHaHdypQaIy523snUjog0W71ayWXTjiR+ixeMyVHN2XcpnTd/liPg/Q==}
@@ -4232,8 +4222,6 @@ snapshots:
       istanbul-lib-report: 3.0.1
 
   jiti@2.6.1: {}
-
-  jquery@2.2.4: {}
 
   js-tokens@10.0.0: {}
 
