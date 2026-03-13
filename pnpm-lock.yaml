@@ -44,9 +44,6 @@ importers:
       jquery:
         specifier: 2.2.4
         version: 2.2.4
-      jquery-visible:
-        specifier: 1.2.0
-        version: 1.2.0
       mousetrap:
         specifier: 1.4.6
         version: 1.4.6
@@ -1782,9 +1779,6 @@ packages:
   jiti@2.6.1:
     resolution: {integrity: sha512-ekilCSN1jwRvIbgeg/57YFh8qQDNbwDb9xT/qu2DAHbFFZUicIl4ygVaAvzveMhMVr3LnpSKTNnwt8PoOfmKhQ==}
     hasBin: true
-
-  jquery-visible@1.2.0:
-    resolution: {integrity: sha512-lj6Xqy7GYEwTD1audFYdv7SrBM6z7icPXNvRpS4e15RXtDksjgU7YF7EKrsqF5rCUZA99OqF+d5H8BGdcwMr+w==}
 
   jquery@2.2.4:
     resolution: {integrity: sha512-lBHj60ezci2u1v2FqnZIraShGgEXq35qCzMv4lITyHGppTnA13rwR0MgwyNJh9TnDs3aXUvd1xjAotfraMHX/Q==}
@@ -4238,8 +4232,6 @@ snapshots:
       istanbul-lib-report: 3.0.1
 
   jiti@2.6.1: {}
-
-  jquery-visible@1.2.0: {}
 
   jquery@2.2.4: {}
 

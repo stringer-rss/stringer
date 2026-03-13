@@ -6,7 +6,6 @@ import * as bootstrap from "bootstrap";
 
 window.bootstrap = bootstrap;
 import "mousetrap";
-import "jquery-visible";
 import _ from "underscore";
 import Backbone from "backbone";
 import "backbone.nativeview";
