@@ -55,7 +55,6 @@ pt-BR:
       subtitle: 'Existe apenas um usuário: você.'
       title: Stringer é
   flash:
-    cookies_required: Bem, isso é estranho. É necessário habilitar Cookies para que o aplicativo funcione corretamente.
     js_required: Bem, isso é estranho. É necessário habilitar Javascript para que o aplicativo funcione corretamente.
   import:
     description: Importe seus feeds de outro serviço.

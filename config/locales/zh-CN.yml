@@ -55,7 +55,6 @@ zh-CN:
       subtitle: 这里将只会有一个用户，那就是你
       title: Stringer是
   flash:
-    cookies_required: 抱歉，你的浏览器禁用了Cookie记录功能。为了你的正常使用，请开启浏览器的Cookie功能。
     js_required: 抱歉，你的浏览器禁用了Javascript脚本。为了你的正常使用，请开启脚本功能。
   import:
     description: 从其他服务导入您的提要。

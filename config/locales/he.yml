@@ -55,8 +55,7 @@ he:
       subtitle: יש רק משתמש יחיד. אתה.
       title: סטרינגר זה
   flash:
-    cookies_required: 
-    js_required: 
+    js_required:
   import:
     description: ייבא את העדכונים שלך משירות אחר.
     export: יצוא

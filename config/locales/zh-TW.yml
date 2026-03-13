@@ -56,7 +56,6 @@ zh-TW:
       subtitle: 這裡只有一位使用者，那就是您。
       title: Stringer 是
   flash:
-    cookies_required: 抱歉，您的瀏覽器似乎停用了 Cookie，請啟用瀏覽器的 Cookie 功能才能正常使用。
     js_required: 抱歉，您的瀏覽器似乎停用了 JavaScript，請啟用瀏覽器的 JavaScript 功能才能正常使用。
   import:
     description: 從其他服務匯入您的 RSS 訂閱。

@@ -55,7 +55,6 @@ tr:
       subtitle: 'Sadece bir kullanici var: Sen!'
       title: Stringer is
   flash:
-    cookies_required: Aaa, garip!. Uygulamanin duzgun calismasi icin Cookies gerekli.
     js_required: Aaa, garip. Uygulamanin duzgun calismasi icin Javascript gerekli.
   import:
     description: Beslemelerinizi başka bir hizmetten içe aktarın.

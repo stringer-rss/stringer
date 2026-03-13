@@ -56,7 +56,6 @@ en:
       subtitle: 'There is only one user: you.'
       title: Stringer is
   flash:
-    cookies_required: Well, this is awkward. Cookies are required for the app to work properly.
     js_required: Well, this is awkward. Javascript is required for the app to work properly.
   import:
     description: Import your feeds from another service.
