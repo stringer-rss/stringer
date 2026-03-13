@@ -29,7 +29,7 @@
   <h1><%= t('tutorial.title') %> <span class="orange"><%= t('tutorial.simple') %></span>.</h1>
   <h2><%= t('tutorial.subtitle') %></h2>
   <hr />
-  <p id="cta"><%= t('tutorial.description') %></p>
+  <p id="cta" data-ready="<%= t('tutorial.ready') %>"><%= t('tutorial.description') %></p>
   <hr />
   <div class="center">
     <a href="/news" id="start" style="display: none" class="btn btn-primary"><%= t('tutorial.start') %></a>
@@ -37,12 +37,13 @@
 </div>
 
 <script type="text/javascript">
-$(document).ready(function() {
-  setTimeout(function() {
-    $("#cta").fadeOut(function() {
-      $(this).html("<%= t('tutorial.ready') %>").fadeIn();
-      $("#start").fadeIn();
-    });
+document.addEventListener("DOMContentLoaded", () => {
+  setTimeout(() => {
+    const cta   = document.getElementById("cta");
+    const start = document.getElementById("start");
+
+    cta.textContent = cta.dataset.ready;
+    start.style.display = "";
   }, 10 * 1000);
 });
 </script>
