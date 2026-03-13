@@ -55,7 +55,6 @@ fr:
       subtitle: 'Il n''y a qu''un seul utilisateur : vous.'
       title: Stringer est
   flash:
-    cookies_required: 'C''est embêtant : les cookies sont obligatoires pour le bon fonctionnement de l''application.'
     js_required: 'C''est embêtant : Javascript est obligatoire pour le bon fonctionnement de l''application.'
   import:
     description: Importez vos flux depuis un autre service.

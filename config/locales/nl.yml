@@ -55,7 +55,6 @@ nl:
       subtitle: 'Er is maar één gebruiker: jij.'
       title: Stringer is
   flash:
-    cookies_required: 'Wel, dit is vervelend: deze applicatie heeft cookies nodig om goed te werken.'
     js_required: 'Wel, dit is vervelend: deze applicatie heeft Javascript nodig om goed te werken.'
   import:
     description: Importeer uw feeds van een andere service.

@@ -55,7 +55,6 @@ eo:
       subtitle: 'Estas unu uzanto: vi.'
       title: Stringer estas
   flash:
-    cookies_required: Nu, mallerteco. Kuketoj estas postulita por funkcii dece.
     js_required: Nu, mallerteco. JavaScript estas postulita por funkcii dece.
   import:
     description: Importu viajn fluojn de alia servo.

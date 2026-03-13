@@ -55,7 +55,6 @@ de:
       subtitle: 'Es gibt nur einen Benutzer: Dich.'
       title: Stringer ist
   flash:
-    cookies_required: Das ist jetzt peinlich. Die App benötigt Cookies um richtig zu funktionieren.
     js_required: Das ist jetzt peinlich. Die App benötigt JavaScript um richtig zu funktionieren.
   import:
     description: Importieren Sie Ihre Feeds von einem anderen Dienst.

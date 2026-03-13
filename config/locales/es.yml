@@ -55,7 +55,6 @@ es:
       subtitle: 'Nada mas hay un usuario: tu.'
       title: Stringer es
   flash:
-    cookies_required: Bueno esto es incomodo. Cookies son requeridas para que la aplicación funcione correctamente.
     js_required: Bueno esto es incomodo. JavaScript es requerido para que la aplicación funcione correctamente.
   import:
     description: Importa tus feeds desde otro servicio.

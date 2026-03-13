@@ -55,7 +55,6 @@ sv:
       subtitle: 'Det finns bara en användare: du.'
       title: Stringer är
   flash:
-    cookies_required: Jaha, det här var tråkigt. Cookies behövs för att appen ska fungera.
     js_required: Jaha, det här var tråkigt. Javascript behövs för att appen ska fungera.
   import:
     description: Importera dina flöden från en annan tjänst.

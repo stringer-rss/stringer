@@ -55,7 +55,6 @@ ja:
       subtitle: ユーザは「あなた」ただひとり
       title: Stringerは
   flash:
-    cookies_required: 正常に動作するためにクッキーを有効にして下さい
     js_required: 正常に動作するためにJavascriptを有効にして下さい
   import:
     description: 別のサービスからフィードをインポートします。

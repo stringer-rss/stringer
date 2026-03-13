@@ -15,15 +15,3 @@
     <%= t('flash.js_required') %>
   </div>
 </noscript>
-
-<div id="cookies-required" class="alert alert-danger error" style="display: none;">
-  <%= t('flash.cookies_required') %>
-</div>
-
-<script type="text/javascript">
-document.addEventListener("DOMContentLoaded", function() {
-  if (!navigator.cookieEnabled) {
-    $("#cookies-required").show();
-  }
-});
-</script>

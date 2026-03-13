@@ -55,8 +55,7 @@ pt:
       subtitle: 'Existe apenas um utilizador: você.'
       title: Stringer é
   flash:
-    cookies_required: 
-    js_required: 
+    js_required:
   import:
     description: Importe seus feeds de outro serviço.
     fields:

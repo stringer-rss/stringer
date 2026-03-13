@@ -55,7 +55,6 @@ it:
       subtitle: 'Esiste un solo utente: tu.'
       title: Stringer è
   flash:
-    cookies_required: Beh, questo sì che è strano. L'app necessita di cookie per funzionare correttamente.
     js_required: Beh, questo sì che è strano. L'app necessita di Javascript attivato per funzionare correttamente.
   import:
     description: Importa i tuoi feed da un altro servizio.
