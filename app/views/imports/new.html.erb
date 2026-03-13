@@ -21,7 +21,7 @@
 </div>
 
 <script type="text/javascript">
-$(document).ready(function() {
+document.addEventListener("DOMContentLoaded", function() {
   $('#opml_file').on("change", function(e) {
     $('form#import').submit();
   });

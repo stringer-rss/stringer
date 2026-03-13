@@ -17,7 +17,7 @@
 <% end %>
 
 <script type="text/javascript">
-  $(document).ready(function () {
+  document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".status").forEach(function(el) {
       new bootstrap.Tooltip(el);
     });
