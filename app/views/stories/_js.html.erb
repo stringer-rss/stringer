@@ -1,7 +1,7 @@
 <%= render 'stories/templates' %>
 
 <script type="text/javascript">
-  $(document).ready(function() {
+  document.addEventListener("DOMContentLoaded", function() {
     var Stories = new StoryList;
     var StoryApp = new AppView(Stories);
     StoryApp.loadData(<%= sanitize(stories.to_json) %>);

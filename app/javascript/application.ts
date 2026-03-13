@@ -323,7 +323,7 @@ var AppView = Backbone.NativeView.extend({
   }
 });
 
-$(document).ready(function() {
+document.addEventListener("DOMContentLoaded", function() {
   Mousetrap.bind("?", function() {
     bootstrap.Modal.getOrCreateInstance(document.getElementById('shortcuts')).toggle();
   });
