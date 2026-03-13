@@ -1,7 +1,6 @@
 // @ts-nocheck
 /// <reference types="vitest/globals" />
 
-import "jquery";
 import underscore from "underscore";
 import Backbone from "backbone";
 
@@ -9,13 +8,8 @@ beforeEach(() => {
   expect.hasAssertions();
 });
 
-const jquery = window.jQuery;
-globalThis.$ = jquery;
-globalThis.jQuery = jquery;
 globalThis._ = underscore;
 globalThis.Backbone = Backbone;
-
-Backbone.$ = jquery;
 
 _.templateSettings = {
   evaluate: /\{\{(.+?)\}\}/g,

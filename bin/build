@@ -8,6 +8,5 @@ esbuild app/javascript/*.ts \
   --format=iife \
   --outdir=app/assets/builds \
   --public-path=/assets \
-  --alias:jquery=./app/javascript/support/jquery-global.ts \
   --alias:bootstrap=./node_modules/bootstrap/dist/js/bootstrap.bundle.js \
   "$@"

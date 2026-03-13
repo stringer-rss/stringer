@@ -13,7 +13,6 @@
     "backbone.nativeview": "^0.3.4",
     "bootstrap": "^5.3.3",
     "font-awesome": "4.7.0",
-    "jquery": "2.2.4",
     "mousetrap": "1.4.6",
     "underscore": "1.13.8"
   },
@@ -23,7 +22,6 @@
     "@stylistic/eslint-plugin": "^5.7.0",
     "@types/backbone": "latest",
     "@types/hotwired__turbo": "^8.0.5",
-    "@types/jquery": "3.5.34",
     "@types/mousetrap": "latest",
     "@types/node": "^25.2.3",
     "@types/rails__actioncable": "^8.0.3",
