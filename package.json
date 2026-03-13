@@ -14,7 +14,6 @@
     "bootstrap": "^5.3.3",
     "font-awesome": "4.7.0",
     "jquery": "2.2.4",
-    "jquery-visible": "1.2.0",
     "mousetrap": "1.4.6",
     "underscore": "1.13.8"
   },
