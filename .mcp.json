@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "playwright": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@playwright/mcp@latest",
+        "--caps",
+        "core,tabs,vision",
+        "--output-dir",
+        ".playwright-mcp"
+      ]
+    }
+  }
+}
