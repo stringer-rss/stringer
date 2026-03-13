@@ -22,8 +22,8 @@
 
 <script type="text/javascript">
 document.addEventListener("DOMContentLoaded", function() {
-  $('#opml_file').on("change", function(e) {
-    $('form#import').submit();
+  document.getElementById('opml_file').addEventListener("change", function(e) {
+    document.querySelector('form#import').requestSubmit();
   });
 });
 </script>
