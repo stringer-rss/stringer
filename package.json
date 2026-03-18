@@ -1,6 +1,9 @@
 {
   "private": true,
-  "packageManager": "pnpm@10.4.1",
+  "engines": {
+    "node": "25.8.1"
+  },
+  "packageManager": "pnpm@10.5.2",
   "dependencies": {
     "@fontsource/lato": "^5.2.7",
     "@fontsource/reenie-beanie": "^5.2.8",
