@@ -136,7 +136,7 @@ var StoryView = Backbone.NativeView.extend({
     if (this.model.get("open")) {
       this.el.classList.add("open");
       if (storyLead) storyLead.style.display = "none";
-      window.scrollTo(0, this.el.getBoundingClientRect().top + window.scrollY);
+      this.el.scrollIntoView({ block: "start" });
     } else {
       this.el.classList.remove("open");
       if (storyLead) storyLead.style.display = "";
@@ -149,10 +149,7 @@ var StoryView = Backbone.NativeView.extend({
 
   itemSelected: function() {
     this.el.classList.toggle("cursor", this.model.get("selected"));
-    var rect = this.el.getBoundingClientRect();
-    if (rect.top < 0 || rect.bottom > window.innerHeight) {
-      window.scrollTo(0, rect.top + window.scrollY);
-    }
+    requestAnimationFrame(() => { this.el.scrollIntoView({ block: "nearest" }); });
   },
 
   render: function() {
@@ -184,7 +181,7 @@ var StoryView = Backbone.NativeView.extend({
       if (this.model.shouldSave()) this.model.save(null, { headers: requestHeaders() });
     } else {
       this.model.toggle();
-      window.scrollTo(0, this.el.getBoundingClientRect().top + window.scrollY);
+      this.el.scrollIntoView({ block: "start" });
     }
   },
 
