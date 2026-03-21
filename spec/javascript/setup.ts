@@ -86,6 +86,8 @@ const templateHTML = [
 
 document.body.insertAdjacentHTML("beforeend", templateHTML);
 
+window.HTMLElement.prototype.scrollIntoView = function () { /* noop */ };
+
 import { Story, StoryView, StoryList, AppView } from "../../app/javascript/application";
 
 globalThis.Story = Story;
