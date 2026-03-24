@@ -510,7 +510,11 @@ DEPENDENCIES
   with_model
 
 RUBY VERSION
+<<<<<<< HEAD
    ruby 4.0.2
+=======
+  ruby 4.0.2
+>>>>>>> 5658f63 (Update Ruby to version 4.0.2 (#1381))
 
 BUNDLED WITH
    2.6.2
