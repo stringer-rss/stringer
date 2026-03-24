@@ -8,7 +8,7 @@ jobs:
   build:
     parallelism: 1
     docker:
-      - image: cimg/ruby:4.0.1-browsers
+      - image: cimg/ruby:4.0.2-browsers
         environment:
           BUNDLE_PATH: vendor/bundle
           NODE_VERSION: 22.17.1
