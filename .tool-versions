@@ -1,4 +1,4 @@
-ruby 4.0.1
+ruby 4.0.2
 nodejs 25.8.1
 postgres 16.8
 pnpm 10.5.2
