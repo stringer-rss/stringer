@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "incremental": true,
     "target": "es2016",
     "module": "esnext",
