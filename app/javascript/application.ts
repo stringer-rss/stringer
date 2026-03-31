@@ -1,7 +1,6 @@
 // @ts-nocheck
 import "@hotwired/turbo-rails";
 import "@rails/activestorage";
-<<<<<<< HEAD
 import * as bootstrap from "bootstrap";
 
 window.bootstrap = bootstrap;
@@ -342,10 +341,3 @@ window.StoryList = StoryList;
 window.AppView = AppView;
 
 export { Story, StoryView, StoryList, AppView };
-=======
-import {session} from "@hotwired/turbo";
-
-import "./controllers/index";
-
-session.drive = false;
->>>>>>> 70fbdce (Update typescript to version 6.0.2 (#1384))

@@ -86,11 +86,7 @@ importers:
         version: 4.1.0(vitest@4.1.0(@types/node@25.5.0)(jsdom@29.0.1)(vite@7.3.1(@types/node@25.5.0)(jiti@2.6.1)))
       '@vitest/eslint-plugin':
         specifier: ^1.6.12
-<<<<<<< HEAD
-        version: 1.6.12(eslint@10.1.0(jiti@2.6.1))(typescript@5.9.3)(vitest@4.1.0(@types/node@25.5.0)(jsdom@29.0.1)(vite@7.3.1(@types/node@25.5.0)(jiti@2.6.1)))
-=======
-        version: 1.6.12(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)(vitest@4.1.0(@types/node@25.5.0)(jsdom@29.0.1)(vite@8.0.0(@types/node@25.5.0)(esbuild@0.27.4)(jiti@2.6.1)))
->>>>>>> 70fbdce (Update typescript to version 6.0.2 (#1384))
+        version: 1.6.12(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)(vitest@4.1.0(@types/node@25.5.0)(jsdom@29.0.1)(vite@7.3.1(@types/node@25.5.0)(jiti@2.6.1)))
       esbuild:
         specifier: ^0.27.4
         version: 0.27.4
@@ -2986,15 +2982,11 @@ snapshots:
 
   '@types/rails__actioncable@8.0.3': {}
 
-<<<<<<< HEAD
   '@types/sizzle@2.3.10': {}
 
   '@types/underscore@1.13.0': {}
 
-  '@typescript-eslint/eslint-plugin@8.57.2(@typescript-eslint/parser@8.57.2(eslint@10.1.0(jiti@2.6.1))(typescript@5.9.3))(eslint@10.1.0(jiti@2.6.1))(typescript@5.9.3)':
-=======
   '@typescript-eslint/eslint-plugin@8.57.2(@typescript-eslint/parser@8.57.2(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2))(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)':
->>>>>>> 70fbdce (Update typescript to version 6.0.2 (#1384))
     dependencies:
       '@eslint-community/regexpp': 4.12.2
       '@typescript-eslint/parser': 8.57.2(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
@@ -3211,23 +3203,14 @@ snapshots:
       tinyrainbow: 3.0.3
       vitest: 4.1.0(@types/node@25.5.0)(jsdom@29.0.1)(vite@7.3.1(@types/node@25.5.0)(jiti@2.6.1))
 
-<<<<<<< HEAD
-  '@vitest/eslint-plugin@1.6.12(eslint@10.1.0(jiti@2.6.1))(typescript@5.9.3)(vitest@4.1.0(@types/node@25.5.0)(jsdom@29.0.1)(vite@7.3.1(@types/node@25.5.0)(jiti@2.6.1)))':
-=======
-  '@vitest/eslint-plugin@1.6.12(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)(vitest@4.1.0(@types/node@25.5.0)(jsdom@29.0.1)(vite@8.0.0(@types/node@25.5.0)(esbuild@0.27.4)(jiti@2.6.1)))':
->>>>>>> 70fbdce (Update typescript to version 6.0.2 (#1384))
+  '@vitest/eslint-plugin@1.6.12(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)(vitest@4.1.0(@types/node@25.5.0)(jsdom@29.0.1)(vite@7.3.1(@types/node@25.5.0)(jiti@2.6.1)))':
     dependencies:
       '@typescript-eslint/scope-manager': 8.57.0
       '@typescript-eslint/utils': 8.57.0(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
       eslint: 10.1.0(jiti@2.6.1)
     optionalDependencies:
-<<<<<<< HEAD
-      typescript: 5.9.3
-      vitest: 4.1.0(@types/node@25.5.0)(jsdom@29.0.1)(vite@7.3.1(@types/node@25.5.0)(jiti@2.6.1))
-=======
       typescript: 6.0.2
-      vitest: 4.1.0(@types/node@25.5.0)(jsdom@29.0.1)(vite@8.0.0(@types/node@25.5.0)(esbuild@0.27.4)(jiti@2.6.1))
->>>>>>> 70fbdce (Update typescript to version 6.0.2 (#1384))
+      vitest: 4.1.0(@types/node@25.5.0)(jsdom@29.0.1)(vite@7.3.1(@types/node@25.5.0)(jiti@2.6.1))
     transitivePeerDependencies:
       - supports-color
 
@@ -3446,11 +3429,7 @@ snapshots:
 
   convert-source-map@2.0.0: {}
 
-<<<<<<< HEAD
-  cosmiconfig@9.0.0(typescript@5.9.3):
-=======
-  cosmiconfig@9.0.1(typescript@6.0.2):
->>>>>>> 70fbdce (Update typescript to version 6.0.2 (#1384))
+  cosmiconfig@9.0.0(typescript@6.0.2):
     dependencies:
       env-paths: 2.2.1
       import-fresh: 3.3.1
@@ -4429,10 +4408,10 @@ snapshots:
 
   possible-typed-array-names@1.1.0: {}
 
-  postcss-bem-linter@4.0.1(postcss@8.5.6):
+  postcss-bem-linter@4.0.1(postcss@8.5.8):
     dependencies:
       minimatch: 3.1.5
-      postcss: 8.5.6
+      postcss: 8.5.8
       postcss-resolve-nested-selector: 0.1.6
 
   postcss-resolve-nested-selector@0.1.6: {}
@@ -4724,15 +4703,9 @@ snapshots:
   stylelint-selector-bem-pattern@4.0.1(stylelint@17.4.0(typescript@6.0.2)):
     dependencies:
       lodash: 4.17.23
-<<<<<<< HEAD
-      postcss: 8.5.6
-      postcss-bem-linter: 4.0.1(postcss@8.5.6)
-      stylelint: 17.4.0(typescript@5.9.3)
-=======
       postcss: 8.5.8
       postcss-bem-linter: 4.0.1(postcss@8.5.8)
       stylelint: 17.4.0(typescript@6.0.2)
->>>>>>> 70fbdce (Update typescript to version 6.0.2 (#1384))
 
   stylelint@17.4.0(typescript@6.0.2):
     dependencies:
@@ -4744,11 +4717,7 @@ snapshots:
       '@csstools/selector-resolve-nested': 4.0.0(postcss-selector-parser@7.1.1)
       '@csstools/selector-specificity': 6.0.0(postcss-selector-parser@7.1.1)
       colord: 2.9.3
-<<<<<<< HEAD
-      cosmiconfig: 9.0.0(typescript@5.9.3)
-=======
-      cosmiconfig: 9.0.1(typescript@6.0.2)
->>>>>>> 70fbdce (Update typescript to version 6.0.2 (#1384))
+      cosmiconfig: 9.0.0(typescript@6.0.2)
       css-functions-list: 3.3.3
       css-tree: 3.2.1
       debug: 4.4.3
