@@ -1,5 +1,6 @@
 import "javascript/application";
+import {session} from "@hotwired/turbo";
 
 it("disables Turbo", () => {
-  expect(Turbo.session.drive).toBe(false);
+  expect(session.drive).toBe(false);
 });
