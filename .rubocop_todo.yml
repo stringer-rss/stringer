@@ -12,7 +12,11 @@ Capybara/NegationMatcherAfterVisit:
     - 'spec/system/account_setup_spec.rb'
     - 'spec/system/stories_index_spec.rb'
 
+<<<<<<< HEAD
 # Offense count: 6
+=======
+# Offense count: 2
+>>>>>>> bfb1757 (Rubocop: require click_on in system tests (#1393))
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: AllowMultipleStyles, EnforcedHashRocketStyle, EnforcedColonStyle, EnforcedLastArgumentHashStyle.
 # SupportedHashRocketStyles: key, separator, table

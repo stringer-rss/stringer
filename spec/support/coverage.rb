@@ -8,6 +8,7 @@ if ENV["CI"]
   require "coveralls"
   SimpleCov.formatter = Coveralls::SimpleCov::Formatter
 end
+<<<<<<< HEAD
 
 SimpleCov.start(:rails) do
   add_group("Commands", "app/commands")
@@ -18,3 +19,5 @@ SimpleCov.start(:rails) do
   enable_coverage :branch
 end
 SimpleCov.minimum_coverage(line: 100, branch: 100)
+=======
+>>>>>>> bfb1757 (Rubocop: require click_on in system tests (#1393))

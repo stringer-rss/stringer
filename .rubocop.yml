@@ -16,6 +16,7 @@ AllCops:
     - 'db/schema.rb'
     - 'vendor/**/*'
 
+<<<<<<< HEAD
 Capybara/ClickLinkOrButtonStyle: { EnforcedStyle: link_or_button }
 Layout/LineLength: { Max: 80, Exclude: [db/migrate/*.rb] }
 Layout/RedundantLineBreak: { InspectBlocks: true }
@@ -31,6 +32,35 @@ RSpec/MessageExpectation:
 RSpec/MessageSpies: { EnforcedStyle: receive }
 RSpec/MultipleMemoizedHelpers: { AllowSubject: false, Max: 0 }
 Style/ClassAndModuleChildren: { EnforcedStyle: compact }
+=======
+################################################################################
+#
+# Rules that depart from rubocop defaults
+#
+################################################################################
+
+Style/ModuleFunction: { EnforcedStyle: extend_self }
+Layout/LineLength:
+  Max: 80
+  AutoCorrect: true
+  Exclude: ['config/**/*']
+Layout/MultilineMethodCallIndentation: { EnforcedStyle: indented }
+Layout/MultilineOperationIndentation: { EnforcedStyle: indented }
+Metrics/BlockLength:
+  AllowedMethods:
+    - describe
+  Exclude:
+    - Guardfile
+    - db/schema.rb
+    - config/environments/development.rb
+Rails/FilePath: { EnforcedStyle: slashes }
+Metrics/MethodLength: { Exclude: [db/migrate/**/*.rb] }
+RSpec/MultipleExpectations:
+  Exclude:
+    - spec/system/**/*.rb
+RSpec/MessageExpectation: { EnforcedStyle: expect }
+Style/ArrayFirstLast: { Exclude: [Guardfile] }
+>>>>>>> bfb1757 (Rubocop: require click_on in system tests (#1393))
 Style/MethodCallWithArgsParentheses:
   AllowedMethods:
     - and
@@ -56,7 +86,10 @@ Style/Documentation: { Enabled: false }
 ################################################################################
 
 Bundler/GemComment: { Enabled: false }
+<<<<<<< HEAD
 Bundler/GemVersion: { Enabled: false }
+=======
+>>>>>>> bfb1757 (Rubocop: require click_on in system tests (#1393))
 Capybara/AmbiguousClick: { Enabled: false }
 Layout/SingleLineBlockChain: { Enabled: false }
 Lint/ConstantResolution: { Enabled: false }
@@ -64,10 +97,14 @@ Rails/BulkChangeTable: { Enabled: false }
 Rails/RedundantPresenceValidationOnBelongsTo: { Enabled: false }
 RSpec/AlignLeftLetBrace: { Enabled: false }
 RSpec/AlignRightLetBrace: { Enabled: false }
+<<<<<<< HEAD
 Rails/HasManyOrHasOneDependent: { Enabled: false }
 RSpec/IndexedLet: { Enabled: false }
 RSpec/StubbedMock: { Enabled: false }
 Rails/SchemaComment: { Enabled: false }
+=======
+Style/CommentedKeyword: { Enabled: false }
+>>>>>>> bfb1757 (Rubocop: require click_on in system tests (#1393))
 Style/ConstantVisibility: { Enabled: false }
 Style/Copyright: { Enabled: false }
 Style/InlineComment: { Enabled: false }
