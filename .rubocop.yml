@@ -29,7 +29,7 @@ RSpec/MessageExpectation:
   EnforcedStyle: expect
   Exclude: [spec/support/matchers/**/*.rb]
 RSpec/MessageSpies: { EnforcedStyle: receive }
-RSpec/MultipleMemoizedHelpers: { AllowSubject: false, Max: 0 }
+RSpec/MultipleMemoizedHelpers: { Max: 0, AllowSubject: false }
 Style/ClassAndModuleChildren: { EnforcedStyle: compact }
 Style/MethodCallWithArgsParentheses:
   AllowedMethods:
