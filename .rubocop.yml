@@ -1,9 +1,13 @@
+require:
+  - ./linters/rubocop/cop/rspec/no_before_hook
+
 inherit_from: .rubocop_todo.yml
 inherit_mode: { merge: [Exclude] }
 
 plugins:
   - rubocop-capybara
   - rubocop-factory_bot
+  - rubocop-i18n
   - rubocop-rails
   - rubocop-rake
   - rubocop-rspec
@@ -29,7 +33,11 @@ RSpec/MessageExpectation:
   EnforcedStyle: expect
   Exclude: [spec/support/matchers/**/*.rb]
 RSpec/MessageSpies: { EnforcedStyle: receive }
-RSpec/MultipleMemoizedHelpers: { Max: 0, AllowSubject: false }
+RSpec/MultipleMemoizedHelpers:
+  Max: 0
+  AllowSubject: false
+  Exclude:
+    - spec/linters/rubocop/**/*.rb
 Style/ClassAndModuleChildren: { EnforcedStyle: compact }
 Style/MethodCallWithArgsParentheses:
   AllowedMethods:
@@ -48,6 +56,13 @@ Style/WordArray: { EnforcedStyle: brackets }
 # want to enable these, but they don't work right when using `.rubocop_todo.yml`
 Style/DocumentationMethod: { Enabled: false }
 Style/Documentation: { Enabled: false }
+
+I18n/GetText/DecorateString:
+  Exclude:
+    - linters/**/*.rb
+I18n/RailsI18n/DecorateString:
+  Exclude:
+    - linters/**/*.rb
 
 ################################################################################
 #
