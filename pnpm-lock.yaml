@@ -29,6 +29,7 @@ importers:
       '@rails/activestorage':
         specifier: ^8.1.300
         version: 8.1.300
+<<<<<<< HEAD
       backbone:
         specifier: 1.6.1
         version: 1.6.1
@@ -47,6 +48,8 @@ importers:
       underscore:
         specifier: 1.13.8
         version: 1.13.8
+=======
+>>>>>>> 153603a (Update all pnpm dependencies (2026-04-06) (#1398))
     devDependencies:
       '@eslint/eslintrc':
         specifier: ^3.3.5
@@ -528,6 +531,7 @@ packages:
   '@rails/actioncable@8.1.300':
     resolution: {integrity: sha512-zOENQsq3NM2jyBY6Z2qtZa3V/R/6OEqA+LGKixQbBMl7kk/J3FXDRcszPe74LsHNgB01jCl/DXu/xA8sHt4I/g==}
 
+<<<<<<< HEAD
   '@rails/activestorage@8.1.300':
     resolution: {integrity: sha512-AOv3zZrTJjQlzm4L9uzOQtCz6zaM4IqUyux6yzSqmS+PZ8EzwD1F2JAc4LlJNJAv4MSyNYriG+CaCm1QbQTjsA==}
 
@@ -535,6 +539,13 @@ packages:
     resolution: {integrity: sha512-A6ehUVSiSaaliTxai040ZpZ2zTevHYbvu/lDoeAteHI8QnaosIzm4qwtezfRg1jOYaUmnzLX1AOD6Z+UJjtifg==}
     cpu: [arm]
     os: [android]
+=======
+  '@rails/actioncable@8.1.300':
+    resolution: {integrity: sha512-zOENQsq3NM2jyBY6Z2qtZa3V/R/6OEqA+LGKixQbBMl7kk/J3FXDRcszPe74LsHNgB01jCl/DXu/xA8sHt4I/g==}
+
+  '@rails/activestorage@8.1.300':
+    resolution: {integrity: sha512-AOv3zZrTJjQlzm4L9uzOQtCz6zaM4IqUyux6yzSqmS+PZ8EzwD1F2JAc4LlJNJAv4MSyNYriG+CaCm1QbQTjsA==}
+>>>>>>> 153603a (Update all pnpm dependencies (2026-04-06) (#1398))
 
   '@rollup/rollup-android-arm64@4.57.1':
     resolution: {integrity: sha512-dQaAddCY9YgkFHZcFNS/606Exo8vcLHwArFZ7vxXq4rigo2bb494/xKMMwRRQW6ug7Js6yXmBZhSBRuBvCCQ3w==}
@@ -2839,6 +2850,11 @@ snapshots:
 
   '@rails/actioncable@8.1.300': {}
 
+<<<<<<< HEAD
+=======
+  '@rails/actioncable@8.1.300': {}
+
+>>>>>>> 153603a (Update all pnpm dependencies (2026-04-06) (#1398))
   '@rails/activestorage@8.1.300':
     dependencies:
       spark-md5: 3.0.2
