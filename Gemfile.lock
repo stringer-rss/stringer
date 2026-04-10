@@ -170,7 +170,7 @@ GEM
     goldiloader (6.0.0)
       activerecord (>= 7.2, < 8.3)
       activesupport (>= 7.2, < 8.3)
-    good_job (4.14.2)
+    good_job (4.15.0)
       activejob (>= 6.1.0)
       activerecord (>= 6.1.0)
       concurrent-ruby (>= 1.3.1)
@@ -474,7 +474,7 @@ DEPENDENCIES
   feedbag
   feedjira
   goldiloader
-  good_job (~> 4.14.0)
+  good_job (~> 4.15.0)
   httparty
   jsbundling-rails
   nokogiri (~> 1.19.0)
