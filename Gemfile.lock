@@ -231,8 +231,15 @@ GEM
     nokogiri (1.19.2)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
+<<<<<<< HEAD
     ostruct (0.6.3)
     parallel (1.28.0)
+=======
+    notiffany (0.1.3)
+      nenv (~> 0.1)
+      shellany (~> 0.0)
+    parallel (2.0.1)
+>>>>>>> 5e4deda (Update all Bundler dependencies (2026-04-10) (#1405))
     parser (3.3.11.1)
       ast (~> 2.4.1)
       racc
@@ -309,8 +316,14 @@ GEM
       erb
       psych (>= 4.0.0)
       tsort
+<<<<<<< HEAD
     readline (0.0.4)
       reline
+=======
+    refract (1.1.0)
+      prism
+      zeitwerk
+>>>>>>> 5e4deda (Update all Bundler dependencies (2026-04-10) (#1405))
     regexp_parser (2.12.0)
     reline (0.6.3)
       io-console (~> 0.5)
@@ -338,11 +351,11 @@ GEM
     rspec-support (3.13.7)
     rspec_junit_formatter (0.6.0)
       rspec-core (>= 2, < 4, != 2.12.0)
-    rubocop (1.86.0)
+    rubocop (1.86.1)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
-      parallel (~> 1.10)
+      parallel (>= 1.10)
       parser (>= 3.3.0.2)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 2.9.3, < 3.0)
@@ -386,7 +399,13 @@ GEM
       rb-inotify (~> 0.9, >= 0.9.7)
     sax-machine (1.3.2)
     securerandom (0.4.1)
+<<<<<<< HEAD
     selenium-webdriver (4.10.0)
+=======
+    selenium-webdriver (4.42.0)
+      base64 (~> 0.2)
+      logger (~> 1.4)
+>>>>>>> 5e4deda (Update all Bundler dependencies (2026-04-10) (#1405))
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
@@ -399,6 +418,7 @@ GEM
     stimulus-rails (1.3.4)
       railties (>= 6.0.0)
     stringio (3.2.0)
+<<<<<<< HEAD
     stripe (19.0.0)
       bigdecimal
       logger
@@ -407,6 +427,10 @@ GEM
     sync (0.5.0)
     term-ansicolor (1.11.3)
       tins (~> 1)
+=======
+    strong_migrations (2.6.0)
+      activerecord (>= 7.2)
+>>>>>>> 5e4deda (Update all Bundler dependencies (2026-04-10) (#1405))
     thor (1.5.0)
     thread (0.2.2)
     thread_safe (0.3.6)
