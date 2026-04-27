@@ -3245,10 +3245,13 @@ snapshots:
 
   '@types/rails__actioncable@8.0.3': {}
 
+<<<<<<< HEAD
   '@types/sizzle@2.3.10': {}
 
   '@types/underscore@1.13.0': {}
 
+=======
+>>>>>>> e4dd5f4 (Update all pnpm dependencies (2026-04-27) (#1409))
   '@typescript-eslint/eslint-plugin@8.57.2(@typescript-eslint/parser@8.57.2(eslint@10.2.0(jiti@2.6.1))(typescript@6.0.3))(eslint@10.2.0(jiti@2.6.1))(typescript@6.0.3)':
     dependencies:
       '@eslint-community/regexpp': 4.12.2
@@ -3474,7 +3477,11 @@ snapshots:
     optionalDependencies:
       '@typescript-eslint/eslint-plugin': 8.57.2(@typescript-eslint/parser@8.57.2(eslint@10.2.0(jiti@2.6.1))(typescript@6.0.3))(eslint@10.2.0(jiti@2.6.1))(typescript@6.0.3)
       typescript: 6.0.3
+<<<<<<< HEAD
       vitest: 4.1.4(@types/node@25.6.0)(@vitest/coverage-v8@4.1.4)(jsdom@29.0.2)(vite@7.3.1(@types/node@25.6.0)(jiti@2.6.1))
+=======
+      vitest: 4.1.4(@types/node@25.6.0)(@vitest/coverage-v8@4.1.4)(jsdom@29.0.2)(vite@8.0.0(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1))
+>>>>>>> e4dd5f4 (Update all pnpm dependencies (2026-04-27) (#1409))
     transitivePeerDependencies:
       - supports-color
 
