@@ -879,12 +879,15 @@ packages:
   '@types/rails__actioncable@8.0.3':
     resolution: {integrity: sha512-y46MOTYorVQVwlHUyaZYbrh3nIkXsRYNuPna32lb3RngLVBlndNbIPvAUywFfhivftNhYg+vW5sZKWYCVIX2lA==}
 
+<<<<<<< HEAD
   '@types/sizzle@2.3.10':
     resolution: {integrity: sha512-TC0dmN0K8YcWEAEfiPi5gJP14eJe30TTGjkvek3iM/1NdHHsdCA/Td6GvNndMOo/iSnIsZ4HuuhrYPDAmbxzww==}
 
   '@types/underscore@1.13.0':
     resolution: {integrity: sha512-L6LBgy1f0EFQZ+7uSA57+n2g/s4Qs5r06Vwrwn0/nuK1de+adz00NWaztRQ30aEqw5qOaWbPI8u2cGQ52lj6VA==}
 
+=======
+>>>>>>> 11d3f48 (Update all pnpm dependencies (2026-05-04) (#1412))
   '@typescript-eslint/eslint-plugin@8.59.1':
     resolution: {integrity: sha512-BOziFIfE+6osHO9FoJG4zjoHUcvI7fTNBSpdAwrNH0/TLvzjsk2oo8XSSOT2HhqUyhZPfHv4UOffoJ9oEEQ7Ag==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
@@ -939,8 +942,13 @@ packages:
       eslint: ^8.57.0 || ^9.0.0 || ^10.0.0
       typescript: '>=4.8.4 <6.1.0'
 
+<<<<<<< HEAD
   '@typescript-eslint/types@8.57.1':
     resolution: {integrity: sha512-S29BOBPJSFUiblEl6RzPPjJt6w25A6XsBqRVDt53tA/tlL8q7ceQNZHTjPeONt/3S7KRI4quk+yP9jK2WjBiPQ==}
+=======
+  '@typescript-eslint/types@8.57.0':
+    resolution: {integrity: sha512-dTLI8PEXhjUC7B9Kre+u0XznO696BhXcTlOn0/6kf1fHaQW8+VjJAVHJ3eTI14ZapTxdkOmc80HblPQLaEeJdg==}
+>>>>>>> 11d3f48 (Update all pnpm dependencies (2026-05-04) (#1412))
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
   '@typescript-eslint/types@8.58.2':
@@ -3243,10 +3251,13 @@ snapshots:
 
   '@types/rails__actioncable@8.0.3': {}
 
+<<<<<<< HEAD
   '@types/sizzle@2.3.10': {}
 
   '@types/underscore@1.13.0': {}
 
+=======
+>>>>>>> 11d3f48 (Update all pnpm dependencies (2026-05-04) (#1412))
   '@typescript-eslint/eslint-plugin@8.59.1(@typescript-eslint/parser@8.59.1(eslint@10.2.0(jiti@2.6.1))(typescript@6.0.3))(eslint@10.2.0(jiti@2.6.1))(typescript@6.0.3)':
     dependencies:
       '@eslint-community/regexpp': 4.12.2
@@ -3323,7 +3334,11 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+<<<<<<< HEAD
   '@typescript-eslint/types@8.57.1': {}
+=======
+  '@typescript-eslint/types@8.57.0': {}
+>>>>>>> 11d3f48 (Update all pnpm dependencies (2026-05-04) (#1412))
 
   '@typescript-eslint/types@8.58.2': {}
 
@@ -5209,7 +5224,11 @@ snapshots:
       fdir: 6.5.0(picomatch@4.0.3)
       picomatch: 4.0.3
       postcss: 8.5.13
+<<<<<<< HEAD
       rollup: 4.57.1
+=======
+      rolldown: 1.0.0-rc.9
+>>>>>>> 11d3f48 (Update all pnpm dependencies (2026-05-04) (#1412))
       tinyglobby: 0.2.15
     optionalDependencies:
       '@types/node': 25.6.0

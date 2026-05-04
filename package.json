@@ -28,7 +28,10 @@
     "@types/mousetrap": "latest",
     "@types/node": "^25.6.0",
     "@types/rails__actioncable": "^8.0.3",
+<<<<<<< HEAD
     "@types/underscore": "latest",
+=======
+>>>>>>> 11d3f48 (Update all pnpm dependencies (2026-05-04) (#1412))
     "@typescript-eslint/eslint-plugin": "^8.59.1",
     "@typescript-eslint/parser": "^8.59.1",
     "@vitest/coverage-v8": "^4.1.4",
