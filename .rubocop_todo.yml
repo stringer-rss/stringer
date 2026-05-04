@@ -7,7 +7,7 @@
 # versions of RuboCop, may require this file to be generated again.
 
 # Offense count: 3
-Capybara/NegationMatcherAfterVisit:
+Capybara/RSpec/NegationMatcherAfterVisit:
   Exclude:
     - 'spec/system/account_setup_spec.rb'
     - 'spec/system/stories_index_spec.rb'
@@ -328,12 +328,11 @@ Style/IfUnlessModifier:
   Exclude:
     - 'db/migrate/20240314031223_create_index_good_job_jobs_for_candidate_lookup.rb'
 
-# Offense count: 2
+# Offense count: 1
 # Configuration parameters: AllowedClasses.
 Style/OneClassPerFile:
   Exclude:
     - 'config/application.rb'
-    - 'spec/support/factory_bot.rb'
 
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).

@@ -7,7 +7,7 @@ RSpec.describe "importing feeds" do
 
     click_on("Not now")
 
-    expect(page).to have_content("We're getting you some stories to read")
+    expect(page).to have_text("We're getting you some stories to read")
   end
 
   it "allows importing feeds" do
@@ -17,7 +17,7 @@ RSpec.describe "importing feeds" do
 
     attach_file("opml_file", file_path, visible: false)
 
-    expect(page).to have_content("We're getting you some stories to read")
+    expect(page).to have_text("We're getting you some stories to read")
   end
 
   it "gracefully handles an invalid OPML file" do
@@ -27,7 +27,7 @@ RSpec.describe "importing feeds" do
 
     attach_file("opml_file", file_path, visible: false)
 
-    expect(page).to have_content("We're getting you some stories to read")
+    expect(page).to have_text("We're getting you some stories to read")
   end
 
   def import_grouped_opml

@@ -11,7 +11,7 @@ RSpec.describe "archive" do
 
     visit(archive_path)
 
-    expect(page).to have_content("Old Story")
+    expect(page).to have_text("Old Story")
   end
 
   it "shows a message when no stories have been read" do
@@ -19,7 +19,7 @@ RSpec.describe "archive" do
 
     visit(archive_path)
 
-    expect(page).to have_content("you haven't read any stories")
+    expect(page).to have_text("you haven't read any stories")
   end
 
   it "paginates read stories" do
@@ -38,7 +38,7 @@ RSpec.describe "archive" do
 
     click_on("Next")
 
-    expect(page).to have_content("2 of 2")
+    expect(page).to have_text("2 of 2")
     expect(page).to have_link("Previous")
   end
 

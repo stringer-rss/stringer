@@ -6,7 +6,7 @@ RSpec.describe "admin/debug" do
 
     visit("/admin/debug")
 
-    expect(page).to have_content(RUBY_VERSION)
+    expect(page).to have_text(RUBY_VERSION)
   end
 
   it "shows None when there are no pending migrations" do
@@ -14,7 +14,7 @@ RSpec.describe "admin/debug" do
 
     visit("/admin/debug")
 
-    expect(page).to have_content("None")
+    expect(page).to have_text("None")
   end
 
   it "shows the queued jobs count" do
@@ -22,7 +22,7 @@ RSpec.describe "admin/debug" do
 
     visit("/admin/debug")
 
-    expect(page).to have_content("Queued Jobs")
+    expect(page).to have_text("Queued Jobs")
   end
 
   it "blocks non-admin users" do
@@ -30,6 +30,6 @@ RSpec.describe "admin/debug" do
 
     visit("/admin/debug")
 
-    expect(page).to have_content("No route matches")
+    expect(page).to have_text("No route matches")
   end
 end

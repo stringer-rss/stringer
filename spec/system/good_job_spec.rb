@@ -22,6 +22,6 @@ RSpec.describe "admin/good_job" do
 
     visit(good_job_path)
 
-    expect(page).to have_content("No route matches")
+    expect(page).to have_text("No route matches")
   end
 end

@@ -13,7 +13,7 @@ RSpec.describe "login" do
 
     submit_login(username: user.username, password: user.password)
 
-    expect(page).to have_content("Logged in as #{user.username}")
+    expect(page).to have_text("Logged in as #{user.username}")
   end
 
   it "shows an error for wrong password" do
@@ -21,7 +21,7 @@ RSpec.describe "login" do
 
     submit_login(username: user.username, password: "wrong-password")
 
-    expect(page).to have_content("That's the wrong password")
+    expect(page).to have_text("That's the wrong password")
   end
 
   def login_from_current_page(user)
@@ -44,6 +44,6 @@ RSpec.describe "login" do
 
     click_on("Logout")
 
-    expect(page).to have_content("You have been signed out!")
+    expect(page).to have_text("You have been signed out!")
   end
 end

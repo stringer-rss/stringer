@@ -78,7 +78,7 @@ RSpec.describe "keyboard shortcuts" do
 
     visit(starred_path)
 
-    expect(page).to have_content("My Story")
+    expect(page).to have_text("My Story")
   end
 
   def open_story_and_send(key)
@@ -93,7 +93,7 @@ RSpec.describe "keyboard shortcuts" do
     open_story_and_send("m")
     visit(news_path)
 
-    expect(page).to have_content("My Story")
+    expect(page).to have_text("My Story")
   end
 
   it "refreshes the page with r" do
@@ -103,7 +103,7 @@ RSpec.describe "keyboard shortcuts" do
 
     send_keys("r")
 
-    expect(page).to have_content("My Story")
+    expect(page).to have_text("My Story")
   end
 
   it "marks all as read with A" do
@@ -112,7 +112,7 @@ RSpec.describe "keyboard shortcuts" do
 
     send_keys("A")
 
-    expect(page).to have_content("You've reached RSS Zero")
+    expect(page).to have_text("You've reached RSS Zero")
   end
 
   it "navigates to feeds with f" do

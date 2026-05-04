@@ -7,7 +7,7 @@ RSpec.describe "starred" do
 
     visit(starred_path)
 
-    expect(page).to have_content("Fave Story")
+    expect(page).to have_text("Fave Story")
   end
 
   it "shows a message when no stories are starred" do
@@ -15,7 +15,7 @@ RSpec.describe "starred" do
 
     visit(starred_path)
 
-    expect(page).to have_content("you haven't starred any stories")
+    expect(page).to have_text("you haven't starred any stories")
   end
 
   def unstar_story(story_title)
@@ -31,7 +31,7 @@ RSpec.describe "starred" do
     unstar_story("Starred Story")
     visit(starred_path)
 
-    expect(page).to have_content("you haven't starred any stories")
+    expect(page).to have_text("you haven't starred any stories")
   end
 
   def open_story_and_find_star_icon(story_title)
@@ -63,7 +63,7 @@ RSpec.describe "starred" do
     find(".story-preview .story-starred", text: "").click
     visit(starred_path)
 
-    expect(page).to have_content("Preview Star Story")
+    expect(page).to have_text("Preview Star Story")
   end
 
   def create_starred_stories(count)
@@ -86,7 +86,7 @@ RSpec.describe "starred" do
 
     click_on("Next")
 
-    expect(page).to have_content("2 of 2")
+    expect(page).to have_text("2 of 2")
   end
 
   it "navigates to the next page with arrow keys" do
@@ -96,7 +96,7 @@ RSpec.describe "starred" do
 
     send_keys(:arrow_right)
 
-    expect(page).to have_content("2 of 2")
+    expect(page).to have_text("2 of 2")
   end
 
   it "navigates to the previous page" do
@@ -107,7 +107,7 @@ RSpec.describe "starred" do
 
     click_on("Previous")
 
-    expect(page).to have_content("1 of 2")
+    expect(page).to have_text("1 of 2")
   end
 
   it "navigates to the previous page with arrow keys" do
@@ -115,10 +115,10 @@ RSpec.describe "starred" do
     create_starred_stories(21)
     visit(starred_path)
     send_keys(:arrow_right)
-    expect(page).to have_content("2 of 2")
+    expect(page).to have_text("2 of 2")
 
     send_keys(:arrow_left)
 
-    expect(page).to have_content("1 of 2")
+    expect(page).to have_text("1 of 2")
   end
 end

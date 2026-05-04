@@ -13,7 +13,7 @@ RSpec.describe "feeds/show" do
 
     feed = create_and_visit_feed
 
-    expect(page).to have_content(feed.name)
+    expect(page).to have_text(feed.name)
   end
 
   it "displays stories for the feed" do
@@ -21,7 +21,7 @@ RSpec.describe "feeds/show" do
 
     create_and_visit_feed(story_title: "My Story")
 
-    expect(page).to have_content("My Story")
+    expect(page).to have_text("My Story")
   end
 
   it "marks all stories as read" do
@@ -30,7 +30,7 @@ RSpec.describe "feeds/show" do
 
     find_by_id("mark-all").click
 
-    expect(page).to have_content("You've reached RSS Zero")
+    expect(page).to have_text("You've reached RSS Zero")
   end
 
   it "refreshes the feed" do
@@ -40,7 +40,7 @@ RSpec.describe "feeds/show" do
 
     find_by_id("refresh").click
 
-    expect(page).to have_content("New Story")
+    expect(page).to have_text("New Story")
   end
 
   it "marks all stories as read with A hotkey" do
@@ -49,7 +49,7 @@ RSpec.describe "feeds/show" do
 
     send_keys("A")
 
-    expect(page).to have_content("You've reached RSS Zero")
+    expect(page).to have_text("You've reached RSS Zero")
   end
 
   it "refreshes the feed with r hotkey" do
@@ -59,7 +59,7 @@ RSpec.describe "feeds/show" do
 
     send_keys("r")
 
-    expect(page).to have_content("New Story")
+    expect(page).to have_text("New Story")
   end
 
   it "navigates to add feed with a hotkey" do
@@ -78,7 +78,7 @@ RSpec.describe "feeds/show" do
 
     visit("/feed/#{feed.id}")
 
-    expect(page).to have_content("Read Story")
+    expect(page).to have_text("Read Story")
   end
 
   it "navigates home with the home button" do
@@ -106,6 +106,6 @@ RSpec.describe "feeds/show" do
     find_by_id("mark-all").click
     visit(news_path)
 
-    expect(page).to have_content("Other Story")
+    expect(page).to have_text("Other Story")
   end
 end

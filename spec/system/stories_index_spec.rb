@@ -7,7 +7,7 @@ RSpec.describe "stories/index" do
 
     visit news_path
 
-    expect(page).to have_content("My Story")
+    expect(page).to have_text("My Story")
   end
 
   it "does not display read stories" do
@@ -16,7 +16,7 @@ RSpec.describe "stories/index" do
 
     visit news_path
 
-    expect(page).to have_no_content("My Story")
+    expect(page).to have_no_text("My Story")
   end
 
   it "marks all stories as read" do
@@ -26,7 +26,7 @@ RSpec.describe "stories/index" do
 
     click_on "Mark all as read"
 
-    expect(page).to have_content("You've reached RSS Zero")
+    expect(page).to have_text("You've reached RSS Zero")
   end
 
   it "refreshes the page" do
@@ -36,7 +36,7 @@ RSpec.describe "stories/index" do
 
     click_on "Refresh"
 
-    expect(page).to have_content("My Story")
+    expect(page).to have_text("My Story")
   end
 
   it "displays the story body when the row is clicked" do
@@ -46,7 +46,7 @@ RSpec.describe "stories/index" do
 
     find(".story-preview", text: "My Story").click
 
-    expect(page).to have_content("My Body")
+    expect(page).to have_text("My Body")
   end
 
   def star_story(story_title)
@@ -63,7 +63,7 @@ RSpec.describe "stories/index" do
     star_story("My Story")
 
     visit(starred_path)
-    expect(page).to have_content("My Story")
+    expect(page).to have_text("My Story")
   end
 
   it "allows marking a story as unstarred" do
@@ -73,7 +73,7 @@ RSpec.describe "stories/index" do
     star_story("My Story")
 
     visit(starred_path)
-    expect(page).to have_no_content("My Story")
+    expect(page).to have_no_text("My Story")
   end
 
   def mark_story_unread(story_title)
@@ -90,7 +90,7 @@ RSpec.describe "stories/index" do
 
     visit(news_path)
 
-    expect(page).to have_content("My Story")
+    expect(page).to have_text("My Story")
   end
 
   def open_story_and_find_unread_icon(story_title)
@@ -199,6 +199,6 @@ RSpec.describe "stories/index" do
 
     send_keys("j")
 
-    expect(page).to have_content("My Body")
+    expect(page).to have_text("My Body")
   end
 end

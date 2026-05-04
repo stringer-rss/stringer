@@ -4,13 +4,13 @@ RSpec.describe "heroku setup" do
   it "displays the heroku setup page without authentication" do
     visit("/heroku")
 
-    expect(page).to have_content("One more thing")
+    expect(page).to have_text("One more thing")
   end
 
   it "displays the scheduler task instructions" do
     visit("/heroku")
 
-    expect(page).to have_content("rake lazy_fetch")
+    expect(page).to have_text("rake lazy_fetch")
   end
 
   it "links to the home page" do

@@ -11,7 +11,7 @@ RSpec.describe "tutorial" do
 
     visit_tutorial
 
-    expect(page).to have_content("Stringer is simple")
+    expect(page).to have_text("Stringer is simple")
   end
 
   it "displays sample stories" do
@@ -19,6 +19,6 @@ RSpec.describe "tutorial" do
 
     visit_tutorial
 
-    expect(page).to have_content("Darin' Fireballs")
+    expect(page).to have_text("Darin' Fireballs")
   end
 end

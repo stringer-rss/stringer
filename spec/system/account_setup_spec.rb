@@ -21,7 +21,7 @@ RSpec.describe "account setup" do
 
     fill_in_fields(username: "my-username", confirm: "wrong-password")
 
-    expect(page).to have_content("doesn't match")
+    expect(page).to have_text("doesn't match")
   end
 
   it "allows a second user to sign up" do
