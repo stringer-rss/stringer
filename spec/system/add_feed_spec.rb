@@ -19,7 +19,7 @@ RSpec.describe "adding a feed" do
 
     submit_feed("http://example.com/feed.xml")
 
-    expect(page).to have_content("We've added your new feed")
+    expect(page).to have_text("We've added your new feed")
   end
 
   it "shows an error when the feed is not found" do
@@ -28,7 +28,7 @@ RSpec.describe "adding a feed" do
 
     submit_feed("http://example.com/bad")
 
-    expect(page).to have_content("We couldn't find that feed")
+    expect(page).to have_text("We couldn't find that feed")
   end
 
   it "shows an error when already subscribed" do
@@ -39,6 +39,6 @@ RSpec.describe "adding a feed" do
 
     submit_feed(url)
 
-    expect(page).to have_content("You are already subscribed")
+    expect(page).to have_text("You are already subscribed")
   end
 end

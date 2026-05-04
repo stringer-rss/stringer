@@ -15,7 +15,7 @@ RSpec.describe "feeds/index" do
 
     visit "/feeds"
 
-    expect(page).to have_content("Hey, you should add some feeds")
+    expect(page).to have_text("Hey, you should add some feeds")
   end
 
   it "allows the user to delete a feed" do
@@ -25,7 +25,7 @@ RSpec.describe "feeds/index" do
     visit("/feeds")
     click_on "Delete"
 
-    expect(page).to have_content("Feed deleted")
+    expect(page).to have_text("Feed deleted")
   end
 
   it "removes stories from news when a feed is deleted" do
@@ -37,7 +37,7 @@ RSpec.describe "feeds/index" do
     click_on "Delete"
     visit(news_path)
 
-    expect(page).to have_content("You've reached RSS Zero")
+    expect(page).to have_text("You've reached RSS Zero")
   end
 
   it "allows the user to edit a feed" do
@@ -66,7 +66,7 @@ RSpec.describe "feeds/index" do
 
     visit "/feeds"
 
-    expect(page).to have_content("Never")
+    expect(page).to have_text("Never")
   end
 
   it "displays the last fetched timestamp" do
@@ -75,7 +75,7 @@ RSpec.describe "feeds/index" do
 
     visit "/feeds"
 
-    expect(page).to have_content("Jun 15, 10:30")
+    expect(page).to have_text("Jun 15, 10:30")
   end
 
   it "links to the feed" do

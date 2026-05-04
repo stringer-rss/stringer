@@ -7,7 +7,7 @@ RSpec.describe "application settings" do
 
     within("form", text: "User signups are disabled") { click_on("Enable") }
 
-    expect(page).to have_content("User signups are enabled")
+    expect(page).to have_text("User signups are enabled")
   end
 
   it "allows disabling account creation" do
@@ -17,7 +17,7 @@ RSpec.describe "application settings" do
 
     within("form", text: "User signups are enabled") { click_on("Disable") }
 
-    expect(page).to have_content("User signups are disabled")
+    expect(page).to have_text("User signups are disabled")
   end
 
   it "blocks non-admin users from settings" do
@@ -25,7 +25,7 @@ RSpec.describe "application settings" do
 
     visit(settings_path)
 
-    expect(page).to have_content("No route matches")
+    expect(page).to have_text("No route matches")
   end
 
   it "prevents signup when signups are disabled" do

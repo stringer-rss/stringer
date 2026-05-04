@@ -20,7 +20,7 @@ RSpec.describe "feeds/edit" do
     fill_in("Feed Name", with: "New Name")
     click_on("Save")
 
-    expect(page).to have_content("Updated the feed")
+    expect(page).to have_text("Updated the feed")
   end
 
   it "allows updating a feed URL" do
@@ -30,7 +30,7 @@ RSpec.describe "feeds/edit" do
     fill_in("Feed URL", with: "http://new.example.com")
     click_on("Save")
 
-    expect(page).to have_content("Updated the feed")
+    expect(page).to have_text("Updated the feed")
   end
 
   it "pre-selects the feed's current group in the dropdown" do

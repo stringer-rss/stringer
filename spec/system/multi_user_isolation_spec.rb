@@ -7,7 +7,7 @@ RSpec.describe "multi-user data isolation" do
 
     visit(news_path)
 
-    expect(page).to have_content("You've reached RSS Zero")
+    expect(page).to have_text("You've reached RSS Zero")
   end
 
   it "does not show another user's starred stories" do
@@ -16,7 +16,7 @@ RSpec.describe "multi-user data isolation" do
 
     visit(starred_path)
 
-    expect(page).to have_content("you haven't starred any stories")
+    expect(page).to have_text("you haven't starred any stories")
   end
 
   it "does not show another user's read stories in the archive" do
@@ -25,7 +25,7 @@ RSpec.describe "multi-user data isolation" do
 
     visit(archive_path)
 
-    expect(page).to have_content("you haven't read any stories")
+    expect(page).to have_text("you haven't read any stories")
   end
 
   it "does not show another user's feeds on the feeds page" do
@@ -34,6 +34,6 @@ RSpec.describe "multi-user data isolation" do
 
     visit(feeds_path)
 
-    expect(page).to have_content("Hey, you should add some feeds")
+    expect(page).to have_text("Hey, you should add some feeds")
   end
 end
