@@ -56,13 +56,11 @@ Style/WordArray: { EnforcedStyle: brackets }
 # want to enable these, but they don't work right when using `.rubocop_todo.yml`
 Style/DocumentationMethod: { Enabled: false }
 Style/Documentation: { Enabled: false }
-
-I18n/GetText/DecorateString:
-  Exclude:
-    - linters/**/*.rb
 I18n/RailsI18n/DecorateString:
   Exclude:
+    - Rakefile
     - linters/**/*.rb
+    - spec/**/*.rb
 
 ################################################################################
 #
@@ -73,6 +71,7 @@ I18n/RailsI18n/DecorateString:
 Bundler/GemComment: { Enabled: false }
 Bundler/GemVersion: { Enabled: false }
 Capybara/AmbiguousClick: { Enabled: false }
+I18n/GetText: { Enabled: false }
 Layout/SingleLineBlockChain: { Enabled: false }
 Lint/ConstantResolution: { Enabled: false }
 Rails/BulkChangeTable: { Enabled: false }
