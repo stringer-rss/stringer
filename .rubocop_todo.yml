@@ -6,6 +6,16 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
+<<<<<<< HEAD
+=======
+# Offense count: 35
+# Configuration parameters: EnforcedStyle, AllowedGems.
+# SupportedStyles: required, forbidden
+Bundler/GemVersion:
+  Exclude:
+    - 'Gemfile'
+
+>>>>>>> 58b372a (Rubocop: fix EmptyLineAfterMagicComment lints (#1416))
 # Offense count: 3
 Capybara/RSpec/NegationMatcherAfterVisit:
   Exclude:
