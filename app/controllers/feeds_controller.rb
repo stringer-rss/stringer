@@ -55,7 +55,7 @@ class FeedsController < ApplicationController
   end
 
   def destroy
-    authorization.check(Feed.find(params[:id]))
+    authorization.check(Feed.find(params.expect(:id)))
     FeedRepository.delete(params[:id])
 
     flash[:success] = t(".success")

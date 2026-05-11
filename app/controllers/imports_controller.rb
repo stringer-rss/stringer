@@ -7,7 +7,10 @@ class ImportsController < ApplicationController
 
   def create
     authorization.skip
-    Feed::ImportFromOpml.call(params["opml_file"].read, user: current_user)
+    Feed::ImportFromOpml.call(
+      params.expect("opml_file").read,
+      user: current_user
+    )
 
     redirect_to("/setup/tutorial")
   end
