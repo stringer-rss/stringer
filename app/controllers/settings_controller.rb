@@ -8,7 +8,7 @@ class SettingsController < ApplicationController
   def update
     authorization.skip
 
-    setting = Setting.find(params[:id])
+    setting = Setting.find(params.expect(:id))
     setting.update!(setting_params)
 
     redirect_to(settings_path)
