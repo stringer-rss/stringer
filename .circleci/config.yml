@@ -25,7 +25,7 @@ jobs:
       - checkout
 
       - node/install:
-          node-version: 25.9.0
+          node-version: 26.1.0
 
       - node/install-packages:
           pkg-manager: pnpm
