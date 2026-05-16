@@ -49,9 +49,25 @@ RSpec.describe StoryRepository do
         summary: "",
         content: ""
       ).as_null_object
-      allow(described_class).to receive(:normalize_url)
+      allow(described_class).to receive(:normalize_url) { |url, _base| url }
 
       expect(Story).to receive(:create).with(hash_including(enclosure_url: "http://example.com/audio.mp3"))
+
+      described_class.add(entry, feed)
+    end
+
+    it "drops a javascript: enclosure_url" do
+      feed = create_feed
+      entry = instance_double(
+        Feedjira::Parser::ITunesRSSItem,
+        url: "http://example.com/post",
+        enclosure_url: "javascript:alert(1)",
+        title: "",
+        summary: "",
+        content: ""
+      ).as_null_object
+
+      expect(Story).to receive(:create).with(hash_including(enclosure_url: nil))
 
       described_class.add(entry, feed)
     end
@@ -426,6 +442,38 @@ RSpec.describe StoryRepository do
     it "does not crash if url is nil but enclosure_url does not exist" do
       feed = double(url: "http://github.com")
       entry = double(url: nil)
+
+      expect(described_class.extract_url(entry, feed)).to be_nil
+    end
+
+    it "drops a javascript: entry url" do
+      feed = double(url: "http://github.com")
+      entry = double(url: "javascript:alert(1)")
+
+      expect(described_class.extract_url(entry, feed)).to be_nil
+    end
+
+    it "falls through to enclosure_url when entry url is javascript:" do
+      feed = double(url: "http://github.com")
+      entry = double(
+        url: "javascript:alert(1)",
+        enclosure_url: "https://example.com/audio.mp3"
+      )
+
+      expect(described_class.extract_url(entry, feed))
+        .to eq("https://example.com/audio.mp3")
+    end
+
+    it "drops a javascript: enclosure_url fallback" do
+      feed = double(url: "http://github.com")
+      entry = double(url: nil, enclosure_url: "javascript:alert(1)")
+
+      expect(described_class.extract_url(entry, feed)).to be_nil
+    end
+
+    it "returns nil for an unparseable enclosure_url fallback" do
+      feed = double(url: "http://github.com")
+      entry = double(url: nil, enclosure_url: "http://[invalid")
 
       expect(described_class.extract_url(entry, feed)).to be_nil
     end

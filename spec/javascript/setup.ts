@@ -12,6 +12,7 @@ globalThis._ = underscore;
 globalThis.Backbone = Backbone;
 
 _.templateSettings = {
+  escape: /\{\{-(.+?)\}\}/g,
   evaluate: /\{\{(.+?)\}\}/g,
   interpolate: /\{\{=(.+?)\}\}/g,
 };
@@ -53,9 +54,9 @@ const templateHTML = [
   '  <div class="story-body-container">',
   '    <div class="story-body">',
   "      <h1>",
-  '        <a href="{{= permalink }}">{{= title }}</a>',
+  '        <a href="{{- permalink }}">{{= title }}</a>',
   "        {{ if (enclosure_url) { }}",
-  '          <a class="story-enclosure" target="_blank" href="{{= enclosure_url }}">',
+  '          <a class="story-enclosure" target="_blank" href="{{- enclosure_url }}">',
   '            <i class="fa fa-download"></i>',
   "          </a>",
   "        {{ } }}",
@@ -75,7 +76,7 @@ const templateHTML = [
   '        <div class="story-starred" data-action="click->star-toggle#toggle:stop">',
   '          <i class="fa {{ if(is_starred) { }}fa-star{{ } else { }}fa-star-o{{ } }}" data-star-toggle-target="icon"></i>',
   "        </div>",
-  '        <a class="story-permalink" target="_blank" href="{{= permalink }}">',
+  '        <a class="story-permalink" target="_blank" href="{{- permalink }}">',
   '          <i class="fa fa-external-link"></i>',
   "        </a>",
   "      </div>",
