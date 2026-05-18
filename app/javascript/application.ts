@@ -34,6 +34,7 @@ Backbone.ajax = async function(options) {
 };
 
 _.templateSettings = {
+  escape: /\{\{-(.+?)\}\}/g,
   evaluate: /\{\{(.+?)\}\}/g,
   interpolate: /\{\{=(.+?)\}\}/g
 };

@@ -144,6 +144,30 @@ describe("StoryView", function () {
       assertPropertyRendered(view.el, story, "enclosure_url");
     });
 
+    it("should escape permalink to prevent attribute injection", function () {
+      var injected = new Story({
+        body: "",
+        enclosure_url: null,
+        headline: "x",
+        is_read: false,
+        is_starred: false,
+        keep_unread: false,
+        lead: "",
+        permalink: "\" onclick=\"alert(1)",
+        pretty_date: "",
+        source: "",
+        title: "x",
+      });
+      var injectedView = new StoryView({ model: injected });
+      injectedView.render();
+
+      var anchors = injectedView.el.querySelectorAll("a[href]");
+      anchors.forEach(function (a) {
+        expect(a.getAttribute("onclick")).toBeNull();
+        expect(a.getAttribute("href")).toBe("\" onclick=\"alert(1)");
+      });
+    });
+
     describe("Handling click on story", function () {
       let toggleStub;
 

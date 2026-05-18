@@ -106,5 +106,35 @@ RSpec.describe UrlHelpers do
       )
       expect(url).to eq("https://github.com/progrium/dokku/releases/tag/v0.4.4")
     end
+
+    it "returns nil for javascript: scheme" do
+      url = helper.normalize_url(
+        "javascript:alert(1)", "https://example.com/feed.xml"
+      )
+      expect(url).to be_nil
+    end
+
+    it "returns nil for data: scheme" do
+      url = helper.normalize_url(
+        "data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==",
+        "https://example.com/feed.xml"
+      )
+      expect(url).to be_nil
+    end
+
+    it "returns nil for other non-http schemes" do
+      ["vbscript:msgbox(1)", "file:///etc/passwd"].each do |bad|
+        expect(
+          helper.normalize_url(bad, "https://example.com/feed.xml")
+        ).to be_nil
+      end
+    end
+
+    it "rejects case-mangled javascript: scheme" do
+      url = helper.normalize_url(
+        "JaVaScRiPt:alert(1)", "https://example.com/feed.xml"
+      )
+      expect(url).to be_nil
+    end
   end
 end

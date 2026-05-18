@@ -4,12 +4,11 @@ class StoryRepository
   extend UrlHelpers
 
   def self.add(entry, feed)
-    enclosure_url = entry.enclosure_url if entry.respond_to?(:enclosure_url)
     Story.create(
       feed:,
       title: extract_title(entry),
       permalink: extract_url(entry, feed),
-      enclosure_url:,
+      enclosure_url: safe_normalize_url(entry.try(:enclosure_url), feed.url),
       body: extract_content(entry),
       is_read: false,
       is_starred: false,
@@ -83,9 +82,8 @@ class StoryRepository
   end
 
   def self.extract_url(entry, feed)
-    return normalize_url(entry.url, feed.url) if entry.url.present?
-
-    entry.enclosure_url if entry.respond_to?(:enclosure_url)
+    safe_normalize_url(entry.url, feed.url) ||
+      safe_normalize_url(entry.try(:enclosure_url), feed.url)
   end
 
   def self.extract_content(entry)

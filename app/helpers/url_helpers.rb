@@ -19,6 +19,8 @@ module UrlHelpers
     doc.to_html
   end
 
+  ALLOWED_URL_SCHEMES = ["http", "https"].freeze
+
   def normalize_url(url, base_url)
     uri = URI.parse(url.strip)
 
@@ -29,6 +31,16 @@ module UrlHelpers
       uri = URI.join("#{scheme}://#{base_uri.host}", uri)
     end
 
+    return if ALLOWED_URL_SCHEMES.exclude?(uri.scheme.downcase)
+
     uri.to_s
+  end
+
+  def safe_normalize_url(url, base_url)
+    return if url.blank?
+
+    normalize_url(url, base_url)
+  rescue URI::InvalidURIError
+    nil
   end
 end
