@@ -124,8 +124,8 @@ importers:
         specifier: ^40.0.0
         version: 40.0.0(stylelint@17.9.1(typescript@6.0.3))
       stylelint-selector-bem-pattern:
-        specifier: ^4.0.1
-        version: 4.0.1(stylelint@17.9.1(typescript@6.0.3))
+        specifier: ^5.0.0
+        version: 5.0.0(stylelint@17.9.1(typescript@6.0.3))
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -1951,9 +1951,6 @@ packages:
   lodash.truncate@4.4.2:
     resolution: {integrity: sha512-jttmRe7bRse52OsWIMDLaXxWqRAmtIUccAQ3garviCqJjafXOfNMO0yMfNpdD6zbGaTU0P5Nz7e7gAT6cKmJRw==}
 
-  lodash@4.17.23:
-    resolution: {integrity: sha512-LgVTMpQtIopCi79SJeDiP0TfWi5CNEc/L/aRdTh3yIvmZXTnheWpKjSZhnvMl8iXbC1tFg9gdHHDMLoV7CnG+w==}
-
   lru-cache@11.3.6:
     resolution: {integrity: sha512-Gf/KoL3C/MlI7Bt0PGI9I+TeTC/I6r/csU58N4BSNc4lppLBeKsOdFYkK+dX0ABDUMJNfCHTyPpzwwO21Awd3A==}
     engines: {node: 20 || >=22}
@@ -2148,10 +2145,6 @@ packages:
 
   postcss@8.5.13:
     resolution: {integrity: sha512-qif0+jGGZoLWdHey3UFHHWP0H7Gbmsk8T5VEqyYFbWqPr1XqvLGBbk/sl8V5exGmcYJklJOhOQq1pV9IcsiFag==}
-    engines: {node: ^10 || ^12 || >=14}
-
-  postcss@8.5.8:
-    resolution: {integrity: sha512-OW/rX8O/jXnm82Ey1k44pObPtdblfiuWnrd8X7GJ7emImCOstunGbXUpp7HdBrFQX6rJzn3sPT397Wp5aCwCHg==}
     engines: {node: ^10 || ^12 || >=14}
 
   prelude-ls@1.2.1:
@@ -2366,11 +2359,11 @@ packages:
     peerDependencies:
       stylelint: ^16.18.0 || ^17.0.0
 
-  stylelint-selector-bem-pattern@4.0.1:
-    resolution: {integrity: sha512-zpyC52/aqwbxbtliyTKdV3gv+h/ExZUTIn7tKMt9nfILtMhYIeJNF5a3UE1dtv9L826ulXU+83YA83Ymx3jW0A==}
-    engines: {node: '>=18.12.0'}
+  stylelint-selector-bem-pattern@5.0.0:
+    resolution: {integrity: sha512-nXcfLw2mZkNCyTLYPESavGLfWhY1RrjzsjVufbpKsMTH65WeOYGwouB3yqyV8l4WtKMVniz29LlELJcJ0d660A==}
+    engines: {node: '>=24.13.0'}
     peerDependencies:
-      stylelint: ^16.2.1
+      stylelint: ^17.0.0
 
   stylelint@17.9.1:
     resolution: {integrity: sha512-THTmnAPJTrg/JhkTWZlSyrO+HUYMx6ELthIHeMyD2WOKqXIJUFQv2Yxn91bvUrZdbBJaW2dUuQdPST2wcQ6C3g==}
@@ -4443,8 +4436,6 @@ snapshots:
 
   lodash.truncate@4.4.2: {}
 
-  lodash@4.17.23: {}
-
   lru-cache@11.3.6: {}
 
   magic-string@0.30.21:
@@ -4599,10 +4590,10 @@ snapshots:
 
   possible-typed-array-names@1.1.0: {}
 
-  postcss-bem-linter@4.0.1(postcss@8.5.8):
+  postcss-bem-linter@4.0.1(postcss@8.5.13):
     dependencies:
       minimatch: 3.1.5
-      postcss: 8.5.8
+      postcss: 8.5.13
       postcss-resolve-nested-selector: 0.1.6
 
   postcss-resolve-nested-selector@0.1.6: {}
@@ -4623,12 +4614,6 @@ snapshots:
   postcss-value-parser@4.2.0: {}
 
   postcss@8.5.13:
-    dependencies:
-      nanoid: 3.3.11
-      picocolors: 1.1.1
-      source-map-js: 1.2.1
-
-  postcss@8.5.8:
     dependencies:
       nanoid: 3.3.11
       picocolors: 1.1.1
@@ -4891,11 +4876,10 @@ snapshots:
       postcss-sorting: 9.1.0(postcss@8.5.13)
       stylelint: 17.9.1(typescript@6.0.3)
 
-  stylelint-selector-bem-pattern@4.0.1(stylelint@17.9.1(typescript@6.0.3)):
+  stylelint-selector-bem-pattern@5.0.0(stylelint@17.9.1(typescript@6.0.3)):
     dependencies:
-      lodash: 4.17.23
-      postcss: 8.5.8
-      postcss-bem-linter: 4.0.1(postcss@8.5.8)
+      postcss: 8.5.13
+      postcss-bem-linter: 4.0.1(postcss@8.5.13)
       stylelint: 17.9.1(typescript@6.0.3)
 
   stylelint@17.9.1(typescript@6.0.3):
