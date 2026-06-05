@@ -46,7 +46,7 @@
     }
   },
   "addons": [
-    "heroku-postgresql:hobby-dev",
+    "heroku-postgresql:essential-0",
     "scheduler:standard"
   ]
 }
