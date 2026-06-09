@@ -188,6 +188,7 @@ zh-TW:
   activerecord:
     attributes:
       user:
+        group_stories: "依來源分組文章"
         stories_order: "文章排序方式"
       user/stories_order:
         asc: "最舊優先"

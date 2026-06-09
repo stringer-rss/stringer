@@ -183,6 +183,21 @@ RSpec.describe "stories/index" do
     expect(titles).to eq(["Older Story", "Newer Story"])
   end
 
+  it "groups stories by feed when the user enables grouping" do
+    default_user.update!(group_stories: true)
+    feed_few = create(:feed)
+    feed_many = create(:feed)
+    create(:story, feed: feed_few, title: "Lonely", published: 1.day.ago)
+    create(:story, feed: feed_many, title: "Pair A", published: 2.days.ago)
+    create(:story, feed: feed_many, title: "Pair B", published: 3.days.ago)
+    login_as(default_user)
+
+    visit news_path
+
+    titles = all(".story-title").map(&:text)
+    expect(titles).to eq(["Pair A", "Pair B", "Lonely"])
+  end
+
   it "shows the unread count in the page title" do
     create(:story, title: "My Story")
     login_as(default_user)

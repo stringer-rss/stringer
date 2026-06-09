@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_09_172408) do
+ActiveRecord::Schema[7.1].define(version: 2026_06_09_120000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -171,6 +171,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_09_172408) do
     t.string "username", null: false
     t.boolean "admin", null: false
     t.string "stories_order", default: "desc"
+    t.boolean "group_stories", default: false, null: false
     t.index ["api_key"], name: "index_users_on_api_key", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end

@@ -276,6 +276,34 @@ RSpec.describe StoryRepository do
     end
   end
 
+  describe ".unread_grouped_by_feed" do
+    it "keeps a feed's stories adjacent, most-unread feed first" do
+      feed_few = create(:feed)
+      feed_many = create(:feed)
+      lonely = create(:story, feed: feed_few, published: 1.day.ago)
+      newer = create(:story, feed: feed_many, published: 2.days.ago)
+      older = create(:story, feed: feed_many, published: 3.days.ago)
+
+      expect(described_class.unread_grouped_by_feed)
+        .to eq([newer, older, lonely])
+    end
+
+    it "orders stories within a feed by the given direction" do
+      feed = create(:feed)
+      older = create(:story, feed:, published: 2.days.ago)
+      newer = create(:story, feed:, published: 1.day.ago)
+
+      expect(described_class.unread_grouped_by_feed(order: "asc"))
+        .to eq([older, newer])
+    end
+
+    it "does not return read stories" do
+      create(:story, :read)
+
+      expect(described_class.unread_grouped_by_feed).to be_empty
+    end
+  end
+
   describe ".unread_since_id" do
     it "returns unread stories with id greater than given id" do
       story1 = create(:story)
