@@ -63,5 +63,6 @@ group :test do
   gem "axe-core-rspec"
   gem "rspec_junit_formatter"
   gem "selenium-webdriver"
+  gem "shoulda-matchers"
   gem "with_model"
 end
