@@ -6,11 +6,13 @@ module UrlHelpers
 
     [["a", "href"], ["img", "src"], ["video", "src"]].each do |tag, attr|
       doc.css("#{tag}[#{attr}]").each do |node|
-        url = node.get_attribute(attr)
-        next if url =~ URI::RFC2396_PARSER.regexp[:ABS_URI]
+        url = Addressable::URI.parse(node.get_attribute(attr))
+        next if url.absolute?
 
-        node.set_attribute(attr, URI.join(base_url, url).to_s)
-      rescue URI::InvalidURIError
+        # normalize percent-encodes any non-ascii (IRI) characters so the
+        # resolved link is a valid URL.
+        node[attr] = Addressable::URI.join(base_url, url).normalize.to_s
+      rescue Addressable::URI::InvalidURIError
         # Just ignore. If we cannot parse the url, we don't want the entire
         # import to blow up.
       end
@@ -22,25 +24,28 @@ module UrlHelpers
   ALLOWED_URL_SCHEMES = ["http", "https"].freeze
 
   def normalize_url(url, base_url)
-    uri = URI.parse(url.strip)
+    uri = Addressable::URI.parse(url.strip)
 
     # resolve (protocol) relative URIs
     if uri.relative?
-      base_uri = URI.parse(base_url.strip)
+      base_uri = Addressable::URI.parse(base_url.strip)
       scheme = base_uri.scheme || "http"
-      uri = URI.join("#{scheme}://#{base_uri.host}", uri)
+      uri = Addressable::URI.parse("#{scheme}://#{base_uri.host}").join(uri)
     end
 
     return if ALLOWED_URL_SCHEMES.exclude?(uri.scheme.downcase)
 
-    uri.to_s
+    # Percent-encode any non-ASCII characters (e.g. an IRI path) so the result
+    # is a valid URL. normalize is idempotent, so already-encoded URLs are
+    # left untouched rather than double-encoded.
+    uri.normalize.to_s
   end
 
   def safe_normalize_url(url, base_url)
     return if url.blank?
 
     normalize_url(url, base_url)
-  rescue URI::InvalidURIError
+  rescue Addressable::URI::InvalidURIError
     nil
   end
 end

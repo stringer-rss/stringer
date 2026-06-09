@@ -33,6 +33,13 @@ RSpec.describe UrlHelpers do
       HTML
     end
 
+    it "percent-encodes non-ascii characters in resolved relative urls" do
+      content = '<a href="/why_no_了/">link</a>'
+
+      result = helper.expand_absolute_urls(content, "http://oodl.io/d/")
+      expect(result).to include('href="http://oodl.io/why_no_%E4%BA%86/"')
+    end
+
     it "handles empty body" do
       expect(helper.expand_absolute_urls("", nil)).to eq("")
     end
@@ -105,6 +112,26 @@ RSpec.describe UrlHelpers do
         "https://github.com/progrium/dokku/releases.atom"
       )
       expect(url).to eq("https://github.com/progrium/dokku/releases/tag/v0.4.4")
+    end
+
+    it "percent-encodes non-ascii (IRI) paths" do
+      url = helper.normalize_url(
+        "https://www.reddit.com/r/ChineseLanguage/comments/1u04wzs/" \
+        "why_no_了_in_the_3rd_one/",
+        "https://www.reddit.com/feed.xml"
+      )
+      expect(url).to eq(
+        "https://www.reddit.com/r/ChineseLanguage/comments/1u04wzs/" \
+        "why_no_%E4%BA%86_in_the_3rd_one/"
+      )
+    end
+
+    it "leaves already-encoded urls intact (no double-encoding)" do
+      input =
+        "https://www.reddit.com/r/ChineseLanguage/comments/1u04wzs/" \
+        "why_no_%E4%BA%86_in_the_3rd_one/"
+      url = helper.normalize_url(input, "https://www.reddit.com/feed.xml")
+      expect(url).to eq(input)
     end
 
     it "returns nil for javascript: scheme" do
