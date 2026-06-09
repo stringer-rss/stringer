@@ -50,8 +50,15 @@ class StoryRepository
     Story.where(is_read: false).order("published #{order}").includes(:feed)
   end
 
-  def self.unread_by_feed_stories_count
-    Story.where.not(is_read: true).joins("JOIN (SELECT COUNT(stories.*) AS stories_count, feeds.id, feeds.name FROM feeds JOIN stories on stories.feed_id = feeds.id AND stories.is_read != 't' GROUP BY feeds.id) a ON a.id = stories.feed_id").order("a.stories_count DESC, a.name, published")
+  # Keeps each feed's stories adjacent, with the feeds that have the most
+  # unread stories first. `feed_id` is the stable tie-break that holds a feed's
+  # stories together; `order` controls the published direction within a feed.
+  def self.unread_grouped_by_feed(order: "desc")
+    Story.where(is_read: false)
+         .order(Arel.sql("count(*) OVER (PARTITION BY feed_id) DESC"))
+         .order(:feed_id)
+         .order(published: order)
+         .includes(:feed)
   end
 
   def self.unread_since_id(since_id)

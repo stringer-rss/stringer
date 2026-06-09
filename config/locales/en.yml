@@ -189,6 +189,7 @@ en:
   activerecord:
     attributes:
       user:
+        group_stories: "Group stories by feed"
         stories_order: "Stories feed order"
       user/stories_order:
         asc: "Oldest first"

@@ -50,6 +50,12 @@ Lint/NumberConversion:
     - 'spec/models/story_spec.rb'
 
 # Offense count: 1
+# Configuration parameters: CountComments, Max, CountAsOne, AllowedMethods, AllowedPatterns.
+Metrics/ClassLength:
+  Exclude:
+    - 'app/repositories/story_repository.rb'
+
+# Offense count: 1
 # Configuration parameters: AllowedMethods, AllowedPatterns, Max.
 Metrics/CyclomaticComplexity:
   Exclude:

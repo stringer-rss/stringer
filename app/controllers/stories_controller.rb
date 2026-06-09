@@ -2,7 +2,15 @@
 
 class StoriesController < ApplicationController
   def index
-    @unread_stories = authorization.scope(StoryRepository.unread_by_feed_stories_count)
+    order = current_user.stories_order
+    scope =
+      if current_user.group_stories
+        StoryRepository.unread_grouped_by_feed(order:)
+      else
+        StoryRepository.unread(order:)
+      end
+
+    @unread_stories = authorization.scope(scope)
   end
 
   def update
