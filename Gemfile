@@ -9,6 +9,7 @@ gem "dotenv-rails"
 
 gem "rails", "~> 8.1.0"
 
+gem "addressable"
 gem "bcrypt"
 gem "bootsnap", require: false
 gem "cssbundling-rails"
