@@ -17,7 +17,7 @@ But it does have keyboard shortcuts and was made with love!
 
 ## Installation
 
-Stringer is a Ruby app based on Rails, PostgreSQL, Backbone.js and GoodJob.
+Stringer is a Ruby app based on Rails, PostgreSQL, Hotwire (Turbo and Stimulus) and GoodJob.
 
 [![Deploy to Heroku](https://cdn.herokuapp.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/stringer-rss/stringer)
 
@@ -86,27 +86,34 @@ task.
 
 ## Development
 
-Run the Ruby tests with `rspec`.
-
-Run the Javascript tests with `rake test_js` and then open a browser to `http://localhost:4567/test`.
-
 ### Getting Started
 
-To get started using Stringer for development you first need to install `foreman`.
-
-    gem install foreman
-
-Then run the following commands.
+You'll need the toolchain versions pinned in `.tool-versions` (Ruby, Node,
+PostgreSQL, and pnpm). With those installed, run:
 
 ```sh
-bundle install
-rails db:setup
-foreman start
+bin/setup
 ```
 
-The application will be running on port `5000`.
+This installs dependencies, prepares the database, and launches the development
+server. The application will be running on port `3000`.
+
+On subsequent runs you can start the server directly with `bin/dev`, which boots
+Puma alongside the esbuild watchers for JavaScript and CSS.
 
 You can launch an interactive console (a la `rails c`) using `rake console`.
+
+### Tests and linting
+
+Run the Ruby tests with `bundle exec rspec`. Run a single file or example with
+`bundle exec rspec spec/path/to/file_spec.rb:LINE`.
+
+Run the JavaScript tests with `pnpm test` (Vitest). This also type-checks and
+runs ESLint first.
+
+Other checks: `bundle exec rubocop` (Ruby lint), `pnpm eslint` (JS lint),
+`pnpm stylelint` (CSS lint), `pnpm tscheck` (type check), and
+`bundle exec brakeman` (security scan).
 
 ## Acknowledgments
 
