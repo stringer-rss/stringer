@@ -476,14 +476,14 @@ DEPENDENCIES
   feedbag
   feedjira
   goldiloader
-  good_job (~> 4.19.0)
+  good_job
   httparty
   jsbundling-rails
-  nokogiri (~> 1.19.0)
+  nokogiri
   pg
   propshaft
   pry-byebug
-  puma (~> 8.0)
+  puma
   rack-ssl
   rails (~> 8.1.0)
   rspec
@@ -512,7 +512,7 @@ DEPENDENCIES
   with_model
 
 RUBY VERSION
-   ruby 4.0.5
+  ruby 4.0.5
 
 BUNDLED WITH
-   4.0.13
+  4.0.13
