@@ -62,6 +62,5 @@ group :test do
   gem "axe-core-rspec"
   gem "rspec_junit_formatter"
   gem "selenium-webdriver"
-  gem "webdrivers"
   gem "with_model"
 end
