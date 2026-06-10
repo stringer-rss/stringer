@@ -5,7 +5,7 @@
 <% unless @read_stories.empty? %>
   <%= render "stories/js", { stories: @read_stories } %>
 
-  <div id="stories">
+  <div id="stories" data-controller="unread-count" data-action="story:read-changed->unread-count#update" data-unread-count-title-value="<%= t('layout.title') %>">
     <ul id="story-list">
     </ul>
   </div>

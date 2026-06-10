@@ -207,6 +207,18 @@ RSpec.describe "stories/index" do
     expect(page).to have_title("(1)")
   end
 
+  it "clears the unread count in the title when the last story is read",
+     :aggregate_failures do
+    create(:story, title: "My Story")
+    login_as(default_user)
+    visit news_path
+    expect(page).to have_title("(1)")
+
+    find(".story-preview", text: "My Story").click
+
+    expect(page).to have_no_title("(1)")
+  end
+
   it "allows viewing a story with hot keys" do
     create(:story, title: "My Story", body: "My Body")
     login_as(default_user)
