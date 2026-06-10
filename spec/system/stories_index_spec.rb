@@ -160,6 +160,30 @@ RSpec.describe "stories/index" do
     expect(page).to have_css(".story.read")
   end
 
+  it "persists read state across page reload", :aggregate_failures do
+    create(:story, title: "My Story")
+    login_as(default_user)
+    visit news_path
+
+    find(".story-preview", text: "My Story").click
+    expect(page).to have_css(".story.read")
+
+    visit news_path
+    expect(page).to have_no_text("My Story")
+  end
+
+  it "marks a story as read when opened in a background tab with ctrl-click",
+     :aggregate_failures do
+    create(:story, title: "My Story")
+    login_as(default_user)
+    visit news_path
+
+    find(".story-preview", text: "My Story").click(:control)
+
+    expect(page.windows.size).to eq(2)
+    expect(page).to have_css(".story.read")
+  end
+
   it "displays stories in newest-first order by default" do
     create(:story, title: "Older Story", published: 2.days.ago)
     create(:story, title: "Newer Story", published: 1.day.ago)
@@ -205,6 +229,18 @@ RSpec.describe "stories/index" do
     visit news_path
 
     expect(page).to have_title("(1)")
+  end
+
+  it "clears the unread count in the title when the last story is read",
+     :aggregate_failures do
+    create(:story, title: "My Story")
+    login_as(default_user)
+    visit news_path
+    expect(page).to have_title("(1)")
+
+    find(".story-preview", text: "My Story").click
+
+    expect(page).to have_no_title("(1)")
   end
 
   it "allows viewing a story with hot keys" do
