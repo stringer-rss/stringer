@@ -18,6 +18,13 @@ RSpec.describe "Feed importing" do
     )
   end
 
+  # The local FeedServer binds to loopback, which the SSRF guard blocks.
+  # Treat addresses as public so these import specs can reach it.
+  def allow_local_fetches
+    allow(PrivateAddressCheck)
+      .to receive(:resolves_to_private_address?).and_return(false)
+  end
+
   describe "Valid feed" do
     # articles older than 3 days are ignored, so freeze time within
     # applicable range of the stories in the sample feed
@@ -25,6 +32,7 @@ RSpec.describe "Feed importing" do
 
     describe "Importing for the first time" do
       it "imports all entries" do
+        allow_local_fetches
         travel_to(Time.parse("2014-08-15T17:30:00Z"))
         feed = create_feed(url: create_server.url)
         expect { Feed::FetchOne.call(feed) }
@@ -35,6 +43,7 @@ RSpec.describe "Feed importing" do
     describe "Importing for the second time" do
       context "no new entries" do
         it "does not create new stories" do
+          allow_local_fetches
           travel_to(Time.parse("2014-08-15T17:30:00Z"))
           feed = create_feed(url: create_server.url)
           Feed::FetchOne.call(feed)
@@ -45,6 +54,7 @@ RSpec.describe "Feed importing" do
 
       context "new entries" do
         it "creates new stories" do
+          allow_local_fetches
           travel_to(Time.parse("2014-08-15T17:30:00Z"))
           server = create_server
           feed = create_feed(url: server.url)
@@ -72,6 +82,7 @@ RSpec.describe "Feed importing" do
         # last time this feed was fetched is after 00:00 the day the article
         # was published.
 
+        allow_local_fetches
         travel_to(Time.parse("2014-08-12T17:30:00Z"))
         server = create_server(url:)
         feed = create_feed(url: server.url, last_fetched:)

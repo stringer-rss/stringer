@@ -160,6 +160,7 @@ RSpec/LeakyLocalVariable:
 RSpec/MessageExpectation:
   Exclude:
     - 'spec/commands/feed/fetch_one_spec.rb'
+    - 'spec/integration/feed_importing_spec.rb'
     - 'spec/models/migration_status_spec.rb'
     - 'spec/repositories/story_repository_spec.rb'
     - 'spec/tasks/remove_old_stories_spec.rb'
@@ -180,6 +181,7 @@ RSpec/MultipleExpectations:
     - 'spec/utils/feed_discovery_spec.rb'
     - 'spec/utils/i18n_support_spec.rb'
     - 'spec/utils/opml_parser_spec.rb'
+    - 'spec/utils/safe_fetch_spec.rb'
 
 # Offense count: 5
 # Configuration parameters: EnforcedStyle, IgnoreSharedExamples.
