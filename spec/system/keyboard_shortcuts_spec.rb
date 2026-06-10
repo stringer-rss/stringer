@@ -27,6 +27,24 @@ RSpec.describe "keyboard shortcuts" do
     expect(page).to have_css("li.story.open", count: 1)
   end
 
+  it "wraps the cursor to the first story when pressing j at the end" do
+    login_as(default_user)
+    create_stories_and_visit
+
+    send_keys("j", "j", "j")
+
+    expect(find("li.story.open")).to have_text("First Story")
+  end
+
+  it "wraps the cursor to the last story when pressing k at the top" do
+    login_as(default_user)
+    create_stories_and_visit
+
+    send_keys("j", "k")
+
+    expect(find("li.story.open")).to have_text("Second Story")
+  end
+
   it "moves cursor without opening with n" do
     login_as(default_user)
     create_stories_and_visit
