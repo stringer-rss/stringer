@@ -146,6 +146,7 @@ var StoryView = Backbone.NativeView.extend({
 
   itemRead: function() {
     this.el.classList.toggle("read", this.model.get("is_read"));
+    this.el.dispatchEvent(new CustomEvent("story:read-changed", { bubbles: true }));
   },
 
   itemSelected: function() {
@@ -169,6 +170,7 @@ var StoryView = Backbone.NativeView.extend({
       keepUnreadToggleKeepUnreadValue: String(jsonModel.keep_unread),
       starToggleIdValue: String(jsonModel.id),
       starToggleStarredValue: String(jsonModel.is_starred),
+      unreadCountTarget: "story",
     });
     return this;
   },
@@ -257,10 +259,6 @@ var StoryList = Backbone.Collection.extend({
     this.at(this.cursorPosition).toggleKeepUnread();
   },
 
-  unreadCount: function() {
-    return this.where({is_read: false}).length;
-  },
-
   unselectAll: function() {
     _.invoke(this.selected(), "unselect");
   },
@@ -290,7 +288,6 @@ var AppView = Backbone.NativeView.extend({
 
     this.listenTo(this.stories, 'add', this.addOne);
     this.listenTo(this.stories, 'reset', this.addAll);
-    this.listenTo(this.stories, 'all', this.render);
   },
 
   loadData: function(data) {
@@ -307,16 +304,6 @@ var AppView = Backbone.NativeView.extend({
 
   openCurrentSelection: function() {
     this.stories.openCurrentSelection();
-  },
-
-  render: function() {
-    var unreadCount = this.stories.unreadCount();
-
-    if (unreadCount === 0) {
-      document.title = window.i18n.titleName;
-    } else {
-      document.title = "(" + unreadCount + ") " + window.i18n.titleName;
-    }
   },
 
   toggleCurrent: function() {
