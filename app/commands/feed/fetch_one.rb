@@ -21,7 +21,7 @@ module Feed::FetchOne
     private
 
     def fetch_raw_feed(feed)
-      response = HTTParty.get(feed.url).to_s
+      response = SafeFetch.body(feed.url)
       Feedjira.parse(response)
     end
 

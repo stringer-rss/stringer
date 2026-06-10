@@ -39,6 +39,15 @@ RSpec.describe FeedDiscovery do
     expect(result).to be(false)
   end
 
+  it "returns false without fetching when the url scheme is not http(s)" do
+    expect(HTTParty).not_to receive(:get)
+    expect(Feedbag).not_to receive(:find)
+
+    result = described_class.call("file:///etc/passwd")
+
+    expect(result).to be(false)
+  end
+
   it "returns the feed if the discovered feed is parsable" do
     feed = double(feed_url: url)
     expect(HTTParty).to receive(:get).with(url)

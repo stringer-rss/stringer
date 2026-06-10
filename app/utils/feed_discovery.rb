@@ -4,7 +4,7 @@ module FeedDiscovery
   class << self
     def call(url)
       get_feed_for_url(url) do
-        urls = Feedbag.find(url)
+        urls = discover_feeds(url)
         return false if urls.empty?
 
         get_feed_for_url(urls.first) { return false }
@@ -13,8 +13,14 @@ module FeedDiscovery
 
     private
 
+    def discover_feeds(url)
+      SafeFetch.guard(url) { Feedbag.find(url) }
+    rescue SafeFetch::UnsafeUrl
+      []
+    end
+
     def get_feed_for_url(url)
-      response = HTTParty.get(url).to_s
+      response = SafeFetch.body(url)
       feed = Feedjira.parse(response)
       feed.feed_url ||= url
       feed
