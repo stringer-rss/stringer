@@ -33,7 +33,7 @@
     "@typescript-eslint/parser": "^8.60.0",
     "@vitest/coverage-v8": "^4.1.6",
     "@vitest/eslint-plugin": "^1.6.17",
-    "esbuild": "^0.28.0",
+    "esbuild": "^0.28.1",
     "eslint": "^10.4.0",
     "eslint-find-rules": "^5.0.0",
     "eslint-import-resolver-typescript": "^4.4.4",
