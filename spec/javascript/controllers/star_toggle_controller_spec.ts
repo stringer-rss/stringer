@@ -1,3 +1,4 @@
+import type {MockInstance} from "vitest";
 import {bootStimulus, getController} from "support/stimulus";
 import StarToggleController from "controllers/star_toggle_controller";
 import {assert} from "helpers/assert";
@@ -51,6 +52,17 @@ function iconTargets(): HTMLElement[] {
   return Array.from(document.querySelectorAll<HTMLElement>(iconSel));
 }
 
+function expectIcons(className: string): void {
+  for (const icon of iconTargets()) {
+    expect(icon.className).toBe(className);
+  }
+}
+
+function mockFetch(status = 200): MockInstance {
+  return vi.spyOn(globalThis, "fetch").
+    mockResolvedValue(new Response(null, {status}));
+}
+
 describe("toggle", () => {
   // eslint-disable-next-line vitest/no-hooks
   afterEach(() => {
@@ -59,32 +71,36 @@ describe("toggle", () => {
 
   it("flips icons from unstarred to starred", async () => {
     await setupController(false);
-    vi.spyOn(globalThis, "fetch").mockResolvedValue(new Response());
+    mockFetch();
 
-    controller().toggle();
+    await controller().toggle();
 
-    for (const icon of iconTargets()) {
-      expect(icon.className).toBe("fa fa-star");
-    }
+    expectIcons("fa fa-star");
   });
 
   it("flips icons from starred to unstarred", async () => {
     await setupController(true);
-    vi.spyOn(globalThis, "fetch").mockResolvedValue(new Response());
+    mockFetch();
 
-    controller().toggle();
+    await controller().toggle();
 
-    for (const icon of iconTargets()) {
-      expect(icon.className).toBe("fa fa-star-o");
-    }
+    expectIcons("fa fa-star-o");
+  });
+
+  it("does not flip icons when the request fails", async () => {
+    await setupController(false);
+    mockFetch(500);
+
+    await expect(controller().toggle()).rejects.toThrow("Failed to star");
+
+    expectIcons("fa fa-star-o");
   });
 
   it("calls fetch with the correct payload", async () => {
     await setupController(false);
-    const fetchSpy = vi.spyOn(globalThis, "fetch").
-      mockResolvedValue(new Response());
+    const fetchSpy = mockFetch();
 
-    controller().toggle();
+    await controller().toggle();
 
     expect(fetchSpy).toHaveBeenCalledWith(
       "/stories/42",

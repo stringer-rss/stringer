@@ -13,19 +13,22 @@ export default class extends Controller {
 
   iconTargets!: HTMLElement[];
 
-  toggle(): void {
-    this.starredValue = !this.starredValue;
+  async toggle(): Promise<void> {
+    const starred = !this.starredValue;
+
+    // eslint-disable-next-line camelcase
+    const response = await updateStory(this.idValue, {is_starred: starred});
+    if (!response.ok) {
+      throw new Error(`Failed to star story ${this.idValue}`);
+    }
+
+    this.starredValue = starred;
 
     let icon = "fa fa-star-o";
-    if (this.starredValue) { icon = "fa fa-star"; }
+    if (starred) { icon = "fa fa-star"; }
 
     for (const target of this.iconTargets) {
       target.className = icon;
     }
-
-    // eslint-disable-next-line camelcase
-    updateStory(this.idValue, {is_starred: this.starredValue}).catch(() => {
-      // Optimistic UI — ignore server errors
-    });
   }
 }
