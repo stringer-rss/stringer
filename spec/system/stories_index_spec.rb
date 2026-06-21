@@ -61,6 +61,7 @@ RSpec.describe "stories/index" do
     login_as(default_user)
 
     star_story("My Story")
+    expect(page).to have_css(".story-actions .story-starred .fa-star")
 
     visit(starred_path)
     expect(page).to have_text("My Story")
@@ -71,6 +72,7 @@ RSpec.describe "stories/index" do
     login_as(default_user)
 
     star_story("My Story")
+    expect(page).to have_css(".story-actions .story-starred .fa-star-o")
 
     visit(starred_path)
     expect(page).to have_no_text("My Story")

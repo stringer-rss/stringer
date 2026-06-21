@@ -93,6 +93,7 @@ RSpec.describe "keyboard shortcuts" do
     login_as(default_user)
     create_story_and_visit(title: "My Story")
     send_keys("j", "s")
+    expect(page).to have_css(".story.cursor .story-starred .fa-star")
 
     visit(starred_path)
 
