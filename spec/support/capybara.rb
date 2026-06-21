@@ -11,7 +11,7 @@ Selenium::WebDriver.logger.output = Rails.root.join("log/selenium.log")
 using = ENV.fetch("DRIVER", :firefox).to_sym
 
 RSpec.configure do |config|
-  config.before(:each, type: :system) do
+  config.prepend_before(:each, type: :system) do
     driven_by(:selenium, using:) do |driver|
       driver.add_preference("browser.download.folderList", 2)
       driver.add_preference("browser.download.manager.showWhenStarting", false)
