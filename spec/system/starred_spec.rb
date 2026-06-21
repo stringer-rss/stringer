@@ -93,8 +93,9 @@ RSpec.describe "starred" do
     login_as(default_user)
     create_starred_stories(21)
     visit(starred_path)
+    expect(page).to have_link("Next")
 
-    send_keys(:arrow_right)
+    find("body").send_keys(:arrow_right)
 
     expect(page).to have_text("2 of 2")
   end
@@ -114,10 +115,11 @@ RSpec.describe "starred" do
     login_as(default_user)
     create_starred_stories(21)
     visit(starred_path)
-    send_keys(:arrow_right)
+    expect(page).to have_link("Next")
+    find("body").send_keys(:arrow_right)
     expect(page).to have_text("2 of 2")
 
-    send_keys(:arrow_left)
+    find("body").send_keys(:arrow_left)
 
     expect(page).to have_text("1 of 2")
   end
