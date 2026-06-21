@@ -14,16 +14,8 @@
   </p>
   <hr />
 
-  <%= form_with(url: "/feeds/import", id: "import", multipart: true) do %>
-    <input id="opml_file" name="opml_file" type="file" title="<%= t('import.fields.import') %>" aria-label="<%= t('import.fields.import') %>" class="btn-primary" />
+  <%= form_with(url: "/feeds/import", id: "import", multipart: true, data: { controller: "auto-submit" }) do %>
+    <input id="opml_file" name="opml_file" type="file" title="<%= t('import.fields.import') %>" aria-label="<%= t('import.fields.import') %>" class="btn-primary" data-action="change->auto-submit#submit" />
     <a href="/setup/tutorial" id="skip" class="btn float-end"><%= t('import.fields.not_now') %></a>
   <% end %>
 </div>
-
-<script type="text/javascript">
-document.addEventListener("DOMContentLoaded", function() {
-  document.getElementById('opml_file').addEventListener("change", function(e) {
-    document.querySelector('form#import').requestSubmit();
-  });
-});
-</script>
