@@ -47,10 +47,12 @@ RSpec.describe "archive" do
     create_read_stories(21)
     visit(archive_path)
 
-    send_keys(:arrow_right)
+    expect(page).to have_link("Next")
+
+    find("body").send_keys(:arrow_right)
     expect(page).to have_link("Previous")
 
-    send_keys(:arrow_left)
+    find("body").send_keys(:arrow_left)
     expect(page).to have_link("Next")
     expect(page).to have_no_link("Previous")
   end
