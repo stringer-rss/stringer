@@ -6,9 +6,6 @@
 
 import {application} from "./application";
 
-import AutoSubmitController from "./auto_submit_controller";
-application.register("auto-submit", AutoSubmitController);
-
 import DialogController from "./dialog_controller";
 application.register("dialog", DialogController);
 

@@ -14,8 +14,9 @@
   </p>
   <hr />
 
-  <%= form_with(url: "/feeds/import", id: "import", multipart: true, data: { controller: "auto-submit" }) do %>
-    <input id="opml_file" name="opml_file" type="file" title="<%= t('import.fields.import') %>" aria-label="<%= t('import.fields.import') %>" class="btn-primary" data-action="change->auto-submit#submit" />
+  <%= form_with(url: "/feeds/import", id: "import", multipart: true) do %>
+    <input id="opml_file" name="opml_file" type="file" title="<%= t('import.fields.choose_file') %>" aria-label="<%= t('import.fields.choose_file') %>" required />
+    <%= submit_tag(t('import.fields.import'), class: "btn btn-primary") %>
     <a href="/setup/tutorial" id="skip" class="btn float-end"><%= t('import.fields.not_now') %></a>
   <% end %>
 </div>
