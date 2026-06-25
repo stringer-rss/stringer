@@ -60,6 +60,7 @@ en:
   import:
     description: Import your feeds from another service.
     fields:
+      choose_file: Choose file
       import: Import
       not_now: Not now
     subtitle: Let's setup your feeds.

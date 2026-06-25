@@ -116,7 +116,7 @@ RSpec/DescribeClass:
   Exclude:
     - 'spec/integration/feed_importing_spec.rb'
 
-# Offense count: 68
+# Offense count: 70
 # Configuration parameters: Max, CountAsOne.
 RSpec/ExampleLength:
   Exclude:
@@ -138,6 +138,7 @@ RSpec/ExampleLength:
     - 'spec/system/feed_show_spec.rb'
     - 'spec/system/feeds_index_spec.rb'
     - 'spec/system/good_job_spec.rb'
+    - 'spec/system/import_spec.rb'
     - 'spec/system/keyboard_shortcuts_spec.rb'
     - 'spec/system/starred_spec.rb'
     - 'spec/system/stories_index_spec.rb'
