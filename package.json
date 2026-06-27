@@ -38,7 +38,7 @@
     "eslint-find-rules": "^5.0.0",
     "eslint-import-resolver-typescript": "^4.4.5",
     "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-perfectionist": "^5.9.0",
+    "eslint-plugin-perfectionist": "^5.9.1",
     "globals": "^17.6.0",
     "jiti": "^2.7.0",
     "jsdom": "^29.1.1",
