@@ -20,7 +20,6 @@ AllCops:
     - 'db/schema.rb'
     - 'vendor/**/*'
 
-Capybara/ClickLinkOrButtonStyle: { EnforcedStyle: link_or_button }
 Layout/LineLength: { Max: 80, Exclude: [db/migrate/*.rb] }
 Layout/RedundantLineBreak: { InspectBlocks: true }
 Metrics/AbcSize: { Exclude: [db/migrate/*.rb], CountRepeatedAttributes: false }
