@@ -5,6 +5,7 @@ require "capybara/rails"
 Capybara.enable_aria_label = true
 Capybara.save_path = ENV.fetch("CIRCLE_ARTIFACTS", Capybara.save_path)
 Capybara.server = :puma, { Silent: true }
+Capybara.default_max_wait_time = Integer(ENV.fetch("CAPYBARA_MAX_WAIT_TIME", 5))
 
 Selenium::WebDriver.logger.output = Rails.root.join("log/selenium.log")
 
