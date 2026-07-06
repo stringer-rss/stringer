@@ -17,6 +17,17 @@ class StoryRepository
     )
   end
 
+  def self.update_from_entry(story, entry)
+    feed = story.feed
+
+    story.update!(
+      title: extract_title(entry),
+      permalink: extract_url(entry, feed),
+      enclosure_url: safe_normalize_url(entry.try(:enclosure_url), feed.url),
+      body: extract_content(entry)
+    )
+  end
+
   def self.fetch(id)
     Story.find(id)
   end

@@ -258,7 +258,7 @@ li.story.open .story-preview {
   float: right;
 }
 
-.story-keep-unread, .story-starred {
+.story-keep-unread, .story-starred, .story-refresh {
   display: inline-block;
   cursor: pointer;
   -webkit-touch-callout: none;
@@ -379,6 +379,8 @@ p.story-details {
 /* end Wordpress hacks */
 
 .story-actions-container {
+  display: flex;
+  justify-content: space-between;
   border-top: 2px solid #FAF2E5;
   height: 28px;
   line-height: 30px;

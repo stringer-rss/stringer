@@ -153,6 +153,51 @@ RSpec.describe "stories/index" do
     expect(page).to have_no_css("a.story-enclosure")
   end
 
+  def updated_feed_entry(entry_id:, enclosure_url:)
+    double(
+      guid: entry_id,
+      title: "Podcast Episode",
+      url: "http://example.com/episode",
+      published: Time.zone.now,
+      content: "Show notes",
+      enclosure_url:
+    )
+  end
+
+  def serve_feed_with_entry(feed, **entry_options)
+    server = FeedServer.new
+    entry = updated_feed_entry(**entry_options)
+    server.response = GenerateXml.call(feed, [entry])
+    feed.update!(url: server.url)
+
+    # The local FeedServer binds to loopback, which the SSRF guard blocks.
+    # Treat addresses as public so the refresh fetch can reach it.
+    allow(PrivateAddressCheck)
+      .to receive(:resolves_to_private_address?).and_return(false)
+  end
+
+  it "refreshes a story from its feed", :aggregate_failures do
+    story = create(
+      :story,
+      title: "Podcast Episode",
+      entry_id: "episode-1",
+      enclosure_url: "http://example.com/dead.mp3"
+    )
+    serve_feed_with_entry(
+      story.feed,
+      entry_id: "episode-1",
+      enclosure_url: "http://example.com/fixed.mp3"
+    )
+    login_as(default_user)
+    visit(news_path)
+
+    find(".story-preview", text: "Podcast Episode").click
+    find(".story-actions .story-refresh").click
+
+    expect(page).to have_link(href: "http://example.com/fixed.mp3")
+    expect(page).to have_no_link(href: "http://example.com/dead.mp3")
+  end
+
   it "marks a story as read when opened" do
     create(:story, title: "My Story")
     login_as(default_user)

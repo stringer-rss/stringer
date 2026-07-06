@@ -151,6 +151,57 @@ RSpec.describe StoriesController do
     end
   end
 
+  describe "#refresh" do
+    def updated_entry
+      double(
+        guid: "entry-guid",
+        published: Time.zone.now,
+        title: "Updated title",
+        url: "https://example.com/updated",
+        content: "Updated content",
+        enclosure_url: "https://example.com/updated.mp3"
+      )
+    end
+
+    def stub_updated_feed(feed)
+      xml = GenerateXml.call(feed, [updated_entry])
+      stub_request(:get, feed.url).to_return(status: 200, body: xml)
+    end
+
+    def stub_invalid_feed(feed)
+      stub_request(:get, feed.url).to_return(status: 200, body: "not a feed")
+    end
+
+    it "updates the story from the feed" do
+      login_as(default_user)
+      story = create(:story, entry_id: "entry-guid")
+      stub_updated_feed(story.feed)
+
+      expect { post("/stories/#{story.id}/refresh") }
+        .to change_record(story, :title).to("Updated title")
+    end
+
+    it "returns the refreshed story as JSON" do
+      login_as(default_user)
+      story = create(:story, entry_id: "entry-guid")
+      stub_updated_feed(story.feed)
+
+      post("/stories/#{story.id}/refresh")
+
+      expect(response.parsed_body).to include("title" => "Updated title")
+    end
+
+    it "responds with unprocessable content when the refresh fails" do
+      login_as(default_user)
+      story = create(:story)
+      stub_invalid_feed(story.feed)
+
+      post("/stories/#{story.id}/refresh")
+
+      expect(response).to have_http_status(:unprocessable_content)
+    end
+  end
+
   describe "#mark_all_as_read" do
     it "marks all unread stories as read and reload the page" do
       login_as(default_user)

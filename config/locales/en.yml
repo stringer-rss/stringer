@@ -167,6 +167,7 @@ en:
     sorry: Sorry, you haven't starred any stories yet!
   stories:
     keep_unread: Keep unread
+    refresh: Refresh story from feed
   time:
     formats:
       default: '%b %d, %H:%M'
