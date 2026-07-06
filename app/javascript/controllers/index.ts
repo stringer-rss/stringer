@@ -21,5 +21,8 @@ application.register("mark-all-as-read", MarkAllAsReadController);
 import StarToggleController from "./star_toggle_controller";
 application.register("star-toggle", StarToggleController);
 
+import StoryRefreshController from "./story_refresh_controller";
+application.register("story-refresh", StoryRefreshController);
+
 import UnreadCountController from "./unread_count_controller";
 application.register("unread-count", UnreadCountController);

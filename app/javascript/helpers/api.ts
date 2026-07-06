@@ -19,4 +19,11 @@ async function updateStory(
   });
 }
 
-export {updateStory};
+async function refreshStory(id: string): Promise<Response> {
+  return fetch(`/stories/${id}/refresh`, {
+    headers: {"X-CSRF-Token": csrfToken()},
+    method: "POST",
+  });
+}
+
+export {refreshStory, updateStory};

@@ -130,6 +130,11 @@ var StoryView = Backbone.NativeView.extend({
       this.model.set({is_read: detail.isRead, keep_unread: detail.keepUnread}, {silent: true});
       this.model.trigger('change:is_read');
     });
+    this.el.addEventListener('story-refresh:refreshed', (e) => {
+      this.model.set(e.detail.story, {silent: true});
+      this.render();
+      this.itemOpened();
+    });
   },
 
   itemOpened: function() {
@@ -164,12 +169,13 @@ var StoryView = Backbone.NativeView.extend({
       this.el.classList.add('keepUnread');
     }
     Object.assign(this.el.dataset, {
-      controller: "star-toggle keep-unread-toggle",
+      controller: "star-toggle keep-unread-toggle story-refresh",
       keepUnreadToggleIdValue: String(jsonModel.id),
       keepUnreadToggleIsReadValue: String(jsonModel.is_read),
       keepUnreadToggleKeepUnreadValue: String(jsonModel.keep_unread),
       starToggleIdValue: String(jsonModel.id),
       starToggleStarredValue: String(jsonModel.is_starred),
+      storyRefreshIdValue: String(jsonModel.id),
       unreadCountTarget: "story",
     });
     return this;

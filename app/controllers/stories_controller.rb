@@ -22,6 +22,16 @@ class StoriesController < ApplicationController
     head(:no_content)
   end
 
+  def refresh
+    story = authorization.check(StoryRepository.fetch(params[:id]))
+
+    if RefreshFromFeed.call(story)
+      render(json: story)
+    else
+      head(:unprocessable_content)
+    end
+  end
+
   def mark_all_as_read
     stories = authorization.scope(Story.where(id: params[:story_ids]))
     MarkAllAsRead.call(stories.ids)

@@ -37,5 +37,6 @@ Rails.application.routes.draw do
   get "/setup/tutorial", to: "tutorials#index"
   get "/starred", to: "stories#starred"
   put "/stories/:id", to: "stories#update"
+  post "/stories/:id/refresh", to: "stories#refresh"
   post "/stories/mark_all_as_read", to: "stories#mark_all_as_read"
 end

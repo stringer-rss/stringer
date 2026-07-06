@@ -156,7 +156,7 @@ RSpec/LeakyLocalVariable:
     - 'spec/requests/stories_controller_spec.rb'
     - 'spec/utils/feed_discovery_spec.rb'
 
-# Offense count: 18
+# Offense count: 19
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: allow, expect
 RSpec/MessageExpectation:
@@ -165,6 +165,7 @@ RSpec/MessageExpectation:
     - 'spec/integration/feed_importing_spec.rb'
     - 'spec/models/migration_status_spec.rb'
     - 'spec/repositories/story_repository_spec.rb'
+    - 'spec/system/stories_index_spec.rb'
     - 'spec/tasks/remove_old_stories_spec.rb'
     - 'spec/utils/i18n_support_spec.rb'
 
@@ -207,12 +208,13 @@ RSpec/NoBeforeHook:
     - 'spec/system/authentication_spec.rb'
     - 'spec/system/profile_spec.rb'
 
-# Offense count: 5
+# Offense count: 6
 # Configuration parameters: IgnoreNameless, IgnoreSymbolicNames.
 RSpec/VerifiedDoubles:
   Exclude:
     - 'spec/commands/feed/fetch_one_spec.rb'
     - 'spec/commands/feed/find_new_stories_spec.rb'
+    - 'spec/commands/story/refresh_from_feed_spec.rb'
     - 'spec/tasks/remove_old_stories_spec.rb'
 
 # Offense count: 1
