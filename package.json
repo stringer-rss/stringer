@@ -20,7 +20,7 @@
     "underscore": "1.13.8"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.5",
+    "@eslint/eslintrc": "^3.3.6",
     "@eslint/js": "^10.0.1",
     "@stylistic/eslint-plugin": "^5.10.0",
     "@types/backbone": "latest",
@@ -31,14 +31,14 @@
     "@types/underscore": "latest",
     "@typescript-eslint/eslint-plugin": "^8.62.1",
     "@typescript-eslint/parser": "^8.62.1",
-    "@vitest/coverage-v8": "^4.1.9",
-    "@vitest/eslint-plugin": "^1.6.20",
+    "@vitest/coverage-v8": "^4.1.10",
+    "@vitest/eslint-plugin": "^1.6.23",
     "esbuild": "^0.28.1",
     "eslint": "^10.6.0",
     "eslint-find-rules": "^5.0.0",
     "eslint-import-resolver-typescript": "^4.4.5",
     "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-perfectionist": "^5.9.1",
+    "eslint-plugin-perfectionist": "^5.10.0",
     "globals": "^17.7.0",
     "jiti": "^2.7.0",
     "jsdom": "^29.1.1",
@@ -48,7 +48,7 @@
     "stylelint-selector-bem-pattern": "^5.0.0",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.62.1",
-    "vitest": "^4.1.9"
+    "vitest": "^4.1.10"
   },
   "scripts": {
     "build": "bin/build",
