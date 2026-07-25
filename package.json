@@ -6,7 +6,7 @@
   "packageManager": "pnpm@10.5.2",
   "dependencies": {
     "@fontsource/lato": "^5.2.7",
-    "@fontsource/reenie-beanie": "^5.2.8",
+    "@fontsource/reenie-beanie": "^5.3.0",
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo": "^8.0.23",
     "@hotwired/turbo-rails": "^8.0.23",
@@ -24,7 +24,7 @@
     "@eslint/js": "^10.0.1",
     "@stylistic/eslint-plugin": "^5.10.0",
     "@types/backbone": "latest",
-    "@types/hotwired__turbo": "^8.0.12",
+    "@types/hotwired__turbo": "^8.0.16",
     "@types/mousetrap": "latest",
     "@types/node": "^26.1.1",
     "@types/rails__actioncable": "^8.0.3",
