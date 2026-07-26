@@ -116,7 +116,7 @@ jobs:
             COVERAGE=true bundle exec rspec \
               --format progress \
               --format RspecJunitFormatter \
-              --out /tmp/test-results/rspec.xml \
+              --out /tmp/test-results/unit/rspec.xml \
               $TEST_FILES
 
       - run:
@@ -129,11 +129,17 @@ jobs:
             echo "bundle exec rspec -s <seed-from-failed-build> $TEST_FILES"
             echo "********************************************************"
 
+            mkdir -p tmp/capybara
+
             COVERAGE=false xvfb-run -a bundle exec rspec \
               --format progress \
               --format RspecJunitFormatter \
-              --out /tmp/test-results/rspec.xml \
+              --out /tmp/test-results/system/rspec.xml \
               $TEST_FILES
 
       - store_test_results:
-          path: test_results
+          path: /tmp/test-results
+
+      - store_artifacts:
+          path: tmp/capybara
+          destination: capybara
