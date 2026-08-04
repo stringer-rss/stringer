@@ -136,10 +136,10 @@ describe("Story", function () {
   describe("openInTab", function () {
     it("opens a new window", function () {
       var story = new Story({ permalink: "http://localhost" });
-      vi.spyOn(window, "open").mockImplementation(function () {});
+      const openSpy = vi.spyOn(window, "open").mockImplementation(() => {});
 
       story.openInTab();
-      expect(window.open).toHaveBeenCalledWith("http://localhost", "_blank");
+      expect(openSpy).toHaveBeenCalledWith("http://localhost", "_blank");
     });
   });
 });
