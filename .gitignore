@@ -33,5 +33,8 @@ spec/examples.txt
 tsconfig.tsbuildinfo
 .eslintcache
 
-# Ignore local environment variable files.
+# Ignore local environment variable files. The docker setup generates real
+# secrets into .env, so it must never be committed; .env.development and
+# .env.test hold placeholders only and are tracked deliberately.
+.env
 .env.*.local
