@@ -97,4 +97,43 @@ RSpec.describe "Feed" do
       )
     end
   end
+
+  describe "url scheme validation" do
+    it "allows an http url" do
+      expect(build(:feed, url: "http://example.com/feed")).to be_valid
+    end
+
+    it "allows an https url" do
+      expect(build(:feed, url: "https://example.com/feed")).to be_valid
+    end
+
+    it "rejects a javascript url" do
+      expect(build(:feed, url: "javascript:alert(1)")).not_to be_valid
+    end
+
+    it "explains why a javascript url was rejected" do
+      feed = build(:feed, url: "javascript:alert(1)")
+      feed.valid?
+
+      expect(feed.errors[:url]).to eq(["must be an http or https address"])
+    end
+
+    it "rejects a url with no scheme, which we could never fetch" do
+      expect(build(:feed, url: "example.com/feed")).not_to be_valid
+    end
+
+    it "leaves a blank url to the presence validation alone" do
+      feed = build(:feed, url: "")
+      feed.valid?
+
+      expect(feed.errors[:url]).to eq(["can't be blank"])
+    end
+
+    it "still lets rows stored before the validation record their status" do
+      feed = build(:feed, url: "example.com/legacy")
+      feed.save!(validate: false)
+
+      expect(feed.update(status: :red)).to be(true)
+    end
+  end
 end

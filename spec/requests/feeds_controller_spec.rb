@@ -44,7 +44,7 @@ RSpec.describe FeedsController do
   describe "#edit" do
     it "displays the feed edit form" do
       login_as(default_user)
-      feed = create(:feed, name: "Rainbows/unicorns", url: "example.com/feed")
+      feed = create(:feed, name: "Rainbows/unicorns", url: "http://example.com/feed")
 
       get "/feeds/#{feed.id}/edit"
 
@@ -65,9 +65,9 @@ RSpec.describe FeedsController do
 
     it "updates a feed given the id" do
       login_as(default_user)
-      feed = create(:feed, url: "example.com/atom", id: "12", group_id: nil)
+      feed = create(:feed, url: "http://example.com/atom", id: "12")
 
-      feed_url = "example.com/feed"
+      feed_url = "http://example.com/feed"
 
       expect { put("/feeds/#{feed.id}", params: params(feed, feed_url:)) }
         .to change_record(feed, :url).to(feed_url)
@@ -75,10 +75,29 @@ RSpec.describe FeedsController do
 
     it "updates a feed group given the id" do
       login_as(default_user)
-      feed = create(:feed, url: "example.com/atom")
+      feed = create(:feed, url: "http://example.com/atom")
 
       expect { put("/feeds/#{feed.id}", params: params(feed, group_id: 321)) }
         .to change_record(feed, :group_id).to(321)
+    end
+
+    it "does not store a url with a disallowed scheme" do
+      login_as(default_user)
+      feed = create(:feed, url: "http://example.com/atom")
+      feed_url = "javascript:alert(document.domain)"
+
+      expect { put("/feeds/#{feed.id}", params: params(feed, feed_url:)) }
+        .not_to change_record(feed, :url)
+    end
+
+    it "reports the failure instead of claiming success" do
+      login_as(default_user)
+      feed = create(:feed, url: "http://example.com/atom")
+      feed_url = "javascript:alert(document.domain)"
+
+      put("/feeds/#{feed.id}", params: params(feed, feed_url:))
+
+      expect(rendered).to have_css(".error")
     end
   end
 
@@ -142,6 +161,35 @@ RSpec.describe FeedsController do
         post("/feeds", params: { feed_url: })
 
         expect(rendered).to have_css(".error")
+      end
+    end
+
+    context "when the feed document declares a disallowed self url" do
+      feed_url = "http://example.com/"
+      hostile_atom = <<~XML
+        <?xml version="1.0" encoding="utf-8"?>
+        <feed xmlns="http://www.w3.org/2005/Atom">
+          <title>Hostile</title>
+          <link rel="self" href="javascript:alert(document.domain)"/>
+        </feed>
+      XML
+
+      it "does not add the feed" do
+        login_as(default_user)
+        stub_request(:get, feed_url).to_return(status: 200, body: hostile_atom)
+
+        expect { post("/feeds", params: { feed_url: }) }
+          .not_to change(Feed, :count)
+      end
+
+      it "explains the real reason rather than 'already subscribed'" do
+        login_as(default_user)
+        stub_request(:get, feed_url).to_return(status: 200, body: hostile_atom)
+
+        post("/feeds", params: { feed_url: })
+
+        expect(rendered)
+          .to have_css(".error", text: "must be an http or https address")
       end
     end
 
