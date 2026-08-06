@@ -1,3 +1,8 @@
 .git/*
 .gitignore
 log/*
+
+# Generated at runtime and mounted in by compose. A local copy baked into the
+# image would be loaded by dotenv, silently overriding the intended config.
+.env
+.env.*.local
