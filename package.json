@@ -26,7 +26,7 @@
     "@types/backbone": "latest",
     "@types/hotwired__turbo": "^8.0.16",
     "@types/mousetrap": "latest",
-    "@types/node": "^26.1.1",
+    "@types/node": "^26.1.2",
     "@types/rails__actioncable": "^8.0.3",
     "@types/underscore": "latest",
     "@typescript-eslint/eslint-plugin": "^8.65.0",
