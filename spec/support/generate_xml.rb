@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 module GenerateXml
+  ITUNES_NAMESPACE = "http://www.itunes.com/dtds/podcast-1.0.dtd"
+
   class << self
     def call(feed, items)
       build_feed(feed, items).to_xml
@@ -26,11 +28,13 @@ module GenerateXml
         "xmlns:content" => "http://purl.org/rss/1.0/modules/content/"
       }
 
-      if items.any? { |item| item.try(:enclosure_url) }
-        attributes["xmlns:itunes"] = "http://www.itunes.com/dtds/podcast-1.0.dtd"
-      end
+      attributes["xmlns:itunes"] = ITUNES_NAMESPACE if enclosures?(items)
 
       attributes
+    end
+
+    def enclosures?(items)
+      items.any? { |item| item.try(:enclosure_url) }
     end
 
     def build_item(xml, item)
