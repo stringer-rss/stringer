@@ -12,7 +12,6 @@ jobs:
       - image: cimg/ruby:4.0.6-browsers
         environment:
           BUNDLE_PATH: vendor/bundle
-          NODE_VERSION: 22.17.1
           PGHOST: 127.0.0.1
           PGUSER: postgres
           RAILS_ENV: test
@@ -27,6 +26,8 @@ jobs:
 
       - node/install:
           node-version: 26.7.0
+          install-pnpm: true
+          pnpm-version: 11.24.0
 
       - node/install-packages:
           pkg-manager: pnpm
