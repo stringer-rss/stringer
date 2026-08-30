@@ -81,7 +81,7 @@ jobs:
             --title "$TITLE" \
             --body-file "$RUNNER_TEMP/pr-body.md")
 
-          # Queues the merge behind the required "ci/circleci: build" check.
+          # Queues the merge behind whatever checks main requires.
           gh pr merge --auto --squash "$PR_URL"
 
   bundler:
@@ -146,5 +146,5 @@ jobs:
             --title "$TITLE" \
             --body-file "$RUNNER_TEMP/pr-body.md")
 
-          # Queues the merge behind the required "ci/circleci: build" check.
+          # Queues the merge behind whatever checks main requires.
           gh pr merge --auto --squash "$PR_URL"
