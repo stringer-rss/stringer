@@ -1,0 +1,150 @@
+name: Update tooling versions
+
+on:
+  schedule:
+    - cron: '0 6 * * 1' # Mondays at 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  pnpm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Check for a new pnpm release
+        id: check
+        run: |
+          LATEST=$(curl -fsSL https://registry.npmjs.org/pnpm/latest | jq -r .version)
+          CURRENT=$(jq -r .packageManager package.json | cut -d@ -f2)
+          echo "Current: $CURRENT, latest: $LATEST"
+          echo "latest=$LATEST" >> "$GITHUB_OUTPUT"
+
+          if [ "$LATEST" = "$CURRENT" ]; then
+            echo "Already up to date"
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          elif git ls-remote --exit-code --heads origin "deps/pnpm-$LATEST" >/dev/null 2>&1; then
+            echo "Branch deps/pnpm-$LATEST already exists"
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Bump the pinned version
+        if: steps.check.outputs.skip != 'true'
+        env:
+          VERSION: ${{ steps.check.outputs.latest }}
+        run: |
+          sed -i "s/^pnpm .*/pnpm $VERSION/" .tool-versions
+          sed -i "s|\"packageManager\": \"pnpm@[^\"]*\"|\"packageManager\": \"pnpm@$VERSION\"|" package.json
+          sed -i "s/^\([[:space:]]*\)pnpm-version: .*/\1pnpm-version: $VERSION/" .circleci/config.yml
+          git diff --stat
+
+      # Reads the version we just wrote to package.json's packageManager field.
+      - uses: pnpm/action-setup@v4
+        if: steps.check.outputs.skip != 'true'
+
+      - uses: actions/setup-node@v6
+        if: steps.check.outputs.skip != 'true'
+        with:
+          node-version-file: .node-version
+
+      - name: Refresh the lockfile
+        if: steps.check.outputs.skip != 'true'
+        run: pnpm install --lockfile-only --no-frozen-lockfile
+
+      - name: Open a pull request
+        if: steps.check.outputs.skip != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.check.outputs.latest }}
+        run: |
+          BRANCH="deps/pnpm-$VERSION"
+          TITLE="Deps: update pnpm to version $VERSION"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git commit -m "$TITLE" .tool-versions package.json .circleci/config.yml pnpm-lock.yaml
+          git push origin "$BRANCH"
+
+          cat > "$RUNNER_TEMP/pr-body.md" <<EOF
+          Bumps the pnpm version pinned in \`.tool-versions\`, \`package.json\` and \`.circleci/config.yml\` to $VERSION, and refreshes \`pnpm-lock.yaml\` in case the lockfile format changed.
+
+          Release notes: https://github.com/pnpm/pnpm/releases/tag/v$VERSION
+          EOF
+
+          PR_URL=$(gh pr create \
+            --base main \
+            --head "$BRANCH" \
+            --title "$TITLE" \
+            --body-file "$RUNNER_TEMP/pr-body.md")
+
+          # Queues the merge behind the required "ci/circleci: build" check.
+          gh pr merge --auto --squash "$PR_URL"
+
+  bundler:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Check for a new Bundler release
+        id: check
+        run: |
+          LATEST=$(curl -fsSL https://rubygems.org/api/v1/gems/bundler.json | jq -r .version)
+          CURRENT=$(grep -A1 '^BUNDLED WITH$' Gemfile.lock | tail -1 | tr -d '[:space:]')
+          echo "Current: $CURRENT, latest: $LATEST"
+          echo "latest=$LATEST" >> "$GITHUB_OUTPUT"
+
+          if [ "$LATEST" = "$CURRENT" ]; then
+            echo "Already up to date"
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          elif git ls-remote --exit-code --heads origin "deps/bundler-$LATEST" >/dev/null 2>&1; then
+            echo "Branch deps/bundler-$LATEST already exists"
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # bundler-cache is deliberately off: it rewrites .bundle/config, which is
+      # tracked, and that change would end up in the commit below.
+      - uses: ruby/setup-ruby@v1
+        if: steps.check.outputs.skip != 'true'
+        with:
+          ruby-version: .ruby-version
+          bundler: ${{ steps.check.outputs.latest }}
+
+      - name: Bump the locked version
+        if: steps.check.outputs.skip != 'true'
+        run: |
+          bundle update --bundler
+          git diff --stat
+
+      - name: Open a pull request
+        if: steps.check.outputs.skip != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.check.outputs.latest }}
+        run: |
+          BRANCH="deps/bundler-$VERSION"
+          TITLE="Deps: update bundler to version $VERSION"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git commit -m "$TITLE" Gemfile.lock
+          git push origin "$BRANCH"
+
+          cat > "$RUNNER_TEMP/pr-body.md" <<EOF
+          Bumps the \`BUNDLED WITH\` version in \`Gemfile.lock\` to $VERSION, via \`bundle update --bundler\`.
+
+          Changelog: https://github.com/rubygems/rubygems/blob/master/bundler/CHANGELOG.md
+          EOF
+
+          PR_URL=$(gh pr create \
+            --base main \
+            --head "$BRANCH" \
+            --title "$TITLE" \
+            --body-file "$RUNNER_TEMP/pr-body.md")
+
+          # Queues the merge behind the required "ci/circleci: build" check.
+          gh pr merge --auto --squash "$PR_URL"
