@@ -27,7 +27,7 @@ jobs:
       - node/install:
           node-version: 26.8.1
           install-pnpm: true
-          pnpm-version: 11.24.0
+          pnpm-version: 12.4.1
 
       - node/install-packages:
           pkg-manager: pnpm
