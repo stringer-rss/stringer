@@ -48,6 +48,12 @@ Rails.application.configure do
   # Highlight code that enqueued background job in logs.
   config.active_job.verbose_enqueue_logs = true
 
+  # Run jobs inside the web process so no separate worker is needed.
+  config.good_job.execution_mode = :async
+
+  # Highlight code that triggered redirect in logs.
+  config.action_dispatch.verbose_redirect_logs = true
+
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 
