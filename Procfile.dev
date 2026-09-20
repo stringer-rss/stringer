@@ -1,3 +1,4 @@
 web: PORT=3000 bundle exec puma -C config/puma.rb
+worker: bin/jobs
 js: pnpm build --watch
 css: pnpm build:css --watch

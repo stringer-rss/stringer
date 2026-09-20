@@ -20,18 +20,29 @@ AllCops:
     - 'db/schema.rb'
     - 'vendor/**/*'
 
-Layout/LineLength: { Max: 80, Exclude: [db/migrate/*.rb] }
+Layout/LineLength:
+  Max: 80
+  AutoCorrect: true
+  Exclude: [db/migrate/*.rb, config/**/*]
+Layout/MultilineMethodCallIndentation: { EnforcedStyle: indented }
+Layout/MultilineOperationIndentation: { EnforcedStyle: indented }
 Layout/RedundantLineBreak: { InspectBlocks: true }
 Metrics/AbcSize: { Exclude: [db/migrate/*.rb], CountRepeatedAttributes: false }
 Metrics/BlockLength:
+  AllowedMethods: [describe]
   Exclude: [config/**/*.rb, db/migrate/*.rb, spec/**/*.rb, db/seeds/**/*.rb]
-Metrics/MethodLength: { Exclude: [db/migrate/*.rb] }
+Metrics/ClassLength: { Exclude: [db/migrate/*.rb] }
+Metrics/MethodLength: { Exclude: [db/migrate/**/*.rb] }
+Rails/FilePath: { EnforcedStyle: slashes }
 Rails/SkipsModelValidations: { AllowedMethods: [update_all] }
 RSpec/DescribeClass: { Exclude: [spec/system/**/*] }
 RSpec/MessageExpectation:
   EnforcedStyle: expect
   Exclude: [spec/support/matchers/**/*.rb]
 RSpec/MessageSpies: { EnforcedStyle: receive }
+RSpec/MultipleExpectations:
+  Exclude: [spec/system/**/*.rb]
+Style/ModuleFunction: { EnforcedStyle: extend_self }
 RSpec/MultipleMemoizedHelpers:
   Max: 0
   AllowSubject: false

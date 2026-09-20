@@ -10,6 +10,10 @@ Rails.application.routes.draw do
     get "/debug", to: "debug#index"
   end
 
+  constraints AdminConstraint.new do
+    mount MissionControl::Jobs::Engine, at: "jobs"
+  end
+
   resource :profile, only: [:edit, :update]
   resource :password, only: [:update]
 

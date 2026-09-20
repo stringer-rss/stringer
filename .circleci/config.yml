@@ -15,7 +15,7 @@ jobs:
           PGHOST: 127.0.0.1
           PGUSER: postgres
           RAILS_ENV: test
-      - image: cimg/postgres:10.18
+      - image: cimg/postgres:16.15
         environment:
           POSTGRES_USER: postgres
           POSTGRES_DB: app_test
