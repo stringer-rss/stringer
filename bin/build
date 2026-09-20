@@ -7,6 +7,5 @@ esbuild app/javascript/*.ts \
   --sourcemap \
   --format=iife \
   --outdir=app/assets/builds \
-  --public-path=/assets \
   --alias:bootstrap=./node_modules/bootstrap/dist/js/bootstrap.bundle.js \
   "$@"
