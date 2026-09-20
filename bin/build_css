@@ -5,8 +5,6 @@ set -euo pipefail
 esbuild app/assets/stylesheets/application.css \
   --bundle \
   --outdir=app/assets/builds \
-  --public-path=/assets \
-  --asset-names=[name]-[hash].digested \
   --external:/img/* \
   --loader:.woff=file \
   --loader:.woff2=file \
