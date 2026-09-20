@@ -79,6 +79,7 @@ jobs:
             --base main \
             --head "$BRANCH" \
             --title "$TITLE" \
+            --assignee mockdeep \
             --body-file "$RUNNER_TEMP/pr-body.md")
 
           # Queues the merge behind whatever checks main requires.
@@ -144,6 +145,7 @@ jobs:
             --base main \
             --head "$BRANCH" \
             --title "$TITLE" \
+            --assignee mockdeep \
             --body-file "$RUNNER_TEMP/pr-body.md")
 
           # Queues the merge behind whatever checks main requires.
