@@ -31,7 +31,7 @@
     "@types/underscore": "latest",
     "@typescript-eslint/eslint-plugin": "^8.69.0",
     "@typescript-eslint/parser": "^8.69.0",
-    "@vitest/coverage-v8": "^4.1.11",
+    "@vitest/coverage-v8": "^5.0.1",
     "@vitest/eslint-plugin": "^1.6.27",
     "esbuild": "^0.28.2",
     "eslint": "^10.9.1",
