@@ -52,6 +52,8 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64
           push: ${{ github.ref_name == 'main' }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
           tags: |
             ${{ steps.get-tag-latest.outputs.tags }}
             ${{ steps.get-tag-sha.outputs.tags }}

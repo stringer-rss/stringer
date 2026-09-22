@@ -9,10 +9,6 @@ EXPOSE 8080
 
 SHELL ["/bin/bash", "-c"]
 
-WORKDIR /app
-ADD Gemfile Gemfile.lock /app/
-RUN gem install bundler:$BUNDLER_VERSION && bundle install
-
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
       supervisor locales nodejs vim nano \
@@ -38,6 +34,10 @@ RUN curl -fsSLO "$SUPERCRONIC_URL" \
  && chmod +x "$SUPERCRONIC" \
  && mv "$SUPERCRONIC" "/usr/local/bin/${SUPERCRONIC}" \
  && ln -s "/usr/local/bin/${SUPERCRONIC}" /usr/local/bin/supercronic
+
+WORKDIR /app
+ADD Gemfile Gemfile.lock /app/
+RUN gem install bundler:$BUNDLER_VERSION && bundle install
 
 ADD docker/supervisord.conf /etc/supervisord.conf
 ADD docker/start.sh /app/
