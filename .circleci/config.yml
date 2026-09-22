@@ -4,9 +4,8 @@ orbs:
   browser-tools: circleci/browser-tools@2.2.0
   node: circleci/node@7.1.0
 
-jobs:
-  build:
-    parallelism: 1
+executors:
+  default:
     resource_class: large
     docker:
       - image: cimg/ruby:4.0.6-browsers
@@ -21,6 +20,9 @@ jobs:
           POSTGRES_DB: app_test
           POSTGRES_PASSWORD:
 
+commands:
+  setup:
+    description: Check out code and install Node, Ruby, and database dependencies
     steps:
       - checkout
 
@@ -31,8 +33,6 @@ jobs:
 
       - node/install-packages:
           pkg-manager: pnpm
-
-      - browser-tools/install_firefox
 
       - run:
           name: Which versions?
@@ -66,6 +66,12 @@ jobs:
       - run:
           name: Database setup
           command: bin/rails db:setup --trace
+
+jobs:
+  checks:
+    executor: default
+    steps:
+      - setup
 
       - run:
           name: Typescript
@@ -106,19 +112,26 @@ jobs:
       - run:
           name: ✨ 🌈 ✨ Run Unit Tests ✨ 🌈 ✨
           command: |
-            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
-              grep -v "spec/system" | \
-              circleci tests split --split-by=timings)"
-
-            echo "******************** TEST_FILES ************************"
-            echo "bundle exec rspec -s <seed-from-failed-build> $TEST_FILES"
-            echo "********************************************************"
-
             COVERAGE=true bundle exec rspec \
+              --exclude-pattern "spec/system/**/*_spec.rb" \
               --format progress \
               --format RspecJunitFormatter \
-              --out /tmp/test-results/unit/rspec.xml \
-              $TEST_FILES
+              --out /tmp/test-results/unit/rspec.xml
+
+      - store_test_results:
+          path: /tmp/test-results
+
+      - store_artifacts:
+          path: log
+          destination: log
+
+  system_tests:
+    executor: default
+    parallelism: 4
+    steps:
+      - setup
+
+      - browser-tools/install_firefox
 
       - run:
           name: ✨ 🌈 ✨ Run System Tests ✨ 🌈 ✨
@@ -148,3 +161,9 @@ jobs:
       - store_artifacts:
           path: log
           destination: log
+
+workflows:
+  test:
+    jobs:
+      - checks
+      - system_tests
