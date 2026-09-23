@@ -8,7 +8,7 @@ executors:
   default:
     resource_class: large
     docker:
-      - image: cimg/ruby:4.0.6-browsers
+      - image: cimg/ruby:4.0.7-browsers
         environment:
           BUNDLE_PATH: vendor/bundle
           PGHOST: 127.0.0.1
