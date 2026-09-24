@@ -28,11 +28,11 @@ docker network create --driver bridge stringer-network
 docker run --detach \
     --name stringer-postgres \
     --restart always \
-    --volume /srv/stringer/data:/var/lib/postgresql/data \
+    --volume /srv/stringer/data:/var/lib/postgresql \
     --net stringer-network \
     -e POSTGRES_PASSWORD=myPassword \
     -e POSTGRES_DB=stringer \
-    postgres:16-alpine
+    postgres:18-alpine
 ```
 
 3. Run the Stringer Docker image:
@@ -55,6 +55,53 @@ docker run --detach \
 ```
 
 That's it! You now have a fully working Stringer instance up and running!
+
+## Upgrading Postgres
+
+The setup above moved from Postgres 16 to Postgres 18. Two things changed:
+
+- A Postgres major version cannot read data files written by an older one.
+- The official 18+ image expects a single mount at `/var/lib/postgresql` (not `/var/lib/postgresql/data`) and stores the database in a version-named subdirectory inside it.
+
+If you start the 18 image against an existing 16 data directory it refuses to start and prints an explanation, so nothing is lost. But you do need to migrate by hand. Stringer databases are small, so the simplest route is to dump and restore.
+
+1. With the old container still running, dump everything:
+
+```sh
+docker compose exec stringer-postgres sh -c 'pg_dumpall -U "$POSTGRES_USER"' > stringer-pg16.sql
+```
+
+2. Stop the stack and move the old data directory aside:
+
+```sh
+docker compose down
+sudo mv /srv/stringer/data /srv/stringer/data-pg16
+```
+
+3. Update `docker-compose.yml` (or re-download it): change the image to `postgres:18-alpine` and the volume to `/srv/stringer/data:/var/lib/postgresql`.
+
+4. Start only the database and wait for it to accept connections:
+
+```sh
+docker compose up -d stringer-postgres
+until docker compose exec stringer-postgres pg_isready -h localhost; do sleep 1; done
+```
+
+5. Restore the dump. Errors saying a role or database "already exists" are expected and harmless, because the fresh container already created them:
+
+```sh
+docker compose exec -T stringer-postgres sh -c 'psql -U "$POSTGRES_USER" -d postgres' < stringer-pg16.sql
+```
+
+6. Start the rest of the stack and check that your feeds and stories are there:
+
+```sh
+docker compose up -d
+```
+
+7. Once you are happy, delete `/srv/stringer/data-pg16` and `stringer-pg16.sql`.
+
+If you used the manual setup instead of docker-compose, run the same commands with `docker exec stringer-postgres` in place of `docker compose exec stringer-postgres`, and recreate the Postgres container with the new image and volume path in step 3.
 
 For production use it's recommended to put a reverse proxy in front of Stringer.
 

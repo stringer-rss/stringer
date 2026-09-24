@@ -12,7 +12,7 @@ services:
     command: ["/app/docker/init_or_update_env.rb"]
 
   stringer-postgres:
-    image: postgres:16-alpine
+    image: postgres:18-alpine
     container_name: stringer-postgres
     restart: always
     depends_on:
@@ -22,7 +22,9 @@ services:
       - stringer-network
     volumes:
       - ./.env:/app/.env
-      - /srv/stringer/data:/var/lib/postgresql/data
+      # Postgres 18+ images expect a single mount here and store the database
+      # in a version-named subdirectory. See docs/Docker.md for upgrade steps.
+      - /srv/stringer/data:/var/lib/postgresql
     env_file: .env
 
   stringer:
