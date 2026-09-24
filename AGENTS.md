@@ -8,7 +8,7 @@ Stringer is a self-hosted, anti-social RSS reader: a Rails 8.1 app (Ruby 4.0) ba
 
 ## Commands
 
-Toolchain versions are pinned in `.tool-versions` (Ruby 4.0.5, Node 26.3.0, Postgres 16.8, pnpm 10.5.2).
+Toolchain versions (Ruby, Node, Postgres, pnpm) are pinned in `.tool-versions`; check that file rather than relying on numbers quoted here.
 
 - **Setup:** `bin/setup` (runs `bundle install`, `db:prepare`, clears logs/tmp, then launches the dev server). Pass `--skip-server` to stop before launching.
 - **Run dev server:** `bin/dev` (foreman against `Procfile.dev` — boots Puma on port 3000 plus `js`/`css` esbuild watchers). The app is at `http://localhost:3000`.
