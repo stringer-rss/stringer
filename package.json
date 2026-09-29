@@ -1,7 +1,7 @@
 {
   "private": true,
   "engines": {
-    "node": "26.8.2"
+    "node": "26.10.0"
   },
   "packageManager": "pnpm@12.6.0",
   "dependencies": {
