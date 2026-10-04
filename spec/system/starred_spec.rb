@@ -34,9 +34,8 @@ RSpec.describe "starred" do
     expect(page).to have_text("you haven't starred any stories")
   end
 
-  def open_story_and_find_star_icon(story_title)
-    find(".story-preview", text: story_title).click
-    find(".story-actions .story-starred i")
+  def star_icon_selector(css_class)
+    ".story-actions .story-starred i.#{css_class}"
   end
 
   it "changes the star icon on toggle", :aggregate_failures do
@@ -44,15 +43,15 @@ RSpec.describe "starred" do
     create(:story, title: "My Story")
     visit(news_path)
 
-    icon = open_story_and_find_star_icon("My Story")
-    expect(icon[:class]).to include("fa-star-o")
+    find(".story-preview", text: "My Story").click
+    expect(page).to have_css(star_icon_selector("fa-star-o"))
 
     find(".story-actions .story-starred").click
-    expect(icon[:class]).to include("fa-star")
-    expect(icon[:class]).not_to include("fa-star-o")
+    expect(page).to have_css(star_icon_selector("fa-star"))
+    expect(page).to have_no_css(star_icon_selector("fa-star-o"))
 
     find(".story-actions .story-starred").click
-    expect(icon[:class]).to include("fa-star-o")
+    expect(page).to have_css(star_icon_selector("fa-star-o"))
   end
 
   it "stars from the preview row" do
