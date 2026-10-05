@@ -29,7 +29,7 @@ commands:
       - node/install:
           node-version: 26.10.0
           install-pnpm: true
-          pnpm-version: 12.6.0
+          pnpm-version: 12.9.1
 
       - node/install-packages:
           pkg-manager: pnpm
