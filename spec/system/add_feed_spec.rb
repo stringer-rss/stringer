@@ -15,11 +15,13 @@ RSpec.describe "adding a feed" do
   it "allows adding a new feed" do
     login_as(default_user)
     stub_discovery(url: "http://example.com/feed.xml")
-    expect(CallableJob).to receive(:perform_later)
 
-    submit_feed("http://example.com/feed.xml")
+    with_test_adapter do
+      submit_feed("http://example.com/feed.xml")
 
-    expect(page).to have_text("We've added your new feed")
+      expect(page).to have_text("We've added your new feed")
+      expect(CallableJob).to have_been_enqueued
+    end
   end
 
   it "shows an error when the feed is not found" do
