@@ -16,6 +16,21 @@ RSpec.describe User do
       expect(user.api_key).to eq(Digest::MD5.hexdigest("stringer:new-password"))
     end
 
+    it "uses the new password when password challenge is also given" do
+      user = create(:user, username: "stringer", password: "super-secret")
+      user.update!(password_challenge: "super-secret", password: "new-password")
+
+      expect(user.api_key).to eq(Digest::MD5.hexdigest("stringer:new-password"))
+    end
+
+    it "uses the password challenge when only the username changed" do
+      user = create(:user, username: "stringer", password: "super-secret")
+      user = described_class.find(user.id)
+      user.update!(username: "booger", password_challenge: "super-secret")
+
+      expect(user.api_key).to eq(Digest::MD5.hexdigest("booger:super-secret"))
+    end
+
     it "does nothing when the username and password have not changed" do
       user = create(:user, username: "stringer", password: "super-secret")
       user = described_class.find(user.id)
