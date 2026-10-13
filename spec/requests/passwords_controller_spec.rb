@@ -73,6 +73,16 @@ RSpec.describe PasswordsController do
         expect(user.reload.authenticate("new_password")).to eq(user)
       end
 
+      it "updates the api key to use the new password" do
+        user = create(:user, password: "old_password")
+        login_as(user)
+
+        put("/password", params: params("old_password", "new_password"))
+
+        expected_key = Digest::MD5.hexdigest("#{user.username}:new_password")
+        expect(user.reload.api_key).to eq(expected_key)
+      end
+
       it "redirects to the news page" do
         user = create(:user, password: "old_password")
         login_as(user)

@@ -37,7 +37,7 @@ class User < ApplicationRecord
       raise(ActiveRecord::ActiveRecordError, message)
     end
 
-    password = password_challenge.presence || self.password.presence
+    password = self.password.presence || password_challenge.presence
 
     # API key based on Fever spec: https://feedafever.com/api
     self.api_key = Digest::MD5.hexdigest("#{username}:#{password}")
