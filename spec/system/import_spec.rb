@@ -15,7 +15,7 @@ RSpec.describe "importing feeds" do
     visit(feeds_import_path)
     file_path = Rails.root.join("spec/fixtures/feeds.opml")
 
-    attach_file("opml_file", file_path, visible: false)
+    attach_file("opml_file", file_path)
     within("#import") { click_on("Import") }
 
     expect(page).to have_text("We're getting you some stories to read")
@@ -26,7 +26,7 @@ RSpec.describe "importing feeds" do
     visit(feeds_import_path)
     file_path = Rails.root.join("spec/fixtures/invalid.opml")
 
-    attach_file("opml_file", file_path, visible: false)
+    attach_file("opml_file", file_path)
     within("#import") { click_on("Import") }
 
     expect(page).to have_text("We're getting you some stories to read")
@@ -34,7 +34,7 @@ RSpec.describe "importing feeds" do
 
   def import_grouped_opml
     file_path = Rails.root.join("spec/fixtures/feeds.opml")
-    attach_file("opml_file", file_path, visible: false)
+    attach_file("opml_file", file_path)
     within("#import") { click_on("Import") }
     expect(page).to have_text("We're getting you some stories to read")
   end
