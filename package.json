@@ -3,7 +3,7 @@
   "engines": {
     "node": "26.11.1"
   },
-  "packageManager": "pnpm@12.11.2",
+  "packageManager": "pnpm@12.14.0",
   "dependencies": {
     "@fontsource/lato": "^5.3.0",
     "@fontsource/reenie-beanie": "^5.3.0",
