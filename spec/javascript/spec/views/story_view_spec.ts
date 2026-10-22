@@ -49,6 +49,16 @@ describe("StoryView", function () {
       assertPropertyRendered(view.el, story, "source");
     });
 
+    it("should escape blog title", function () {
+      const evilStory = new Story({ ...story.attributes, source: "<img src=x>" });
+      const evilView = new StoryView({ model: evilStory });
+      evilView.render();
+
+      const blogTitle = evilView.el.querySelector(".blog-title");
+      expect(blogTitle.querySelector("img")).toBeNull();
+      expect(blogTitle.textContent.trim()).toBe("<img src=x>");
+    });
+
     it("should render story headline", function () {
       assertTagExists(view.el, ".story-title");
       assertPropertyRendered(view.el, story, "headline");
