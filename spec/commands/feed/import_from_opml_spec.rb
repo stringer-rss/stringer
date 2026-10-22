@@ -61,6 +61,21 @@ RSpec.describe Feed::ImportFromOpml do
     end
   end
 
+  def evil_opml
+    <<~XML
+      <opml><body>
+        <outline type="rss" xmlUrl="http://example.com/feed.xml"
+          text="&lt;img src=x onerror=&quot;alert(1)&quot;&gt; Evil" />
+      </body></opml>
+    XML
+  end
+
+  it "sanitizes feed names" do
+    described_class.call(evil_opml, user: default_user)
+
+    expect(Feed.last.name).to eq('<img src="x"> Evil')
+  end
+
   context "adding group_id for existing feeds" do
     it "retains exising feeds" do
       feed1 = create_feed(tmw_football)

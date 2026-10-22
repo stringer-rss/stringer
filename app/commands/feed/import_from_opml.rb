@@ -28,8 +28,8 @@ module Feed::ImportFromOpml
     end
 
     def create_feed(parsed_feed, group, user)
-      feed = user.feeds.where(**parsed_feed.slice(:name, :url))
-                 .first_or_initialize
+      name = parsed_feed[:name] && ContentSanitizer.call(parsed_feed[:name])
+      feed = user.feeds.where(name:, url: parsed_feed[:url]).first_or_initialize
       find_feed_name(feed, parsed_feed)
       feed.last_fetched = 1.day.ago if feed.new_record?
       feed.group_id = group.id if group
