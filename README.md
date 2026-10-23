@@ -20,6 +20,7 @@ But it does have keyboard shortcuts and was made with love!
 Stringer is a Ruby app based on Rails, PostgreSQL, Hotwire (Turbo and Stimulus) and GoodJob.
 
 [![Deploy to Heroku](https://cdn.herokuapp.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/stringer-rss/stringer)
+[![Deploy to Railyard](https://app.railyard.run/deploy/badge)](https://app.railyard.run/deploy?repo=https://github.com/stringer-rss/stringer)
 
 Stringer will run just fine on the Eco/Basic Heroku plans.
 
