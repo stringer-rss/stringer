@@ -27,7 +27,7 @@ commands:
       - checkout
 
       - node/install:
-          node-version: 26.12.0
+          node-version: 26.12.1
           install-pnpm: true
           pnpm-version: 12.15.0
 
