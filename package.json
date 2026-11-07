@@ -26,11 +26,11 @@
     "@types/backbone": "latest",
     "@types/hotwired__turbo": "^8.0.16",
     "@types/mousetrap": "latest",
-    "@types/node": "^26.6.5",
+    "@types/node": "^26.6.6",
     "@types/rails__actioncable": "^8.0.3",
     "@types/underscore": "latest",
-    "@typescript-eslint/eslint-plugin": "^8.71.1",
-    "@typescript-eslint/parser": "^8.71.1",
+    "@typescript-eslint/eslint-plugin": "^8.72.1",
+    "@typescript-eslint/parser": "^8.72.1",
     "@vitest/coverage-v8": "^5.0.5",
     "@vitest/eslint-plugin": "^1.6.28",
     "esbuild": "^0.28.2",
@@ -47,7 +47,7 @@
     "stylelint-config-standard": "^40.0.0",
     "stylelint-selector-bem-pattern": "^5.0.0",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.71.1",
+    "typescript-eslint": "^8.72.1",
     "vitest": "^5.0.5"
   },
   "scripts": {
