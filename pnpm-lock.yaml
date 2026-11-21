@@ -203,8 +203,8 @@ importers:
         specifier: ^0.3.4
         version: 0.3.4
       bootstrap:
-        specifier: ^5.3.8
-        version: 5.3.8(@popperjs/core@2.11.8)
+        specifier: ^5.3.9
+        version: 5.3.9(@popperjs/core@2.11.8)
       font-awesome:
         specifier: 4.7.0
         version: 4.7.0
@@ -1306,8 +1306,8 @@ packages:
   bcp-47@2.1.2:
     resolution: {integrity: sha512-wsv86UuNFuPnVieKLyECTT+CP1WSAHeoIg5P3xu2kA9Z+7fVPoKt7dxzSeEhtJel0AI+NW3fIW3KtTKQKUCngg==}
 
-  bootstrap@5.3.8:
-    resolution: {integrity: sha512-HP1SZDqaLDPwsNiqRqi5NcP0SSXciX2s9E+RyqJIIqGo+vJeN5AJVM98CXmW/Wux0nQ5L7jeWUdplCEf0Ee+tg==}
+  bootstrap@5.3.9:
+    resolution: {integrity: sha512-20cU0rcfw8WdxtVbmfU+xT2EjvVTw9Ror/h1Qvd7DXCujRg8OO9mdBCsmTHdJFf3BuadmBNJtgIuUXsBqSkk/w==}
     peerDependencies:
       '@popperjs/core': ^2.11.8
 
@@ -3372,7 +3372,7 @@ snapshots:
       is-alphanumerical: 2.0.1
       is-decimal: 2.0.1
 
-  bootstrap@5.3.8(@popperjs/core@2.11.8):
+  bootstrap@5.3.9(@popperjs/core@2.11.8):
     dependencies:
       '@popperjs/core': 2.11.8
 
