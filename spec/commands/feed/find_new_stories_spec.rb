@@ -40,13 +40,13 @@ RSpec.describe Feed::FindNewStories do
     end
   end
 
-  it "scans until matching the last story id" do
-    new_entry = create_entry(published: Time.zone.now, url: "www.new.com")
-    old_entry = create_entry(title: "old entry", url: "www.old.com")
-    raw_feed = create_raw_feed(create(:feed), entries: [new_entry, old_entry])
-    result = described_class.call(raw_feed, 1, "www.old.com")
+  it "finds new stories listed after an existing story" do
+    story = create(:story, entry_id: "www.pinned.com")
+    entries = [story.entry_id, "www.new.com"].map { |url| create_entry(url:) }
+    raw_feed = create_raw_feed(story.feed, entries:)
 
-    expect(result).to eq([raw_feed.entries.first])
+    expect(described_class.call(raw_feed, story.feed_id))
+      .to eq([raw_feed.entries.last])
   end
 
   it "ignores stories older than 3 days" do

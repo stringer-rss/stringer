@@ -253,6 +253,22 @@ RSpec.describe StoryRepository do
     end
   end
 
+  describe ".existing_entry_ids" do
+    it "returns the given entry ids that are stored for the feed" do
+      story = create(:story, entry_id: "stored")
+      ids = described_class.existing_entry_ids(["stored", "new"], story.feed_id)
+
+      expect(ids).to eq(["stored"])
+    end
+
+    it "ignores entry ids stored for other feeds" do
+      create(:story, entry_id: "stored")
+      ids = described_class.existing_entry_ids(["stored"], create(:feed).id)
+
+      expect(ids).to be_empty
+    end
+  end
+
   describe ".unread" do
     it "returns unread stories ordered by published date descending" do
       story1 = create(:story, published: 5.minutes.ago)
