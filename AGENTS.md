@@ -30,7 +30,7 @@ Feed operations are exposed as rake tasks: `rake fetch_feeds`, `rake fetch_feed[
 
 **Background jobs** funnel through a single `CallableJob`, which just calls any callable: `CallableJob.perform_later(Feed::FetchOne, feed)` enqueues `Feed::FetchOne.call(feed)`. There is rarely a need to write a new `ApplicationJob` subclass — enqueue a command via `CallableJob` instead. Jobs run on GoodJob (Postgres-backed).
 
-**Feed fetching flow:** `Feed::FetchAll` → enqueues `Feed::FetchOne` per feed → `HTTParty` fetches, `Feedjira` parses → `Feed::FindNewStories` diffs against the latest stored entry → `StoryRepository.add`. Fetch failures set the feed status to `:red` (vs `:green`) and log rather than raise.
+**Feed fetching flow:** `Feed::FetchAll` → enqueues `Feed::FetchOne` per feed → `HTTParty` fetches, `Feedjira` parses → `Feed::FindNewStories` drops entries that are too old or already stored → `StoryRepository.add`. Fetch failures set the feed status to `:red` (vs `:green`) and log rather than raise.
 
 **Admin routes** under `/admin` (GoodJob dashboard, settings, debug) are gated by `AdminConstraint` (`lib/admin_constraint.rb`). Stringer is single-user; auth is password-based (`bcrypt`).
 

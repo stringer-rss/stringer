@@ -26,11 +26,7 @@ module Feed::FetchOne
     end
 
     def new_entries_from(feed, raw_feed)
-      Feed::FindNewStories.call(raw_feed, feed.id, latest_entry_id(feed))
-    end
-
-    def latest_entry_id(feed)
-      feed.stories.first.entry_id unless feed.stories.empty?
+      Feed::FindNewStories.call(raw_feed, feed.id)
     end
   end
 end

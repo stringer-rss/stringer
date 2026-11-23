@@ -53,8 +53,8 @@ class StoryRepository
       .where("created_at < ? AND is_read = ?", timestamp, false)
   end
 
-  def self.exists?(id, feed_id)
-    Story.exists?(entry_id: id, feed_id:)
+  def self.existing_entry_ids(entry_ids, feed_id)
+    Story.where(entry_id: entry_ids, feed_id:).pluck(:entry_id)
   end
 
   def self.unread(order: "desc")
