@@ -515,14 +515,12 @@ RSpec.describe StoryRepository do
       expect(described_class.extract_url(entry, feed)).to be_nil
     end
 
-    it "preserves a structurally broken (but non-malicious) enclosure_url" do
+    it "returns nil for a structurally broken enclosure_url fallback" do
       feed = double(url: "http://github.com")
+      # An unclosed bracket in the host is rejected outright by the parser.
       entry = double(url: nil, enclosure_url: "http://[invalid")
 
-      # Only disallowed schemes get dropped. A merely broken URL is kept
-      # (normalize adds the trailing slash) so the bad value stays visible
-      # as a signal rather than being silently turned into nil.
-      expect(described_class.extract_url(entry, feed)).to eq("http://[invalid/")
+      expect(described_class.extract_url(entry, feed)).to be_nil
     end
 
     it "returns nil for an unparseable enclosure_url fallback" do
