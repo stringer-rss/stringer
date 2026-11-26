@@ -2,12 +2,10 @@
 
 RSpec.describe DebugController do
   describe "#debug" do
-    def setup
+    def setup(migrations: ["Migration B - 2", "Migration C - 3"])
       login_as(create(:user, admin: true))
 
-      expect(MigrationStatus)
-        .to receive(:call)
-        .and_return(["Migration B - 2", "Migration C - 3"])
+      expect(MigrationStatus).to receive(:call).and_return(migrations)
     end
 
     it "displays an admin settings link" do
@@ -50,6 +48,14 @@ RSpec.describe DebugController do
 
       expect(rendered).to have_css("li", text: /Migration B - 2/)
         .and have_css("li", text: /Migration C - 3/)
+    end
+
+    it "displays none when there are no pending migrations" do
+      setup(migrations: [])
+
+      get "/admin/debug"
+
+      expect(rendered).to have_css("dd", text: "None")
     end
   end
 
