@@ -14,7 +14,7 @@ RSpec.describe "profile page" do
   end
 
   def fill_in_username_fields(existing_password, username: "new_username")
-    within_fieldset("Change Username") do
+    within_fieldset("Change username") do
       fill_in("Username", with: username)
       fill_in("Existing password", with: existing_password)
     end
@@ -28,7 +28,7 @@ RSpec.describe "profile page" do
   end
 
   def fill_in_password_fields(existing_password, new_password)
-    within_fieldset("Change Password") do
+    within_fieldset("Change password") do
       fill_in("Existing password", with: existing_password)
       fill_in("New password", with: new_password)
       fill_in("Password confirmation", with: new_password)
@@ -64,7 +64,7 @@ RSpec.describe "profile page" do
   end
 
   def fill_in_mismatched_password_fields(existing_password)
-    within_fieldset("Change Password") do
+    within_fieldset("Change password") do
       fill_in("Existing password", with: existing_password)
       fill_in("New password", with: "new_password")
       fill_in("Password confirmation", with: "different_password")

@@ -4,7 +4,7 @@ class ProfilesController < ApplicationController
   def edit
     authorization.skip
 
-    render(locals: { user: current_user })
+    render(Views::Profiles::Edit.new(user: current_user))
   end
 
   def update
@@ -15,7 +15,7 @@ class ProfilesController < ApplicationController
     else
       errors = current_user.error_messages
       flash.now[:error] = t(".failure", errors:)
-      render(:edit, locals: { user: current_user })
+      render(Views::Profiles::Edit.new(user: current_user))
     end
   end
 

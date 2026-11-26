@@ -31,7 +31,7 @@ class PasswordsController < ApplicationController
       redirect_to("/news", flash: { success: t(".success") })
     else
       flash.now[:error] = t(".failure", errors: current_user.error_messages)
-      render("profiles/edit", locals: { user: current_user })
+      render(Views::Profiles::Edit.new(user: current_user))
     end
   end
 
