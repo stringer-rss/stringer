@@ -145,7 +145,7 @@ jobs:
 
             mkdir -p tmp/capybara
 
-            COVERAGE=false xvfb-run -a bundle exec rspec \
+            COVERAGE=false bundle exec rspec \
               --format progress \
               --format RspecJunitFormatter \
               --out /tmp/test-results/system/rspec.xml \

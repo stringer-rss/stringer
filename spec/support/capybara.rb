@@ -9,7 +9,7 @@ Capybara.default_max_wait_time = Integer(ENV.fetch("CAPYBARA_MAX_WAIT_TIME", 5))
 
 Selenium::WebDriver.logger.output = Rails.root.join("log/selenium.log")
 
-using = ENV.fetch("DRIVER", :firefox).to_sym
+using = ENV.fetch("DRIVER", :headless_firefox).to_sym
 
 RSpec.configure do |config|
   config.prepend_before(:each, type: :system) do
