@@ -5,19 +5,17 @@ class SessionsController < ApplicationController
 
   def new
     authorization.skip
+    render(Views::Sessions::New.new)
   end
 
   def create
     authorization.skip
     user = SignInUser.call(params[:username], params[:password])
     if user
-      session[:user_id] = user.id
-
-      redirect_uri = session.delete(:redirect_to) || "/"
-      redirect_to(redirect_uri)
+      log_in(user)
     else
       flash.now[:error] = t("sessions.new.flash.wrong_password")
-      render(:new)
+      render(Views::Sessions::New.new)
     end
   end
 
@@ -27,5 +25,14 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
 
     redirect_to("/")
+  end
+
+  private
+
+  def log_in(user)
+    session[:user_id] = user.id
+
+    redirect_uri = session.delete(:redirect_to) || "/"
+    redirect_to(redirect_uri)
   end
 end
