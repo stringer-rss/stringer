@@ -7,6 +7,7 @@ class PasswordsController < ApplicationController
 
   def new
     authorization.skip
+    render(Views::Passwords::New.new)
   end
 
   def create
@@ -19,7 +20,7 @@ class PasswordsController < ApplicationController
       redirect_to("/feeds/import")
     else
       flash.now[:error] = user.error_messages
-      render(:new)
+      render(Views::Passwords::New.new)
     end
   end
 
