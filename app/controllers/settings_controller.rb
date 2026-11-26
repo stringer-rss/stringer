@@ -3,6 +3,7 @@
 class SettingsController < ApplicationController
   def index
     authorization.skip
+    render(Views::Settings::Index.new(setting: Setting::UserSignup.first))
   end
 
   def update
