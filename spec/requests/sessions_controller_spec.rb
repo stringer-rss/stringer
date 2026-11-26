@@ -9,6 +9,23 @@ RSpec.describe SessionsController do
 
       expect(rendered).to have_field("password")
     end
+
+    it "shows a sign up link when signups are enabled" do
+      create(:user)
+      Setting::UserSignup.create!(enabled: true)
+
+      get "/login"
+
+      expect(rendered).to have_link("sign up", href: "/setup/password")
+    end
+
+    it "does not show a sign up link when signups are disabled" do
+      create(:user)
+
+      get "/login"
+
+      expect(rendered).to have_no_link("sign up")
+    end
   end
 
   describe "#create" do

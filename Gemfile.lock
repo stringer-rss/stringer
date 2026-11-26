@@ -221,6 +221,13 @@ GEM
       ast (~> 2.4.1)
       racc
     pg (1.7.0)
+    phlex (2.4.3)
+      refract (~> 1.0)
+      zeitwerk (~> 2.7)
+    phlex-rails (2.4.0)
+      phlex (~> 2.4.0)
+      railties (>= 7.1, < 9)
+      zeitwerk (~> 2.7)
     pp (0.6.4)
       prettyprint
     prettyprint (0.2.1)
@@ -298,6 +305,9 @@ GEM
       tsort
     readline (0.0.4)
       reline
+    refract (1.2.0)
+      prism
+      zeitwerk
     regexp_parser (2.13.4)
     reline (0.7.0)
       io-console (~> 0.5)
@@ -461,6 +471,7 @@ DEPENDENCIES
   jsbundling-rails
   nokogiri
   pg
+  phlex-rails
   private_address_check
   propshaft
   pry-byebug
