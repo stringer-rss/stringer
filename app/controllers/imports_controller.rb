@@ -3,6 +3,7 @@
 class ImportsController < ApplicationController
   def new
     authorization.skip
+    render(Views::Imports::New.new)
   end
 
   def create
