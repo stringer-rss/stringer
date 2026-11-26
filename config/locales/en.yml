@@ -51,6 +51,7 @@ en:
         next: Next
         password: Password
         password_confirmation: Confirm
+        username: Username
       flash:
         passwords_dont_match: Hey, your password confirmation didn't match. Try again.
       subtitle: 'There is only one user: you.'

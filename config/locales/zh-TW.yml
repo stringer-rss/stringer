@@ -51,6 +51,7 @@ zh-TW:
         next: 下一步
         password: 密碼
         password_confirmation: 確認密碼
+        username: 使用者名稱
       flash:
         passwords_dont_match: 您兩次輸入的密碼不同，麻煩確認並重新輸入。
       subtitle: 這裡只有一位使用者，那就是您。

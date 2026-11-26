@@ -24,8 +24,8 @@ class Views::Sessions::New < Views::Base
   def login_form
     form_with(url: "/login") do |form|
       p { raw(t("sessions.new.fields.unknown_username_html")) }
-      username_field(form)
-      password_field(form)
+      field(form, :username, t("sessions.new.fields.username"))
+      field(form, :password, t("sessions.new.fields.password"), :password)
       input(
         type: "submit",
         value: t("sessions.new.fields.submit"),
@@ -34,22 +34,8 @@ class Views::Sessions::New < Views::Base
     end
   end
 
-  def username_field(form)
-    div do
-      form.text_field(:username, class: "form-control", required: true)
-      label_text = t("sessions.new.fields.username")
-      form.label(:username, label_text, class: "field-label")
-    end
-  end
-
-  def password_field(form)
-    div do
-      form.password_field(:password, class: "form-control", required: true)
-      i(class: "fa fa-lock field-icon")
-      label_text = t("sessions.new.fields.password")
-      label_attrs = { id: "password-label", class: "field-label" }
-      form.label(:password, label_text, **label_attrs)
-    end
+  def field(form, field, label, type = :text)
+    render(Components::SetupField.new(form:, field:, label:, type:))
   end
 
   def sign_up_link
