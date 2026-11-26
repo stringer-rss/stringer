@@ -30,6 +30,7 @@ class Views::Imports::New < Views::Base
   def import_form
     form_with(url: "/feeds/import", id: "import", multipart: true) do
       file_input
+      whitespace
       submit_tag(t("import.fields.import"), class: "btn btn-primary")
       a(href: "/setup/tutorial", id: "skip", class: "btn float-end") do
         t("import.fields.not_now")

@@ -10,6 +10,16 @@ RSpec.describe SettingsController do
       expect(rendered).to have_css("h1", text: "Settings")
         .and have_text("User signups are disabled")
     end
+
+    it "displays a disable button when signups are enabled" do
+      login_as(create(:user, admin: true))
+      Setting::UserSignup.first.update!(enabled: true)
+
+      get(settings_path)
+
+      expect(rendered).to have_text("User signups are enabled")
+        .and have_button("Disable")
+    end
   end
 
   describe "#update" do
