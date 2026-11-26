@@ -125,6 +125,9 @@ en:
       failure: 'Unable to update password: %{errors}'
   profiles:
     edit:
+      change_password: Change password
+      change_username: Change username
+      stories_feed_settings: Stories feed settings
       title: Edit profile
       warning_html:
         <strong>Warning!!!</strong> Editing your username or password will
