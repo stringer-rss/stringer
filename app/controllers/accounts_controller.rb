@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-class ProfilesController < ApplicationController
-  def edit
+class AccountsController < ApplicationController
+  def show
     authorization.skip
 
-    render(Views::Profiles::Edit.new(user: current_user))
+    render(Views::Accounts::Show.new(user: current_user))
   end
 
   def update
@@ -15,8 +15,23 @@ class ProfilesController < ApplicationController
     else
       errors = current_user.error_messages
       flash.now[:error] = t(".failure", errors:)
-      render(Views::Profiles::Edit.new(user: current_user))
+      render(Views::Accounts::Show.new(user: current_user))
     end
+  end
+
+  def remove
+    authorization.skip
+
+    render(Views::Accounts::Remove.new(user: current_user))
+  end
+
+  def destroy
+    authorization.skip
+
+    UserRepository.delete(current_user)
+    reset_session
+
+    redirect_to("/", flash: { success: t(".success") })
   end
 
   private

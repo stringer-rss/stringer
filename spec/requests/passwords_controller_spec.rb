@@ -103,13 +103,13 @@ RSpec.describe PasswordsController do
         expect(rendered).to have_text("Unable to update password")
       end
 
-      it "renders the edit profile page" do
+      it "renders the account page" do
         user = create(:user, password: "old_password")
         login_as(user)
 
         put("/password", params: params("wrong_password", "new_password"))
 
-        expect(rendered).to have_text("Edit profile")
+        expect(rendered).to have_css("h1", text: "Account")
       end
 
       it "doesn't update the password" do

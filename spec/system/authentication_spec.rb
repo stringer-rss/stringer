@@ -35,8 +35,8 @@ RSpec.describe "authentication" do
     expect(page).to have_current_path(login_path)
   end
 
-  it "redirects to login when accessing profile while logged out" do
-    visit(edit_profile_path)
+  it "redirects to login when accessing account while logged out" do
+    visit(account_path)
 
     expect(page).to have_current_path(login_path)
   end

@@ -16,6 +16,10 @@ class UserRepository
     user
   end
 
+  def self.delete(user)
+    user.destroy!
+  end
+
   def self.first
     User.first
   end

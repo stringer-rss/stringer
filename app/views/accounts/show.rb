@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::Profiles::Edit < Views::Base
+class Views::Accounts::Show < Views::Base
   attr_accessor :user
 
   def initialize(user:)
@@ -8,22 +8,23 @@ class Views::Profiles::Edit < Views::Base
     self.user = user
   end
 
-  def page_title = t("page_titles.edit_profile")
+  def page_title = t("page_titles.account")
 
   def view_template
-    h1 { t("profiles.edit.title") }
+    h1 { t("accounts.show.title") }
 
     stories_feed_form
     username_form
     password_form
+    delete_account
   end
 
   private
 
   def stories_feed_form
-    form_with(model: user, url: profile_path) do |form|
+    form_with(model: user, url: account_path) do |form|
       fieldset do
-        legend { t("profiles.edit.stories_feed_settings") }
+        legend { t("accounts.show.stories_feed_settings") }
         spaced { form.label(:stories_order) }
         spaced { form.select(:stories_order, stories_order_options) }
         spaced { form.label(:group_stories) }
@@ -34,10 +35,10 @@ class Views::Profiles::Edit < Views::Base
   end
 
   def username_form
-    form_with(model: user, url: profile_path) do |form|
+    form_with(model: user, url: account_path) do |form|
       fieldset do
-        legend { t("profiles.edit.change_username") }
-        div(class: "warning") { p { raw(t("profiles.edit.warning_html")) } }
+        legend { t("accounts.show.change_username") }
+        div(class: "warning") { p { raw(t("accounts.show.warning_html")) } }
         spaced { form.label(:username) }
         spaced { form.text_field(:username, required: true) }
         password_field(form, :password_challenge, "Existing password")
@@ -49,12 +50,22 @@ class Views::Profiles::Edit < Views::Base
   def password_form
     form_with(model: user, url: password_path) do |form|
       fieldset do
-        legend { t("profiles.edit.change_password") }
+        legend { t("accounts.show.change_password") }
         password_field(form, :password_challenge, "Existing password")
         password_field(form, :password, "New password")
         password_field(form, :password_confirmation)
       end
       form.submit("Update password")
+    end
+  end
+
+  def delete_account
+    fieldset do
+      legend { t("accounts.show.delete_account") }
+      p { t("accounts.show.delete_account_description") }
+      a(href: remove_account_path, class: "btn btn-danger") do
+        t("accounts.show.delete_account")
+      end
     end
   end
 
