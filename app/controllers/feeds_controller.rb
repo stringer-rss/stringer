@@ -7,11 +7,12 @@ class FeedsController < ApplicationController
   end
 
   def show
-    @feed = FeedRepository.fetch(params[:feed_id])
-    authorization.check(@feed)
+    feed = FeedRepository.fetch(params[:feed_id])
+    authorization.check(feed)
 
-    @stories = StoryRepository.feed(params[:feed_id])
-    @unread_stories = @stories.reject(&:is_read)
+    stories = StoryRepository.feed(params[:feed_id])
+    unread_stories = stories.reject(&:is_read)
+    render(Views::Feeds::Show.new(feed:, stories:, unread_stories:))
   end
 
   def new

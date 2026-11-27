@@ -4,10 +4,7 @@ class Components::FeedActionBar < Components::Base
   def view_template
     nav do
       div { home_button }
-      div do
-        plain("Logged in as ")
-        link_to(current_user.username, edit_profile_path)
-      end
+      render(Components::LoggedInAs.new)
       div { primary_buttons }
     end
   end

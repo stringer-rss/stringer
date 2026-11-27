@@ -10,7 +10,8 @@ class StoriesController < ApplicationController
         StoryRepository.unread(order:)
       end
 
-    @unread_stories = authorization.scope(scope)
+    stories = authorization.scope(scope)
+    render(Views::Stories::Index.new(stories:))
   end
 
   def update
