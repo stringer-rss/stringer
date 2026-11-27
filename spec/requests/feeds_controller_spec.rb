@@ -20,6 +20,34 @@ RSpec.describe FeedsController do
 
       expect(rendered).to have_css("#add-some-feeds")
     end
+
+    it "displays the unread count for feeds with unread stories" do
+      login_as(default_user)
+      feed = create(:feed, name: "Unicorns")
+      create(:story, feed:)
+
+      get "/feeds"
+
+      expect(rendered).to have_link("(1) Unicorns")
+    end
+
+    it "displays the feed status" do
+      login_as(default_user)
+      create(:feed, status: :green)
+
+      get "/feeds"
+
+      expect(rendered).to have_css(".sr-only", text: "Success!")
+    end
+
+    it "displays when the feed was last fetched" do
+      login_as(default_user)
+      create(:feed, last_fetched: Time.zone.local(2026, 1, 2, 3, 4))
+
+      get "/feeds"
+
+      expect(rendered).to have_css(".last-updated-time", text: "Jan 02, 03:04")
+    end
   end
 
   describe "#show" do
@@ -49,6 +77,15 @@ RSpec.describe FeedsController do
       get "/feeds/#{feed.id}/edit"
 
       expect(rendered).to have_field("feed_name", with: "Rainbows/unicorns")
+    end
+
+    it "displays a group select with the feed's group selected" do
+      login_as(default_user)
+      feed = create(:feed, :with_group)
+
+      get "/feeds/#{feed.id}/edit"
+
+      expect(rendered).to have_select("group_id", selected: feed.group.name)
     end
   end
 
