@@ -5,6 +5,6 @@ class TutorialsController < ApplicationController
     authorization.skip
     CallableJob.perform_later(Feed::FetchAllForUser, current_user)
 
-    @sample_stories = StoryRepository.samples
+    render(Views::Tutorials::Index.new(stories: StoryRepository.samples))
   end
 end
