@@ -22,14 +22,6 @@ _.templateSettings = {
   interpolate: /\{\{=(.+?)\}\}/g,
 };
 
-globalThis.CSRFToken = function () {
-  return "";
-};
-
-globalThis.requestHeaders = function () {
-  return { "X-CSRF-Token": CSRFToken() };
-};
-
 // Inject the story template into the DOM.
 // This is a static test fixture extracted from _templates.html.erb,
 // with the ERB t() call replaced by a plain string.
@@ -95,6 +87,11 @@ document.body.insertAdjacentHTML("beforeend", templateHTML);
 window.HTMLElement.prototype.scrollIntoView = function () { /* noop */ };
 
 import { Story, StoryView, StoryList, AppView } from "../../app/javascript/application";
+import { application } from "../../app/javascript/controllers/application";
+
+// Importing the app starts its Stimulus application with every controller
+// registered. Stop it so specs only get the controllers they boot themselves.
+application.stop();
 
 globalThis.Story = Story;
 globalThis.StoryView = StoryView;

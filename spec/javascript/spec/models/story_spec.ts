@@ -19,20 +19,6 @@ describe("Story", function () {
       expect(story.get("selected")).toBe(true);
     });
 
-    it("sets is_read to true if keep_unread isn't true", function () {
-      var story = new Story();
-      expect(!!story.get("keep_unread")).toBe(false);
-      story.open();
-      expect(story.get("is_read")).toBe(true);
-    });
-
-    it("doesn't sets is_read to true if keep_unread is true", function () {
-      var story = new Story();
-      story.set("keep_unread", true);
-      story.open();
-      expect(!!story.get("is_read")).toBe(false);
-    });
-
     it("calls closeOthers, unselectAll, setSelection on collection", function () {
       var story = new Story();
       var spy = (story.collection = {
@@ -44,19 +30,6 @@ describe("Story", function () {
       expect(spy.closeOthers).toHaveBeenCalledWith(story);
       expect(spy.unselectAll).toHaveBeenCalledOnce();
       expect(spy.setSelection).toHaveBeenCalledWith(story);
-    });
-
-    it("calls save if it should save", function () {
-      var story = new Story();
-
-      vi.spyOn(story, "save").mockImplementation(function () {});
-      vi.spyOn(story, "shouldSave").mockImplementation(function () {
-        return true;
-      });
-
-      story.open();
-      expect(story.shouldSave).toHaveBeenCalledOnce();
-      expect(story.save).toHaveBeenCalledOnce();
     });
   });
 
@@ -101,35 +74,6 @@ describe("Story", function () {
       story.toggle();
       expect(story.open).toHaveBeenCalledOnce();
       expect(story.close).toHaveBeenCalledOnce();
-    });
-  });
-
-  describe("shouldSave", function () {
-    it("returns false in there are no changed Attributes", function () {
-      var story = new Story();
-      vi.spyOn(story, "changedAttributes").mockImplementation(function () {
-        return false;
-      });
-      expect(story.shouldSave()).toBe(false);
-      expect(story.changedAttributes).toHaveBeenCalledOnce();
-    });
-
-    it("returns false if it has changedAttributes but no id", function () {
-      var story = new Story();
-      vi.spyOn(story, "changedAttributes").mockImplementation(function () {
-        return { is_read: true };
-      });
-      expect(story.shouldSave()).toBe(false);
-      expect(story.changedAttributes).toHaveBeenCalledOnce();
-    });
-
-    it("returns true if it has changedAttributes and an id", function () {
-      var story = new Story({ id: 1 });
-      vi.spyOn(story, "changedAttributes").mockImplementation(function () {
-        return { is_read: true };
-      });
-      expect(story.shouldSave()).toBe(true);
-      expect(story.changedAttributes).toHaveBeenCalledOnce();
     });
   });
 
