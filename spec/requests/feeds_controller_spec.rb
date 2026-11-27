@@ -229,6 +229,17 @@ RSpec.describe FeedsController do
       end
     end
 
+    context "when the feed url is malformed" do
+      it "shows the feed not found error" do
+        login_as(default_user)
+        feed_url = "\"https://example.com/feed.atom"
+
+        post("/feeds", params: { feed_url: })
+
+        expect(rendered).to have_text("We couldn't find that feed")
+      end
+    end
+
     context "when the feed document declares a disallowed self url" do
       feed_url = "http://example.com/"
       hostile_atom = <<~XML
