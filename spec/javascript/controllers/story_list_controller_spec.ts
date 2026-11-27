@@ -1,4 +1,3 @@
-import type { MockInstance } from "vitest";
 import { bootStimulus, getController } from "support/stimulus";
 import StoryController from "controllers/story_controller";
 import StoryListController from "controllers/story_list_controller";
@@ -71,12 +70,6 @@ function cursorIndexes(): number[] {
 
 function openIndexes(): number[] {
   return indexesWithClass("open");
-}
-
-function listenOn(element: HTMLElement, eventName: string): MockInstance {
-  const listener = vi.fn<(event: Event) => void>();
-  element.addEventListener(eventName, listener);
-  return listener;
 }
 
 describe("next", () => {
@@ -182,7 +175,7 @@ describe("openNext and openPrevious", () => {
   });
 });
 
-describe("toggleCurrent and openCurrentInTab", () => {
+describe("toggleCurrent", () => {
   it("toggles the cursor story", async () => {
     await setupController();
     controller().next();
@@ -201,16 +194,6 @@ describe("toggleCurrent and openCurrentInTab", () => {
     controller().toggleCurrent();
 
     expect(openIndexes()).toStrictEqual([0]);
-  });
-
-  it("asks the cursor story to open in a tab", async () => {
-    await setupController();
-    controller().previous();
-    const listener = listenOn(story(2), "story:open-in-tab");
-
-    controller().openCurrentInTab();
-
-    expect(listener).toHaveBeenCalledExactlyOnceWith(expect.any(CustomEvent));
   });
 });
 

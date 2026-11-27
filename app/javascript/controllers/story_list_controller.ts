@@ -5,8 +5,8 @@ import type StoryController from "controllers/story_controller";
 /*
  * Owns the story cursor and the accordion: one story target has the "cursor"
  * class, moved with the keyboard and wrapping at either end, and opening a
- * story closes the others. Opening in a tab still belongs to the Backbone
- * StoryView, so it is requested with a "story:open-in-tab" event.
+ * story closes the others. Shortcuts that click a button in the cursor story
+ * (b, v, m, s) go through a hotkeys controller scoped to ".story.cursor".
  */
 export default class extends Controller {
   static override targets = ["story"];
@@ -37,12 +37,6 @@ export default class extends Controller {
 
   toggleCurrent(): void {
     this.currentStory()?.toggle();
-  }
-
-  openCurrentInTab(): void {
-    this.currentStory()?.element.dispatchEvent(
-      new CustomEvent("story:open-in-tab"),
-    );
   }
 
   storyOpened(event: Event): void {

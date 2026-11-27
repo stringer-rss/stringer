@@ -14,8 +14,10 @@ void {
     "    data-action='keep-unread-toggle:toggled->story#keepUnreadToggled'",
     `    data-story-id-value='${id}'`,
     `    data-story-is-read-value='${isRead}'`,
-    `    data-story-keep-unread-value='${keepUnread}'>`,
-    "  <div class='story-preview' data-action='click->story#toggle'></div>",
+    `    data-story-keep-unread-value='${keepUnread}'`,
+    "    data-story-permalink-value='http://example.com/story'>",
+    "  <div class='story-preview'",
+    "       data-action='click->story#previewClicked'></div>",
     "</li>",
   ].join("\n");
 }
@@ -209,20 +211,33 @@ describe("open", () => {
   });
 });
 
-describe("close", () => {
-  it("removes the open class", async () => {
+
+describe("close and toggle", () => {
+  it("toggles the story open and closed", async () => {
+    await setupController();
+    mockFetch();
+
+    controller().toggle();
+    expect(isOpen()).toBe(true);
+
+    controller().toggle();
+    expect(isOpen()).toBe(false);
+  });
+
+  it("does not scroll when closing", async () => {
     await setupController();
     mockFetch();
     controller().open();
+    const scrollSpy = vi.spyOn(element(), "scrollIntoView");
 
     controller().close();
 
-    expect(isOpen()).toBe(false);
+    expect(scrollSpy).not.toHaveBeenCalled();
   });
 });
 
-describe("toggle", () => {
-  it("opens and closes the story when the preview is clicked", async () => {
+describe("previewClicked", () => {
+  it("opens and closes the story", async () => {
     await setupController();
     mockFetch();
 
@@ -245,28 +260,24 @@ describe("toggle", () => {
       { behavior: "instant", block: "start" },
     );
   });
+});
 
-  it("does not scroll when closed without a click", async () => {
-    await setupController();
-    mockFetch();
-    controller().open();
-    const scrollSpy = vi.spyOn(element(), "scrollIntoView");
-
-    controller().toggle();
-
-    expect(scrollSpy).not.toHaveBeenCalled();
-  });
-
+describe("previewClicked with a modifier", () => {
   it.each([
     ["meta", { metaKey: true }],
     ["ctrl", { ctrlKey: true }],
     ["middle", { button: 1 }],
-  ])("ignores %s clicks, which open a tab instead", async (_name, options) => {
+  ])("opens a tab on %s clicks and marks read", async (_name, options) => {
     await setupController();
     mockFetch();
+    const openSpy = vi.spyOn(window, "open").mockReturnValue(null);
+    const focusSpy = vi.spyOn(window, "focus").mockReturnValue();
 
     clickPreview(options);
 
+    expect(openSpy).toHaveBeenCalledExactlyOnceWith("http://example.com/story");
+    expect(focusSpy).toHaveBeenCalledExactlyOnceWith();
     expect(isOpen()).toBe(false);
+    expect(element().classList.contains("read")).toBe(true);
   });
 });
