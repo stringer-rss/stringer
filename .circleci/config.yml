@@ -74,6 +74,10 @@ jobs:
       - setup
 
       - run:
+          name: Check for Conflict Markers
+          command: "! git grep -nE '^([<]{7}|>{7})( |$)'"
+
+      - run:
           name: Typescript
           command: pnpm tscheck
 
