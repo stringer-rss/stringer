@@ -40,11 +40,12 @@ class StoriesController < ApplicationController
   end
 
   def archived
-    @read_stories = authorization.scope(StoryRepository.read(params[:page]))
+    stories = authorization.scope(StoryRepository.read(params[:page]))
+    render(Views::Stories::Archived.new(stories:))
   end
 
   def starred
-    @starred_stories =
-      authorization.scope(StoryRepository.starred(params[:page]))
+    stories = authorization.scope(StoryRepository.starred(params[:page]))
+    render(Views::Stories::Starred.new(stories:))
   end
 end
