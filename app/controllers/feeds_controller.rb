@@ -2,7 +2,8 @@
 
 class FeedsController < ApplicationController
   def index
-    @feeds = authorization.scope(FeedRepository.list.with_unread_stories_counts)
+    feeds = authorization.scope(FeedRepository.list.with_unread_stories_counts)
+    render(Views::Feeds::Index.new(feeds:))
   end
 
   def show
@@ -15,18 +16,19 @@ class FeedsController < ApplicationController
 
   def new
     authorization.skip
-    @feed_url = params[:feed_url]
+    render(Views::Feeds::New.new(feed_url: params[:feed_url]))
   end
 
   def edit
-    @feed = FeedRepository.fetch(params[:id])
-    authorization.check(@feed)
+    feed = FeedRepository.fetch(params[:id])
+    authorization.check(feed)
+    render_edit(feed)
   end
 
   def create
     authorization.skip
-    @feed_url = params[:feed_url]
-    feed = Feed::Create.call(@feed_url, user: current_user)
+    feed_url = params[:feed_url]
+    feed = Feed::Create.call(feed_url, user: current_user)
 
     if feed && feed.valid?
       CallableJob.perform_later(Feed::FetchOne, feed)
@@ -35,7 +37,7 @@ class FeedsController < ApplicationController
     else
       flash.now[:error] = create_error_message(feed)
 
-      render(:new)
+      render(Views::Feeds::New.new(feed_url:))
     end
   end
 
@@ -49,7 +51,7 @@ class FeedsController < ApplicationController
     else
       flash.now[:error] = @feed.error_messages
 
-      render(:edit)
+      render_edit(@feed)
     end
   end
 
@@ -62,6 +64,10 @@ class FeedsController < ApplicationController
   end
 
   private
+
+  def render_edit(feed)
+    render(Views::Feeds::Edit.new(feed:, groups: current_user.groups))
+  end
 
   def update_feed
     FeedRepository.update_feed(
