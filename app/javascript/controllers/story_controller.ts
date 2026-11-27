@@ -4,12 +4,8 @@ import { updateStory } from "helpers/api";
 
 interface KeepUnreadDetail { isRead: boolean; keepUnread: boolean }
 
-// Cmd, ctrl and middle clicks open the story in a background tab instead.
-function opensInTab(event: Event): boolean {
-  if (!(event instanceof MouseEvent)) {
-    return false;
-  }
-
+// Cmd, ctrl and middle clicks open the story in a background tab.
+function opensInTab(event: MouseEvent): boolean {
   return event.metaKey || event.ctrlKey || event.button === 1;
 }
 
@@ -19,9 +15,16 @@ function opensInTab(event: Event): boolean {
  * bubbling "story:opened" and "story:read-changed" events.
  */
 export default class extends Controller {
-  static override values = { id: String, isRead: Boolean, keepUnread: Boolean };
+  static override values = {
+    id: String,
+    isRead: Boolean,
+    keepUnread: Boolean,
+    permalink: String,
+  };
 
   declare idValue: string;
+
+  declare permalinkValue: string;
 
   declare isReadValue: boolean;
 
@@ -42,23 +45,24 @@ export default class extends Controller {
     this.element.classList.remove("open");
   }
 
-  /*
-   * Called with a click event from the story preview, or with no event from
-   * the story list's keyboard shortcuts.
-   */
-  toggle(event?: Event): void {
-    if (event && opensInTab(event)) {
-      return;
-    }
-
-    if (!this.isOpen) {
+  toggle(): void {
+    if (this.isOpen) {
+      this.close();
+    } else {
       this.open();
+    }
+  }
+
+  previewClicked(event: MouseEvent): void {
+    if (opensInTab(event)) {
+      this.openInBackgroundTab();
       return;
     }
 
-    this.close();
+    const wasOpen = this.isOpen;
+    this.toggle();
     // Closing by click keeps the story's top in view.
-    if (event) {
+    if (wasOpen) {
       this.scrollIntoView();
     }
   }
@@ -86,6 +90,12 @@ export default class extends Controller {
     this.isReadValue = event.detail.isRead;
     this.keepUnreadValue = event.detail.keepUnread;
     this.dispatch("read-changed");
+  }
+
+  private openInBackgroundTab(): void {
+    window.open(this.permalinkValue);
+    window.focus();
+    this.markAsRead();
   }
 
   private scrollIntoView(): void {

@@ -12,14 +12,15 @@ class Components::StoryList < Components::Base
     "n" => "next",
     "p" => "previous",
     "o" => "toggleCurrent",
-    "enter" => "toggleCurrent",
-    "b" => "openCurrentInTab",
-    "v" => "openCurrentInTab"
+    "enter" => "toggleCurrent"
   }.freeze
 
+  # The b/v/m/s keys click buttons in the cursor story through the hotkeys
+  # controller, scoped by `hotkeys_scope_value`.
   ACTIONS = [
     "story:read-changed->unread-count#update",
     "story:opened->story-list#storyOpened",
+    "keydown@document->hotkeys#handleKeydown",
     *KEY_ACTIONS.map do |key, action|
       "keydown.#{key}@document->story-list##{action}"
     end
@@ -36,14 +37,18 @@ class Components::StoryList < Components::Base
   def view_template
     render(partial("stories/js", stories:))
 
-    div(
-      id: "stories",
-      data: {
-        controller: "unread-count story-list",
-        action: ACTIONS,
-        story_list_story_outlet: "#story-list > li.story",
-        unread_count_title_value: title
-      }
-    ) { ul(id: "story-list") }
+    div(id: "stories", data: stories_data) { ul(id: "story-list") }
+  end
+
+  private
+
+  def stories_data
+    {
+      controller: "unread-count story-list hotkeys",
+      action: ACTIONS,
+      hotkeys_scope_value: ".story.cursor",
+      story_list_story_outlet: "#story-list > li.story",
+      unread_count_title_value: title
+    }
   end
 end

@@ -126,11 +126,16 @@ describe("StoryView", function () {
       expect(view.el.dataset.storyKeepUnreadValue).toBe("true");
     });
 
+    it("should set the story permalink value", function () {
+      view.render();
+
+      expect(view.el.dataset.storyPermalinkValue).toBe("http://example.com/krunch");
+    });
+
     it("should wire story Stimulus actions", function () {
       view.render();
 
-      expect(view.el.dataset.action).toContain("story:mark-as-read->story#markAsRead");
-      expect(view.el.dataset.action).toContain(
+      expect(view.el.dataset.action).toBe(
         "keep-unread-toggle:toggled->story#keepUnreadToggled",
       );
     });
@@ -145,15 +150,19 @@ describe("StoryView", function () {
       view.render();
       var preview = view.el.querySelector(".story-preview");
 
-      expect(preview.getAttribute("data-action")).toBe("click->story#toggle");
+      expect(preview.getAttribute("data-action")).toBe("click->story#previewClicked");
     });
 
-    it("should open in a tab when the story list asks", function () {
-      const openInTabStub = vi.spyOn(story, "openInTab").mockImplementation(function () {});
+    it.each([
+      [".story-permalink", "b v"],
+      [".story-keep-unread", "m"],
+      [".story-actions .story-starred", "s"],
+    ])("should give %s the hotkeys %s", function (selector, keys) {
+      view.render();
+      var button = view.el.querySelector(selector);
 
-      view.el.dispatchEvent(new CustomEvent("story:open-in-tab"));
-
-      expect(openInTabStub).toHaveBeenCalledOnce();
+      expect(button.dataset.hotkeysTarget).toBe("click");
+      expect(button.dataset.hotkey).toBe(keys);
     });
 
     it("should wire keep-unread action to Stimulus controller", function () {
@@ -215,44 +224,6 @@ describe("StoryView", function () {
       anchors.forEach(function (a) {
         expect(a.getAttribute("onclick")).toBeNull();
         expect(a.getAttribute("href")).toBe("\" onclick=\"alert(1)");
-      });
-    });
-
-    describe("Handling click on story", function () {
-      it("should not open a tab on a plain click", function () {
-        const openSpy = vi.spyOn(window, "open").mockImplementation(() => {
-          return null;
-        });
-
-        view.el.querySelector(".story-preview").click();
-
-        expect(openSpy).not.toHaveBeenCalled();
-      });
-
-      it("should open a tab when clicked with ctrlKey pressed", function () {
-        const openSpy = vi.spyOn(window, "open").mockImplementation(() => {
-          return null;
-        });
-
-        var e = new MouseEvent("click", { bubbles: true, ctrlKey: true });
-        view.el.querySelector(".story-preview").dispatchEvent(e);
-
-        expect(openSpy).toHaveBeenCalledWith(story.get("permalink"));
-      });
-
-      it("should ask to mark as read when clicked with metaKey pressed", function () {
-        const listener = vi.fn();
-        view.el.addEventListener("story:mark-as-read", listener);
-        vi.spyOn(window, "open").mockImplementation(() => {
-          return null;
-        });
-
-        var e = new MouseEvent("click", { bubbles: true, metaKey: true });
-        view.el.querySelector(".story-preview").dispatchEvent(e);
-
-        expect(listener).toHaveBeenCalledOnce();
-        view.el.removeEventListener("story:mark-as-read", listener);
-        vi.restoreAllMocks();
       });
     });
   });

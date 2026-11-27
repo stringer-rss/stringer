@@ -39,32 +39,18 @@ _.templateSettings = {
   interpolate: /\{\{=(.+?)\}\}/g
 };
 
-var Story = Backbone.Model.extend({
-  openInTab: function() {
-    window.open(this.get("permalink"), '_blank');
-  }
-});
+var Story = Backbone.Model.extend({});
 
 var StoryView = Backbone.NativeView.extend({
   className: "story",
-  events: {
-    "click .story-preview" : "storyClicked"
-  },
 
   initialize: function() {
     this.template = _.template(document.querySelector(this.template).innerHTML);
     this.listenTo(this.model, 'add', this.render);
-    // Request from the story-list Stimulus controller, which owns the cursor.
-    this.el.addEventListener('story:open-in-tab', () => { this.model.openInTab(); });
     this.el.addEventListener('story-refresh:refreshed', (e) => {
       this.model.set(e.detail.story, {silent: true});
       this.render();
     });
-  },
-
-  // Bridge to the story Stimulus controller, which owns read state.
-  markAsRead: function() {
-    this.el.dispatchEvent(new CustomEvent("story:mark-as-read"));
   },
 
   render: function() {
@@ -77,10 +63,7 @@ var StoryView = Backbone.NativeView.extend({
       this.el.classList.add('keepUnread');
     }
     Object.assign(this.el.dataset, {
-      action: [
-        "story:mark-as-read->story#markAsRead",
-        "keep-unread-toggle:toggled->story#keepUnreadToggled",
-      ].join(" "),
+      action: "keep-unread-toggle:toggled->story#keepUnreadToggled",
       controller: "story star-toggle keep-unread-toggle story-refresh",
       keepUnreadToggleIdValue: String(jsonModel.id),
       keepUnreadToggleIsReadValue: String(jsonModel.is_read),
@@ -91,20 +74,11 @@ var StoryView = Backbone.NativeView.extend({
       storyIsReadValue: String(jsonModel.is_read),
       storyKeepUnreadValue: String(jsonModel.keep_unread),
       storyListTarget: "story",
+      storyPermalinkValue: String(jsonModel.permalink),
       storyRefreshIdValue: String(jsonModel.id),
       unreadCountTarget: "story",
     });
     return this;
-  },
-
-  // Plain clicks open the story through the story Stimulus controller.
-  storyClicked: function(e) {
-    if (e.metaKey || e.ctrlKey || e.which == 2) {
-      var backgroundTab = window.open(this.model.get("permalink"));
-      if (backgroundTab) backgroundTab.blur();
-      window.focus();
-      this.markAsRead();
-    }
   },
 
   tagName: "li",
