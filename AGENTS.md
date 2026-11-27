@@ -4,7 +4,7 @@ This file provides guidance to coding agents when working with code in this repo
 
 ## What this is
 
-Stringer is a self-hosted, anti-social RSS reader: a Rails 8.1 app (Ruby 4.0) backed by PostgreSQL, with feed fetching run as background jobs via GoodJob. The README's mention of Backbone.js is partly outdated — see the frontend notes below.
+Stringer is a self-hosted, anti-social RSS reader: a Rails 8.1 app (Ruby 4.0) backed by PostgreSQL, with feed fetching run as background jobs via GoodJob.
 
 ## Commands
 
@@ -38,12 +38,11 @@ Feed operations are exposed as rake tasks: `rake fetch_feeds`, `rake fetch_feed[
 
 ## Frontend
 
-Assets are bundled with **esbuild**, not Rails' asset pipeline compilation (Propshaft serves the built files). Two distinct JS worlds coexist:
+Assets are bundled with **esbuild**, not Rails' asset pipeline compilation (Propshaft serves the built files).
 
-- **Stimulus controllers** (`app/javascript/controllers/`) — the current approach for new interactive behavior (dialogs, hotkeys, toggles).
-- **Backbone** (`app/javascript/application.ts`) — the legacy story-list view (`Story`/`StoryView`/`StoryList`/`AppView`), which talks to `/stories`. Note this file is `@ts-nocheck`. Underscore templates use custom `{{ }}` delimiters (set in `application.ts`), not the default `<% %>`.
+Pages are rendered on the server with **Phlex** components (`app/components/`, `app/views/`), and interactive behavior lives in **Stimulus controllers** (`app/javascript/controllers/`). The story list, for example, is `Components::StoryList` plus the `story`, `story-list` and `hotkeys` controllers. Keyboard shortcuts either use Stimulus key filters or the `hotkeys` controller, which clicks a button marked with `data-hotkey`.
 
-Turbo Drive is explicitly **disabled** (`Turbo.session.drive = false`).
+Turbo Drive is explicitly **disabled** (`session.drive = false` in `app/javascript/application.ts`). Turbo Frames still work: refreshing a story swaps its `<turbo-frame>`.
 
 ## Linting baselines
 
