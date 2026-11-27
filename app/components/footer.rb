@@ -1,6 +1,19 @@
 # frozen_string_literal: true
 
 class Components::Footer < Components::Base
+  LINKS_DATA = {
+    controller: "hotkeys",
+    action: "keydown@document->hotkeys#handleKeydown"
+  }.freeze
+
+  # The ? key clicks the shortcuts link, through the hotkeys controller above.
+  SHORTCUTS_DATA = {
+    bs_toggle: "modal",
+    bs_target: "#shortcuts",
+    hotkeys_target: "click",
+    hotkey: "?"
+  }.freeze
+
   def view_template
     div(class: "container") do
       div(class: "row") do
@@ -13,7 +26,7 @@ class Components::Footer < Components::Base
   private
 
   def links
-    ul(class: "footer-links") do
+    ul(class: "footer-links", data: LINKS_DATA) do
       user_links if current_user
       li { a(href: "https://github.com/stringer-rss/stringer") { support } }
     end
@@ -35,11 +48,9 @@ class Components::Footer < Components::Base
 
   def shortcuts_link
     li do
-      a(
-        href: "#shortcuts",
-        data: { bs_toggle: "modal", bs_target: "#shortcuts" },
-        aria_label: "shortcuts"
-      ) { i(aria_hidden: "true", class: "fa fa-keyboard-o") }
+      a(href: "#shortcuts", data: SHORTCUTS_DATA, aria_label: "shortcuts") do
+        i(aria_hidden: "true", class: "fa fa-keyboard-o")
+      end
     end
     separator
   end

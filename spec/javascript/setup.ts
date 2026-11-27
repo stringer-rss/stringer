@@ -1,8 +1,4 @@
-// @ts-nocheck
 /// <reference types="vitest/globals" />
-
-import underscore from "underscore";
-import Backbone from "backbone";
 
 beforeEach(() => {
   expect.hasAssertions();
@@ -13,87 +9,7 @@ afterEach(() => {
   vi.useRealTimers();
 });
 
-globalThis._ = underscore;
-globalThis.Backbone = Backbone;
-
-_.templateSettings = {
-  escape: /\{\{-(.+?)\}\}/g,
-  evaluate: /\{\{(.+?)\}\}/g,
-  interpolate: /\{\{=(.+?)\}\}/g,
+// jsdom doesn't implement scrolling; story controllers scroll stories into view.
+window.HTMLElement.prototype.scrollIntoView = (): void => {
+  // noop
 };
-
-// Inject the story template into the DOM.
-// This is a static test fixture extracted from _templates.html.erb,
-// with the ERB t() call replaced by a plain string.
-const templateHTML = [
-  '<script type="text/template" id="story-template">',
-  '  <div class="row story-preview" data-action="click->story#previewClicked">',
-  '    <div class="col-md-3">',
-  '      <div class="story-starred" data-action="click->star-toggle#toggle:stop">',
-  '        <i class="fa {{ if(is_starred) { }}fa-star{{ } else { }}fa-star-o{{ } }}" data-star-toggle-target="icon"></i>',
-  "      </div>",
-  '      <p class="blog-title">',
-  "        {{- source }}",
-  "      </p>",
-  "    </div>",
-  '    <div class="col-md-9">',
-  '      <p class="story-details">',
-  '        <span class="story-title">',
-  "          {{= headline }}",
-  "        </span>",
-  '        <span class="story-lead">',
-  "          &mdash; {{= lead }}",
-  "        </span>",
-  "      </p>",
-  "    </div>",
-  "  </div>",
-  "",
-  '  <div class="story-body-container">',
-  '    <div class="story-body">',
-  "      <h1>",
-  '        <a href="{{- permalink }}">{{= title }}</a>',
-  "        {{ if (enclosure_url) { }}",
-  '          <a class="story-enclosure" target="_blank" href="{{- enclosure_url }}">',
-  '            <i class="fa fa-download"></i>',
-  "          </a>",
-  "        {{ } }}",
-  "      </h1>",
-  "      {{= body }}",
-  "    </div>",
-  '    <div class="row story-actions-container">',
-  '      <div class="pull-left">',
-  '        <span class="story-published">',
-  "          {{= pretty_date }}",
-  "        </span>",
-  "      </div>",
-  '      <div class="pull-right story-actions">',
-  '        <div class="story-keep-unread" data-action="click->keep-unread-toggle#toggle:stop" data-hotkeys-target="click" data-hotkey="m">',
-  '          <i class="fa {{ if(keep_unread) { }}fa-check{{ } else { }}fa-square-o{{ } }}" data-keep-unread-toggle-target="icon"></i> Keep unread',
-  "        </div>",
-  '        <div class="story-starred" data-action="click->star-toggle#toggle:stop" data-hotkeys-target="click" data-hotkey="s">',
-  '          <i class="fa {{ if(is_starred) { }}fa-star{{ } else { }}fa-star-o{{ } }}" data-star-toggle-target="icon"></i>',
-  "        </div>",
-  '        <a class="story-permalink" target="_blank" href="{{- permalink }}" data-hotkeys-target="click" data-hotkey="b v">',
-  '          <i class="fa fa-external-link"></i>',
-  "        </a>",
-  "      </div>",
-  "    </div>",
-  "  </div>",
-  "</script>",
-].join("\n");
-
-document.body.insertAdjacentHTML("beforeend", templateHTML);
-
-window.HTMLElement.prototype.scrollIntoView = function () { /* noop */ };
-
-import { Story, StoryView, StoryList, AppView } from "../../app/javascript/application";
-import { application } from "../../app/javascript/controllers/application";
-
-// Importing the app starts its Stimulus application with every controller
-// registered. Stop it so specs only get the controllers they boot themselves.
-application.stop();
-
-globalThis.Story = Story;
-globalThis.StoryView = StoryView;
-globalThis.StoryList = StoryList;
-globalThis.AppView = AppView;

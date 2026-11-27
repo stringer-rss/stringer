@@ -16,7 +16,6 @@ export default defineConfig({
       {find: /^javascript\//u, replacement: appPath("")},
       {find: /^spec\//u, replacement: `${path.resolve(root, "spec")}/`},
       {find: "bootstrap", replacement: path.resolve(root, "node_modules/bootstrap/dist/js/bootstrap.js")},
-      {find: "mousetrap", replacement: path.resolve(root, "node_modules/mousetrap/mousetrap.js")},
       {
         find: /^support\//u,
         replacement: `${path.resolve(root, "spec/javascript/support")}/`,
