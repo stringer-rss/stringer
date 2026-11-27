@@ -24,7 +24,7 @@ class Components::Footer < Components::Base
     link_item("/feeds/import", t("layout.import"))
     link_item("/feeds/export", t("layout.export"))
     shortcuts_link
-    link_item(edit_profile_path, t("layout.profile"))
+    link_item(account_path, t("layout.account"))
     link_item(settings_path, t("layout.admin_settings")) if current_user.admin?
   end
 

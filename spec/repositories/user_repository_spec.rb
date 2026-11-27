@@ -40,6 +40,40 @@ RSpec.describe UserRepository do
     end
   end
 
+  describe ".delete" do
+    it "deletes the given user" do
+      user = create(:user)
+
+      expect { described_class.delete(user) }.to delete_record(user)
+    end
+
+    it "deletes the user's feeds and their stories" do
+      story = create(:story, feed: create(:feed, user: default_user))
+
+      expect { described_class.delete(default_user) }.to delete_record(story)
+    end
+
+    it "deletes the user's groups" do
+      group = create(:group, user: default_user)
+
+      expect { described_class.delete(default_user) }.to delete_record(group)
+    end
+
+    it "deletes the user's subscription" do
+      subscription = create(:subscription, user: default_user)
+
+      expect { described_class.delete(default_user) }
+        .to delete_record(subscription)
+    end
+
+    it "leaves other users' data alone" do
+      story = create(:story, feed: create(:feed, user: create(:user)))
+
+      expect { described_class.delete(default_user) }
+        .not_to delete_record(story)
+    end
+  end
+
   describe ".first" do
     it "returns the first user" do
       user = default_user

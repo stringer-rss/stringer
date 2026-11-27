@@ -201,12 +201,11 @@ RSpec/NestedGroups:
   Exclude:
     - 'spec/integration/feed_importing_spec.rb'
 
-# Offense count: 3
+# Offense count: 2
 RSpec/NoBeforeHook:
   Exclude:
     - 'spec/commands/feed/import_from_opml_spec.rb'
     - 'spec/system/authentication_spec.rb'
-    - 'spec/system/profile_spec.rb'
 
 # Offense count: 6
 # Configuration parameters: IgnoreNameless, IgnoreSymbolicNames.

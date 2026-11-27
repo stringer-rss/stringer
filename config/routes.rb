@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     get "/debug", to: "debug#index"
   end
 
-  resource :profile, only: [:edit, :update]
+  resource :account, only: [:show, :update, :remove, :destroy]
   resource :password, only: [:update]
 
   get "/", to: "stories#index"

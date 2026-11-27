@@ -1,4 +1,29 @@
 en:
+  accounts:
+    destroy:
+      success: Your account has been deleted
+    remove:
+      cancel: Cancel
+      confirm: Permanently delete account
+      title: Delete account
+      warning:
+        This will permanently delete the account for %{username}, along with
+        all of its feeds and stories. This cannot be undone.
+    show:
+      change_password: Change password
+      change_username: Change username
+      delete_account: Delete account
+      delete_account_description:
+        Permanently delete your account and all of its feeds and stories.
+      stories_feed_settings: Stories feed settings
+      title: Account
+      warning_html:
+        <strong>Warning!!!</strong> Editing your username or password will
+        change your API key as well. You will need to update your credentials
+        in any Fever clients you have connected to Stringer.
+    update:
+      success: Account updated
+      failure: 'Unable to update account: %{errors}'
   archive:
     next: Next
     of: of
@@ -67,21 +92,22 @@ en:
     subtitle: Let's setup your feeds.
     title: Welcome aboard.
   layout:
+    account: Account
     admin_settings: Admin Settings
     back_to_work: Get back to work, slacker!
     export: Export
     hey: Hey!
     import: Import
     logout: Logout
-    profile: Profile
     support: Support
     title: stringer | your rss buddy
   page_titles:
+    account: Account
     add_feed: Add a feed
     archived_stories: Archived stories
     debug: Debug
+    delete_account: Delete account
     edit_feed: Edit feed
-    edit_profile: Edit profile
     feeds: Feeds
     heroku_setup: Heroku setup
     import_feeds: Import feeds
@@ -138,19 +164,6 @@ en:
     update:
       success: Password updated
       failure: 'Unable to update password: %{errors}'
-  profiles:
-    edit:
-      change_password: Change password
-      change_username: Change username
-      stories_feed_settings: Stories feed settings
-      title: Edit profile
-      warning_html:
-        <strong>Warning!!!</strong> Editing your username or password will
-        change your API key as well. You will need to update your credentials
-        in any Fever clients you have connected to Stringer.
-    update:
-      success: Profile updated
-      failure: 'Unable to update profile: %{errors}'
   sessions:
     destroy:
       flash:
@@ -160,7 +173,7 @@ en:
         unknown_username_html:
           <strong>Note:</strong> if you didn't set a username when you set up
           your stringer instance, then your username will be "stringer". You
-          can change this on your profile page after logging in.
+          can change this on your account page after logging in.
         username: Username
         password: Password
         submit: Login

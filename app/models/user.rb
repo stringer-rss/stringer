@@ -5,8 +5,9 @@ class User < ApplicationRecord
 
   encrypts :api_key, deterministic: true
 
-  has_many :feeds, dependent: :delete_all
+  has_many :feeds, dependent: :destroy
   has_many :groups, dependent: :delete_all
+  has_one :subscription, dependent: :delete
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }
   validate :password_challenge_matches
