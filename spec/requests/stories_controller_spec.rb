@@ -80,6 +80,14 @@ RSpec.describe StoriesController do
 
       expect(rendered).to have_css("#stories")
     end
+
+    it "displays a message when there are no read stories" do
+      login_as(default_user)
+
+      get "/archive"
+
+      expect(rendered).to have_text("you haven't read any stories yet")
+    end
   end
 
   describe "#starred" do
@@ -90,6 +98,14 @@ RSpec.describe StoriesController do
       get "/starred"
 
       expect(rendered).to have_css("#stories")
+    end
+
+    it "displays a message when there are no starred stories" do
+      login_as(default_user)
+
+      get "/starred"
+
+      expect(rendered).to have_text("you haven't starred any stories yet")
     end
   end
 
