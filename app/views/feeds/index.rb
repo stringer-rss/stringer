@@ -1,13 +1,6 @@
 # frozen_string_literal: true
 
 class Views::Feeds::Index < Views::Base
-  TOOLTIP_SCRIPT = <<~JS
-    document.addEventListener("DOMContentLoaded", function () {
-      document.querySelectorAll(".status").forEach(function(el) {
-        new bootstrap.Tooltip(el);
-      });
-    });
-  JS
   LINK_PLACEHOLDER = "\0"
 
   attr_accessor :feeds
@@ -27,8 +20,6 @@ class Views::Feeds::Index < Views::Base
     else
       feed_list
     end
-
-    script(type: "text/javascript") { raw(safe(TOOLTIP_SCRIPT)) }
   end
 
   private

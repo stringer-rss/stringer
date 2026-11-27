@@ -36,7 +36,7 @@ class Components::FeedItem < Components::Base
     i(
       class: "fa fa-circle status #{feed.status_bubble}",
       aria_hidden: "true",
-      data: { bs_toggle: "tooltip", placement: "left" },
+      data: { controller: "tooltip", bs_toggle: "tooltip", placement: "left" },
       title: status_text.to_s
     )
     span(class: "sr-only") { status_text } if status_text

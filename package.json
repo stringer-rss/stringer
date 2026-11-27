@@ -24,6 +24,7 @@
     "@eslint/js": "^10.0.1",
     "@stylistic/eslint-plugin": "^6.0.1",
     "@types/backbone": "latest",
+    "@types/bootstrap": "^5.2.11",
     "@types/hotwired__turbo": "^8.0.16",
     "@types/mousetrap": "latest",
     "@types/node": "^26.6.6",

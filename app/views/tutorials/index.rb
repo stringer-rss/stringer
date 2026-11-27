@@ -1,26 +1,17 @@
 # frozen_string_literal: true
 
 class Views::Tutorials::Index < Views::Base
-  # Swaps in the "ready" text and shows the start button once the first
-  # feeds have had a chance to fetch.
-  START_SCRIPT = <<~JS
-    document.addEventListener("DOMContentLoaded", () => {
-      setTimeout(() => {
-        const cta   = document.getElementById("cta");
-        const start = document.getElementById("start");
+  # How long the tutorial-start controller waits before showing the start
+  # button, giving the first feeds a chance to fetch.
+  START_DELAY_MS = 10_000
 
-        cta.textContent = cta.dataset.ready;
-        start.style.display = "";
-      }, 10 * 1000);
-    });
-  JS
-
-  # Hidden until START_SCRIPT shows it.
+  # Hidden until the tutorial-start controller shows it.
   START_BUTTON = {
     href: "/news",
     id: "start",
     style: "display: none",
-    class: "btn btn-primary"
+    class: "btn btn-primary",
+    data: { tutorial_start_target: "start" }
   }.freeze
 
   attr_accessor :stories
@@ -41,8 +32,6 @@ class Views::Tutorials::Index < Views::Base
 
     render(Components::StoryList.new(stories:, title: site_title))
     setup
-
-    script(type: "text/javascript") { raw(safe(START_SCRIPT)) }
   end
 
   private
@@ -70,10 +59,10 @@ class Views::Tutorials::Index < Views::Base
   end
 
   def setup
-    div(class: "setup") do
+    div(class: "setup", data: start_data) do
       heading
       hr
-      p(id: "cta", data: { ready: t("tutorial.ready") }) do
+      p(id: "cta", data: { tutorial_start_target: "cta" }) do
         t("tutorial.description")
       end
       hr
@@ -92,5 +81,13 @@ class Views::Tutorials::Index < Views::Base
 
   def start_button
     a(**START_BUTTON) { t("tutorial.start") }
+  end
+
+  def start_data
+    {
+      controller: "tutorial-start",
+      tutorial_start_delay_value: START_DELAY_MS,
+      tutorial_start_ready_value: t("tutorial.ready")
+    }
   end
 end

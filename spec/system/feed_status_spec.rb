@@ -28,4 +28,14 @@ RSpec.describe "feed status bubbles" do
 
     expect(page).to have_css(".status.yellow")
   end
+
+  it "shows the status text in a tooltip on hover" do
+    login_as(default_user)
+    create(:feed, status: :green)
+    visit("/feeds")
+
+    find(".status.green").hover
+
+    expect(page).to have_css(".tooltip", text: "Success!")
+  end
 end

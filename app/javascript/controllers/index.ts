@@ -24,5 +24,11 @@ application.register("star-toggle", StarToggleController);
 import StoryRefreshController from "./story_refresh_controller";
 application.register("story-refresh", StoryRefreshController);
 
+import TooltipController from "./tooltip_controller";
+application.register("tooltip", TooltipController);
+
+import TutorialStartController from "./tutorial_start_controller";
+application.register("tutorial-start", TutorialStartController);
+
 import UnreadCountController from "./unread_count_controller";
 application.register("unread-count", UnreadCountController);
