@@ -197,14 +197,18 @@ RSpec.describe StoriesController do
         .to change_record(story, :title).to("Updated title")
     end
 
-    it "returns the refreshed story as JSON" do
+    def have_story_frame(story, text:)
+      have_css("turbo-frame#story_#{story.id}", text:)
+    end
+
+    it "renders the refreshed story's Turbo Frame" do
       login_as(default_user)
       story = create(:story, entry_id: "entry-guid")
       stub_updated_feed(story.feed)
 
       post("/stories/#{story.id}/refresh")
 
-      expect(response.parsed_body).to include("title" => "Updated title")
+      expect(rendered).to have_story_frame(story, text: "Updated title")
     end
 
     it "responds with unprocessable content when the refresh fails" do
@@ -215,6 +219,16 @@ RSpec.describe StoriesController do
       post("/stories/#{story.id}/refresh")
 
       expect(response).to have_http_status(:unprocessable_content)
+    end
+
+    it "renders the unchanged story's frame when the refresh fails" do
+      login_as(default_user)
+      story = create(:story, title: "Old title")
+      stub_invalid_feed(story.feed)
+
+      post("/stories/#{story.id}/refresh")
+
+      expect(rendered).to have_story_frame(story, text: "Old title")
     end
   end
 

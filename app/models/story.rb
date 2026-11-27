@@ -28,10 +28,6 @@ class Story < ApplicationRecord
     I18n.l(published)
   end
 
-  def as_json(_options = {})
-    super(methods: [:headline, :lead, :source, :pretty_date])
-  end
-
   def as_fever_json
     {
       id:,
@@ -48,7 +44,8 @@ class Story < ApplicationRecord
 
   private
 
+  # Plain text, not HTML: views escape it when they render it.
   def strip_html(contents)
-    Loofah.fragment(contents).text
+    Loofah.fragment(contents).text(encode_special_chars: false)
   end
 end

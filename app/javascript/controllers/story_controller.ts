@@ -15,16 +15,14 @@ function opensInTab(event: MouseEvent): boolean {
  * bubbling "story:opened" and "story:read-changed" events.
  */
 export default class extends Controller {
-  static override values = {
-    id: String,
-    isRead: Boolean,
-    keepUnread: Boolean,
-    permalink: String,
-  };
+  static override values = { id: String, isRead: Boolean, keepUnread: Boolean };
+
+  // The permalink sits inside the story's Turbo Frame, so a refresh updates it.
+  static override targets = ["permalink"];
 
   declare idValue: string;
 
-  declare permalinkValue: string;
+  declare permalinkTarget: HTMLAnchorElement;
 
   declare isReadValue: boolean;
 
@@ -76,8 +74,7 @@ export default class extends Controller {
     this.element.classList.add("read");
     this.dispatch("read-changed");
 
-    // Sample stories on the tutorial page have fake, non-positive ids.
-    if (Number(this.idValue) <= 0) {
+    if (this.isSample()) {
       return;
     }
 
@@ -92,8 +89,31 @@ export default class extends Controller {
     this.dispatch("read-changed");
   }
 
+  // Sample stories have no feed to refresh from, so skip the request.
+  refreshSubmitted(event: Event): void {
+    if (this.isSample()) {
+      event.preventDefault();
+    }
+  }
+
+  /*
+   * A failed refresh can respond without the story's Turbo Frame, e.g. when
+   * the story was deleted. Cancelling the event keeps the story as it was,
+   * instead of Turbo's "Content missing".
+   */
+  frameMissing(event: Event): void {
+    if (event.target instanceof Node && this.element.contains(event.target)) {
+      event.preventDefault();
+    }
+  }
+
+  // Sample stories on the tutorial page have fake, non-positive ids.
+  private isSample(): boolean {
+    return Number(this.idValue) <= 0;
+  }
+
   private openInBackgroundTab(): void {
-    window.open(this.permalinkValue);
+    window.open(this.permalinkTarget.href);
     window.focus();
     this.markAsRead();
   }

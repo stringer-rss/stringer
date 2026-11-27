@@ -33,6 +33,12 @@ RSpec.describe "Story" do
       story.title = "<b>Super cool</b> stuff"
       expect(story.headline).to eq("Super cool stuff")
     end
+
+    it "returns plain text with entities decoded" do
+      story = build_stubbed(:story)
+      story.title = "Tom &amp; Jerry &lt;3"
+      expect(story.headline).to eq("Tom & Jerry <3")
+    end
   end
 
   describe "#lead" do
@@ -71,51 +77,6 @@ RSpec.describe "Story" do
       story = Story.new
 
       expect { story.pretty_date }.to raise_error(ArgumentError)
-    end
-  end
-
-  describe "#as_json" do
-    it "returns a hash of the story" do
-      feed = create(:feed, name: "my feed")
-      published_at = 1.day.ago
-      created_at = 1.hour.ago
-      updated_at = 1.minute.ago
-      story = create(
-        :story,
-        body: "story body",
-        created_at:,
-        entry_id: 5,
-        feed:,
-        is_read: true,
-        is_starred: false,
-        keep_unread: true,
-        permalink: "www.exampoo.com/perma",
-        published: published_at,
-        title: "the story title",
-        updated_at:
-      )
-
-      expect(story.as_json).to eq(
-        {
-          body: "story body",
-          created_at: created_at.utc.as_json,
-          enclosure_url: nil,
-          entry_id: "5",
-          feed_id: feed.id,
-          headline: "the story title",
-          id: story.id,
-          is_read: true,
-          is_starred: false,
-          keep_unread: true,
-          lead: "story body",
-          permalink: "www.exampoo.com/perma",
-          pretty_date: I18n.l(published_at.utc),
-          published: published_at.utc.as_json,
-          source: "my feed",
-          title: "the story title",
-          updated_at: updated_at.utc.as_json
-        }.stringify_keys
-      )
     end
   end
 

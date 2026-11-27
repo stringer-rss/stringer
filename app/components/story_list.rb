@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-# The Backbone-rendered story list. The `stories/js` partial stays ERB until
-# the Backbone removal replaces it with server-rendered stories.
+# The list of stories, with the Stimulus controllers that run it: the cursor
+# and accordion (story-list), the hotkeys for the cursor story, and the
+# unread count in the browser title.
 #
 # `title` is the page's browser title without an unread count. The
 # unread-count controller puts the live count in front of it.
@@ -35,9 +36,11 @@ class Components::StoryList < Components::Base
   end
 
   def view_template
-    render(partial("stories/js", stories:))
-
-    div(id: "stories", data: stories_data) { ul(id: "story-list") }
+    div(id: "stories", data: stories_data) do
+      ul(id: "story-list") do
+        stories.each { |story| render(Components::Story.new(story:)) }
+      end
+    end
   end
 
   private

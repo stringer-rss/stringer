@@ -19,4 +19,19 @@ RSpec.describe "tutorial" do
 
     expect(page).to have_text("Darin' Fireballs")
   end
+
+  def open_sample_story(source)
+    login_as(default_user)
+    visit(setup_tutorial_path)
+    find(".story-preview", text: source).click
+  end
+
+  it "keeps a sample story in place when refreshed" do
+    open_sample_story("Darin' Fireballs")
+
+    find(".story-actions .story-refresh").click
+
+    expect(page).to have_current_path(setup_tutorial_path)
+      .and have_css("li.story.open", text: "Darin' Fireballs")
+  end
 end

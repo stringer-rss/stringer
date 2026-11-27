@@ -23,8 +23,10 @@ HTML
 
 SampleStory =
   Struct.new(:source, :title, :lead, :is_read, :published) do
+    # Fake, negative ids keep the tutorial from saving read state. Memoized
+    # so every attribute rendered for one story uses the same id.
     def id
-      rand(100) * -1
+      @id ||= -rand(1..100)
     end
 
     def headline
@@ -61,20 +63,7 @@ SampleStory =
       Time.now
     end
 
-    def as_json(_options = {})
-      {
-        id:,
-        headline:,
-        lead:,
-        source:,
-        title:,
-        pretty_date: published.strftime("%A, %B %d"),
-        body:,
-        enclosure_url:,
-        permalink:,
-        is_read:,
-        is_starred:,
-        keep_unread:
-      }
+    def pretty_date
+      published.strftime("%A, %B %d")
     end
   end

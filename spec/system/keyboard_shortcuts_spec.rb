@@ -95,7 +95,7 @@ RSpec.describe "keyboard shortcuts" do
   end
 
   def create_story_and_visit(title:)
-    create(:story, title:)
+    create(:story, title:, permalink: archive_path)
     visit(news_path)
   end
 
