@@ -9,6 +9,8 @@ class Views::Feeds::Edit < Views::Base
     self.groups = groups
   end
 
+  def page_title = t("page_titles.edit_feed")
+
   def view_template
     div(id: "action-bar") { render(Components::FeedActionBar.new) }
 

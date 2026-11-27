@@ -5,11 +5,11 @@ class Views::Layouts::Application < Components::Base
   include Phlex::Rails::Helpers::JavascriptIncludeTag
   include Phlex::Rails::Helpers::StylesheetLinkTag
 
-  attr_accessor :page_title
+  attr_accessor :document_title
 
-  def initialize(page_title:)
+  def initialize(document_title:)
     super()
-    self.page_title = page_title
+    self.document_title = document_title
   end
 
   def view_template(&)
@@ -32,7 +32,7 @@ class Views::Layouts::Application < Components::Base
   end
 
   def head_tags
-    title { [page_title, t("layout.title")].compact.join(" ") }
+    title { document_title }
     csrf_meta_tags
     meta(charset: "utf-8")
     meta(name: "viewport", content: "width=device-width, initial-scale=1")

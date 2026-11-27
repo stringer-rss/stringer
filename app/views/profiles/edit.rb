@@ -8,6 +8,8 @@ class Views::Profiles::Edit < Views::Base
     self.user = user
   end
 
+  def page_title = t("page_titles.edit_profile")
+
   def view_template
     h1 { t("profiles.edit.title") }
 

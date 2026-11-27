@@ -10,9 +10,9 @@ class Views::Feeds::Show < Views::Base
     self.unread_stories = unread_stories
   end
 
-  def page_title
-    "(#{unread_stories.count})" unless unread_stories.empty?
-  end
+  def page_title = feed.name
+
+  def unread_count = unread_stories.count
 
   def view_template
     div(id: "action-bar") do
@@ -23,6 +23,6 @@ class Views::Feeds::Show < Views::Base
 
     div(id: "feed-title") { feed.name }
 
-    render(Components::StoryList.new(stories:))
+    render(Components::StoryList.new(stories:, title: site_title))
   end
 end

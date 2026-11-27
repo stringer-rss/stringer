@@ -8,6 +8,8 @@ class Views::Settings::Index < Views::Base
     self.setting = setting
   end
 
+  def page_title = t("page_titles.settings")
+
   def view_template
     div(id: "action-bar") { render(Components::FeedActionBar.new) }
 

@@ -2,12 +2,16 @@
 
 # The Backbone-rendered story list. The `stories/js` partial stays ERB until
 # the Backbone removal replaces it with server-rendered stories.
+#
+# `title` is the page's browser title without an unread count. The
+# unread-count controller puts the live count in front of it.
 class Components::StoryList < Components::Base
-  attr_accessor :stories
+  attr_accessor :stories, :title
 
-  def initialize(stories:)
+  def initialize(stories:, title:)
     super()
     self.stories = stories
+    self.title = title
   end
 
   def view_template
@@ -18,7 +22,7 @@ class Components::StoryList < Components::Base
       data: {
         controller: "unread-count",
         action: "story:read-changed->unread-count#update",
-        unread_count_title_value: t("layout.title")
+        unread_count_title_value: title
       }
     ) { ul(id: "story-list") }
   end

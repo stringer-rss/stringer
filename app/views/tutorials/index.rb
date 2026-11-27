@@ -30,6 +30,8 @@ class Views::Tutorials::Index < Views::Base
     self.stories = stories
   end
 
+  def page_title = t("page_titles.tutorial")
+
   def view_template
     instructions
 
@@ -37,7 +39,7 @@ class Views::Tutorials::Index < Views::Base
       render(Components::TutorialActionBar.new(stories:))
     end
 
-    render(Components::StoryList.new(stories:))
+    render(Components::StoryList.new(stories:, title: site_title))
     setup
 
     script(type: "text/javascript") { raw(safe(START_SCRIPT)) }

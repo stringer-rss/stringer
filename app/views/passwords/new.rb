@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Views::Passwords::New < Views::Base
+  def page_title = t("page_titles.set_up_account")
+
   def view_template
     div(class: "setup", id: "password-setup") do
       heading

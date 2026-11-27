@@ -8,9 +8,9 @@ class Views::Stories::Index < Views::Base
     self.stories = stories
   end
 
-  def page_title
-    "(#{stories.count})" unless stories.empty?
-  end
+  def page_title = t("page_titles.stories")
+
+  def unread_count = stories.count
 
   def view_template
     div(id: "action-bar") do
@@ -20,7 +20,7 @@ class Views::Stories::Index < Views::Base
     if stories.empty?
       render(Components::Zen.new)
     else
-      render(Components::StoryList.new(stories:))
+      render(Components::StoryList.new(stories:, title: site_title))
     end
   end
 end
