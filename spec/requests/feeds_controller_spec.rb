@@ -60,6 +60,24 @@ RSpec.describe FeedsController do
       expect(rendered).to have_css("#stories")
     end
 
+    it "shows the unread count in the page title" do
+      login_as(default_user)
+      story = create(:story)
+
+      get "/feed/#{story.feed_id}"
+
+      expect(rendered).to have_title(/\(1\)/)
+    end
+
+    it "leaves the unread count out of the title when all stories are read" do
+      login_as(default_user)
+      story = create(:story, :read)
+
+      get "/feed/#{story.feed_id}"
+
+      expect(rendered).to have_no_title(/\(\d+\)/)
+    end
+
     it "raises an error if the feed belongs to another user" do
       login_as(create(:user))
       feed = create(:feed)

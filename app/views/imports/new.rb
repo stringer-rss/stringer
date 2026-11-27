@@ -4,12 +4,7 @@ class Views::Imports::New < Views::Base
   include Phlex::Rails::Helpers::SubmitTag
 
   def view_template
-    nav do
-      div do
-        plain("Logged in as ")
-        link_to(current_user.username, edit_profile_path)
-      end
-    end
+    nav { render(Components::LoggedInAs.new) }
 
     div(class: "setup", id: "feed-setup") do
       heading
