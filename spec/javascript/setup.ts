@@ -27,7 +27,7 @@ _.templateSettings = {
 // with the ERB t() call replaced by a plain string.
 const templateHTML = [
   '<script type="text/template" id="story-template">',
-  '  <div class="row story-preview">',
+  '  <div class="row story-preview" data-action="click->story#toggle">',
   '    <div class="col-md-3">',
   '      <div class="story-starred" data-action="click->star-toggle#toggle:stop">',
   '        <i class="fa {{ if(is_starred) { }}fa-star{{ } else { }}fa-star-o{{ } }}" data-star-toggle-target="icon"></i>',

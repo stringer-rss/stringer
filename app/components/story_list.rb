@@ -41,6 +41,7 @@ class Components::StoryList < Components::Base
       data: {
         controller: "unread-count story-list",
         action: ACTIONS,
+        story_list_story_outlet: "#story-list > li.story",
         unread_count_title_value: title
       }
     ) { ul(id: "story-list") }

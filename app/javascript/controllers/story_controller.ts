@@ -4,9 +4,19 @@ import { updateStory } from "helpers/api";
 
 interface KeepUnreadDetail { isRead: boolean; keepUnread: boolean }
 
+// Cmd, ctrl and middle clicks open the story in a background tab instead.
+function opensInTab(event: Event): boolean {
+  if (!(event instanceof MouseEvent)) {
+    return false;
+  }
+
+  return event.metaKey || event.ctrlKey || event.button === 1;
+}
+
 /*
- * Owns a story's read state: the "read" class on its element, saving it to
- * the server, and announcing changes as a bubbling "story:read-changed" event.
+ * Owns a story's open and read state: the "open" and "read" classes on its
+ * element, saving read state to the server, and announcing changes as
+ * bubbling "story:opened" and "story:read-changed" events.
  */
 export default class extends Controller {
   static override values = { id: String, isRead: Boolean, keepUnread: Boolean };
@@ -16,6 +26,42 @@ export default class extends Controller {
   declare isReadValue: boolean;
 
   declare keepUnreadValue: boolean;
+
+  get isOpen(): boolean {
+    return this.element.classList.contains("open");
+  }
+
+  open(): void {
+    this.element.classList.add("open");
+    this.markAsRead();
+    this.dispatch("opened");
+    this.scrollIntoView();
+  }
+
+  close(): void {
+    this.element.classList.remove("open");
+  }
+
+  /*
+   * Called with a click event from the story preview, or with no event from
+   * the story list's keyboard shortcuts.
+   */
+  toggle(event?: Event): void {
+    if (event && opensInTab(event)) {
+      return;
+    }
+
+    if (!this.isOpen) {
+      this.open();
+      return;
+    }
+
+    this.close();
+    // Closing by click keeps the story's top in view.
+    if (event) {
+      this.scrollIntoView();
+    }
+  }
 
   markAsRead(): void {
     if (this.isReadValue || this.keepUnreadValue) {
@@ -40,5 +86,9 @@ export default class extends Controller {
     this.isReadValue = event.detail.isRead;
     this.keepUnreadValue = event.detail.keepUnread;
     this.dispatch("read-changed");
+  }
+
+  private scrollIntoView(): void {
+    this.element.scrollIntoView({ behavior: "instant", block: "start" });
   }
 }
