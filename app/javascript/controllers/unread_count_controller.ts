@@ -5,7 +5,7 @@ import {Controller} from "@hotwired/stimulus";
  * "(3) Stringer". The DOM is the source of truth: any story target without
  * the "read" class counts as unread. Target callbacks re-count when stories
  * are added or removed; read-state flips are announced by whoever owns them
- * (currently the Backbone StoryView) as a bubbling "story:read-changed"
+ * (the story controller) as a bubbling "story:read-changed"
  * event, routed here via data-action on the container.
  */
 export default class extends Controller {

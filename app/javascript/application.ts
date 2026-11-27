@@ -39,16 +39,6 @@ _.templateSettings = {
   interpolate: /\{\{=(.+?)\}\}/g
 };
 
-function CSRFToken() {
-  const tokenTag = document.getElementsByName('csrf-token')[0];
-
-  return (tokenTag && tokenTag.content) || '';
-}
-
-function requestHeaders() {
-  return { 'X-CSRF-Token': CSRFToken() };
-}
-
 var Story = Backbone.Model.extend({
   close: function() {
     this.set("open", false);
@@ -62,9 +52,6 @@ var Story = Backbone.Model.extend({
   },
 
   open: function() {
-    if (!this.get("keep_unread")) this.set("is_read", true);
-    if (this.shouldSave()) this.save(null, { headers: requestHeaders() });
-
     if(this.collection){
       this.collection.closeOthers(this);
       this.collection.unselectAll();
@@ -82,10 +69,6 @@ var Story = Backbone.Model.extend({
   select: function() {
     if(this.collection) this.collection.unselectAll();
     this.set("selected", true);
-  },
-
-  shouldSave: function() {
-    return this.changedAttributes() && this.get("id") > 0;
   },
 
   toggle: function() {
@@ -112,12 +95,6 @@ var StoryView = Backbone.NativeView.extend({
     this.listenTo(this.model, 'add', this.render);
     this.listenTo(this.model, 'change:selected', this.itemSelected);
     this.listenTo(this.model, 'change:open', this.itemOpened);
-    this.listenTo(this.model, 'change:is_read', this.itemRead);
-    this.el.addEventListener('keep-unread-toggle:toggled', (e) => {
-      var detail = e.detail;
-      this.model.set({is_read: detail.isRead, keep_unread: detail.keepUnread}, {silent: true});
-      this.model.trigger('change:is_read');
-    });
     this.el.addEventListener('story-refresh:refreshed', (e) => {
       this.model.set(e.detail.story, {silent: true});
       this.render();
@@ -129,6 +106,7 @@ var StoryView = Backbone.NativeView.extend({
     var storyLead = this.el.querySelector(".story-lead");
     if (this.model.get("open")) {
       this.el.classList.add("open");
+      this.markAsRead();
       if (storyLead) storyLead.style.display = "none";
       this.el.scrollIntoView({ behavior: "instant", block: "start" });
     } else {
@@ -137,14 +115,14 @@ var StoryView = Backbone.NativeView.extend({
     }
   },
 
-  itemRead: function() {
-    this.el.classList.toggle("read", this.model.get("is_read"));
-    this.el.dispatchEvent(new CustomEvent("story:read-changed", { bubbles: true }));
-  },
-
   itemSelected: function() {
     this.el.classList.toggle("cursor", this.model.get("selected"));
     requestAnimationFrame(() => { this.el.scrollIntoView({ behavior: "instant", block: "start" }); });
+  },
+
+  // Bridge to the story Stimulus controller, which owns read state.
+  markAsRead: function() {
+    this.el.dispatchEvent(new CustomEvent("story:mark-as-read"));
   },
 
   render: function() {
@@ -157,12 +135,19 @@ var StoryView = Backbone.NativeView.extend({
       this.el.classList.add('keepUnread');
     }
     Object.assign(this.el.dataset, {
-      controller: "star-toggle keep-unread-toggle story-refresh",
+      action: [
+        "story:mark-as-read->story#markAsRead",
+        "keep-unread-toggle:toggled->story#keepUnreadToggled",
+      ].join(" "),
+      controller: "story star-toggle keep-unread-toggle story-refresh",
       keepUnreadToggleIdValue: String(jsonModel.id),
       keepUnreadToggleIsReadValue: String(jsonModel.is_read),
       keepUnreadToggleKeepUnreadValue: String(jsonModel.keep_unread),
       starToggleIdValue: String(jsonModel.id),
       starToggleStarredValue: String(jsonModel.is_starred),
+      storyIdValue: String(jsonModel.id),
+      storyIsReadValue: String(jsonModel.is_read),
+      storyKeepUnreadValue: String(jsonModel.keep_unread),
       storyRefreshIdValue: String(jsonModel.id),
       unreadCountTarget: "story",
     });
@@ -174,8 +159,7 @@ var StoryView = Backbone.NativeView.extend({
       var backgroundTab = window.open(this.model.get("permalink"));
       if (backgroundTab) backgroundTab.blur();
       window.focus();
-      if (!this.model.get("keep_unread")) this.model.set("is_read", true);
-      if (this.model.shouldSave()) this.model.save(null, { headers: requestHeaders() });
+      this.markAsRead();
     } else {
       this.model.toggle();
       this.el.scrollIntoView({ behavior: "instant", block: "start" });

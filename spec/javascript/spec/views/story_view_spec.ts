@@ -116,6 +116,36 @@ describe("StoryView", function () {
       expect(view.el.dataset.controller).toContain("keep-unread-toggle");
     });
 
+    it("should set story Stimulus data attributes", function () {
+      story.set({ id: 7, is_read: false, keep_unread: true });
+      view.render();
+
+      expect(view.el.dataset.controller).toContain("story ");
+      expect(view.el.dataset.storyIdValue).toBe("7");
+      expect(view.el.dataset.storyIsReadValue).toBe("false");
+      expect(view.el.dataset.storyKeepUnreadValue).toBe("true");
+    });
+
+    it("should wire story Stimulus actions", function () {
+      view.render();
+
+      expect(view.el.dataset.action).toContain("story:mark-as-read->story#markAsRead");
+      expect(view.el.dataset.action).toContain(
+        "keep-unread-toggle:toggled->story#keepUnreadToggled",
+      );
+    });
+
+    it("should ask the story controller to mark as read when opened", function () {
+      const listener = vi.fn();
+      view.el.addEventListener("story:mark-as-read", listener);
+
+      story.set("open", true);
+      story.set("open", false);
+
+      expect(listener).toHaveBeenCalledOnce();
+      view.el.removeEventListener("story:mark-as-read", listener);
+    });
+
     it("should wire keep-unread action to Stimulus controller", function () {
       view.render();
       var keepUnreadDiv = view.el.querySelector(".story-keep-unread");
@@ -199,6 +229,21 @@ describe("StoryView", function () {
         view.el.querySelector(".story-preview").dispatchEvent(e);
 
         expect(toggleStub).not.toHaveBeenCalled();
+      });
+
+      it("should ask to mark as read when clicked with metaKey pressed", function () {
+        const listener = vi.fn();
+        view.el.addEventListener("story:mark-as-read", listener);
+        vi.spyOn(window, "open").mockImplementation(() => {
+          return null;
+        });
+
+        var e = new MouseEvent("click", { bubbles: true, metaKey: true });
+        view.el.querySelector(".story-preview").dispatchEvent(e);
+
+        expect(listener).toHaveBeenCalledOnce();
+        view.el.removeEventListener("story:mark-as-read", listener);
+        vi.restoreAllMocks();
       });
 
       it("should not open story when clicked on it with ctrlKey pressed", function () {
