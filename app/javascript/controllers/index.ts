@@ -24,6 +24,9 @@ application.register("star-toggle", StarToggleController);
 import StoryController from "./story_controller";
 application.register("story", StoryController);
 
+import StoryListController from "./story_list_controller";
+application.register("story-list", StoryListController);
+
 import StoryRefreshController from "./story_refresh_controller";
 application.register("story-refresh", StoryRefreshController);
 

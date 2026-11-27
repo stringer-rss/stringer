@@ -6,6 +6,25 @@
 # `title` is the page's browser title without an unread count. The
 # unread-count controller puts the live count in front of it.
 class Components::StoryList < Components::Base
+  KEY_ACTIONS = {
+    "j" => "openNext",
+    "k" => "openPrevious",
+    "n" => "next",
+    "p" => "previous",
+    "o" => "toggleCurrent",
+    "enter" => "toggleCurrent",
+    "b" => "openCurrentInTab",
+    "v" => "openCurrentInTab"
+  }.freeze
+
+  ACTIONS = [
+    "story:read-changed->unread-count#update",
+    "story:opened->story-list#storyOpened",
+    *KEY_ACTIONS.map do |key, action|
+      "keydown.#{key}@document->story-list##{action}"
+    end
+  ].join(" ").freeze
+
   attr_accessor :stories, :title
 
   def initialize(stories:, title:)
@@ -20,8 +39,8 @@ class Components::StoryList < Components::Base
     div(
       id: "stories",
       data: {
-        controller: "unread-count",
-        action: "story:read-changed->unread-count#update",
+        controller: "unread-count story-list",
+        action: ACTIONS,
         unread_count_title_value: title
       }
     ) { ul(id: "story-list") }

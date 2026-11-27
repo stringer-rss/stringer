@@ -146,6 +146,47 @@ describe("StoryView", function () {
       view.el.removeEventListener("story:mark-as-read", listener);
     });
 
+    it("should be a story-list Stimulus target", function () {
+      view.render();
+
+      expect(view.el.dataset.storyListTarget).toBe("story");
+    });
+
+    it("should announce when it opens", function () {
+      const listener = vi.fn();
+      view.el.addEventListener("story:opened", listener);
+
+      story.set("open", true);
+      story.set("open", false);
+
+      expect(listener).toHaveBeenCalledOnce();
+      view.el.removeEventListener("story:opened", listener);
+    });
+
+    it("should open when the story list asks", function () {
+      const openStub = vi.spyOn(story, "open").mockImplementation(function () {});
+
+      view.el.dispatchEvent(new CustomEvent("story:open"));
+
+      expect(openStub).toHaveBeenCalledOnce();
+    });
+
+    it("should toggle when the story list asks", function () {
+      const toggleStub = vi.spyOn(story, "toggle").mockImplementation(function () {});
+
+      view.el.dispatchEvent(new CustomEvent("story:toggle"));
+
+      expect(toggleStub).toHaveBeenCalledOnce();
+    });
+
+    it("should open in a tab when the story list asks", function () {
+      const openInTabStub = vi.spyOn(story, "openInTab").mockImplementation(function () {});
+
+      view.el.dispatchEvent(new CustomEvent("story:open-in-tab"));
+
+      expect(openInTabStub).toHaveBeenCalledOnce();
+    });
+
     it("should wire keep-unread action to Stimulus controller", function () {
       view.render();
       var keepUnreadDiv = view.el.querySelector(".story-keep-unread");

@@ -8,28 +8,22 @@ describe("Story", function () {
   it("uses defaults", function () {
     var story = new Story();
     expect(story.get("open")).toBe(false);
-    expect(story.get("selected")).toBe(false);
   });
 
   describe("open", function () {
-    it("sets open and selected to true", function () {
+    it("sets open to true", function () {
       var story = new Story();
       story.open();
       expect(story.get("open")).toBe(true);
-      expect(story.get("selected")).toBe(true);
     });
 
-    it("calls closeOthers, unselectAll, setSelection on collection", function () {
+    it("calls closeOthers on collection", function () {
       var story = new Story();
       var spy = (story.collection = {
         closeOthers: vi.fn(),
-        setSelection: vi.fn(),
-        unselectAll: vi.fn(),
       });
       story.open();
       expect(spy.closeOthers).toHaveBeenCalledWith(story);
-      expect(spy.unselectAll).toHaveBeenCalledOnce();
-      expect(spy.setSelection).toHaveBeenCalledWith(story);
     });
   });
 
@@ -40,23 +34,6 @@ describe("Story", function () {
       expect(story.get("open")).toBe(true);
       story.close();
       expect(story.get("open")).toBe(false);
-    });
-  });
-
-  describe("select", function () {
-    it("sets selected to true", function () {
-      var story = new Story();
-      story.select();
-      expect(story.get("selected")).toBe(true);
-    });
-
-    it("calls unselectAll on collection", function () {
-      var story = new Story();
-      var spy = (story.collection = {
-        unselectAll: vi.fn(),
-      });
-      story.select();
-      expect(spy.unselectAll).toHaveBeenCalledOnce();
     });
   });
 
