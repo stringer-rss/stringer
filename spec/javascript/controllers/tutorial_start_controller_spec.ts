@@ -1,6 +1,6 @@
 import { bootStimulus } from "support/stimulus";
 import TutorialStartController from "controllers/tutorial_start_controller";
-import { assert } from "helpers/assert";
+import { ensure } from "helpers/ensure";
 
 async function setupController(): Promise<void> {
   vi.useFakeTimers();
@@ -20,11 +20,11 @@ async function setupController(): Promise<void> {
 }
 
 function cta(): HTMLElement {
-  return assert(document.querySelector<HTMLElement>("#cta"));
+  return ensure(document.querySelector<HTMLElement>("#cta"));
 }
 
 function startButton(): HTMLElement {
-  return assert(document.querySelector<HTMLElement>("#start"));
+  return ensure(document.querySelector<HTMLElement>("#start"));
 }
 
 describe("tutorial-start", () => {
@@ -55,7 +55,7 @@ describe("tutorial-start", () => {
   it("does nothing if disconnected before the delay", async () => {
     await setupController();
 
-    const element = assert(document.querySelector("[data-controller]"));
+    const element = ensure(document.querySelector("[data-controller]"));
     element.removeAttribute("data-controller");
     await Promise.resolve();
     vi.advanceTimersByTime(1000);

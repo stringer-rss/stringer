@@ -1,6 +1,6 @@
 import {Controller} from "@hotwired/stimulus";
 
-import {assert} from "helpers/assert";
+import {ensure} from "helpers/ensure";
 
 export default class extends Controller {
   static override targets = ["form"];
@@ -10,6 +10,6 @@ export default class extends Controller {
   submit(event: Event): void {
     event.preventDefault();
 
-    assert(this.formTarget).requestSubmit();
+    ensure(this.formTarget).requestSubmit();
   }
 }

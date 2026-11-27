@@ -1,6 +1,6 @@
 import { bootStimulus, getController } from "support/stimulus";
 import HotkeysController from "controllers/hotkeys_controller";
-import { assert } from "helpers/assert";
+import { ensure } from "helpers/ensure";
 
 function setupDOM(): void {
   document.body.innerHTML = `
@@ -19,7 +19,7 @@ async function setupController(): Promise<void> {
 function element(): HTMLElement {
   const selector = "[data-controller='hotkeys']";
 
-  return assert(document.querySelector<HTMLElement>(selector));
+  return ensure(document.querySelector<HTMLElement>(selector));
 }
 
 function controller(): HotkeysController {
@@ -29,7 +29,7 @@ function controller(): HotkeysController {
 function button(): HTMLButtonElement {
   const selector = "button[data-hotkeys-target='click']";
 
-  return assert(document.querySelector<HTMLButtonElement>(selector));
+  return ensure(document.querySelector<HTMLButtonElement>(selector));
 }
 
 describe("clickTargetConnected", () => {

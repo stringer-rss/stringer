@@ -1,7 +1,7 @@
 import type { Context, Controller } from "@hotwired/stimulus";
 import { Application } from "@hotwired/stimulus";
 
-import { assert } from "helpers/assert";
+import { ensure } from "helpers/ensure";
 
 let application: Application | null = null;
 
@@ -25,7 +25,7 @@ function getController<T extends Controller>(
   controllerClass: ControllerClass<T>,
 ): T {
   const controller =
-    assert(application).getControllerForElementAndIdentifier(element, name);
+    ensure(application).getControllerForElementAndIdentifier(element, name);
 
   if (controller instanceof controllerClass) {
     return controller;

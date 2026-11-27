@@ -1,6 +1,6 @@
 import {bootStimulus, getController} from "support/stimulus";
 import Controller from "controllers/mark_all_as_read_controller";
-import {assert} from "helpers/assert";
+import {ensure} from "helpers/ensure";
 
 const name = "mark-all-as-read";
 const sel = `[data-controller='${name}']`;
@@ -29,7 +29,7 @@ async function setupController(): Promise<void> {
 function element(): HTMLElement {
   const el = document.querySelector<HTMLElement>(sel);
 
-  return assert(el);
+  return ensure(el);
 }
 
 function controller(): Controller {
@@ -39,7 +39,7 @@ function controller(): Controller {
 function form(): HTMLFormElement {
   const el = document.querySelector<HTMLFormElement>(formSel);
 
-  return assert(el);
+  return ensure(el);
 }
 
 describe("submit", () => {

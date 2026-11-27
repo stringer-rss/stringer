@@ -1,6 +1,6 @@
 import {bootStimulus} from "support/stimulus";
 import UnreadCountController from "controllers/unread_count_controller";
-import {assert} from "helpers/assert";
+import {ensure} from "helpers/ensure";
 
 function storyItem(read: boolean): string {
   if (read) {
@@ -27,7 +27,7 @@ async function setupController(stories: boolean[]): Promise<void> {
 }
 
 function storyList(): HTMLElement {
-  return assert(document.querySelector<HTMLElement>("#story-list"));
+  return ensure(document.querySelector<HTMLElement>("#story-list"));
 }
 
 async function targetsObserved(): Promise<void> {
@@ -55,7 +55,7 @@ describe("unread-count", () => {
   it("clears the count when a story announces read-changed", async () => {
     await setupController([false, true]);
 
-    markRead(assert(storyList().querySelector(".story:not(.read)")));
+    markRead(ensure(storyList().querySelector(".story:not(.read)")));
 
     expect(document.title).toBe("Stringer");
   });

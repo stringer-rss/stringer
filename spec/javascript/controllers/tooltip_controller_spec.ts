@@ -2,7 +2,7 @@ import { Tooltip } from "bootstrap";
 
 import { bootStimulus } from "support/stimulus";
 import TooltipController from "controllers/tooltip_controller";
-import { assert } from "helpers/assert";
+import { ensure } from "helpers/ensure";
 
 async function setupController(): Promise<HTMLElement> {
   // Static test fixture — safe to use innerHTML
@@ -11,7 +11,7 @@ async function setupController(): Promise<HTMLElement> {
 
   await bootStimulus("tooltip", TooltipController);
 
-  return assert(document.querySelector<HTMLElement>("#icon"));
+  return ensure(document.querySelector<HTMLElement>("#icon"));
 }
 
 async function mutationsObserved(): Promise<void> {
