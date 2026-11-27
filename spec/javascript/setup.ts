@@ -8,6 +8,11 @@ beforeEach(() => {
   expect.hasAssertions();
 });
 
+// Specs that call vi.useFakeTimers() get real timers back afterward.
+afterEach(() => {
+  vi.useRealTimers();
+});
+
 globalThis._ = underscore;
 globalThis.Backbone = Backbone;
 

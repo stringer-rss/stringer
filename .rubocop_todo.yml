@@ -228,12 +228,6 @@ Rails/InverseOf:
   Exclude:
     - 'app/models/feed.rb'
 
-# Offense count: 2
-Rails/OutputSafety:
-  Exclude:
-    - 'app/views/feeds/index.rb'
-    - 'app/views/tutorials/index.rb'
-
 # Offense count: 3
 Rails/ReversibleMigrationMethodDefinition:
   Exclude:

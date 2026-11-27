@@ -227,6 +227,9 @@ importers:
       '@types/backbone':
         specifier: latest
         version: 1.4.23
+      '@types/bootstrap':
+        specifier: ^5.2.11
+        version: 5.2.11
       '@types/hotwired__turbo':
         specifier: ^8.0.16
         version: 8.0.16
@@ -980,6 +983,9 @@ packages:
 
   '@types/backbone@1.4.23':
     resolution: {integrity: sha512-B/hN/DAJdWFOusEkEoa5xgfVuxJJPOR/6JQ2uwURPDyKL24PuC76IR6EcSRJ6lvGWtxHRQYMJQhJYm6KpMDtGQ==}
+
+  '@types/bootstrap@5.2.11':
+    resolution: {integrity: sha512-69ykbLiNzQxi6Q/y/aYJLrlzI5QkLQjhIYW2U+cxujBxAmaBtmXKtxnFes59Ttfpt936as6xJU0dYnmVpcwIwg==}
 
   '@types/chai@5.2.3':
     resolution: {integrity: sha512-Mw558oeA9fFbv65/y4mHtXDs9bPnFMZAL/jxdPFUpOHHIXX91mcgEHbS5Lahr+pwZFR8A7GQleRWeI6cGFC2UA==}
@@ -3061,6 +3067,10 @@ snapshots:
     dependencies:
       '@types/jquery': 3.5.34
       '@types/underscore': 1.13.0
+
+  '@types/bootstrap@5.2.11':
+    dependencies:
+      '@popperjs/core': 2.11.8
 
   '@types/chai@5.2.3':
     dependencies:
