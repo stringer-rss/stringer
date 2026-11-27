@@ -7,6 +7,8 @@ class Views::Debug::Heroku < Views::Base
     Frequency: Hourly
   TEXT
 
+  def page_title = t("page_titles.heroku_setup")
+
   def view_template
     instructions
     start_button

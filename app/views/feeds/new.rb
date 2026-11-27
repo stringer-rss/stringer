@@ -8,6 +8,8 @@ class Views::Feeds::New < Views::Base
     self.feed_url = feed_url
   end
 
+  def page_title = t("page_titles.add_feed")
+
   def view_template
     div(id: "action-bar") { render(Components::FeedActionBar.new) }
 

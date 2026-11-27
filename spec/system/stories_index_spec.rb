@@ -283,11 +283,11 @@ RSpec.describe "stories/index" do
     create(:story, title: "My Story")
     login_as(default_user)
     visit news_path
-    expect(page).to have_title("(1)")
+    expect(page).to have_title("(1) Stories | stringer", exact: true)
 
     find(".story-preview", text: "My Story").click
 
-    expect(page).to have_no_title("(1)")
+    expect(page).to have_title("Stories | stringer", exact: true)
   end
 
   it "allows viewing a story with hot keys" do

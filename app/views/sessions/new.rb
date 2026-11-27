@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Views::Sessions::New < Views::Base
+  def page_title = t("page_titles.log_in")
+
   def view_template
     div(class: "setup", id: "feed-setup") do
       heading

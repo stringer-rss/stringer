@@ -10,6 +10,8 @@ class Views::Debug::Index < Views::Base
     self.user_agent = user_agent
   end
 
+  def page_title = t("page_titles.debug")
+
   def view_template
     div(id: "debug") do
       h1 { "Debug Information" }

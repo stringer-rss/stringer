@@ -3,6 +3,8 @@
 class Views::Imports::New < Views::Base
   include Phlex::Rails::Helpers::SubmitTag
 
+  def page_title = t("page_titles.import_feeds")
+
   def view_template
     nav { render(Components::LoggedInAs.new) }
 

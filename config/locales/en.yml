@@ -76,6 +76,21 @@ en:
     profile: Profile
     support: Support
     title: stringer | your rss buddy
+  page_titles:
+    add_feed: Add a feed
+    archived_stories: Archived stories
+    debug: Debug
+    edit_feed: Edit feed
+    edit_profile: Edit profile
+    feeds: Feeds
+    heroku_setup: Heroku setup
+    import_feeds: Import feeds
+    log_in: Log in
+    set_up_account: Set up your account
+    settings: Application settings
+    starred_stories: Starred stories
+    stories: Stories
+    tutorial: Tutorial
   partials:
     action_bar:
       add_feed: Add a feed

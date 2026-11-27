@@ -17,6 +17,8 @@ class Views::Feeds::Index < Views::Base
     self.feeds = feeds
   end
 
+  def page_title = t("page_titles.feeds")
+
   def view_template
     div(id: "action-bar") { render(Components::FeedActionBar.new) }
 

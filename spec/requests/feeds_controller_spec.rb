@@ -13,6 +13,14 @@ RSpec.describe FeedsController do
       expect(rendered).to have_css("li.feed", count: 2)
     end
 
+    it "titles the page with the page name and site name" do
+      login_as(default_user)
+
+      get "/feeds"
+
+      expect(rendered).to have_title("Feeds | stringer", exact: true)
+    end
+
     it "displays message to add feeds if there are none" do
       login_as(default_user)
 
@@ -66,7 +74,7 @@ RSpec.describe FeedsController do
 
       get "/feed/#{story.feed_id}"
 
-      expect(rendered).to have_title(/\(1\)/)
+      expect(rendered).to have_title("(1) #{story.feed.name} | stringer")
     end
 
     it "leaves the unread count out of the title when all stories are read" do
@@ -75,7 +83,8 @@ RSpec.describe FeedsController do
 
       get "/feed/#{story.feed_id}"
 
-      expect(rendered).to have_no_title(/\(\d+\)/)
+      title = "#{story.feed.name} | stringer"
+      expect(rendered).to have_title(title, exact: true)
     end
 
     it "raises an error if the feed belongs to another user" do
