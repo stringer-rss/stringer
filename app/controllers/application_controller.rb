@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+  layout false
+
   before_action :complete_setup
   before_action :authenticate_user
   after_action -> { authorization.verify }
