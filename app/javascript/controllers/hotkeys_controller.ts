@@ -1,6 +1,6 @@
-import {Controller} from "@hotwired/stimulus";
+import { Controller } from "@hotwired/stimulus";
 
-import {assert} from "helpers/assert";
+import { assert } from "helpers/assert";
 
 export default class extends Controller {
   static override targets = ["click"];
@@ -10,12 +10,12 @@ export default class extends Controller {
   indexedClickTargets = new Map<string, HTMLElement>();
 
   clickTargetConnected(element: HTMLElement): void {
-    const {hotkey} = element.dataset;
+    const { hotkey } = element.dataset;
     this.indexedClickTargets.set(assert(hotkey), element);
   }
 
   clickTargetDisconnected(element: HTMLElement): void {
-    const {hotkey} = element.dataset;
+    const { hotkey } = element.dataset;
     this.indexedClickTargets.delete(assert(hotkey));
   }
 

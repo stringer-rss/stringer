@@ -6,4 +6,4 @@ function assert<T>(value: T | null | undefined): T {
   return value;
 }
 
-export {assert};
+export { assert };

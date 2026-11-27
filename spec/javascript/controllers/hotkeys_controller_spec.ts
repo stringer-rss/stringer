@@ -1,6 +1,6 @@
-import {bootStimulus, getController} from "support/stimulus";
+import { bootStimulus, getController } from "support/stimulus";
 import HotkeysController from "controllers/hotkeys_controller";
-import {assert} from "helpers/assert";
+import { assert } from "helpers/assert";
 
 function setupDOM(): void {
   document.body.innerHTML = `
@@ -57,7 +57,7 @@ describe("handleKeydown", () => {
     await setupController();
     const clickSpy = vi.spyOn(button(), "click");
 
-    controller().handleKeydown(new KeyboardEvent("keydown", {key: "a"}));
+    controller().handleKeydown(new KeyboardEvent("keydown", { key: "a" }));
 
     expect(clickSpy).toHaveBeenCalledWith();
   });
@@ -66,7 +66,7 @@ describe("handleKeydown", () => {
     await setupController();
     const clickSpy = vi.spyOn(button(), "click");
 
-    controller().handleKeydown(new KeyboardEvent("keydown", {key: "b"}));
+    controller().handleKeydown(new KeyboardEvent("keydown", { key: "b" }));
 
     expect(clickSpy).not.toHaveBeenCalled();
   });

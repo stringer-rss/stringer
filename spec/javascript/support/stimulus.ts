@@ -1,7 +1,7 @@
-import type {Context, Controller} from "@hotwired/stimulus";
-import {Application} from "@hotwired/stimulus";
+import type { Context, Controller } from "@hotwired/stimulus";
+import { Application } from "@hotwired/stimulus";
 
-import {assert} from "helpers/assert";
+import { assert } from "helpers/assert";
 
 let application: Application | null = null;
 
@@ -42,4 +42,4 @@ afterEach(() => {
   application = null;
 });
 
-export {bootStimulus, getController};
+export { bootStimulus, getController };
