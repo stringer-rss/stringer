@@ -96,18 +96,6 @@ var Story = Backbone.Model.extend({
     }
   },
 
-  toggleKeepUnread: function() {
-    if (this.get("keep_unread")) {
-      this.set("keep_unread", false);
-      this.set("is_read", true);
-    } else {
-      this.set("keep_unread", true);
-      this.set("is_read", false);
-    }
-
-    if (this.shouldSave()) this.save(null, { headers: requestHeaders() });
-  },
-
   unselect: function() {
     this.set("selected", false);
   }
@@ -260,11 +248,6 @@ var StoryList = Backbone.Collection.extend({
     this.at(this.cursorPosition).toggle();
   },
 
-  toggleCurrentKeepUnread: function() {
-    if (this.cursorPosition < 0) this.cursorPosition = 0;
-    this.at(this.cursorPosition).toggleKeepUnread();
-  },
-
   unselectAll: function() {
     _.invoke(this.selected(), "unselect");
   },
@@ -314,10 +297,6 @@ var AppView = Backbone.NativeView.extend({
 
   toggleCurrent: function() {
     this.stories.toggleCurrent();
-  },
-
-  toggleCurrentKeepUnread: function() {
-    this.stories.toggleCurrentKeepUnread();
   },
 
   viewCurrentInTab: function() {
