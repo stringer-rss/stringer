@@ -135,48 +135,17 @@ describe("StoryView", function () {
       );
     });
 
-    it("should ask the story controller to mark as read when opened", function () {
-      const listener = vi.fn();
-      view.el.addEventListener("story:mark-as-read", listener);
-
-      story.set("open", true);
-      story.set("open", false);
-
-      expect(listener).toHaveBeenCalledOnce();
-      view.el.removeEventListener("story:mark-as-read", listener);
-    });
-
     it("should be a story-list Stimulus target", function () {
       view.render();
 
       expect(view.el.dataset.storyListTarget).toBe("story");
     });
 
-    it("should announce when it opens", function () {
-      const listener = vi.fn();
-      view.el.addEventListener("story:opened", listener);
+    it("should wire the preview click to the story Stimulus controller", function () {
+      view.render();
+      var preview = view.el.querySelector(".story-preview");
 
-      story.set("open", true);
-      story.set("open", false);
-
-      expect(listener).toHaveBeenCalledOnce();
-      view.el.removeEventListener("story:opened", listener);
-    });
-
-    it("should open when the story list asks", function () {
-      const openStub = vi.spyOn(story, "open").mockImplementation(function () {});
-
-      view.el.dispatchEvent(new CustomEvent("story:open"));
-
-      expect(openStub).toHaveBeenCalledOnce();
-    });
-
-    it("should toggle when the story list asks", function () {
-      const toggleStub = vi.spyOn(story, "toggle").mockImplementation(function () {});
-
-      view.el.dispatchEvent(new CustomEvent("story:toggle"));
-
-      expect(toggleStub).toHaveBeenCalledOnce();
+      expect(preview.getAttribute("data-action")).toBe("click->story#toggle");
     });
 
     it("should open in a tab when the story list asks", function () {
@@ -250,26 +219,25 @@ describe("StoryView", function () {
     });
 
     describe("Handling click on story", function () {
-      let toggleStub;
+      it("should not open a tab on a plain click", function () {
+        const openSpy = vi.spyOn(window, "open").mockImplementation(() => {
+          return null;
+        });
 
-      beforeEach(function () {
-        toggleStub = vi.spyOn(story, "toggle").mockImplementation(function () {});
-      });
-
-      afterEach(function () {
-        toggleStub.mockRestore();
-      });
-
-      it("should open story when clicked on it", function () {
         view.el.querySelector(".story-preview").click();
-        expect(toggleStub).toHaveBeenCalledOnce();
+
+        expect(openSpy).not.toHaveBeenCalled();
       });
 
-      it("should not open story when clicked on it with metaKey pressed", function () {
-        var e = new MouseEvent("click", { bubbles: true, metaKey: true });
+      it("should open a tab when clicked with ctrlKey pressed", function () {
+        const openSpy = vi.spyOn(window, "open").mockImplementation(() => {
+          return null;
+        });
+
+        var e = new MouseEvent("click", { bubbles: true, ctrlKey: true });
         view.el.querySelector(".story-preview").dispatchEvent(e);
 
-        expect(toggleStub).not.toHaveBeenCalled();
+        expect(openSpy).toHaveBeenCalledWith(story.get("permalink"));
       });
 
       it("should ask to mark as read when clicked with metaKey pressed", function () {
@@ -285,13 +253,6 @@ describe("StoryView", function () {
         expect(listener).toHaveBeenCalledOnce();
         view.el.removeEventListener("story:mark-as-read", listener);
         vi.restoreAllMocks();
-      });
-
-      it("should not open story when clicked on it with ctrlKey pressed", function () {
-        var e = new MouseEvent("click", { bubbles: true, ctrlKey: true });
-        view.el.querySelector(".story-preview").dispatchEvent(e);
-
-        expect(toggleStub).not.toHaveBeenCalled();
       });
     });
   });

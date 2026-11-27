@@ -1,15 +1,21 @@
 import { Controller } from "@hotwired/stimulus";
 
+import type StoryController from "controllers/story_controller";
+
 /*
- * Owns the story cursor: the "cursor" class on one story target, moved with
- * the keyboard and wrapping at either end. Opening, toggling and opening in a
- * tab still belong to the Backbone StoryView, so those are requested with
- * "story:open", "story:toggle" and "story:open-in-tab" events on the story.
+ * Owns the story cursor and the accordion: one story target has the "cursor"
+ * class, moved with the keyboard and wrapping at either end, and opening a
+ * story closes the others. Opening in a tab still belongs to the Backbone
+ * StoryView, so it is requested with a "story:open-in-tab" event.
  */
 export default class extends Controller {
   static override targets = ["story"];
 
+  static override outlets = ["story"];
+
   declare storyTargets: HTMLElement[];
+
+  declare storyOutlets: StoryController[];
 
   next(): void {
     this.moveCursor(1);
@@ -21,20 +27,22 @@ export default class extends Controller {
 
   openNext(): void {
     this.next();
-    this.requestOnCurrent("story:open");
+    this.currentStory()?.open();
   }
 
   openPrevious(): void {
     this.previous();
-    this.requestOnCurrent("story:open");
+    this.currentStory()?.open();
   }
 
   toggleCurrent(): void {
-    this.requestOnCurrent("story:toggle");
+    this.currentStory()?.toggle();
   }
 
   openCurrentInTab(): void {
-    this.requestOnCurrent("story:open-in-tab");
+    this.currentStory()?.element.dispatchEvent(
+      new CustomEvent("story:open-in-tab"),
+    );
   }
 
   storyOpened(event: Event): void {
@@ -42,8 +50,15 @@ export default class extends Controller {
       return event.target instanceof Node && target.contains(event.target);
     });
 
-    if (story) {
-      this.setCursor(story);
+    if (!story) {
+      return;
+    }
+
+    this.setCursor(story);
+    for (const outlet of this.storyOutlets) {
+      if (outlet.element !== story) {
+        outlet.close();
+      }
     }
   }
 
@@ -79,9 +94,11 @@ export default class extends Controller {
   }
 
   // With no cursor yet, act on the first story.
-  private requestOnCurrent(eventName: string): void {
+  private currentStory(): StoryController | undefined {
     const story = this.storyTargets[this.cursorIndex()] ?? this.storyTargets[0];
 
-    story?.dispatchEvent(new CustomEvent(eventName));
+    return this.storyOutlets.find((outlet) => {
+      return outlet.element === story;
+    });
   }
 }

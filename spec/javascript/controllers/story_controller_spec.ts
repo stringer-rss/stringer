@@ -15,6 +15,7 @@ void {
     `    data-story-id-value='${id}'`,
     `    data-story-is-read-value='${isRead}'`,
     `    data-story-keep-unread-value='${keepUnread}'>`,
+    "  <div class='story-preview' data-action='click->story#toggle'></div>",
     "</li>",
   ].join("\n");
 }
@@ -156,5 +157,116 @@ describe("keepUnreadToggled", () => {
     controller().markAsRead();
 
     expect(element().classList.contains("read")).toBe(true);
+  });
+});
+
+function preview(): HTMLElement {
+  return ensure(element().querySelector<HTMLElement>(".story-preview"));
+}
+
+function clickPreview(options: MouseEventInit = {}): void {
+  preview().dispatchEvent(
+    new MouseEvent("click", { bubbles: true, ...options }),
+  );
+}
+
+function isOpen(): boolean {
+  return element().classList.contains("open");
+}
+
+describe("open", () => {
+  it("adds the open class and marks the story read", async () => {
+    await setupController();
+    mockFetch();
+
+    controller().open();
+
+    expect(isOpen()).toBe(true);
+    expect(element().classList.contains("read")).toBe(true);
+  });
+
+  it("announces that it opened", async () => {
+    await setupController();
+    mockFetch();
+    const listener = vi.fn<(event: Event) => void>();
+    element().addEventListener("story:opened", listener);
+
+    controller().open();
+
+    expect(listener).toHaveBeenCalledExactlyOnceWith(expect.any(CustomEvent));
+  });
+
+  it("scrolls the story into view", async () => {
+    await setupController();
+    mockFetch();
+    const scrollSpy = vi.spyOn(element(), "scrollIntoView");
+
+    controller().open();
+
+    expect(scrollSpy).toHaveBeenCalledExactlyOnceWith(
+      { behavior: "instant", block: "start" },
+    );
+  });
+});
+
+describe("close", () => {
+  it("removes the open class", async () => {
+    await setupController();
+    mockFetch();
+    controller().open();
+
+    controller().close();
+
+    expect(isOpen()).toBe(false);
+  });
+});
+
+describe("toggle", () => {
+  it("opens and closes the story when the preview is clicked", async () => {
+    await setupController();
+    mockFetch();
+
+    clickPreview();
+    expect(isOpen()).toBe(true);
+
+    clickPreview();
+    expect(isOpen()).toBe(false);
+  });
+
+  it("scrolls the story into view when closed by a click", async () => {
+    await setupController();
+    mockFetch();
+    controller().open();
+    const scrollSpy = vi.spyOn(element(), "scrollIntoView");
+
+    clickPreview();
+
+    expect(scrollSpy).toHaveBeenCalledExactlyOnceWith(
+      { behavior: "instant", block: "start" },
+    );
+  });
+
+  it("does not scroll when closed without a click", async () => {
+    await setupController();
+    mockFetch();
+    controller().open();
+    const scrollSpy = vi.spyOn(element(), "scrollIntoView");
+
+    controller().toggle();
+
+    expect(scrollSpy).not.toHaveBeenCalled();
+  });
+
+  it.each([
+    ["meta", { metaKey: true }],
+    ["ctrl", { ctrlKey: true }],
+    ["middle", { button: 1 }],
+  ])("ignores %s clicks, which open a tab instead", async (_name, options) => {
+    await setupController();
+    mockFetch();
+
+    clickPreview(options);
+
+    expect(isOpen()).toBe(false);
   });
 });

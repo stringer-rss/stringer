@@ -40,32 +40,8 @@ _.templateSettings = {
 };
 
 var Story = Backbone.Model.extend({
-  close: function() {
-    this.set("open", false);
-  },
-
-  defaults: function() {
-    return {
-      "open" : false
-    }
-  },
-
-  open: function() {
-    if(this.collection) this.collection.closeOthers(this);
-
-    this.set("open", true);
-  },
-
   openInTab: function() {
     window.open(this.get("permalink"), '_blank');
-  },
-
-  toggle: function() {
-    if (this.get("open")) {
-      this.close();
-    } else {
-      this.open();
-    }
   }
 });
 
@@ -78,30 +54,12 @@ var StoryView = Backbone.NativeView.extend({
   initialize: function() {
     this.template = _.template(document.querySelector(this.template).innerHTML);
     this.listenTo(this.model, 'add', this.render);
-    this.listenTo(this.model, 'change:open', this.itemOpened);
-    // Requests from the story-list Stimulus controller, which owns the cursor.
-    this.el.addEventListener('story:open', () => { this.model.open(); });
-    this.el.addEventListener('story:toggle', () => { this.model.toggle(); });
+    // Request from the story-list Stimulus controller, which owns the cursor.
     this.el.addEventListener('story:open-in-tab', () => { this.model.openInTab(); });
     this.el.addEventListener('story-refresh:refreshed', (e) => {
       this.model.set(e.detail.story, {silent: true});
       this.render();
-      this.itemOpened();
     });
-  },
-
-  itemOpened: function() {
-    var storyLead = this.el.querySelector(".story-lead");
-    if (this.model.get("open")) {
-      this.el.classList.add("open");
-      this.markAsRead();
-      this.el.dispatchEvent(new CustomEvent("story:opened", { bubbles: true }));
-      if (storyLead) storyLead.style.display = "none";
-      this.el.scrollIntoView({ behavior: "instant", block: "start" });
-    } else {
-      this.el.classList.remove("open");
-      if (storyLead) storyLead.style.display = "";
-    }
   },
 
   // Bridge to the story Stimulus controller, which owns read state.
@@ -139,15 +97,13 @@ var StoryView = Backbone.NativeView.extend({
     return this;
   },
 
+  // Plain clicks open the story through the story Stimulus controller.
   storyClicked: function(e) {
     if (e.metaKey || e.ctrlKey || e.which == 2) {
       var backgroundTab = window.open(this.model.get("permalink"));
       if (backgroundTab) backgroundTab.blur();
       window.focus();
       this.markAsRead();
-    } else {
-      this.model.toggle();
-      this.el.scrollIntoView({ behavior: "instant", block: "start" });
     }
   },
 
@@ -158,13 +114,6 @@ var StoryView = Backbone.NativeView.extend({
 });
 
 var StoryList = Backbone.Collection.extend({
-  closeOthers: function(modelToSkip) {
-    this.each(function(model) {
-      if (model.id != modelToSkip.id) {
-        model.close();
-      }
-    });
-  },
   model: Story,
 
   url: "/stories"

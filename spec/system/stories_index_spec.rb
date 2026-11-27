@@ -49,6 +49,19 @@ RSpec.describe "stories/index" do
     expect(page).to have_text("My Body")
   end
 
+  it "closes the open story when another is clicked", :aggregate_failures do
+    create(:story, title: "First Story")
+    create(:story, title: "Second Story")
+    login_as(default_user)
+    visit news_path
+
+    find(".story-preview", text: "First Story").click
+    find(".story-preview", text: "Second Story").click
+
+    expect(page).to have_css("li.story.open", count: 1)
+    expect(find("li.story.open")).to have_text("Second Story")
+  end
+
   def star_story(story_title)
     visit(news_path)
 

@@ -5,55 +5,6 @@ describe("Story", function () {
     expect(Story).toBeDefined();
   });
 
-  it("uses defaults", function () {
-    var story = new Story();
-    expect(story.get("open")).toBe(false);
-  });
-
-  describe("open", function () {
-    it("sets open to true", function () {
-      var story = new Story();
-      story.open();
-      expect(story.get("open")).toBe(true);
-    });
-
-    it("calls closeOthers on collection", function () {
-      var story = new Story();
-      var spy = (story.collection = {
-        closeOthers: vi.fn(),
-      });
-      story.open();
-      expect(spy.closeOthers).toHaveBeenCalledWith(story);
-    });
-  });
-
-  describe("close", function () {
-    it("sets open to false", function () {
-      var story = new Story();
-      story.set("open", true);
-      expect(story.get("open")).toBe(true);
-      story.close();
-      expect(story.get("open")).toBe(false);
-    });
-  });
-
-  describe("toggle", function () {
-    it("calles open/close based on state", function () {
-      var story = new Story();
-      vi.spyOn(story, "open").mockImplementation(function () {});
-      vi.spyOn(story, "close").mockImplementation(function () {});
-
-      story.toggle();
-      expect(story.open).toHaveBeenCalledOnce();
-      expect(story.close).not.toHaveBeenCalled();
-
-      story.set("open", true);
-      story.toggle();
-      expect(story.open).toHaveBeenCalledOnce();
-      expect(story.close).toHaveBeenCalledOnce();
-    });
-  });
-
   describe("openInTab", function () {
     it("opens a new window", function () {
       var story = new Story({ permalink: "http://localhost" });

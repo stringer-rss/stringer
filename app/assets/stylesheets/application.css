@@ -250,6 +250,10 @@ li.story.open .story-preview {
   color: #c5c5c5;
 }
 
+li.story.open .story-lead {
+  display: none;
+}
+
 .story-published {
   margin-left: 20px;
 }
