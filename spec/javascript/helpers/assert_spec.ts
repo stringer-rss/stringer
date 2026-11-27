@@ -1,4 +1,4 @@
-import {assert} from "helpers/assert";
+import { assert } from "helpers/assert";
 
 describe("assert", () => {
   it("throws an error when the passed value is null", () => {
@@ -25,7 +25,7 @@ describe("assert", () => {
     expect(assert("blah")).toBe("blah");
     expect(assert(0)).toBe(0);
 
-    const obj = {bloo: "blah"};
+    const obj = { bloo: "blah" };
 
     expect(assert(obj)).toBe(obj);
   });

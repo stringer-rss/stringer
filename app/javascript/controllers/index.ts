@@ -4,7 +4,7 @@
  * ./bin/rails generate stimulus controllerName
  */
 
-import {application} from "./application";
+import { application } from "./application";
 
 import DialogController from "./dialog_controller";
 application.register("dialog", DialogController);
