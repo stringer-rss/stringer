@@ -1,4 +1,4 @@
-import {refreshStory, updateStory} from "helpers/api";
+import {updateStory} from "helpers/api";
 
 describe("updateStory", () => {
   afterEach(() => {
@@ -38,30 +38,5 @@ describe("updateStory", () => {
     const {headers} = fetchSpy.mock.calls[0]?.[1] ?? {};
 
     expect(headers).toHaveProperty("X-CSRF-Token", "");
-  });
-});
-
-describe("refreshStory", () => {
-  afterEach(() => {
-    vi.restoreAllMocks();
-  });
-
-  it("sends a POST with CSRF token", async () => {
-    const fetchSpy = vi.spyOn(globalThis, "fetch").
-      mockResolvedValue(new Response("{}", {status: 200}));
-
-    const meta = document.createElement("meta");
-    meta.name = "csrf-token";
-    meta.content = "test-token";
-    document.head.appendChild(meta);
-
-    await refreshStory("42");
-
-    expect(fetchSpy).toHaveBeenCalledWith("/stories/42/refresh", {
-      headers: {"X-CSRF-Token": "test-token"},
-      method: "POST",
-    });
-
-    meta.remove();
   });
 });

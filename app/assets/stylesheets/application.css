@@ -274,6 +274,21 @@ li.story.open .story-lead {
   margin-right: 20px;
 }
 
+li.story > turbo-frame {
+  display: block;
+}
+
+.story-refresh-form {
+  display: inline;
+}
+
+.story-refresh {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+}
+
 .story-preview .story-starred {
   width: 13px;
   float: left;

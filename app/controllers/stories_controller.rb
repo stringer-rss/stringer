@@ -26,11 +26,11 @@ class StoriesController < ApplicationController
   def refresh
     story = authorization.check(StoryRepository.fetch(params[:id]))
 
-    if RefreshFromFeed.call(story)
-      render(json: story)
-    else
-      head(:unprocessable_content)
-    end
+    # The refresh form submits inside the story's Turbo Frame, which swaps in
+    # this response. On failure, render the story unchanged so the frame
+    # still finds its content.
+    status = RefreshFromFeed.call(story) ? :ok : :unprocessable_content
+    render(Components::StoryFrame.new(story:), layout: false, status:)
   end
 
   def mark_all_as_read
