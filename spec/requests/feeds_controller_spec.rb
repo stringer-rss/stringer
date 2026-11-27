@@ -163,6 +163,16 @@ RSpec.describe FeedsController do
 
       expect { delete("/feeds/#{feed.id}") }.to delete_record(feed)
     end
+
+    it "shows a success message on the feeds page" do
+      login_as(default_user)
+      feed = create(:feed)
+
+      delete("/feeds/#{feed.id}")
+      follow_redirect!
+
+      expect(rendered).to have_css(".alert-success", text: "Feed deleted.")
+    end
   end
 
   describe "#new" do

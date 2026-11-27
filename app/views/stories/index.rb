@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class Views::Stories::Index < Views::Base
-  include Phlex::Rails::Helpers::ContentFor
-
   attr_accessor :stories
 
   def initialize(stories:)
@@ -10,9 +8,11 @@ class Views::Stories::Index < Views::Base
     self.stories = stories
   end
 
-  def view_template
-    content_for(:title, "(#{stories.count})") unless stories.empty?
+  def page_title
+    "(#{stories.count})" unless stories.empty?
+  end
 
+  def view_template
     div(id: "action-bar") do
       render(Components::StoriesActionBar.new(stories:))
     end
