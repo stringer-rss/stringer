@@ -1,7 +1,7 @@
 import type {MockInstance} from "vitest";
 import {bootStimulus, getController} from "support/stimulus";
 import StoryRefreshController from "controllers/story_refresh_controller";
-import {assert} from "helpers/assert";
+import {ensure} from "helpers/ensure";
 
 function setupDOM(): void {
   // Static test fixture — safe to use innerHTML
@@ -25,7 +25,7 @@ async function setupController(): Promise<void> {
 const sel = "[data-controller='story-refresh']";
 
 function element(): HTMLElement {
-  return assert(document.querySelector<HTMLElement>(sel));
+  return ensure(document.querySelector<HTMLElement>(sel));
 }
 
 function controller(): StoryRefreshController {

@@ -89,7 +89,7 @@ const config: Linter.Config[] = [
       "app/javascript/controllers/star_toggle_controller.ts",
       "spec/javascript/controllers/star_toggle_controller_spec.ts",
       "spec/javascript/controllers/unread_count_controller_spec.ts",
-      "spec/javascript/helpers/assert_spec.ts",
+      "spec/javascript/helpers/ensure_spec.ts",
       "spec/javascript/support/stimulus.ts",
     ],
     rules: {

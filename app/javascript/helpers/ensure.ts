@@ -1,4 +1,4 @@
-function assert<T>(value: T | null | undefined): T {
+function ensure<T>(value: T | null | undefined): T {
   if (value === null || value === undefined) {
     throw new Error("value is null or undefined");
   }
@@ -6,4 +6,4 @@ function assert<T>(value: T | null | undefined): T {
   return value;
 }
 
-export { assert };
+export { ensure };

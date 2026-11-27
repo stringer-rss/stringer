@@ -1,7 +1,7 @@
 import type {MockInstance} from "vitest";
 import {bootStimulus, getController} from "support/stimulus";
 import StarToggleController from "controllers/star_toggle_controller";
-import {assert} from "helpers/assert";
+import {ensure} from "helpers/ensure";
 
 function starClass(starred: boolean): string {
   if (starred) { return "fa-star"; }
@@ -41,7 +41,7 @@ const sel = "[data-controller='star-toggle']";
 const iconSel = "[data-star-toggle-target='icon']";
 
 function element(): HTMLElement {
-  return assert(document.querySelector<HTMLElement>(sel));
+  return ensure(document.querySelector<HTMLElement>(sel));
 }
 
 function controller(): StarToggleController {

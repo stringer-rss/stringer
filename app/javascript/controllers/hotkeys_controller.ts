@@ -1,6 +1,6 @@
 import { Controller } from "@hotwired/stimulus";
 
-import { assert } from "helpers/assert";
+import { ensure } from "helpers/ensure";
 
 export default class extends Controller {
   static override targets = ["click"];
@@ -11,12 +11,12 @@ export default class extends Controller {
 
   clickTargetConnected(element: HTMLElement): void {
     const { hotkey } = element.dataset;
-    this.indexedClickTargets.set(assert(hotkey), element);
+    this.indexedClickTargets.set(ensure(hotkey), element);
   }
 
   clickTargetDisconnected(element: HTMLElement): void {
     const { hotkey } = element.dataset;
-    this.indexedClickTargets.delete(assert(hotkey));
+    this.indexedClickTargets.delete(ensure(hotkey));
   }
 
   handleKeydown(event: KeyboardEvent): void {
