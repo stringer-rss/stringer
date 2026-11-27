@@ -46,29 +46,18 @@ var Story = Backbone.Model.extend({
 
   defaults: function() {
     return {
-      "open" : false,
-      "selected" : false
+      "open" : false
     }
   },
 
   open: function() {
-    if(this.collection){
-      this.collection.closeOthers(this);
-      this.collection.unselectAll();
-      this.collection.setSelection(this);
-    }
+    if(this.collection) this.collection.closeOthers(this);
 
     this.set("open", true);
-    this.set("selected", true);
   },
 
   openInTab: function() {
     window.open(this.get("permalink"), '_blank');
-  },
-
-  select: function() {
-    if(this.collection) this.collection.unselectAll();
-    this.set("selected", true);
   },
 
   toggle: function() {
@@ -77,10 +66,6 @@ var Story = Backbone.Model.extend({
     } else {
       this.open();
     }
-  },
-
-  unselect: function() {
-    this.set("selected", false);
   }
 });
 
@@ -93,8 +78,11 @@ var StoryView = Backbone.NativeView.extend({
   initialize: function() {
     this.template = _.template(document.querySelector(this.template).innerHTML);
     this.listenTo(this.model, 'add', this.render);
-    this.listenTo(this.model, 'change:selected', this.itemSelected);
     this.listenTo(this.model, 'change:open', this.itemOpened);
+    // Requests from the story-list Stimulus controller, which owns the cursor.
+    this.el.addEventListener('story:open', () => { this.model.open(); });
+    this.el.addEventListener('story:toggle', () => { this.model.toggle(); });
+    this.el.addEventListener('story:open-in-tab', () => { this.model.openInTab(); });
     this.el.addEventListener('story-refresh:refreshed', (e) => {
       this.model.set(e.detail.story, {silent: true});
       this.render();
@@ -107,17 +95,13 @@ var StoryView = Backbone.NativeView.extend({
     if (this.model.get("open")) {
       this.el.classList.add("open");
       this.markAsRead();
+      this.el.dispatchEvent(new CustomEvent("story:opened", { bubbles: true }));
       if (storyLead) storyLead.style.display = "none";
       this.el.scrollIntoView({ behavior: "instant", block: "start" });
     } else {
       this.el.classList.remove("open");
       if (storyLead) storyLead.style.display = "";
     }
-  },
-
-  itemSelected: function() {
-    this.el.classList.toggle("cursor", this.model.get("selected"));
-    requestAnimationFrame(() => { this.el.scrollIntoView({ behavior: "instant", block: "start" }); });
   },
 
   // Bridge to the story Stimulus controller, which owns read state.
@@ -148,6 +132,7 @@ var StoryView = Backbone.NativeView.extend({
       storyIdValue: String(jsonModel.id),
       storyIsReadValue: String(jsonModel.is_read),
       storyKeepUnreadValue: String(jsonModel.keep_unread),
+      storyListTarget: "story",
       storyRefreshIdValue: String(jsonModel.id),
       unreadCountTarget: "story",
     });
@@ -180,68 +165,9 @@ var StoryList = Backbone.Collection.extend({
       }
     });
   },
-  initialize: function() {
-    this.cursorPosition = -1;
-  },
-
-  max_position: function() {
-    return this.length - 1;
-  },
-
   model: Story,
 
-  moveCursorDown: function() {
-    if (this.cursorPosition < this.max_position()) {
-      this.cursorPosition++;
-    } else {
-      this.cursorPosition = 0;
-    }
-
-    this.at(this.cursorPosition).select();
-  },
-
-  moveCursorUp: function() {
-    if (this.cursorPosition > 0) {
-      this.cursorPosition--;
-    } else {
-      this.cursorPosition = this.max_position();
-    }
-
-    this.at(this.cursorPosition).select();
-  },
-
-  openCurrentSelection: function() {
-    this.at(this.cursorPosition).open();
-  },
-
-  selected: function() {
-    return this.where({selected: true});
-  },
-
-  selectedStoryId: function() {
-    var selectedStory = this.at(this.cursorPosition);
-    return selectedStory ? selectedStory.id : -1;
-  },
-
-  setSelection: function(model) {
-    this.cursorPosition = this.indexOf(model);
-  },
-
-  toggleCurrent: function() {
-    if (this.cursorPosition < 0) this.cursorPosition = 0;
-    this.at(this.cursorPosition).toggle();
-  },
-
-  unselectAll: function() {
-    _.invoke(this.selected(), "unselect");
-  },
-
-  url: "/stories",
-
-  viewCurrentInTab: function() {
-    if (this.cursorPosition < 0) this.cursorPosition = 0;
-    this.at(this.cursorPosition).openInTab();
-  }
+  url: "/stories"
 });
 
 var AppView = Backbone.NativeView.extend({
@@ -265,26 +191,6 @@ var AppView = Backbone.NativeView.extend({
 
   loadData: function(data) {
     this.stories.reset(data);
-  },
-
-  moveCursorDown: function() {
-    this.stories.moveCursorDown();
-  },
-
-  moveCursorUp: function() {
-    this.stories.moveCursorUp();
-  },
-
-  openCurrentSelection: function() {
-    this.stories.openCurrentSelection();
-  },
-
-  toggleCurrent: function() {
-    this.stories.toggleCurrent();
-  },
-
-  viewCurrentInTab: function() {
-    this.stories.viewCurrentInTab();
   }
 });
 

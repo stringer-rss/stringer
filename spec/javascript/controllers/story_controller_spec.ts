@@ -1,7 +1,7 @@
 import type { MockInstance } from "vitest";
 import { bootStimulus, getController } from "support/stimulus";
 import StoryController from "controllers/story_controller";
-import { assert } from "helpers/assert";
+import { ensure } from "helpers/ensure";
 
 interface Options { id?: string; isRead?: boolean; keepUnread?: boolean }
 
@@ -25,7 +25,7 @@ async function setupController(options: Options = {}): Promise<void> {
 }
 
 function element(): HTMLElement {
-  return assert(document.querySelector<HTMLElement>("li.story"));
+  return ensure(document.querySelector<HTMLElement>("li.story"));
 }
 
 function controller(): StoryController {

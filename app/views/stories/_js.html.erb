@@ -6,32 +6,6 @@
     var StoryApp = new AppView(Stories);
     StoryApp.loadData(<%= sanitize(stories.to_json) %>);
 
-    Mousetrap.bind("j", function() {
-      StoryApp.moveCursorDown();
-      StoryApp.openCurrentSelection();
-    });
-
-    Mousetrap.bind("k", function() {
-      StoryApp.moveCursorUp();
-      StoryApp.openCurrentSelection();
-    });
-
-    Mousetrap.bind("n", function() {
-      StoryApp.moveCursorDown();
-    });
-
-    Mousetrap.bind("p", function() {
-      StoryApp.moveCursorUp();
-    });
-
-    Mousetrap.bind(["o", "enter"], function() {
-      StoryApp.toggleCurrent();
-    });
-
-    Mousetrap.bind(["b", "v"], function() {
-      StoryApp.viewCurrentInTab();
-    });
-
     Mousetrap.bind(["m"], function() {
       document.querySelector(".story.cursor .story-keep-unread")?.click();
     });

@@ -45,6 +45,16 @@ RSpec.describe "keyboard shortcuts" do
     expect(find("li.story.open")).to have_text("Second Story")
   end
 
+  it "moves up from a clicked story with k" do
+    login_as(default_user)
+    create_stories_and_visit
+    find(".story-preview", text: "Second Story").click
+
+    send_keys("k")
+
+    expect(find("li.story.open")).to have_text("First Story")
+  end
+
   it "moves cursor without opening with n" do
     login_as(default_user)
     create_stories_and_visit
