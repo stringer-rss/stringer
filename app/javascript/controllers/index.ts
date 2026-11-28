@@ -27,5 +27,8 @@ application.register("tooltip", TooltipController);
 import TutorialStartController from "./tutorial_start_controller";
 application.register("tutorial-start", TutorialStartController);
 
+import TutorialStoriesController from "./tutorial_stories_controller";
+application.register("tutorial-stories", TutorialStoriesController);
+
 import UnreadCountController from "./unread_count_controller";
 application.register("unread-count", UnreadCountController);

@@ -151,25 +151,3 @@ describe("frameMissing from outside the story", () => {
     expect(event.defaultPrevented).toBe(false);
   });
 });
-
-describe("formSubmitted", () => {
-  function submitRefresh(): SubmitEvent {
-    const form = ensure(element().querySelector("form"));
-    const event = new SubmitEvent("submit", { bubbles: true, cancelable: true });
-    form.dispatchEvent(event);
-    return event;
-  }
-
-  it("cancels form submits for sample stories", async () => {
-    await setupController({ id: "-5" });
-
-    expect(submitRefresh().defaultPrevented).toBe(true);
-  });
-
-  it("lets form submits through for real stories", async () => {
-    await setupController();
-    const event = submitRefresh();
-
-    expect(event.defaultPrevented).toBe(false);
-  });
-});

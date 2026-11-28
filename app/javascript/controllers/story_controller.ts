@@ -105,13 +105,6 @@ export default class extends Controller {
     this.dispatch("read-changed");
   }
 
-  // Sample stories aren't saved, so their star and refresh forms do nothing.
-  formSubmitted(event: Event): void {
-    if (this.isSample()) {
-      event.preventDefault();
-    }
-  }
-
   /*
    * A failed refresh can respond without the story's Turbo Frame, e.g. when
    * the story was deleted. Cancelling the event keeps the story as it was,

@@ -4,12 +4,8 @@
 # state classes; its contents sit in a Turbo Frame so refreshing the story
 # from its feed swaps them in place (see `Components::StoryFrame`).
 class Components::Story < Components::Base
-  # The star and refresh forms submit inside the story's frame: sample
-  # stories skip them, and a failed refresh leaves the story as it was.
-  ACTIONS = [
-    "submit->story#formSubmitted",
-    "turbo:frame-missing->story#frameMissing"
-  ].join(" ").freeze
+  # A failed refresh leaves the story as it was.
+  ACTIONS = "turbo:frame-missing->story#frameMissing"
 
   attr_accessor :story
 
