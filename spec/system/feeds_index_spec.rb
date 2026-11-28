@@ -31,7 +31,7 @@ RSpec.describe "feeds/index" do
   it "removes stories from news when a feed is deleted" do
     login_as(default_user)
     feed = create(:feed)
-    create(:story, feed: feed, title: "Gone Story")
+    create(:story, feed:, title: "Gone Story")
     visit("/feeds")
 
     click_on "Delete"
