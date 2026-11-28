@@ -1,7 +1,21 @@
 #!/usr/bin/env sh
+if [ -d /app/.env ]; then
+  cat <<-EOF
+	Error: /app/.env is a directory, not a file. Docker creates one when the
+	file to mount is missing. Remove it, run \`touch .env\` next to
+	docker-compose.yml and start again.
+	EOF
+
+  exit 1
+fi
+
+if [ -f /app/.env ]; then
+  ruby /app/docker/init_or_update_env.rb || exit 1
+fi
+
 if [ -z "$DATABASE_URL" ]; then
   cat <<-EOF
-	$(tput setaf 1)Error: no DATABASE_URL was specified.
+	Error: no DATABASE_URL was specified.
 	EOF
 
   exit 1
