@@ -2,8 +2,6 @@ import { Controller } from "@hotwired/stimulus";
 
 import { updateStory } from "helpers/api";
 
-interface KeepUnreadDetail { isRead: boolean; keepUnread: boolean }
-
 // Cmd, ctrl and middle clicks open the story in a background tab.
 function opensInTab(event: MouseEvent): boolean {
   return event.metaKey || event.ctrlKey || event.button === 1;
@@ -17,8 +15,12 @@ function opensInTab(event: MouseEvent): boolean {
 export default class extends Controller {
   static override values = { id: String, isRead: Boolean, keepUnread: Boolean };
 
-  // The permalink sits inside the story's Turbo Frame, so a refresh updates it.
-  static override targets = ["permalink"];
+  /*
+   * The permalink sits inside the story's Turbo Frame, so a refresh updates
+   * it. The readState target is the keep unread form, which the server
+   * replaces with the saved read and keep unread state.
+   */
+  static override targets = ["permalink", "readState"];
 
   declare idValue: string;
 
@@ -88,9 +90,18 @@ export default class extends Controller {
     });
   }
 
-  keepUnreadToggled(event: CustomEvent<KeepUnreadDetail>): void {
-    this.isReadValue = event.detail.isRead;
-    this.keepUnreadValue = event.detail.keepUnread;
+  // Copies the saved state from a newly rendered keep unread form.
+  readStateTargetConnected(target: HTMLElement): void {
+    const isRead = target.dataset.isRead === "true";
+    const keepUnread = target.dataset.keepUnread === "true";
+    if (isRead === this.isReadValue && keepUnread === this.keepUnreadValue) {
+      return;
+    }
+
+    this.isReadValue = isRead;
+    this.keepUnreadValue = keepUnread;
+    this.element.classList.toggle("read", isRead);
+    this.element.classList.toggle("keepUnread", keepUnread);
     this.dispatch("read-changed");
   }
 

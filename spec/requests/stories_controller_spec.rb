@@ -276,6 +276,43 @@ RSpec.describe StoriesController do
     end
   end
 
+  describe "#keep_unread" do
+    def keep_unread(story, value)
+      patch(
+        "/stories/#{story.id}/keep_unread",
+        params: { keep_unread: value.to_s }
+      )
+    end
+
+    it "keeps the story unread" do
+      login_as(default_user)
+      story = create(:story, :read)
+
+      expect { keep_unread(story, true) }
+        .to change_record(story, :keep_unread).from(false).to(true)
+        .and change_record(story, :is_read).from(true).to(false)
+    end
+
+    it "marks the story read when it stops keeping it unread" do
+      login_as(default_user)
+      story = create(:story, keep_unread: true)
+
+      expect { keep_unread(story, false) }
+        .to change_record(story, :keep_unread).from(true).to(false)
+        .and change_record(story, :is_read).from(false).to(true)
+    end
+
+    it "replaces the keep unread button with a Turbo Stream" do
+      login_as(default_user)
+      story = create(:story)
+
+      keep_unread(story, true)
+
+      expect(rendered.find("turbo-stream", visible: :all)[:target])
+        .to eq("story_#{story.id}_keep_unread")
+    end
+  end
+
   describe "#mark_all_as_read" do
     it "marks all unread stories as read and reload the page" do
       login_as(default_user)

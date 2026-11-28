@@ -3,6 +3,7 @@ import {
   element,
   listenForReadChanged,
   mockFetch,
+  replaceReadState,
   setupController,
 } from "support/story_fixture";
 
@@ -85,27 +86,38 @@ describe("markAsRead when it should not save", () => {
   });
 });
 
-describe("keepUnreadToggled", () => {
-  function toggle(detail: { isRead: boolean; keepUnread: boolean }): void {
-    element().dispatchEvent(
-      new CustomEvent("keep-unread-toggle:toggled", { bubbles: true, detail }),
-    );
-  }
+describe("readStateTargetConnected", () => {
+  it("copies the saved state onto the story", async () => {
+    await setupController({ isRead: true });
+
+    await replaceReadState({ isRead: false, keepUnread: true });
+
+    expect([...element().classList]).toStrictEqual(["story", "keepUnread"]);
+  });
 
   it("announces the change", async () => {
     await setupController({ isRead: true });
     const listener = listenForReadChanged();
 
-    toggle({ isRead: false, keepUnread: true });
+    await replaceReadState({ isRead: false, keepUnread: true });
 
     expect(listener).toHaveBeenCalledExactlyOnceWith(expect.any(CustomEvent));
+  });
+
+  it("does nothing when the state is unchanged", async () => {
+    await setupController({ isRead: true });
+    const listener = listenForReadChanged();
+
+    await replaceReadState({ isRead: true, keepUnread: false });
+
+    expect(listener).not.toHaveBeenCalled();
   });
 
   it("stops markAsRead while kept unread", async () => {
     await setupController({ isRead: true });
     const fetchSpy = mockFetch();
 
-    toggle({ isRead: false, keepUnread: true });
+    await replaceReadState({ isRead: false, keepUnread: true });
     controller().markAsRead();
 
     expect(fetchSpy).not.toHaveBeenCalled();
@@ -115,7 +127,7 @@ describe("keepUnreadToggled", () => {
     await setupController({ keepUnread: true });
     mockFetch();
 
-    toggle({ isRead: false, keepUnread: false });
+    await replaceReadState({ isRead: false, keepUnread: false });
     controller().markAsRead();
 
     expect(element().classList.contains("read")).toBe(true);

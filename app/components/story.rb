@@ -7,7 +7,6 @@ class Components::Story < Components::Base
   # The star and refresh forms submit inside the story's frame: sample
   # stories skip them, and a failed refresh leaves the story as it was.
   ACTIONS = [
-    "keep-unread-toggle:toggled->story#keepUnreadToggled",
     "submit->story#formSubmitted",
     "turbo:frame-missing->story#frameMissing"
   ].join(" ").freeze
@@ -31,7 +30,7 @@ class Components::Story < Components::Base
 
   def data
     {
-      controller: "story keep-unread-toggle",
+      controller: "story",
       action: ACTIONS,
       **values,
       story_list_target: "story",
@@ -40,16 +39,10 @@ class Components::Story < Components::Base
   end
 
   def values
-    read_state = { is_read: story.is_read, keep_unread: story.keep_unread }
     {
-      **controller_values("story", **read_state),
-      **controller_values("keep_unread_toggle", **read_state)
+      story_id_value: story.id.to_s,
+      story_is_read_value: story.is_read.to_s,
+      story_keep_unread_value: story.keep_unread.to_s
     }
-  end
-
-  def controller_values(controller, **values)
-    { id: story.id, **values }.to_h do |name, value|
-      [:"#{controller}_#{name}_value", value.to_s]
-    end
   end
 end

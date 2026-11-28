@@ -14,18 +14,18 @@ RSpec.describe Components::Story do
   it "sets the Stimulus controllers on the li" do
     li = story_li(create(:story))
 
-    expect(li["data-controller"]).to eq("story keep-unread-toggle")
+    expect(li["data-controller"]).to eq("story")
   end
 
   def values(element)
-    names = ["story-id", "story-keep-unread", "keep-unread-toggle-is-read"]
+    names = ["story-id", "story-is-read", "story-keep-unread"]
     names.map { |name| element["data-#{name}-value"] }
   end
 
   it "sets the Stimulus values on the li" do
     story = create(:story, keep_unread: true)
 
-    expect(values(story_li(story))).to eq([story.id.to_s, "true", "false"])
+    expect(values(story_li(story))).to eq([story.id.to_s, "false", "true"])
   end
 
   it "wires the form submit and missing frame actions" do

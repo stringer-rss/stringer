@@ -264,29 +264,26 @@ li.story.open .story-lead {
 
 .story-keep-unread, .story-starred, .story-refresh {
   display: inline-block;
+  padding: 0;
+  margin-right: 20px;
+  color: inherit;
   cursor: pointer;
-  -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  margin-right: 20px;
+  background: none;
+  border: 0;
+  -webkit-touch-callout: none;
 }
 
 li.story > turbo-frame {
   display: block;
 }
 
-.story-refresh-form, .story-star-form {
+.story-refresh-form, .story-star-form, .story-keep-unread-form {
   display: inline;
-}
-
-.story-refresh, .story-starred {
-  padding: 0;
-  color: inherit;
-  background: none;
-  border: 0;
 }
 
 /* Turbo sets aria-busy on the refresh form while its request is in flight. */

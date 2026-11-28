@@ -4,7 +4,7 @@
 # one in its actions, which also answers the s hotkey.
 #
 # The button submits a form; the response is a Turbo Stream that replaces both
-# buttons (see `Components::StoryStarStream`), so the icon only changes once
+# buttons (see `StoriesController#star`), so the icon only changes once
 # the server has saved the star.
 class Components::StoryStar < Components::Base
   PLACEMENTS = [:preview, :actions].freeze
@@ -13,6 +13,13 @@ class Components::StoryStar < Components::Base
 
   def self.dom_id(story, placement)
     "story_#{story.id}_star_#{placement}"
+  end
+
+  # Both of the story's star buttons, by id, for a Turbo Stream response.
+  def self.replacements(story)
+    PLACEMENTS.to_h do |placement|
+      [dom_id(story, placement), new(story:, placement:)]
+    end
   end
 
   def initialize(story:, placement:)
