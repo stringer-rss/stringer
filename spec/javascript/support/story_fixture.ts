@@ -25,8 +25,7 @@ void {
   document.body.innerHTML = [
     "<li class='story'",
     "    data-controller='story'",
-    "    data-action='submit->story#formSubmitted",
-    "                 turbo:frame-missing->story#frameMissing'",
+    "    data-action='turbo:frame-missing->story#frameMissing'",
     `    data-story-id-value='${id}'`,
     `    data-story-is-read-value='${isRead}'`,
     `    data-story-keep-unread-value='${keepUnread}'>`,

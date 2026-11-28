@@ -26,12 +26,28 @@ RSpec.describe "tutorial" do
     find(".story-preview", text: source).click
   end
 
-  it "keeps a sample story in place when refreshed" do
+  it "pretends to refresh a sample story" do
     open_sample_story("Darin' Fireballs")
 
     find(".story-actions .story-refresh").click
 
-    expect(page).to have_current_path(setup_tutorial_path)
-      .and have_css("li.story.open", text: "Darin' Fireballs")
+    expect(page).to have_css("li.story.open [aria-busy='true'] .fa-refresh")
+      .and have_current_path(setup_tutorial_path)
+  end
+
+  it "stars a sample story without saving it" do
+    open_sample_story("Darin' Fireballs")
+
+    find(".story-actions .story-starred").click
+
+    expect(page).to have_css("li.story.open .story-starred .fa-star", count: 2)
+  end
+
+  it "keeps a sample story unread without saving it" do
+    open_sample_story("Darin' Fireballs")
+
+    find(".story-actions .story-keep-unread").click
+
+    expect(page).to have_css("li.story.open.keepUnread .fa-check")
   end
 end

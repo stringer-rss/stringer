@@ -28,13 +28,10 @@ RSpec.describe Components::Story do
     expect(values(story_li(story))).to eq([story.id.to_s, "false", "true"])
   end
 
-  it "wires the form submit and missing frame actions" do
+  it "keeps the story in place when a refresh fails" do
     li = story_li(create(:story))
 
-    expect(li["data-action"].split).to include(
-      "submit->story#formSubmitted",
-      "turbo:frame-missing->story#frameMissing"
-    )
+    expect(li["data-action"]).to eq("turbo:frame-missing->story#frameMissing")
   end
 
   it "makes the li a story-list and unread-count target", :aggregate_failures do

@@ -30,7 +30,9 @@ class Views::Tutorials::Index < Views::Base
       render(Components::TutorialActionBar.new(stories:))
     end
 
-    render(Components::StoryList.new(stories:, title: site_title))
+    div(data: stories_data) do
+      render(Components::StoryList.new(stories:, title: site_title))
+    end
     setup
   end
 
@@ -81,6 +83,18 @@ class Views::Tutorials::Index < Views::Base
 
   def start_button
     a(**START_BUTTON) { t("tutorial.start") }
+  end
+
+  # The sample stories have nothing to save, so tutorial-stories imitates
+  # their forms instead of submitting them. It listens in the capture phase
+  # because each story's Turbo Frame stops the submit event from bubbling.
+  def stories_data
+    {
+      controller: "tutorial-stories",
+      action: "submit->tutorial-stories#submitted:capture",
+      tutorial_stories_star_label_value: t("stories.star"),
+      tutorial_stories_unstar_label_value: t("stories.unstar")
+    }
   end
 
   def start_data
