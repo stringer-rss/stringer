@@ -109,64 +109,6 @@ RSpec.describe StoriesController do
     end
   end
 
-  describe "#update" do
-    headers = { "CONTENT_TYPE" => "application/json" }
-
-    it "marks a story as read when it is_read not malformed" do
-      login_as(default_user)
-      story = create(:story)
-      params = { is_read: true }.to_json
-
-      expect { put("/stories/#{story.id}", params:, headers:) }
-        .to change_record(story, :is_read).from(false).to(true)
-    end
-
-    it "marks a story as read when is_read is malformed" do
-      login_as(default_user)
-      story = create(:story)
-      params = { is_read: "malformed" }.to_json
-
-      expect { put("/stories/#{story.id}", params:, headers:) }
-        .to change_record(story, :is_read).from(false).to(true)
-    end
-
-    it "marks a story as keep unread when it keep_unread not malformed" do
-      login_as(default_user)
-      story = create(:story)
-      params = { keep_unread: true }.to_json
-
-      expect { put("/stories/#{story.id}", params:, headers:) }
-        .to change_record(story, :keep_unread).from(false).to(true)
-    end
-
-    it "marks a story as keep unread when keep_unread is malformed" do
-      login_as(default_user)
-      story = create(:story)
-      params = { keep_unread: "malformed" }.to_json
-
-      expect { put("/stories/#{story.id}", params:, headers:) }
-        .to change_record(story, :keep_unread).from(false).to(true)
-    end
-
-    it "marks a story as starred when is_starred is not malformed" do
-      login_as(default_user)
-      story = create(:story)
-      params = { is_starred: true }.to_json
-
-      expect { put("/stories/#{story.id}", params:, headers:) }
-        .to change_record(story, :is_starred).from(false).to(true)
-    end
-
-    it "marks a story as starred when is_starred is malformed" do
-      login_as(default_user)
-      story = create(:story)
-      params = { is_starred: "malformed" }.to_json
-
-      expect { put("/stories/#{story.id}", params:, headers:) }
-        .to change_record(story, :is_starred).from(false).to(true)
-    end
-  end
-
   describe "#refresh" do
     def updated_entry
       double(
@@ -307,6 +249,36 @@ RSpec.describe StoriesController do
       story = create(:story)
 
       keep_unread(story, true)
+
+      expect(rendered.find("turbo-stream", visible: :all)[:target])
+        .to eq("story_#{story.id}_keep_unread")
+    end
+  end
+
+  describe "#read" do
+    def read(story)
+      patch("/stories/#{story.id}/read")
+    end
+
+    it "marks the story read" do
+      login_as(default_user)
+      story = create(:story)
+
+      expect { read(story) }.to change_record(story, :is_read).to(true)
+    end
+
+    it "leaves a story kept unread alone" do
+      login_as(default_user)
+      story = create(:story, keep_unread: true)
+
+      expect { read(story) }.not_to change_record(story, :is_read)
+    end
+
+    it "replaces the keep unread form with the saved state" do
+      login_as(default_user)
+      story = create(:story)
+
+      read(story)
 
       expect(rendered.find("turbo-stream", visible: :all)[:target])
         .to eq("story_#{story.id}_keep_unread")

@@ -2,15 +2,15 @@ import { bootStimulus, getController } from "support/stimulus";
 import StoryController from "controllers/story_controller";
 import StoryListController from "controllers/story_list_controller";
 import { ensure } from "helpers/ensure";
+import { stubFormSubmits } from "support/story_fixture";
 
-// Sample ids skip saving read state, so these specs make no requests.
 function storyHTML(title: string): string {
   return [
     "<li class='story'",
     "    data-controller='story'",
-    "    data-story-id-value='-1'",
     "    data-story-list-target='story'>",
     `  <span class='story-title'>${title}</span>`,
+    "  <form data-story-target='markRead'></form>",
     "</li>",
   ].join("\n");
 }
@@ -33,6 +33,8 @@ function setupDOM(): void {
 
 async function setupController(): Promise<void> {
   setupDOM();
+  // Opening a story submits its mark read form, which jsdom can't do.
+  stubFormSubmits();
   await bootStimulus("story", StoryController);
   await bootStimulus("story-list", StoryListController);
 }

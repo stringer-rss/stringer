@@ -14,15 +14,6 @@ class StoriesController < ApplicationController
     render(Views::Stories::Index.new(stories:))
   end
 
-  def update
-    json_params = JSON.parse(request.body.read, symbolize_names: true)
-
-    story = authorization.check(StoryRepository.fetch(params[:id]))
-    story.update!(json_params.slice(:is_read, :is_starred, :keep_unread))
-
-    head(:no_content)
-  end
-
   def refresh
     story = authorization.check(StoryRepository.fetch(params[:id]))
 
@@ -48,6 +39,16 @@ class StoriesController < ApplicationController
     story = authorization.check(StoryRepository.fetch(params[:id]))
     keep_unread = params[:keep_unread] == "true"
     story.update!(keep_unread:, is_read: !keep_unread)
+
+    render_replacements(Components::StoryKeepUnread.replacements(story))
+  end
+
+  # Marks the story read when it opens, unless it's kept unread. Responds
+  # with a Turbo Stream that replaces the keep unread form with the saved
+  # state, which the story controller copies onto the story.
+  def read
+    story = authorization.check(StoryRepository.fetch(params[:id]))
+    story.update!(is_read: true) unless story.keep_unread
 
     render_replacements(Components::StoryKeepUnread.replacements(story))
   end

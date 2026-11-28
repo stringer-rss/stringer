@@ -3,26 +3,23 @@ import {
   controller,
   element,
   isOpen,
-  mockFetch,
   preview,
   setupController,
+  submittedMarkRead,
 } from "support/story_fixture";
 import { ensure } from "helpers/ensure";
 
 describe("open", () => {
-  it("adds the open class and marks the story read", async () => {
+  it("adds the open class and asks to mark the story read", async () => {
     await setupController();
-    mockFetch();
 
     controller().open();
 
-    expect(isOpen()).toBe(true);
-    expect(element().classList.contains("read")).toBe(true);
+    expect([isOpen(), submittedMarkRead()]).toStrictEqual([true, true]);
   });
 
   it("announces that it opened", async () => {
     await setupController();
-    mockFetch();
     const listener = vi.fn<(event: Event) => void>();
     element().addEventListener("story:opened", listener);
 
@@ -33,7 +30,6 @@ describe("open", () => {
 
   it("scrolls the story into view", async () => {
     await setupController();
-    mockFetch();
     const scrollSpy = vi.spyOn(element(), "scrollIntoView");
 
     controller().open();
@@ -48,7 +44,6 @@ describe("open", () => {
 describe("close and toggle", () => {
   it("toggles the story open and closed", async () => {
     await setupController();
-    mockFetch();
 
     controller().toggle();
     expect(isOpen()).toBe(true);
@@ -59,7 +54,6 @@ describe("close and toggle", () => {
 
   it("does not scroll when closing", async () => {
     await setupController();
-    mockFetch();
     controller().open();
     const scrollSpy = vi.spyOn(element(), "scrollIntoView");
 
@@ -72,7 +66,6 @@ describe("close and toggle", () => {
 describe("previewClicked", () => {
   it("opens and closes the story", async () => {
     await setupController();
-    mockFetch();
 
     clickPreview();
     expect(isOpen()).toBe(true);
@@ -83,7 +76,6 @@ describe("previewClicked", () => {
 
   it("scrolls the story into view when closed by a click", async () => {
     await setupController();
-    mockFetch();
     controller().open();
     const scrollSpy = vi.spyOn(element(), "scrollIntoView");
 
@@ -98,7 +90,6 @@ describe("previewClicked", () => {
 describe("previewClicked on the star button", () => {
   it("leaves the story closed", async () => {
     await setupController();
-    mockFetch();
     const button = ensure(element().querySelector<HTMLElement>("#star button"));
 
     button.dispatchEvent(new MouseEvent("click", { bubbles: true }));
@@ -114,7 +105,6 @@ describe("previewClicked with a modifier", () => {
     ["middle", { button: 1 }],
   ])("opens a tab on %s clicks and marks read", async (_name, options) => {
     await setupController();
-    mockFetch();
     const openSpy = vi.spyOn(window, "open").mockReturnValue(null);
     const focusSpy = vi.spyOn(window, "focus").mockReturnValue();
 
@@ -123,7 +113,7 @@ describe("previewClicked with a modifier", () => {
     expect(openSpy).toHaveBeenCalledExactlyOnceWith("http://example.com/story");
     expect(focusSpy).toHaveBeenCalledExactlyOnceWith();
     expect(isOpen()).toBe(false);
-    expect(element().classList.contains("read")).toBe(true);
+    expect(submittedMarkRead()).toBe(true);
   });
 });
 

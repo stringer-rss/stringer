@@ -36,7 +36,6 @@ class Components::Story < Components::Base
 
   def values
     {
-      story_id_value: story.id.to_s,
       story_is_read_value: story.is_read.to_s,
       story_keep_unread_value: story.keep_unread.to_s
     }
