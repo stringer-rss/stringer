@@ -278,11 +278,11 @@ li.story > turbo-frame {
   display: block;
 }
 
-.story-refresh-form {
+.story-refresh-form, .story-star-form {
   display: inline;
 }
 
-.story-refresh {
+.story-refresh, .story-starred {
   padding: 0;
   color: inherit;
   background: none;

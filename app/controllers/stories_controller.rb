@@ -33,6 +33,18 @@ class StoriesController < ApplicationController
     render(Components::StoryFrame.new(story:), layout: false, status:)
   end
 
+  # Responds with a Turbo Stream that replaces the story's star buttons.
+  def star
+    story = authorization.check(StoryRepository.fetch(params[:id]))
+    story.update!(is_starred: params[:starred] == "true")
+
+    render(
+      Components::StoryStarStream.new(story:),
+      layout: false,
+      content_type: "text/vnd.turbo-stream.html"
+    )
+  end
+
   def mark_all_as_read
     stories = authorization.scope(Story.where(id: params[:story_ids]))
     MarkAllAsRead.call(stories.ids)

@@ -14,31 +14,25 @@ RSpec.describe Components::Story do
   it "sets the Stimulus controllers on the li" do
     li = story_li(create(:story))
 
-    expect(li["data-controller"]).to eq("story star-toggle keep-unread-toggle")
+    expect(li["data-controller"]).to eq("story keep-unread-toggle")
   end
 
   def values(element)
-    names = [
-      "story-id",
-      "story-keep-unread",
-      "keep-unread-toggle-is-read",
-      "star-toggle-starred"
-    ]
+    names = ["story-id", "story-keep-unread", "keep-unread-toggle-is-read"]
     names.map { |name| element["data-#{name}-value"] }
   end
 
   it "sets the Stimulus values on the li" do
-    story = create(:story, keep_unread: true, is_starred: true)
+    story = create(:story, keep_unread: true)
 
-    expect(values(story_li(story)))
-      .to eq([story.id.to_s, "true", "false", "true"])
+    expect(values(story_li(story))).to eq([story.id.to_s, "true", "false"])
   end
 
-  it "wires the refresh form's submit and missing frame actions" do
+  it "wires the form submit and missing frame actions" do
     li = story_li(create(:story))
 
     expect(li["data-action"].split).to include(
-      "submit->story#refreshSubmitted",
+      "submit->story#formSubmitted",
       "turbo:frame-missing->story#frameMissing"
     )
   end

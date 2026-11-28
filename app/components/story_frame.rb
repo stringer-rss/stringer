@@ -39,7 +39,7 @@ class Components::StoryFrame < Components::Base
     data = { action: "click->story#previewClicked" }
     div(class: "row story-preview", data:) do
       div(class: "col-md-3") do
-        render(Components::StoryStar.new(story:))
+        render(Components::StoryStar.new(story:, placement: :preview))
         p(class: "blog-title") { story.source }
       end
       div(class: "col-md-9") { details }

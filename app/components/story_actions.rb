@@ -16,7 +16,7 @@ class Components::StoryActions < Components::Base
       div { span(class: "story-published") { story.pretty_date } }
       div(class: "story-actions") do
         keep_unread_button
-        render(Components::StoryStar.new(story:, hotkey: "s"))
+        render(Components::StoryStar.new(story:, placement: :actions))
         refresh_button
         permalink_link
       end

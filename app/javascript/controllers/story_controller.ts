@@ -52,6 +52,11 @@ export default class extends Controller {
   }
 
   previewClicked(event: MouseEvent): void {
+    // The preview's star button submits its own form.
+    if (event.target instanceof Element && event.target.closest("form")) {
+      return;
+    }
+
     if (opensInTab(event)) {
       this.openInBackgroundTab();
       return;
@@ -89,8 +94,8 @@ export default class extends Controller {
     this.dispatch("read-changed");
   }
 
-  // Sample stories have no feed to refresh from, so skip the request.
-  refreshSubmitted(event: Event): void {
+  // Sample stories aren't saved, so their star and refresh forms do nothing.
+  formSubmitted(event: Event): void {
     if (this.isSample()) {
       event.preventDefault();
     }

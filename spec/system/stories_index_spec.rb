@@ -69,6 +69,18 @@ RSpec.describe "stories/index" do
     find(".story-actions .story-starred").click
   end
 
+  it "stars from the preview row without opening the story" do
+    create(:story, title: "My Story")
+    login_as(default_user)
+    visit(news_path)
+
+    find(".story-preview .story-starred").click
+
+    expect(page)
+      .to have_css(".story-starred .fa-star", count: 2, visible: :all)
+      .and have_no_css("li.story.open")
+  end
+
   it "allows marking a story as starred" do
     create(:story, title: "My Story")
     login_as(default_user)

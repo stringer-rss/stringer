@@ -95,6 +95,18 @@ describe("previewClicked", () => {
   });
 });
 
+describe("previewClicked on the star button", () => {
+  it("leaves the story closed", async () => {
+    await setupController();
+    mockFetch();
+    const button = ensure(element().querySelector<HTMLElement>("#star button"));
+
+    button.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+
+    expect(isOpen()).toBe(false);
+  });
+});
+
 describe("previewClicked with a modifier", () => {
   it.each([
     ["meta", { metaKey: true }],
@@ -140,7 +152,7 @@ describe("frameMissing from outside the story", () => {
   });
 });
 
-describe("refreshSubmitted", () => {
+describe("formSubmitted", () => {
   function submitRefresh(): SubmitEvent {
     const form = ensure(element().querySelector("form"));
     const event = new SubmitEvent("submit", { bubbles: true, cancelable: true });
@@ -148,13 +160,13 @@ describe("refreshSubmitted", () => {
     return event;
   }
 
-  it("cancels the refresh for sample stories", async () => {
+  it("cancels form submits for sample stories", async () => {
     await setupController({ id: "-5" });
 
     expect(submitRefresh().defaultPrevented).toBe(true);
   });
 
-  it("lets the refresh through for real stories", async () => {
+  it("lets form submits through for real stories", async () => {
     await setupController();
     const event = submitRefresh();
 

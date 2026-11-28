@@ -4,11 +4,11 @@
 # state classes; its contents sit in a Turbo Frame so refreshing the story
 # from its feed swaps them in place (see `Components::StoryFrame`).
 class Components::Story < Components::Base
-  # The refresh form submits inside the story's frame: sample stories skip
-  # it, and a failed refresh leaves the story as it was.
+  # The star and refresh forms submit inside the story's frame: sample
+  # stories skip them, and a failed refresh leaves the story as it was.
   ACTIONS = [
     "keep-unread-toggle:toggled->story#keepUnreadToggled",
-    "submit->story#refreshSubmitted",
+    "submit->story#formSubmitted",
     "turbo:frame-missing->story#frameMissing"
   ].join(" ").freeze
 
@@ -31,7 +31,7 @@ class Components::Story < Components::Base
 
   def data
     {
-      controller: "story star-toggle keep-unread-toggle",
+      controller: "story keep-unread-toggle",
       action: ACTIONS,
       **values,
       story_list_target: "story",
@@ -43,8 +43,7 @@ class Components::Story < Components::Base
     read_state = { is_read: story.is_read, keep_unread: story.keep_unread }
     {
       **controller_values("story", **read_state),
-      **controller_values("keep_unread_toggle", **read_state),
-      **controller_values("star_toggle", starred: story.is_starred)
+      **controller_values("keep_unread_toggle", **read_state)
     }
   end
 
