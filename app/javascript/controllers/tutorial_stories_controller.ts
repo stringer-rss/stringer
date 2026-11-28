@@ -28,22 +28,44 @@ function setIcon(form: HTMLFormElement, icon: string): void {
 }
 
 /*
- * Swaps in an updated copy of the keep unread form, like the keep unread
- * stream does. The story controller copies the new state onto the story
+ * Swaps in an updated copy of the keep unread form, like the keep unread and
+ * read streams do. The story controller copies the new state onto the story
  * when the copy connects.
  */
+function replaceReadState(
+  form: HTMLFormElement,
+  update: (copy: HTMLFormElement) => void,
+): void {
+  const copy = form.cloneNode(true);
+  if (copy instanceof HTMLFormElement) {
+    update(copy);
+    form.replaceWith(copy);
+  }
+}
+
 function keepUnread(form: HTMLFormElement): void {
   const kept = hiddenValue(form, "keep_unread").value === "true";
-  const copy = form.cloneNode(true);
-  if (!(copy instanceof HTMLFormElement)) {
+
+  replaceReadState(form, (copy) => {
+    copy.dataset.keepUnread = String(kept);
+    copy.dataset.isRead = String(!kept);
+    hiddenValue(copy, "keep_unread").value = String(!kept);
+    setIcon(copy, keepUnreadIcon(kept));
+  });
+}
+
+// Marks the story read through its keep unread form, like the read stream.
+function markRead(form: HTMLFormElement): void {
+  const story = form.closest("li.story");
+  const keepUnreadForm =
+    story?.querySelector<HTMLFormElement>(".story-keep-unread-form");
+  if (!keepUnreadForm) {
     return;
   }
 
-  copy.dataset.keepUnread = String(kept);
-  copy.dataset.isRead = String(!kept);
-  hiddenValue(copy, "keep_unread").value = String(!kept);
-  setIcon(copy, keepUnreadIcon(kept));
-  form.replaceWith(copy);
+  replaceReadState(keepUnreadForm, (copy) => {
+    copy.dataset.isRead = "true";
+  });
 }
 
 // Spins the refresh icon for a moment, as a real refresh does.
@@ -79,6 +101,8 @@ export default class extends Controller {
       this.star(form);
     } else if (form.classList.contains("story-keep-unread-form")) {
       keepUnread(form);
+    } else if (form.classList.contains("story-mark-read-form")) {
+      markRead(form);
     } else if (form.classList.contains("story-refresh-form")) {
       refresh(form);
     }

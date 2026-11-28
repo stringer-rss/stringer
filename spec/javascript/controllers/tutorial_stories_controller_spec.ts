@@ -28,6 +28,7 @@ async function setupController(): Promise<void> {
     "      <button><i class='fa fa-square-o'></i> Keep unread</button>",
     "    </form>",
     "    <form class='story-refresh-form'><button>Refresh</button></form>",
+    "    <form class='story-mark-read-form'></form>",
     "  </li>",
     "</div>",
   ].join("\n");
@@ -110,6 +111,19 @@ describe("submitted for the keep unread form", () => {
     const input = ensure(copy.querySelector("input"));
     expect([icon(".story-keep-unread-form"), input.value])
       .toStrictEqual(["fa fa-check", "false"]);
+  });
+});
+
+describe("submitted for the mark read form", () => {
+  it("swaps in a keep unread form that says the story is read", async () => {
+    await setupController();
+    form(".story-keep-unread-form").dataset.isRead = "false";
+
+    submit(".story-mark-read-form");
+
+    const copy = form(".story-keep-unread-form");
+    expect([copy.dataset.isRead, copy.dataset.keepUnread])
+      .toStrictEqual(["true", "false"]);
   });
 });
 

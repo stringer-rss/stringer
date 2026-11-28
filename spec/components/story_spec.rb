@@ -18,14 +18,31 @@ RSpec.describe Components::Story do
   end
 
   def values(element)
-    names = ["story-id", "story-is-read", "story-keep-unread"]
+    names = ["story-is-read", "story-keep-unread"]
     names.map { |name| element["data-#{name}-value"] }
   end
 
   it "sets the Stimulus values on the li" do
     story = create(:story, keep_unread: true)
 
-    expect(values(story_li(story))).to eq([story.id.to_s, "false", "true"])
+    expect(values(story_li(story))).to eq(["false", "true"])
+  end
+
+  it "includes a hidden form for marking the story read" do
+    story = create(:story)
+    form = render_story(story).find("form.story-mark-read-form", visible: :all)
+
+    expect([form[:action], form["data-story-target"]])
+      .to eq(["/stories/#{story.id}/read", "markRead"])
+  end
+
+  it "doesn't nest the story's other forms inside the mark read form" do
+    rendered = render_story(create(:story))
+
+    expect(rendered).to have_no_css(
+      "form.story-mark-read-form form",
+      visible: :all
+    )
   end
 
   it "keeps the story in place when a refresh fails" do
@@ -141,7 +158,7 @@ RSpec.describe Components::Story do
 
   it "posts the refresh form to the story's refresh path" do
     story = create(:story)
-    form = render_story(story).find("form:has(button.story-refresh)")
+    form = render_story(story).find("form.story-refresh-form")
 
     expect(form[:action]).to eq("/stories/#{story.id}/refresh")
   end

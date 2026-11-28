@@ -36,9 +36,9 @@ Rails.application.routes.draw do
   get "/setup/password", to: "passwords#new"
   get "/setup/tutorial", to: "tutorials#index"
   get "/starred", to: "stories#starred"
-  put "/stories/:id", to: "stories#update"
   post "/stories/:id/refresh", to: "stories#refresh"
   patch "/stories/:id/star", to: "stories#star"
   patch "/stories/:id/keep_unread", to: "stories#keep_unread"
+  patch "/stories/:id/read", to: "stories#read"
   post "/stories/mark_all_as_read", to: "stories#mark_all_as_read"
 end

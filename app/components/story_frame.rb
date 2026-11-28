@@ -26,6 +26,7 @@ class Components::StoryFrame < Components::Base
   def view_template
     turbo_frame(id: "story_#{story.id}") do
       preview
+      render(Components::StoryMarkRead.new(story:))
       div(class: "story-body-container") do
         story_body
         render(Components::StoryActions.new(story:))
