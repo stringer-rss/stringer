@@ -7,14 +7,25 @@ import { ensure } from "helpers/ensure";
 
 interface Options { id?: string; isRead?: boolean; keepUnread?: boolean }
 
+interface ReadState { isRead: boolean; keepUnread: boolean }
+
+// The keep unread form, as the server renders it with the saved state.
+function readStateHTML({ isRead, keepUnread }: ReadState): string {
+  return [
+    "<form class='story-keep-unread-form' data-story-target='readState'",
+    `      data-is-read='${isRead}' data-keep-unread='${keepUnread}'>`,
+    "  <button>Keep unread</button>",
+    "</form>",
+  ].join("\n");
+}
+
 function setupDOM({ id = "42", isRead = false, keepUnread = false }: Options):
 void {
   // Static test fixture — safe to use innerHTML
   document.body.innerHTML = [
     "<li class='story'",
     "    data-controller='story'",
-    "    data-action='keep-unread-toggle:toggled->story#keepUnreadToggled",
-    "                 submit->story#formSubmitted",
+    "    data-action='submit->story#formSubmitted",
     "                 turbo:frame-missing->story#frameMissing'",
     `    data-story-id-value='${id}'`,
     `    data-story-is-read-value='${isRead}'`,
@@ -25,6 +36,7 @@ void {
     "  </div>",
     "  <a href='http://example.com/story' data-story-target='permalink'></a>",
     "  <form action='/stories/refresh'><button>Refresh</button></form>",
+    readStateHTML({ isRead, keepUnread }),
     "</li>",
   ].join("\n");
 }
@@ -63,6 +75,13 @@ function clickPreview(options: MouseEventInit = {}): void {
   );
 }
 
+// Swaps in a new keep unread form, as a Turbo Stream response would.
+async function replaceReadState(state: ReadState): Promise<void> {
+  const form = ensure(element().querySelector(".story-keep-unread-form"));
+  form.outerHTML = readStateHTML(state);
+  await Promise.resolve();
+}
+
 function isOpen(): boolean {
   return element().classList.contains("open");
 }
@@ -75,5 +94,6 @@ export {
   listenForReadChanged,
   mockFetch,
   preview,
+  replaceReadState,
   setupController,
 };

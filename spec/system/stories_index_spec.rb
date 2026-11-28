@@ -108,6 +108,7 @@ RSpec.describe "stories/index" do
 
     find(".story-preview", text: story_title).click
     find(".story-actions .story-keep-unread").click
+    expect(page).to have_css(".story-actions .story-keep-unread .fa-check")
   end
 
   it "allows marking a story as unread" do
@@ -129,16 +130,16 @@ RSpec.describe "stories/index" do
     create(:story, title: "My Story")
     login_as(default_user)
     visit(news_path)
+    find(".story-preview", text: "My Story").click
+    icon = ".story-actions .story-keep-unread"
 
-    icon = open_story_and_find_unread_icon("My Story")
-    expect(icon[:class]).to include("fa-square-o")
+    expect(page).to have_css("#{icon} .fa-square-o")
 
-    find(".story-actions .story-keep-unread").click
-    expect(icon[:class]).to include("fa-check")
-    expect(icon[:class]).not_to include("fa-square-o")
+    find(icon).click
+    expect(page).to have_css("#{icon} .fa-check")
 
-    find(".story-actions .story-keep-unread").click
-    expect(icon[:class]).to include("fa-square-o")
+    find(icon).click
+    expect(page).to have_css("#{icon} .fa-square-o")
   end
 
   it "persists keep unread state across page reload" do
@@ -148,6 +149,7 @@ RSpec.describe "stories/index" do
 
     find(".story-preview", text: "My Story").click
     find(".story-actions .story-keep-unread").click
+    expect(page).to have_css(".story-actions .story-keep-unread .fa-check")
     visit(news_path)
 
     icon = open_story_and_find_unread_icon("My Story")

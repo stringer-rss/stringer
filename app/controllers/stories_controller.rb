@@ -33,16 +33,23 @@ class StoriesController < ApplicationController
     render(Components::StoryFrame.new(story:), layout: false, status:)
   end
 
-  # Responds with a Turbo Stream that replaces the story's star buttons.
+  # Responds with a Turbo Stream that replaces both of the story's star
+  # buttons.
   def star
     story = authorization.check(StoryRepository.fetch(params[:id]))
     story.update!(is_starred: params[:starred] == "true")
 
-    render(
-      Components::StoryStarStream.new(story:),
-      layout: false,
-      content_type: "text/vnd.turbo-stream.html"
-    )
+    render_replacements(Components::StoryStar.replacements(story))
+  end
+
+  # Keeping a story unread also marks it unread; turning it off marks it
+  # read. Responds with a Turbo Stream that replaces the keep unread button.
+  def keep_unread
+    story = authorization.check(StoryRepository.fetch(params[:id]))
+    keep_unread = params[:keep_unread] == "true"
+    story.update!(keep_unread:, is_read: !keep_unread)
+
+    render_replacements(Components::StoryKeepUnread.replacements(story))
   end
 
   def mark_all_as_read
@@ -60,5 +67,15 @@ class StoriesController < ApplicationController
   def starred
     stories = authorization.scope(StoryRepository.starred(params[:page]))
     render(Views::Stories::Starred.new(stories:))
+  end
+
+  private
+
+  def render_replacements(replacements)
+    render(
+      Components::ReplaceStream.new(replacements),
+      layout: false,
+      content_type: "text/vnd.turbo-stream.html"
+    )
   end
 end

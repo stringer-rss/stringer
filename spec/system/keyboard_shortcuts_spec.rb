@@ -120,6 +120,7 @@ RSpec.describe "keyboard shortcuts" do
     login_as(default_user)
     create_story_and_visit(title: "My Story")
     open_story_and_send("m")
+    expect(page).to have_css("li.story.cursor .story-keep-unread .fa-check")
     visit(news_path)
 
     expect(page).to have_text("My Story")

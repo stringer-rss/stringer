@@ -15,7 +15,7 @@ class Components::StoryActions < Components::Base
     div(class: "story-actions-container") do
       div { span(class: "story-published") { story.pretty_date } }
       div(class: "story-actions") do
-        keep_unread_button
+        render(Components::StoryKeepUnread.new(story:))
         render(Components::StoryStar.new(story:, placement: :actions))
         refresh_button
         permalink_link
@@ -24,15 +24,6 @@ class Components::StoryActions < Components::Base
   end
 
   private
-
-  def keep_unread_button
-    data = { action: "click->keep-unread-toggle#toggle:stop", **hotkey("m") }
-    div(class: "story-keep-unread", data:) do
-      icon = story.keep_unread ? "fa-check" : "fa-square-o"
-      i(class: "fa #{icon}", data: { keep_unread_toggle_target: "icon" })
-      plain(" #{t('stories.keep_unread')}")
-    end
-  end
 
   # Submits inside the story's Turbo Frame; see Components::StoryFrame.
   def refresh_button

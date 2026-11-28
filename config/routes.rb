@@ -39,5 +39,6 @@ Rails.application.routes.draw do
   put "/stories/:id", to: "stories#update"
   post "/stories/:id/refresh", to: "stories#refresh"
   patch "/stories/:id/star", to: "stories#star"
+  patch "/stories/:id/keep_unread", to: "stories#keep_unread"
   post "/stories/mark_all_as_read", to: "stories#mark_all_as_read"
 end
