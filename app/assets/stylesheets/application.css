@@ -284,9 +284,14 @@ li.story > turbo-frame {
 
 .story-refresh {
   padding: 0;
-  border: 0;
-  background: none;
   color: inherit;
+  background: none;
+  border: 0;
+}
+
+/* Turbo sets aria-busy on the refresh form while its request is in flight. */
+.story-refresh-form[aria-busy="true"] .fa-refresh {
+  animation: fa-spin 1s infinite linear;
 }
 
 .story-preview .story-starred {

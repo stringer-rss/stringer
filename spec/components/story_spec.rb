@@ -155,12 +155,14 @@ RSpec.describe Components::Story do
     expect(form[:action]).to eq("/stories/#{story.id}/refresh")
   end
 
+  # Midday UTC is the same date in the machine's local zone, which
+  # SampleStory uses.
   it "renders tutorial sample stories" do
+    travel_to(Time.utc(2026, 6, 15, 12))
     sample = SampleStory.new("Feed Name", "Sample title")
-    date = Time.current.strftime("%A, %B %d")
 
     expect(render_story(sample))
       .to have_css("turbo-frame#story_#{sample.id}")
-      .and have_css(".story-published", text: date)
+      .and have_css(".story-published", text: "Monday, June 15")
   end
 end
