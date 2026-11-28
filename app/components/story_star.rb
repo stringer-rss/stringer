@@ -1,29 +1,45 @@
 # frozen_string_literal: true
 
-# A star toggle button for a story. Each story shows two: one in its preview
-# row and one in its actions, which also answers the s hotkey.
+# A star button for a story. Each story shows two: one in its preview row and
+# one in its actions, which also answers the s hotkey.
+#
+# The button submits a form; the response is a Turbo Stream that replaces both
+# buttons (see `Components::StoryStarStream`), so the icon only changes once
+# the server has saved the star.
 class Components::StoryStar < Components::Base
-  attr_accessor :story, :hotkey
+  PLACEMENTS = [:preview, :actions].freeze
 
-  def initialize(story:, hotkey: nil)
+  attr_accessor :story, :placement
+
+  def self.dom_id(story, placement)
+    "story_#{story.id}_star_#{placement}"
+  end
+
+  def initialize(story:, placement:)
     super()
     self.story = story
-    self.hotkey = hotkey
+    self.placement = placement
   end
 
   def view_template
-    div(class: "story-starred", data:) do
-      icon = story.is_starred ? "fa-star" : "fa-star-o"
-      i(class: "fa #{icon}", data: { star_toggle_target: "icon" })
+    url = "/stories/#{story.id}/star"
+    id = self.class.dom_id(story, placement)
+    form_with(url:, method: :patch, class: "story-star-form", id:) do
+      input(type: "hidden", name: "starred", value: (!story.is_starred).to_s)
+      star_button
     end
   end
 
   private
 
-  def data
-    data = { action: "click->star-toggle#toggle:stop" }
-    return data unless hotkey
+  def star_button
+    aria_label = t(story.is_starred ? "stories.unstar" : "stories.star")
+    button(type: "submit", class: "story-starred", aria_label:, data:) do
+      i(class: "fa #{story.is_starred ? 'fa-star' : 'fa-star-o'}")
+    end
+  end
 
-    { **data, hotkeys_target: "click", hotkey: }
+  def data
+    placement == :actions ? { hotkeys_target: "click", hotkey: "s" } : {}
   end
 end

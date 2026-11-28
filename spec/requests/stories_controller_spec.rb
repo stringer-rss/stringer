@@ -232,6 +232,50 @@ RSpec.describe StoriesController do
     end
   end
 
+  describe "#star" do
+    def star(story, starred)
+      patch("/stories/#{story.id}/star", params: { starred: starred.to_s })
+    end
+
+    def star_targets(story)
+      ["preview", "actions"].map { |row| "story_#{story.id}_star_#{row}" }
+    end
+
+    it "stars the story" do
+      login_as(default_user)
+      story = create(:story)
+
+      expect { star(story, true) }
+        .to change_record(story, :is_starred).from(false).to(true)
+    end
+
+    it "unstars the story" do
+      login_as(default_user)
+      story = create(:story, :starred)
+
+      expect { star(story, false) }
+        .to change_record(story, :is_starred).from(true).to(false)
+    end
+
+    it "responds with a Turbo Stream" do
+      login_as(default_user)
+
+      star(create(:story), true)
+
+      expect(response.media_type).to eq("text/vnd.turbo-stream.html")
+    end
+
+    it "replaces both of the story's star buttons" do
+      login_as(default_user)
+      story = create(:story)
+
+      star(story, true)
+
+      expect(rendered.all("turbo-stream", visible: :all).pluck(:target))
+        .to eq(star_targets(story))
+    end
+  end
+
   describe "#mark_all_as_read" do
     it "marks all unread stories as read and reload the page" do
       login_as(default_user)

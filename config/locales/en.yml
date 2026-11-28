@@ -200,6 +200,8 @@ en:
   stories:
     keep_unread: Keep unread
     refresh: Refresh story from feed
+    star: Star
+    unstar: Unstar
   time:
     formats:
       default: '%b %d, %H:%M'

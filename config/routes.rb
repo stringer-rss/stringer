@@ -38,5 +38,6 @@ Rails.application.routes.draw do
   get "/starred", to: "stories#starred"
   put "/stories/:id", to: "stories#update"
   post "/stories/:id/refresh", to: "stories#refresh"
+  patch "/stories/:id/star", to: "stories#star"
   post "/stories/mark_all_as_read", to: "stories#mark_all_as_read"
 end
