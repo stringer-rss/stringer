@@ -2,15 +2,19 @@
 
 ## Production ready setup using docker-compose
 
-Create a local environment file named `.env`, e.g. via `touch .env`.
-
-Download [docker-compose.yml](../docker-compose.yml) and run:
+Download [docker-compose.yml](../docker-compose.yml) and, in the same folder, run:
 
 ```sh
 touch .env && docker compose up -d
 ```
 
-Give it a second and visit `localhost`!
+Give it a minute and visit `localhost`!
+
+On its first boot Stringer writes its secret keys to `.env`. Keep this file, and back it up along with your database: without the keys, Stringer can't read the encrypted data it has stored.
+
+You can also set other options in `.env`, such as `FETCH_FEEDS_CRON` and `CLEANUP_CRON`.
+
+The database uses a default password, `stringer`. That's fine as long as Postgres is only reachable from the Stringer container, which is how `docker-compose.yml` sets it up. If you change it to publish the Postgres port, set your own password first by adding `POSTGRES_PASSWORD=...` to `.env` before the first `docker compose up`.
 
 ## Production ready manual setup
 

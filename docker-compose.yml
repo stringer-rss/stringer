@@ -1,31 +1,22 @@
 version: '3'
 
 services:
-  stringer-setup:
-    image: stringerrss/stringer:latest
-    container_name: stringer-setup
-    restart: no
-    env_file: .env
-    volumes:
-      - ./.env:/app/.env
-    entrypoint: ["ruby"]
-    command: ["/app/docker/init_or_update_env.rb"]
-
   stringer-postgres:
     image: postgres:18-alpine
     container_name: stringer-postgres
     restart: always
-    depends_on:
-      stringer-setup:
-        condition: service_completed_successfully
     networks:
       - stringer-network
     volumes:
-      - ./.env:/app/.env
       # Postgres 18+ images expect a single mount here and store the database
       # in a version-named subdirectory. See docs/Docker.md for upgrade steps.
       - /srv/stringer/data:/var/lib/postgresql
-    env_file: .env
+    # The database is only reachable on stringer-network, so a default
+    # password is fine. Set POSTGRES_PASSWORD in .env to change it.
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-stringer}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-stringer}
+      POSTGRES_DB: ${POSTGRES_DB:-stringer}
 
   stringer:
     image: stringerrss/stringer:latest
@@ -34,16 +25,17 @@ services:
     depends_on:
       stringer-postgres:
         condition: service_started
-      stringer-setup:
-        condition: service_completed_successfully
     restart: always
     ports:
       - 80:8080
     networks:
       - stringer-network
     volumes:
+      # On boot the app writes any missing secret keys to this file.
       - ./.env:/app/.env
     env_file: .env
+    environment:
+      DATABASE_URL: ${DATABASE_URL:-postgres://${POSTGRES_USER:-stringer}:${POSTGRES_PASSWORD:-stringer}@${POSTGRES_HOSTNAME:-stringer-postgres}/${POSTGRES_DB:-stringer}}
 
 networks:
   stringer-network:

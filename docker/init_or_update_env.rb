@@ -1,34 +1,23 @@
 # frozen_string_literal: true
 
+# Adds any missing secret keys to the .env file mounted into the container, so
+# that a fresh docker compose install works without generating them by hand.
+# Dotenv loads the file when Rails boots.
+
 require "securerandom"
 
-module Secrets
-  def self.generate_secret(length)
-    SecureRandom.hex(length)
-  end
-end
+ENV_PATH = "/app/.env"
+KEYS = [
+  "SECRET_KEY_BASE",
+  "ENCRYPTION_PRIMARY_KEY",
+  "ENCRYPTION_DETERMINISTIC_KEY",
+  "ENCRYPTION_KEY_DERIVATION_SALT"
+].freeze
 
-pg_user = ENV.fetch("POSTGRES_USER", "stringer")
-pg_password = ENV.fetch("POSTGRES_PASSWORD", Secrets.generate_secret(32))
-pg_host = ENV.fetch("POSTGRES_HOSTNAME", "stringer-postgres")
-pg_db = ENV.fetch("POSTGRES_DB", "stringer")
+existing = File.read(ENV_PATH)
+missing = KEYS.reject { |key| ENV.key?(key) || existing.match?(/^#{key}=/) }
 
-required_env = {
-  "SECRET_KEY_BASE" => Secrets.generate_secret(64),
-  "ENCRYPTION_PRIMARY_KEY" => Secrets.generate_secret(64),
-  "ENCRYPTION_DETERMINISTIC_KEY" => Secrets.generate_secret(64),
-  "ENCRYPTION_KEY_DERIVATION_SALT" => Secrets.generate_secret(64),
-  "POSTGRES_USER" => pg_user,
-  "POSTGRES_PASSWORD" => pg_password,
-  "POSTGRES_HOSTNAME" => pg_host,
-  "POSTGRES_DB" => pg_db,
-  "FETCH_FEEDS_CRON" => "*/5 * * * *",
-  "CLEANUP_CRON" => "0 0 * * *",
-  "DATABASE_URL" => "postgres://#{pg_user}:#{pg_password}@#{pg_host}/#{pg_db}"
-}
-
-required_env.each do |key, value|
-  next if ENV.key?(key)
-
-  File.open("/app/.env", "a") { |file| file << "#{key}=#{value}\n" }
+File.open(ENV_PATH, "a") do |file|
+  file << "\n" unless existing.empty? || existing.end_with?("\n")
+  missing.each { |key| file << "#{key}=#{SecureRandom.hex(64)}\n" }
 end
