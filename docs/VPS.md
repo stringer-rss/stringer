@@ -1,165 +1,221 @@
+These steps set up Stringer on a Linux server. They were tested on Ubuntu
+24.04, Fedora, CentOS Stream 10 and Arch Linux. If something is missing on
+your system, please open an issue or pull request.
+
 Install some dependencies
 =========================
 
-The first step is installing some essential dependencies from your VPS's package manager.
+First install the packages needed to build Ruby and Stringer's gems, plus
+PostgreSQL. (mise, used below, downloads a prebuilt Ruby when it can; these
+packages let it build Ruby from source when it can't.)
 
 #### Ubuntu/Debian
 
-    sudo apt-get install git libxml2-dev libxslt-dev libcurl4-openssl-dev libpq-dev build-essential postgresql libreadline-dev
+    sudo apt-get update
+    sudo apt-get install git curl build-essential libssl-dev libyaml-dev \
+      zlib1g-dev libffi-dev libreadline-dev libpq-dev postgresql
 
 #### CentOS/Fedora
 
-    sudo yum install git libxml2-devel libxslt-devel curl-devel postgresql-devel make automake gcc gcc-c++ postgresql-server readline-devel openssl-devel
+On CentOS, first turn on the CRB repository, which has `libyaml-devel`:
 
-On CentOS after installing Postgres, I needed to run these commands, Fedora likely the same.
+    sudo dnf install dnf-plugins-core
+    sudo dnf config-manager --set-enabled crb
 
-    service postgresql initdb && service postgresql start
+Then, on both CentOS and Fedora:
+
+    sudo dnf install git curl gcc gcc-c++ make openssl openssl-devel libyaml-devel \
+      zlib-devel libffi-devel readline-devel libpq-devel libatomic \
+      postgresql-server postgresql-contrib
+
+Set up Postgres and start it. The `PGSETUP_INITDB_OPTIONS` setting lets
+Stringer log in with a password; without it, Postgres rejects the login.
+
+    sudo PGSETUP_INITDB_OPTIONS="--auth-host=scram-sha-256" postgresql-setup --initdb
+    sudo systemctl enable --now postgresql
 
 #### Arch Linux
 
-    pacman -S git postgresql base-devel libxml2 libxslt curl readline postgresql-libs
+    sudo pacman -S git curl base-devel openssl libyaml zlib libffi readline \
+      postgresql
 
-Here are some Arch specific instructions for setting up postgres
+Set up Postgres and start it:
 
-    systemd-tmpfiles --create postgresql.conf
-    chown -c -R postgres:postgres /var/lib/postgres
-    sudo su - postgres -c "initdb --locale en_US.UTF-8 -E UTF8 -D '/var/lib/postgres/data'"
-    systemctl start postgresql
-    systemctl enable postgresql
-
+    sudo -u postgres initdb --locale en_US.UTF-8 -E UTF8 \
+      --auth-local=peer --auth-host=scram-sha-256 -D /var/lib/postgres/data
+    sudo systemctl enable --now postgresql
 
 Set up the database
 ===================
 
-Create a postgresql user to own the database Stringer will use, you will need to create a password too, make a note of it.
+Create a Postgres user to own Stringer's database. You will be asked for a
+password; make a note of it.
 
-    sudo -u postgres createuser -D -A -P stringer
+    sudo -u postgres createuser -P stringer
 
-Now create the database Stringer will use
+Now create the database:
 
     sudo -u postgres createdb -O stringer stringer_live
 
 Create your stringer user
 =========================
 
-We will run stringer as it's own user for security, also we will be installing a specific version of ruby to stringer user's home directory, this saves us worrying whether the version of ruby and some dependencies provided by your distro are compatible with Stringer.
+Stringer runs as its own user for security. Ruby and Node are installed in
+this user's home directory, so they don't depend on the versions your
+distribution ships.
 
     sudo useradd stringer -m -s /bin/bash
     sudo su -l stringer
 
-Always use -l switch when you switch user to your stringer user, without it your modified .bash_profile or .profile file will be ignored.
+Always use the `-l` flag when you switch to the stringer user. Without it,
+your `.bash_profile` is ignored.
 
-Install Ruby for your stringer user
-===================================
+Install Stringer
+================
 
-We are going to use Rbenv to manage the version of Ruby you use.
+Grab Stringer from GitHub:
 
-    cd
-    git clone git://github.com/sstephenson/rbenv.git .rbenv
-    echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> $HOME/.bash_profile
-    echo 'eval "$(rbenv init -)"' >> $HOME/.bash_profile
-    git clone git://github.com/sstephenson/ruby-build.git $HOME/.rbenv/plugins/ruby-build
-    source ~/.bash_profile
-
-    rbenv install 2.7.5
-    rbenv local 2.7.5
-    rbenv rehash
-
-We also need to install bundler which will handle Stringer's dependencies
-
-    gem install bundler
-    rbenv rehash
-
-We will also need foreman to run our app
-
-    gem install foreman
-
-Install Stringer and set it up
-==============================
-
-Grab Stringer from github
-
-    git clone git@github.com:stringer-rss/stringer.git
+    git clone https://github.com/stringer-rss/stringer.git
     cd stringer
 
-Use bundler to grab and build Stringer's dependencies
+Install Ruby, Node and pnpm
+===========================
 
-    bundle install
-    rbenv rehash
+We use [mise](https://mise.jdx.dev) to install the Ruby, Node and pnpm versions
+listed in Stringer's `.tool-versions` file.
 
-Stringer uses environment variables to configure the application. Edit these values to reflect your settings.
-
-    echo 'export DATABASE_URL="postgres://stringer:EDIT_ME@localhost/stringer_live"' >> $HOME/.bash_profile
-    echo 'export RACK_ENV="production"' >> $HOME/.bash_profile
-    echo 'export RAILS_ENV="production"' >> $HOME/.bash_profile
-    echo "export SECRET_KEY_BASE=`openssl rand -hex 64`" >> $HOME/.bash_profile
-    echo "export ENCRYPTION_PRIMARY_KEY=`openssl rand -hex 64`" >> $HOME/.bash_profile
-    echo "export ENCRYPTION_DETERMINISTIC_KEY=`openssl rand -hex 64`" >> $HOME/.bash_profile
-    echo "export ENCRYPTION_KEY_DERIVATION_SALT=`openssl rand -hex 64`" >> $HOME/.bash_profile
+    curl https://mise.run | sh
+    echo 'eval "$(~/.local/bin/mise activate bash)"' >> ~/.bash_profile
+    echo 'export RAILS_ENV=production' >> ~/.bash_profile
     source ~/.bash_profile
 
-Tell stringer to run the database in production mode, using the `postgres` database you created earlier.
+    cd ~/stringer
+    mise install ruby node pnpm
 
-    cd $HOME/stringer
-    rake db:migrate RAILS_ENV=production
+`.tool-versions` also lists Postgres, which is only used for development, so
+we name the tools to install rather than running a bare `mise install`.
 
-Run the application:
+Set up Stringer
+===============
 
-    foreman start
+Stringer reads its settings from a `.env` file in its directory. Create one,
+replacing `EDIT_ME` with the database password you chose earlier:
 
-Set up a cron job to parse the rss feeds.
+    cd ~/stringer
+    cat > .env <<EOF
+    DATABASE_URL=postgres://stringer:EDIT_ME@localhost/stringer_live
+    SECRET_KEY_BASE=$(openssl rand -hex 64)
+    ENCRYPTION_PRIMARY_KEY=$(openssl rand -hex 64)
+    ENCRYPTION_DETERMINISTIC_KEY=$(openssl rand -hex 64)
+    ENCRYPTION_KEY_DERIVATION_SALT=$(openssl rand -hex 64)
+    EOF
+    chmod 600 .env
+
+Install Stringer's gems, build its assets and set up the database:
+
+    bundle config set --local deployment true
+    bundle config set --local without development:test
+    bundle install
+    bundle exec rails assets:precompile
+    bundle exec rails db:migrate
+
+Check that it starts:
+
+    bundle exec puma -C config/puma.rb
+
+You should see `Listening on http://0.0.0.0:3000`. Press `Ctrl-C` to stop it.
+
+Stringer only works over HTTPS in production: plain HTTP requests are
+redirected to `https://`. Put a reverse proxy with an SSL certificate in front
+of it, as shown in the nginx section below, before opening it in a browser.
+
+Fetch feeds on a schedule
+=========================
+
+Feeds are fetched by a cron job. As the stringer user, run:
 
     crontab -e
 
-add the lines
+and add these lines:
 
-    SHELL=/bin/bash
-    PATH=/home/stringer/.rbenv/bin:/bin/:/usr/bin:/usr/local/bin/:/usr/local/sbin
-    */10 * * * *  source $HOME/.bash_profile; cd $HOME/stringer/; bundle exec rake fetch_feeds;
+    */10 * * * * bash -lc 'cd ~/stringer && bundle exec rake fetch_feeds'
+    0 0 * * * bash -lc 'cd ~/stringer && bundle exec rake cleanup_old_stories'
 
-Manage Stringer With Systemd
-============================
+The first fetches feeds every 10 minutes. The second removes read, unstarred
+stories older than 30 days once a day.
 
-You may want to manage Stringer as a systemd service on distributions come with systemd.
+Run Stringer with systemd
+=========================
 
-As stringer user, export app service files with foreman:
+To start Stringer when the server boots, run it as a systemd service. Log out
+of the stringer user (`exit`) and create
+`/etc/systemd/system/stringer.service`:
+
+``` ini
+[Unit]
+Description=Stringer
+After=network.target postgresql.service
+
+[Service]
+Type=simple
+User=stringer
+WorkingDirectory=/home/stringer/stringer
+Environment=RAILS_ENV=production
+ExecStart=/home/stringer/.local/bin/mise exec -- bundle exec puma -C config/puma.rb
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Then start it and make it run at boot:
+
+    sudo systemctl daemon-reload
+    sudo systemctl enable --now stringer
+
+Background jobs run inside the same process, so this is the only service you
+need.
+
+Updating Stringer
+=================
+
+As the stringer user:
 
     cd ~/stringer
-    mkdir systemd-services
-    foreman export systemd systemd-services -a stringer -u stringer
+    git pull
+    mise install ruby node pnpm
+    bundle install
+    bundle exec rails assets:precompile
+    bundle exec rails db:migrate
 
-Logout stringer user, install systemd services:
-
-    sudo cp -a ~stringer/stringer/systemd-services/* /etc/systemd/system
-
-As stringer user, close existing Stringer instance:
-
-    exit # exit app
-
-Start app as a systemd service and make app run at startup
-
-    sudo systemctl start stringer.target
-    sudo systemctl enable stringer.target
+Then restart the service with `sudo systemctl restart stringer`.
 
 Reverse Proxy With Nginx
 ========================
 
-You may want to use nginx as reverse proxy server to add SSL/TLS for security
-reason. Here is a sample configuration:
+Stringer needs HTTPS, so put nginx in front of it with an SSL certificate (for
+example a free one from [Let's Encrypt](https://letsencrypt.org/)). Here is a
+sample configuration:
 
 ``` nginx
 server {
     listen 80;
-    # listen 443 ssl;
-    # ssl_certificate ssl/fullchain.pem;
-    # ssl_certificate_key ssl/privatekey.pem;
-    # you can try to use Mozilla SSL Configuration Generator
+    server_name example.com;
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    ssl_certificate /etc/path/to/example.com/fullchain.pem;
+    ssl_certificate_key /etc/path/to/example.com/privkey.pem;
+    # you can use the Mozilla SSL Configuration Generator
     # to harden your TLS configuration
-    # https://mozilla.github.io/server-side-tls/ssl-config-generator/
+    # https://ssl-config.mozilla.org/
     server_name example.com;
     location / {
-        proxy_pass http://127.0.0.1:1337/;
+        proxy_pass http://127.0.0.1:3000/;
         proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Proto $scheme;
     }
 }
 ```
@@ -167,33 +223,30 @@ server {
 Deploy Stringer With Passenger And Apache
 =========================================
 
-You may want to run Stringer with the existing Apache server. We need to install
-*mod_passenger* and edit few files.
+You may want to run Stringer with an existing Apache server instead of the
+systemd service above. You will need to install *mod_passenger*.
 
-The installation of *mod_passenger* depends on VPS's system distribution release.
-Offical installation guide is available at [Passenger Library](https://www.phusionpassenger.com/library/install/apache/install/oss/)
+How to install *mod_passenger* depends on your distribution. The official
+installation guide is in the
+[Passenger Library](https://www.phusionpassenger.com/library/install/apache/install/oss/).
 
-After validating the *mod_passenger* install, we will fetch dependencies again
-to meet Passenger's default GEM_HOME set. As stringer user:
-
-    cd ~/stringer
-    bundle install --path vendor/bundle
-
-Edit database.yml with correct database url:
+Passenger needs the full path to Ruby. As the stringer user, find it with:
 
     cd ~/stringer
-    sed -i "s|url: .*|url: $DATABASE_URL|" config/database.yml
+    mise which ruby
 
-Add VirtualHost to your Apache installation, here's a sample configuration:
+Add a VirtualHost to your Apache configuration, using that path for
+`PassengerRuby`. Here's a sample:
 
-```bash
+```apache
 <VirtualHost *:80>
     ServerName example.com
     DocumentRoot /home/stringer/stringer/public
 
     PassengerEnabled On
     PassengerAppRoot /home/stringer/stringer
-    PassengerRuby /home/stringer/.rbenv/shims/ruby
+    PassengerAppEnv production
+    PassengerRuby /home/stringer/.local/share/mise/installs/ruby/VERSION/bin/ruby
     # PassengerLogFile /dev/null # don't flow logs to apache error.log
 
     <Directory /home/stringer/stringer/public>
@@ -202,9 +255,8 @@ Add VirtualHost to your Apache installation, here's a sample configuration:
         AllowOverride All
     </Directory>
 
-
-    # you can harden your connection with https, don't forget
-    # change to <VirtualHost *:443>
+    # Stringer needs HTTPS: use <VirtualHost *:443> and set your certificate
+    # SSLEngine on
     # SSLCertificateFile /etc/path/to/example.com/fullchain.pem
     # SSLCertificateKeyFile /etc/path/to/example.com/privkey.pem
     # Include /etc/path/to/options-ssl-apache.conf
