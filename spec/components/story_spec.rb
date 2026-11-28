@@ -75,6 +75,13 @@ RSpec.describe Components::Story do
       .to have_css("li > turbo-frame#story_#{story.id}")
   end
 
+  it "separates the headline from the lead with a space" do
+    story = create(:story, title: "Headline", body: "Lead")
+
+    expect(render_story(story).find(".story-details").text)
+      .to eq("Headline — Lead")
+  end
+
   it "escapes the headline" do
     story = create(:story, title: "&lt;b&gt;Bold&lt;/b&gt; &amp; more")
 

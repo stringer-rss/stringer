@@ -50,6 +50,7 @@ class Components::StoryFrame < Components::Base
   def details
     p(class: "story-details") do
       span(class: "story-title") { story.headline }
+      whitespace
       span(class: "story-lead") { "— #{story.lead}" }
     end
   end
