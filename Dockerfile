@@ -1,3 +1,15 @@
+# Builds the JS and CSS bundles. Only the output is copied into the final
+# image, so it doesn't need Node or node_modules.
+FROM node:26.13.1-slim AS assets
+
+WORKDIR /app
+RUN npm install --global pnpm@12.21.0
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml /app/
+COPY patches /app/patches
+RUN pnpm install --frozen-lockfile
+COPY . /app
+RUN pnpm build && pnpm build:css
+
 FROM ruby:4.0.10
 
 ENV RACK_ENV=production
@@ -11,7 +23,7 @@ SHELL ["/bin/bash", "-c"]
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-      supervisor locales nodejs vim nano \
+      supervisor locales vim nano \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -42,6 +54,17 @@ RUN gem install bundler:$BUNDLER_VERSION && bundle install
 ADD docker/supervisord.conf /etc/supervisord.conf
 ADD docker/start.sh /app/
 ADD . /app
+COPY --from=assets /app/app/assets/builds /app/app/assets/builds
+
+# Rails needs these keys to boot, but precompiling doesn't use them. The JS
+# and CSS were already built in the assets stage above.
+RUN SECRET_KEY_BASE=dummy \
+    ENCRYPTION_PRIMARY_KEY=dummy \
+    ENCRYPTION_DETERMINISTIC_KEY=dummy \
+    ENCRYPTION_KEY_DERIVATION_SALT=dummy \
+    SKIP_CSS_BUILD=1 \
+    SKIP_JS_BUILD=1 \
+    bundle exec rails assets:precompile
 
 RUN useradd -m stringer
 RUN chown -R stringer:stringer /app

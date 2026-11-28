@@ -21,8 +21,6 @@ if [ -z "$DATABASE_URL" ]; then
   exit 1
 fi
 
-rails assets:precompile
-
 : ${FETCH_FEEDS_CRON:='*/5 * * * *'}
 : ${CLEANUP_CRON:='0 0 * * *'}
 
