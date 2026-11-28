@@ -177,10 +177,11 @@ RSpec.describe "stories/index" do
     )
   end
 
-  def serve_feed_with_entry(feed, **entry_options)
+  def serve_feed_with_entry(feed, delay: nil, **entry_options)
     server = FeedServer.new
     entry = updated_feed_entry(**entry_options)
     server.response = GenerateXml.call(feed, [entry])
+    server.delay = delay
     feed.update!(url: server.url)
 
     # The local FeedServer binds to loopback, which the SSRF guard blocks.
@@ -209,6 +210,30 @@ RSpec.describe "stories/index" do
 
     expect(page).to have_link(href: "http://example.com/fixed.mp3")
     expect(page).to have_no_link(href: "http://example.com/dead.mp3")
+  end
+
+  def spinning_refresh_icon?
+    page.evaluate_script(<<~JS)
+      getComputedStyle(
+        document.querySelector(".story-refresh-form[aria-busy] .fa-refresh")
+      ).animationName === "fa-spin"
+    JS
+  end
+
+  it "spins the refresh icon while the refresh loads", :aggregate_failures do
+    story = create(:story, title: "Podcast Episode", entry_id: "episode-1")
+    serve_feed_with_entry(
+      story.feed, delay: 1, entry_id: "episode-1", enclosure_url: nil
+    )
+    login_as(default_user)
+    visit(news_path)
+    find(".story-preview", text: "Podcast Episode").click
+
+    find(".story-actions .story-refresh").click
+
+    expect(page).to have_css(".story-refresh-form[aria-busy='true']")
+    expect(spinning_refresh_icon?).to be(true)
+    expect(page).to have_no_css(".story-refresh-form[aria-busy]")
   end
 
   it "marks a story as read when opened" do
