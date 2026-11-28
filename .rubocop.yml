@@ -45,6 +45,7 @@ RSpec/MultipleMemoizedHelpers:
   Exclude:
     - spec/linters/rubocop/**/*.rb
 Style/ClassAndModuleChildren: { EnforcedStyle: compact }
+Style/HashSyntax: { EnforcedShorthandSyntax: always }
 Style/MethodCallWithArgsParentheses:
   AllowedMethods:
     - and
